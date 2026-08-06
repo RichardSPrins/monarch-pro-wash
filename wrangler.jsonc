@@ -4,7 +4,7 @@
 		"nodejs_compat",
 		"global_fetch_strictly_public"
 	],
-	"name": "vws-starter-2026",
+	"name": "monarch-pro-wash",
 	"main": "@astrojs/cloudflare/entrypoints/server",
 	"assets": {
 		"directory": "./dist",
@@ -15,18 +15,19 @@
 	},
 	"d1_databases": [
 		{
-			"binding": "vws_starter_2026_db",
-			"database_name": "vws-starter-2026-db",
-			"database_id": "51b4a7ea-be86-4ec6-842a-8510ce976511",
-			"remote": true,
+			"binding": "DB",
+			"database_name": "monarch-pro-wash-db",
+			"database_id": "f71d7cb9-27fa-4d60-9479-410bb232793f",
+			"remote": false,
 			"migrations_dir": "../../migrations"
 		}
 	],
 	"r2_buckets": [
 		{
-			"bucket_name": "vws-starter-2026-media",
-			"binding": "vws_starter_2026_media",
-			"remote": true
+			"bucket_name": "monarch-pro-wash-media",
+			"binding": "MEDIA",
+			"remote": false
 		}
-	]
+	],
+	"kv_namespaces": [{ "binding": "SESSION", "id": "fb0b1a901a5e46eab98b025214455965" }]
 }

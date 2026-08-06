@@ -1,17 +1,19 @@
 {
-  "businessName": "Peak Roofing Co",
-  "tagline": "Trusted Roofing You Can Count On",
-  "phone": "(208) 555-0147",
-  "email": "info@peakroofingco.com",
-  "address": "123 Main St",
-  "city": "Boise",
-  "state": "ID",
-  "zip": "83702",
-  "license": "ID-RCE-12345",
+  "businessName": "Monarch Pro Wash",
+  "tagline": "Exterior cleaning that transforms",
+  "phone": "",
+  "email": "",
+  "address": "",
+  "city": "",
+  "state": "",
+  "zip": "",
+  "license": "",
   "gbpUrl": "",
   "social": {
     "facebook": "",
     "instagram": "",
     "youtube": ""
-  }
+  },
+  "headerVariant": "classic",
+  "footerVariant": "columns"
 }

@@ -16,30 +16,33 @@
   /* ---------------------------------------------------------------
      BRAND PALETTE
      --------------------------------------------------------------- */
-  /* Primary brand — deep forest green */
-  --t-primary: #1b4332;
-  --t-primary-light: #2d6a4f;
-  --t-primary-muted: #e8f5e9;
+  /* Primary brand — signal orange (CTAs / primary actions) */
+  --t-primary: #e85c2b;
+  --t-primary-light: #f0764a; /* lightened orange for buttons on dark surfaces */
+  --t-primary-muted: #2a1a12; /* subtle orange-tinted dark (muted primary bg) */
 
-  /* Secondary brand — warm amber/orange */
-  --t-secondary: #f4a261;
-  --t-secondary-light: #fddcbc;
-  --t-secondary-fg: #7c2d00;
+  /* Secondary brand — Monarch teal (accent: eyebrows, emphasis, icons, links) */
+  --t-secondary: #2fa8b5;
+  --t-secondary-light: #6fc4cd;
+  --t-secondary-fg: #06303a; /* dark teal ink — text on a teal surface */
 
   /* ---------------------------------------------------------------
-     NEUTRALS — backgrounds & text
+     NEUTRALS — DARK-FIRST. The base surface is deep navy; the "alt"
+     surface is the light/white contrast break. Footer + dark bands
+     use inverse (kept dark). See global.css for the per-surface tokens.
      --------------------------------------------------------------- */
-  --t-bg: #ffffff;
-  --t-bg-alt: #f9fafb;
-  --t-bg-muted: #f3f4f6;
-  --t-bg-inverse: #111827;
+  --t-bg: #0e2a3f; /* base = deep navy (default sections, header) */
+  --t-bg-alt: #f5f8f9; /* the LIGHT/white sections (theme="alt") */
+  --t-bg-muted: #0a2233; /* deeper navy (theme="muted") */
+  --t-bg-inverse: #0a1f2e; /* footer / dark bands (theme="inverse") */
 
-  --t-fg: #111827;
-  --t-fg-muted: #5f6470;
-  --t-fg-subtle: #767d89;
-  --t-fg-inverse: #f9fafb;
+  --t-fg: #e7eef2; /* light text on the dark base */
+  --t-fg-muted: rgba(231, 238, 242, 0.72);
+  --t-fg-subtle: rgba(231, 238, 242, 0.48);
+  --t-fg-inverse: #e7eef2; /* text on inverse (dark) — light */
+  --t-fg-on-light: #22323f; /* slate ink — text on the light "alt" surface */
 
-  --t-border: #e5e7eb;
+  --t-border: rgba(255, 255, 255, 0.12); /* borders on the dark base */
 
   /* ---------------------------------------------------------------
      RATING — review stars. Retheme per brand if desired.
@@ -118,9 +121,9 @@
      ELEVATION — shadow style. Soft vs flat vs hard reads as a
      completely different design system at the same palette.
      --------------------------------------------------------------- */
-  --t-shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.06);
-  --t-shadow-md: 0 4px 12px -2px rgba(0, 0, 0, 0.08);
-  --t-shadow-lg: 0 12px 32px -4px rgba(0, 0, 0, 0.12);
+  --t-shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.35);
+  --t-shadow-md: 0 6px 16px -2px rgba(0, 0, 0, 0.45);
+  --t-shadow-lg: 0 16px 40px -6px rgba(0, 0, 0, 0.55);
 
   /* ---------------------------------------------------------------
      DENSITY — vertical section rhythm. Airy vs tight.

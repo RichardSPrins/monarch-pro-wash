@@ -27,3 +27,6 @@ pnpm-debug.log*
 .wrangler/
 .emdash/data.db*
 dev.log
+
+# local secrets
+.dev.vars

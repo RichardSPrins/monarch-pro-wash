@@ -1,5 +1,6 @@
 ---
 import { getBusinessData } from "@/lib/utils";
+import { getBackgroundImage } from "@/lib/images";
 import type { Eyebrow, SectionCTA } from "@/types/sections";
 import { highlight } from "@/lib/highlight";
 import Badge from "@/components/elements/badge/Badge.astro";
@@ -13,6 +14,7 @@ import { Button } from "@/components/elements/button";
 interface Props {
   theme?: string;
   data?: {
+    backgroundImage?: { src: string; overlayOpacity?: number };
     eyebrow?: Eyebrow;
     heading?: string;
     subheading?: string;
@@ -26,6 +28,8 @@ interface Props {
 }
 
 const { theme = "default", data } = Astro.props;
+const heroBg = await getBackgroundImage(data?.backgroundImage?.src, { width: 2200 });
+const heroOverlay = (data?.backgroundImage?.overlayOpacity ?? 60) / 100;
 const business = await getBusinessData();
 
 const ctas = (
@@ -34,7 +38,7 @@ const ctas = (
 const bullets = data?.bullets ?? [];
 ---
 
-<section class:list={["hero-split-checklist section-wrapper section-py-lg", `theme-${theme}`]}>
+<section class:list={["hero-split-checklist section-wrapper section-py-lg", `theme-${theme}`, "hero-bg", heroBg ? "has-bg" : ""]} style={heroBg ? `--hero-image: url('${heroBg}'); --hero-overlay: ${heroOverlay}` : undefined}>
   <div class="section-container">
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
       <div class="flex flex-col gap-5">

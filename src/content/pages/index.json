@@ -1,161 +1,30 @@
 {
+  "noindex": false,
+  "draft": false,
   "slug": "index",
-  "title": "Home",
-  "metaTitle": "Peak Roofing Co | Trusted Roofing in Boise, ID",
-  "metaDescription": "Professional roofing services in Boise, ID. Licensed, insured, and trusted by homeowners since 2019.",
+  "title": "Monarch Pro Wash",
+  "metaTitle": "Monarch Pro Wash | Professional Pressure Washing",
+  "metaDescription": "Professional exterior cleaning and pressure washing that restores curb appeal, protects your property, and makes it shine.",
   "sections": [
     {
-      "type": "hero:split-form",
+      "type": "hero:centered-card",
       "theme": "inverse",
       "data": {
-        "eyebrow": {
-          "text": "Roofing Specialists — Boise • Meridian • Nampa",
-          "variant": "badge"
-        },
-        "heading": "Trusted Roof Repair in Boise, ID",
-        "subheading": "Fast response times, licensed and insured.",
-        "body": "Family-owned and operated. Competitive pricing, fast response, and a team that gets the job done right.",
-        "trustBadges": [
-          { "text": "Licensed & Insured" },
-          { "text": "Family Owned" },
-          { "text": "Same-Day Response" }
-        ],
+        "eyebrow": { "text": "Residential & Commercial", "variant": "text" },
+        "heading": "Exterior cleaning that ==transforms==.",
+        "subheading": "Professional pressure washing that restores curb appeal, protects your property, and makes it shine.",
         "ctas": [
-          { "label": "Get a Free Quote", "href": "tel:2085550147", "variant": "primary" }
-        ],
-        "showPhone": true,
-        "backgroundImage": {
-          "src": "/src/assets/images/landing.jpg",
-          "overlayOpacity": 70
-        }
-      }
-    },
-    {
-      "type": "trust-bar:badges",
-      "theme": "default",
-      "data": {
-        "foundingYear": 2019,
-        "googleRating": 4.9,
-        "reviewCount": 142,
-        "familyOwned": true,
-        "licensedInsured": true
-      }
-    },
-    {
-      "type": "services:side-by-side",
-      "theme": "default",
-      "data": {
-        "eyebrow": { "text": "Everything You Need", "variant": "text" },
-        "heading": "Full-Service Roofing Solutions",
-        "subheading": "From emergency repairs to full replacements, we handle it all.",
-        "image": { "src": "/src/assets/images/roofing-crew.jpg", "alt": "Roofing crew at work" },
-        "imagePosition": "left",
-        "cta": { "label": "View All Services", "href": "/services" }
-      }
-    },
-    {
-      "type": "process:numbered",
-      "theme": "muted",
-      "data": {
-        "eyebrow": { "text": "Simple Process", "variant": "text" },
-        "heading": "How It Works",
-        "subheading": "Getting your roof fixed is simple and stress-free.",
-        "steps": [
-          {
-            "heading": "Call or Request a Quote",
-            "body": "Reach out by phone or form and we respond within the hour."
-          },
-          {
-            "heading": "Free Inspection",
-            "body": "We come to you, assess the damage, and give you a clear honest estimate."
-          },
-          {
-            "heading": "Fast Repair",
-            "body": "Most repairs completed same day or within 48 hours. No surprises."
-          }
+          { "label": "Get a Free Quote", "href": "#quote", "variant": "primary" }
         ]
       }
     },
     {
-      "type": "about:why-choose-us",
-      "theme": "default",
-      "data": {
-        "eyebrow": { "text": "Why Choose Us", "variant": "text" },
-        "heading": "Your Trusted Roofing Partner in Boise",
-        "body": "At Peak Roofing Co, we understand that your roof is one of the most important investments in your home. That's why we treat every project with the care and attention it deserves. Our team is dedicated to providing top-notch craftsmanship, transparent communication, and exceptional customer service from start to finish.",
-        "image": {
-          "src": "/src/assets/images/roofing-crew.jpg",
-          "alt": "Peak Roofing Co team on the job"
-        },
-        "overlayText": "5-Star Rated on Google",
-        "stats": [
-          { "value": "7+", "label": "Years Experience", "description": "Serving the Treasure Valley since 2019" },
-          { "value": "500+", "label": "Roofs Repaired", "description": "Across Boise, Meridian, and Nampa" },
-          { "value": "98%", "label": "5-Star Reviews", "description": "Our customers keep coming back" }
-        ],
-        "cta": { "label": "Learn More", "href": "/about" }
-      }
-    },
-    {
-      "type": "reviews:featured",
-      "theme": "muted",
-      "data": {
-        "eyebrow": { "text": "Customer Stories", "variant": "text" },
-        "heading": "Don't Take Our Word For It",
-        "author": "Marcus T.",
-        "location": "Boise, ID",
-        "rating": 5,
-        "source": "Google",
-        "body": "Peak Roofing showed up the same day I called about a leak after the storm. They had it fixed in a few hours and the price was exactly what they quoted. I've already recommended them to two of my neighbors."
-      }
-    },
-    {
-      "type": "service-areas:map-split",
-      "theme": "default",
-      "data": {
-        "eyebrow": { "text": "Where We Work", "variant": "text" },
-        "heading": "Proudly Serving Boise and the Treasure Valley",
-        "body": "We provide fast, reliable roofing services across the greater Boise area. Most jobs are scheduled within 24-48 hours of your first call.",
-        "coverageNote": "Serving within 30 miles of Boise, ID",
-        "featuredOnly": true,
-        "cta": {
-          "label": "Get a Free Quote",
-          "href": "/contact",
-          "variant": "primary"
-        }
-      }
-    },
-    {
-      "type": "reviews:cards",
-      "theme": "default",
-      "data": {
-        "eyebrow": { "text": "Customer Reviews", "variant": "text" },
-        "heading": "What Our Customers Say",
-        "subheading": "Real reviews from real homeowners across the Boise area.",
-        "filter": "featured",
-        "limit": 6
-      }
-    },
-    {
-      "type": "faqs:accordion",
-      "theme": "alt",
-      "data": {
-        "eyebrow": { "text": "FAQ", "variant": "text" },
-        "heading": "Common Questions",
-        "subheading": "Everything you need to know before hiring a roofer."
-      }
-    },
-    {
-      "type": "cta:centered",
+      "type": "cta:banner",
       "theme": "primary",
       "data": {
-        "eyebrow": { "text": "Get Started Today", "variant": "text" },
-        "heading": "Ready to Fix Your Roof?",
-        "subheading": "Call us today for a free estimate. We respond within the hour.",
-        "showPhone": true,
-        "ctas": [
-          { "label": "Get a Free Quote", "href": "/contact", "variant": "secondary" }
-        ]
+        "heading": "Ready to transform your property?",
+        "subheading": "Get a free, no-obligation quote today.",
+        "showPhone": true
       }
     }
   ]

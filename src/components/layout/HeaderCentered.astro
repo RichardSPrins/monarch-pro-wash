@@ -16,7 +16,8 @@ const business = await getBusinessData();
   class="sticky top-0 z-50 bg-bg border-b border-border transition-shadow duration-300"
   data-header
 >
-  <!-- Top bar -->
+  <!-- Top bar — only rendered when there's contact info to show -->
+  {(business.phone || business.email || business.social?.facebook || business.social?.instagram || business.social?.youtube) && (
   <div class="bg-bg-inverse text-fg-inverse text-sm hidden md:block">
     <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 py-2 flex items-center justify-between">
       <div class="flex items-center gap-6">
@@ -72,6 +73,7 @@ const business = await getBusinessData();
       </div>
     </div>
   </div>
+  )}
 
   <!-- Main nav (centered) -->
   <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">

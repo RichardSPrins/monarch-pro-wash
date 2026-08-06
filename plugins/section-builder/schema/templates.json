@@ -9,6 +9,10 @@
     "secondaryCta": {
       "label": "Get a Free Quote",
       "href": "/contact"
+    },
+    "backgroundImage": {
+      "src": "",
+      "overlayOpacity": 60
     }
   },
   "about:why-choose-us": {
@@ -129,7 +133,11 @@
   },
   "hero:full": {
     "headline": "hero:full",
-    "subheadline": "Full-viewport centered hero — bold brand landing."
+    "subheadline": "Full-viewport centered hero — bold brand landing.",
+    "backgroundImage": {
+      "src": "",
+      "overlayOpacity": 60
+    }
   },
   "hero:split-form": {
     "eyebrow": {
@@ -165,7 +173,11 @@
   },
   "hero:stacked-form": {
     "headline": "hero:stacked-form",
-    "subheadline": "Centered content with the form beneath."
+    "subheadline": "Centered content with the form beneath.",
+    "backgroundImage": {
+      "src": "",
+      "overlayOpacity": 60
+    }
   },
   "hero:video": {
     "eyebrow": {
@@ -182,7 +194,11 @@
         "href": "/contact",
         "variant": "primary"
       }
-    ]
+    ],
+    "backgroundImage": {
+      "src": "",
+      "overlayOpacity": 60
+    }
   },
   "hero:gradient": {
     "eyebrow": {
@@ -198,7 +214,11 @@
         "href": "/contact",
         "variant": "secondary"
       }
-    ]
+    ],
+    "backgroundImage": {
+      "src": "",
+      "overlayOpacity": 60
+    }
   },
   "hero:stats": {
     "eyebrow": {
@@ -256,7 +276,11 @@
         "href": "/contact",
         "variant": "primary"
       }
-    ]
+    ],
+    "backgroundImage": {
+      "src": "",
+      "overlayOpacity": 60
+    }
   },
   "hero:centered-card": {
     "eyebrow": {
@@ -298,7 +322,11 @@
         "variant": "outline"
       }
     ],
-    "showPhone": true
+    "showPhone": true,
+    "backgroundImage": {
+      "src": "",
+      "overlayOpacity": 60
+    }
   },
   "hero:split-stats": {
     "eyebrow": {
@@ -338,7 +366,11 @@
         "value": "100%",
         "label": "Licensed & insured"
       }
-    ]
+    ],
+    "backgroundImage": {
+      "src": "",
+      "overlayOpacity": 60
+    }
   },
   "hero:overlay-card": {
     "eyebrow": {
@@ -364,6 +396,10 @@
     "image": {
       "src": "/src/assets/images/landing.jpg",
       "alt": "Finished roof"
+    },
+    "backgroundImage": {
+      "src": "",
+      "overlayOpacity": 60
     }
   },
   "hero:angled": {
@@ -390,6 +426,10 @@
     "image": {
       "src": "/src/assets/images/roofing-crew.jpg",
       "alt": "Roofing crew"
+    },
+    "backgroundImage": {
+      "src": "",
+      "overlayOpacity": 60
     }
   },
   "hero:badge-row": {
@@ -428,7 +468,11 @@
         "icon": "✅",
         "label": "Free Estimates"
       }
-    ]
+    ],
+    "backgroundImage": {
+      "src": "",
+      "overlayOpacity": 60
+    }
   },
   "hero:split-checklist": {
     "eyebrow": {
@@ -457,7 +501,11 @@
       "Manufacturer-certified installers",
       "Full cleanup & magnetic nail sweep",
       "5-year workmanship warranty"
-    ]
+    ],
+    "backgroundImage": {
+      "src": "",
+      "overlayOpacity": 60
+    }
   },
   "trust-bar:stats": {
     "heading": "trust-bar:stats",

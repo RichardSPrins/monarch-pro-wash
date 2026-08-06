@@ -36,6 +36,7 @@
   --color-fg-muted: var(--t-fg-muted);
   --color-fg-subtle: var(--t-fg-subtle);
   --color-fg-inverse: var(--t-fg-inverse);
+  --color-fg-on-light: var(--t-fg-on-light);
   --color-fg-on-primary: #ffffff;
   --color-fg-on-brand-secondary: var(--t-secondary-fg);
 
@@ -154,10 +155,11 @@
   --background: var(--t-bg);
   --foreground: var(--t-fg);
 
-  --card: var(--t-bg);
+  /* Dark-first base: cards/popovers are a RAISED navy (visible on the base). */
+  --card: color-mix(in srgb, var(--t-bg) 92%, #ffffff);
   --card-foreground: var(--t-fg);
 
-  --popover: var(--t-bg);
+  --popover: color-mix(in srgb, var(--t-bg) 90%, #ffffff);
   --popover-foreground: var(--t-fg);
 
   /* Primary = brand */
@@ -174,8 +176,9 @@
   --muted: var(--t-bg-muted);
   --muted-foreground: var(--t-fg-muted);
 
-  /* Accent = Starwind subtle hover — NOT brand color */
-  --accent: var(--t-bg-alt);
+  /* Accent = Starwind subtle hover — NOT brand color. On the dark base this is a
+     faint light wash (the light --t-bg-alt would be wrong here). */
+  --accent: rgba(255, 255, 255, 0.08);
   --accent-foreground: var(--t-fg);
 
   /* Status (fixed — semantic, not brand) */
@@ -208,7 +211,7 @@
   --theme-fg-muted: var(--t-fg-muted);
   --theme-fg-subtle: var(--t-fg-subtle);
   --theme-border: var(--t-border);
-  --theme-accent: var(--t-primary);
+  --theme-accent: var(--t-secondary);
   /* Floating dropdown-panel surface — follows the header context so menus on
      dark headers are dark cards (not white boxes). Overridden by .on-dark. */
   --dropdown-surface: var(--t-bg);
@@ -288,6 +291,31 @@
   --color-fg-muted: rgba(124, 45, 0, 0.72);
   --color-fg-subtle: rgba(124, 45, 0, 0.5);
   --color-border: rgba(124, 45, 0, 0.22);
+}
+
+/* Dark-first: `alt` is the LIGHT/white contrast surface, so it carries the full
+   light Starwind token set (dark ink, white cards) that the dark base no longer
+   has. Section background itself is set by the .theme-alt rule in @layer components. */
+.theme-alt {
+  --background: #ffffff;
+  --foreground: var(--t-fg-on-light);
+  --card: #ffffff;
+  --card-foreground: var(--t-fg-on-light);
+  --popover: #ffffff;
+  --popover-foreground: var(--t-fg-on-light);
+  --border: rgba(14, 42, 63, 0.12);
+  --input: rgba(14, 42, 63, 0.12);
+  --muted: #eef2f4;
+  --muted-foreground: rgba(14, 42, 63, 0.62);
+  --accent: #eef2f4;
+  --accent-foreground: var(--t-fg-on-light);
+  --primary: var(--t-primary);
+  --primary-foreground: #ffffff;
+  --color-fg: var(--t-fg-on-light);
+  --color-fg-muted: rgba(14, 42, 63, 0.65);
+  --color-fg-subtle: rgba(14, 42, 63, 0.45);
+  --color-border: rgba(14, 42, 63, 0.12);
+  --dropdown-surface: #ffffff;
 }
 
 /* =====================
@@ -499,30 +527,30 @@
        bg-* utility (utilities layer) still overrides it when a component wants
        a different shade. This is what makes surface-base an actually-solid card. */
     background-color: var(--background);
-    --background: var(--t-bg);
-    --foreground: var(--t-fg);
-    --card: var(--t-bg);
-    --card-foreground: var(--t-fg);
-    --popover: var(--t-bg);
-    --popover-foreground: var(--t-fg);
-    --border: var(--t-border);
-    --input: var(--t-border);
-    --muted: var(--t-bg-muted);
-    --muted-foreground: var(--t-fg-muted);
-    --accent: var(--t-bg-alt);
-    --accent-foreground: var(--t-fg);
+    --background: var(--t-bg-alt);
+    --foreground: var(--t-fg-on-light);
+    --card: #ffffff;
+    --card-foreground: var(--t-fg-on-light);
+    --popover: #ffffff;
+    --popover-foreground: var(--t-fg-on-light);
+    --border: rgba(14, 42, 63, 0.12);
+    --input: rgba(14, 42, 63, 0.12);
+    --muted: #eef2f4;
+    --muted-foreground: rgba(14, 42, 63, 0.62);
+    --accent: #eef2f4;
+    --accent-foreground: var(--t-fg-on-light);
     --primary: var(--t-primary);
     --primary-foreground: #ffffff;
-    --color-fg: var(--t-fg);
-    --color-fg-muted: var(--t-fg-muted);
-    --color-fg-subtle: var(--t-fg-subtle);
-    --color-border: var(--t-border);
-    --theme-fg: var(--t-fg);
-    --theme-heading: var(--t-fg);
-    --theme-fg-muted: var(--t-fg-muted);
-    --theme-fg-subtle: var(--t-fg-subtle);
-    --theme-border: var(--t-border);
-    --theme-accent: var(--t-primary);
+    --color-fg: var(--t-fg-on-light);
+    --color-fg-muted: rgba(14, 42, 63, 0.65);
+    --color-fg-subtle: rgba(14, 42, 63, 0.45);
+    --color-border: rgba(14, 42, 63, 0.12);
+    --theme-fg: var(--t-fg-on-light);
+    --theme-heading: var(--t-fg-on-light);
+    --theme-fg-muted: rgba(14, 42, 63, 0.65);
+    --theme-fg-subtle: rgba(14, 42, 63, 0.45);
+    --theme-border: rgba(14, 42, 63, 0.12);
+    --theme-accent: var(--t-secondary);
   }
 
   /* Per-surface accent (eyebrows, links, icons) — readable on each surface.
@@ -546,6 +574,28 @@
   .heading-em {
     color: var(--theme-accent);
   }
+
+  /* Optional background image on ANY hero. A hero marks its <section> with
+     `hero-bg`; when an image is set it also gets `has-bg` + inline
+     --hero-image / --hero-overlay vars. The scrim keeps hero text readable.
+     Direct children are lifted above the image+scrim so content stays visible. */
+  .hero-bg { position: relative; isolation: isolate; }
+  .hero-bg.has-bg { overflow: hidden; }
+  .hero-bg.has-bg::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    background: var(--hero-image) center / cover no-repeat;
+  }
+  .hero-bg.has-bg::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background: rgba(0, 0, 0, var(--hero-overlay, 0.6));
+  }
+  .hero-bg.has-bg > * { position: relative; z-index: 2; }
 
   /* Force a light-on-dark surface context (dark headers/footers/bands) so
      theme-* utilities + nav links go light without a full theme class. */

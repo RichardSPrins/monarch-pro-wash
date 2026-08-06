@@ -470,41 +470,30 @@ const footerAreasFlat = [...content.service_areas]
   .sort((a, b) => (b.data.featured ? 1 : 0) - (a.data.featured ? 1 : 0) || (a.data.order ?? 0) - (b.data.order ?? 0))
   .map((area) => link("#", `${area.data.city}, ${area.data.state}`));
 
-const primaryMenu = {
-  name: "primary",
-  label: "Primary Navigation",
-  items: [
-    link("/", "Home"),
-    { ...link("/services", "Services"), children: servicesChildren },
-    ...(areasChildren.length ? [link("#", "Service Areas", { children: areasChildren })] : []),
-    pageLink("about", "About"),
-    link("/blog", "Blog"),
-    link("/contact", "Contact"),
-  ],
-};
+// Menus are authored from whatever content actually exists, so a stripped/new
+// site has no broken links. Items appear only when their target does. Everything
+// stays editable in the CMS Navigation admin.
+const hasPosts = (content.posts?.length ?? 0) > 0;
+const primaryItems = [link("/", "Home")];
+if (servicesChildren.length) primaryItems.push({ ...link("/services", "Services"), children: servicesChildren });
+if (areasChildren.length) primaryItems.push(link("#", "Service Areas", { children: areasChildren }));
+if (pageIds.has("about")) primaryItems.push(pageLink("about", "About"));
+if (hasPosts) primaryItems.push(link("/blog", "Blog"));
+if (pageSlugs.has("contact")) primaryItems.push(link("/contact", "Contact"));
+const primaryMenu = { name: "primary", label: "Primary Navigation", items: primaryItems };
 
 // Footer menu is GROUPED: each top-level item is a footer column, its children
 // are that column's links. Column footers render one column per group; minimal
-// footers flatten the children into a row. Fully editable in the CMS — add a
-// top-level item for a new column, nest links under it.
-const footerNavMenu = {
-  name: "footer",
-  label: "Footer Navigation",
-  items: [
-    link("#", "Our Services", { children: servicesChildren }),
-    // Footer areas = flat city entries (no per-area page yet, so no href), NOT the
-    // nested area→service tree the header dropdown uses.
-    ...(footerAreasFlat.length ? [link("#", "Service Areas", { children: footerAreasFlat })] : []),
-    link("#", "Company", {
-      children: [
-        link("/", "Home"),
-        pageLink("about", "About"),
-        link("/blog", "Blog"),
-        link("/contact", "Contact"),
-      ],
-    }),
-  ],
-};
+// footers flatten the children into a row. Fully editable in the CMS.
+const companyChildren = [link("/", "Home")];
+if (pageIds.has("about")) companyChildren.push(pageLink("about", "About"));
+if (hasPosts) companyChildren.push(link("/blog", "Blog"));
+if (pageSlugs.has("contact")) companyChildren.push(link("/contact", "Contact"));
+const footerGroups = [];
+if (servicesChildren.length) footerGroups.push(link("#", "Our Services", { children: servicesChildren }));
+if (footerAreasFlat.length) footerGroups.push(link("#", "Service Areas", { children: footerAreasFlat }));
+footerGroups.push(link("#", "Company", { children: companyChildren }));
+const footerNavMenu = { name: "footer", label: "Footer Navigation", items: footerGroups };
 
 const legalMenu = {
   name: "footer-legal",
@@ -562,10 +551,8 @@ const widgetAreas = [
   {
     name: "announcement-bar",
     label: "Announcement Bar",
-    description: "Optional promo strip at the very top of every page. Empty = hidden.",
-    widgets: [
-      { type: "content", title: "Announcement", content: mdToPortableText("📣 Now booking for the season — call (208) 555-0147 for a free estimate.") },
-    ],
+    description: "Optional promo strip at the very top of every page. Empty = hidden. Add a content widget in the CMS to show it.",
+    widgets: [],
   },
   {
     name: "post-footer",

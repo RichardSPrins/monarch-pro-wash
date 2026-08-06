@@ -22,7 +22,7 @@ if (!SITE_URL && process.argv.some((a) => a === 'build')) {
 }
 // In dev, default `site` to localhost so EmDash's absolute admin/login redirects
 // stay on the local http server (otherwise they point at the prod placeholder).
-const SITE = SITE_URL || (isDev ? 'http://localhost:4321' : 'https://vws-starter-2026.extensiblmedia.workers.dev');
+const SITE = SITE_URL || (isDev ? 'http://localhost:4321' : 'https://monarch-pro-wash.extensiblmedia.workers.dev');
 
 // https://astro.build/config
 export default defineConfig({
@@ -67,8 +67,8 @@ export default defineConfig({
     // adapter's workerd emulation, which serves a local (miniflare) D1 + R2 from
     // the wrangler.jsonc bindings — so there is no Node-native SQLite dev path.
     emdash({
-      database: d1({ binding: 'vws_starter_2026_db' }),
-      storage: r2({ binding: 'vws_starter_2026_media' }),
+      database: d1({ binding: 'DB' }),
+      storage: r2({ binding: 'MEDIA' }),
       plugins: [/** @type {any} */ (sectionBuilder())],
     }),
     markdoc(),
