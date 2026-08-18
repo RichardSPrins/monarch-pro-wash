@@ -37,7 +37,10 @@ export async function submitForm(
   config: FormSubmitConfig = {},
   target?: EventTarget | null,
 ): Promise<SubmitResult> {
-  const data = { ...payload, ...(config.hiddenFields || {}) };
+  // Attach first-touch marketing attribution (utm_*/gclid/fbclid) to every
+  // submission so /api/lead can derive campaign tags. Payload/hiddenFields win.
+  const { getUtms } = await import("@/lib/utm");
+  const data = { ...getUtms(), ...payload, ...(config.hiddenFields || {}) };
 
   // Always dispatch — lets GTM/pixels/custom code react to any submission.
   (target ?? document).dispatchEvent(

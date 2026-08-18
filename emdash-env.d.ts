@@ -83,6 +83,18 @@ export interface Post {
   terms?: Record<string, TaxonomyTerm[]>;
 }
 
+export interface Pricing {
+  id: string;
+  slug: string | null;
+  status: string;
+  value?: unknown;
+  createdAt: Date;
+  updatedAt: Date;
+  publishedAt: Date | null;
+  bylines?: ContentBylineCredit[];
+  terms?: Record<string, TaxonomyTerm[]>;
+}
+
 export interface Review {
   id: string;
   slug: string | null;
@@ -160,6 +172,7 @@ declare module "emdash" {
     faqs: Faq;
     pages: Page;
     posts: Post;
+    pricing: Pricing;
     reviews: Review;
     service_areas: ServiceArea;
     service_categories: ServiceCategory;

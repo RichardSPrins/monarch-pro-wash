@@ -1,4 +1,5 @@
 ---
+import Logo from "@/components/layout/Logo.astro";
 import { getBusinessData, getFooterNav } from "@/lib/utils";
 
 const business = await getBusinessData();
@@ -19,7 +20,7 @@ const links = flat.filter((l) => l.href).slice(0, 6);
           href="/"
           class="inline-block font-bold text-xl text-fg-inverse hover:text-accent transition-colors"
         >
-          {business.businessName}
+          <Logo business={business} />
         </a>
         {
           business.tagline && (

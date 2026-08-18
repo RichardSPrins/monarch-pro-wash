@@ -214,7 +214,21 @@ const ctas = (data?.ctas?.length
       var(--theme-accent, var(--color-primary)) 45%,
       var(--theme-border)
     );
+    /* This card is always the solid light surface, so pin on-light text tokens
+       here — otherwise a dark section renders its text light-on-white. */
+    --theme-fg: var(--t-fg-on-light);
+    --theme-heading: var(--t-fg-on-light);
+    --theme-fg-muted: rgba(14, 42, 63, 0.65);
+    --theme-fg-subtle: rgba(14, 42, 63, 0.45);
+    --theme-border: rgba(14, 42, 63, 0.12);
+    color: var(--t-fg-on-light);
   }
+  /* The var-based theme tokens don't reliably flip on this white card, so pin
+     the text colors directly. Keeps the teal accent + checks untouched. */
+  .compare-card-us :is(.theme-heading, h3) { color: var(--t-fg-on-light) !important; }
+  .compare-card-us .theme-text { color: var(--t-fg-on-light) !important; }
+  .compare-card-us .theme-text-muted { color: rgba(14, 42, 63, 0.7) !important; }
+  .compare-card-us .theme-text-subtle { color: rgba(14, 42, 63, 0.5) !important; }
   .card-head {
     padding-bottom: 1rem;
     border-bottom: 1px solid var(--theme-border);

@@ -1,4 +1,5 @@
 ---
+import Logo from "@/components/layout/Logo.astro";
 import { getBusinessData, getFooterNav } from "@/lib/utils";
 import { getHoursSettings } from "@/lib/content";
 
@@ -22,7 +23,7 @@ const hours = h[0]?.data.hours ?? [];
           href="/"
           class="inline-block font-bold text-xl text-fg-inverse hover:text-accent transition-colors mb-4"
         >
-          {business.businessName}
+          <Logo business={business} />
         </a>
         {
           business.tagline && (

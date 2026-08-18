@@ -1,5 +1,7 @@
 ---
 import { getBusinessData, getFooterNav } from "@/lib/utils";
+import Socials from "@/components/layout/Socials.astro";
+import Logo from "@/components/layout/Logo.astro";
 import { getWidgetArea } from "emdash";
 import { WidgetArea } from "emdash/ui";
 
@@ -23,8 +25,9 @@ const footerExtra = await getWidgetArea("footer-extra");
         <a
           href="/"
           class="inline-block font-bold text-xl text-fg-inverse hover:text-accent transition-colors mb-4"
+          aria-label={`${business.businessName} — home`}
         >
-          {business.businessName}
+          <Logo business={business} class="w-auto h-auto max-w-[190px] max-h-12 object-contain" />
         </a>
         {
           business.tagline && (
@@ -101,78 +104,11 @@ const footerExtra = await getWidgetArea("footer-extra");
           }
         </div>
         <!-- Social links -->
-        {
-          (business.social?.facebook ||
-            business.social?.instagram ||
-            business.social?.youtube) && (
-            <div class="flex items-center gap-3 mt-6">
-              {business.social?.facebook && (
-                <a
-                  href={business.social.facebook}
-                  target="_blank"
-                  rel="noopener"
-                  aria-label="Facebook"
-                  class="w-8 h-8 flex items-center justify-center rounded-lg bg-fg-inverse/10 text-fg-inverse/60 hover:bg-fg-inverse/20 hover:text-fg-inverse transition-colors"
-                >
-                  <svg
-                    class="w-4 h-4"
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 24 24"
-                    fill="currentColor"
-                    aria-hidden="true"
-                  >
-                    <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
-                  </svg>
-                </a>
-              )}
-              {business.social?.instagram && (
-                <a
-                  href={business.social.instagram}
-                  target="_blank"
-                  rel="noopener"
-                  aria-label="Instagram"
-                  class="w-8 h-8 flex items-center justify-center rounded-lg bg-fg-inverse/10 text-fg-inverse/60 hover:bg-fg-inverse/20 hover:text-fg-inverse transition-colors"
-                >
-                  <svg
-                    class="w-4 h-4"
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2"
-                    aria-hidden="true"
-                  >
-                    <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
-                    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
-                    <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
-                  </svg>
-                </a>
-              )}
-              {business.social?.youtube && (
-                <a
-                  href={business.social.youtube}
-                  target="_blank"
-                  rel="noopener"
-                  aria-label="YouTube"
-                  class="w-8 h-8 flex items-center justify-center rounded-lg bg-fg-inverse/10 text-fg-inverse/60 hover:bg-fg-inverse/20 hover:text-fg-inverse transition-colors"
-                >
-                  <svg
-                    class="w-4 h-4"
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2"
-                    aria-hidden="true"
-                  >
-                    <path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46a2.78 2.78 0 0 0-1.95 1.96A29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58A2.78 2.78 0 0 0 3.41 19.6C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.95A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z" />
-                    <polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" />
-                  </svg>
-                </a>
-              )}
-            </div>
-          )
-        }
+        <Socials
+          social={business.social}
+          class="flex items-center gap-3 mt-6"
+          linkClass="w-8 h-8 flex items-center justify-center rounded-lg bg-fg-inverse/10 text-fg-inverse/60 hover:bg-fg-inverse/20 hover:text-fg-inverse transition-colors"
+        />
       </div>
 
       <!-- Nav columns — one per group in the native `footer` menu -->

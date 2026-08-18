@@ -330,8 +330,15 @@ const sourceColors: Record<string, string> = {
   .review-card {
     padding: 1.5rem;
     border-radius: 1rem;
-    border: 1px solid var(--color-border);
+    border: 1px solid var(--t-border);
     background: var(--color-bg);
+    /* The card is always the dark base surface, so pin on-dark text tokens here.
+       Otherwise a light section (theme="alt") renders the text dark-on-dark. */
+    --theme-fg: var(--t-fg);
+    --theme-heading: var(--t-fg);
+    --theme-fg-muted: var(--t-fg-muted);
+    --theme-fg-subtle: var(--t-fg-subtle);
+    color: var(--t-fg);
     transition:
       box-shadow 0.2s ease,
       transform 0.2s ease;

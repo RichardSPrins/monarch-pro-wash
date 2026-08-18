@@ -1,0 +1,970 @@
+---
+// /estimate — the flagship interactive lead magnet, as its own page (not a
+// section). A rich, low-friction estimator: pick services, move sliders, watch a
+// live price range build. The dollar figure is gated behind a short opt-in so
+// every completed estimate becomes a pre-scoped, pre-tagged lead in /api/lead.
+// Conversion-focused: after reveal we push to book / confirm exact price.
+//
+// Pricing here is an intentionally transparent BALLPARK model (base range ×
+// size/stories/property multipliers). The exact price is confirmed on-site.
+import MarketingLayout from "@/layouts/MarketingLayout.astro";
+import { getServiceAreas, getEstimatorPricing } from "@/lib/content";
+
+// Pricing model — from the `pricing` CMS singleton if registered, else the code
+// default (src/config/estimatorPricing.ts). See getEstimatorPricing().
+const estimatorPricing = await getEstimatorPricing();
+
+// Every served city, straight from the service_areas collection — so the dropdown
+// stays complete as towns are added, with no hardcoded list to maintain.
+const areas = await getServiceAreas();
+const cityOptions = areas
+  .map(
+    (a: any) =>
+      [
+        a.data.slug as string,
+        (a.data.city ?? a.data.name ?? a.data.slug) as string,
+      ] as [string, string],
+  )
+  .sort((a, b) => a[1].localeCompare(b[1]));
+const TOWNS: [string, string][] = [
+  ["", "Select your city"],
+  ...cityOptions,
+  ["other", "Somewhere else nearby"],
+];
+
+// slug, label, base [low,high] at a medium home / 1 story / residential
+const SERVICES = [
+  {
+    slug: "pressure-washing",
+    label: "Pressure Washing",
+    desc: "Driveway, patio & walks",
+  },
+  { slug: "soft-washing", label: "House Soft Wash", desc: "Siding & exterior" },
+  { slug: "roof-cleaning", label: "Roof Cleaning", desc: "Algae & moss" },
+  { slug: "gutter-cleaning", label: "Gutter Cleaning", desc: "Clear & flush" },
+  { slug: "window-cleaning", label: "Window Cleaning", desc: "In & out" },
+  { slug: "solar-panel-cleaning", label: "Solar Panels", desc: "Panel-safe" },
+];
+
+const page = {
+  id: "estimate",
+  data: { title: "Instant Price Estimate | Monarch Pro Wash", sections: [] },
+};
+---
+
+<MarketingLayout
+  page={page}
+  title={page.data.title}
+  description="Get an instant ballpark price for pressure washing, soft washing, roof, gutter, window, and solar cleaning across the Treasure Valley. Move the sliders, get your range."
+>
+  <!-- Intro -->
+  <section
+    class="section-wrapper section-py-lg theme-inverse hero-bg has-bg est-hero"
+    style="--hero-image: url('/images/roofing-crew.jpg'); --hero-overlay: 0.72;"
+  >
+    <div
+      class="section-container text-center flex flex-col items-center gap-sm"
+    >
+      <span class="text-sm font-semibold uppercase tracking-widest theme-accent"
+        >Free · Instant · No Walkthrough</span
+      >
+      <h1
+        class="theme-heading text-3xl lg:text-5xl font-bold m-0 leading-tight"
+        style="text-wrap:balance"
+      >
+        What Will Your Project Cost?
+      </h1>
+      <p class="theme-text-muted text-lg max-w-2xl m-0">
+        Pick your services, tell us about your place, and watch your estimate
+        build in real time. See your number in about a minute — no obligation.
+      </p>
+      <div class="flex flex-wrap justify-center gap-sm mt-xs">
+        <span class="est-chip">Licensed &amp; Insured</span>
+        <span class="est-chip">Owner-Operated</span>
+        <span class="est-chip">Same-Day Response</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Estimator app -->
+  <section class="section-wrapper section-py-lg theme-default">
+    <div class="section-container">
+      <div class="est-grid" id="estimator">
+        <script
+          type="application/json"
+          id="est-pricing"
+          is:inline
+          set:html={JSON.stringify(estimatorPricing)}
+        />
+        <!-- Controls -->
+        <div class="est-panel surface-base">
+          <!-- Step: services -->
+          <fieldset class="est-block">
+            <legend class="est-legend">1 · What do you need cleaned?</legend>
+            <p class="est-help">Pick one or more.</p>
+            <div class="est-services">
+              {
+                SERVICES.map((s) => (
+                  <button
+                    type="button"
+                    class="est-service"
+                    data-service={s.slug}
+                    aria-pressed="false"
+                  >
+                    <span class="est-service-check" aria-hidden="true">
+                      <svg
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="3"
+                      >
+                        <path d="M20 6 9 17l-5-5" />
+                      </svg>
+                    </span>
+                    <span class="est-service-text">
+                      <span class="est-service-label">{s.label}</span>
+                      <span class="est-service-desc">{s.desc}</span>
+                    </span>
+                  </button>
+                ))
+              }
+            </div>
+            <p class="est-other">
+              <label
+                ><input type="checkbox" id="est-other" /> Something else / not sure
+                — we'll follow up</label
+              >
+            </p>
+          </fieldset>
+
+          <!-- Step: property -->
+          <fieldset class="est-block">
+            <legend class="est-legend">2 · Tell us about the property</legend>
+
+            <div class="est-toggle-row" role="group" aria-label="Property type">
+              <button
+                type="button"
+                class="est-toggle is-active"
+                data-prop="residential">🏠 Home</button
+              >
+              <button type="button" class="est-toggle" data-prop="commercial"
+                >🏢 Business</button
+              >
+            </div>
+
+            <div class="est-slider">
+              <div class="est-slider-head">
+                <label for="est-size">Home size</label>
+                <output id="est-size-out">~2,400 sq ft</output>
+              </div>
+              <input
+                type="range"
+                id="est-size"
+                min="800"
+                max="6000"
+                step="100"
+                value="2400"
+              />
+            </div>
+
+            <div class="est-slider" data-story-wrap>
+              <div class="est-slider-head">
+                <label for="est-stories">Stories</label>
+                <output id="est-stories-out">1 story</output>
+              </div>
+              <input
+                type="range"
+                id="est-stories"
+                min="1"
+                max="3"
+                step="1"
+                value="1"
+              />
+            </div>
+
+            <div class="est-slider" id="est-panels-wrap" hidden>
+              <div class="est-slider-head">
+                <label for="est-panels">Solar panels</label>
+                <output id="est-panels-out">16 panels</output>
+              </div>
+              <input
+                type="range"
+                id="est-panels"
+                min="4"
+                max="40"
+                step="1"
+                value="16"
+              />
+            </div>
+          </fieldset>
+
+          <!-- Step: where & when -->
+          <fieldset class="est-block">
+            <legend class="est-legend">3 · Where &amp; when</legend>
+            <div class="est-field">
+              <label for="est-town">City</label>
+              <select id="est-town">
+                {TOWNS.map(([v, l]) => <option value={v}>{l}</option>)}
+              </select>
+            </div>
+            <div class="est-toggle-row" role="group" aria-label="Timeline">
+              <button
+                type="button"
+                class="est-toggle is-active"
+                data-when="asap">As soon as possible</button
+              >
+              <button type="button" class="est-toggle" data-when="weeks"
+                >Next few weeks</button
+              >
+              <button type="button" class="est-toggle" data-when="planning"
+                >Just planning</button
+              >
+            </div>
+          </fieldset>
+        </div>
+
+        <!-- Result rail -->
+        <aside class="est-result">
+          <div class="est-result-card surface-base" id="est-result-card">
+            <p class="est-result-label">Your estimated range</p>
+            <div class="est-amount" id="est-amount" data-locked="1">
+              <span class="est-amount-locked">$•••–$•••</span>
+              <span class="est-amount-value" hidden></span>
+            </div>
+            <p class="est-result-note" id="est-result-note">
+              Pick a service to start your estimate.
+            </p>
+
+            <!-- Gate -->
+            <form class="est-gate" id="est-gate" novalidate hidden>
+              <p class="est-gate-copy">
+                Enter your info to reveal your estimate and lock it in.
+              </p>
+              <input
+                type="text"
+                name="name"
+                placeholder="Full name"
+                autocomplete="name"
+                required
+              />
+              <input
+                type="tel"
+                name="phone"
+                placeholder="Phone"
+                autocomplete="tel"
+                required
+              />
+              <input
+                type="email"
+                name="email"
+                placeholder="Email"
+                autocomplete="email"
+              />
+              <label class="est-gate-label" for="est-contacttime"
+                >Best time to reach you</label
+              >
+              <select id="est-contacttime" name="contactTime">
+                <option value="anytime">Anytime works</option>
+                <option value="morning">Morning</option>
+                <option value="afternoon">Afternoon</option>
+                <option value="evening">Evening</option>
+              </select>
+              <input
+                type="text"
+                name="notes"
+                placeholder="Anything else we should know? (optional)"
+              />
+              <div class="est-hp" aria-hidden="true">
+                <label
+                  >Company website<input
+                    type="text"
+                    name="companyWebsite"
+                    tabindex="-1"
+                    autocomplete="off"
+                  /></label>
+              </div>
+              <button type="submit" class="est-cta">Reveal My Estimate →</button
+              >
+              <p class="est-fine">
+                No obligation. We'll send your estimate and reach out to
+                confirm.
+              </p>
+              <p class="est-error" hidden>
+                Something went wrong — please try again or call us.
+              </p>
+            </form>
+
+            <!-- Post-reveal conversion -->
+            <div class="est-convert" id="est-convert" hidden>
+              <p class="est-convert-copy">
+                Want it exact? We'll confirm your price and hold a spot.
+              </p>
+              <a class="est-cta" href="/contact">Book My Free Quote</a>
+              <a class="est-cta-alt" id="est-call" href="tel:4582097735"
+                >Or call (458) 209-7735</a
+              >
+            </div>
+          </div>
+          <p class="est-disclaimer">
+            Ballpark based on typical Treasure Valley jobs. Your exact price is
+            confirmed with a quick look — never more than the range without your
+            OK.
+          </p>
+        </aside>
+      </div>
+    </div>
+  </section>
+</MarketingLayout>
+
+<style>
+  .est-hero .est-chip {
+    font-size: 0.8rem;
+    font-weight: 600;
+    padding: 0.35rem 0.8rem;
+    border-radius: 999px;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    color: #fff;
+    background: rgba(255, 255, 255, 0.08);
+  }
+
+  .est-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    align-items: start;
+  }
+  @media (min-width: 900px) {
+    .est-grid {
+      grid-template-columns: 1.4fr 1fr;
+    }
+  }
+
+  .est-panel,
+  .est-result-card {
+    border: var(--t-border-width) solid var(--color-border);
+    border-radius: var(--radius);
+    box-shadow: var(--t-shadow-lg);
+    padding: 1.5rem;
+  }
+
+  .est-block {
+    border: 0;
+    padding: 0;
+    margin: 0 0 1.75rem;
+  }
+  .est-block:last-child {
+    margin-bottom: 0;
+  }
+  .est-legend {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--color-fg);
+    padding: 0;
+  }
+  .est-help {
+    font-size: 0.85rem;
+    color: var(--color-fg-muted);
+    margin: 0.15rem 0 0.75rem;
+  }
+
+  .est-services {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.6rem;
+  }
+  @media (min-width: 520px) {
+    .est-services {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+  .est-service {
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+    text-align: left;
+    padding: 0.8rem 0.9rem;
+    border-radius: var(--radius);
+    border: 1px solid var(--color-border);
+    background: var(--card);
+    cursor: pointer;
+    transition:
+      border-color 0.15s ease,
+      background 0.15s ease,
+      box-shadow 0.15s ease;
+  }
+  .est-service:hover {
+    border-color: var(--color-primary);
+  }
+  .est-service[aria-pressed="true"] {
+    border-color: var(--color-primary);
+    background: color-mix(in srgb, var(--color-primary) 8%, transparent);
+    box-shadow: 0 0 0 1px var(--color-primary) inset;
+  }
+  .est-service-check {
+    flex-shrink: 0;
+    width: 1.6rem;
+    height: 1.6rem;
+    border-radius: 6px;
+    border: 1px solid var(--color-border);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    background: transparent;
+  }
+  .est-service[aria-pressed="true"] .est-service-check {
+    background: var(--color-primary);
+    border-color: var(--color-primary);
+  }
+  .est-service-check svg {
+    width: 1rem;
+    height: 1rem;
+    opacity: 0;
+  }
+  .est-service[aria-pressed="true"] .est-service-check svg {
+    opacity: 1;
+  }
+  .est-service-text {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.2;
+  }
+  .est-service-label {
+    font-weight: 600;
+    color: var(--color-fg);
+    font-size: 0.95rem;
+  }
+  .est-service-desc {
+    font-size: 0.78rem;
+    color: var(--color-fg-muted);
+  }
+  .est-other {
+    margin: 0.75rem 0 0;
+    font-size: 0.85rem;
+    color: var(--color-fg-muted);
+  }
+  .est-other input {
+    margin-right: 0.4rem;
+  }
+
+  .est-toggle-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+  }
+  .est-toggle {
+    flex: 1 1 auto;
+    padding: 0.6rem 0.9rem;
+    border-radius: var(--radius);
+    border: 1px solid var(--color-border);
+    background: var(--card);
+    color: var(--color-fg);
+    font-weight: 600;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition:
+      border-color 0.15s ease,
+      background 0.15s ease;
+  }
+  .est-toggle:hover {
+    border-color: var(--color-primary);
+  }
+  .est-toggle.is-active {
+    border-color: var(--color-primary);
+    background: color-mix(in srgb, var(--color-primary) 10%, transparent);
+    box-shadow: 0 0 0 1px var(--color-primary) inset;
+  }
+
+  .est-slider {
+    margin-top: 1.1rem;
+  }
+  .est-slider-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 0.35rem;
+  }
+  .est-slider-head label {
+    font-weight: 600;
+    color: var(--color-fg);
+    font-size: 0.92rem;
+  }
+  .est-slider-head output {
+    font-weight: 700;
+    color: var(--color-primary);
+    font-variant-numeric: tabular-nums;
+  }
+  .est-slider input[type="range"] {
+    width: 100%;
+    accent-color: var(--color-primary);
+    height: 1.5rem;
+    cursor: pointer;
+  }
+
+  .est-field {
+    margin-top: 0.5rem;
+  }
+  .est-field label {
+    display: block;
+    font-weight: 600;
+    color: var(--color-fg);
+    font-size: 0.92rem;
+    margin-bottom: 0.3rem;
+  }
+  .est-field select {
+    width: 100%;
+    padding: 0.6rem 0.8rem;
+    border-radius: var(--radius);
+    border: 1px solid var(--color-border);
+    background: var(--card);
+    color: var(--color-fg);
+    font-size: 0.95rem;
+  }
+
+  /* Result rail */
+  .est-result {
+    position: sticky;
+    /* clear the sticky site header (measured into --header-h at runtime) */
+    top: calc(var(--header-h, 4.5rem) + 1rem);
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+  .est-result-label {
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--color-fg-muted);
+    margin: 0;
+  }
+  .est-amount {
+    font-size: 2.25rem;
+    font-weight: 800;
+    line-height: 1.1;
+    color: var(--color-fg);
+    font-variant-numeric: tabular-nums;
+    margin: 0.25rem 0 0.5rem;
+    min-height: 2.5rem;
+  }
+  .est-amount[data-locked="1"] .est-amount-locked {
+    color: color-mix(in srgb, var(--color-fg) 45%, transparent);
+    letter-spacing: 0.02em;
+  }
+  .est-result-note {
+    font-size: 0.9rem;
+    color: var(--color-fg-muted);
+    margin: 0 0 1rem;
+  }
+
+  .est-gate {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    border-top: 1px solid var(--color-border);
+    padding-top: 1rem;
+  }
+  .est-gate-copy {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--color-fg);
+    margin: 0;
+  }
+  .est-gate input[type="text"],
+  .est-gate input[type="tel"],
+  .est-gate input[type="email"],
+  .est-gate select {
+    width: 100%;
+    padding: 0.65rem 0.8rem;
+    border-radius: var(--radius);
+    border: 1px solid var(--color-border);
+    background: var(--card);
+    color: var(--color-fg);
+    font-size: 0.95rem;
+  }
+  .est-gate-label {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--color-fg-muted);
+    margin: 0.15rem 0 -0.35rem;
+  }
+  .est-gate input::placeholder {
+    color: var(--color-fg-subtle);
+  }
+  .est-gate input:focus,
+  .est-gate input:focus-visible {
+    outline: 2px solid color-mix(in srgb, var(--color-primary) 40%, transparent);
+    outline-offset: 1px;
+    border-color: var(--color-primary);
+  }
+  .est-hp {
+    position: absolute;
+    left: -9999px;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+  }
+  .est-cta {
+    display: inline-block;
+    text-align: center;
+    text-decoration: none;
+    padding: 0.8rem 1rem;
+    border-radius: var(--radius);
+    background: var(--color-primary);
+    color: #fff;
+    font-weight: 700;
+    font-size: 1rem;
+    border: 0;
+    cursor: pointer;
+    transition: opacity 0.15s ease;
+  }
+  .est-cta:hover {
+    opacity: 0.9;
+  }
+  .est-cta-alt {
+    display: block;
+    text-align: center;
+    text-decoration: none;
+    color: var(--color-fg);
+    font-weight: 600;
+    font-size: 0.9rem;
+    margin-top: 0.5rem;
+  }
+  .est-fine,
+  .est-disclaimer {
+    font-size: 0.75rem;
+    color: var(--color-fg-muted);
+    margin: 0;
+  }
+  .est-disclaimer {
+    text-align: center;
+    padding: 0 0.5rem;
+  }
+  .est-error {
+    font-size: 0.85rem;
+    color: var(--color-error, #dc2626);
+    margin: 0;
+  }
+  .est-convert {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    border-top: 1px solid var(--color-border);
+    padding-top: 1rem;
+  }
+  .est-convert-copy {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--color-fg);
+    margin: 0 0 0.5rem;
+  }
+</style>
+
+<script>
+  import { submitForm } from "@/lib/forms/submitForm";
+
+  // Measure the sticky site header so the sticky result card clears it. No
+  // --header-height token exists in the system, and header height varies by
+  // variant, so we measure the rendered <header> and expose it as --header-h.
+  function setHeaderOffset() {
+    const h = document.querySelector("header");
+    if (h)
+      document.documentElement.style.setProperty(
+        "--header-h",
+        h.offsetHeight + "px",
+      );
+  }
+  window.addEventListener("resize", setHeaderOffset);
+
+  type ServicePricing = {
+    base: [number, number];
+    size: boolean;
+    story: boolean;
+    panels?: boolean;
+  };
+  type Pricing = {
+    services: Record<string, ServicePricing>;
+    solar: { perPanel: [number, number]; min: [number, number] };
+    sizeMult: { min: number; max: number; sqftMin: number; sqftMax: number };
+    storyMult: { one: number; two: number; three: number };
+    commercialMult: number;
+    roundTo: number;
+  };
+
+  function init() {
+    const root = document.getElementById("estimator");
+    if (!root || (root as any).__wired) return;
+    (root as any).__wired = true;
+
+    // Pricing model injected server-side from src/config/estimatorPricing.ts
+    // (or, later, a CMS singleton). All figures live there, not here.
+    let P: Pricing;
+    try {
+      P = JSON.parse(root.querySelector("#est-pricing")?.textContent || "{}");
+    } catch {
+      return;
+    }
+    if (!P.services) return;
+
+    const state = {
+      services: new Set<string>(),
+      other: false,
+      prop: "residential",
+      size: 2400,
+      stories: 1,
+      panels: 16,
+      town: "",
+      when: "asap",
+      revealed: false,
+    };
+
+    const $ = (s: string) => root.querySelector(s) as HTMLElement | null;
+    const amountEl = $("#est-amount")!;
+    const amountVal = $(".est-amount-value") as HTMLElement;
+    const amountLocked = $(".est-amount-locked") as HTMLElement;
+    const noteEl = $("#est-result-note")!;
+    const gate = $("#est-gate") as HTMLFormElement;
+    const convert = $("#est-convert")!;
+    const panelsWrap = $("#est-panels-wrap")!;
+    const storyWrap = root.querySelector("[data-story-wrap]") as HTMLElement;
+
+    const round = (n: number) => Math.round(n / P.roundTo) * P.roundTo;
+    const money = (n: number) => "$" + round(n).toLocaleString();
+
+    function compute() {
+      const sm = P.sizeMult;
+      const sizeMult =
+        sm.min +
+        ((state.size - sm.sqftMin) / (sm.sqftMax - sm.sqftMin)) *
+          (sm.max - sm.min);
+      const storyMult =
+        state.stories === 3
+          ? P.storyMult.three
+          : state.stories === 2
+            ? P.storyMult.two
+            : P.storyMult.one;
+      let lo = 0,
+        hi = 0;
+      for (const slug of state.services) {
+        const m = P.services[slug];
+        if (!m) continue;
+        if (m.panels) {
+          lo += Math.max(P.solar.min[0], state.panels * P.solar.perPanel[0]);
+          hi += Math.max(P.solar.min[1], state.panels * P.solar.perPanel[1]);
+          continue;
+        }
+        let bl = m.base[0],
+          bh = m.base[1];
+        if (m.size) {
+          bl *= sizeMult;
+          bh *= sizeMult;
+        }
+        if (m.story) {
+          bl *= storyMult;
+          bh *= storyMult;
+        }
+        lo += bl;
+        hi += bh;
+      }
+      if (state.prop === "commercial") {
+        lo *= P.commercialMult;
+        hi *= P.commercialMult;
+      }
+      return { lo, hi };
+    }
+
+    function temp() {
+      return state.when === "asap" ? "hot" : "warm";
+    }
+
+    function refresh() {
+      // panels slider only when a per-panel (solar) service is selected
+      panelsWrap.hidden = ![...state.services].some(
+        (s) => P.services[s]?.panels,
+      );
+      // stories slider irrelevant if no selected service scales with stories
+      const needsStories = [...state.services].some(
+        (s) => P.services[s]?.story,
+      );
+      storyWrap.style.display = needsStories ? "" : "none";
+
+      const count = state.services.size + (state.other ? 1 : 0);
+      if (count === 0) {
+        noteEl.textContent = "Pick a service to start your estimate.";
+        gate.hidden = true;
+        return;
+      }
+
+      const { lo, hi } = compute();
+      if (!state.revealed) {
+        gate.hidden = false;
+        amountEl.dataset.locked = "1";
+        amountLocked.hidden = false;
+        amountVal.hidden = true;
+        noteEl.textContent = state.other
+          ? "Estimate ready. Your extra request is quoted on-site."
+          : "Estimate ready — reveal it below.";
+      } else {
+        amountVal.textContent = `${money(lo)}–${money(hi)}`;
+        noteEl.textContent = state.other
+          ? "Your extra request is quoted on-site."
+          : `Based on ${count} service${count > 1 ? "s" : ""} for your property.`;
+      }
+    }
+
+    // Services
+    root.querySelectorAll<HTMLButtonElement>(".est-service").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const slug = btn.dataset.service!;
+        if (state.services.has(slug)) {
+          state.services.delete(slug);
+          btn.setAttribute("aria-pressed", "false");
+        } else {
+          state.services.add(slug);
+          btn.setAttribute("aria-pressed", "true");
+        }
+        refresh();
+      });
+    });
+    ($("#est-other") as HTMLInputElement).addEventListener("change", (e) => {
+      state.other = (e.target as HTMLInputElement).checked;
+      refresh();
+    });
+
+    // Property toggles
+    root.querySelectorAll<HTMLButtonElement>("[data-prop]").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        root
+          .querySelectorAll("[data-prop]")
+          .forEach((b) => b.classList.remove("is-active"));
+        btn.classList.add("is-active");
+        state.prop = btn.dataset.prop!;
+        refresh();
+      });
+    });
+    root.querySelectorAll<HTMLButtonElement>("[data-when]").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        root
+          .querySelectorAll("[data-when]")
+          .forEach((b) => b.classList.remove("is-active"));
+        btn.classList.add("is-active");
+        state.when = btn.dataset.when!;
+      });
+    });
+
+    // Sliders
+    const sizeIn = $("#est-size") as HTMLInputElement;
+    const sizeOut = $("#est-size-out")!;
+    sizeIn.addEventListener("input", () => {
+      state.size = +sizeIn.value;
+      sizeOut.textContent = `~${state.size.toLocaleString()} sq ft`;
+      refresh();
+    });
+    const storiesIn = $("#est-stories") as HTMLInputElement;
+    const storiesOut = $("#est-stories-out")!;
+    storiesIn.addEventListener("input", () => {
+      state.stories = +storiesIn.value;
+      storiesOut.textContent =
+        state.stories === 3
+          ? "3+ stories"
+          : `${state.stories} stor${state.stories > 1 ? "ies" : "y"}`;
+      refresh();
+    });
+    const panelsIn = $("#est-panels") as HTMLInputElement;
+    const panelsOut = $("#est-panels-out")!;
+    panelsIn.addEventListener("input", () => {
+      state.panels = +panelsIn.value;
+      panelsOut.textContent = `${state.panels} panels`;
+      refresh();
+    });
+    ($("#est-town") as HTMLSelectElement).addEventListener("change", (e) => {
+      state.town = (e.target as HTMLSelectElement).value;
+    });
+
+    setHeaderOffset();
+
+    // Gate submit → capture → reveal
+    gate.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const errorEl = gate.querySelector(".est-error") as HTMLElement;
+      errorEl.hidden = true;
+      const btn = gate.querySelector(
+        "button[type=submit]",
+      ) as HTMLButtonElement;
+      const orig = btn.textContent;
+      btn.disabled = true;
+      btn.textContent = "Revealing…";
+
+      const { lo, hi } = compute();
+      const services = [...state.services];
+      const tags = [
+        "src:price-estimator",
+        ...services.map((s) => "svc:" + s),
+        state.town && state.town !== "other" ? "area:" + state.town : "",
+        "prop:" + state.prop,
+        "interest:estimate",
+        "temp:" + temp(),
+        state.services.size >= 2 ? "flag:multi-service" : "",
+        hi >= 1000 ? "flag:high-value" : "",
+      ].filter(Boolean);
+
+      const fd = new FormData(gate);
+      const payload: Record<string, unknown> = {
+        magnet: "price-estimator",
+        source: "magnet:price-estimator",
+        tags,
+        page: "/estimate",
+        name: fd.get("name"),
+        phone: fd.get("phone"),
+        email: fd.get("email"),
+        companyWebsite: fd.get("companyWebsite"),
+        contactTime: fd.get("contactTime"),
+        notes: fd.get("notes"),
+        // answers
+        services: services.join(","),
+        otherRequest: state.other,
+        propertyType: state.prop,
+        homeSqft: state.size,
+        stories: state.stories,
+        solarPanels: state.services.has("solar-panel-cleaning")
+          ? state.panels
+          : null,
+        city: state.town,
+        timeline: state.when,
+        estimateLow: round(lo),
+        estimateHigh: round(hi),
+      };
+
+      const res = await submitForm(
+        payload,
+        {
+          adapter: "webhook",
+          endpoint: "/api/lead",
+          formName: "magnet:price-estimator",
+        },
+        root,
+      );
+
+      if (res.ok) {
+        state.revealed = true;
+        amountEl.dataset.locked = "0";
+        amountLocked.hidden = true;
+        amountVal.hidden = false;
+        gate.hidden = true;
+        convert.hidden = false;
+        refresh();
+        amountEl.scrollIntoView({ behavior: "smooth", block: "center" });
+      } else {
+        btn.disabled = false;
+        btn.textContent = orig || "Reveal My Estimate →";
+        errorEl.hidden = false;
+      }
+    });
+
+    refresh();
+  }
+
+  init();
+  document.addEventListener("astro:page-load", init);
+</script>

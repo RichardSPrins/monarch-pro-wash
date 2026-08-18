@@ -61,7 +61,7 @@ const overlayOpacity = (data?.backgroundImage?.overlayOpacity ?? 65) / 100;
         (ctas.length > 0 || data?.showPhone) && (
           <div class="flex flex-wrap items-center gap-md shrink-0">
             {ctas.map((cta, i) => (
-              <Button variant={cta.variant ?? (i === 0 ? "primary" : "outline")} href={cta.href}>{cta.label}</Button>
+              <Button variant={cta.variant || (i === 0 ? "primary" : "outline")} href={cta.href}>{cta.label}</Button>
             ))}
             {data?.showPhone && business.phone && (
               <a href={`tel:${business.phone}`} class="inline-flex items-center gap-xs font-bold text-lg theme-text hover:opacity-80 transition-opacity no-underline">

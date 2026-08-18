@@ -1,0 +1,59 @@
+---
+// Service-detail route — /services/{slug}. Renders a `pages` entry stored under
+// the "svc-" slug prefix (e.g. /services/roof-cleaning → pages entry
+// "svc-roof-cleaning"). The prefix keeps these off the top-level catch-all, so
+// each service page resolves at exactly one URL.
+import MarketingLayout from "@/layouts/MarketingLayout.astro";
+import PageRenderer from "@/components/PageRenderer.astro";
+import { getSeoMeta } from "emdash/seo";
+import { getPage } from "@/lib/content";
+import { getBusinessData, getSiteData } from "@/lib/utils";
+import siteConfig from "@/config/site.config";
+import { createServiceSchema, createFAQSchema } from "@/lib/schema";
+
+const slug = Astro.params.slug ?? "";
+const page = await getPage(`svc-${slug}`);
+
+// Must exist. Anything else → branded 404.
+if (!page || (import.meta.env.PROD && page.data.demo)) {
+  return Astro.rewrite("/404");
+}
+
+const meta = getSeoMeta(page as any, {
+  siteUrl: Astro.site?.href,
+  path: Astro.url.pathname,
+  defaultOgImage: siteConfig.ogImage
+    ? new URL(siteConfig.ogImage, Astro.site).toString()
+    : undefined,
+});
+
+const sd = page.data.structuredData;
+const pageSchemas = [];
+if (sd?.service || sd?.faq?.length) {
+  const business = await getBusinessData();
+  const site = getSiteData();
+  if (sd.service) {
+    pageSchemas.push(
+      createServiceSchema(
+        { ...sd.service, url: new URL(Astro.url.pathname, Astro.site).toString() },
+        business,
+        site,
+      ),
+    );
+  }
+  if (sd.faq?.length) pageSchemas.push(createFAQSchema(sd.faq));
+}
+---
+
+<MarketingLayout
+  page={page}
+  title={meta.title || page.data.title}
+  description={meta.description ?? undefined}
+  noindex={!!meta.robots}
+  image={meta.ogImage ?? undefined}
+  canonical={meta.canonical ?? undefined}
+  includeLocalBusinessSchema={!!sd?.localBusiness}
+  schemas={pageSchemas}
+>
+  <PageRenderer config={page.data} />
+</MarketingLayout>

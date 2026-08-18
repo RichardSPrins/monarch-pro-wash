@@ -1,0 +1,39 @@
+---
+/**
+ * Brand logo. Renders the logo image from EmDash native SiteSettings
+ * (getBusinessData().logo) when one is set, else falls back to the business
+ * name as text (styled by the parent link). Keep the wrapping <a href="/"> on
+ * the caller so the logo stays a home link with its own aria-label.
+ */
+import type { BusinessData } from "@/lib/schema";
+
+interface Props {
+  business: BusinessData;
+  /** Sizing/utility classes for the <img>. Default gives a sensible max-width. */
+  class?: string;
+  /** Eager-load (headers, above the fold). Footers should stay lazy. */
+  eager?: boolean;
+}
+
+const {
+  business,
+  class: className = "w-auto h-auto max-w-[180px] max-h-11 object-contain",
+  eager = false,
+} = Astro.props;
+---
+
+{
+  business.logo ? (
+    <img
+      src={business.logo.url}
+      alt={business.logo.alt ?? business.businessName}
+      width={business.logo.width}
+      height={business.logo.height}
+      class={className}
+      loading={eager ? "eager" : "lazy"}
+      decoding="async"
+    />
+  ) : (
+    business.businessName
+  )
+}

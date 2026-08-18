@@ -1,0 +1,266 @@
+---
+import { highlight } from "@/lib/highlight";
+import { getBackgroundImage } from "@/lib/images";
+import type { Eyebrow } from "@/types/sections";
+import { Input } from "@/components/starwind/input";
+import { Label } from "@/components/starwind/label";
+import { Button } from "@/components/elements/button";
+import siteConfig from "@/config/site.config";
+
+/**
+ * magnet:cta — a CTA-style lead magnet. A conversion band (message + value
+ * offer on one side, a short opt-in card on the other) that captures a lead and
+ * POSTs it to the shared /api/lead endpoint. This is the CMS-droppable building
+ * block for "offer a free resource anywhere" — attach it in blog posts, landing
+ * pages, or any JSON-composed page. Interactive tools (estimators, calculators)
+ * build on the same capture contract later.
+ *
+ * Low friction by default (email only). `magnet` + `tags` flow through to the
+ * lead so every capture is pre-segmented (src:/svc:/area:/interest:).
+ */
+type Field = "name" | "email" | "phone";
+
+interface Props {
+  theme?: string;
+  data?: {
+    eyebrow?: Eyebrow;
+    heading?: string;
+    subheading?: string;
+    /** Bulleted proof points about what they get. */
+    highlights?: string[];
+    /** Magnet slug — becomes source `magnet:<slug>` + tag `src:<slug>`. */
+    magnet?: string;
+    /** Extra CRM tags to attach: svc:*, area:*, prop:*, interest:*, temp:*. */
+    tags?: string[];
+    /** Which fields to collect. Default: just email (lowest friction). */
+    fields?: Field[];
+    submitLabel?: string;
+    /** Small print under the button (e.g. "No spam. Unsubscribe anytime."). */
+    disclaimer?: string;
+    successHeading?: string;
+    successBody?: string;
+    /** Override the capture endpoint. Defaults to /api/lead. */
+    endpoint?: string;
+    backgroundImage?: { src: string; overlayOpacity?: number };
+  };
+}
+
+const { theme = "default", data } = Astro.props;
+
+const magnet = data?.magnet ?? "cta";
+const fields: Field[] = data?.fields?.length ? data.fields : ["email"];
+const submitLabel = data?.submitLabel ?? "Get It Free";
+const successHeading = data?.successHeading ?? "Check your inbox!";
+const successBody = data?.successBody ?? "It's on the way. We'll be in touch soon.";
+
+// Every capture is pre-tagged with its source; author tags are merged in.
+const tags = ["src:" + magnet, ...(data?.tags ?? [])];
+
+const submit = {
+  // Default to the shared logging endpoint so captures are recorded even while
+  // the global form adapter is still `stub`. Author/site can override.
+  adapter: "webhook",
+  endpoint: data?.endpoint || siteConfig.forms.endpoint || "/api/lead",
+  formName: "magnet:" + magnet,
+  hiddenFields: {
+    source: "magnet:" + magnet,
+    magnet,
+    tags: tags.join(","),
+  },
+};
+
+const bgUrl = await getBackgroundImage(data?.backgroundImage?.src, { width: 2000 });
+const hasBackground = !!bgUrl;
+const overlayOpacity = (data?.backgroundImage?.overlayOpacity ?? 70) / 100;
+
+const FIELD_META: Record<Field, { type: "text" | "email" | "tel"; label: string; placeholder: string; autocomplete: string }> = {
+  name: { type: "text", label: "Full name", placeholder: "Jane Smith", autocomplete: "name" },
+  email: { type: "email", label: "Email", placeholder: "you@example.com", autocomplete: "email" },
+  phone: { type: "tel", label: "Phone", placeholder: "(208) 555-0123", autocomplete: "tel" },
+};
+---
+
+<section
+  class:list={["magnet-cta section-wrapper section-py-lg relative overflow-hidden", `theme-${theme}`, hasBackground ? "has-bg" : "no-bg"]}
+  style={hasBackground ? `--cta-image: url('${bgUrl}'); --cta-overlay: ${overlayOpacity}` : ""}
+  data-magnet-cta
+>
+  <div class="section-container relative z-10">
+    <div class="flex flex-col lg:flex-row lg:items-center gap-lg lg:gap-2xl">
+      <!-- Message -->
+      <div class="flex flex-col gap-sm max-w-xl">
+        {
+          data?.eyebrow && (
+            <span class="text-sm font-semibold uppercase tracking-widest text-color-brand-secondary">
+              {data.eyebrow.text}
+            </span>
+          )
+        }
+        {data?.heading && <h2 class="theme-heading text-2xl lg:text-4xl font-bold m-0 leading-tight" set:html={highlight(data.heading)}></h2>}
+        {data?.subheading && <p class="theme-text-muted text-lg m-0">{data.subheading}</p>}
+        {
+          data?.highlights?.length && (
+            <ul class="flex flex-col gap-xs m-0 mt-xs p-0 list-none">
+              {data.highlights.map((h) => (
+                <li class="flex items-start gap-sm theme-text">
+                  <svg class="w-5 h-5 mt-0.5 shrink-0 text-color-primary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+                    <path d="M20 6 9 17l-5-5" />
+                  </svg>
+                  <span set:html={highlight(h)} />
+                </li>
+              ))}
+            </ul>
+          )
+        }
+      </div>
+
+      <!-- Opt-in card -->
+      <div class="magnet-card surface-base w-full lg:max-w-sm lg:ml-auto shrink-0">
+        <form class="magnet-form flex flex-col gap-md" novalidate>
+          {
+            fields.map((f) => (
+              <div class="flex flex-col gap-xs">
+                <Label for={`${magnet}-${f}`}>{FIELD_META[f].label}</Label>
+                <Input
+                  id={`${magnet}-${f}`}
+                  name={f}
+                  type={FIELD_META[f].type}
+                  placeholder={FIELD_META[f].placeholder}
+                  autocomplete={FIELD_META[f].autocomplete}
+                  required={f === "email" || f === "phone"}
+                />
+              </div>
+            ))
+          }
+          <!-- Honeypot: hidden from users, catches bots -->
+          <div class="magnet-hp" aria-hidden="true">
+            <label>Company website<input type="text" name="companyWebsite" tabindex="-1" autocomplete="off" /></label>
+          </div>
+          <Button type="submit" variant="primary" class="w-full justify-center">{submitLabel}</Button>
+          {data?.disclaimer && <p class="magnet-fine m-0 text-center">{data.disclaimer}</p>}
+          <p class="magnet-error m-0" hidden>Something went wrong. Please try again or call us.</p>
+        </form>
+
+        <div class="magnet-success flex-col gap-xs text-center" hidden>
+          <svg class="w-10 h-10 mx-auto text-color-primary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <circle cx="12" cy="12" r="10" /><path d="m9 12 2 2 4-4" />
+          </svg>
+          <p class="magnet-success-heading text-lg font-bold m-0">{successHeading}</p>
+          <p class="theme-text-muted m-0">{successBody}</p>
+        </div>
+
+        <script type="application/json" is:inline class="magnet-config" set:html={JSON.stringify({ submit })}></script>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  /* Background image + dark scrim, matching cta:banner and hero-bg (a neutral
+     dark scrim keeps the inverse-theme light text readable regardless of the
+     photo). Content sits above at z-10 (.section-container). */
+  .magnet-cta.has-bg::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    background: var(--cta-image) center / cover no-repeat;
+  }
+  .magnet-cta.has-bg::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background: rgba(0, 0, 0, var(--cta-overlay, 0.65));
+  }
+  /* The card is a `surface-base` solid card — it resets the surface/text tokens
+     to base-light, so the Starwind Label/Input inside render legibly on every
+     section theme with no per-component overrides. We only own layout here. */
+  .magnet-card {
+    border: var(--t-border-width) solid var(--color-border);
+    border-radius: var(--radius);
+    box-shadow: var(--t-shadow-lg);
+    padding: 1.5rem;
+  }
+  .magnet-hp {
+    position: absolute;
+    left: -9999px;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+  }
+  .magnet-fine {
+    font-size: 0.75rem;
+    color: var(--color-fg-muted);
+  }
+  .magnet-error {
+    font-size: 0.85rem;
+    color: var(--color-error, #dc2626);
+    text-align: center;
+  }
+  .magnet-success[hidden] {
+    display: none;
+  }
+</style>
+
+<script>
+  import { submitForm } from "@/lib/forms/submitForm";
+
+  function wire(section: HTMLElement) {
+    if (section.dataset.magnetWired) return;
+    section.dataset.magnetWired = "1";
+
+    const form = section.querySelector<HTMLFormElement>(".magnet-form");
+    const success = section.querySelector<HTMLElement>(".magnet-success");
+    const errorEl = section.querySelector<HTMLElement>(".magnet-error");
+    const configEl = section.querySelector<HTMLScriptElement>(".magnet-config");
+    if (!form || !configEl) return;
+
+    let config: { submit: Record<string, unknown> } = { submit: {} };
+    try {
+      config = JSON.parse(configEl.textContent || "{}");
+    } catch {
+      /* keep default */
+    }
+
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      if (errorEl) errorEl.hidden = true;
+
+      const btn = form.querySelector<HTMLButtonElement>("button[type=submit]");
+      const original = btn?.textContent;
+      if (btn) {
+        btn.disabled = true;
+        btn.textContent = "Sending…";
+      }
+
+      const payload: Record<string, string> = {
+        page: window.location.pathname,
+      };
+      for (const el of form.elements) {
+        const field = el as HTMLInputElement;
+        if (field.name && field.type !== "submit") payload[field.name] = field.value;
+      }
+
+      const result = await submitForm(payload, config.submit, section);
+
+      if (result.ok) {
+        form.hidden = true;
+        if (success) success.hidden = false;
+      } else {
+        if (btn) {
+          btn.disabled = false;
+          btn.textContent = original || "Get It Free";
+        }
+        if (errorEl) errorEl.hidden = false;
+      }
+    });
+  }
+
+  function init() {
+    document.querySelectorAll<HTMLElement>("[data-magnet-cta]").forEach(wire);
+  }
+
+  init();
+  document.addEventListener("astro:page-load", init);
+</script>

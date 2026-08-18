@@ -1,0 +1,95 @@
+---
+/**
+ * /sections — SECTION CATALOG INDEX (dev/reference, noindex).
+ *
+ * Lists every registered section variant grouped by category, each with its
+ * example `data` shape inline (so you can see the fields without rendering).
+ * "Preview" links to /sections/[type], which renders that one variant in
+ * isolation — a section that throws only breaks its own page, never this index.
+ * Excluded from the sitemap (astro.config filter) and noindexed.
+ */
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import { sectionRegistry } from "@/lib/sectionRegistry";
+import templatesRaw from "../../plugins/section-builder/schema/templates.json";
+
+const templates = templatesRaw as Record<string, Record<string, unknown>>;
+const types = Object.keys(templates).filter((t) => sectionRegistry[t]).sort();
+
+const groups: Record<string, string[]> = {};
+for (const t of types) {
+  const g = t.split(":")[0];
+  (groups[g] ??= []).push(t);
+}
+const groupNames = Object.keys(groups).sort();
+/** URL-safe slug for a `group:variant` type (":" is fine in a path, but "__" is tidier). */
+const toSlug = (t: string) => t.replace(":", "__");
+---
+
+<BaseLayout title="Section Catalog" description="Every section variant, with its data shape and a live preview." noindex page={{ id: "sections", data: {} }}>
+  <div class="cat-wrap">
+    <header class="cat-hero">
+      <h1>Section Catalog</h1>
+      <p>{types.length} variants across {groupNames.length} groups. Each shows its example <strong>data shape</strong>; hit <strong>Preview</strong> to render it live and see what it looks like before you author it in the CMS.</p>
+      <nav class="cat-jump">
+        {groupNames.map((g) => <a href={`#${g}`}>{g} <span>{groups[g].length}</span></a>)}
+      </nav>
+    </header>
+
+    {
+      groupNames.map((g) => (
+        <section id={g} class="cat-group">
+          <h2 class="cat-group-title">{g} <span>{groups[g].length}</span></h2>
+          <div class="cat-list">
+            {groups[g].map((type) => (
+              <article class="cat-item">
+                <div class="cat-item-head">
+                  <code>{type}</code>
+                  <a class="cat-preview" href={`/sections/${toSlug(type)}`}>Preview →</a>
+                </div>
+                <details>
+                  <summary>data shape</summary>
+                  <pre>{JSON.stringify(templates[type], null, 2)}</pre>
+                </details>
+              </article>
+            ))}
+          </div>
+        </section>
+      ))
+    }
+  </div>
+</BaseLayout>
+
+<style>
+  .cat-wrap { max-width: 70rem; margin: 0 auto; padding-bottom: 4rem; }
+  .cat-hero { padding: 3rem 1.5rem 1.5rem; }
+  .cat-hero h1 { font-size: 2.25rem; font-weight: 800; margin: 0 0 0.5rem; }
+  .cat-hero p { color: var(--color-fg-muted); margin: 0 0 1.25rem; max-width: 44rem; }
+  .cat-jump { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+  .cat-jump a {
+    font-size: 0.78rem; text-decoration: none; padding: 0.2rem 0.55rem; text-transform: capitalize;
+    border: 1px solid var(--color-border); border-radius: 999px; color: var(--color-fg);
+  }
+  .cat-jump a span { color: var(--color-fg-subtle); }
+  .cat-jump a:hover { border-color: var(--color-primary); }
+
+  .cat-group { padding: 0 1.5rem; scroll-margin-top: 0.5rem; }
+  .cat-group-title {
+    position: sticky; top: 0; z-index: 10; margin: 0 -1.5rem;
+    padding: 0.5rem 1.5rem; font-size: 0.95rem; font-weight: 700; text-transform: capitalize;
+    background: var(--color-primary); color: #fff; display: flex; gap: 0.5rem; align-items: center;
+  }
+  .cat-group-title span { font-size: 0.68rem; background: rgba(255,255,255,0.25); padding: 0.05rem 0.4rem; border-radius: 999px; }
+
+  .cat-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr)); gap: 0.75rem; padding: 1rem 0; }
+  .cat-item { border: 1px solid var(--color-border); border-radius: 0.6rem; padding: 0.75rem 0.9rem; background: var(--color-bg-muted); }
+  .cat-item-head { display: flex; align-items: center; justify-content: space-between; gap: 0.75rem; }
+  .cat-item-head code { font-weight: 700; color: var(--color-primary); font-size: 0.85rem; }
+  .cat-preview { font-size: 0.78rem; font-weight: 600; text-decoration: none; color: var(--color-fg); white-space: nowrap; }
+  .cat-preview:hover { color: var(--color-primary); }
+  .cat-item details { margin-top: 0.5rem; }
+  .cat-item summary { cursor: pointer; font-size: 0.75rem; color: var(--color-fg-subtle); }
+  .cat-item pre {
+    margin: 0.5rem 0 0; max-height: 18rem; overflow: auto; white-space: pre;
+    background: #06121c; color: #cfe0ea; padding: 0.7rem 0.85rem; border-radius: 0.4rem; font-size: 0.72rem; line-height: 1.5;
+  }
+</style>

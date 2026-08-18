@@ -45,6 +45,10 @@ export default defineConfig({
       // Forms / CRM: how contact, newsletter, and quiz forms submit
       PUBLIC_FORM_ADAPTER: envField.string({ context: 'client', access: 'public', optional: true, default: 'stub' }),
       PUBLIC_FORM_ENDPOINT: envField.string({ context: 'client', access: 'public', optional: true, default: '' }),
+      // Autopilot (autopilotapp.io) CRM — server-side lead delivery via /api/lead.
+      // Unset → /api/lead stays log-only. Source id is the "Website" lead source.
+      AUTOPILOT_API_KEY: envField.string({ context: 'server', access: 'secret', optional: true }),
+      AUTOPILOT_WEBSITE_SOURCE_ID: envField.string({ context: 'server', access: 'secret', optional: true }),
       // Ad / marketing pixels (cookie-setting) — gated behind the consent banner
       PUBLIC_META_PIXEL_ID: envField.string({ context: 'client', access: 'public', optional: true }),
       PUBLIC_GOOGLE_ADS_ID: envField.string({ context: 'client', access: 'public', optional: true }),

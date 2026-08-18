@@ -1,6 +1,6 @@
 ---
 import { getServices } from "@/lib/content";
-import { getBackgroundImage } from "@/lib/images";
+import { getHeroBg } from "@/lib/images";
 import type { Eyebrow, FormConfig } from "@/types/sections";
 import { highlight } from "@/lib/highlight";
 import Badge from "@/components/elements/badge/Badge.astro";
@@ -24,8 +24,7 @@ interface Props {
 }
 
 const { theme = "default", data } = Astro.props;
-const heroBg = await getBackgroundImage(data?.backgroundImage?.src, { width: 2200 });
-const heroOverlay = (data?.backgroundImage?.overlayOpacity ?? 60) / 100;
+const heroBg = await getHeroBg(data?.backgroundImage);
 const headline = data?.headline ?? data?.heading;
 const subheadline = data?.subheadline ?? data?.subheading;
 
@@ -33,7 +32,7 @@ const services = await getServices();
 const sortedServices = services.sort((a, b) => a.data.order - b.data.order);
 ---
 
-<section class={`hero-stacked section-wrapper section-py theme-${theme} hero-bg ${heroBg ? "has-bg" : ""}`} style={heroBg ? `--hero-image: url('${heroBg}'); --hero-overlay: ${heroOverlay}` : undefined}>
+<section class={`hero-stacked section-wrapper section-py theme-${theme} hero-bg ${heroBg ? "has-bg" : ""}`} style={heroBg?.style}>
   <div class="section-container">
     <div class="flex flex-col items-center text-center gap-md max-w-2xl mx-auto mb-10">
       {

@@ -6,11 +6,13 @@ import Badge from "@/components/elements/badge/Badge.astro";
 import FormRenderer from "@/components/forms/FormRenderer.astro";
 
 /**
- * contact:hours-map-form — a three-column "everything to reach us" section:
- * business-hours table, an embedded map, and the lead form. On smaller screens
- * the columns stack. Hours come from `hoursSettings`, the map from an authored
- * `mapEmbedUrl` (falling back to a Google embed of the `generalSettings`
- * address), and the form renders via FormRenderer on its own surface card.
+ * contact:hours-map-form — an "everything to reach us" section. Top row is a
+ * two-column split: a left stack (call/text + email + service-area details, then
+ * the business-hours table) beside the lead form on its own surface card. A
+ * full-width service-area map sits below. Contact details + hours come from the
+ * business/`hoursSettings` singletons; the map from an authored `mapEmbedUrl`
+ * (falling back to a Google embed of the `generalSettings` address). On smaller
+ * screens the two columns stack.
  */
 interface Props {
   theme?: string;
@@ -66,11 +68,61 @@ const mapSrc =
       {data?.subheading && <p class="theme-text-muted text-lg max-w-2xl m-0">{data.subheading}</p>}
     </div>
 
-    <div class="grid grid-cols-1 lg:grid-cols-3 gap-xl items-start">
-      {/* Hours */}
-      <div class="flex flex-col gap-md">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-xl items-start">
+      {/* Left: reach-us details + hours, stacked */}
+      <div class="flex flex-col gap-lg">
+        {/* Contact details */}
+        <div class="rounded-xl border theme-border p-6 flex flex-col gap-5">
+          {
+            business.phone && (
+              <a href={`tel:${business.phone.replace(/[^\d+]/g, "")}`} class="contact-row">
+                <span class="contact-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z" />
+                  </svg>
+                </span>
+                <span class="flex flex-col">
+                  <span class="theme-text-subtle text-xs font-semibold uppercase tracking-widest">Call or text</span>
+                  <span class="theme-heading text-lg font-semibold">{business.phone}</span>
+                </span>
+              </a>
+            )
+          }
+          {
+            business.email && (
+              <a href={`mailto:${business.email}`} class="contact-row">
+                <span class="contact-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                    <rect x="2" y="4" width="20" height="16" rx="2" />
+                    <path d="m22 7-10 6L2 7" />
+                  </svg>
+                </span>
+                <span class="flex flex-col min-w-0">
+                  <span class="theme-text-subtle text-xs font-semibold uppercase tracking-widest">Email</span>
+                  <span class="theme-heading text-lg font-semibold break-words">{business.email}</span>
+                </span>
+              </a>
+            )
+          }
+          <div class="contact-row">
+            <span class="contact-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+                <circle cx="12" cy="10" r="3" />
+              </svg>
+            </span>
+            <span class="flex flex-col">
+              <span class="theme-text-subtle text-xs font-semibold uppercase tracking-widest">Service area</span>
+              <span class="theme-text text-sm leading-relaxed">
+                Boise, Meridian, Nampa, Caldwell, Eagle, Star, Kuna, Garden City &amp; the wider Treasure Valley.
+              </span>
+            </span>
+          </div>
+        </div>
+
+        {/* Hours */}
         {
-          hours.length > 0 ? (
+          hours.length > 0 && (
             <div class="rounded-xl border theme-border overflow-hidden">
               <div class="flex items-center gap-sm px-5 py-4 border-b theme-border">
                 <span class="contact-icon">
@@ -97,47 +149,56 @@ const mapSrc =
                 ))}
               </dl>
             </div>
-          ) : (
-            <p class="theme-text-muted m-0">Hours available by phone.</p>
           )
         }
       </div>
 
-      {/* Map */}
-      {
-        mapSrc ? (
-          <div class="map-box overflow-hidden rounded-xl border theme-border bg-bg-muted min-h-[18rem]">
-            <iframe
-              src={mapSrc}
-              title={`Map to ${business.businessName ?? "our location"}`}
-              width="100%"
-              height="100%"
-              style="border:0; min-height: 18rem;"
-              loading="lazy"
-              referrerpolicy="no-referrer-when-downgrade"
-              allowfullscreen
-            />
-          </div>
-        ) : (
-          <div class="flex items-center justify-center rounded-xl border theme-border bg-bg-muted min-h-[18rem] p-6 text-center">
-            <p class="theme-text-muted m-0">Map location coming soon.</p>
-          </div>
-        )
-      }
-
-      {/* Form */}
+      {/* Right: form */}
       <div class="w-full">
         <FormRenderer form={data?.form} services={sortedServices} />
       </div>
     </div>
+
+    {/* Full-width coverage map (service-area, not an address pin) */}
+    {
+      mapSrc && (
+        <div class="map-box mt-xl overflow-hidden rounded-xl border theme-border bg-bg-muted">
+          <iframe
+            src={mapSrc}
+            title={`Service area — ${business.businessName ?? "the Treasure Valley"}`}
+            width="100%"
+            height="100%"
+            style="border:0;"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            allowfullscreen
+          />
+        </div>
+      )
+    }
   </div>
 </section>
 
 <style>
+  .map-box {
+    height: 22rem;
+  }
   .map-box iframe {
     display: block;
     width: 100%;
     height: 100%;
+  }
+  .contact-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.9rem;
+    text-decoration: none;
+  }
+  a.contact-row {
+    transition: opacity 0.15s ease;
+  }
+  a.contact-row:hover {
+    opacity: 0.8;
   }
   .contact-icon {
     display: inline-flex;

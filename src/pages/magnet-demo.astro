@@ -1,0 +1,146 @@
+---
+// /magnet-demo — a showcase of the lead-magnet system. File-based (touches no CMS
+// data) and noindexed. Demonstrates the `magnet:cta` block across several real
+// offers, each posting to /api/lead with its own source + CRM tags so the
+// segmentation is visible in the logs. Doubles as the scaffold for a future
+// CMS-driven /resources hub. Interactive magnets (estimator, calculators) will
+// slot in here on the same capture contract.
+import MarketingLayout from "@/layouts/MarketingLayout.astro";
+import PageRenderer from "@/components/PageRenderer.astro";
+
+const sections = [
+  {
+    type: "content:rich-text",
+    theme: "default",
+    data: {
+      eyebrow: { text: "Free Tools & Resources", variant: "text" },
+      heading: "Free Resources for Treasure Valley Homeowners",
+      body:
+        "<p>Grab something genuinely useful — no cost, no obligation. These are demo lead magnets built on our capture platform: every opt-in below is low-friction, pre-segmented by source and interest, and follows up automatically. Interactive tools like the instant price estimator plug in next on the same system.</p>",
+    },
+  },
+
+  // 1 — Seasonal maintenance calendar (nurture engine; email only, primary)
+  {
+    type: "magnet:cta",
+    theme: "primary",
+    data: {
+      eyebrow: { text: "Free Download" },
+      heading: "Your Treasure Valley Exterior-Care Calendar",
+      subheading: "Know exactly when to clean, seal, and blow out — month by month, tuned to our freeze-thaw seasons.",
+      highlights: ["Freeze-thaw timeline", "Roof-algae check reminders", "Sprinkler blowout dates"],
+      magnet: "seasonal-calendar",
+      tags: ["interest:maintenance-plan", "prop:residential"],
+      fields: ["email"],
+      submitLabel: "Send Me the Calendar",
+      disclaimer: "No spam. Unsubscribe anytime.",
+      successHeading: "On its way!",
+      successBody: "Check your inbox for the calendar.",
+    },
+  },
+
+  // 2 — HOA notice response kit (high-intent; name + email, alt)
+  {
+    type: "magnet:cta",
+    theme: "alt",
+    data: {
+      eyebrow: { text: "Free Kit" },
+      heading: "Got an HOA Notice About Your Home's Exterior?",
+      subheading: "Our response kit walks you through what the letter really means and how to clear it fast — before the fine.",
+      highlights: ["What each notice type actually requires", "A same-week clean-up checklist", "How to document compliance"],
+      magnet: "hoa-notice-kit",
+      tags: ["interest:hoa", "prop:hoa", "temp:warm"],
+      fields: ["name", "email"],
+      submitLabel: "Get the HOA Kit",
+      disclaimer: "We'll also text you if you add a phone number when you reply.",
+      successHeading: "Sent!",
+      successBody: "Check your inbox — and reply if you'd like a fast-track quote.",
+    },
+  },
+
+  // 3 — Instant price-estimate teaser (hotter; phone + email, inverse w/ bg image)
+  {
+    type: "magnet:cta",
+    theme: "inverse",
+    data: {
+      eyebrow: { text: "Free Estimate" },
+      heading: "What Should Your Project Cost?",
+      subheading: "Tell us where to send it and we'll get you a ballpark range for your home the same business day — no walkthrough required.",
+      highlights: ["A real price range, not a call-us-to-find-out", "Bundle multiple services and save", "Lock the estimate into a booked slot"],
+      magnet: "price-estimate",
+      tags: ["interest:estimate", "temp:hot"],
+      fields: ["name", "phone", "email"],
+      submitLabel: "Get My Estimate",
+      disclaimer: "We'll text or email your estimate. No obligation.",
+      successHeading: "Got it!",
+      successBody: "We'll send your estimate the same business day.",
+      backgroundImage: { src: "/images/roofing-crew.jpg", overlayOpacity: 78 },
+    },
+  },
+
+  // 4 — Sprinkler blowout early-bird list (seasonal list-building; email only, muted)
+  {
+    type: "magnet:cta",
+    theme: "muted",
+    data: {
+      eyebrow: { text: "Seasonal List" },
+      heading: "Get on the Sprinkler Blowout Early-Bird List",
+      subheading: "We'll remind you before the first hard freeze and hold you a fall slot — so your lines don't crack over winter.",
+      highlights: ["Priority fall scheduling", "A reminder before the freeze, not after", "Early-bird pricing when we open the season"],
+      magnet: "blowout-earlybird",
+      tags: ["interest:sprinkler-blowout", "svc:sprinkler-blowouts", "prop:residential"],
+      fields: ["email"],
+      submitLabel: "Notify Me Before the Freeze",
+      disclaimer: "One or two emails a season. That's it.",
+      successHeading: "You're on the list!",
+      successBody: "We'll reach out when fall blowout scheduling opens.",
+    },
+  },
+
+  // 5 — Solar output-loss one-pager (differentiated; email only, brand-secondary)
+  {
+    type: "magnet:cta",
+    theme: "brand-secondary",
+    data: {
+      eyebrow: { text: "Free Guide" },
+      heading: "How Much Output Are Your Solar Panels Losing?",
+      subheading: "Our one-pager shows how dust and hard-water spotting quietly cut production here — and what a clean typically recovers.",
+      highlights: ["Why high-desert dust hits output fast", "Farmland & foothills pollen effects", "When cleaning pays for itself"],
+      magnet: "solar-guide",
+      tags: ["interest:solar", "svc:solar-panel-cleaning"],
+      fields: ["email"],
+      submitLabel: "Send Me the Guide",
+      disclaimer: "No spam. Unsubscribe anytime.",
+      successHeading: "On its way!",
+      successBody: "Check your inbox for the solar guide.",
+    },
+  },
+
+  // Closing prompt
+  {
+    type: "cta:banner",
+    theme: "default",
+    data: {
+      eyebrow: { text: "Prefer to Talk?", variant: "text" },
+      heading: "Ready for a Real Quote?",
+      subheading: "Skip the guides — get a free, no-obligation quote for your property.",
+      ctas: [{ label: "Get My Free Quote", href: "/contact", variant: "primary" }],
+      showPhone: true,
+    },
+  },
+];
+
+const page = {
+  id: "magnet-demo",
+  data: { title: "Free Tools & Resources (Demo) | Monarch Pro Wash", sections },
+};
+---
+
+<MarketingLayout
+  page={page}
+  title={page.data.title}
+  description="Demo of Monarch Pro Wash lead magnets — free downloads, guides, and estimate tools."
+  noindex
+>
+  <PageRenderer config={page.data} />
+</MarketingLayout>

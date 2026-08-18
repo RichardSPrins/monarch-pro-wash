@@ -69,6 +69,13 @@
   "cta:banner": {
     "heading": "Ready to Get Started?",
     "subheading": "Call us today for a free estimate. We respond within the hour.",
+    "ctas": [
+      {
+        "label": "Get a Free Quote",
+        "href": "/contact",
+        "variant": "primary"
+      }
+    ],
     "showPhone": true
   },
   "hero:image-overlay": {
@@ -3927,34 +3934,29 @@
     "themTagline": "Storm-chasers and out-of-town crews",
     "rows": [
       {
-        "feature": "Idaho-licensed & fully insured",
-        "us": true,
-        "them": false
+        "feature": "Cleaning method",
+        "us": "Surface-matched, soft wash for delicate",
+        "them": "One high-pressure setting for everything"
       },
       {
-        "feature": "Written workmanship warranty",
-        "us": "10-year, in writing",
-        "them": "Verbal, if any"
+        "feature": "Damage risk",
+        "us": "Trained to protect the surface",
+        "them": "Etched concrete, stripped paint, blown-out sand"
       },
       {
-        "feature": "Detailed line-item estimate",
-        "us": true,
-        "them": false
+        "feature": "Pricing",
+        "us": "Flat, per-service, published up front",
+        "them": "Call for pricing, or a moving hourly meter"
       },
       {
-        "feature": "Same crew from tear-off to cleanup",
-        "us": true,
-        "them": false
+        "feature": "Accountability",
+        "us": "Owner-run and insured, comes back to correct",
+        "them": "A rotating crew you may never see again"
       },
       {
-        "feature": "Answers the phone after the job",
-        "us": true,
-        "them": false
-      },
-      {
-        "feature": "Magnetic nail sweep of your yard",
-        "us": true,
-        "them": false
+        "feature": "Scope",
+        "us": "The whole property, every season",
+        "them": "One service, then gone"
       }
     ],
     "cta": {
@@ -5542,5 +5544,29 @@
       "href": "/contact",
       "variant": "primary"
     }
+  },
+  "magnet:cta": {
+    "eyebrow": {
+      "text": "Free Download"
+    },
+    "heading": "Your Treasure Valley Exterior-Care Calendar",
+    "subheading": "Know exactly when to clean, seal, and blow out — month by month.",
+    "highlights": [
+      "Freeze-thaw timeline",
+      "Roof-algae check reminders",
+      "Sprinkler blowout dates"
+    ],
+    "magnet": "seasonal-calendar",
+    "tags": [
+      "interest:maintenance-plan",
+      "prop:residential"
+    ],
+    "fields": [
+      "email"
+    ],
+    "submitLabel": "Send Me the Calendar",
+    "disclaimer": "No spam. Unsubscribe anytime.",
+    "successHeading": "On its way!",
+    "successBody": "Check your inbox for the calendar."
   }
 }

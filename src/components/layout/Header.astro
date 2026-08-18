@@ -1,7 +1,12 @@
 ---
 import { getBusinessData } from "@/lib/utils";
 import NavItem from "@/components/layout/NavItem.astro";
+import Socials from "@/components/layout/Socials.astro";
+import Logo from "@/components/layout/Logo.astro";
 import type { NavNode } from "@/lib/utils";
+
+const hasSocial = (s?: Record<string, string | undefined>) =>
+  !!s && Object.values(s).some(Boolean);
 
 interface Props {
   navItems: NavNode[];
@@ -17,7 +22,7 @@ const business = await getBusinessData();
   data-header
 >
   <!-- Top bar — only rendered when there's contact info to show -->
-  {(business.phone || business.email || business.social?.facebook || business.social?.instagram || business.social?.youtube) && (
+  {(business.phone || business.email || hasSocial(business.social)) && (
   <div class="bg-bg-inverse text-fg-inverse text-sm hidden md:block">
     <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 py-2 flex items-center justify-between">
       <div class="flex items-center gap-6">
@@ -45,24 +50,11 @@ const business = await getBusinessData();
           </a>
         )}
       </div>
-      <div class="flex items-center gap-4">
-        {business.social?.facebook && (
-          <a href={business.social.facebook} target="_blank" rel="noopener" aria-label="Facebook" class="text-fg-inverse/60 hover:text-fg-inverse transition-colors">
-            <svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-              <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
-            </svg>
-          </a>
-        )}
-        {business.social?.instagram && (
-          <a href={business.social.instagram} target="_blank" rel="noopener" aria-label="Instagram" class="text-fg-inverse/60 hover:text-fg-inverse transition-colors">
-            <svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-              <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
-              <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
-              <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
-            </svg>
-          </a>
-        )}
-      </div>
+      <Socials
+        social={business.social}
+        class="flex items-center gap-4"
+        linkClass="text-fg-inverse/60 hover:text-fg-inverse transition-colors"
+      />
     </div>
   </div>
   )}
@@ -72,8 +64,8 @@ const business = await getBusinessData();
     <div class="flex items-center justify-between h-16 lg:h-20">
 
       <!-- Logo -->
-      <a href="/" class="flex items-center gap-2 font-bold text-xl text-fg hover:text-primary transition-colors shrink-0">
-        {business.businessName}
+      <a href="/" class="flex items-center gap-2 font-bold text-xl text-fg hover:text-primary transition-colors shrink-0" aria-label={`${business.businessName} — home`}>
+        <Logo business={business} eager />
       </a>
 
       <!-- Desktop nav -->

@@ -13,10 +13,14 @@ interface Props {
     showCTA?: boolean;
     ctaLabel?: string;
     ctaHref?: string;
+    /** Link base for each service card. Defaults to "/services" (→ /services/{slug}).
+        Set to a town path (e.g. "/boise") for service-in-area matrix links. */
+    hrefBase?: string;
   };
 }
 
 const { theme = "default", data } = Astro.props;
+const hrefBase = (data?.hrefBase ?? "/services").replace(/\/$/, "");
 
 const services = await getServices();
 const sorted = services
@@ -78,7 +82,7 @@ const gridClass =
       {
         sorted.map((service) => (
           <a
-            href={`/services/${service.data.slug}`}
+            href={`${hrefBase}/${service.data.slug}`}
             class="group flex flex-col gap-sm p-6 rounded-xl border theme-border bg-background hover:shadow-md transition-all duration-200 no-underline"
           >
             <div class="flex items-start justify-between gap-xs">

@@ -18,7 +18,7 @@ const { theme = "default", data } = Astro.props;
 const allFaqs = await getFaqs();
 
 const faqs = allFaqs
-  .filter((f) => !data?.service || f.data.service === data.service)
+  .filter((f) => data?.service ? f.data.service === data.service : !f.data.service)
   .sort((a, b) => a.data.order - b.data.order);
 ---
 

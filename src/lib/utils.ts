@@ -12,9 +12,13 @@ export async function getBusinessData(): Promise<BusinessData> {
     const businessName = settings.title;
     if (!businessName) throw new Error("No site settings found");
     const s = settings.social;
+    const l = (settings as any).logo;
     return {
       businessName,
       tagline: settings.tagline,
+      logo: l?.url
+        ? { url: l.url, alt: l.alt || businessName, width: l.width, height: l.height }
+        : undefined,
       phone: biz.phone ?? "",
       email: biz.email ?? "",
       address: biz.address ?? "",
@@ -22,7 +26,15 @@ export async function getBusinessData(): Promise<BusinessData> {
       state: biz.state ?? "",
       zip: biz.zip ?? "",
       gbpUrl: biz.gbp_url || undefined,
-      social: s ? { facebook: s.facebook, instagram: s.instagram, youtube: s.youtube } : undefined,
+      social: s
+        ? {
+            facebook: s.facebook,
+            instagram: s.instagram,
+            youtube: s.youtube,
+            twitter: (s as any).twitter,
+            linkedin: (s as any).linkedin,
+          }
+        : undefined,
     };
   } catch {
     return {

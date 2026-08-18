@@ -1,4 +1,5 @@
 ---
+import Logo from "@/components/layout/Logo.astro";
 import { getBusinessData } from "@/lib/utils";
 import NavItem from "@/components/layout/NavItem.astro";
 import type { NavNode } from "@/lib/utils";
@@ -94,7 +95,7 @@ const business = await getBusinessData();
 
       <!-- Logo (centered) -->
       <a href="/" class="flex items-center gap-2 font-bold text-xl text-fg hover:text-primary transition-colors shrink-0 lg:flex-none">
-        {business.businessName}
+        <Logo business={business} eager />
       </a>
 
       <!-- Right slot (desktop): primary CTA -->

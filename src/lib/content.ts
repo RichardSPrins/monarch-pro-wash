@@ -7,6 +7,7 @@
 //
 // Resolved at request time (SSR) → live edits appear without a rebuild.
 import { getEmDashCollection, getEmDashEntry } from "emdash";
+import { estimatorPricing, type EstimatorPricing } from "@/config/estimatorPricing";
 
 /** A JSON column can come back parsed or as a string; normalise. */
 function asJson<T>(v: unknown, fallback: T): T {
@@ -161,6 +162,24 @@ export async function getPosts() {
 export async function getPost(slug: string) {
   const { entry } = await getEmDashEntry("posts" as any, slug);
   return entry ? mapPost(entry) : null;
+}
+
+// ---- estimator pricing singleton --------------------------------------------
+
+/** Ballpark pricing for the /estimate calculator. Reads the optional `pricing`
+ * singleton (json `value`) if it's been registered in the CMS — so the numbers
+ * become editable in the EmDash admin — and otherwise falls back to the code
+ * default in src/config/estimatorPricing.ts. The page reads through here, so no
+ * page change is needed once the singleton is added. */
+export async function getEstimatorPricing(): Promise<EstimatorPricing> {
+  try {
+    const { entry } = await getEmDashEntry("pricing" as any, "pricing");
+    const v = (entry?.data as any)?.value ?? (entry?.data as any);
+    if (v && v.services) return v as EstimatorPricing;
+  } catch {
+    // `pricing` collection not registered yet — use the code default.
+  }
+  return estimatorPricing;
 }
 
 // ---- business profile + appearance singletons -------------------------------

@@ -12,6 +12,8 @@ import type {
 export interface BusinessData {
   businessName: string;
   tagline?: string;
+  /** Logo from EmDash native SiteSettings (media). Falls back to the name text. */
+  logo?: { url: string; alt?: string; width?: number; height?: number };
   phone: string;
   email: string;
   address: string;
@@ -23,6 +25,8 @@ export interface BusinessData {
     facebook?: string;
     instagram?: string;
     youtube?: string;
+    twitter?: string;
+    linkedin?: string;
   };
   /** Which header layout variant to render. Defaults to "classic". */
   headerVariant?:

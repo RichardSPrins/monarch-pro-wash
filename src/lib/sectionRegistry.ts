@@ -22,6 +22,7 @@ import FAQStacked from "@/components/sections/faqs/FAQStacked.astro";
 import CTABanner from "@/components/sections/cta/CTABanner.astro";
 import CTASplit from "@/components/sections/cta/CTASplit.astro";
 import CTACentered from "@/components/sections/cta/CTACentered.astro";
+import MagnetCta from "@/components/sections/magnets/MagnetCta.astro";
 import AboutSplit from "@/components/sections/about/AboutSplit.astro";
 import AboutStacked from "@/components/sections/about/AboutStacked.astro";
 import WhyChooseUsSideBySide from "@/components/sections/about/WhyChooseUsSideBySide.astro";
@@ -266,6 +267,7 @@ export const sectionRegistry: Record<string, AstroComponentFactory> = {
   "cta:banner": CTABanner,
   "cta:split": CTASplit,
   "cta:centered": CTACentered,
+  "magnet:cta": MagnetCta,
   "about:split": AboutSplit,
   "about:stacked": AboutStacked,
   "about:why-choose-us": WhyChooseUsSideBySide,

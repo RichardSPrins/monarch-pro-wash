@@ -47,10 +47,10 @@ const submitCfg = {
 };
 ---
 
-<Card class="bg-bg-muted surface-base" data-lead-form>
+<Card class="surface-base" data-lead-form>
   <CardHeader>
-    <CardTitle class="text-fg">{title}</CardTitle>
-    <CardDescription class="text-fg-muted">{description}</CardDescription>
+    <CardTitle class="text-neutral-900" style="color:#171717">{title}</CardTitle>
+    <CardDescription class="text-neutral-500" style="color:#525252">{description}</CardDescription>
   </CardHeader>
   <CardContent>
     <form class="flex flex-col gap-4" name="hero-quote" data-lead-form-el>
@@ -58,23 +58,23 @@ const submitCfg = {
       <input type="text" name="company_website" tabindex="-1" autocomplete="off" aria-hidden="true" class="lead-hp" data-lead-hp />
 
       <div class="flex flex-col gap-1.5">
-        <Label for="hero-name" class="text-fg">Full Name</Label>
-        <Input type="text" id="hero-name" name="name" placeholder="John Smith" required class="text-fg-muted placeholder:text-fg-muted border-bg-inverse" />
+        <Label for="hero-name" class="text-neutral-900">Full Name</Label>
+        <Input type="text" id="hero-name" name="name" placeholder="John Smith" required />
       </div>
       <div class="flex flex-col gap-1.5">
-        <Label for="hero-phone" class="text-fg">Phone Number</Label>
-        <Input type="tel" id="hero-phone" name="phone" placeholder="(555) 555-5555" required class="text-fg-muted placeholder:text-fg-muted border-bg-inverse" />
+        <Label for="hero-phone" class="text-neutral-900">Phone Number</Label>
+        <Input type="tel" id="hero-phone" name="phone" placeholder="(555) 555-5555" required />
       </div>
       <div class="flex flex-col gap-1.5">
-        <Label for="hero-email" class="text-fg">Email</Label>
-        <Input type="email" id="hero-email" name="email" placeholder="you@example.com" class="text-fg-muted placeholder:text-fg-muted border-bg-inverse" />
+        <Label for="hero-email" class="text-neutral-900">Email</Label>
+        <Input type="email" id="hero-email" name="email" placeholder="you@example.com" />
       </div>
       {
         services.length > 0 && (
           <div class="flex flex-col gap-1.5">
-            <Label for="hero-service" class="text-fg">Service Needed</Label>
+            <Label for="hero-service" class="text-neutral-900">Service Needed</Label>
             <Select id="hero-service" name="service">
-              <SelectTrigger class="w-full text-fg-muted placeholder:text-fg-muted border-bg-inverse">
+              <SelectTrigger class="w-full">
                 <SelectValue placeholder="Select a service" />
               </SelectTrigger>
               <SelectContent>
@@ -89,8 +89,8 @@ const submitCfg = {
         )
       }
       <div class="flex flex-col gap-1.5">
-        <Label for="hero-message" class="text-fg">Message (optional)</Label>
-        <Textarea id="hero-message" name="message" placeholder="Tell us about your project" class="text-fg-muted placeholder:text-fg-muted border-bg-inverse" />
+        <Label for="hero-message" class="text-neutral-900">Message (optional)</Label>
+        <Textarea id="hero-message" name="message" placeholder="Tell us about your project" />
       </div>
 
       <Button variant="primary" type="submit" class="w-full mt-1" data-lead-submit>{submitLabel}</Button>
@@ -101,8 +101,8 @@ const submitCfg = {
       <span class="lead-success-check" aria-hidden="true">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5" /></svg>
       </span>
-      <p class="text-fg font-semibold m-0">Thanks — we got your request!</p>
-      <p class="text-fg-muted text-sm m-0">A team member will reach out within the hour.</p>
+      <p class="text-neutral-900 font-semibold m-0">Thanks, we got your request!</p>
+      <p class="text-neutral-500 text-sm m-0">A team member will reach out within the hour.</p>
     </div>
 
     <script type="application/json" data-lead-config set:html={JSON.stringify(submitCfg)} />

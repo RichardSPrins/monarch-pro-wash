@@ -14,11 +14,31 @@ import { useMemo, useState } from "react";
 import { sectionFields } from "./schema/sectionFields.mjs";
 import templates from "./schema/templates.json";
 
-type Section = { type: string; theme?: string; data?: Record<string, unknown> };
+type Section = { type: string; theme?: string; spacing?: { desktop?: string; mobile?: string }; data?: Record<string, unknown> };
 
 const LABELS = sectionFields as Record<string, { label: string }>;
 const TEMPLATES = templates as Record<string, Record<string, unknown>>;
 const THEMES = ["default", "alt", "muted", "inverse", "primary", "brand-secondary"];
+// Vertical-padding density options ("" = use the section's built-in default).
+const PADS = ["", "none", "xs", "sm", "md", "lg", "xl"];
+
+// Focal-point choices for background images (mirror FOCAL_POSITION in
+// src/lib/images.ts). Rendered as dropdowns wherever a field is named `focal`
+// or `focalMobile`. focalMobile's blank option = "inherit the desktop focal".
+const FOCAL = ["center", "left", "right", "top", "bottom", "top-left", "top-right", "bottom-left", "bottom-right"];
+const focalLabel = (v: string) => v.replace(/-/g, " ").replace(/\b\w/g, (c) => c.toUpperCase());
+const ENUM_FIELDS: Record<string, { value: string; label: string }[]> = {
+  focal: FOCAL.map((v) => ({ value: v, label: focalLabel(v) })),
+  focalMobile: [{ value: "", label: "Same as desktop" }, ...FOCAL.map((v) => ({ value: v, label: focalLabel(v) }))],
+};
+
+// Hero types whose background renders through the shared `.hero-bg` mechanism
+// (src/lib/images.ts getHeroBg + global.css), so they honor the focal point.
+// Only these surface the focal controls; other heroes still take a bg image.
+const FOCAL_TYPES = new Set([
+  "hero:angled", "hero:badge-row", "hero:gradient", "hero:minimal", "hero:overlay-card",
+  "hero:split-checklist", "hero:split-content", "hero:split-image", "hero:split-stats", "hero:stacked-form",
+]);
 
 const CATALOG: Record<string, { type: string; label: string }[]> = (() => {
   const out: Record<string, { type: string; label: string }[]> = {};
@@ -59,8 +79,19 @@ const S = {
 };
 
 // ── data-driven field renderer (recursive; infers input from the value) ──────
-function DataField({ name, value, onChange }: { name: string; value: unknown; onChange: (v: unknown) => void }) {
+function DataField({ name, value, onChange, focalOk }: { name: string; value: unknown; onChange: (v: unknown) => void; focalOk?: boolean }) {
   const label = titleCase(name);
+
+  const enumOpts = ENUM_FIELDS[name];
+  if (enumOpts) {
+    return (
+      <label><span style={S.label}>{label}</span>
+        <select style={S.input} value={(value as string) ?? ""} onChange={(e) => onChange(e.target.value)}>
+          {enumOpts.map((o) => <option key={o.value} value={o.value}>{o.label}</option>)}
+        </select>
+      </label>
+    );
+  }
 
   if (typeof value === "boolean") {
     return (
@@ -93,11 +124,18 @@ function DataField({ name, value, onChange }: { name: string; value: unknown; on
   }
   if (value && typeof value === "object") {
     const obj = value as Record<string, unknown>;
+    // A background image always exposes its focal controls, even on content
+    // saved before the fields existed (the data-driven form otherwise only
+    // renders keys already present). Existing values win over the defaults.
+    const entries =
+      name === "backgroundImage" && focalOk
+        ? { ...obj, focal: obj.focal ?? "center", focalMobile: obj.focalMobile ?? "" }
+        : obj;
     return (
       <div><span style={S.label}>{label}</span>
         <div style={S.nested}>
-          {Object.entries(obj).map(([k, v]) => (
-            <DataField key={k} name={k} value={v} onChange={(nv) => onChange({ ...obj, [k]: nv })} />
+          {Object.entries(entries).map(([k, v]) => (
+            <DataField key={k} name={k} value={v} focalOk={focalOk} onChange={(nv) => onChange({ ...obj, [k]: nv })} />
           ))}
         </div>
       </div>
@@ -226,16 +264,31 @@ function PageBuilder({ value, onChange }: { value: unknown; onChange: (v: unknow
               <select style={{ ...S.input, width: "auto" }} value={s.theme ?? "default"} onChange={(e) => patch(i, { theme: e.target.value })}>
                 {THEMES.map((t) => <option key={t} value={t}>{t}</option>)}
               </select>
+              <select title="Desktop vertical padding" style={{ ...S.input, width: "auto", fontSize: 11 }} value={s.spacing?.desktop ?? ""} onChange={(e) => patch(i, { spacing: { ...s.spacing, desktop: e.target.value } })}>
+                {PADS.map((p) => <option key={p} value={p}>{p ? `🖥 ${p}` : "🖥 auto"}</option>)}
+              </select>
+              <select title="Mobile vertical padding" style={{ ...S.input, width: "auto", fontSize: 11 }} value={s.spacing?.mobile ?? ""} onChange={(e) => patch(i, { spacing: { ...s.spacing, mobile: e.target.value } })}>
+                {PADS.map((p) => <option key={p} value={p}>{p ? `📱 ${p}` : "📱 auto"}</option>)}
+              </select>
               <button type="button" style={S.ghost} onClick={() => move(i, -1)} title="Up">↑</button>
               <button type="button" style={S.ghost} onClick={() => move(i, 1)} title="Down">↓</button>
               <button type="button" style={S.ghost} onClick={() => remove(i)} title="Delete">✕</button>
             </div>
             {open && (
               <div style={S.body}>
-                {Object.keys(data).length === 0 && <div style={S.tag}>No fields on this section.</div>}
-                {Object.entries(data).map(([k, v]) => (
-                  <DataField key={k} name={k} value={v} onChange={(nv) => patch(i, { data: { ...data, [k]: nv } })} />
-                ))}
+                {(() => {
+                  // Render the section type's FULL field set: the template's
+                  // fields (blanked) merged under the saved values. Saved values
+                  // win; fields the component supports but this saved section
+                  // lacks (e.g. a CTA added to the template later) still surface
+                  // for editing instead of being invisible in the data-driven form.
+                  const fields = { ...(blank(TEMPLATES[s.type] ?? {}) as Record<string, unknown>), ...data };
+                  const keys = Object.keys(fields);
+                  if (keys.length === 0) return <div style={S.tag}>No fields on this section.</div>;
+                  return keys.map((k) => (
+                    <DataField key={k} name={k} value={fields[k]} focalOk={FOCAL_TYPES.has(s.type)} onChange={(nv) => patch(i, { data: { ...data, [k]: nv } })} />
+                  ));
+                })()}
               </div>
             )}
           </div>

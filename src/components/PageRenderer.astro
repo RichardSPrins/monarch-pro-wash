@@ -6,6 +6,8 @@ import ErrorShim from "@/components/ErrorShim.astro";
 interface SectionConfig {
   type: string;
   theme?: string;
+  /** Optional CMS-set vertical padding override (density keys: none|xs|sm|md|lg|xl). */
+  spacing?: { desktop?: string; mobile?: string };
   data?: Record<string, unknown>;
 }
 
@@ -52,6 +54,17 @@ function validate(section: SectionConfig): string[] {
       ) : null;
     }
     const Component = sectionRegistry[section.type];
-    return <Component theme={section.theme ?? "default"} data={section.data} />;
+    const el = <Component theme={section.theme ?? "default"} data={section.data} />;
+    // Wrap only when the CMS set a padding override (display:contents wrapper,
+    // so it's layout-neutral); otherwise render the section directly.
+    const pd = section.spacing?.desktop || undefined;
+    const pm = section.spacing?.mobile || undefined;
+    return pd || pm ? (
+      <div class="section-slot" data-pad-d={pd} data-pad-m={pm}>
+        {el}
+      </div>
+    ) : (
+      el
+    );
   })
 }

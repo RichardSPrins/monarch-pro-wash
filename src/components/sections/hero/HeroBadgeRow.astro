@@ -1,6 +1,6 @@
 ---
 import type { Eyebrow, SectionCTA } from "@/types/sections";
-import { getBackgroundImage } from "@/lib/images";
+import { getHeroBg } from "@/lib/images";
 import Badge from "@/components/elements/badge/Badge.astro";
 import { highlight } from "@/lib/highlight";
 import { Button } from "@/components/elements/button";
@@ -25,8 +25,7 @@ interface Props {
 }
 
 const { theme = "default", data } = Astro.props;
-const heroBg = await getBackgroundImage(data?.backgroundImage?.src, { width: 2200 });
-const heroOverlay = (data?.backgroundImage?.overlayOpacity ?? 60) / 100;
+const heroBg = await getHeroBg(data?.backgroundImage);
 
 const ctas = (
   data?.ctas?.length ? data.ctas : [data?.cta, data?.secondaryCta].filter(Boolean)
@@ -34,7 +33,7 @@ const ctas = (
 const badges = data?.badges ?? [];
 ---
 
-<section class:list={["hero-badge-row section-wrapper section-py-lg", `theme-${theme}`, "hero-bg", heroBg ? "has-bg" : ""]} style={heroBg ? `--hero-image: url('${heroBg}'); --hero-overlay: ${heroOverlay}` : undefined}>
+<section class:list={["hero-badge-row section-wrapper section-py-lg", `theme-${theme}`, "hero-bg", heroBg ? "has-bg" : ""]} style={heroBg?.style}>
   <div class="section-container">
     <div class="flex flex-col items-center text-center gap-5 max-w-3xl mx-auto">
       {data?.eyebrow &&

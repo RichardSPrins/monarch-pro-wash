@@ -1,0 +1,114 @@
+---
+// Service-in-area matrix — /{area}/{service} (e.g. /boise/roof-cleaning). Both
+// segments are validated against the service_areas + services collections; any
+// other 2-segment path falls through to a 404.
+//
+// HYBRID content: if an authored, content-rich page exists in the `pages`
+// collection under the slug `sia-{area}--{service}`, its sections render.
+// Otherwise the page is composed on the fly from the service + town data (the
+// generated fallback below). Either way it goes through the shared PageRenderer.
+import MarketingLayout from "@/layouts/MarketingLayout.astro";
+import PageRenderer from "@/components/PageRenderer.astro";
+import { getServices, getServiceAreas, getPage } from "@/lib/content";
+import { getSiaQuiz } from "@/lib/siaQuizzes";
+
+const areaSlug = Astro.params.area ?? "";
+const serviceSlug = Astro.params.service ?? "";
+
+const [services, areas] = await Promise.all([getServices(), getServiceAreas()]);
+const service = services.find((s) => s.data.slug === serviceSlug);
+const area = areas.find((a) => a.data.slug === areaSlug);
+
+// Both must be real collection entries, else this isn't a matrix URL.
+if (!service || !area) {
+  return Astro.rewrite("/404");
+}
+
+const city = area.data.city;
+const state = area.data.state ?? "ID";
+const svcTitle = service.data.title;
+const svcLower = svcTitle.toLowerCase();
+const desc = service.data.description ?? `Professional ${svcLower} for ${city} and the Treasure Valley.`;
+
+// Authored content-rich page for this combo, if one exists.
+const authored = await getPage(`sia-${areaSlug}--${serviceSlug}`);
+
+// Tailored, service-specific qualifying quiz (from the shared quiz map).
+// Capture its leads to the shared /api/lead endpoint, pre-tagged with the
+// service + area so quiz leads are segmented exactly like the magnet captures.
+const siaQuiz = {
+  ...getSiaQuiz(serviceSlug),
+  submit: {
+    adapter: "webhook" as const,
+    endpoint: "/api/lead",
+    hiddenFields: {
+      source: "magnet:sia-quiz",
+      magnet: "sia-quiz",
+      tags: `src:sia-quiz,svc:${serviceSlug},area:${areaSlug}`,
+      service: serviceSlug,
+      city: areaSlug,
+    },
+  },
+};
+
+const fallbackSections = [
+  { type: "hero:split-form", theme: "inverse", data: {
+    eyebrow: { text: `${svcTitle} · ${city}, ${state}`, variant: "text" },
+    heading: `${svcTitle} in ${city}`,
+    subheading: desc,
+    trustBadges: [{ text: "Licensed & Insured" }, { text: "Owner-Operated" }, { text: "Free Quotes" }],
+    showPhone: true,
+    backgroundImage: { src: "/images/roofing-crew.jpg", overlayOpacity: 70 },
+    form: siaQuiz,
+  } },
+  { type: "trust-bar:badges", theme: "default", data: { foundingYear: 2010, familyOwned: true, licensedInsured: true } },
+  { type: "content:rich-text", theme: "alt", data: {
+    eyebrow: { text: `${svcTitle} · ${city}`, variant: "text" },
+    heading: `${svcTitle} for ${city} Homes and Businesses`,
+    body: `<p>${desc}</p><p>Monarch Pro Wash brings ${svcLower} to ${city}, ${state} and the surrounding Treasure Valley, with the same surface-matched method and the Monarch Standard on every job. Read more about our <a href="/services/${serviceSlug}">${svcLower}</a>, or see <a href="/${areaSlug}">every service we offer in ${city}</a>.</p>`,
+  } },
+  { type: "process:horizontal", theme: "default", data: {
+    eyebrow: { text: "The Process", variant: "text" },
+    heading: "How It Works",
+    steps: [
+      { heading: "Get your free quote", body: "A clear price up front, with no guessing." },
+      { heading: "We match the method to the surface", body: "Real pressure where it helps, a gentle soft wash where it protects." },
+      { heading: "We clean, protect, and inspect", body: "Stains treated, landscaping protected, and the job checked before we leave." },
+    ],
+  } },
+  { type: "guarantee:callout", theme: "alt", data: {
+    eyebrow: { text: "Our Guarantee", variant: "text" },
+    heading: "The Monarch Standard",
+    body: "We aim for a full, thorough clean on the first visit. If any surface we cleaned is not right, tell us and we come back to make it right. No fine print and no runaround.",
+    badge: "Make It Right",
+  } },
+  { type: "cta:banner", theme: "primary", data: {
+    heading: `Ready for ${svcTitle} in ${city}?`,
+    subheading: "Get a free quote with your price up front, from a local team that treats your property like its own.",
+    ctas: [{ label: "Get My Free Quote", href: "/contact", variant: "primary" }],
+    showPhone: true,
+  } },
+];
+
+const rawSections = authored?.data?.sections?.length ? authored.data.sections : fallbackSections;
+const title = authored?.data?.title ?? `${svcTitle} in ${city}, ${state} | Monarch Pro Wash`;
+
+// Inject the service-tailored quiz into the hero, overriding whatever an authored
+// page stored — so the quiz is code-driven and consistent across every combo.
+const sections = rawSections.map((s: any) =>
+  s?.type === "hero:split-form" ? { ...s, data: { ...s.data, form: siaQuiz } } : s,
+);
+
+const page = {
+  id: `${areaSlug}/${serviceSlug}`,
+  data: { title, sections },
+};
+---
+
+<MarketingLayout
+  page={page}
+  title={page.data.title}
+  description={`${svcTitle} in ${city}, ${state}. ${desc}`}
+>
+  <PageRenderer config={page.data} />
+</MarketingLayout>

@@ -10,6 +10,14 @@ import siteConfig from "@/config/site.config";
 import { createServiceSchema, createFAQSchema } from "@/lib/schema";
 
 const slug = Astro.params.slug ?? "index";
+
+// Prefixed pages live under dedicated nested routes, never at the top level:
+//   "svc-"  → /services/{slug}          (src/pages/services/[slug].astro)
+//   "sia-"  → /{area}/{service}          (src/pages/[area]/[service].astro)
+if (slug.startsWith("svc-") || slug.startsWith("sia-")) {
+  return Astro.rewrite("/404");
+}
+
 const page = await getPage(slug);
 
 // Not found, or a demo/reference page in production → branded 404.

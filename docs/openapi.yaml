@@ -1,0 +1,1670 @@
+openapi: 3.0.3
+info:
+  title: Autopilot API
+  description: |
+    The Autopilot API lets external tools and integrations (Zapier, custom
+    scripts, partner platforms) read and write your Autopilot data — clients,
+    jobs, invoices, and estimates — and receive real-time webhooks when those
+    records change.
+
+    ## Authentication
+
+    Two credential types are accepted; both are sent as a `Bearer` token in
+    the `Authorization` header and scope every request to your company:
+
+    - **API keys** (`ap_live_…`) — created by an admin under
+      **Settings → API Keys** in the Autopilot app. Shown once at creation;
+      revocable at any time. Recommended for scripts and direct integrations.
+    - **OAuth 2.0 access tokens** — obtained through the Authorization Code
+      flow (used by Zapier). Access tokens expire after **1 hour**; use the
+      refresh token to obtain a new one.
+
+    Requests are rate limited to **100 requests per minute per company**
+    (shared across all of a company's keys and tokens). Exceeding the limit
+    returns `429` with error code `rate_limited`.
+
+    ## Errors
+
+    Non-2xx responses use a structured envelope:
+
+    ```json
+    { "error": { "code": "validation_error", "message": "...", "details": [] } }
+    ```
+
+    Codes: `unauthorized`, `forbidden`, `not_found`, `validation_error`,
+    `conflict`, `rate_limited`, `internal`.
+
+    ## Pagination
+
+    List endpoints return `{ "data": [...], "has_more": true, "next_cursor": "..." }`,
+    ordered newest-first. Pass `cursor` (opaque) and `limit` (1–100,
+    default 25) as query parameters to page through results.
+
+    ## Webhooks
+
+    Autopilot uses a **REST Hook** pattern: register a subscription with the
+    subscribe endpoint and Autopilot POSTs an event envelope to your URL
+    whenever the event occurs. Responding **410 Gone** deactivates the
+    subscription. Delivery is at-least-once with retries (backoff up to 24h);
+    dedupe by envelope `id`, order by `occurred_at`.
+
+    ### Event types
+
+    `client.created`, `client.updated`, `client.deleted`, `job.created`,
+    `job.updated`, `job.deleted`, `invoice.created`, `invoice.updated`,
+    `invoice.deleted`, `estimate.created`, `estimate.updated`,
+    `estimate.deleted`
+
+    `*.updated` also fires when nested records change (line items, schedules,
+    crew, discounts, payments, addresses, tags). `*.created`/`*.updated`
+    payloads carry the full API resource in `data`; `*.deleted` carries a
+    snapshot of the deleted row.
+
+    (Legacy event names `new_client`, `updated_client`, `deleted_client`
+    remain supported for existing subscriptions and receive the original
+    flat client payload.)
+
+    ### Verifying signatures
+
+    Each delivery includes headers:
+
+    - `X-Autopilot-Event-Id` — the event id (dedupe key)
+    - `X-Autopilot-Signature` — `t=<unix seconds>,v1=<hex hmac>`
+
+    Verify by computing `HMAC_SHA256(secret, "<t>.<raw body>")` with your
+    subscription's secret and comparing to `v1`; reject stale timestamps
+    (e.g. older than 5 minutes).
+
+    ## Known limitation
+
+    Changes made through this API (or Zapier) do **not** yet sync to
+    QuickBooks. QuickBooks sync currently covers changes made in the
+    Autopilot web and mobile apps only.
+
+  version: 2.0.0
+  contact:
+    name: Autopilot Support
+    url: https://autopilotapp.io
+
+servers:
+  - url: https://app.autopilotapp.io/api
+    description: Production
+
+tags:
+  - name: Authentication
+  - name: Webhooks
+  - name: Company
+  - name: Clients
+  - name: Jobs
+  - name: Invoices
+  - name: Estimates
+
+paths:
+  # ───────────────────────── OAuth (Zapier) ─────────────────────────
+  /inbound-oauth/authorize:
+    post:
+      summary: Generate authorization code
+      description: Initiates the OAuth flow for a logged-in Autopilot user. Returns a short-lived authorization code (10 minutes).
+      tags: [Authentication]
+      security:
+        - cookieAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [oauth_client_id, redirect_uri]
+              properties:
+                oauth_client_id: { type: string }
+                redirect_uri: { type: string, format: uri }
+      responses:
+        '200':
+          description: Authorization code generated.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code: { type: string }
+        '400': { $ref: '#/components/responses/BadRequest' }
+        '401': { $ref: '#/components/responses/Unauthorized' }
+
+  /inbound-oauth/token:
+    post:
+      summary: Exchange code or refresh token for access token
+      description: |
+        Grant types: `authorization_code` (one-time code → tokens) and
+        `refresh_token` (rotate tokens). Access tokens expire after 1 hour.
+      tags: [Authentication]
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              required: [grant_type, client_id, client_secret]
+              properties:
+                grant_type: { type: string, enum: [authorization_code, refresh_token] }
+                code: { type: string }
+                redirect_uri: { type: string, format: uri }
+                refresh_token: { type: string }
+                client_id: { type: string }
+                client_secret: { type: string }
+      responses:
+        '200':
+          description: Tokens issued.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  access_token: { type: string }
+                  token_type: { type: string, example: Bearer }
+                  expires_in: { type: integer, example: 3600 }
+                  refresh_token: { type: string }
+        '400': { $ref: '#/components/responses/BadRequest' }
+        '401': { $ref: '#/components/responses/Unauthorized' }
+
+  # ───────────────────────── Webhooks ─────────────────────────
+  /inbound-oauth/webhook/subscribe:
+    post:
+      summary: Subscribe to webhook events
+      description: Registers a webhook subscription for the authenticated company. Zapier calls this automatically when a Zap is enabled.
+      tags: [Webhooks]
+      security:
+        - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [target_url, event_type]
+              properties:
+                target_url: { type: string, format: uri }
+                event_type:
+                  type: string
+                  description: One of the canonical event types (or a legacy alias).
+                  example: job.created
+      responses:
+        '200':
+          description: Subscription created.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id: { type: string, format: uuid }
+        '400': { $ref: '#/components/responses/BadRequest' }
+        '401': { $ref: '#/components/responses/Unauthorized' }
+
+  /inbound-oauth/webhook/unsubscribe:
+    post:
+      summary: Unsubscribe from webhook events
+      tags: [Webhooks]
+      security:
+        - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [id]
+              properties:
+                id: { type: string, format: uuid }
+      responses:
+        '200':
+          description: Subscription removed.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success: { type: boolean }
+        '401': { $ref: '#/components/responses/Unauthorized' }
+
+  # ───────────────────────── Company ─────────────────────────
+  /v1/me:
+    get:
+      summary: Identify the authenticated company
+      tags: [Company]
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: The authenticated company.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  company_id: { type: string, format: uuid }
+                  company_name: { type: string }
+                  auth_kind: { type: string, enum: [oauth, api_key] }
+        '401': { $ref: '#/components/responses/Unauthorized' }
+
+  /v1/users:
+    get:
+      summary: List team members
+      description: Read-only roster of current employees, for building crew-assignment payloads.
+      tags: [Company]
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Team members.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items: { $ref: '#/components/schemas/User' }
+        '401': { $ref: '#/components/responses/Unauthorized' }
+
+  /v1/client-tags:
+    get:
+      summary: List client tags
+      tags: [Clients]
+      security: [{ bearerAuth: [] }]
+      responses:
+        '200':
+          description: The company's tag vocabulary.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items: { $ref: '#/components/schemas/Tag' }
+    post:
+      summary: Create a client tag
+      tags: [Clients]
+      security: [{ bearerAuth: [] }]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [name]
+              properties:
+                name: { type: string }
+      responses:
+        '201':
+          description: Created tag.
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/Tag' }
+
+  # ───────────────────────── Clients ─────────────────────────
+  /v1/clients:
+    get:
+      summary: List clients
+      tags: [Clients]
+      security: [{ bearerAuth: [] }]
+      parameters:
+        - { name: q, in: query, schema: { type: string }, description: 'Search name, company, email, phone' }
+        - { name: email, in: query, schema: { type: string } }
+        - { name: phone, in: query, schema: { type: string } }
+        - { name: client_or_lead, in: query, schema: { type: string, enum: [client, lead] } }
+        - { name: tag_id, in: query, schema: { type: string, format: uuid } }
+        - { name: created_since, in: query, schema: { type: string, format: date-time } }
+        - { $ref: '#/components/parameters/limit' }
+        - { $ref: '#/components/parameters/cursor' }
+      responses:
+        '200':
+          description: Page of clients.
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: '#/components/schemas/Page'
+                  - type: object
+                    properties:
+                      data:
+                        type: array
+                        items: { $ref: '#/components/schemas/Client' }
+    post:
+      summary: Create a client
+      tags: [Clients]
+      security: [{ bearerAuth: [] }]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { $ref: '#/components/schemas/ClientInput' }
+      responses:
+        '201':
+          description: Created client.
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/Client' }
+        '400': { $ref: '#/components/responses/BadRequest' }
+
+  /v1/clients/{clientId}:
+    parameters:
+      - { name: clientId, in: path, required: true, schema: { type: string, format: uuid } }
+    get:
+      summary: Get a client
+      tags: [Clients]
+      security: [{ bearerAuth: [] }]
+      responses:
+        '200':
+          description: The client.
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/Client' }
+        '404': { $ref: '#/components/responses/NotFound' }
+    patch:
+      summary: Update a client
+      description: Scalar fields only; manage addresses and tags via their sub-resources.
+      tags: [Clients]
+      security: [{ bearerAuth: [] }]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { $ref: '#/components/schemas/ClientUpdate' }
+      responses:
+        '200':
+          description: Updated client.
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/Client' }
+    delete:
+      summary: Delete a client
+      description: '**Permanently deletes** the client AND all of their jobs, invoices, and estimates (cascade), matching in-app behavior.'
+      tags: [Clients]
+      security: [{ bearerAuth: [] }]
+      responses:
+        '204': { description: Deleted. }
+        '404': { $ref: '#/components/responses/NotFound' }
+
+  /v1/clients/{clientId}/addresses:
+    parameters:
+      - { name: clientId, in: path, required: true, schema: { type: string, format: uuid } }
+    get:
+      summary: List a client's addresses
+      tags: [Clients]
+      security: [{ bearerAuth: [] }]
+      responses:
+        '200': { $ref: '#/components/responses/ChildList' }
+    post:
+      summary: Add an address
+      description: Setting `is_primary` true demotes the previous primary address.
+      tags: [Clients]
+      security: [{ bearerAuth: [] }]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { $ref: '#/components/schemas/AddressInput' }
+      responses:
+        '201':
+          description: Created address.
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/Address' }
+
+  /v1/clients/{clientId}/addresses/{addressId}:
+    parameters:
+      - { name: clientId, in: path, required: true, schema: { type: string, format: uuid } }
+      - { name: addressId, in: path, required: true, schema: { type: string, format: uuid } }
+    patch:
+      summary: Update an address
+      tags: [Clients]
+      security: [{ bearerAuth: [] }]
+      requestBody:
+        content:
+          application/json:
+            schema: { $ref: '#/components/schemas/AddressInput' }
+      responses:
+        '200':
+          description: Updated address.
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/Address' }
+    delete:
+      summary: Delete an address
+      tags: [Clients]
+      security: [{ bearerAuth: [] }]
+      responses:
+        '204': { description: Deleted. }
+
+  /v1/clients/{clientId}/tags:
+    parameters:
+      - { name: clientId, in: path, required: true, schema: { type: string, format: uuid } }
+    put:
+      summary: Replace the client's tag set
+      tags: [Clients]
+      security: [{ bearerAuth: [] }]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [tag_ids]
+              properties:
+                tag_ids:
+                  type: array
+                  items: { type: string, format: uuid }
+      responses:
+        '200':
+          description: The client with its new tag set.
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/Client' }
+
+  # ───────────────────────── Jobs ─────────────────────────
+  /v1/jobs:
+    get:
+      summary: List jobs
+      tags: [Jobs]
+      security: [{ bearerAuth: [] }]
+      parameters:
+        - { name: status, in: query, schema: { $ref: '#/components/schemas/JobStatus' } }
+        - { name: client_id, in: query, schema: { type: string, format: uuid } }
+        - { name: job_number, in: query, schema: { type: integer }, description: 'Exact match — supports "find by number"' }
+        - { name: start_date_after, in: query, schema: { type: string, format: date-time } }
+        - { name: start_date_before, in: query, schema: { type: string, format: date-time } }
+        - { name: created_since, in: query, schema: { type: string, format: date-time } }
+        - { $ref: '#/components/parameters/limit' }
+        - { $ref: '#/components/parameters/cursor' }
+      responses:
+        '200':
+          description: Page of jobs.
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: '#/components/schemas/Page'
+                  - type: object
+                    properties:
+                      data:
+                        type: array
+                        items: { $ref: '#/components/schemas/Job' }
+    post:
+      summary: Create a job
+      description: Optionally include nested `items`, `schedules` (each with `assignee_user_ids`), and `discounts` — created atomically with the job.
+      tags: [Jobs]
+      security: [{ bearerAuth: [] }]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { $ref: '#/components/schemas/JobInput' }
+      responses:
+        '201':
+          description: Created job.
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/Job' }
+
+  /v1/jobs/{jobId}:
+    parameters:
+      - { name: jobId, in: path, required: true, schema: { type: string, format: uuid } }
+    get:
+      summary: Get a job
+      tags: [Jobs]
+      security: [{ bearerAuth: [] }]
+      responses:
+        '200':
+          description: The job with items, schedules, crew, discounts, and totals.
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/Job' }
+        '404': { $ref: '#/components/responses/NotFound' }
+    patch:
+      summary: Update a job
+      description: Scalar fields only; manage items/schedules/assignees/discounts via their sub-resources.
+      tags: [Jobs]
+      security: [{ bearerAuth: [] }]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { $ref: '#/components/schemas/JobUpdate' }
+      responses:
+        '200':
+          description: Updated job.
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/Job' }
+    delete:
+      summary: Delete a job
+      description: Permanent (hard) delete, matching in-app behavior.
+      tags: [Jobs]
+      security: [{ bearerAuth: [] }]
+      responses:
+        '204': { description: Deleted. }
+
+  /v1/jobs/{jobId}/items:
+    parameters:
+      - { name: jobId, in: path, required: true, schema: { type: string, format: uuid } }
+    get:
+      summary: List job line items
+      tags: [Jobs]
+      security: [{ bearerAuth: [] }]
+      responses:
+        '200': { $ref: '#/components/responses/ChildList' }
+    post:
+      summary: Add a line item
+      tags: [Jobs]
+      security: [{ bearerAuth: [] }]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { $ref: '#/components/schemas/LineItemInput' }
+      responses:
+        '201': { $ref: '#/components/responses/ChildCreated' }
+
+  /v1/jobs/{jobId}/items/{itemId}:
+    parameters:
+      - { name: jobId, in: path, required: true, schema: { type: string, format: uuid } }
+      - { name: itemId, in: path, required: true, schema: { type: string, format: uuid } }
+    patch:
+      summary: Update a line item
+      tags: [Jobs]
+      security: [{ bearerAuth: [] }]
+      requestBody:
+        content:
+          application/json:
+            schema: { $ref: '#/components/schemas/LineItemInput' }
+      responses:
+        '200': { $ref: '#/components/responses/ChildUpdated' }
+    delete:
+      summary: Delete a line item
+      tags: [Jobs]
+      security: [{ bearerAuth: [] }]
+      responses:
+        '204': { description: Deleted. }
+
+  /v1/jobs/{jobId}/schedules:
+    parameters:
+      - { name: jobId, in: path, required: true, schema: { type: string, format: uuid } }
+    get:
+      summary: List schedule windows
+      tags: [Jobs]
+      security: [{ bearerAuth: [] }]
+      responses:
+        '200': { $ref: '#/components/responses/ChildList' }
+    post:
+      summary: Add a schedule window
+      tags: [Jobs]
+      security: [{ bearerAuth: [] }]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { $ref: '#/components/schemas/ScheduleInput' }
+      responses:
+        '201': { $ref: '#/components/responses/ChildCreated' }
+
+  /v1/jobs/{jobId}/schedules/{scheduleId}:
+    parameters:
+      - { name: jobId, in: path, required: true, schema: { type: string, format: uuid } }
+      - { name: scheduleId, in: path, required: true, schema: { type: string, format: uuid } }
+    patch:
+      summary: Update a schedule window
+      tags: [Jobs]
+      security: [{ bearerAuth: [] }]
+      requestBody:
+        content:
+          application/json:
+            schema: { $ref: '#/components/schemas/ScheduleInput' }
+      responses:
+        '200': { $ref: '#/components/responses/ChildUpdated' }
+    delete:
+      summary: Delete a schedule window
+      description: Also removes the window's crew assignments.
+      tags: [Jobs]
+      security: [{ bearerAuth: [] }]
+      responses:
+        '204': { description: Deleted. }
+
+  /v1/jobs/{jobId}/assignees:
+    parameters:
+      - { name: jobId, in: path, required: true, schema: { type: string, format: uuid } }
+    get:
+      summary: List crew assignments
+      tags: [Jobs]
+      security: [{ bearerAuth: [] }]
+      responses:
+        '200': { $ref: '#/components/responses/ChildList' }
+    post:
+      summary: Assign a team member to a schedule window
+      description: The user must be a current employee (see /v1/users).
+      tags: [Jobs]
+      security: [{ bearerAuth: [] }]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [user_id, job_schedule_id]
+              properties:
+                user_id: { type: string, format: uuid }
+                job_schedule_id: { type: string, format: uuid }
+      responses:
+        '201': { $ref: '#/components/responses/ChildCreated' }
+
+  /v1/jobs/{jobId}/assignees/{assigneeId}:
+    parameters:
+      - { name: jobId, in: path, required: true, schema: { type: string, format: uuid } }
+      - { name: assigneeId, in: path, required: true, schema: { type: string, format: uuid } }
+    delete:
+      summary: Remove a crew assignment
+      tags: [Jobs]
+      security: [{ bearerAuth: [] }]
+      responses:
+        '204': { description: Deleted. }
+
+  /v1/jobs/{jobId}/discounts:
+    parameters:
+      - { name: jobId, in: path, required: true, schema: { type: string, format: uuid } }
+    get:
+      summary: List job discounts
+      tags: [Jobs]
+      security: [{ bearerAuth: [] }]
+      responses:
+        '200': { $ref: '#/components/responses/ChildList' }
+    post:
+      summary: Add a discount
+      tags: [Jobs]
+      security: [{ bearerAuth: [] }]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { $ref: '#/components/schemas/DiscountInput' }
+      responses:
+        '201': { $ref: '#/components/responses/ChildCreated' }
+
+  /v1/jobs/{jobId}/discounts/{discountId}:
+    parameters:
+      - { name: jobId, in: path, required: true, schema: { type: string, format: uuid } }
+      - { name: discountId, in: path, required: true, schema: { type: string, format: uuid } }
+    patch:
+      summary: Update a discount
+      tags: [Jobs]
+      security: [{ bearerAuth: [] }]
+      requestBody:
+        content:
+          application/json:
+            schema: { $ref: '#/components/schemas/DiscountInput' }
+      responses:
+        '200': { $ref: '#/components/responses/ChildUpdated' }
+    delete:
+      summary: Delete a discount
+      tags: [Jobs]
+      security: [{ bearerAuth: [] }]
+      responses:
+        '204': { description: Deleted. }
+
+  # ───────────────────────── Invoices ─────────────────────────
+  /v1/invoices:
+    get:
+      summary: List invoices
+      tags: [Invoices]
+      security: [{ bearerAuth: [] }]
+      parameters:
+        - { name: status, in: query, schema: { $ref: '#/components/schemas/InvoiceStatus' } }
+        - { name: client_id, in: query, schema: { type: string, format: uuid } }
+        - { name: job_id, in: query, schema: { type: string, format: uuid } }
+        - { name: invoice_number, in: query, schema: { type: integer } }
+        - { name: due_after, in: query, schema: { type: string, format: date-time } }
+        - { name: due_before, in: query, schema: { type: string, format: date-time } }
+        - { name: created_since, in: query, schema: { type: string, format: date-time } }
+        - { $ref: '#/components/parameters/limit' }
+        - { $ref: '#/components/parameters/cursor' }
+      responses:
+        '200':
+          description: Page of invoices.
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: '#/components/schemas/Page'
+                  - type: object
+                    properties:
+                      data:
+                        type: array
+                        items: { $ref: '#/components/schemas/Invoice' }
+    post:
+      summary: Create an invoice
+      description: Optionally include nested `items` and `discounts` — created atomically with the invoice.
+      tags: [Invoices]
+      security: [{ bearerAuth: [] }]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { $ref: '#/components/schemas/InvoiceInput' }
+      responses:
+        '201':
+          description: Created invoice.
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/Invoice' }
+
+  /v1/invoices/{invoiceId}:
+    parameters:
+      - { name: invoiceId, in: path, required: true, schema: { type: string, format: uuid } }
+    get:
+      summary: Get an invoice
+      tags: [Invoices]
+      security: [{ bearerAuth: [] }]
+      responses:
+        '200':
+          description: The invoice with items, payments, discounts, and totals.
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/Invoice' }
+        '404': { $ref: '#/components/responses/NotFound' }
+    patch:
+      summary: Update an invoice
+      tags: [Invoices]
+      security: [{ bearerAuth: [] }]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { $ref: '#/components/schemas/InvoiceUpdate' }
+      responses:
+        '200':
+          description: Updated invoice.
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/Invoice' }
+    delete:
+      summary: Delete an invoice
+      description: Permanent (hard) delete, matching in-app behavior.
+      tags: [Invoices]
+      security: [{ bearerAuth: [] }]
+      responses:
+        '204': { description: Deleted. }
+
+  /v1/invoices/{invoiceId}/items:
+    parameters:
+      - { name: invoiceId, in: path, required: true, schema: { type: string, format: uuid } }
+    get:
+      summary: List invoice line items
+      tags: [Invoices]
+      security: [{ bearerAuth: [] }]
+      responses:
+        '200': { $ref: '#/components/responses/ChildList' }
+    post:
+      summary: Add a line item
+      tags: [Invoices]
+      security: [{ bearerAuth: [] }]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { $ref: '#/components/schemas/LineItemInput' }
+      responses:
+        '201': { $ref: '#/components/responses/ChildCreated' }
+
+  /v1/invoices/{invoiceId}/items/{itemId}:
+    parameters:
+      - { name: invoiceId, in: path, required: true, schema: { type: string, format: uuid } }
+      - { name: itemId, in: path, required: true, schema: { type: string, format: uuid } }
+    patch:
+      summary: Update a line item
+      tags: [Invoices]
+      security: [{ bearerAuth: [] }]
+      requestBody:
+        content:
+          application/json:
+            schema: { $ref: '#/components/schemas/LineItemInput' }
+      responses:
+        '200': { $ref: '#/components/responses/ChildUpdated' }
+    delete:
+      summary: Delete a line item
+      description: Removes the row outright, including from a linked job when the item is shared.
+      tags: [Invoices]
+      security: [{ bearerAuth: [] }]
+      responses:
+        '204': { description: Deleted. }
+
+  /v1/invoices/{invoiceId}/payments:
+    parameters:
+      - { name: invoiceId, in: path, required: true, schema: { type: string, format: uuid } }
+    get:
+      summary: List payments
+      tags: [Invoices]
+      security: [{ bearerAuth: [] }]
+      responses:
+        '200': { $ref: '#/components/responses/ChildList' }
+    post:
+      summary: Record a manual payment
+      description: The invoice status (Unpaid/Partial/Paid) recomputes automatically. Stripe payments cannot be recorded through the API.
+      tags: [Invoices]
+      security: [{ bearerAuth: [] }]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { $ref: '#/components/schemas/PaymentInput' }
+      responses:
+        '201': { $ref: '#/components/responses/ChildCreated' }
+
+  /v1/invoices/{invoiceId}/payments/{paymentId}:
+    parameters:
+      - { name: invoiceId, in: path, required: true, schema: { type: string, format: uuid } }
+      - { name: paymentId, in: path, required: true, schema: { type: string, format: uuid } }
+    delete:
+      summary: Delete a payment
+      description: >-
+        The invoice status recomputes automatically. To correct a payment,
+        delete and re-record it. Only manual payments can be deleted — Stripe
+        payments are managed by the Stripe flow and return 404 here.
+      tags: [Invoices]
+      security: [{ bearerAuth: [] }]
+      responses:
+        '204': { description: Deleted. }
+
+  /v1/invoices/{invoiceId}/discounts:
+    parameters:
+      - { name: invoiceId, in: path, required: true, schema: { type: string, format: uuid } }
+    get:
+      summary: List invoice discounts
+      tags: [Invoices]
+      security: [{ bearerAuth: [] }]
+      responses:
+        '200': { $ref: '#/components/responses/ChildList' }
+    post:
+      summary: Add a discount
+      tags: [Invoices]
+      security: [{ bearerAuth: [] }]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { $ref: '#/components/schemas/DiscountInput' }
+      responses:
+        '201': { $ref: '#/components/responses/ChildCreated' }
+
+  /v1/invoices/{invoiceId}/discounts/{discountId}:
+    parameters:
+      - { name: invoiceId, in: path, required: true, schema: { type: string, format: uuid } }
+      - { name: discountId, in: path, required: true, schema: { type: string, format: uuid } }
+    patch:
+      summary: Update a discount
+      tags: [Invoices]
+      security: [{ bearerAuth: [] }]
+      requestBody:
+        content:
+          application/json:
+            schema: { $ref: '#/components/schemas/DiscountInput' }
+      responses:
+        '200': { $ref: '#/components/responses/ChildUpdated' }
+    delete:
+      summary: Delete a discount
+      tags: [Invoices]
+      security: [{ bearerAuth: [] }]
+      responses:
+        '204': { description: Deleted. }
+
+  # ───────────────────────── Estimates ─────────────────────────
+  /v1/estimates:
+    get:
+      summary: List estimates
+      tags: [Estimates]
+      security: [{ bearerAuth: [] }]
+      parameters:
+        - { name: status, in: query, schema: { $ref: '#/components/schemas/EstimateStatus' } }
+        - { name: client_id, in: query, schema: { type: string, format: uuid } }
+        - { name: estimate_number, in: query, schema: { type: integer } }
+        - { name: created_since, in: query, schema: { type: string, format: date-time } }
+        - { $ref: '#/components/parameters/limit' }
+        - { $ref: '#/components/parameters/cursor' }
+      responses:
+        '200':
+          description: Page of estimates.
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: '#/components/schemas/Page'
+                  - type: object
+                    properties:
+                      data:
+                        type: array
+                        items: { $ref: '#/components/schemas/Estimate' }
+    post:
+      summary: Create an estimate
+      description: Optionally include nested `items`, `discounts`, `assignee_user_ids`, and schedule fields — created atomically with the estimate.
+      tags: [Estimates]
+      security: [{ bearerAuth: [] }]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { $ref: '#/components/schemas/EstimateInput' }
+      responses:
+        '201':
+          description: Created estimate.
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/Estimate' }
+
+  /v1/estimates/{estimateId}:
+    parameters:
+      - { name: estimateId, in: path, required: true, schema: { type: string, format: uuid } }
+    get:
+      summary: Get an estimate
+      tags: [Estimates]
+      security: [{ bearerAuth: [] }]
+      responses:
+        '200':
+          description: The estimate with items, discounts, assignees, and totals.
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/Estimate' }
+        '404': { $ref: '#/components/responses/NotFound' }
+    patch:
+      summary: Update an estimate
+      tags: [Estimates]
+      security: [{ bearerAuth: [] }]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { $ref: '#/components/schemas/EstimateUpdate' }
+      responses:
+        '200':
+          description: Updated estimate.
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/Estimate' }
+    delete:
+      summary: Delete an estimate
+      description: Permanent (hard) delete, matching in-app behavior.
+      tags: [Estimates]
+      security: [{ bearerAuth: [] }]
+      responses:
+        '204': { description: Deleted. }
+
+  /v1/estimates/{estimateId}/items:
+    parameters:
+      - { name: estimateId, in: path, required: true, schema: { type: string, format: uuid } }
+    get:
+      summary: List estimate line items
+      tags: [Estimates]
+      security: [{ bearerAuth: [] }]
+      responses:
+        '200': { $ref: '#/components/responses/ChildList' }
+    post:
+      summary: Add a line item
+      tags: [Estimates]
+      security: [{ bearerAuth: [] }]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { $ref: '#/components/schemas/LineItemInput' }
+      responses:
+        '201': { $ref: '#/components/responses/ChildCreated' }
+
+  /v1/estimates/{estimateId}/items/{itemId}:
+    parameters:
+      - { name: estimateId, in: path, required: true, schema: { type: string, format: uuid } }
+      - { name: itemId, in: path, required: true, schema: { type: string, format: uuid } }
+    patch:
+      summary: Update a line item
+      tags: [Estimates]
+      security: [{ bearerAuth: [] }]
+      requestBody:
+        content:
+          application/json:
+            schema: { $ref: '#/components/schemas/LineItemInput' }
+      responses:
+        '200': { $ref: '#/components/responses/ChildUpdated' }
+    delete:
+      summary: Delete a line item
+      tags: [Estimates]
+      security: [{ bearerAuth: [] }]
+      responses:
+        '204': { description: Deleted. }
+
+  /v1/estimates/{estimateId}/discounts:
+    parameters:
+      - { name: estimateId, in: path, required: true, schema: { type: string, format: uuid } }
+    get:
+      summary: List estimate discounts
+      tags: [Estimates]
+      security: [{ bearerAuth: [] }]
+      responses:
+        '200': { $ref: '#/components/responses/ChildList' }
+    post:
+      summary: Add a discount
+      tags: [Estimates]
+      security: [{ bearerAuth: [] }]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { $ref: '#/components/schemas/DiscountInput' }
+      responses:
+        '201': { $ref: '#/components/responses/ChildCreated' }
+
+  /v1/estimates/{estimateId}/discounts/{discountId}:
+    parameters:
+      - { name: estimateId, in: path, required: true, schema: { type: string, format: uuid } }
+      - { name: discountId, in: path, required: true, schema: { type: string, format: uuid } }
+    patch:
+      summary: Update a discount
+      tags: [Estimates]
+      security: [{ bearerAuth: [] }]
+      requestBody:
+        content:
+          application/json:
+            schema: { $ref: '#/components/schemas/DiscountInput' }
+      responses:
+        '200': { $ref: '#/components/responses/ChildUpdated' }
+    delete:
+      summary: Delete a discount
+      tags: [Estimates]
+      security: [{ bearerAuth: [] }]
+      responses:
+        '204': { description: Deleted. }
+
+  /v1/estimates/{estimateId}/assignees:
+    parameters:
+      - { name: estimateId, in: path, required: true, schema: { type: string, format: uuid } }
+    get:
+      summary: List technician assignments
+      tags: [Estimates]
+      security: [{ bearerAuth: [] }]
+      responses:
+        '200': { $ref: '#/components/responses/ChildList' }
+    post:
+      summary: Assign a technician
+      description: The user must be a current employee (see /v1/users).
+      tags: [Estimates]
+      security: [{ bearerAuth: [] }]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [user_id]
+              properties:
+                user_id: { type: string, format: uuid }
+      responses:
+        '201': { $ref: '#/components/responses/ChildCreated' }
+
+  /v1/estimates/{estimateId}/assignees/{assigneeId}:
+    parameters:
+      - { name: estimateId, in: path, required: true, schema: { type: string, format: uuid } }
+      - { name: assigneeId, in: path, required: true, schema: { type: string, format: uuid } }
+    delete:
+      summary: Remove a technician assignment
+      tags: [Estimates]
+      security: [{ bearerAuth: [] }]
+      responses:
+        '204': { description: Deleted. }
+
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: An API key (`ap_live_…`) or OAuth access token.
+    cookieAuth:
+      type: apiKey
+      in: cookie
+      name: session
+      description: Authenticated Autopilot user session (OAuth authorize step only).
+
+  parameters:
+    limit:
+      name: limit
+      in: query
+      schema: { type: integer, minimum: 1, maximum: 100, default: 25 }
+    cursor:
+      name: cursor
+      in: query
+      schema: { type: string }
+      description: Opaque cursor from a previous page's `next_cursor`.
+
+  responses:
+    BadRequest:
+      description: Validation error.
+      content:
+        application/json:
+          schema: { $ref: '#/components/schemas/ApiError' }
+    Unauthorized:
+      description: Missing, invalid, expired, or revoked credential.
+      content:
+        application/json:
+          schema: { $ref: '#/components/schemas/ApiError' }
+    NotFound:
+      description: No such record for this company.
+      content:
+        application/json:
+          schema: { $ref: '#/components/schemas/ApiError' }
+    ChildList:
+      description: Child rows for the parent record.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              data:
+                type: array
+                items: { type: object }
+    ChildCreated:
+      description: The created child row.
+      content:
+        application/json:
+          schema: { type: object }
+    ChildUpdated:
+      description: The updated child row.
+      content:
+        application/json:
+          schema: { type: object }
+
+  schemas:
+    ApiError:
+      type: object
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: string
+              enum: [unauthorized, forbidden, not_found, validation_error, conflict, rate_limited, internal]
+            message: { type: string }
+            details: {}
+      example:
+        error:
+          code: validation_error
+          message: Invalid request body
+
+    Page:
+      type: object
+      properties:
+        has_more: { type: boolean }
+        next_cursor: { type: string, nullable: true }
+
+    JobStatus:
+      type: string
+      enum: [Open, On My Way, In Progress, Completed, Canceled, Pending Confirmation]
+    InvoiceStatus:
+      type: string
+      enum: [Unsent, Unpaid, Partial, Paid, Overdue]
+    EstimateStatus:
+      type: string
+      enum: [Unsent, Sent, Approved, Declined]
+    DiscountType:
+      type: string
+      enum: [percentage, amount]
+
+    User:
+      type: object
+      properties:
+        id: { type: string, format: uuid }
+        first_name: { type: string }
+        last_name: { type: string }
+        email: { type: string, format: email }
+        field_tech: { type: boolean }
+        subcontractor: { type: boolean }
+        role_id: { type: integer, nullable: true }
+
+    Tag:
+      type: object
+      properties:
+        id: { type: string, format: uuid }
+        name: { type: string }
+        created_at: { type: string, format: date-time }
+
+    Address:
+      type: object
+      properties:
+        id: { type: string, format: uuid }
+        address: { type: string }
+        address2: { type: string, nullable: true }
+        city: { type: string }
+        state: { type: string }
+        zip_code: { type: string }
+        is_primary: { type: boolean }
+        latitude: { type: number, nullable: true }
+        longitude: { type: number, nullable: true }
+
+    AddressInput:
+      type: object
+      required: [address, city, state, zip_code]
+      properties:
+        address: { type: string }
+        address2: { type: string, nullable: true }
+        city: { type: string }
+        state: { type: string }
+        zip_code: { type: string }
+        is_primary: { type: boolean, default: false }
+        latitude: { type: number, nullable: true }
+        longitude: { type: number, nullable: true }
+
+    LineItem:
+      type: object
+      properties:
+        id: { type: string, format: uuid }
+        item_name: { type: string }
+        item_price: { type: number }
+        item_cost: { type: number }
+        quantity: { type: number }
+        taxable: { type: boolean }
+        description: { type: string, nullable: true }
+        payment_upfront: { type: boolean, nullable: true }
+
+    LineItemInput:
+      type: object
+      required: [item_name, item_price]
+      properties:
+        item_name: { type: string }
+        item_price: { type: number }
+        item_cost: { type: number, default: 0 }
+        quantity: { type: number, default: 1 }
+        taxable: { type: boolean, default: true }
+        description: { type: string, nullable: true }
+        payment_upfront: { type: boolean, nullable: true }
+
+    Discount:
+      type: object
+      properties:
+        id: { type: string, format: uuid }
+        discount_name: { type: string }
+        discount_amount: { type: number }
+        discount_type: { $ref: '#/components/schemas/DiscountType' }
+
+    DiscountInput:
+      type: object
+      required: [discount_amount, discount_type]
+      properties:
+        discount_name: { type: string }
+        discount_amount: { type: number }
+        discount_type: { $ref: '#/components/schemas/DiscountType' }
+
+    ScheduleInput:
+      type: object
+      required: [start_time, end_time]
+      properties:
+        start_time: { type: string, format: date-time }
+        end_time: { type: string, format: date-time }
+        status: { $ref: '#/components/schemas/JobStatus' }
+
+    PaymentInput:
+      type: object
+      required: [payment_type, amount_base]
+      properties:
+        payment_type:
+          type: string
+          enum: [cash, check, cash_app, zelle, venmo, offline_credit_card, wire_transfer, ach, other]
+        amount_base: { type: number, exclusiveMinimum: 0 }
+        amount_tip: { type: number, minimum: 0, default: 0 }
+        payment_date: { type: string, format: date-time }
+
+    Totals:
+      type: object
+      description: Computed with the same math the Autopilot apps use.
+      properties:
+        subtotal: { type: number }
+        discount_total: { type: number }
+        tax_total: { type: number }
+        total: { type: number }
+
+    TaxRate:
+      type: object
+      nullable: true
+      properties:
+        id: { type: string, format: uuid }
+        name: { type: string }
+        rate: { type: number }
+
+    Client:
+      type: object
+      properties:
+        id: { type: string, format: uuid }
+        created_at: { type: string, format: date-time }
+        first_name: { type: string, nullable: true }
+        last_name: { type: string, nullable: true }
+        email: { type: string, nullable: true }
+        primary_phone_number: { type: string, nullable: true }
+        client_company_name: { type: string, nullable: true }
+        client_notes: { type: string, nullable: true }
+        client_or_lead: { type: string, enum: [client, lead] }
+        date_became_client: { type: string, format: date-time, nullable: true }
+        source_id: { type: string, format: uuid, nullable: true }
+        is_do_not_service: { type: boolean }
+        is_do_not_sms: { type: boolean }
+        is_do_not_marketing_sms: { type: boolean }
+        addresses:
+          type: array
+          items: { $ref: '#/components/schemas/Address' }
+        tags:
+          type: array
+          items:
+            type: object
+            properties:
+              id: { type: string, format: uuid }
+              name: { type: string }
+
+    ClientInput:
+      type: object
+      properties:
+        first_name: { type: string, nullable: true }
+        last_name: { type: string, nullable: true }
+        email: { type: string, format: email, nullable: true }
+        primary_phone_number: { type: string, nullable: true }
+        client_company_name: { type: string, nullable: true }
+        client_notes: { type: string, nullable: true }
+        client_or_lead: { type: string, enum: [client, lead], default: client }
+        source_id: { type: string, format: uuid, nullable: true }
+        is_do_not_service: { type: boolean }
+        is_do_not_sms: { type: boolean }
+        is_do_not_marketing_sms: { type: boolean }
+        addresses:
+          type: array
+          description: At most one may be primary; if none is marked, the first becomes primary.
+          items: { $ref: '#/components/schemas/AddressInput' }
+        tag_ids:
+          type: array
+          items: { type: string, format: uuid }
+
+    ClientUpdate:
+      type: object
+      description: Any subset of the scalar ClientInput fields (no addresses/tag_ids).
+      properties:
+        first_name: { type: string, nullable: true }
+        last_name: { type: string, nullable: true }
+        email: { type: string, format: email, nullable: true }
+        primary_phone_number: { type: string, nullable: true }
+        client_company_name: { type: string, nullable: true }
+        client_notes: { type: string, nullable: true }
+        client_or_lead: { type: string, enum: [client, lead] }
+        source_id: { type: string, format: uuid, nullable: true }
+        is_do_not_service: { type: boolean }
+        is_do_not_sms: { type: boolean }
+        is_do_not_marketing_sms: { type: boolean }
+
+    Job:
+      type: object
+      properties:
+        id: { type: string, format: uuid }
+        created_at: { type: string, format: date-time }
+        job_number: { type: integer }
+        client_id: { type: string, format: uuid }
+        status: { $ref: '#/components/schemas/JobStatus' }
+        start_date: { type: string, format: date-time, nullable: true }
+        end_date: { type: string, format: date-time, nullable: true }
+        notes: { type: string, nullable: true }
+        type: { type: string, nullable: true }
+        job_source: { type: string, nullable: true }
+        tags: { type: string, nullable: true }
+        estimate_id: { type: string, format: uuid, nullable: true }
+        unpaid_upfront: { type: boolean, nullable: true }
+        address: { $ref: '#/components/schemas/Address' }
+        tax_rate: { $ref: '#/components/schemas/TaxRate' }
+        items:
+          type: array
+          items: { $ref: '#/components/schemas/LineItem' }
+        schedules:
+          type: array
+          items:
+            type: object
+            properties:
+              id: { type: string, format: uuid }
+              start_time: { type: string, format: date-time }
+              end_time: { type: string, format: date-time }
+              status: { $ref: '#/components/schemas/JobStatus' }
+              assignee_user_ids:
+                type: array
+                items: { type: string, format: uuid }
+        discounts:
+          type: array
+          items: { $ref: '#/components/schemas/Discount' }
+        payments:
+          type: array
+          description: Payments recorded against the job (directly, or via its invoice).
+          items:
+            type: object
+            properties:
+              id: { type: string, format: uuid }
+              payment_type: { type: string }
+              payment_date: { type: string, format: date-time }
+              amount_base: { type: number }
+              amount_tip: { type: number, nullable: true }
+              status: { type: string, nullable: true }
+              confirmation_code: { type: string, nullable: true }
+              invoice_id: { type: string, format: uuid, nullable: true }
+        totals:
+          allOf:
+            - $ref: '#/components/schemas/Totals'
+            - type: object
+              properties:
+                amount_paid: { type: number }
+                amount_due: { type: number }
+
+    JobInput:
+      type: object
+      required: [client_id]
+      properties:
+        client_id: { type: string, format: uuid }
+        status: { $ref: '#/components/schemas/JobStatus' }
+        start_date: { type: string, format: date-time, nullable: true }
+        end_date: { type: string, format: date-time, nullable: true }
+        notes: { type: string, nullable: true }
+        address_id: { type: string, format: uuid, nullable: true }
+        job_source: { type: string, nullable: true }
+        type:
+          type: string
+          nullable: true
+          description: One of your company's job types. Defaults to null when omitted.
+        tags: { type: string, nullable: true }
+        tax_rate_id:
+          type: string
+          format: uuid
+          nullable: true
+          description: Defaults to your company's default tax rate when omitted.
+        estimate_id: { type: string, format: uuid, nullable: true }
+        unpaid_upfront: { type: boolean, nullable: true }
+        items:
+          type: array
+          items: { $ref: '#/components/schemas/LineItemInput' }
+        schedules:
+          type: array
+          items:
+            allOf:
+              - $ref: '#/components/schemas/ScheduleInput'
+              - type: object
+                properties:
+                  assignee_user_ids:
+                    type: array
+                    items: { type: string, format: uuid }
+        discounts:
+          type: array
+          items: { $ref: '#/components/schemas/DiscountInput' }
+
+    JobUpdate:
+      type: object
+      description: Any subset of the scalar JobInput fields (no client_id/items/schedules/discounts).
+      properties:
+        status: { $ref: '#/components/schemas/JobStatus' }
+        start_date: { type: string, format: date-time, nullable: true }
+        end_date: { type: string, format: date-time, nullable: true }
+        notes: { type: string, nullable: true }
+        address_id: { type: string, format: uuid, nullable: true }
+        job_source: { type: string, nullable: true }
+        type: { type: string, nullable: true }
+        tags: { type: string, nullable: true }
+        tax_rate_id: { type: string, format: uuid, nullable: true }
+        estimate_id: { type: string, format: uuid, nullable: true }
+        unpaid_upfront: { type: boolean, nullable: true }
+
+    Invoice:
+      type: object
+      properties:
+        id: { type: string, format: uuid }
+        created_at: { type: string, format: date-time }
+        invoice_number: { type: integer }
+        client_id: { type: string, format: uuid }
+        job_id: { type: string, format: uuid, nullable: true }
+        status: { $ref: '#/components/schemas/InvoiceStatus' }
+        due_date: { type: string, format: date-time }
+        start_date: { type: string, format: date-time, nullable: true }
+        end_date: { type: string, format: date-time, nullable: true }
+        notes: { type: string, nullable: true }
+        address: { $ref: '#/components/schemas/Address' }
+        tax_rate: { $ref: '#/components/schemas/TaxRate' }
+        items:
+          type: array
+          items: { $ref: '#/components/schemas/LineItem' }
+        discounts:
+          type: array
+          items: { $ref: '#/components/schemas/Discount' }
+        payments:
+          type: array
+          items:
+            type: object
+            properties:
+              id: { type: string, format: uuid }
+              payment_type: { type: string }
+              payment_date: { type: string, format: date-time }
+              amount_base: { type: number }
+              amount_tip: { type: number, nullable: true }
+              status: { type: string, nullable: true }
+              confirmation_code: { type: string, nullable: true }
+        totals:
+          allOf:
+            - $ref: '#/components/schemas/Totals'
+            - type: object
+              properties:
+                amount_paid: { type: number }
+                amount_due: { type: number }
+
+    InvoiceInput:
+      type: object
+      required: [client_id]
+      properties:
+        client_id: { type: string, format: uuid }
+        status: { $ref: '#/components/schemas/InvoiceStatus' }
+        job_id: { type: string, format: uuid, nullable: true }
+        address_id: { type: string, format: uuid, nullable: true }
+        due_date: { type: string, format: date-time }
+        start_date: { type: string, format: date-time, nullable: true }
+        end_date: { type: string, format: date-time, nullable: true }
+        notes: { type: string, nullable: true }
+        tax_rate_id:
+          type: string
+          format: uuid
+          nullable: true
+          description: Standalone invoices default to your company's default tax rate when omitted; job-linked invoices take exactly what is passed.
+        items:
+          type: array
+          items: { $ref: '#/components/schemas/LineItemInput' }
+        discounts:
+          type: array
+          items: { $ref: '#/components/schemas/DiscountInput' }
+
+    InvoiceUpdate:
+      type: object
+      description: Any subset of the scalar InvoiceInput fields (no client_id/items/discounts).
+      properties:
+        status: { $ref: '#/components/schemas/InvoiceStatus' }
+        job_id: { type: string, format: uuid, nullable: true }
+        address_id: { type: string, format: uuid, nullable: true }
+        due_date: { type: string, format: date-time }
+        start_date: { type: string, format: date-time, nullable: true }
+        end_date: { type: string, format: date-time, nullable: true }
+        notes: { type: string, nullable: true }
+        tax_rate_id: { type: string, format: uuid, nullable: true }
+
+    Estimate:
+      type: object
+      properties:
+        id: { type: string, format: uuid }
+        created_at: { type: string, format: date-time }
+        estimate_number: { type: integer }
+        client_id: { type: string, format: uuid }
+        status: { $ref: '#/components/schemas/EstimateStatus' }
+        notes: { type: string, nullable: true }
+        address: { $ref: '#/components/schemas/Address' }
+        tax_rate: { $ref: '#/components/schemas/TaxRate' }
+        show_on_schedule: { type: boolean }
+        schedule_start: { type: string, format: date-time, nullable: true }
+        schedule_end: { type: string, format: date-time, nullable: true }
+        schedule_status: { $ref: '#/components/schemas/JobStatus' }
+        assignee_user_ids:
+          type: array
+          items: { type: string, format: uuid }
+        items:
+          type: array
+          items: { $ref: '#/components/schemas/LineItem' }
+        discounts:
+          type: array
+          items: { $ref: '#/components/schemas/Discount' }
+        totals: { $ref: '#/components/schemas/Totals' }
+
+    EstimateInput:
+      type: object
+      required: [client_id]
+      properties:
+        client_id: { type: string, format: uuid }
+        status: { $ref: '#/components/schemas/EstimateStatus' }
+        notes: { type: string, nullable: true }
+        address_id: { type: string, format: uuid, nullable: true }
+        tax_rate_id: { type: string, format: uuid, nullable: true }
+        show_on_schedule: { type: boolean, default: false }
+        schedule_start: { type: string, format: date-time, nullable: true }
+        schedule_end: { type: string, format: date-time, nullable: true }
+        schedule_status: { $ref: '#/components/schemas/JobStatus' }
+        items:
+          type: array
+          items: { $ref: '#/components/schemas/LineItemInput' }
+        discounts:
+          type: array
+          items: { $ref: '#/components/schemas/DiscountInput' }
+        assignee_user_ids:
+          type: array
+          items: { type: string, format: uuid }
+
+    EstimateUpdate:
+      type: object
+      description: Any subset of the scalar EstimateInput fields (no client_id/items/discounts/assignee_user_ids).
+      properties:
+        status: { $ref: '#/components/schemas/EstimateStatus' }
+        notes: { type: string, nullable: true }
+        address_id: { type: string, format: uuid, nullable: true }
+        tax_rate_id: { type: string, format: uuid, nullable: true }
+        show_on_schedule: { type: boolean }
+        schedule_start: { type: string, format: date-time, nullable: true }
+        schedule_end: { type: string, format: date-time, nullable: true }
+        schedule_status: { $ref: '#/components/schemas/JobStatus' }
+
+    WebhookEnvelope:
+      type: object
+      description: Body of every webhook delivery (canonical event types).
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: Event id — use for deduplication.
+        type:
+          type: string
+          example: job.updated
+        occurred_at:
+          type: string
+          format: date-time
+        data:
+          type: object
+          description: The full API resource (Client/Job/Invoice/Estimate) for created/updated events; a snapshot of the deleted row for deleted events.

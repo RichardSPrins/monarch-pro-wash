@@ -71,3 +71,57 @@ export async function getBackgroundImage(
   });
   return img.src;
 }
+
+/**
+ * Named focal points → CSS `background-position` values. A 3×3 grid so an
+ * editor can keep the image's subject in frame when `cover` crops it. Values
+ * are consumed by the shared `.hero-bg` rules in global.css via
+ * `--hero-position` (desktop) and `--hero-position-mobile`.
+ */
+export const FOCAL_POSITION = {
+  center: "center",
+  left: "left center",
+  right: "right center",
+  top: "center top",
+  bottom: "center bottom",
+  "top-left": "left top",
+  "top-right": "right top",
+  "bottom-left": "left bottom",
+  "bottom-right": "right bottom",
+} as const;
+
+export type FocalPoint = keyof typeof FOCAL_POSITION;
+
+export interface HeroBackground {
+  src?: string;
+  /** Scrim darkness 0–100 (authored as number or numeric string). */
+  overlayOpacity?: number | string;
+  /** Crop focal point (default `center`). */
+  focal?: string;
+  /** Optional mobile-only focal override; falls back to `focal` when unset. */
+  focalMobile?: string;
+}
+
+function focalToPosition(f?: string): string {
+  return (f && FOCAL_POSITION[f as FocalPoint]) || FOCAL_POSITION.center;
+}
+
+/**
+ * Resolve a hero's optional background image into the inline CSS custom
+ * properties the shared `.hero-bg` rules read: the optimized image URL, the
+ * scrim opacity, and the crop focal point (desktop + optional mobile override).
+ * Returns `null` when no image resolves, so callers skip `has-bg` and the style
+ * attribute entirely.
+ */
+export async function getHeroBg(
+  bg?: HeroBackground,
+): Promise<{ style: string } | null> {
+  const url = await getBackgroundImage(bg?.src, { width: 2200 });
+  if (!url) return null;
+  const overlay = (Number(bg?.overlayOpacity ?? 60) || 0) / 100;
+  const pos = focalToPosition(bg?.focal);
+  const posMobile = bg?.focalMobile ? focalToPosition(bg.focalMobile) : pos;
+  return {
+    style: `--hero-image: url('${url}'); --hero-overlay: ${overlay}; --hero-position: ${pos}; --hero-position-mobile: ${posMobile}`,
+  };
+}

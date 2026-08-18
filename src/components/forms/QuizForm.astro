@@ -41,7 +41,7 @@ const ICONS: Record<string, string> = {
 };
 ---
 
-<div class="quiz surface-base" data-quiz>
+<div class="quiz" data-quiz>
   {/* Progress */}
   <div class="quiz-head" data-quiz-head>
     <div class="quiz-progress"><div class="quiz-progress-bar" data-quiz-bar style="width:0%"></div></div>
@@ -82,7 +82,7 @@ const ICONS: Record<string, string> = {
             <div class="quiz-fields">
               {step.fields?.map((f) => (
                 <div class="flex flex-col gap-1.5">
-                  <Label for={`q-${step.id}-${f.name}`} class="text-fg">{f.label}</Label>
+                  <Label for={`q-${step.id}-${f.name}`} class="quiz-label">{f.label}</Label>
                   <Input
                     id={`q-${step.id}-${f.name}`}
                     name={f.name}
@@ -90,7 +90,7 @@ const ICONS: Record<string, string> = {
                     placeholder={f.placeholder}
                     required={f.required}
                     data-quiz-field={f.name}
-                    class="text-fg-muted placeholder:text-fg-muted border-bg-inverse"
+                    class="quiz-input"
                   />
                 </div>
               ))}
@@ -199,6 +199,31 @@ const ICONS: Record<string, string> = {
   .quiz-outcome-check svg { width: 1.75rem; height: 1.75rem; }
   .quiz-outcome-heading { font-size: 1.3rem; font-weight: 700; margin: 0; }
   .quiz-outcome-body { margin: 0; max-width: 26rem; }
+
+  /* Dark quiz card (this theme is dark-first, so the quiz surface renders dark):
+     pin light-on-dark text, borders, and placeholders so every step is legible.
+     All derived from --t-fg (light) so they hold if the palette changes. */
+  .quiz :is(.quiz-q, .quiz-option-label, .quiz-outcome-heading, .quiz-label) { color: var(--t-fg); }
+  .quiz :is(.quiz-count, .quiz-help, .quiz-option-desc, .quiz-outcome-body) { color: color-mix(in srgb, var(--t-fg) 66%, transparent); }
+  .quiz-progress { background: color-mix(in srgb, var(--t-fg) 14%, transparent); }
+  .quiz-option { background: color-mix(in srgb, var(--t-fg) 5%, transparent); border-color: color-mix(in srgb, var(--t-fg) 20%, transparent); }
+  .quiz-option:hover { border-color: var(--color-primary); background: color-mix(in srgb, var(--t-fg) 9%, transparent); }
+  .quiz-option[data-selected] { background: color-mix(in srgb, var(--color-primary) 16%, transparent); }
+  .quiz-back { color: var(--t-fg); border-color: color-mix(in srgb, var(--t-fg) 24%, transparent); }
+  .quiz-label { font-weight: 600; font-size: 0.85rem; }
+  .quiz-input {
+    width: 100%;
+    background: color-mix(in srgb, var(--t-fg) 6%, transparent) !important;
+    border: 1px solid color-mix(in srgb, var(--t-fg) 24%, transparent) !important;
+    color: var(--t-fg) !important;
+  }
+  .quiz-input::placeholder { color: color-mix(in srgb, var(--t-fg) 42%, transparent) !important; }
+  .quiz-input:focus,
+  .quiz-input:focus-visible {
+    border-color: var(--color-primary) !important;
+    outline: 2px solid color-mix(in srgb, var(--color-primary) 40%, transparent) !important;
+    outline-offset: 1px;
+  }
 </style>
 
 <script>

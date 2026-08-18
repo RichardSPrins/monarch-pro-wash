@@ -180,6 +180,13 @@ if (breadcrumbItems.length > 1 && page.id !== "index") {
     <Analytics />
 
     <ClientRouter />
+    <script>
+      // First-touch marketing attribution — persist utm_*/gclid/fbclid so any
+      // later lead submission carries it (see src/lib/utm.ts + /api/lead).
+      import { captureUtms } from "@/lib/utm";
+      captureUtms();
+      document.addEventListener("astro:page-load", captureUtms);
+    </script>
     <script src="@lib/nav.js"></script>
     <script is:inline>
       // helper functions to toggle dark mode

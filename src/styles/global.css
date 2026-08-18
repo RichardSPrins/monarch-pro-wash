@@ -279,18 +279,18 @@
   --card-foreground: var(--t-secondary-fg);
   --popover: rgba(255, 255, 255, 0.96);
   --popover-foreground: var(--t-secondary-fg);
-  --border: rgba(124, 45, 0, 0.2);
-  --input: rgba(124, 45, 0, 0.2);
+  --border: rgba(6, 48, 58, 0.2);
+  --input: rgba(6, 48, 58, 0.2);
   --muted: rgba(255, 255, 255, 0.35);
-  --muted-foreground: rgba(124, 45, 0, 0.72);
-  --accent: rgba(124, 45, 0, 0.1);
+  --muted-foreground: rgba(6, 48, 58, 0.72);
+  --accent: rgba(6, 48, 58, 0.1);
   --accent-foreground: var(--t-secondary-fg);
   --primary: var(--t-primary);
   --primary-foreground: #ffffff;
   --color-fg: var(--t-secondary-fg);
-  --color-fg-muted: rgba(124, 45, 0, 0.72);
-  --color-fg-subtle: rgba(124, 45, 0, 0.5);
-  --color-border: rgba(124, 45, 0, 0.22);
+  --color-fg-muted: rgba(6, 48, 58, 0.72);
+  --color-fg-subtle: rgba(6, 48, 58, 0.5);
+  --color-border: rgba(6, 48, 58, 0.22);
 }
 
 /* Dark-first: `alt` is the LIGHT/white contrast surface, so it carries the full
@@ -434,6 +434,26 @@
   .section-pt-xl { padding-top: var(--spacing-section-xl); }
   .section-pb-xl { padding-bottom: var(--spacing-section-xl); }
 
+  /* CMS-configurable per-section vertical padding (separate mobile + desktop).
+     PageRenderer wraps a section in `.section-slot` with data-pad-d / data-pad-m;
+     these override the component's built-in `section-py*` via higher specificity.
+     `display:contents` keeps the wrapper out of the layout entirely. */
+  .section-slot { display: contents; }
+  .section-slot[data-pad-d="none"] > .section-wrapper { padding-top: 0; padding-bottom: 0; }
+  .section-slot[data-pad-d="xs"] > .section-wrapper { padding-top: var(--spacing-section-xs); padding-bottom: var(--spacing-section-xs); }
+  .section-slot[data-pad-d="sm"] > .section-wrapper { padding-top: var(--spacing-section-sm); padding-bottom: var(--spacing-section-sm); }
+  .section-slot[data-pad-d="md"] > .section-wrapper { padding-top: var(--spacing-section); padding-bottom: var(--spacing-section); }
+  .section-slot[data-pad-d="lg"] > .section-wrapper { padding-top: var(--spacing-section-lg); padding-bottom: var(--spacing-section-lg); }
+  .section-slot[data-pad-d="xl"] > .section-wrapper { padding-top: var(--spacing-section-xl); padding-bottom: var(--spacing-section-xl); }
+  @media (max-width: 767px) {
+    .section-slot[data-pad-m="none"] > .section-wrapper { padding-top: 0; padding-bottom: 0; }
+    .section-slot[data-pad-m="xs"] > .section-wrapper { padding-top: var(--spacing-section-xs); padding-bottom: var(--spacing-section-xs); }
+    .section-slot[data-pad-m="sm"] > .section-wrapper { padding-top: var(--spacing-section-sm); padding-bottom: var(--spacing-section-sm); }
+    .section-slot[data-pad-m="md"] > .section-wrapper { padding-top: var(--spacing-section); padding-bottom: var(--spacing-section); }
+    .section-slot[data-pad-m="lg"] > .section-wrapper { padding-top: var(--spacing-section-lg); padding-bottom: var(--spacing-section-lg); }
+    .section-slot[data-pad-m="xl"] > .section-wrapper { padding-top: var(--spacing-section-xl); padding-bottom: var(--spacing-section-xl); }
+  }
+
   /* VWS Theme classes */
   .theme-default {
     background-color: var(--color-bg);
@@ -483,10 +503,10 @@
   .theme-brand-secondary {
     background-color: var(--color-bg-brand-secondary);
     --theme-fg: var(--color-fg-on-brand-secondary);
-    --theme-fg-muted: rgba(124, 45, 0, 0.95);
-    --theme-fg-subtle: rgba(124, 45, 0, 0.82);
+    --theme-fg-muted: rgba(6, 48, 58, 0.95);
+    --theme-fg-subtle: rgba(6, 48, 58, 0.82);
     --theme-heading: var(--color-fg-on-brand-secondary);
-    --theme-border: rgba(124, 45, 0, 0.15);
+    --theme-border: rgba(6, 48, 58, 0.15);
   }
 
   /* Every themed section paints its own base text color, so any element that
@@ -553,6 +573,14 @@
     --theme-accent: var(--t-secondary);
   }
 
+  /* UsVsThemCards "recommended" card is always a solid white surface, but its
+     theme-* text tokens don't reliably flip on it — force on-light text here. */
+  .compare-card-us .theme-heading,
+  .compare-card-us h3 { color: var(--t-fg-on-light) !important; }
+  .compare-card-us .theme-text { color: var(--t-fg-on-light) !important; }
+  .compare-card-us .theme-text-muted { color: rgba(14, 42, 63, 0.72) !important; }
+  .compare-card-us .theme-text-subtle { color: rgba(14, 42, 63, 0.5) !important; }
+
   /* Per-surface accent (eyebrows, links, icons) — readable on each surface.
      Light surfaces = brand green; dark = amber; on green = light amber; on
      amber = deep brown. (default/alt/muted inherit the :root green.) */
@@ -579,14 +607,23 @@
      `hero-bg`; when an image is set it also gets `has-bg` + inline
      --hero-image / --hero-overlay vars. The scrim keeps hero text readable.
      Direct children are lifted above the image+scrim so content stays visible. */
-  .hero-bg { position: relative; isolation: isolate; }
-  .hero-bg.has-bg { overflow: hidden; }
+  /* z-index lifts the hero (and any in-form dropdown) above the following
+     section; no overflow:hidden here so a select/menu inside a hero form can
+     escape the hero box instead of being clipped by it. */
+  .hero-bg { position: relative; isolation: isolate; z-index: 20; }
   .hero-bg.has-bg::before {
     content: "";
     position: absolute;
     inset: 0;
     z-index: 0;
-    background: var(--hero-image) center / cover no-repeat;
+    background: var(--hero-image) var(--hero-position, center) / cover no-repeat;
+  }
+  /* Mobile can crop the image tighter; an optional per-image mobile focal keeps
+     the subject in frame when stacked. Falls back to the desktop focal. */
+  @media (max-width: 1023px) {
+    .hero-bg.has-bg::before {
+      background-position: var(--hero-position-mobile, var(--hero-position, center));
+    }
   }
   .hero-bg.has-bg::after {
     content: "";
@@ -721,13 +758,13 @@
    --------------------------------------------------------------------------- */
 .surface-base :is(.text-fg, .theme-heading, .theme-text, [data-slot="card-title"]),
 .surface-base :is(h1, h2, h3, h4, h5, h6):not(.theme-accent):not(.text-color-brand-secondary) {
-  color: var(--t-fg);
+  color: var(--t-fg-on-light);
 }
 .surface-base :is(.text-fg-muted, .theme-text-muted, [data-slot="card-description"]) {
-  color: var(--t-fg-muted);
+  color: rgba(14, 42, 63, 0.65);
 }
 .surface-base :is(.text-fg-subtle, .theme-text-subtle) {
-  color: var(--t-fg-subtle);
+  color: rgba(14, 42, 63, 0.45);
 }
 
 /* ---------------------------------------------------------------------------
