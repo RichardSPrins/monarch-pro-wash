@@ -56,9 +56,28 @@
   /* ---------------------------------------------------------------
      TYPOGRAPHY
      --------------------------------------------------------------- */
-  --t-font-sans: Inter, system-ui, sans-serif;
-  --t-font-heading: Inter, system-ui, sans-serif;
-  --t-font-weight-heading: 700;
+  --t-font-sans: "Inter", system-ui, sans-serif;
+  --t-font-heading: "Oswald", system-ui, sans-serif;
+  --t-font-weight-heading: 600; /* Oswald 600 reads as a strong, clean display weight */
+
+  /* Fluid type scale — tuned for Oswald headings (condensed, so they can run
+     larger and tighter) paired with Inter body. min → fluid → max via clamp.
+     Applied to bare h1–h6 in global.css; component `text-*` utilities still win
+     when a section sets an explicit size, but inherit the family + leading. */
+  --t-text-h1: clamp(2.5rem, 1.55rem + 4.2vw, 4.25rem);
+  --t-text-h2: clamp(2rem, 1.45rem + 2.5vw, 3.25rem);
+  --t-text-h3: clamp(1.55rem, 1.2rem + 1.6vw, 2.25rem);
+  --t-text-h4: clamp(1.25rem, 1.08rem + 0.75vw, 1.6rem);
+  --t-text-h5: 1.2rem;
+  --t-text-h6: 1.0625rem;
+  --t-text-body: 1rem;
+  --t-text-sm: 0.875rem;
+
+  /* Rhythm: headings sit tight (Oswald has tall caps), body breathes (Inter). */
+  --t-leading-heading: 1.1;
+  --t-leading-body: 1.65;
+  --t-tracking-heading: -0.005em; /* Oswald caps run tall; a hair tighter reads cleaner */
+  --t-tracking-eyebrow: 0.12em; /* uppercase labels/eyebrows in Oswald */
 
   /* ---------------------------------------------------------------
      SHAPE — roundness & border weight. A big part of "feel":

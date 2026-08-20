@@ -1,0 +1,59 @@
+---
+/**
+ * SectionDivider — a decorative edge between sections (topper/tail). Drops inside
+ * a `position:relative` section; the SVG stretches full-width and is filled with
+ * the *neighbouring* section's colour so the boundary reads as a shaped edge.
+ * Water-forward variants suit the brand (wave, drip, squeegee wipe).
+ *
+ * `fill` MUST be the colour of the ADJACENT band (the one the edge flows into) —
+ * NOT this section's own colour, or the shape is invisible. Note `--t-bg` is deep
+ * navy; a light neighbour is `--t-bg-alt` (#f5f8f9).
+ *
+ *   <section class="relative" style="background:#0e2a3f">   // navy band
+ *     …content…
+ *     <SectionDivider variant="squeegee" position="bottom" fill="var(--t-bg-alt)" />
+ *   </section>
+ *   <section style="background:var(--t-bg-alt)">…light band below…</section>
+ */
+interface Props {
+  variant?: "wave" | "curve" | "angle" | "squeegee" | "drip";
+  position?: "top" | "bottom";
+  fill?: string;
+  height?: string;
+  flip?: boolean;
+  class?: string;
+}
+
+const { variant = "wave", position = "bottom", fill = "var(--color-bg)", height = "4rem", flip = false, class: cls } = Astro.props;
+
+// Paths drawn in a 1200×100 box; the filled mass hugs the divider's outer edge
+// (y=100), the decorative line is the inner edge that meets the section content.
+const PATHS: Record<string, string> = {
+  wave: "M0,45 C240,95 420,5 600,40 C780,72 960,100 1200,55 L1200,100 L0,100 Z",
+  curve: "M0,70 Q600,-6 1200,70 L1200,100 L0,100 Z",
+  angle: "M0,20 L1200,78 L1200,100 L0,100 Z",
+  squeegee: "M0,34 L1200,70 L1200,100 L0,100 Z",
+  drip: "M0,30 C80,30 80,72 160,72 C240,72 240,34 320,34 C400,34 400,74 480,74 C560,74 560,32 640,32 C720,32 720,72 800,72 C880,72 880,34 960,34 C1040,34 1040,72 1120,72 C1160,72 1180,52 1200,44 L1200,100 L0,100 Z",
+};
+const d = PATHS[variant] ?? PATHS.wave;
+---
+
+<span
+  class:list={["sd-wrap", `sd-${position}`, { "sd-flip": flip }, cls]}
+  style={`--sd-h:${height}`}
+  aria-hidden="true"
+>
+  <svg viewBox="0 0 1200 100" preserveAspectRatio="none" class="sd-svg">
+    <path d={d} fill={fill} />
+    {variant === "squeegee" && <path d="M0,34 L1200,70" fill="none" stroke="rgba(255,255,255,0.5)" stroke-width="2" vector-effect="non-scaling-stroke" />}
+  </svg>
+</span>
+
+<style>
+  .sd-wrap { position: absolute; left: 0; right: 0; z-index: 3; height: var(--sd-h, 4rem); line-height: 0; pointer-events: none; }
+  .sd-bottom { bottom: 0; }
+  .sd-top { top: 0; transform: scaleY(-1); }
+  .sd-flip { transform: scaleX(-1); }
+  .sd-top.sd-flip { transform: scale(-1, -1); }
+  .sd-svg { display: block; width: 100%; height: 100%; }
+</style>

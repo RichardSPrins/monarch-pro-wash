@@ -1,0 +1,115 @@
+---
+import { getServices } from "@/lib/content";
+import type { Eyebrow } from "@/types/sections";
+import SmartImage from "@/components/media/SmartImage.astro";
+
+/**
+ * services:photo-grid — full-photo service cards: the service image fills the
+ * card under a bottom gradient, title (+ optional description) overlaid, with a
+ * corner arrow and a hover zoom/lift. The signature visual service card
+ * (Mammoth / Baird). Pulls the real services collection; links via hrefBase.
+ */
+interface Props {
+  theme?: string;
+  data?: {
+    eyebrow?: Eyebrow;
+    heading?: string;
+    subheading?: string;
+    limit?: number;
+    showDescription?: boolean;
+    hrefBase?: string;
+    showCTA?: boolean;
+    ctaLabel?: string;
+    ctaHref?: string;
+  };
+}
+
+const { theme = "default", data } = Astro.props;
+const hrefBase = (data?.hrefBase ?? "/services").replace(/\/$/, "");
+const showDescription = data?.showDescription ?? true;
+
+const services = (await getServices())
+  .sort((a, b) => a.data.order - b.data.order)
+  .slice(0, data?.limit ?? undefined);
+---
+
+<section class={`section-wrapper section-py theme-${theme}`}>
+  <div class="section-container">
+    <div class="flex flex-col items-center text-center gap-sm mb-12">
+      {data?.eyebrow && <span class="text-sm font-semibold uppercase tracking-widest text-color-brand-secondary">{data.eyebrow.text}</span>}
+      {data?.heading && <h2 class="theme-heading text-3xl lg:text-4xl font-bold m-0">{data.heading}</h2>}
+      {data?.subheading && <p class="theme-text-muted text-lg max-w-2xl m-0">{data.subheading}</p>}
+    </div>
+
+    <div class="svc-pg">
+      {
+        services.map((s) => (
+          <a href={`${hrefBase}/${s.data.slug}`} class="svc-pg-card group">
+            <div class="svc-pg-media">
+              {s.data.image ? (
+                <SmartImage src={s.data.image} alt={s.data.title} width={720} class="svc-pg-img" loading="lazy" />
+              ) : (
+                <span class="svc-pg-fallback" aria-hidden="true" />
+              )}
+              <span class="svc-pg-scrim" aria-hidden="true" />
+            </div>
+            <span class="svc-pg-arrow" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M7 17 17 7M9 7h8v8" /></svg>
+            </span>
+            <div class="svc-pg-body">
+              {s.data.isEmergency && <span class="svc-pg-tag">Emergency</span>}
+              <h3 class="svc-pg-title">{s.data.title}</h3>
+              {showDescription && s.data.description && <p class="svc-pg-desc">{s.data.description}</p>}
+            </div>
+          </a>
+        ))
+      }
+    </div>
+
+    {
+      data?.showCTA && (
+        <div class="flex justify-center mt-10">
+          <a href={data.ctaHref ?? "/services"} class="inline-flex items-center justify-center px-6 py-3 rounded-lg border theme-border theme-text font-semibold text-sm hover:bg-muted transition-colors">
+            {data.ctaLabel ?? "View All Services"}
+          </a>
+        </div>
+      )
+    }
+  </div>
+</section>
+
+<style>
+  .svc-pg { display: grid; gap: 1rem; grid-template-columns: repeat(auto-fill, minmax(min(100%, 16.5rem), 1fr)); }
+  .svc-pg-card {
+    position: relative; display: block; border-radius: 1rem; overflow: hidden; aspect-ratio: 4 / 5;
+    text-decoration: none; isolation: isolate;
+    box-shadow: 0 14px 36px -18px rgba(0, 0, 0, 0.5);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  .svc-pg-card:hover { transform: translateY(-4px); box-shadow: 0 26px 56px -20px rgba(0, 0, 0, 0.6); }
+  .svc-pg-media { position: absolute; inset: 0; z-index: 0; }
+  .svc-pg-img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
+  .svc-pg-card:hover .svc-pg-img { transform: scale(1.07); }
+  .svc-pg-fallback { position: absolute; inset: 0; background: linear-gradient(155deg, var(--t-secondary) 0%, var(--t-bg-inverse) 100%); }
+  .svc-pg-scrim { position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.86) 0%, rgba(0,0,0,0.4) 46%, rgba(0,0,0,0.04) 78%); }
+
+  .svc-pg-arrow {
+    position: absolute; top: 0.85rem; right: 0.85rem; z-index: 2;
+    width: 2.1rem; height: 2.1rem; border-radius: 999px; display: grid; place-items: center;
+    color: #fff; background: color-mix(in srgb, var(--t-primary) 90%, transparent);
+    opacity: 0; transform: translateY(-4px); transition: opacity 0.2s ease, transform 0.2s ease;
+  }
+  .svc-pg-card:hover .svc-pg-arrow { opacity: 1; transform: translateY(0); }
+  .svc-pg-arrow svg { width: 1.05rem; height: 1.05rem; }
+
+  .svc-pg-body { position: absolute; inset: auto 0 0 0; z-index: 2; padding: 1.1rem 1.2rem 1.25rem; display: flex; flex-direction: column; gap: 0.35rem; }
+  .svc-pg-tag {
+    align-self: flex-start; font-size: 0.65rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em;
+    color: #fff; background: color-mix(in srgb, var(--t-primary) 88%, transparent); padding: 0.1rem 0.45rem; border-radius: 999px; margin-bottom: 0.15rem;
+  }
+  .svc-pg-title { margin: 0; font-size: 1.15rem; font-weight: 800; color: #fff; line-height: 1.2; text-wrap: balance; }
+  .svc-pg-desc {
+    margin: 0; font-size: 0.85rem; line-height: 1.45; color: rgba(255, 255, 255, 0.82);
+    display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
+  }
+</style>

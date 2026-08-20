@@ -1,0 +1,117 @@
+---
+import { getBusinessData } from "@/lib/utils";
+import { getBackgroundImage } from "@/lib/images";
+import { highlight } from "@/lib/highlight";
+import type { Eyebrow, SectionCTA } from "@/types/sections";
+import { Button } from "@/components/elements/button";
+
+/**
+ * hero:showcase — full-bleed photo with content up top and a row of glass proof
+ * cards along the base (stat or feature style). The cards add depth and proof
+ * without any flat-color panel (PV floating stats / Pool Envy card row).
+ */
+interface Card { value?: string; label?: string; title?: string; text?: string }
+interface Props {
+  theme?: string;
+  data?: {
+    eyebrow?: Eyebrow;
+    heading?: string;
+    headline?: string;
+    subheading?: string;
+    subheadline?: string;
+    ctas?: SectionCTA[];
+    showPhone?: boolean;
+    cards?: Card[];
+    backgroundImage?: { src: string; overlayOpacity?: number };
+  };
+}
+
+const { theme = "default", data } = Astro.props;
+const business = await getBusinessData();
+const heading = data?.heading ?? data?.headline;
+const subheading = data?.subheading ?? data?.subheadline;
+const cards = data?.cards ?? [];
+
+const bgUrl = await getBackgroundImage(data?.backgroundImage?.src, { width: 2200 });
+const hasBackground = !!bgUrl;
+const overlayOpacity = (data?.backgroundImage?.overlayOpacity ?? 58) / 100;
+---
+
+<section
+  class:list={["hero-showcase section-wrapper relative overflow-hidden", `theme-${theme}`, hasBackground ? "has-bg" : "no-bg"]}
+  style={hasBackground ? `--hero-image: url('${bgUrl}'); --hero-overlay: ${overlayOpacity}` : ""}
+>
+  <div class="section-container relative z-10 hero-showcase-inner">
+    <div class="flex flex-col gap-5 max-w-2xl">
+      {data?.eyebrow && <span class="text-sm font-semibold uppercase tracking-widest text-color-brand-secondary">{data.eyebrow.text}</span>}
+      {heading && <h1 class="hero-h font-extrabold m-0 leading-[1.06] text-white" set:html={highlight(heading)}></h1>}
+      {subheading && <p class="text-lg lg:text-xl m-0 text-white/85 max-w-xl">{subheading}</p>}
+      {
+        (data?.ctas?.length || data?.showPhone) && (
+          <div class="flex flex-wrap items-center gap-sm mt-1">
+            {data?.ctas?.map((cta) => <Button variant={cta.variant ?? "primary"} href={cta.href}>{cta.label}</Button>)}
+            {data?.showPhone && business.phone && (
+              <a href={`tel:${business.phone}`} class="inline-flex items-center gap-xs font-bold text-lg text-white hover:opacity-80 transition-opacity no-underline">
+                <svg class="w-5 h-5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z" /></svg>
+                {business.phone}
+              </a>
+            )}
+          </div>
+        )
+      }
+    </div>
+
+    {
+      cards.length > 0 && (
+        <div class="hero-showcase-cards">
+          {cards.map((c) => (
+            <div class="showcase-card">
+              {c.value && <span class="showcase-value">{c.value}</span>}
+              {c.title && <span class="showcase-title" set:html={highlight(c.title)} />}
+              {(c.label || c.text) && <span class="showcase-text">{c.label ?? c.text}</span>}
+            </div>
+          ))}
+        </div>
+      )
+    }
+  </div>
+</section>
+
+<style>
+  .hero-showcase { min-height: 640px; display: flex; }
+  .hero-showcase.has-bg::before {
+    content: ""; position: absolute; inset: 0; z-index: 0;
+    background-image: var(--hero-image); background-size: cover; background-position: center;
+  }
+  .hero-showcase.has-bg::after {
+    content: ""; position: absolute; inset: 0; z-index: 1;
+    background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.4) 45%, rgba(0,0,0, var(--hero-overlay,0.58)) 100%);
+  }
+  .hero-showcase.no-bg::before {
+    content: ""; position: absolute; inset: 0; z-index: 0;
+    background: linear-gradient(160deg, var(--t-bg) 0%, var(--t-bg-inverse) 100%);
+  }
+
+  .hero-showcase-inner {
+    width: 100%; align-self: stretch;
+    display: flex; flex-direction: column; justify-content: space-between; gap: 2.5rem;
+    padding-block: 3rem 2.25rem;
+  }
+
+  .hero-h { font-size: clamp(2.3rem, 5vw, 3.75rem); text-wrap: balance; }
+
+  .hero-showcase-cards {
+    display: grid; gap: 0.85rem;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 13rem), 1fr));
+  }
+  .showcase-card {
+    display: flex; flex-direction: column; gap: 0.25rem;
+    padding: 1rem 1.1rem; border-radius: 0.85rem;
+    background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.16);
+    backdrop-filter: blur(6px);
+    box-shadow: 0 16px 40px -18px rgba(0,0,0,0.5);
+  }
+  .showcase-value { font-size: 1.75rem; font-weight: 800; line-height: 1; color: #fff; }
+  .showcase-title { font-size: 1rem; font-weight: 700; color: #fff; }
+  .showcase-text { font-size: 0.85rem; line-height: 1.45; color: rgba(255,255,255,0.82); }
+</style>

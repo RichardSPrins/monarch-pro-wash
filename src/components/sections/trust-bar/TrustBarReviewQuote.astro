@@ -1,0 +1,52 @@
+---
+import { getReviews } from "@/lib/content";
+import type { Eyebrow } from "@/types/sections";
+
+/**
+ * trust-bar:review-quote — a slim single-review testimonial bar: gold stars, a
+ * short quote, and the author. Falls back to the most recent DB review when no
+ * quote is supplied. A compact social-proof strip. Theme-aware.
+ */
+interface Props {
+  theme?: string;
+  data?: { eyebrow?: Eyebrow; quote?: string; author?: string; location?: string; rating?: number; source?: string };
+}
+
+const { theme = "default", data } = Astro.props;
+
+let quote = data?.quote, author = data?.author, location = data?.location, rating = data?.rating ?? 5;
+if (!quote) {
+  const r = (await getReviews()).sort((a, b) => b.data.date.getTime() - a.data.date.getTime())[0];
+  if (r) { quote = r.data.body; author = r.data.author; location = r.data.location; rating = r.data.rating; }
+}
+const filled = Math.round(rating);
+---
+
+{
+  quote && (
+    <section class:list={["section-wrapper section-py-sm", `theme-${theme}`]}>
+      <div class="section-container">
+        <figure class="trq">
+          <span class="trq-stars" aria-hidden="true">
+            {Array.from({ length: 5 }, (_, i) => i < filled).map((f) => (
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" class={f ? "on" : "off"}><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            ))}
+          </span>
+          <blockquote class="trq-quote theme-heading">“{quote}”</blockquote>
+          <figcaption class="trq-cite theme-text-muted">
+            — <span class="font-semibold theme-text">{author}</span>{location && <span>, {location}</span>}
+          </figcaption>
+        </figure>
+      </div>
+    </section>
+  )
+}
+
+<style>
+  .trq { margin: 0; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 0.6rem; max-width: 52rem; margin-inline: auto; }
+  .trq-stars { display: inline-flex; gap: 0.1rem; }
+  .trq-stars .on { color: var(--color-rating); }
+  .trq-stars .off { color: var(--color-rating-empty); }
+  .trq-quote { margin: 0; font-size: clamp(1.05rem, 2.2vw, 1.4rem); font-weight: 600; line-height: 1.45; text-wrap: balance; }
+  .trq-cite { font-size: 0.85rem; }
+</style>

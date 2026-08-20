@@ -7,23 +7,32 @@ import HeroMinimal from "@/components/sections/hero/HeroMinimal.astro";
 import HeroSplitForm from "@/components/sections/hero/HeroSplitForm.astro";
 import HeroStackedForm from "@/components/sections/hero/HeroStackedForm.astro";
 import ServicesGrid from "@/components/sections/services/ServicesGrid.astro";
+import ServicesPhotoGrid from "@/components/sections/services/ServicesPhotoGrid.astro";
+import ServicesShowcase from "@/components/sections/services/ServicesShowcase.astro";
+import ServicesCategorySplit from "@/components/sections/services/ServicesCategorySplit.astro";
+import ServicesCategoryShowcase from "@/components/sections/services/ServicesCategoryShowcase.astro";
 import ServicesList from "@/components/sections/services/ServicesList.astro";
 import ServicesCards from "@/components/sections/services/ServicesCards.astro";
 import ServicesSideBySide from "@/components/sections/services/ServicesSideBySide.astro";
 import ServiceAreasMapSplit from "@/components/sections/service-areas/ServiceAreasMapSplit.astro";
+import DividerShape from "@/components/sections/divider/DividerShape.astro";
 import ProcessNumbered from "@/components/sections/process/ProcessNumbered.astro";
 import ProcessHorizontal from "@/components/sections/process/ProcessHorizontal.astro";
 import ProcessVertical from "@/components/sections/process/ProcessVertical.astro";
 import ReviewsCards from "@/components/sections/reviews/ReviewsCards.astro";
+import ReviewsVideoCta from "@/components/sections/reviews/ReviewsVideoCta.astro";
+import ReviewsRatingSummary from "@/components/sections/reviews/ReviewsRatingSummary.astro";
 import ReviewsMasonry from "@/components/sections/reviews/ReviewsMasonry.astro";
 import ReviewsFeatured from "@/components/sections/reviews/ReviewsFeatured.astro";
 import FAQAccordion from "@/components/sections/faqs/FAQAccordion.astro";
 import FAQStacked from "@/components/sections/faqs/FAQStacked.astro";
 import CTABanner from "@/components/sections/cta/CTABanner.astro";
+import CTAStatement from "@/components/sections/cta/CTAStatement.astro";
 import CTASplit from "@/components/sections/cta/CTASplit.astro";
 import CTACentered from "@/components/sections/cta/CTACentered.astro";
 import MagnetCta from "@/components/sections/magnets/MagnetCta.astro";
 import AboutSplit from "@/components/sections/about/AboutSplit.astro";
+import AboutPromiseTrio from "@/components/sections/about/AboutPromiseTrio.astro";
 import AboutStacked from "@/components/sections/about/AboutStacked.astro";
 import WhyChooseUsSideBySide from "@/components/sections/about/WhyChooseUsSideBySide.astro";
 import TrustBarBadges from "@/components/sections/trust-bar/TrustBarBadges.astro";
@@ -41,13 +50,20 @@ import TeamGrid from "@/components/sections/team/TeamGrid.astro";
 import FeatureAlternating from "@/components/sections/features/FeatureAlternating.astro";
 import UsVsThem from "@/components/sections/comparison/UsVsThem.astro";
 import TrustBarRatings from "@/components/sections/trust-bar/TrustBarRatings.astro";
+import TrustBarIconStrip from "@/components/sections/trust-bar/TrustBarIconStrip.astro";
+import TrustBarGoogleBadge from "@/components/sections/trust-bar/TrustBarGoogleBadge.astro";
+import TrustBarStatLockups from "@/components/sections/trust-bar/TrustBarStatLockups.astro";
+import TrustBarReviewQuote from "@/components/sections/trust-bar/TrustBarReviewQuote.astro";
+import TrustBarSplitCta from "@/components/sections/trust-bar/TrustBarSplitCta.astro";
 import AnnouncementBanner from "@/components/sections/banner/AnnouncementBanner.astro";
 import CTAStickyBar from "@/components/sections/cta/CTAStickyBar.astro";
 import BenefitsTabs from "@/components/sections/benefits/BenefitsTabs.astro";
+import BenefitsProblemCards from "@/components/sections/benefits/BenefitsProblemCards.astro";
 import FAQTwoColumn from "@/components/sections/faqs/FAQTwoColumn.astro";
 import InlineForm from "@/components/sections/contact/InlineForm.astro";
 import CertificationsGrid from "@/components/sections/certifications/CertificationsGrid.astro";
 import StatsCounters from "@/components/sections/stats/StatsCounters.astro";
+import StatsDiagonal from "@/components/sections/stats/StatsDiagonal.astro";
 import Timeline from "@/components/sections/about/Timeline.astro";
 import ReviewsCarousel from "@/components/sections/reviews/ReviewsCarousel.astro";
 import PricingEstimate from "@/components/sections/pricing/PricingEstimate.astro";
@@ -61,6 +77,12 @@ import HeroSplitContent from "@/components/sections/hero/HeroSplitContent.astro"
 import HeroSplitStats from "@/components/sections/hero/HeroSplitStats.astro";
 import HeroOverlayCard from "@/components/sections/hero/HeroOverlayCard.astro";
 import HeroAngled from "@/components/sections/hero/HeroAngled.astro";
+import HeroRatingSpotlight from "@/components/sections/hero/HeroRatingSpotlight.astro";
+import HeroSplitPanel from "@/components/sections/hero/HeroSplitPanel.astro";
+import HeroSpotlight from "@/components/sections/hero/HeroSpotlight.astro";
+import HeroFormOverlay from "@/components/sections/hero/HeroFormOverlay.astro";
+import HeroShowcase from "@/components/sections/hero/HeroShowcase.astro";
+import HeroSplitVideo from "@/components/sections/hero/HeroSplitVideo.astro";
 import HeroBadgeRow from "@/components/sections/hero/HeroBadgeRow.astro";
 import HeroSplitChecklist from "@/components/sections/hero/HeroSplitChecklist.astro";
 import ServicesAccordion from "@/components/sections/services/ServicesAccordion.astro";
@@ -252,6 +274,10 @@ export const sectionRegistry: Record<string, AstroComponentFactory> = {
   "hero:split-form": HeroSplitForm,
   "hero:stacked-form": HeroStackedForm,
   "services:grid": ServicesGrid,
+  "services:photo-grid": ServicesPhotoGrid,
+  "services:showcase": ServicesShowcase,
+  "services:category-split": ServicesCategorySplit,
+  "services:category-showcase": ServicesCategoryShowcase,
   "services:list": ServicesList,
   "services:cards": ServicesCards,
   "services:side-by-side": ServicesSideBySide,
@@ -260,15 +286,19 @@ export const sectionRegistry: Record<string, AstroComponentFactory> = {
   "process:horizontal": ProcessHorizontal,
   "process:vertical": ProcessVertical,
   "reviews:cards": ReviewsCards,
+  "reviews:video-cta": ReviewsVideoCta,
+  "reviews:rating-summary": ReviewsRatingSummary,
   "reviews:masonry": ReviewsMasonry,
   "reviews:featured": ReviewsFeatured,
   "faqs:accordion": FAQAccordion,
   "faqs:stacked": FAQStacked,
   "cta:banner": CTABanner,
+  "cta:statement": CTAStatement,
   "cta:split": CTASplit,
   "cta:centered": CTACentered,
   "magnet:cta": MagnetCta,
   "about:split": AboutSplit,
+  "about:promise-trio": AboutPromiseTrio,
   "about:stacked": AboutStacked,
   "about:why-choose-us": WhyChooseUsSideBySide,
   "trust-bar:badges": TrustBarBadges,
@@ -286,13 +316,20 @@ export const sectionRegistry: Record<string, AstroComponentFactory> = {
   "feature:alternating": FeatureAlternating,
   "comparison:us-vs-them": UsVsThem,
   "trust-bar:ratings": TrustBarRatings,
+  "trust-bar:icon-strip": TrustBarIconStrip,
+  "trust-bar:google-badge": TrustBarGoogleBadge,
+  "trust-bar:stat-lockups": TrustBarStatLockups,
+  "trust-bar:review-quote": TrustBarReviewQuote,
+  "trust-bar:split-cta": TrustBarSplitCta,
   "banner:announcement": AnnouncementBanner,
   "cta:sticky-bar": CTAStickyBar,
   "benefits:tabs": BenefitsTabs,
+  "benefits:problem-cards": BenefitsProblemCards,
   "faqs:two-column": FAQTwoColumn,
   "contact:inline-form": InlineForm,
   "certifications:grid": CertificationsGrid,
   "stats:counters": StatsCounters,
+  "stats:diagonal": StatsDiagonal,
   "about:timeline": Timeline,
   "reviews:carousel": ReviewsCarousel,
   "pricing:estimate": PricingEstimate,
@@ -306,6 +343,12 @@ export const sectionRegistry: Record<string, AstroComponentFactory> = {
   "hero:split-stats": HeroSplitStats,
   "hero:overlay-card": HeroOverlayCard,
   "hero:angled": HeroAngled,
+  "hero:rating-spotlight": HeroRatingSpotlight,
+  "hero:split-panel": HeroSplitPanel,
+  "hero:spotlight": HeroSpotlight,
+  "hero:form-overlay": HeroFormOverlay,
+  "hero:showcase": HeroShowcase,
+  "hero:split-video": HeroSplitVideo,
   "hero:badge-row": HeroBadgeRow,
   "hero:split-checklist": HeroSplitChecklist,
   "services:accordion": ServicesAccordion,
@@ -488,5 +531,6 @@ export const sectionRegistry: Record<string, AstroComponentFactory> = {
   "services:category-tabs": ServicesCategoryTabs,
   "services:category-cards": ServicesCategoryCards,
   "services:category-filter": ServicesCategoryFilter,
+  "divider:shape": DividerShape,
   // GEN:variant-keys
 };

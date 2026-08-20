@@ -1,0 +1,67 @@
+---
+import type { Eyebrow } from "@/types/sections";
+
+/**
+ * trust-bar:icon-strip — a row of icon + label trust points (licensed, rated,
+ * owner-operated, guaranteed…), each icon in an accent chip. Icon-forward strip
+ * that sits well under a hero. Theme-aware.
+ */
+interface Item { icon?: string; label?: string; sublabel?: string }
+interface Props {
+  theme?: string;
+  data?: { eyebrow?: Eyebrow; heading?: string; items?: Item[] };
+}
+
+const { theme = "default", data } = Astro.props;
+const items = data?.items ?? [];
+
+const ICON: Record<string, string> = {
+  shield: '<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>',
+  star: '<path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>',
+  home: '<path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V21h14V9.5"/>',
+  check: '<path d="M20 6 9 17l-5-5"/>',
+  clock: '<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>',
+  medal: '<circle cx="12" cy="9" r="6"/><path d="M9 14l-2 7 5-3 5 3-2-7"/>',
+  leaf: '<path d="M11 20A7 7 0 0 1 4 13c0-5 4-9 16-9 0 8-5 12-9 12z"/><path d="M4 21c4-5 7-7 11-8"/>',
+  wrench: '<path d="M14.7 6.3a4 4 0 0 1-5.4 5.4L4 17l3 3 5.3-5.3a4 4 0 0 0 5.4-5.4l-2.1 2.1-2.8-2.8 2.1-2.1z"/>',
+};
+---
+
+<section class:list={["section-wrapper section-py-sm", `theme-${theme}`]}>
+  <div class="section-container">
+    {
+      (data?.eyebrow || data?.heading) && (
+        <div class="flex flex-col items-center text-center gap-sm mb-8">
+          {data?.eyebrow && <span class="text-sm font-semibold uppercase tracking-widest text-color-brand-secondary">{data.eyebrow.text}</span>}
+          {data?.heading && <h2 class="theme-heading text-2xl lg:text-3xl font-bold m-0">{data.heading}</h2>}
+        </div>
+      )
+    }
+    <ul class="tbi">
+      {items.map((it) => (
+        <li class="tbi-item">
+          <span class="tbi-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" set:html={ICON[it.icon ?? "check"] ?? ICON.check} />
+          </span>
+          <span class="tbi-text">
+            <span class="tbi-label theme-heading">{it.label}</span>
+            {it.sublabel && <span class="tbi-sub theme-text-muted">{it.sublabel}</span>}
+          </span>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>
+
+<style>
+  .tbi { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 1rem 2rem; }
+  .tbi-item { display: flex; align-items: center; gap: 0.7rem; }
+  .tbi-icon {
+    width: 2.6rem; height: 2.6rem; flex-shrink: 0; border-radius: 0.85rem; display: grid; place-items: center;
+    color: var(--color-brand-secondary); background: color-mix(in srgb, var(--color-brand-secondary) 14%, transparent);
+  }
+  .tbi-icon svg { width: 1.3rem; height: 1.3rem; }
+  .tbi-text { display: flex; flex-direction: column; gap: 0.05rem; }
+  .tbi-label { font-size: 0.95rem; font-weight: 700; line-height: 1.2; }
+  .tbi-sub { font-size: 0.78rem; }
+</style>

@@ -3,6 +3,11 @@ import { getReviews } from "@/lib/content";
 import type { Eyebrow } from "@/types/sections";
 import Badge from "@/components/elements/badge/Badge.astro";
 
+/**
+ * reviews:wall — a dense masonry wall of review cards (CSS columns, so any count
+ * flows cleanly with no empty cells). Each card: source avatar, gold stars,
+ * body, author + location + date. Theme-aware elevated cards.
+ */
 interface Props {
   theme?: string;
   data?: {
@@ -17,13 +22,14 @@ interface Props {
 
 const { theme = "default", data } = Astro.props;
 
-const allReviews = await getReviews();
-
-const reviews = allReviews
-  .filter((r) => (data?.filter === "all" ? true : r.data.featured))
+const reviews = (await getReviews())
+  .filter((r) => (data?.filter === "featured" ? r.data.featured : true))
   .filter((r) => !data?.service || r.data.service === data.service)
   .sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
-  .slice(0, data?.limit ?? 8);
+  .slice(0, data?.limit ?? 9);
+
+const initials = (name = "") => name.split(" ").map((n) => n[0]).join("").toUpperCase().slice(0, 2);
+const sourceColor: Record<string, string> = { Google: "#EA4335", Facebook: "#1877F2", Yelp: "#D32323", Direct: "#2fa8b5" };
 ---
 
 <section class:list={["reviews-wall section-wrapper section-py", `theme-${theme}`]}>
@@ -31,76 +37,46 @@ const reviews = allReviews
     {
       (data?.eyebrow || data?.heading || data?.subheading) && (
         <div class="flex flex-col items-center text-center gap-sm mb-12">
-          {data?.eyebrow &&
-            (data.eyebrow.variant === "badge" ? (
-              <Badge class="uppercase tracking-widest text-xs">
-                {data.eyebrow.text}
-              </Badge>
-            ) : (
-              <span class="text-sm font-semibold uppercase tracking-widest theme-accent">
-                {data.eyebrow.text}
-              </span>
-            ))}
-          {data?.heading && (
-            <h2 class="theme-heading text-3xl lg:text-4xl font-bold m-0">
-              {data.heading}
-            </h2>
-          )}
-          {data?.subheading && (
-            <p class="theme-text-muted text-lg max-w-2xl m-0">
-              {data.subheading}
-            </p>
-          )}
+          {data?.eyebrow && (data.eyebrow.variant === "badge" ? (
+            <Badge class="uppercase tracking-widest text-xs">{data.eyebrow.text}</Badge>
+          ) : (
+            <span class="text-sm font-semibold uppercase tracking-widest text-color-brand-secondary">{data.eyebrow.text}</span>
+          ))}
+          {data?.heading && <h2 class="theme-heading text-3xl lg:text-4xl font-bold m-0">{data.heading}</h2>}
+          {data?.subheading && <p class="theme-text-muted text-lg max-w-2xl m-0">{data.subheading}</p>}
         </div>
       )
     }
 
     {
       reviews.length > 0 ? (
-        <div class="wall-frame">
-          <div class="wall-grid">
-            {reviews.map((review) => (
-              <article class="wall-item">
-                <div class="flex items-center justify-between gap-sm mb-3">
-                  <div class="flex items-center gap-0.5">
-                    {Array.from(
-                      { length: 5 },
-                      (_, i) => review.data.rating > i
-                    ).map((filled) => (
-                      <svg
-                        class={`w-4 h-4 ${filled ? "star-filled" : "star-empty"}`}
-                        xmlns="http://www.w3.org/2000/svg"
-                        viewBox="0 0 24 24"
-                        fill="currentColor"
-                        aria-hidden="true"
-                      >
-                        <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
-                      </svg>
-                    ))}
-                  </div>
-                  <span class="theme-text-subtle text-xs shrink-0">
-                    {review.data.date.toLocaleDateString("en-US", {
-                      month: "short",
-                      year: "numeric",
-                    })}
+        <div class="rw">
+          {reviews.map((r) => {
+            const src = r.data.source ?? "Direct";
+            return (
+              <article class="rw-card">
+                <div class="rw-head">
+                  <span class="rw-avatar" style={`background:${(sourceColor[src] ?? sourceColor.Direct)}1f;color:${sourceColor[src] ?? sourceColor.Direct}`}>{initials(r.data.author)}</span>
+                  <span class="rw-who">
+                    <span class="rw-name theme-heading">{r.data.author}</span>
+                    {r.data.location && <span class="rw-loc theme-text-subtle">{r.data.location}</span>}
+                  </span>
+                  <span class="rw-src" title={src} aria-label={src}>
+                    {src === "Google" && (<svg width="18" height="18" viewBox="0 0 24 24"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>)}
+                    {src === "Facebook" && (<svg width="18" height="18" viewBox="0 0 24 24"><path d="M24 12.07C24 5.44 18.63.07 12 .07S0 5.44 0 12.07c0 5.99 4.39 10.95 10.13 11.85v-8.38H7.08v-3.47h3.05V9.43c0-3.01 1.79-4.67 4.53-4.67 1.31 0 2.69.24 2.69.24v2.95h-1.51c-1.49 0-1.96.93-1.96 1.87v2.25h3.33l-.53 3.47h-2.8v8.38C19.61 23.02 24 18.06 24 12.07z" fill="#1877F2"/></svg>)}
+                    {(src === "Direct" || src === "Yelp") && (<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--color-brand-secondary)" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>)}
                   </span>
                 </div>
-
-                <p class="wall-body theme-text">{review.data.body}</p>
-
-                <div class="flex items-baseline gap-xs mt-4">
-                  <span class="theme-heading font-semibold text-sm leading-tight">
-                    {review.data.author}
-                  </span>
-                  {review.data.location && (
-                    <span class="theme-text-subtle text-xs">
-                      &middot; {review.data.location}
-                    </span>
-                  )}
-                </div>
+                <span class="rw-stars" aria-hidden="true">
+                  {Array.from({ length: 5 }, (_, i) => i < r.data.rating).map((f) => (
+                    <svg width="15" height="15" class={f ? "on" : "off"} viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                  ))}
+                </span>
+                <p class="rw-body theme-text">{r.data.body}</p>
+                <span class="rw-date theme-text-subtle">{r.data.date.toLocaleDateString("en-US", { month: "short", year: "numeric" })}</span>
               </article>
-            ))}
-          </div>
+            );
+          })}
         </div>
       ) : (
         <p class="text-center theme-text-muted">No reviews yet.</p>
@@ -110,63 +86,31 @@ const reviews = allReviews
 </section>
 
 <style>
-  .wall-frame {
-    border: var(--t-border-width) solid var(--theme-border);
-    border-radius: var(--t-radius);
-    overflow: hidden;
-  }
+  .rw { columns: 1; column-gap: 1.1rem; }
+  @media (min-width: 640px) { .rw { columns: 2; } }
+  @media (min-width: 1024px) { .rw { columns: 3; } }
 
-  .wall-grid {
-    display: grid;
-    grid-template-columns: 1fr;
+  .rw-card {
+    break-inside: avoid; margin: 0 0 1.1rem; padding: 1.35rem 1.4rem; border-radius: 1rem;
+    border: 1px solid var(--color-border); background: var(--card);
+    box-shadow: 0 10px 26px -18px rgba(0, 0, 0, 0.4);
+    transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
   }
+  .rw-card:hover { transform: translateY(-3px); box-shadow: 0 20px 44px -20px rgba(0, 0, 0, 0.5); border-color: color-mix(in srgb, var(--color-brand-secondary) 40%, var(--color-border)); }
 
-  @media (min-width: 768px) {
-    .wall-grid {
-      grid-template-columns: repeat(2, 1fr);
-    }
-  }
+  .rw-head { display: flex; align-items: center; gap: 0.6rem; margin-bottom: 0.75rem; }
+  .rw-avatar { width: 2.4rem; height: 2.4rem; border-radius: 50%; display: grid; place-items: center; font-size: 0.78rem; font-weight: 800; flex-shrink: 0; }
+  .rw-who { display: flex; flex-direction: column; gap: 0.05rem; min-width: 0; flex: 1; }
+  .rw-name { font-size: 0.9rem; font-weight: 700; line-height: 1.2; }
+  .rw-loc { font-size: 0.72rem; }
+  .rw-src { width: 1.15rem; height: 1.15rem; flex-shrink: 0; }
+  .rw-src svg { width: 100%; height: 100%; }
 
-  .wall-item {
-    padding: 1.75rem;
-    border-top: var(--t-border-width) solid var(--theme-border);
-    border-left: var(--t-border-width) solid var(--theme-border);
-  }
+  .rw-stars { display: inline-flex; gap: 0.06rem; margin-bottom: 0.55rem; }
+  .rw-stars svg { width: 0.95rem; height: 0.95rem; }
+  .rw-stars .on { color: var(--color-rating); }
+  .rw-stars .off { color: var(--color-rating-empty); }
 
-  /* Remove top border on the first row */
-  .wall-item:nth-child(1),
-  .wall-item:nth-child(2) {
-    border-top: 0;
-  }
-
-  /* Remove left border on the leading column so only inner rules show */
-  .wall-item:nth-child(odd) {
-    border-left: 0;
-  }
-
-  @media (max-width: 767px) {
-    .wall-item {
-      border-left: 0;
-    }
-    .wall-item:nth-child(1) {
-      border-top: 0;
-    }
-    .wall-item:nth-child(2) {
-      border-top: var(--t-border-width) solid var(--theme-border);
-    }
-  }
-
-  .wall-body {
-    font-size: 0.9375rem;
-    line-height: 1.7;
-    margin: 0;
-  }
-
-  .star-filled {
-    color: var(--color-rating);
-  }
-
-  .star-empty {
-    color: var(--color-rating-empty);
-  }
+  .rw-body { font-size: 0.9rem; line-height: 1.6; margin: 0 0 0.7rem; }
+  .rw-date { font-size: 0.72rem; }
 </style>

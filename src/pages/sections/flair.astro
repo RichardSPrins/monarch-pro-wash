@@ -1,0 +1,183 @@
+---
+/**
+ * /sections/flair — FLAIR SHOWCASE (dev/reference, noindex).
+ *
+ * Demonstrates the non-CMS site-flair layer: SectionDivider (toppers/tails) and
+ * BackgroundMotif (watermarks/textures). These are code-level decorations you
+ * compose into real sections — they are not CMS section variants. Each divider's
+ * `fill` is the LITERAL colour of the band it flows INTO, so the edge reads as
+ * that next band intruding with a shaped edge.
+ */
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import SectionDivider from "@/components/flair/SectionDivider.astro";
+import BackgroundMotif from "@/components/flair/BackgroundMotif.astro";
+import PageRenderer from "@/components/PageRenderer.astro";
+import templatesRaw from "../../../plugins/section-builder/schema/templates.json";
+
+const templates = templatesRaw as Record<string, Record<string, unknown>>;
+
+// Real sections rendered THROUGH PageRenderer with a CMS `motif` field — exactly
+// how it works from the CMS (motif is a sibling of type/theme/data).
+type DemoMotif = {
+  kind: "butterfly" | "butterfly-color" | "droplets" | "splash" | "glow" | "grid";
+  position?: "left" | "right" | "center" | "top" | "bottom";
+  color?: string;
+  opacity?: number;
+  size?: string;
+  src?: string;
+};
+type DemoSection = { type: string; theme?: string; motif?: DemoMotif; data?: Record<string, unknown> };
+const motifDemoConfig: { sections: DemoSection[] } = {
+  sections: [
+    { type: "cta:statement", theme: "default", motif: { kind: "butterfly", color: "#ffffff", opacity: 0.07 }, data: templates["cta:statement"] },
+    { type: "benefits:problem-cards", theme: "alt", motif: { kind: "butterfly-color", position: "right", size: "30rem" }, data: templates["benefits:problem-cards"] },
+    { type: "about:promise-trio", theme: "muted", motif: { kind: "butterfly-color", position: "left", size: "26rem" }, data: templates["about:promise-trio"] },
+    { type: "stats:diagonal", theme: "inverse", motif: { kind: "grid", color: "#ffffff" }, data: templates["stats:diagonal"] },
+  ],
+};
+
+// Displayed as plain text (braces here would be parsed as JSX expressions).
+const cmsSnippet = '{ "type": "cta:statement", "theme": "default", "motif": { "kind": "butterfly", "color": "#ffffff" }, "data": {…} }';
+
+// Brand band colours (literal, so the demo never depends on theme tokens).
+// Literal brand band colours = the actual theme surface tokens (theme-alt is a
+// soft off-white, NOT pure #fff — matches --t-bg-alt).
+const NAVY = "#0e2a3f"; // --t-bg (theme default)
+const LIGHT = "#f5f8f9"; // --t-bg-alt (theme alt)
+const ORANGE = "#e85c2b"; // --t-primary
+
+const DIVIDERS = ["wave", "curve", "angle", "squeegee", "drip"] as const;
+const MOTIFS = ["butterfly", "butterfly-color", "droplets", "splash", "glow", "grid"] as const;
+---
+
+<BaseLayout
+  title="Section Flair Showcase"
+  description="Dividers and background motifs for section toppers, tails, and watermarks."
+  noindex
+  page={{ id: "sections/flair", data: {} }}
+>
+  <div class="fx-page">
+  <div class="fx-head">
+    <strong>Section Flair</strong>
+    <span>Dividers · Background motifs — code-level, not CMS</span>
+    <a href="/sections/live">← live sections</a>
+  </div>
+
+  <!-- ================= DIVIDERS ================= -->
+  <div class="fx-grouphead">
+    <h2>Section dividers</h2>
+    <p><code>fill</code> = the colour of the band it flows into. Navy band on top, the light band below reaches up through the shaped edge.</p>
+  </div>
+
+  {DIVIDERS.map((v) => (
+    <>
+      <div class="fx-label"><code>&lt;SectionDivider variant="{v}" position="bottom" fill="{LIGHT}" /&gt;</code></div>
+      <section class="fx-band" style={`background:${NAVY};position:relative;`}>
+        <span class="fx-bandtext">{v}</span>
+        <SectionDivider variant={v} position="bottom" fill={LIGHT} />
+      </section>
+      <section class="fx-band fx-short" style={`background:${LIGHT};`}><span class="fx-bandtext fx-dark">next band</span></section>
+    </>
+  ))}
+
+  <div class="fx-label"><code>position="top"</code> caps the top of a band instead (here the light band above reaches down into the orange one):</div>
+  <section class="fx-band fx-short" style={`background:${LIGHT};`}><span class="fx-bandtext fx-dark">band above</span></section>
+  <section class="fx-band" style={`background:${ORANGE};position:relative;`}>
+    <SectionDivider variant="wave" position="top" fill={LIGHT} />
+    <span class="fx-bandtext">top wave</span>
+  </section>
+
+  <!-- ================= MOTIFS ================= -->
+  <div class="fx-grouphead">
+    <h2>Background motifs</h2>
+    <p>Decorative layers behind content. Tint via <code>color</code>, subdue via <code>opacity</code>. Shown on navy here.</p>
+  </div>
+
+  {MOTIFS.map((m) => (
+    <>
+      <div class="fx-label">
+        <code>&lt;BackgroundMotif motif="{m}"{m === "butterfly-color" ? "" : ' color="var(--color-primary)"'} /&gt;</code>
+      </div>
+      <section class="fx-motif-band" style={`background:${NAVY};position:relative;overflow:hidden;`}>
+        <BackgroundMotif
+          motif={m}
+          position={m === "grid" ? "center" : "right"}
+          color="var(--color-primary)"
+          src={m === "butterfly-color" ? "/brand/butterfly-full-color-white-antennae.svg" : undefined}
+        />
+        {m === "butterfly" && <BackgroundMotif motif="butterfly" position="left" color="var(--color-brand-secondary)" size="20rem" />}
+        <div class="relative z-10 fx-motif-content">
+          <span class="fx-eyebrow">Motif · {m}</span>
+          <h3>Spotless results, every visit.</h3>
+          <p>Sample copy above the <strong>{m}</strong> motif — checking legibility and tint.</p>
+        </div>
+      </section>
+    </>
+  ))}
+
+  <!-- ================= COMBINED ================= -->
+  <div class="fx-grouphead">
+    <h2>Combined — real-section usage</h2>
+    <p>Drip topper + squeegee tail (both filled light to match the neighbours) with a glow and a faint white butterfly behind the copy.</p>
+  </div>
+  <section class="fx-band fx-short" style={`background:${LIGHT};`}><span class="fx-bandtext fx-dark">band above</span></section>
+  <section style={`background:${NAVY};height:24rem;position:relative;overflow:hidden;`}>
+    <SectionDivider variant="drip" position="top" fill={LIGHT} />
+    <BackgroundMotif motif="glow" position="right" color="var(--color-primary)" size="42rem" opacity={0.3} />
+    <BackgroundMotif motif="butterfly" position="right" color="#ffffff" opacity={0.06} size="30rem" />
+    <div class="relative z-10" style="display:grid;place-items:center;height:100%;text-align:center;padding:0 1.25rem;">
+      <div>
+        <span class="fx-eyebrow" style="color:var(--color-primary)">Ready when you are</span>
+        <h3 style="color:#fff;font-size:2.2rem;margin:.35rem 0;">Book your free estimate</h3>
+        <p style="color:rgba(255,255,255,0.72);margin:0;">Drip topper feeds in from above; squeegee tail wipes into the band below.</p>
+      </div>
+    </div>
+    <SectionDivider variant="squeegee" position="bottom" fill={LIGHT} />
+  </section>
+  <section class="fx-band fx-short" style={`background:${LIGHT};`}><span class="fx-bandtext fx-dark">band below</span></section>
+
+  <!-- ============ CMS MOTIF ON REAL SECTIONS ============ -->
+  <div class="fx-grouphead">
+    <h2>CMS motif on real sections</h2>
+    <p>These are actual registered sections rendered through <code>PageRenderer</code> with a <code>motif</code> field on the section config — the same JSON the CMS stores. Butterfly watermark, glow, and dot-grid, respectively.</p>
+  </div>
+  <div class="fx-label"><code>{cmsSnippet}</code></div>
+  <PageRenderer config={motifDemoConfig} />
+
+  <div class="fx-grouphead">
+    <h2>Contrast control — benefits:problem-cards @ theme-alt, NO motif</h2>
+    <p>Same section, no motif layer. If these cards are ALSO dark-on-dark, the contrast is a theme-token issue (not the motif).</p>
+  </div>
+  <PageRenderer config={{ sections: [{ type: "benefits:problem-cards", theme: "alt", data: templates["benefits:problem-cards"] }] }} />
+
+  <div style="height:5rem"></div>
+  </div>
+</BaseLayout>
+
+<style>
+  /* The site body is deep navy by default; give this reference page an explicit
+     light surface so the dark headings/labels/code below read properly. */
+  .fx-page { background: #ffffff; min-height: 100vh; }
+  .fx-head { position: sticky; top: 0; z-index: 40; display: flex; align-items: center; gap: 1rem; padding: 0.75rem 1.25rem; background: #0e2a3f; color: #fff; font-size: 0.85rem; border-bottom: 1px solid rgba(255,255,255,0.12); }
+  .fx-head strong { font-size: 1rem; }
+  .fx-head span { color: rgba(255,255,255,0.6); }
+  .fx-head a { margin-left: auto; color: #e85c2b; text-decoration: none; }
+
+  .fx-grouphead { max-width: 60rem; margin: 3.5rem auto 1rem; padding: 0 1.25rem; }
+  .fx-grouphead h2 { margin: 0; font-size: 1.5rem; color: #0e2a3f; }
+  .fx-grouphead p { margin: 0.35rem 0 0; color: #55707e; font-size: 0.9rem; }
+
+  .fx-label { max-width: 60rem; margin: 2rem auto 0.5rem; padding: 0 1.25rem; font-size: 0.82rem; color: #55707e; }
+  .fx-label code { background: rgba(14,42,63,0.07); padding: 0.12rem 0.45rem; border-radius: 0.35rem; font-size: 0.8em; color: #0e2a3f; }
+
+  .fx-band { height: 9rem; display: grid; place-items: center; }
+  .fx-short { height: 5rem; }
+  .fx-bandtext { color: rgba(255,255,255,0.82); font-weight: 700; letter-spacing: 0.03em; text-transform: uppercase; font-size: 0.85rem; }
+  .fx-bandtext.fx-dark { color: #0e2a3f; }
+
+  .fx-motif-band { min-height: 15rem; display: grid; place-items: center; }
+  .fx-motif-content { max-width: 40rem; text-align: center; padding: 2.75rem 1.25rem; }
+  .fx-motif-content h3 { margin: 0.4rem 0; font-size: 1.6rem; color: #fff; }
+  .fx-motif-content p { margin: 0; color: rgba(255,255,255,0.72); }
+  .fx-eyebrow { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.14em; color: #2fa8b5; }
+</style>

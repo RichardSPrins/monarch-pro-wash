@@ -3,146 +3,81 @@ import { getReviews } from "@/lib/content";
 import type { Eyebrow } from "@/types/sections";
 import Badge from "@/components/elements/badge/Badge.astro";
 
+/**
+ * reviews:carousel — condensed, swipeable review cards (avatar + source + gold
+ * stars, equal-height flex cards, a peek of the next). Matches the wall card
+ * styling for consistency across the review sections.
+ */
 interface Props {
   theme?: string;
-  data?: {
-    eyebrow?: Eyebrow;
-    heading?: string;
-    subheading?: string;
-    filter?: string;
-    limit?: number;
-  };
+  data?: { eyebrow?: Eyebrow; heading?: string; subheading?: string; filter?: string; limit?: number };
 }
 
 const { theme = "default", data } = Astro.props;
 
-const allReviews = await getReviews();
-
-const reviews = allReviews
+const reviews = (await getReviews())
   .filter((r) => (data?.filter === "featured" ? r.data.featured : true))
   .sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
-  .slice(0, data?.limit ?? allReviews.length);
+  .slice(0, data?.limit ?? undefined);
 
-// Unique id so multiple instances on one page stay independent
 const carouselId = `carousel-${Math.random().toString(36).slice(2, 9)}`;
+const initials = (name = "") => name.split(" ").map((n) => n[0]).join("").toUpperCase().slice(0, 2);
+const sourceColor: Record<string, string> = { Google: "#EA4335", Facebook: "#1877F2", Yelp: "#D32323", Direct: "#2fa8b5" };
 ---
 
 {
   reviews.length > 0 && (
     <section class={`section-wrapper section-py theme-${theme}`}>
       <div class="section-container">
-        {/* Section header */}
         {(data?.eyebrow || data?.heading || data?.subheading) && (
           <div class="flex flex-col items-center text-center gap-sm mb-12">
-            {data?.eyebrow && (
-              <div>
-                {data.eyebrow.variant === "badge" ? (
-                  <Badge class="uppercase tracking-widest text-xs">
-                    {data.eyebrow.text}
-                  </Badge>
-                ) : (
-                  <span class="text-sm font-semibold uppercase tracking-widest text-color-brand-secondary">
-                    {data.eyebrow.text}
-                  </span>
-                )}
-              </div>
-            )}
-            {data?.heading && (
-              <h2 class="theme-heading text-3xl lg:text-4xl font-bold m-0">
-                {data.heading}
-              </h2>
-            )}
-            {data?.subheading && (
-              <p class="theme-text-muted text-lg max-w-2xl m-0">
-                {data.subheading}
-              </p>
-            )}
+            {data?.eyebrow && (data.eyebrow.variant === "badge" ? (
+              <Badge class="uppercase tracking-widest text-xs">{data.eyebrow.text}</Badge>
+            ) : (
+              <span class="text-sm font-semibold uppercase tracking-widest text-color-brand-secondary">{data.eyebrow.text}</span>
+            ))}
+            {data?.heading && <h2 class="theme-heading text-3xl lg:text-4xl font-bold m-0">{data.heading}</h2>}
+            {data?.subheading && <p class="theme-text-muted text-lg max-w-2xl m-0">{data.subheading}</p>}
           </div>
         )}
 
-        {/* Carousel */}
         <div class="carousel" data-carousel id={carouselId}>
-          {/* Track */}
           <div class="carousel-track" data-carousel-track>
-            {reviews.map((review) => {
-              const stars = Array.from(
-                { length: 5 },
-                (_, i) => i < review.data.rating
-              );
-
+            {reviews.map((r) => {
+              const src = r.data.source ?? "Direct";
+              const color = sourceColor[src] ?? sourceColor.Direct;
               return (
-                <article class="carousel-card rounded-xl border theme-border bg-background">
-                  {/* Stars */}
-                  <div class="flex items-center gap-0.5 mb-4">
-                    {stars.map((filled) => (
-                      <svg
-                        class={`w-4 h-4 ${filled ? "star-filled" : "star-empty"}`}
-                        xmlns="http://www.w3.org/2000/svg"
-                        viewBox="0 0 24 24"
-                        fill="currentColor"
-                        aria-hidden="true"
-                      >
-                        <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
-                      </svg>
-                    ))}
-                  </div>
-
-                  {/* Body */}
-                  <p class="carousel-body theme-text">{review.data.body}</p>
-
-                  {/* Author */}
-                  <div class="carousel-author">
-                    <span class="theme-heading font-semibold text-sm leading-tight">
-                      {review.data.author}
+                <article class="rc-card">
+                  <div class="rc-head">
+                    <span class="rc-avatar" style={`background:${color}1f;color:${color}`}>{initials(r.data.author)}</span>
+                    <span class="rc-who">
+                      <span class="rc-name theme-heading">{r.data.author}</span>
+                      {r.data.location && <span class="rc-loc theme-text-subtle">{r.data.location}</span>}
                     </span>
-                    {review.data.location && (
-                      <span class="theme-text-subtle text-xs">
-                        {review.data.location}
-                      </span>
-                    )}
+                    <span class="rc-src" title={src} aria-label={src}>
+                      {src === "Google" && (<svg viewBox="0 0 24 24"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>)}
+                      {src === "Facebook" && (<svg viewBox="0 0 24 24"><path d="M24 12.07C24 5.44 18.63.07 12 .07S0 5.44 0 12.07c0 5.99 4.39 10.95 10.13 11.85v-8.38H7.08v-3.47h3.05V9.43c0-3.01 1.79-4.67 4.53-4.67 1.31 0 2.69.24 2.69.24v2.95h-1.51c-1.49 0-1.96.93-1.96 1.87v2.25h3.33l-.53 3.47h-2.8v8.38C19.61 23.02 24 18.06 24 12.07z" fill="#1877F2"/></svg>)}
+                      {(src === "Direct" || src === "Yelp") && (<svg viewBox="0 0 24 24" fill="none" stroke="var(--color-brand-secondary)" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>)}
+                    </span>
                   </div>
+                  <span class="rc-stars" aria-hidden="true">
+                    {Array.from({ length: 5 }, (_, i) => i < r.data.rating).map((f) => (
+                      <svg class={f ? "on" : "off"} viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    ))}
+                  </span>
+                  <p class="rc-body theme-text">{r.data.body}</p>
+                  <span class="rc-date theme-text-subtle">{r.data.date.toLocaleDateString("en-US", { month: "short", year: "numeric" })}</span>
                 </article>
               );
             })}
           </div>
 
-          {/* Controls */}
           <div class="carousel-controls">
-            <button
-              type="button"
-              class="carousel-arrow border theme-border bg-background hover:bg-muted"
-              data-carousel-prev
-              aria-label="Previous review"
-            >
-              <svg
-                class="w-5 h-5"
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                aria-hidden="true"
-              >
-                <path d="M15 18l-6-6 6-6" />
-              </svg>
+            <button type="button" class="carousel-arrow" data-carousel-prev aria-label="Previous review">
+              <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg>
             </button>
-            <button
-              type="button"
-              class="carousel-arrow border theme-border bg-background hover:bg-muted"
-              data-carousel-next
-              aria-label="Next review"
-            >
-              <svg
-                class="w-5 h-5"
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                aria-hidden="true"
-              >
-                <path d="M9 18l6-6-6-6" />
-              </svg>
+            <button type="button" class="carousel-arrow" data-carousel-next aria-label="Next review">
+              <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg>
             </button>
           </div>
         </div>
@@ -153,133 +88,74 @@ const carouselId = `carousel-${Math.random().toString(36).slice(2, 9)}`;
 
 <script>
   function initCarousels() {
-    const carousels = document.querySelectorAll<HTMLElement>("[data-carousel]");
-
-    carousels.forEach((root) => {
+    document.querySelectorAll<HTMLElement>("[data-carousel]").forEach((root) => {
       if (root.dataset.carouselReady === "true") return;
       root.dataset.carouselReady = "true";
-
       const track = root.querySelector<HTMLElement>("[data-carousel-track]");
       const prev = root.querySelector<HTMLElement>("[data-carousel-prev]");
       const next = root.querySelector<HTMLElement>("[data-carousel-next]");
       if (!track) return;
-
       const scrollByCard = (dir: number) => {
-        const card = track.querySelector<HTMLElement>(".carousel-card");
+        const card = track.querySelector<HTMLElement>(".rc-card");
         const gap = parseFloat(getComputedStyle(track).columnGap || "0") || 0;
         const amount = card ? card.offsetWidth + gap : track.clientWidth * 0.85;
         track.scrollBy({ left: amount * dir, behavior: "smooth" });
       };
-
       prev?.addEventListener("click", () => scrollByCard(-1));
       next?.addEventListener("click", () => scrollByCard(1));
-
       const updateArrows = () => {
         const maxScroll = track.scrollWidth - track.clientWidth - 1;
         if (prev) (prev as HTMLButtonElement).disabled = track.scrollLeft <= 0;
-        if (next)
-          (next as HTMLButtonElement).disabled = track.scrollLeft >= maxScroll;
+        if (next) (next as HTMLButtonElement).disabled = track.scrollLeft >= maxScroll;
       };
-
       track.addEventListener("scroll", updateArrows, { passive: true });
       window.addEventListener("resize", updateArrows);
       updateArrows();
     });
   }
-
   initCarousels();
   document.addEventListener("astro:page-load", initCarousels);
 </script>
 
 <style>
-  .carousel {
-    position: relative;
-  }
-
+  .carousel { position: relative; }
   .carousel-track {
-    display: flex;
-    gap: 1.5rem;
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    scroll-behavior: smooth;
-    padding-bottom: 0.25rem;
-    /* Hide scrollbar — Firefox */
-    scrollbar-width: none;
-    -ms-overflow-style: none;
+    display: flex; gap: 1rem; overflow-x: auto; scroll-snap-type: x mandatory; scroll-behavior: smooth;
+    padding-bottom: 0.25rem; scrollbar-width: none; -ms-overflow-style: none;
   }
+  .carousel-track::-webkit-scrollbar { display: none; width: 0; height: 0; }
 
-  /* Hide scrollbar — WebKit */
-  .carousel-track::-webkit-scrollbar {
-    display: none;
-    width: 0;
-    height: 0;
+  .rc-card {
+    scroll-snap-align: start; flex: 0 0 auto; width: 88%;
+    display: flex; flex-direction: column; padding: 1.25rem 1.35rem; border-radius: 1rem;
+    border: 1px solid var(--color-border); background: var(--card);
+    box-shadow: 0 10px 26px -18px rgba(0, 0, 0, 0.4);
   }
+  @media (min-width: 640px) { .rc-card { width: 46%; } }
+  @media (min-width: 1024px) { .rc-card { width: 30.5%; } }
 
-  .carousel-card {
-    scroll-snap-align: start;
-    flex: 0 0 auto;
-    min-width: 85%;
-    padding: 1.75rem;
-    box-shadow: var(--t-shadow-md);
-  }
+  .rc-head { display: flex; align-items: center; gap: 0.6rem; margin-bottom: 0.7rem; }
+  .rc-avatar { width: 2.4rem; height: 2.4rem; border-radius: 50%; display: grid; place-items: center; font-size: 0.78rem; font-weight: 800; flex-shrink: 0; }
+  .rc-who { display: flex; flex-direction: column; gap: 0.05rem; min-width: 0; flex: 1; }
+  .rc-name { font-size: 0.9rem; font-weight: 700; line-height: 1.2; }
+  .rc-loc { font-size: 0.72rem; }
+  .rc-src { width: 1.15rem; height: 1.15rem; flex-shrink: 0; }
+  .rc-src svg { width: 100%; height: 100%; }
 
-  @media (min-width: 640px) {
-    .carousel-card {
-      min-width: 45%;
-    }
-  }
+  .rc-stars { display: inline-flex; gap: 0.06rem; margin-bottom: 0.5rem; }
+  .rc-stars svg { width: 0.95rem; height: 0.95rem; }
+  .rc-stars .on { color: var(--color-rating); }
+  .rc-stars .off { color: var(--color-rating-empty); }
 
-  @media (min-width: 1024px) {
-    .carousel-card {
-      min-width: 31%;
-    }
-  }
+  .rc-body { font-size: 0.9rem; line-height: 1.6; margin: 0 0 0.9rem; flex: 1; }
+  .rc-date { font-size: 0.72rem; margin-top: auto; }
 
-  .star-filled {
-    fill: var(--color-rating);
-  }
-
-  .star-empty {
-    fill: var(--color-rating-empty);
-  }
-
-  .carousel-body {
-    font-size: 0.9375rem;
-    line-height: 1.7;
-    margin: 0 0 1.25rem 0;
-  }
-
-  .carousel-author {
-    display: flex;
-    flex-direction: column;
-    gap: 0.125rem;
-    padding-top: 1rem;
-    border-top: 1px solid var(--color-border-muted);
-  }
-
-  .carousel-controls {
-    display: flex;
-    justify-content: center;
-    gap: 0.75rem;
-    margin-top: 1.75rem;
-  }
-
+  .carousel-controls { display: flex; justify-content: center; gap: 0.75rem; margin-top: 1.75rem; }
   .carousel-arrow {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 2.75rem;
-    height: 2.75rem;
-    border-radius: 999px;
-    color: var(--color-fg);
-    cursor: pointer;
-    transition:
-      background 0.2s ease,
-      opacity 0.2s ease;
+    display: inline-flex; align-items: center; justify-content: center; width: 2.75rem; height: 2.75rem;
+    border-radius: 999px; border: 1px solid var(--color-border); background: var(--card); color: var(--color-fg);
+    cursor: pointer; transition: background 0.2s ease, opacity 0.2s ease, border-color 0.2s ease;
   }
-
-  .carousel-arrow:disabled {
-    opacity: 0.4;
-    cursor: default;
-  }
+  .carousel-arrow:hover:not(:disabled) { border-color: color-mix(in srgb, var(--t-primary) 45%, var(--color-border)); }
+  .carousel-arrow:disabled { opacity: 0.4; cursor: default; }
 </style>

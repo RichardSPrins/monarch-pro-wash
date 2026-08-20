@@ -1,0 +1,72 @@
+---
+/**
+ * divider:shape — a CMS-configurable transition band between two sections.
+ *
+ * A divider spans two sections, so the editor sets BOTH neighbour themes and the
+ * band paints itself to match: its own background = the section ABOVE (`topTheme`)
+ * and the shaped edge is filled with the section BELOW (`bottomTheme`), so the
+ * lower section appears to rise through the shape. Place this section in the
+ * `sections[]` array between the two it joins and set the themes to match them.
+ *
+ * data:
+ *   variant     "wave" | "curve" | "angle" | "squeegee" | "drip"   (default wave)
+ *   topTheme    theme of the section ABOVE  (default | alt | muted | inverse | primary | brand-secondary)
+ *   bottomTheme theme of the section BELOW
+ *   height      CSS length for the band height (default clamp(2.5rem,6vw,5.5rem))
+ *   flip        mirror the shape horizontally
+ */
+type ThemeName = "default" | "alt" | "muted" | "inverse" | "primary" | "brand-secondary";
+interface Props {
+  theme?: string;
+  data?: {
+    variant?: "wave" | "curve" | "angle" | "squeegee" | "drip";
+    topTheme?: ThemeName;
+    bottomTheme?: ThemeName;
+    height?: string;
+    flip?: boolean;
+  };
+}
+
+const { data } = Astro.props;
+const variant = data?.variant || "wave";
+// `||` (not `??`) so an empty-string height from the CMS falls back to the default.
+const height = data?.height || "clamp(2.5rem, 6vw, 5.5rem)";
+const flip = data?.flip ?? false;
+
+// Theme → the section's actual surface colour (root tokens, so both neighbours
+// resolve independent of the current theme context). Mirrors global.css.
+const THEME_BG: Record<ThemeName, string> = {
+  default: "var(--t-bg)",
+  alt: "var(--t-bg-alt)",
+  muted: "var(--t-bg-muted)",
+  inverse: "var(--t-bg-inverse)",
+  primary: "var(--t-primary)",
+  "brand-secondary": "var(--t-secondary)",
+};
+const topColor = THEME_BG[(data?.topTheme || "default") as ThemeName] ?? "var(--t-bg)";
+const bottomColor = THEME_BG[(data?.bottomTheme || "alt") as ThemeName] ?? "var(--t-bg-alt)";
+
+// Same shapes as the flair SectionDivider: the filled mass hugs the bottom edge
+// (y=100); the curve is the boundary that meets the section above.
+const PATHS: Record<string, string> = {
+  wave: "M0,45 C240,95 420,5 600,40 C780,72 960,100 1200,55 L1200,100 L0,100 Z",
+  curve: "M0,70 Q600,-6 1200,70 L1200,100 L0,100 Z",
+  angle: "M0,20 L1200,78 L1200,100 L0,100 Z",
+  squeegee: "M0,34 L1200,70 L1200,100 L0,100 Z",
+  drip: "M0,30 C80,30 80,72 160,72 C240,72 240,34 320,34 C400,34 400,74 480,74 C560,74 560,32 640,32 C720,32 720,72 800,72 C880,72 880,34 960,34 C1040,34 1040,72 1120,72 C1160,72 1180,52 1200,44 L1200,100 L0,100 Z",
+};
+const d = PATHS[variant] ?? PATHS.wave;
+---
+
+<div class="sdb" style={`--sdb-h:${height};background:${topColor};`} aria-hidden="true">
+  <svg class:list={["sdb-svg", { "sdb-flip": flip }]} viewBox="0 0 1200 100" preserveAspectRatio="none">
+    <path d={d} fill={bottomColor} />
+    {variant === "squeegee" && <path d="M0,34 L1200,70" fill="none" stroke="rgba(255,255,255,0.45)" stroke-width="2" vector-effect="non-scaling-stroke" />}
+  </svg>
+</div>
+
+<style>
+  .sdb { position: relative; width: 100%; height: var(--sdb-h); line-height: 0; overflow: hidden; }
+  .sdb-svg { position: absolute; inset: 0; display: block; width: 100%; height: 100%; }
+  .sdb-flip { transform: scaleX(-1); }
+</style>

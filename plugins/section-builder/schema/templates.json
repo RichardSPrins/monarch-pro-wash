@@ -12,7 +12,9 @@
     },
     "backgroundImage": {
       "src": "",
-      "overlayOpacity": 60
+      "overlayOpacity": 60,
+      "focal": "center",
+      "focalMobile": ""
     }
   },
   "about:why-choose-us": {
@@ -76,28 +78,50 @@
         "variant": "primary"
       }
     ],
-    "showPhone": true
+    "showPhone": true,
+    "spotlight": true
   },
   "hero:image-overlay": {
-    "heading": "Commercial Flat Roofing in Boise, ID",
-    "subheading": "TPO, EPDM, and modified-bitumen systems engineered for Idaho commercial and low-slope buildings.",
-    "showPhone": true,
-    "backgroundImage": {
-      "src": "/src/assets/images/landing.jpg",
-      "overlayOpacity": 65
+    "eyebrow": {
+      "text": "Boise & the Treasure Valley",
+      "variant": "text"
     },
-    "ctas": [
+    "heading": "Exterior Cleaning, **Done Right**",
+    "subheading": "Pressure washing, soft washing, and roof cleaning from a local, owner-run team.",
+    "ratings": [
       {
-        "label": "Call Now",
-        "href": "tel:2085550147",
-        "variant": "secondary"
+        "platform": "Google",
+        "score": "4.9"
       },
       {
-        "label": "Get a Free Quote",
-        "href": "/contact",
-        "variant": "outline"
+        "platform": "Facebook",
+        "score": "5.0"
       }
-    ]
+    ],
+    "combinedReviews": "240+ 5-star reviews",
+    "showPhone": true,
+    "trustBadges": [
+      {
+        "text": "Licensed & Insured"
+      },
+      {
+        "text": "Owner-Operated"
+      },
+      {
+        "text": "15+ Years"
+      }
+    ],
+    "ctas": [
+      {
+        "label": "Get My Free Quote",
+        "href": "/contact",
+        "variant": "primary"
+      }
+    ],
+    "backgroundImage": {
+      "src": "/images/roofing-crew.jpg",
+      "overlayOpacity": 60
+    }
   },
   "process:numbered": {
     "eyebrow": {
@@ -175,7 +199,9 @@
     "showPhone": true,
     "backgroundImage": {
       "src": "/src/assets/images/landing.jpg",
-      "overlayOpacity": 70
+      "overlayOpacity": 70,
+      "focal": "center",
+      "focalMobile": ""
     }
   },
   "hero:stacked-form": {
@@ -183,7 +209,9 @@
     "subheadline": "Centered content with the form beneath.",
     "backgroundImage": {
       "src": "",
-      "overlayOpacity": 60
+      "overlayOpacity": 60,
+      "focal": "center",
+      "focalMobile": ""
     }
   },
   "hero:video": {
@@ -224,7 +252,9 @@
     ],
     "backgroundImage": {
       "src": "",
-      "overlayOpacity": 60
+      "overlayOpacity": 60,
+      "focal": "center",
+      "focalMobile": ""
     }
   },
   "hero:stats": {
@@ -286,7 +316,9 @@
     ],
     "backgroundImage": {
       "src": "",
-      "overlayOpacity": 60
+      "overlayOpacity": 60,
+      "focal": "center",
+      "focalMobile": ""
     }
   },
   "hero:centered-card": {
@@ -332,7 +364,9 @@
     "showPhone": true,
     "backgroundImage": {
       "src": "",
-      "overlayOpacity": 60
+      "overlayOpacity": 60,
+      "focal": "center",
+      "focalMobile": ""
     }
   },
   "hero:split-stats": {
@@ -376,7 +410,9 @@
     ],
     "backgroundImage": {
       "src": "",
-      "overlayOpacity": 60
+      "overlayOpacity": 60,
+      "focal": "center",
+      "focalMobile": ""
     }
   },
   "hero:overlay-card": {
@@ -406,38 +442,55 @@
     },
     "backgroundImage": {
       "src": "",
-      "overlayOpacity": 60
+      "overlayOpacity": 60,
+      "focal": "center",
+      "focalMobile": ""
     }
   },
   "hero:angled": {
     "eyebrow": {
-      "text": "hero:angled",
+      "text": "Treasure Valley Exterior Cleaning",
       "variant": "text"
     },
-    "heading": "A little motion, zero risk",
-    "subheading": "A diagonally-clipped accent panel adds energy while the copy stays on the safe surface.",
-    "body": "Optional image lives inside the angled panel.",
-    "ctas": [
+    "heading": "Cleaner Home. **Zero Hassle.**",
+    "subheading": "Surface-matched washing that comes clean without the damage — booked in minutes, backed by our make-it-right guarantee.",
+    "ratings": [
       {
-        "label": "Get a Free Quote",
-        "href": "/contact",
-        "variant": "primary"
+        "platform": "Google",
+        "score": "4.9"
       },
       {
-        "label": "See Our Work",
-        "href": "/services",
-        "variant": "outline"
+        "platform": "Facebook",
+        "score": "5.0"
+      }
+    ],
+    "combinedReviews": "240+ 5-star reviews",
+    "ctas": [
+      {
+        "label": "Get My Free Quote",
+        "href": "/contact",
+        "variant": "primary"
       }
     ],
     "showPhone": true,
-    "image": {
-      "src": "/src/assets/images/roofing-crew.jpg",
-      "alt": "Roofing crew"
-    },
+    "trustBadges": [
+      {
+        "text": "Licensed & Insured"
+      },
+      {
+        "text": "Owner-Operated"
+      },
+      {
+        "text": "15+ Years"
+      }
+    ],
     "backgroundImage": {
-      "src": "",
-      "overlayOpacity": 60
-    }
+      "src": "/images/landing.jpg",
+      "overlayOpacity": 52,
+      "focal": "center",
+      "focalMobile": ""
+    },
+    "quoteForm": true
   },
   "hero:badge-row": {
     "eyebrow": {
@@ -478,7 +531,9 @@
     ],
     "backgroundImage": {
       "src": "",
-      "overlayOpacity": 60
+      "overlayOpacity": 60,
+      "focal": "center",
+      "focalMobile": ""
     }
   },
   "hero:split-checklist": {
@@ -511,7 +566,9 @@
     ],
     "backgroundImage": {
       "src": "",
-      "overlayOpacity": 60
+      "overlayOpacity": 60,
+      "focal": "center",
+      "focalMobile": ""
     }
   },
   "trust-bar:stats": {
@@ -558,28 +615,25 @@
   },
   "trust-bar:ratings": {
     "eyebrow": {
-      "text": "trust-bar:ratings",
+      "text": "Trusted Across the Valley",
       "variant": "text"
     },
-    "heading": "Rated 4.8+ Everywhere",
+    "heading": "Rated 5 Stars by Your Neighbors",
     "sources": [
       {
         "name": "Google",
         "rating": 4.9,
-        "count": 142,
-        "url": "#"
+        "count": 184
       },
       {
         "name": "Facebook",
-        "rating": 4.8,
-        "count": 63,
-        "url": "#"
+        "rating": 5,
+        "count": 62
       },
       {
         "name": "Yelp",
-        "rating": 4.7,
-        "count": 28,
-        "url": "#"
+        "rating": 4.8,
+        "count": 41
       }
     ]
   },
@@ -5568,5 +5622,529 @@
     "disclaimer": "No spam. Unsubscribe anytime.",
     "successHeading": "On its way!",
     "successBody": "Check your inbox for the calendar."
+  },
+  "hero:rating-spotlight": {
+    "eyebrow": {
+      "text": "Boise’s 5-Star Exterior Cleaning",
+      "variant": "text"
+    },
+    "heading": "Your Home, **Restored** to Its Best",
+    "subheading": "Soft washing, pressure washing, and roof cleaning that treats your property like our own — with a price up front and the Monarch Standard on every job.",
+    "ratings": [
+      {
+        "platform": "Google",
+        "score": "4.9",
+        "count": "180+ reviews"
+      },
+      {
+        "platform": "Facebook",
+        "score": "5.0",
+        "count": "60+ reviews"
+      }
+    ],
+    "combinedReviews": "240+ combined 5-star reviews",
+    "ctas": [
+      {
+        "label": "Get My Free Quote",
+        "href": "/contact",
+        "variant": "primary"
+      }
+    ],
+    "showPhone": true,
+    "trustBadges": [
+      {
+        "text": "Licensed & Insured"
+      },
+      {
+        "text": "Owner-Operated"
+      },
+      {
+        "text": "15+ Years"
+      }
+    ],
+    "backgroundImage": {
+      "src": "/images/roofing-crew.jpg",
+      "overlayOpacity": 68,
+      "focal": "center",
+      "focalMobile": ""
+    },
+    "quoteForm": true
+  },
+  "hero:split-panel": {
+    "eyebrow": {
+      "text": "Treasure Valley Exterior Cleaning",
+      "variant": "text"
+    },
+    "heading": "The Clean That **Lasts** Longer",
+    "subheading": "We match the method to the surface — real pressure where it helps, a gentle soft wash where it protects — so your home comes clean without the damage.",
+    "body": [
+      "Owner-run and insured, with the Monarch Standard on every visit: if any surface we cleaned isn’t right, we come back and make it right."
+    ],
+    "ctas": [
+      {
+        "label": "Get My Free Quote",
+        "href": "/contact",
+        "variant": "primary"
+      }
+    ],
+    "showPhone": true,
+    "trustBadges": [
+      {
+        "text": "Soft-Wash Safe"
+      },
+      {
+        "text": "Surface-Matched"
+      },
+      {
+        "text": "Make-It-Right Guarantee"
+      }
+    ],
+    "image": {
+      "src": "/images/landing.jpg",
+      "alt": "Monarch Pro Wash crew cleaning a Treasure Valley home"
+    },
+    "imagePosition": "right",
+    "floatingCard": {
+      "value": "15+ Years",
+      "label": "Serving the Valley"
+    }
+  },
+  "hero:spotlight": {
+    "eyebrow": {
+      "text": "Boise & the Treasure Valley",
+      "variant": "text"
+    },
+    "heading": "Bring Back the **Curb Appeal**",
+    "subheading": "Soft washing, pressure washing, and roof cleaning done the right way — surface-matched, owner-run, and guaranteed.",
+    "ratings": [
+      {
+        "platform": "Google",
+        "score": "4.9"
+      },
+      {
+        "platform": "Facebook",
+        "score": "5.0"
+      }
+    ],
+    "combinedReviews": "240+ 5-star reviews",
+    "ctas": [
+      {
+        "label": "Get My Free Quote",
+        "href": "/contact",
+        "variant": "primary"
+      }
+    ],
+    "showPhone": true,
+    "trustBadges": [
+      {
+        "text": "Licensed & Insured"
+      },
+      {
+        "text": "Owner-Operated"
+      }
+    ],
+    "backgroundImage": {
+      "src": "/images/roofing-crew.jpg",
+      "overlayOpacity": 38
+    }
+  },
+  "hero:form-overlay": {
+    "eyebrow": {
+      "text": "Free · Fast · No Obligation",
+      "variant": "text"
+    },
+    "heading": "Your Free Quote in **60 Seconds**",
+    "subheading": "Tell us what needs cleaning and we’ll send a clear price up front — no walkthrough required.",
+    "trustBadges": [
+      {
+        "text": "Licensed & Insured"
+      },
+      {
+        "text": "Same-Day Response"
+      },
+      {
+        "text": "Make-It-Right Guarantee"
+      }
+    ],
+    "showPhone": true,
+    "formTitle": "Get Your Free Quote",
+    "formSubtitle": "A real price up front, usually same day.",
+    "rating": {
+      "platform": "Google",
+      "score": "4.9",
+      "count": "180+ reviews"
+    },
+    "form": {
+      "type": "simple",
+      "title": "Get My Free Quote"
+    },
+    "backgroundImage": {
+      "src": "/images/landing.jpg",
+      "overlayOpacity": 66
+    }
+  },
+  "hero:showcase": {
+    "eyebrow": {
+      "text": "The Monarch Standard",
+      "variant": "text"
+    },
+    "heading": "Exterior Cleaning You Can **Count On**",
+    "subheading": "From driveways to rooftops, we treat your property like our own — and back every job with our make-it-right guarantee.",
+    "ctas": [
+      {
+        "label": "Get My Free Quote",
+        "href": "/contact",
+        "variant": "primary"
+      }
+    ],
+    "showPhone": true,
+    "cards": [
+      {
+        "value": "15+ yrs",
+        "label": "Serving the Treasure Valley"
+      },
+      {
+        "value": "4.9★",
+        "label": "240+ Google & Facebook reviews"
+      },
+      {
+        "value": "100%",
+        "label": "Make-it-right guarantee"
+      },
+      {
+        "value": "Same day",
+        "label": "Free quote turnaround"
+      }
+    ],
+    "backgroundImage": {
+      "src": "/images/roofing-crew.jpg",
+      "overlayOpacity": 56
+    }
+  },
+  "hero:split-video": {
+    "eyebrow": {
+      "text": "See the Monarch Difference",
+      "variant": "text"
+    },
+    "heading": "Watch How We **Protect** Your Property",
+    "subheading": "A 90-second look at our surface-matched process — real pressure where it helps, a gentle soft wash where it protects.",
+    "ratings": [
+      {
+        "platform": "Google",
+        "score": "4.9"
+      },
+      {
+        "platform": "Facebook",
+        "score": "5.0"
+      }
+    ],
+    "combinedReviews": "240+ 5-star reviews",
+    "ctas": [
+      {
+        "label": "Get My Free Quote",
+        "href": "/contact",
+        "variant": "primary"
+      }
+    ],
+    "showPhone": true,
+    "trustBadges": [
+      {
+        "text": "Soft-Wash Safe"
+      },
+      {
+        "text": "Make-It-Right Guarantee"
+      }
+    ],
+    "video": {
+      "poster": "/images/roofing-crew.jpg",
+      "embedUrl": "https://www.youtube.com/embed/aqz-KE-bpKQ",
+      "caption": "Our process, start to finish"
+    },
+    "videoPosition": "right"
+  },
+  "services:photo-grid": {
+    "eyebrow": {
+      "text": "What We Do",
+      "variant": "text"
+    },
+    "heading": "Our Exterior Cleaning Services",
+    "subheading": "One local, insured team for everything outside your home.",
+    "showDescription": true
+  },
+  "services:showcase": {
+    "eyebrow": {
+      "text": "What We Do",
+      "variant": "text"
+    },
+    "heading": "Our Exterior Cleaning Services",
+    "subheading": "One local, insured team for everything outside your home.",
+    "columns": 3
+  },
+  "services:category-split": {
+    "eyebrow": {
+      "text": "What We Do",
+      "variant": "text"
+    },
+    "heading": "Exterior Cleaning, Every Surface",
+    "subheading": "From driveways to rooftops, one local team handles it all — matched to the surface and backed by our guarantee.",
+    "body": [
+      "Not sure which service you need? Tell us what you are looking at and we will point you the right way, with a clear price up front."
+    ],
+    "trustBadges": [
+      {
+        "text": "Licensed & Insured"
+      },
+      {
+        "text": "Owner-Operated"
+      }
+    ],
+    "ctas": [
+      {
+        "label": "Get My Free Quote",
+        "href": "/contact",
+        "variant": "primary"
+      }
+    ],
+    "showPhone": true,
+    "columns": 2
+  },
+  "services:category-showcase": {
+    "eyebrow": {
+      "text": "Browse by Category",
+      "variant": "text"
+    },
+    "heading": "What We Clean",
+    "subheading": "Explore our services by category — every surface outside your home, handled by one local team.",
+    "showCount": true
+  },
+  "reviews:video-cta": {
+    "eyebrow": {
+      "text": "Hear It From Them",
+      "variant": "text"
+    },
+    "heading": "See the Monarch Difference",
+    "subheading": "A 90-second look at a real Treasure Valley job, start to finish.",
+    "body": [
+      "Watch how we match the method to the surface, protect your landscaping, and leave the place spotless."
+    ],
+    "rating": {
+      "platform": "Google",
+      "score": "4.9",
+      "count": "240+ reviews"
+    },
+    "quote": {
+      "body": "They soft-washed our roof and it looks incredible, with zero damage.",
+      "author": "Mike & Jen R., Meridian"
+    },
+    "video": {
+      "poster": "/images/roofing-crew.jpg",
+      "embedUrl": "https://www.youtube.com/embed/aqz-KE-bpKQ",
+      "caption": "Our process, start to finish"
+    },
+    "videoPosition": "left",
+    "ctas": [
+      {
+        "label": "Get My Free Quote",
+        "href": "/contact",
+        "variant": "primary"
+      }
+    ],
+    "showPhone": true
+  },
+  "reviews:rating-summary": {
+    "eyebrow": {
+      "text": "Trusted Across the Treasure Valley",
+      "variant": "text"
+    },
+    "heading": "Rated 5 Stars by Your Neighbors",
+    "subheading": "Real reviews from real Treasure Valley homeowners and businesses.",
+    "ratings": [
+      {
+        "platform": "Google",
+        "score": "4.9",
+        "count": "180+ reviews"
+      },
+      {
+        "platform": "Facebook",
+        "score": "5.0",
+        "count": "60+ reviews"
+      }
+    ],
+    "combined": "240+ combined 5-star reviews",
+    "showQuotes": true
+  },
+  "trust-bar:icon-strip": {
+    "heading": "",
+    "items": [
+      {
+        "icon": "shield",
+        "label": "Licensed & Insured"
+      },
+      {
+        "icon": "star",
+        "label": "5-Star Rated"
+      },
+      {
+        "icon": "home",
+        "label": "Owner-Operated"
+      },
+      {
+        "icon": "medal",
+        "label": "Satisfaction Guaranteed"
+      }
+    ]
+  },
+  "trust-bar:google-badge": {
+    "rating": 4.9,
+    "count": 184,
+    "label": "Google Rating"
+  },
+  "trust-bar:stat-lockups": {
+    "stats": [
+      {
+        "value": "15+",
+        "label": "Years in the Valley"
+      },
+      {
+        "value": "4.9★",
+        "label": "Google Rating"
+      },
+      {
+        "value": "500+",
+        "label": "Jobs Completed"
+      },
+      {
+        "value": "Same-Day",
+        "label": "Free Quotes"
+      }
+    ]
+  },
+  "trust-bar:review-quote": {
+    "quote": "My driveway and patio look brand new. On time, clear on pricing, and zero mess.",
+    "author": "Sarah M.",
+    "location": "Boise, ID",
+    "rating": 5,
+    "source": "Google"
+  },
+  "trust-bar:split-cta": {
+    "heading": "Ready When You Are",
+    "items": [
+      "Licensed & Insured",
+      "Owner-Operated",
+      "Free Quotes"
+    ],
+    "cta": {
+      "label": "Get My Free Quote",
+      "href": "/contact",
+      "variant": "primary"
+    },
+    "showPhone": true
+  },
+  "stats:diagonal": {
+    "eyebrow": {
+      "text": "By the Numbers",
+      "variant": "text"
+    },
+    "heading": "Trusted Across the Treasure Valley",
+    "stats": [
+      {
+        "value": "15+",
+        "label": "Years Serving the Valley"
+      },
+      {
+        "value": "5,000+",
+        "label": "Jobs Completed"
+      },
+      {
+        "value": "4.9",
+        "label": "Average Google Rating"
+      },
+      {
+        "value": "100%",
+        "label": "Satisfaction Guarantee"
+      }
+    ]
+  },
+  "cta:statement": {
+    "eyebrow": {
+      "text": "Ready When You Are",
+      "variant": "text"
+    },
+    "heading": "One Call. A Cleaner Home.",
+    "subheading": "Free quotes, up-front pricing, and the Monarch Standard on every job.",
+    "ctas": [
+      {
+        "label": "Get My Free Quote",
+        "href": "/contact",
+        "variant": "primary"
+      }
+    ],
+    "showPhone": true,
+    "backgroundImage": {
+      "src": "/images/roofing-crew.jpg",
+      "overlayOpacity": 72
+    }
+  },
+  "benefits:problem-cards": {
+    "eyebrow": {
+      "text": "The Hidden Problem",
+      "variant": "text"
+    },
+    "heading": "What Neglected Exteriors Cost You",
+    "subheading": "Left alone, these only get worse and more expensive.",
+    "problems": [
+      {
+        "icon": "droplet",
+        "title": "Black Roof Streaks",
+        "body": "That algae feeds on your shingles and traps moisture, shortening the life of your roof."
+      },
+      {
+        "icon": "crack",
+        "title": "Cracked, Spalling Concrete",
+        "body": "Ground-in grime and freeze-thaw break down unsealed driveways and patios fast."
+      },
+      {
+        "icon": "bug",
+        "title": "Pests & Mildew",
+        "body": "Organic buildup on siding and bins invites mold, wasps, and rodents."
+      },
+      {
+        "icon": "dollar",
+        "title": "Lost Curb Appeal",
+        "body": "A dingy exterior quietly drags down your home value and first impressions."
+      }
+    ]
+  },
+  "about:promise-trio": {
+    "eyebrow": {
+      "text": "Our Promise",
+      "variant": "text"
+    },
+    "heading": "The Monarch Standard",
+    "subheading": "Three promises we make on every single job.",
+    "pledges": [
+      {
+        "icon": "clock",
+        "title": "We Show Up",
+        "body": "On time, when we say, with a clear price up front and no surprises."
+      },
+      {
+        "icon": "shield",
+        "title": "We Protect Your Property",
+        "body": "Surface-matched methods and careful prep, so we clean without the damage."
+      },
+      {
+        "icon": "smile",
+        "title": "We Make It Right",
+        "body": "If any surface we cleaned isn't right, tell us and we come back. No runaround."
+      }
+    ],
+    "signature": "Monarch Pro Wash"
+  },
+  "divider:shape": {
+    "variant": "wave",
+    "topTheme": "default",
+    "bottomTheme": "alt",
+    "height": "5rem"
   }
 }

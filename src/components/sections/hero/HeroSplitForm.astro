@@ -5,7 +5,7 @@ import { highlight } from "@/lib/highlight";
 import Badge from "@/components/elements/badge/Badge.astro";
 import { Button } from "@/components/elements/button";
 import { getBusinessData } from "@/lib/utils";
-import { getBackgroundImage } from "@/lib/images";
+import { getBackgroundImage, FOCAL_POSITION } from "@/lib/images";
 import { getServices } from "@/lib/content";
 
 interface Props {
@@ -21,6 +21,9 @@ const sortedServices = services.sort((a, b) => a.data.order - b.data.order);
 const bgUrl = await getBackgroundImage(data?.backgroundImage?.src, { width: 2000 });
 const hasBackground = !!bgUrl;
 const overlayOpacity = (data?.backgroundImage?.overlayOpacity ?? 60) / 100;
+const fpos = (f?: string) => FOCAL_POSITION[(f ?? "center") as keyof typeof FOCAL_POSITION] ?? "center";
+const heroPos = fpos(data?.backgroundImage?.focal);
+const heroPosMobile = fpos(data?.backgroundImage?.focalMobile ?? data?.backgroundImage?.focal); // mobile falls back to desktop focal
 ---
 
 <section
@@ -30,7 +33,7 @@ const overlayOpacity = (data?.backgroundImage?.overlayOpacity ?? 60) / 100;
     hasBackground ? "has-bg" : "no-bg",
   ]}
   style={hasBackground
-    ? `--hero-image: url('${bgUrl}'); --hero-overlay: ${overlayOpacity}`
+    ? `--hero-image: url('${bgUrl}'); --hero-overlay: ${overlayOpacity}; --hero-position: ${heroPos}; --hero-position-mobile: ${heroPosMobile}`
     : ""}
 >
   <div class="section-container relative z-10">
@@ -170,8 +173,14 @@ const overlayOpacity = (data?.backgroundImage?.overlayOpacity ?? 60) / 100;
     z-index: 0;
     background-image: var(--hero-image);
     background-size: cover;
-    background-position: center;
+    background-position: var(--hero-position, center);
     background-repeat: no-repeat;
+  }
+  /* Mobile stacks/crops tighter, so honor a mobile focal (falls back to desktop). */
+  @media (max-width: 767px) {
+    .hero-split.has-bg::before {
+      background-position: var(--hero-position-mobile, var(--hero-position, center));
+    }
   }
 
   .hero-split.has-bg::after {

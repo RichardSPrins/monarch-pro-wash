@@ -1,0 +1,160 @@
+---
+import { getBusinessData } from "@/lib/utils";
+import { getBackgroundImage } from "@/lib/images";
+import { highlight } from "@/lib/highlight";
+import type { Eyebrow, SectionCTA } from "@/types/sections";
+import { Button } from "@/components/elements/button";
+
+/**
+ * reviews:video-cta — a prominent, click-to-play testimonial video beside a
+ * content column (heading, copy, a gold rating lockup, an optional pull-quote,
+ * and a CTA). The "video proof + conversion" block (PV "Watch How…" / "Because
+ * the Details Matter"). Theme-aware content side.
+ */
+interface Props {
+  theme?: string;
+  data?: {
+    eyebrow?: Eyebrow;
+    heading?: string;
+    subheading?: string;
+    body?: string | string[];
+    video?: { poster?: string; src?: string; embedUrl?: string; caption?: string };
+    videoPosition?: "left" | "right";
+    rating?: { platform?: string; score?: number | string; count?: string };
+    quote?: { body?: string; author?: string };
+    ctas?: SectionCTA[];
+    showPhone?: boolean;
+  };
+}
+
+const { theme = "default", data } = Astro.props;
+const business = await getBusinessData();
+const bodyParts = Array.isArray(data?.body) ? data?.body : data?.body ? [data.body] : [];
+const videoLeft = data?.videoPosition === "left";
+const posterUrl = await getBackgroundImage(data?.video?.poster, { width: 1400 });
+const rating = data?.rating;
+---
+
+<section class:list={["reviews-vcta section-wrapper section-py relative overflow-hidden", `theme-${theme}`]}>
+  <div class="section-container relative z-10">
+    <div class:list={["vcta-grid", videoLeft && "is-video-left"]}>
+      <!-- Video -->
+      <div class="vcta-media">
+        <div class="vcta-frame" style={posterUrl ? `background-image:url('${posterUrl}')` : ""} data-embed={data?.video?.embedUrl ?? ""} data-src={data?.video?.src ?? ""}>
+          <button class="vcta-play" type="button" aria-label="Play video">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z" /></svg>
+          </button>
+          {data?.video?.caption && <span class="vcta-caption">{data.video.caption}</span>}
+        </div>
+      </div>
+
+      <!-- Content -->
+      <div class="vcta-content">
+        {data?.eyebrow && <span class="text-sm font-semibold uppercase tracking-widest text-color-brand-secondary">{data.eyebrow.text}</span>}
+        {data?.heading && <h2 class="theme-heading text-3xl lg:text-4xl font-bold m-0 leading-tight" set:html={highlight(data.heading)}></h2>}
+        {data?.subheading && <p class="theme-text-muted text-lg m-0">{data.subheading}</p>}
+        {bodyParts.length > 0 && (
+          <div class="flex flex-col gap-3 theme-text">
+            {bodyParts.map((p) => <p class="m-0 leading-relaxed" set:html={highlight(p)} />)}
+          </div>
+        )}
+
+        {
+          rating?.score && (
+            <span class="vcta-rating">
+              <span class="vcta-stars" aria-hidden="true">
+                {[0, 1, 2, 3, 4].map(() => (<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" /></svg>))}
+              </span>
+              <strong>{rating.score}</strong>
+              {rating.platform && <span class="theme-text-muted">on {rating.platform}</span>}
+              {rating.count && <span class="theme-text-subtle">· {rating.count}</span>}
+            </span>
+          )
+        }
+
+        {
+          data?.quote?.body && (
+            <blockquote class="vcta-quote">
+              <p class="theme-text m-0">“{data.quote.body}”</p>
+              {data.quote.author && <cite class="theme-text-subtle">— {data.quote.author}</cite>}
+            </blockquote>
+          )
+        }
+
+        {
+          (data?.ctas?.length || data?.showPhone) && (
+            <div class="flex flex-wrap items-center gap-sm mt-1">
+              {data?.ctas?.map((cta) => <Button variant={cta.variant ?? "primary"} href={cta.href}>{cta.label}</Button>)}
+              {data?.showPhone && business.phone && (
+                <a href={`tel:${business.phone}`} class="inline-flex items-center gap-xs font-bold text-lg theme-text hover:opacity-80 transition-opacity no-underline">
+                  <svg class="w-5 h-5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z" /></svg>
+                  {business.phone}
+                </a>
+              )}
+            </div>
+          )
+        }
+      </div>
+    </div>
+  </div>
+</section>
+
+<script is:inline>
+  if (!window.__reviewsVctaInit) {
+    window.__reviewsVctaInit = true;
+    document.addEventListener("click", (e) => {
+      const btn = e.target.closest(".vcta-play");
+      if (!btn) return;
+      const frame = btn.closest(".vcta-frame");
+      const embed = frame.dataset.embed, src = frame.dataset.src;
+      if (embed) {
+        const sep = embed.includes("?") ? "&" : "?";
+        frame.innerHTML = `<iframe src="${embed}${sep}autoplay=1" allow="autoplay; encrypted-media; fullscreen" allowfullscreen title="Testimonial video"></iframe>`;
+      } else if (src) {
+        frame.innerHTML = `<video src="${src}" controls autoplay playsinline></video>`;
+      }
+    });
+  }
+</script>
+
+<style>
+  .reviews-vcta::before {
+    content: ""; position: absolute; inset: 0; z-index: 0;
+    background: linear-gradient(150deg, color-mix(in srgb, var(--t-secondary) 8%, transparent) 0%, transparent 55%);
+    pointer-events: none;
+  }
+  .vcta-grid { display: grid; grid-template-columns: 1fr; gap: 2rem; align-items: center; }
+  @media (min-width: 1024px) {
+    .vcta-grid { grid-template-columns: 1.05fr 0.95fr; gap: 3.5rem; }
+    .vcta-grid.is-video-left .vcta-media { order: 1; }
+    .vcta-grid.is-video-left .vcta-content { order: 2; }
+    .vcta-grid:not(.is-video-left) .vcta-media { order: 2; }
+    .vcta-grid:not(.is-video-left) .vcta-content { order: 1; }
+  }
+
+  .vcta-media { position: relative; }
+  .vcta-frame {
+    position: relative; aspect-ratio: 16 / 9; border-radius: 1rem; overflow: hidden;
+    background-color: #06121c; background-size: cover; background-position: center;
+    box-shadow: 0 26px 64px -22px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(255, 255, 255, 0.06);
+  }
+  .vcta-frame::after { content: ""; position: absolute; inset: 0; background: rgba(0, 0, 0, 0.28); pointer-events: none; }
+  .vcta-frame :global(iframe), .vcta-frame :global(video) { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+  .vcta-play {
+    position: absolute; inset: 0; margin: auto; z-index: 2; width: 4.75rem; height: 4.75rem; border-radius: 999px; border: 0; cursor: pointer;
+    display: grid; place-items: center; color: #fff; background: color-mix(in srgb, var(--t-primary) 92%, transparent);
+    box-shadow: 0 10px 30px -6px rgba(0, 0, 0, 0.6); transition: transform 0.15s ease;
+  }
+  .vcta-play:hover { transform: scale(1.06); }
+  .vcta-play svg { width: 2rem; height: 2rem; margin-left: 0.18rem; }
+  .vcta-caption { position: absolute; left: 0.9rem; bottom: 0.9rem; z-index: 2; font-size: 0.8rem; font-weight: 600; color: #fff; text-shadow: 0 1px 8px rgba(0, 0, 0, 0.6); }
+
+  .vcta-content { display: flex; flex-direction: column; gap: 1.1rem; }
+  .vcta-rating { display: inline-flex; align-items: center; gap: 0.4rem; font-size: 0.95rem; }
+  .vcta-rating strong { font-weight: 800; color: var(--color-fg); }
+  .vcta-stars { display: inline-flex; gap: 0.06rem; color: var(--color-rating); }
+  .vcta-stars svg { width: 1rem; height: 1rem; }
+  .vcta-quote { margin: 0; padding: 0.9rem 1.1rem; border-left: 3px solid var(--t-primary); background: color-mix(in srgb, var(--color-fg) 4%, transparent); border-radius: 0 0.6rem 0.6rem 0; display: flex; flex-direction: column; gap: 0.35rem; }
+  .vcta-quote p { font-size: 1rem; font-style: italic; line-height: 1.5; }
+  .vcta-quote cite { font-size: 0.8rem; font-style: normal; font-weight: 600; }
+</style>

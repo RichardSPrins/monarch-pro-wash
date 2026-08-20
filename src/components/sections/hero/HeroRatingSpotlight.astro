@@ -1,0 +1,174 @@
+---
+import { getBusinessData } from "@/lib/utils";
+import { getBackgroundImage, FOCAL_POSITION } from "@/lib/images";
+import { highlight } from "@/lib/highlight";
+import type { Eyebrow, SectionCTA } from "@/types/sections";
+import { Button } from "@/components/elements/button";
+import HeroQuoteForm from "@/components/elements/HeroQuoteForm.astro";
+
+/**
+ * hero:rating-spotlight — full-bleed photo hero led by a review-rating lockup
+ * trio (platform · stars · score · combined count), a bold headline, dual CTA,
+ * and a trust-chip row. Depth comes from a directional gradient + vignette and
+ * a strong type scale — not from clipped geometry. Conversion-forward hero.
+ */
+interface Rating {
+  platform?: string;
+  score?: number | string;
+  count?: string;
+}
+interface Props {
+  theme?: string;
+  data?: {
+    eyebrow?: Eyebrow;
+    heading?: string;
+    headline?: string;
+    subheading?: string;
+    subheadline?: string;
+    ctas?: SectionCTA[];
+    showPhone?: boolean;
+    align?: "left" | "center";
+    quoteForm?: boolean;
+    ratings?: Rating[];
+    combinedReviews?: string;
+    trustBadges?: Array<{ text: string }>;
+    backgroundImage?: { src: string; overlayOpacity?: number; focal?: string; focalMobile?: string };
+  };
+}
+
+const { theme = "default", data } = Astro.props;
+const business = await getBusinessData();
+
+const heading = data?.heading ?? data?.headline;
+const subheading = data?.subheading ?? data?.subheadline;
+const quoteForm = data?.quoteForm ?? false;
+// A form forces the left-aligned split layout (centered narrow only applies when
+// there's no form).
+const align = quoteForm ? "left" : (data?.align ?? "left");
+const ratings = data?.ratings ?? [];
+const badges = data?.trustBadges ?? [];
+
+const bgUrl = await getBackgroundImage(data?.backgroundImage?.src, { width: 2200 });
+const hasBackground = !!bgUrl;
+const overlayOpacity = (data?.backgroundImage?.overlayOpacity ?? 68) / 100;
+const fpos = (f?: string) => FOCAL_POSITION[(f ?? "center") as keyof typeof FOCAL_POSITION] ?? "center";
+const heroPos = fpos(data?.backgroundImage?.focal);
+const heroPosMobile = fpos(data?.backgroundImage?.focalMobile ?? data?.backgroundImage?.focal);
+---
+
+<section
+  class:list={[
+    "hero-rating section-wrapper relative overflow-hidden flex items-center",
+    `theme-${theme}`,
+    hasBackground ? "has-bg" : "no-bg",
+  ]}
+  style={hasBackground ? `--hero-image: url('${bgUrl}'); --hero-overlay: ${overlayOpacity}; --hero-position: ${heroPos}; --hero-position-mobile: ${heroPosMobile}` : ""}
+>
+  <div class="section-container relative z-10 py-20 lg:py-28">
+    <div class:list={[quoteForm && "hero-form-grid"]}>
+    <div class:list={["flex flex-col gap-5", quoteForm ? "max-w-xl" : "max-w-3xl", align === "center" && "items-center text-center mx-auto"]}>
+      {
+        ratings.length > 0 && (
+          <div class:list={["hero-ratings", align === "center" && "justify-center"]}>
+            {ratings.map((r) => (
+              <div class="rating-lockup">
+                {r.platform && <span class="rating-platform">{r.platform}</span>}
+                <span class="rating-stars" aria-hidden="true">
+                  {[0, 1, 2, 3, 4].map(() => (
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77 5.82 21l1.18-6.88-5-4.87 7.1-1.01L12 2z" /></svg>
+                  ))}
+                </span>
+                <span class="rating-score">{r.score}</span>
+                {r.count && <span class="rating-count">{r.count}</span>}
+              </div>
+            ))}
+            {data?.combinedReviews && <span class="rating-combined">{data.combinedReviews}</span>}
+          </div>
+        )
+      }
+
+      {
+        data?.eyebrow && (
+          <span class="text-sm font-semibold uppercase tracking-widest text-color-brand-secondary">
+            {data.eyebrow.text}
+          </span>
+        )
+      }
+
+      {heading && <h1 class="hero-h text-white font-extrabold m-0 leading-[1.05]" set:html={highlight(heading)}></h1>}
+      {subheading && <p class="text-white/85 text-lg lg:text-xl max-w-2xl m-0">{subheading}</p>}
+
+      {
+        (data?.ctas?.length || data?.showPhone) && (
+          <div class:list={["flex flex-wrap items-center gap-sm mt-2", align === "center" && "justify-center"]}>
+            {data?.ctas?.map((cta) => (
+              <Button variant={cta.variant ?? "primary"} href={cta.href}>{cta.label}</Button>
+            ))}
+            {data?.showPhone && business.phone && (
+              <a href={`tel:${business.phone}`} class="inline-flex items-center gap-xs font-bold text-lg text-white hover:opacity-80 transition-opacity no-underline">
+                <svg class="w-5 h-5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z" /></svg>
+                {business.phone}
+              </a>
+            )}
+          </div>
+        )
+      }
+
+      {
+        badges.length > 0 && (
+          <ul class:list={["hero-chips", align === "center" && "justify-center"]}>
+            {badges.map((b) => (
+              <li class="hero-chip">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M20 6 9 17l-5-5" /></svg>
+                {b.text}
+              </li>
+            ))}
+          </ul>
+        )
+      }
+    </div>
+    {quoteForm && <HeroQuoteForm />}
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero-rating { min-height: 620px; }
+  /* Form on → 2-column split (content + quote card); off → natural narrow content. */
+  .hero-form-grid { display: grid; grid-template-columns: 1fr; gap: 2.5rem; align-items: center; }
+  @media (min-width: 1024px) { .hero-form-grid { grid-template-columns: 1.1fr 0.9fr; gap: 3.5rem; } }
+  .hero-rating.has-bg::before {
+    content: ""; position: absolute; inset: 0; z-index: 0;
+    background-image: var(--hero-image); background-size: cover; background-position: var(--hero-position, center);
+  }
+  @media (max-width: 767px) {
+    .hero-rating.has-bg::before { background-position: var(--hero-position-mobile, var(--hero-position, center)); }
+  }
+  /* Depth from light, not geometry: a directional darkening toward the text
+     side plus a soft vignette so the headline holds against any photo. */
+  .hero-rating.has-bg::after {
+    content: ""; position: absolute; inset: 0; z-index: 1;
+    background:
+      radial-gradient(120% 100% at 80% 15%, transparent 40%, rgba(0, 0, 0, 0.35) 100%),
+      linear-gradient(100deg, rgba(0, 0, 0, calc(var(--hero-overlay, 0.68) + 0.14)) 0%, rgba(0, 0, 0, var(--hero-overlay, 0.68)) 50%, rgba(0, 0, 0, calc(var(--hero-overlay, 0.68) - 0.18)) 100%);
+  }
+
+  .hero-h { font-size: clamp(2.25rem, 5vw, 3.75rem); text-wrap: balance; }
+
+  .hero-ratings { display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem 0.9rem; }
+  .rating-lockup {
+    display: inline-flex; align-items: center; gap: 0.4rem;
+    background: rgba(255, 255, 255, 0.1); border: 1px solid rgba(255, 255, 255, 0.16);
+    backdrop-filter: blur(4px); border-radius: 999px; padding: 0.3rem 0.7rem;
+  }
+  .rating-platform { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.02em; color: #fff; }
+  .rating-stars { display: inline-flex; gap: 0.05rem; color: var(--color-rating); }
+  .rating-stars svg { width: 0.85rem; height: 0.85rem; }
+  .rating-score { font-size: 0.78rem; font-weight: 800; color: #fff; }
+  .rating-count { font-size: 0.68rem; color: rgba(255, 255, 255, 0.75); }
+  .rating-combined { font-size: 0.8rem; font-weight: 600; color: rgba(255, 255, 255, 0.85); }
+
+  .hero-chips { list-style: none; margin: 0.25rem 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: 0.4rem 1rem; }
+  .hero-chip { display: inline-flex; align-items: center; gap: 0.4rem; font-size: 0.82rem; font-weight: 600; color: var(--t-fg); }
+  .hero-chip svg { width: 1rem; height: 1rem; color: var(--t-secondary-light); }
+</style>

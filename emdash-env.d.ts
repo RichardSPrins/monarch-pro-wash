@@ -10,7 +10,7 @@ export interface Appearance {
   slug: string | null;
   status: string;
   header_variant?: "classic" | "centered" | "minimal" | "transparent" | "inverse" | "two-row" | "pill" | "compact" | "cta-prominent" | "gradient";
-  footer_variant?: "columns" | "simple" | "cta" | "newsletter" | "map" | "mega" | "centered" | "hours" | "social" | "bar";
+  footer_variant?: "columns" | "simple" | "cta" | "newsletter" | "map" | "mega" | "centered" | "hours" | "social" | "bar" | "brandmark" | "glow" | "spotlight" | "marquee";
   createdAt: Date;
   updatedAt: Date;
   publishedAt: Date | null;

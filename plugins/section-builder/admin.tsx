@@ -14,13 +14,18 @@ import { useMemo, useState } from "react";
 import { sectionFields } from "./schema/sectionFields.mjs";
 import templates from "./schema/templates.json";
 
-type Section = { type: string; theme?: string; spacing?: { desktop?: string; mobile?: string }; data?: Record<string, unknown> };
+type Motif = { kind: string; position?: string; color?: string; opacity?: number; size?: string };
+type Section = { type: string; theme?: string; spacing?: { desktop?: string; mobile?: string }; motif?: Motif; data?: Record<string, unknown> };
 
 const LABELS = sectionFields as Record<string, { label: string }>;
 const TEMPLATES = templates as Record<string, Record<string, unknown>>;
 const THEMES = ["default", "alt", "muted", "inverse", "primary", "brand-secondary"];
 // Vertical-padding density options ("" = use the section's built-in default).
 const PADS = ["", "none", "xs", "sm", "md", "lg", "xl"];
+// Decorative background motif ("" = none). Rendered BEHIND section content by
+// PageRenderer. `butterfly-color` is the full-colour brand mark (color ignored).
+const MOTIFS = ["", "butterfly", "butterfly-color", "droplets", "splash", "glow", "grid"];
+const MOTIF_POSITIONS = ["right", "left", "center", "top", "bottom"];
 
 // Focal-point choices for background images (mirror FOCAL_POSITION in
 // src/lib/images.ts). Rendered as dropdowns wherever a field is named `focal`
@@ -38,6 +43,7 @@ const ENUM_FIELDS: Record<string, { value: string; label: string }[]> = {
 const FOCAL_TYPES = new Set([
   "hero:angled", "hero:badge-row", "hero:gradient", "hero:minimal", "hero:overlay-card",
   "hero:split-checklist", "hero:split-content", "hero:split-image", "hero:split-stats", "hero:stacked-form",
+  "hero:split-form", "hero:rating-spotlight",
 ]);
 
 const CATALOG: Record<string, { type: string; label: string }[]> = (() => {
@@ -270,12 +276,39 @@ function PageBuilder({ value, onChange }: { value: unknown; onChange: (v: unknow
               <select title="Mobile vertical padding" style={{ ...S.input, width: "auto", fontSize: 11 }} value={s.spacing?.mobile ?? ""} onChange={(e) => patch(i, { spacing: { ...s.spacing, mobile: e.target.value } })}>
                 {PADS.map((p) => <option key={p} value={p}>{p ? `📱 ${p}` : "📱 auto"}</option>)}
               </select>
+              {/* Heroes use a background image, so they never take a motif. */}
+              {!s.type.startsWith("hero:") && (
+                <select title="Background motif (behind content)" style={{ ...S.input, width: "auto", fontSize: 11 }} value={s.motif?.kind ?? ""} onChange={(e) => patch(i, { motif: e.target.value ? { ...s.motif, kind: e.target.value } : undefined })}>
+                  {MOTIFS.map((m) => <option key={m} value={m}>{m ? `✦ ${m}` : "✦ none"}</option>)}
+                </select>
+              )}
               <button type="button" style={S.ghost} onClick={() => move(i, -1)} title="Up">↑</button>
               <button type="button" style={S.ghost} onClick={() => move(i, 1)} title="Down">↓</button>
               <button type="button" style={S.ghost} onClick={() => remove(i)} title="Delete">✕</button>
             </div>
             {open && (
               <div style={S.body}>
+                {s.motif?.kind && (
+                  <div style={{ display: "flex", gap: 10, alignItems: "center", flexWrap: "wrap", paddingBottom: 10, marginBottom: 10, borderBottom: "1px dashed rgba(0,0,0,0.15)" }}>
+                    <span style={S.tag}>✦ motif: {s.motif.kind}</span>
+                    <label style={{ fontSize: 11, display: "flex", gap: 4, alignItems: "center" }}>
+                      position
+                      <select style={{ ...S.input, width: "auto", fontSize: 11 }} value={s.motif.position ?? "right"} onChange={(e) => patch(i, { motif: { ...s.motif!, position: e.target.value } })}>
+                        {MOTIF_POSITIONS.map((p) => <option key={p} value={p}>{p}</option>)}
+                      </select>
+                    </label>
+                    {s.motif.kind !== "butterfly-color" && (
+                      <label style={{ fontSize: 11, display: "flex", gap: 4, alignItems: "center" }}>
+                        color
+                        <input style={{ ...S.input, width: 150, fontSize: 11 }} value={s.motif.color ?? ""} placeholder="var(--color-primary)" onChange={(e) => patch(i, { motif: { ...s.motif!, color: e.target.value || undefined } })} />
+                      </label>
+                    )}
+                    <label style={{ fontSize: 11, display: "flex", gap: 4, alignItems: "center" }}>
+                      opacity
+                      <input type="number" step="0.02" min="0" max="1" style={{ ...S.input, width: 70, fontSize: 11 }} value={s.motif.opacity ?? ""} placeholder="auto" onChange={(e) => patch(i, { motif: { ...s.motif!, opacity: e.target.value === "" ? undefined : Number(e.target.value) } })} />
+                    </label>
+                  </div>
+                )}
                 {(() => {
                   // Render the section type's FULL field set: the template's
                   // fields (blanked) merged under the saved values. Saved values

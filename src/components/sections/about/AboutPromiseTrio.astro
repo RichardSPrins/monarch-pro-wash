@@ -1,0 +1,84 @@
+---
+import { getBusinessData } from "@/lib/utils";
+import type { Eyebrow } from "@/types/sections";
+
+/**
+ * about:promise-trio — a framed "Our Promise to You" panel with three icon
+ * pledges (reliability · quality · satisfaction) and an optional owner
+ * signature. The Madd Air "Our Promise" trust moment. Theme-aware.
+ */
+interface Pledge { icon?: string; title?: string; body?: string }
+interface Props {
+  theme?: string;
+  data?: { eyebrow?: Eyebrow; heading?: string; subheading?: string; pledges?: Pledge[]; signature?: string };
+}
+
+const { theme = "default", data } = Astro.props;
+const business = await getBusinessData();
+const pledges = data?.pledges ?? [];
+
+const ICON: Record<string, string> = {
+  shield: '<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/>',
+  medal: '<circle cx="12" cy="8" r="6"/><path d="M15.5 13.5 17 22l-5-3-5 3 1.5-8.5"/>',
+  smile: '<circle cx="12" cy="12" r="9"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><path d="M9 9h.01M15 9h.01"/>',
+  clock: '<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>',
+  check: '<circle cx="12" cy="12" r="9"/><path d="M8 12l3 3 5-6"/>',
+  heart: '<path d="M20.8 5.6a5 5 0 0 0-7.1 0L12 7.3l-1.7-1.7a5 5 0 1 0-7.1 7.1L12 21.5l8.8-8.8a5 5 0 0 0 0-7.1z"/>',
+};
+---
+
+<section class:list={["section-wrapper section-py", `theme-${theme}`]}>
+  <div class="section-container">
+    <div class="apt-panel">
+      <div class="flex flex-col items-center text-center gap-sm mb-10">
+        {data?.eyebrow && <span class="text-sm font-semibold uppercase tracking-widest text-color-brand-secondary">{data.eyebrow.text}</span>}
+        {data?.heading && <h2 class="theme-heading text-3xl lg:text-4xl font-bold m-0">{data.heading}</h2>}
+        {data?.subheading && <p class="theme-text-muted text-lg max-w-2xl m-0">{data.subheading}</p>}
+      </div>
+
+      <div class="apt-grid">
+        {pledges.map((p) => (
+          <div class="apt-item">
+            <span class="apt-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" set:html={ICON[p.icon ?? "shield"] ?? ICON.shield} />
+            </span>
+            {p.title && <h3 class="apt-title theme-heading">{p.title}</h3>}
+            {p.body && <p class="apt-body theme-text-muted">{p.body}</p>}
+          </div>
+        ))}
+      </div>
+
+      {
+        (data?.signature || business.businessName) && (
+          <div class="apt-sign">
+            <span class="apt-sign-name">{data?.signature ?? business.businessName}</span>
+            <span class="apt-sign-role theme-text-subtle">Owner-Operated</span>
+          </div>
+        )
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  .apt-panel {
+    max-width: 64rem; margin-inline: auto; padding: clamp(1.75rem, 4vw, 3rem); border-radius: 1.5rem;
+    border: 1px solid var(--color-border); background: var(--card);
+    box-shadow: 0 30px 70px -34px rgba(0, 0, 0, 0.5);
+  }
+  .apt-grid { display: grid; grid-template-columns: 1fr; gap: 1.75rem; }
+  @media (min-width: 768px) { .apt-grid { grid-template-columns: repeat(3, 1fr); } }
+
+  .apt-item { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 0.6rem; }
+  .apt-icon {
+    width: 3.4rem; height: 3.4rem; border-radius: 1rem; display: grid; place-items: center; margin-bottom: 0.2rem;
+    color: var(--color-brand-secondary); background: color-mix(in srgb, var(--color-brand-secondary) 14%, transparent);
+  }
+  .apt-icon svg { width: 1.7rem; height: 1.7rem; }
+  .apt-title { margin: 0; font-size: 1.1rem; font-weight: 800; }
+  .apt-body { margin: 0; font-size: 0.9rem; line-height: 1.55; max-width: 20rem; }
+
+  .apt-sign { margin-top: 2.25rem; padding-top: 1.5rem; border-top: 1px solid var(--color-border); display: flex; flex-direction: column; align-items: center; gap: 0.15rem; }
+  .apt-sign-name { font-size: 1.35rem; font-weight: 800; color: var(--color-fg); font-style: italic; letter-spacing: -0.01em; }
+  .apt-sign-role { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.06em; }
+</style>

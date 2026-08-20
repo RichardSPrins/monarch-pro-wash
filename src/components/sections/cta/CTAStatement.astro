@@ -1,0 +1,76 @@
+---
+import { getBusinessData } from "@/lib/utils";
+import { getBackgroundImage } from "@/lib/images";
+import { highlight } from "@/lib/highlight";
+import type { Eyebrow, SectionCTA } from "@/types/sections";
+import { Button } from "@/components/elements/button";
+
+/**
+ * cta:statement — an oversized-type conversion band. The headline carries the
+ * section (Shattered Vision "ONE CALL. ONE INSTALL." energy) — no decorative
+ * slab. Optional background photo (fixed light text) or the theme surface
+ * (theme-aware). Optional uppercase.
+ */
+interface Props {
+  theme?: string;
+  data?: {
+    eyebrow?: Eyebrow;
+    heading?: string;
+    subheading?: string;
+    ctas?: SectionCTA[];
+    showPhone?: boolean;
+    uppercase?: boolean;
+    backgroundImage?: { src: string; overlayOpacity?: number };
+  };
+}
+
+const { theme = "default", data } = Astro.props;
+const business = await getBusinessData();
+const bgUrl = await getBackgroundImage(data?.backgroundImage?.src, { width: 2200 });
+const hasBg = !!bgUrl;
+const overlay = (data?.backgroundImage?.overlayOpacity ?? 72) / 100;
+---
+
+<section
+  class:list={["cta-statement section-wrapper section-py-lg relative overflow-hidden", `theme-${theme}`, hasBg ? "has-bg" : "no-bg", data?.uppercase && "is-upper"]}
+  style={hasBg ? `--hero-image: url('${bgUrl}'); --hero-overlay: ${overlay}` : ""}
+>
+  <div class="section-container relative z-10 flex flex-col items-center text-center gap-md">
+    {data?.eyebrow && <span class="text-sm font-semibold uppercase tracking-widest text-color-brand-secondary">{data.eyebrow.text}</span>}
+    {data?.heading && (
+      <h2 class:list={["cts-h m-0", hasBg ? "text-white" : "theme-heading"]} set:html={highlight(data.heading)}></h2>
+    )}
+    {data?.subheading && (
+      <p class:list={["cts-sub m-0 max-w-2xl", hasBg ? "text-white/85" : "theme-text-muted"]}>{data.subheading}</p>
+    )}
+    {
+      (data?.ctas?.length || data?.showPhone) && (
+        <div class="flex flex-wrap items-center justify-center gap-md mt-2">
+          {data?.ctas?.map((cta) => <Button variant={cta.variant ?? "primary"} size="lg" href={cta.href}>{cta.label}</Button>)}
+          {data?.showPhone && business.phone && (
+            <a href={`tel:${business.phone}`} class:list={["inline-flex items-center gap-xs font-bold text-lg hover:opacity-80 transition-opacity no-underline", hasBg ? "text-white" : "theme-text"]}>
+              <svg class="w-5 h-5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z" /></svg>
+              {business.phone}
+            </a>
+          )}
+        </div>
+      )
+    }
+  </div>
+</section>
+
+<style>
+  .cta-statement.has-bg::before {
+    content: ""; position: absolute; inset: 0; z-index: 0;
+    background-image: var(--hero-image); background-size: cover; background-position: center;
+  }
+  .cta-statement.has-bg::after {
+    content: ""; position: absolute; inset: 0; z-index: 1;
+    background: radial-gradient(120% 120% at 50% 30%, rgba(0,0,0,calc(var(--hero-overlay,0.72) - 0.15)) 0%, rgba(0,0,0,var(--hero-overlay,0.72)) 100%);
+  }
+  .cts-h {
+    font-size: clamp(2.6rem, 8vw, 6rem); font-weight: 800; line-height: 0.98; letter-spacing: -0.02em; text-wrap: balance;
+  }
+  .is-upper .cts-h { text-transform: uppercase; letter-spacing: -0.005em; }
+  .cts-sub { font-size: clamp(1.05rem, 2vw, 1.35rem); line-height: 1.5; }
+</style>

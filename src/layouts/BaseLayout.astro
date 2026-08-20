@@ -156,6 +156,14 @@ if (breadcrumbItems.length > 1 && page.id !== "index") {
     />
     <meta name="theme-color" content={siteConfig.branding.colors.themeColor} />
 
+    {/* Typography: Oswald (condensed display headings) + Inter (body). */}
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Oswald:wght@400;500;600;700&display=swap"
+    />
+
     {seoSettings?.googleVerification && (
       <meta name="google-site-verification" content={seoSettings.googleVerification} />
     )}

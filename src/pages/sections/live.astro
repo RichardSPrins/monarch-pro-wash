@@ -1,0 +1,195 @@
+---
+/**
+ * /sections/live — LIVE SECTION GALLERY (dev/reference, noindex).
+ *
+ * Renders EVERY registered variant inline with its example data, grouped by
+ * category, each with a per-section theme switcher (default | alt | muted |
+ * inverse | primary | brand-secondary) plus a global "set all" control. Themes
+ * are just `.theme-*` classes on the section root, so switching is a live class
+ * swap — no reload. Excluded from sitemap + noindexed.
+ *
+ * `?group=hero` renders a single group (lighter, and isolates a throwing section
+ * to its own group view). No param = everything.
+ */
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import PageRenderer from "@/components/PageRenderer.astro";
+import { sectionRegistry } from "@/lib/sectionRegistry";
+import templatesRaw from "../../../plugins/section-builder/schema/templates.json";
+
+const templates = templatesRaw as Record<string, Record<string, unknown>>;
+const allTypes = Object.keys(templates).filter((t) => sectionRegistry[t]).sort();
+
+const groupsAll: Record<string, string[]> = {};
+for (const t of allTypes) (groupsAll[t.split(":")[0]] ??= []).push(t);
+const allGroupNames = Object.keys(groupsAll).sort();
+
+const only = Astro.url.searchParams.get("group");
+const groupNames = only && groupsAll[only] ? [only] : allGroupNames;
+const shownCount = groupNames.reduce((n, g) => n + groupsAll[g].length, 0);
+
+const THEMES = ["default", "alt", "muted", "inverse", "primary", "brand-secondary"] as const;
+const toId = (t: string) => t.replace(":", "__");
+---
+
+<BaseLayout
+  title="Live Section Gallery"
+  description="Every section variant rendered live, with a per-section theme switcher."
+  noindex
+  page={{ id: "sections/live", data: {} }}
+>
+  <div class="lab-toolbar">
+    <div class="lab-toolbar-row">
+      <strong class="lab-title">Live Sections</strong>
+      <span class="lab-count">{shownCount} / {allTypes.length}</span>
+      <span class="lab-global">
+        Set all:
+        {THEMES.map((th) => (
+          <button class="lab-th" data-global-theme={th}>{th}</button>
+        ))}
+      </span>
+      <a class="lab-idx" href="/sections">data shapes →</a>
+    </div>
+    <nav class="lab-jump">
+      <a href="/sections/live" class:list={[{ on: !only }]}>all</a>
+      {allGroupNames.map((g) => (
+        <a href={`/sections/live?group=${g}`} class:list={[{ on: only === g }]}>
+          {g} <span>{groupsAll[g].length}</span>
+        </a>
+      ))}
+    </nav>
+  </div>
+
+  {
+    groupNames.map((g) => (
+      <section class="lab-group" id={g}>
+        <h2 class="lab-group-title">{g} <span>{groupsAll[g].length}</span></h2>
+        {groupsAll[g].map((type) => (
+          <article class="frame" data-type={type} id={toId(type)}>
+            <div class="frame-bar">
+              <code>{type}</code>
+              <div class="frame-themes" role="group" aria-label={`Theme for ${type}`}>
+                {THEMES.map((th, i) => (
+                  <button class:list={["frame-th", { on: i === 0 }]} data-theme={th} title={th}>
+                    {th}
+                  </button>
+                ))}
+              </div>
+              <a class="frame-open" href={`/sections/${toId(type)}`} target="_blank" rel="noopener">open ↗</a>
+            </div>
+            <div class="frame-body">
+              <PageRenderer config={{ sections: [{ type, theme: "default", data: templates[type] }] }} />
+            </div>
+          </article>
+        ))}
+      </section>
+    ))
+  }
+</BaseLayout>
+
+<script is:inline>
+  (() => {
+    const THEMES = ["default", "alt", "muted", "inverse", "primary", "brand-secondary"];
+    // The themeable node is the section component's root. PageRenderer renders it
+    // as a DIRECT child of `.frame-body` (or, when a padding override exists, one
+    // level down inside `.section-slot`). Collect those top-level roots and keep
+    // only the ones carrying a full `theme-<name>` class — never inner utilities
+    // like `theme-text`/`theme-heading`.
+    const isThemed = (el) => THEMES.some((t) => el.classList.contains("theme-" + t));
+    const roots = (frame) => {
+      const body = frame.querySelector(".frame-body");
+      if (!body) return [];
+      const tops = [];
+      body.querySelectorAll(":scope > *").forEach((ch) => {
+        if (ch.classList.contains("section-slot")) tops.push(...ch.children);
+        else tops.push(ch);
+      });
+      return tops.filter(isThemed);
+    };
+    function applyTheme(frame, theme) {
+      roots(frame).forEach((el) => {
+        THEMES.forEach((t) => el.classList.remove("theme-" + t));
+        el.classList.add("theme-" + theme);
+      });
+      frame.querySelectorAll(".frame-th").forEach((b) =>
+        b.classList.toggle("on", b.dataset.theme === theme),
+      );
+    }
+    // Per-section switch (event-delegated).
+    document.addEventListener("click", (e) => {
+      const btn = e.target.closest(".frame-th");
+      if (btn) {
+        applyTheme(btn.closest(".frame"), btn.dataset.theme);
+        return;
+      }
+      const gbtn = e.target.closest("[data-global-theme]");
+      if (gbtn) {
+        const theme = gbtn.dataset.globalTheme;
+        document.querySelectorAll(".frame").forEach((f) => applyTheme(f, theme));
+        document
+          .querySelectorAll("[data-global-theme]")
+          .forEach((b) => b.classList.toggle("on", b === gbtn));
+      }
+    });
+  })();
+</script>
+
+<style>
+  .lab-toolbar {
+    position: sticky; top: 0; z-index: 60;
+    background: #0a1f2e; color: #e7eef2;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  }
+  .lab-toolbar-row {
+    display: flex; align-items: center; gap: 0.75rem; flex-wrap: wrap;
+    padding: 0.5rem 1rem;
+  }
+  .lab-title { font-size: 0.95rem; font-weight: 800; }
+  .lab-count {
+    font-size: 0.7rem; background: rgba(255, 255, 255, 0.14);
+    padding: 0.1rem 0.45rem; border-radius: 999px;
+  }
+  .lab-global { display: flex; align-items: center; gap: 0.3rem; font-size: 0.72rem; color: #9fb3c0; margin-left: auto; }
+  .lab-idx { color: #f0764a; text-decoration: none; font-weight: 600; font-size: 0.78rem; }
+
+  .lab-th, .frame-th {
+    font: inherit; font-size: 0.68rem; cursor: pointer; text-transform: capitalize;
+    padding: 0.12rem 0.45rem; border-radius: 999px;
+    border: 1px solid rgba(255, 255, 255, 0.22); background: transparent; color: #cfe0ea;
+  }
+  .lab-th:hover, .frame-th:hover { border-color: #f0764a; }
+  .lab-th.on, .frame-th.on { background: #e85c2b; border-color: #e85c2b; color: #fff; font-weight: 700; }
+
+  .lab-jump {
+    display: flex; gap: 0.35rem; overflow-x: auto; padding: 0 1rem 0.5rem;
+    -webkit-overflow-scrolling: touch;
+  }
+  .lab-jump a {
+    white-space: nowrap; font-size: 0.72rem; text-decoration: none; text-transform: capitalize;
+    padding: 0.15rem 0.5rem; border-radius: 999px; color: #cfe0ea;
+    border: 1px solid rgba(255, 255, 255, 0.16);
+  }
+  .lab-jump a span { color: #7f97a6; }
+  .lab-jump a.on { background: #e85c2b; border-color: #e85c2b; color: #fff; font-weight: 700; }
+
+  .lab-group { scroll-margin-top: 5rem; }
+  .lab-group-title {
+    position: sticky; top: 3.9rem; z-index: 40; margin: 0;
+    padding: 0.35rem 1rem; font-size: 0.85rem; font-weight: 800; text-transform: capitalize;
+    background: #12354c; color: #fff; display: flex; gap: 0.5rem; align-items: center;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+  }
+  .lab-group-title span { font-size: 0.66rem; background: rgba(255, 255, 255, 0.18); padding: 0.05rem 0.4rem; border-radius: 999px; }
+
+  .frame { scroll-margin-top: 6rem; border-bottom: 3px dashed rgba(0, 0, 0, 0.12); }
+  .frame-bar {
+    position: sticky; top: 5.35rem; z-index: 30;
+    display: flex; align-items: center; gap: 0.6rem; flex-wrap: wrap;
+    padding: 0.3rem 1rem; background: #06121c; color: #cfe0ea;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  }
+  .frame-bar code { font-weight: 700; color: #f0764a; font-size: 0.8rem; }
+  .frame-themes { display: flex; gap: 0.25rem; flex-wrap: wrap; }
+  .frame-open { margin-left: auto; color: #9fb3c0; text-decoration: none; font-size: 0.72rem; font-weight: 600; }
+  .frame-open:hover { color: #f0764a; }
+  .frame-body { min-height: 2rem; }
+</style>

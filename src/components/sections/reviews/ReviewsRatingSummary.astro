@@ -1,0 +1,122 @@
+---
+import { getReviews } from "@/lib/content";
+import type { Eyebrow } from "@/types/sections";
+
+/**
+ * reviews:rating-summary — a social-proof band led by the gold rating-lockup
+ * trio (platform · big score · stars · count) + a combined-reviews line, with an
+ * optional row of short featured quotes underneath. Works without video content,
+ * so it's a strong "high up" trust signal (PV rating trio). Theme-aware.
+ */
+interface RatingItem { platform?: string; score?: number | string; count?: string }
+interface Quote { body?: string; author?: string; location?: string }
+interface Props {
+  theme?: string;
+  data?: {
+    eyebrow?: Eyebrow;
+    heading?: string;
+    subheading?: string;
+    ratings?: RatingItem[];
+    combined?: string;
+    quotes?: Quote[];
+    showQuotes?: boolean;
+  };
+}
+
+const { theme = "default", data } = Astro.props;
+const ratings = data?.ratings ?? [];
+const showQuotes = data?.showQuotes ?? true;
+
+// Fall back to featured DB reviews for the quote row when none are supplied.
+let quotes: Quote[] = data?.quotes ?? [];
+if (showQuotes && quotes.length === 0) {
+  quotes = (await getReviews())
+    .sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
+    .slice(0, 3)
+    .map((r) => ({ body: r.data.body, author: r.data.author, location: r.data.location }));
+}
+
+const Logo = (p?: string) => (p ?? "").toLowerCase();
+---
+
+<section class:list={["reviews-rs section-wrapper section-py", `theme-${theme}`]}>
+  <div class="section-container">
+    {
+      (data?.eyebrow || data?.heading || data?.subheading) && (
+        <div class="flex flex-col items-center text-center gap-sm mb-10">
+          {data?.eyebrow && <span class="text-sm font-semibold uppercase tracking-widest text-color-brand-secondary">{data.eyebrow.text}</span>}
+          {data?.heading && <h2 class="theme-heading text-3xl lg:text-4xl font-bold m-0">{data.heading}</h2>}
+          {data?.subheading && <p class="theme-text-muted text-lg max-w-2xl m-0">{data.subheading}</p>}
+        </div>
+      )
+    }
+
+    {
+      ratings.length > 0 && (
+        <div class="rs-lockups">
+          {ratings.map((r) => (
+            <div class="rs-card">
+              <span class="rs-logo" aria-hidden="true">
+                {Logo(r.platform) === "google" && (<svg width="22" height="22" viewBox="0 0 24 24"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>)}
+                {Logo(r.platform) === "facebook" && (<svg width="22" height="22" viewBox="0 0 24 24"><path d="M24 12.07C24 5.44 18.63.07 12 .07S0 5.44 0 12.07c0 5.99 4.39 10.95 10.13 11.85v-8.38H7.08v-3.47h3.05V9.43c0-3.01 1.79-4.67 4.53-4.67 1.31 0 2.69.24 2.69.24v2.95h-1.51c-1.49 0-1.96.93-1.96 1.87v2.25h3.33l-.53 3.47h-2.8v8.38C19.61 23.02 24 18.06 24 12.07z" fill="#1877F2"/></svg>)}
+                {Logo(r.platform) === "yelp" && (<svg width="22" height="22" viewBox="0 0 24 24" fill="#D32323"><path d="M20.16 12.73l-4.7 1.14a.63.63 0 0 0-.32.98l3.03 3.78a.65.65 0 0 0 .88.16c.47-.88.8-1.82.98-2.8a9.1 9.1 0 0 0-.08-3.06.62.62 0 0 0-.69-.2zM12.77 11.33l4.31-2.22a.62.62 0 0 0 .05-1.08 9.28 9.28 0 0 0-5.45-1.49.62.62 0 0 0-.6.6l-.07 4.8a.64.64 0 0 0 .93.56z"/></svg>)}
+              </span>
+              <span class="rs-logo-name">{r.platform}</span>
+              <span class="rs-score">{r.score}</span>
+              <span class="rs-stars" aria-hidden="true">
+                {[0, 1, 2, 3, 4].map(() => (<svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>))}
+              </span>
+              {r.count && <span class="rs-count theme-text-subtle">{r.count}</span>}
+            </div>
+          ))}
+        </div>
+      )
+    }
+
+    {data?.combined && <p class="rs-combined">{data.combined}</p>}
+
+    {
+      showQuotes && quotes.length > 0 && (
+        <div class="rs-quotes">
+          {quotes.map((q) => (
+            <figure class="rs-quote">
+              <span class="rs-quote-stars" aria-hidden="true">
+                {[0, 1, 2, 3, 4].map(() => (<svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>))}
+              </span>
+              <blockquote class="rs-quote-body theme-text">{q.body}</blockquote>
+              <figcaption class="rs-quote-cite">
+                <span class="theme-heading">{q.author}</span>
+                {q.location && <span class="theme-text-subtle"> · {q.location}</span>}
+              </figcaption>
+            </figure>
+          ))}
+        </div>
+      )
+    }
+  </div>
+</section>
+
+<style>
+  .rs-lockups { display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem; }
+  .rs-card {
+    display: grid; grid-template-columns: auto auto; grid-template-areas: "logo name" "score stars" "score count";
+    align-items: center; column-gap: 0.6rem; row-gap: 0.1rem;
+    padding: 1rem 1.4rem; border-radius: 1rem; border: 1px solid var(--color-border); background: var(--card);
+    box-shadow: 0 10px 26px -18px rgba(0, 0, 0, 0.4);
+  }
+  .rs-logo { grid-area: logo; display: inline-flex; }
+  .rs-logo-name { grid-area: name; font-size: 0.85rem; font-weight: 700; color: var(--color-fg); }
+  .rs-score { grid-area: score; font-size: 2.1rem; font-weight: 800; line-height: 1; color: var(--color-fg); align-self: center; }
+  .rs-stars { grid-area: stars; display: inline-flex; gap: 0.05rem; color: var(--color-rating); }
+  .rs-count { grid-area: count; font-size: 0.72rem; }
+
+  .rs-combined { text-align: center; margin: 1.25rem 0 0; font-size: 1.05rem; font-weight: 700; color: var(--color-fg); }
+
+  .rs-quotes { display: grid; grid-template-columns: 1fr; gap: 1rem; margin-top: 2.5rem; }
+  @media (min-width: 768px) { .rs-quotes { grid-template-columns: repeat(3, 1fr); } }
+  .rs-quote { margin: 0; padding: 1.25rem 1.3rem; border-radius: 1rem; border: 1px solid var(--color-border); background: var(--card); display: flex; flex-direction: column; gap: 0.6rem; }
+  .rs-quote-stars { display: inline-flex; gap: 0.05rem; color: var(--color-rating); }
+  .rs-quote-body { margin: 0; font-size: 0.9rem; line-height: 1.6; }
+  .rs-quote-cite { font-size: 0.82rem; }
+  .rs-quote-cite .theme-heading { font-weight: 700; }
+</style>

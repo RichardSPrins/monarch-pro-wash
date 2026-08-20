@@ -1,0 +1,13 @@
+---
+import FormRenderer from "@/components/forms/FormRenderer.astro";
+import { getServices } from "@/lib/content";
+
+/**
+ * HeroQuoteForm — the hero form slot. Thin: just supplies sorted services to the
+ * shared FormRenderer (default "simple" lead form). FormRenderer ALREADY renders
+ * its own card + heading + submit, so DO NOT wrap it in another card/heading here.
+ */
+const services = (await getServices()).sort((a, b) => (a.data.order ?? 0) - (b.data.order ?? 0));
+---
+
+<FormRenderer services={services} />

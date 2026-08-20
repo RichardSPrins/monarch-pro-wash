@@ -5,6 +5,7 @@ import { highlight } from "@/lib/highlight";
 import type { Eyebrow, SectionCTA } from "@/types/sections";
 import Badge from "@/components/elements/badge/Badge.astro";
 import { Button } from "@/components/elements/button";
+import CtaSpotlight from "@/components/elements/CtaSpotlight.astro";
 
 /**
  * cta:banner — a full-width color band with the message on one side and the
@@ -21,6 +22,7 @@ interface Props {
     cta?: SectionCTA;
     secondaryCta?: SectionCTA;
     showPhone?: boolean;
+    spotlight?: boolean;
     backgroundImage?: { src: string; overlayOpacity?: number };
   };
 }
@@ -59,18 +61,21 @@ const overlayOpacity = (data?.backgroundImage?.overlayOpacity ?? 65) / 100;
 
       {
         (ctas.length > 0 || data?.showPhone) && (
-          <div class="flex flex-wrap items-center gap-md shrink-0">
-            {ctas.map((cta, i) => (
-              <Button variant={cta.variant || (i === 0 ? "primary" : "outline")} href={cta.href}>{cta.label}</Button>
-            ))}
-            {data?.showPhone && business.phone && (
-              <a href={`tel:${business.phone}`} class="inline-flex items-center gap-xs font-bold text-lg theme-text hover:opacity-80 transition-opacity no-underline">
-                <svg class="w-5 h-5 shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-                  <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z" />
-                </svg>
-                {business.phone}
-              </a>
-            )}
+          <div class="flex flex-col gap-3 shrink-0 items-start md:items-end">
+            <div class="flex flex-wrap items-center gap-md">
+              {ctas.map((cta, i) => (
+                <Button variant={cta.variant || (i === 0 ? "primary" : "outline")} href={cta.href}>{cta.label}</Button>
+              ))}
+              {data?.showPhone && business.phone && (
+                <a href={`tel:${business.phone}`} class="inline-flex items-center gap-xs font-bold text-lg theme-text hover:opacity-80 transition-opacity no-underline">
+                  <svg class="w-5 h-5 shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z" />
+                  </svg>
+                  {business.phone}
+                </a>
+              )}
+            </div>
+            {data?.spotlight && <CtaSpotlight align="start" />}
           </div>
         )
       }

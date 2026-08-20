@@ -1,0 +1,75 @@
+---
+import { getBusinessData } from "@/lib/utils";
+import { highlight } from "@/lib/highlight";
+import type { Eyebrow, SectionCTA } from "@/types/sections";
+import { Button } from "@/components/elements/button";
+
+/**
+ * trust-bar:split-cta — a conversion bar: trust points (checklist chips) on one
+ * side, a CTA + click-to-call on the other. Pairs proof with an action right
+ * where you want it. Theme-aware.
+ */
+interface Props {
+  theme?: string;
+  data?: {
+    eyebrow?: Eyebrow;
+    heading?: string;
+    items?: string[];
+    cta?: SectionCTA;
+    showPhone?: boolean;
+  };
+}
+
+const { theme = "default", data } = Astro.props;
+const business = await getBusinessData();
+const items = data?.items ?? [];
+---
+
+<section class:list={["section-wrapper section-py-sm", `theme-${theme}`]}>
+  <div class="section-container">
+    <div class="tsc">
+      <div class="tsc-left">
+        {data?.heading && <p class="tsc-heading theme-heading" set:html={highlight(data.heading)}></p>}
+        {
+          items.length > 0 && (
+            <ul class="tsc-points">
+              {items.map((it) => (
+                <li class="tsc-point">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M20 6 9 17l-5-5" /></svg>
+                  {it}
+                </li>
+              ))}
+            </ul>
+          )
+        }
+      </div>
+      {
+        (data?.cta || data?.showPhone) && (
+          <div class="tsc-actions">
+            {data?.cta && <Button variant={data.cta.variant ?? "primary"} href={data.cta.href}>{data.cta.label}</Button>}
+            {data?.showPhone && business.phone && (
+              <a href={`tel:${business.phone}`} class="inline-flex items-center gap-xs font-bold text-lg theme-text hover:opacity-80 transition-opacity no-underline whitespace-nowrap">
+                <svg class="w-5 h-5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z" /></svg>
+                {business.phone}
+              </a>
+            )}
+          </div>
+        )
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  .tsc {
+    display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1.25rem 2rem;
+    padding: 1.25rem 1.6rem; border-radius: 1rem; border: 1px solid var(--color-border);
+    background: color-mix(in srgb, var(--color-brand-secondary) 6%, var(--card));
+  }
+  .tsc-left { display: flex; flex-direction: column; gap: 0.6rem; }
+  .tsc-heading { margin: 0; font-size: 1.15rem; font-weight: 800; }
+  .tsc-points { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 0.5rem 1.4rem; }
+  .tsc-point { display: inline-flex; align-items: center; gap: 0.4rem; font-size: 0.9rem; font-weight: 600; color: var(--color-fg); }
+  .tsc-point svg { width: 1rem; height: 1rem; color: var(--color-brand-secondary); flex-shrink: 0; }
+  .tsc-actions { display: flex; align-items: center; gap: 1.25rem; flex-wrap: wrap; }
+</style>

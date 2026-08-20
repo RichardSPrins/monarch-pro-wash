@@ -1,15 +1,15 @@
 ---
-import { getServices } from "@/lib/content";
-import type { Eyebrow } from "@/types/sections";
-import Badge from "@/components/elements/badge/Badge.astro";
+import { getServices, getServiceCategories } from "@/lib/content";
+import type { Eyebrow, SectionCTA } from "@/types/sections";
 import SmartImage from "@/components/media/SmartImage.astro";
-import {
-  Tabs,
-  TabsList,
-  TabsTrigger,
-  TabsContent,
-} from "@/components/blocks/tabs";
+import { Button } from "@/components/elements/button";
 
+/**
+ * services:tabs — one tab per service CATEGORY, with a fully custom, polished
+ * tab UI (segmented pill bar with a filled active state + count, animated panel
+ * transition, keyboard nav). Each panel: category blurb, a two-column service
+ * link list, an image, and an optional CTA. (PV "Air Conditioning & Heating".)
+ */
 interface Props {
   theme?: string;
   data?: {
@@ -17,117 +17,195 @@ interface Props {
     heading?: string;
     subheading?: string;
     limit?: number;
+    hrefBase?: string;
+    cta?: SectionCTA;
   };
 }
 
 const { theme = "default", data } = Astro.props;
+const hrefBase = (data?.hrefBase ?? "/services").replace(/\/$/, "");
 
-const services = await getServices();
-const sorted = services
-  .sort((a, b) => a.data.order - b.data.order)
-  .slice(0, data?.limit ?? services.length);
+const [services, categories] = await Promise.all([getServices(), getServiceCategories()]);
+
+const groups = categories
+  .map((c) => {
+    const members = services
+      .filter((s) => s.data.category === c.data.slug)
+      .sort((a, b) => a.data.order - b.data.order);
+    return {
+      title: c.data.title,
+      description: c.data.description,
+      services: members,
+      image: members.find((m) => m.data.image)?.data.image,
+    };
+  })
+  .filter((g) => g.services.length > 0)
+  .sort((a, b) => b.services.length - a.services.length)
+  .slice(0, data?.limit ?? undefined);
 ---
 
 <section class={`section-wrapper section-py theme-${theme}`}>
   <div class="section-container">
-    {/* Section header */}
-    <div class="flex flex-col items-center text-center gap-sm mb-12">
-      {
-        data?.eyebrow && (
-          <div>
-            {data.eyebrow.variant === "badge" ? (
-              <Badge class="uppercase tracking-widest text-xs">
-                {data.eyebrow.text}
-              </Badge>
-            ) : (
-              <span class="text-sm font-semibold uppercase tracking-widest text-color-brand-secondary">
-                {data.eyebrow.text}
-              </span>
-            )}
-          </div>
-        )
-      }
-      {
-        data?.heading && (
-          <h2 class="theme-heading text-3xl lg:text-4xl font-bold m-0">
-            {data.heading}
-          </h2>
-        )
-      }
-      {
-        data?.subheading && (
-          <p class="theme-text-muted text-lg max-w-2xl m-0">
-            {data.subheading}
-          </p>
-        )
-      }
+    <div class="flex flex-col items-center text-center gap-sm mb-10">
+      {data?.eyebrow && <span class="text-sm font-semibold uppercase tracking-widest text-color-brand-secondary">{data.eyebrow.text}</span>}
+      {data?.heading && <h2 class="theme-heading text-3xl lg:text-4xl font-bold m-0">{data.heading}</h2>}
+      {data?.subheading && <p class="theme-text-muted text-lg max-w-2xl m-0">{data.subheading}</p>}
     </div>
 
-    {/* Tabs */}
     {
-      sorted.length > 0 && (
-        <Tabs defaultValue="svc-0" class="w-full max-w-4xl mx-auto">
-          <TabsList class="flex-wrap">
-            {sorted.map((service, i) => (
-              <TabsTrigger value={`svc-${i}`}>{service.data.title}</TabsTrigger>
-            ))}
-          </TabsList>
+      groups.length > 0 && (
+        <div class="svc-tabs" data-svc-tabs>
+          <div class="svc-tabs-barwrap">
+            <div class="svc-tabs-bar" role="tablist" aria-label="Service categories">
+              {groups.map((g, i) => (
+                <button
+                  type="button"
+                  role="tab"
+                  id={`svctab-${i}`}
+                  aria-selected={i === 0 ? "true" : "false"}
+                  aria-controls={`svcpane-${i}`}
+                  tabindex={i === 0 ? "0" : "-1"}
+                  class:list={["svc-tab-btn", { "is-active": i === 0 }]}
+                  data-tab={`cat-${i}`}
+                >
+                  <span class="svc-tab-btn-label">{g.title}</span>
+                  <span class="svc-tab-btn-count">{g.services.length}</span>
+                </button>
+              ))}
+            </div>
+          </div>
 
-          {sorted.map((service, i) => (
-            <TabsContent value={`svc-${i}`}>
-              <div class="grid gap-lg md:grid-cols-2 items-center">
-                <div class="flex flex-col gap-sm">
-                  <div class="flex items-center gap-xs">
-                    <h3 class="theme-heading text-2xl font-bold m-0">
-                      {service.data.title}
-                    </h3>
-                    {service.data.isEmergency && (
-                      <span
-                        class="shrink-0 text-xs font-semibold px-2 py-0.5 rounded-full"
-                        style="background: color-mix(in srgb, var(--color-brand-secondary) 15%, transparent); color: var(--color-brand-secondary-fg)"
-                      >
-                        Emergency
-                      </span>
+          <div class="svc-tabs-panels">
+            {groups.map((g, i) => (
+              <div class="svc-tab-pane" id={`svcpane-${i}`} role="tabpanel" aria-labelledby={`svctab-${i}`} data-pane={`cat-${i}`} hidden={i !== 0}>
+                <div class="svc-tab-panel">
+                  <div class="svc-tab-content">
+                    <h3 class="theme-heading text-2xl font-bold m-0">{g.title}</h3>
+                    {g.description && <p class="theme-text-muted text-base leading-relaxed m-0">{g.description}</p>}
+                    <ul class="svc-tab-links">
+                      {g.services.map((s) => (
+                        <li>
+                          <a href={`${hrefBase}/${s.data.slug}`} class="svc-tab-link group">
+                            <svg class="svc-tab-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M9 6l6 6-6 6" /></svg>
+                            <span>{s.data.title}</span>
+                          </a>
+                        </li>
+                      ))}
+                    </ul>
+                    {data?.cta && (
+                      <div class="mt-2">
+                        <Button variant={data.cta.variant ?? "primary"} href={data.cta.href}>{data.cta.label}</Button>
+                      </div>
                     )}
                   </div>
-                  {service.data.description && (
-                    <p class="theme-text-muted text-base leading-relaxed m-0">
-                      {service.data.description}
-                    </p>
-                  )}
-                  <a
-                    href={`/services/${service.data.slug}`}
-                    class="text-sm font-semibold text-primary inline-flex items-center gap-1 no-underline self-start group mt-2"
-                  >
-                    Learn more
-                    <svg
-                      class="w-4 h-4 transition-transform duration-200 group-hover:translate-x-1"
-                      xmlns="http://www.w3.org/2000/svg"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      stroke-width="2"
-                      aria-hidden="true"
-                    >
-                      <path d="M5 12h14M12 5l7 7-7 7" />
-                    </svg>
-                  </a>
-                </div>
-                {service.data.image && (
-                  <div class="rounded-xl border theme-border bg-background overflow-hidden">
-                    <SmartImage
-                      src={service.data.image}
-                      alt={service.data.title}
-                      width={640}
-                      class="w-full h-full object-cover"
-                    />
+                  <div class="svc-tab-media">
+                    {g.image ? (
+                      <SmartImage src={g.image} alt={g.title} width={760} class="svc-tab-img" loading="lazy" />
+                    ) : (
+                      <span class="svc-tab-fallback" aria-hidden="true" />
+                    )}
                   </div>
-                )}
+                </div>
               </div>
-            </TabsContent>
-          ))}
-        </Tabs>
+            ))}
+          </div>
+        </div>
       )
     }
   </div>
 </section>
+
+<script is:inline>
+  if (!window.__svcTabsInit) {
+    window.__svcTabsInit = true;
+    const activate = (root, val, focus) => {
+      const bar = root.querySelector(".svc-tabs-bar");
+      let activeBtn = null;
+      root.querySelectorAll("[data-tab]").forEach((b) => {
+        const on = b.dataset.tab === val;
+        b.classList.toggle("is-active", on);
+        b.setAttribute("aria-selected", on ? "true" : "false");
+        b.tabIndex = on ? 0 : -1;
+        if (on) activeBtn = b;
+      });
+      // Scroll the bar so the selected tab snaps to the left edge (no reorder).
+      if (activeBtn && bar) {
+        const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+        const padLeft = parseFloat(getComputedStyle(bar).paddingLeft) || 0;
+        const left = bar.scrollLeft + (activeBtn.getBoundingClientRect().left - bar.getBoundingClientRect().left) - padLeft;
+        bar.scrollTo({ left, behavior: reduce ? "auto" : "smooth" });
+      }
+      if (activeBtn && focus) activeBtn.focus();
+      root.querySelectorAll("[data-pane]").forEach((p) => {
+        const on = p.dataset.pane === val;
+        p.hidden = !on;
+        if (on) { p.classList.remove("is-entering"); void p.offsetWidth; p.classList.add("is-entering"); }
+      });
+    };
+    document.addEventListener("click", (e) => {
+      const btn = e.target.closest("[data-tab]");
+      if (btn) activate(btn.closest("[data-svc-tabs]"), btn.dataset.tab, false);
+    });
+    document.addEventListener("keydown", (e) => {
+      if (e.key !== "ArrowLeft" && e.key !== "ArrowRight") return;
+      const btn = e.target.closest && e.target.closest("[data-tab]");
+      if (!btn) return;
+      const root = btn.closest("[data-svc-tabs]");
+      const btns = [...root.querySelectorAll("[data-tab]")];
+      const i = btns.indexOf(btn);
+      const next = btns[(i + (e.key === "ArrowRight" ? 1 : -1) + btns.length) % btns.length];
+      activate(root, next.dataset.tab, true);
+      e.preventDefault();
+    });
+  }
+</script>
+
+<style is:global>
+  /* Segmented pill bar */
+  .svc-tabs-barwrap { display: flex; justify-content: center; margin-bottom: 2rem; }
+  .svc-tabs-bar {
+    display: inline-flex; gap: 0.25rem; max-width: 100%; overflow-x: auto; scrollbar-width: none;
+    padding: 0.35rem; border-radius: 999px;
+    background: color-mix(in srgb, var(--color-fg) 5%, transparent);
+    border: 1px solid var(--color-border);
+  }
+  .svc-tabs-bar::-webkit-scrollbar { display: none; }
+
+  .svc-tab-btn {
+    display: inline-flex; align-items: center; gap: 0.45rem; white-space: nowrap; cursor: pointer;
+    padding: 0.5rem 1rem; border: 0; border-radius: 999px; background: transparent;
+    font: inherit; font-size: 0.9rem; font-weight: 600; color: var(--color-fg-muted);
+    transition: color 0.18s ease, background 0.18s ease, box-shadow 0.18s ease;
+  }
+  .svc-tab-btn:hover { color: var(--color-fg); background: color-mix(in srgb, var(--color-fg) 6%, transparent); }
+  .svc-tab-btn.is-active {
+    color: #fff; background: var(--t-primary);
+    box-shadow: 0 8px 20px -8px color-mix(in srgb, var(--t-primary) 80%, transparent);
+  }
+  .svc-tab-btn-count {
+    font-size: 0.68rem; font-weight: 700; line-height: 1; padding: 0.15rem 0.4rem; border-radius: 999px;
+    background: color-mix(in srgb, var(--color-fg) 12%, transparent); color: var(--color-fg-muted);
+  }
+  .svc-tab-btn.is-active .svc-tab-btn-count { background: rgba(255, 255, 255, 0.22); color: #fff; }
+  .svc-tab-btn:focus-visible { outline: 2px solid var(--t-secondary); outline-offset: 2px; }
+
+  /* Panels */
+  .svc-tab-panel { display: grid; grid-template-columns: 1fr; gap: 1.75rem; align-items: center; }
+  @media (min-width: 768px) { .svc-tab-panel { grid-template-columns: 1.05fr 0.95fr; gap: 2.75rem; } }
+
+  .is-entering { animation: svcTabIn 0.32s ease both; }
+  @keyframes svcTabIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+  @media (prefers-reduced-motion: reduce) { .is-entering { animation: none; } }
+
+  .svc-tab-content { display: flex; flex-direction: column; gap: 1rem; }
+  .svc-tab-links { list-style: none; margin: 0.25rem 0 0; padding: 0; display: grid; grid-template-columns: 1fr; gap: 0.15rem 1.5rem; }
+  @media (min-width: 480px) { .svc-tab-links { grid-template-columns: repeat(2, 1fr); } }
+  .svc-tab-link { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.45rem 0; font-size: 0.95rem; font-weight: 600; color: var(--color-fg); text-decoration: none; border-bottom: 1px solid transparent; transition: color 0.15s ease; }
+  .svc-tab-link:hover { color: var(--color-primary); }
+  .svc-tab-chevron { width: 1rem; height: 1rem; color: var(--color-primary); flex-shrink: 0; transition: transform 0.15s ease; }
+  .svc-tab-link:hover .svc-tab-chevron { transform: translateX(3px); }
+
+  .svc-tab-media { border-radius: 1rem; overflow: hidden; aspect-ratio: 4 / 3; box-shadow: 0 20px 48px -22px rgba(0, 0, 0, 0.45); }
+  .svc-tab-img { width: 100%; height: 100%; object-fit: cover; }
+  .svc-tab-fallback { display: block; width: 100%; height: 100%; background: linear-gradient(155deg, var(--t-secondary) 0%, var(--t-bg-inverse) 100%); }
+</style>

@@ -1,0 +1,126 @@
+---
+/**
+ * BackgroundMotif — a decorative, non-content background layer for a section.
+ * Drops inside a `position:relative` section (behind content, which should sit in
+ * a `relative z-10` wrapper). All motifs are tint-controlled via `color` and
+ * kept subtle via `opacity` so they never fight the copy.
+ *
+ *   <section class="relative overflow-hidden theme-alt">
+ *     <BackgroundMotif motif="butterfly" position="right" color="var(--color-primary)" />
+ *     <div class="relative z-10">…content…</div>
+ *   </section>
+ *
+ * Motifs:
+ *   butterfly       — the brand mark as a watermark (CSS-masked → tints to any `color`)
+ *   butterfly-color — the full-colour brand butterfly (an <img>; `color` ignored)
+ *   droplets        — scattered water dots
+ *   splash          — a soft water-streak arc
+ *   glow            — a radial brand-colour bloom
+ *   grid            — a faint dot-grid texture
+ */
+type Motif = "butterfly" | "butterfly-color" | "droplets" | "splash" | "glow" | "grid";
+interface Props {
+  motif?: Motif;
+  position?: "left" | "right" | "center" | "top" | "bottom";
+  color?: string;
+  opacity?: number;
+  size?: string;
+  /** Override the butterfly source SVG (solid silhouette for `butterfly`, full art for `butterfly-color`). */
+  src?: string;
+  class?: string;
+}
+
+const {
+  motif = "butterfly",
+  position = "right",
+  color = "var(--color-primary)",
+  opacity,
+  size = "34rem",
+  src,
+  class: cls,
+} = Astro.props;
+
+const op = opacity ?? { butterfly: 0.07, "butterfly-color": 0.16, droplets: 0.5, splash: 0.12, glow: 0.5, grid: 0.5 }[motif];
+const maskSrc = src ?? "/brand/butterfly-dark.svg";
+const colorSrc = src ?? "/brand/butterfly-full-color-black-antennae.svg";
+---
+
+<div
+  class:list={["bgm", `bgm-${motif}`, `bgm-pos-${position}`, cls]}
+  style={`--bgm-color:${color};--bgm-op:${op};--bgm-size:${size};--bgm-mask:url("${maskSrc}");`}
+  aria-hidden="true"
+>
+  {motif === "butterfly-color" && <img class="bgm-img" src={colorSrc} alt="" width="954" height="733" />}
+  {motif === "droplets" && (
+    <svg class="bgm-svg" viewBox="0 0 400 400" fill="var(--bgm-color)">
+      <circle cx="60" cy="70" r="7" /><circle cx="130" cy="40" r="4" /><circle cx="210" cy="90" r="10" />
+      <circle cx="300" cy="55" r="5" /><circle cx="360" cy="120" r="8" /><circle cx="90" cy="160" r="5" />
+      <circle cx="180" cy="200" r="6" /><circle cx="270" cy="180" r="4" /><circle cx="340" cy="240" r="9" />
+      <circle cx="50" cy="260" r="8" /><circle cx="140" cy="300" r="5" /><circle cx="230" cy="330" r="7" />
+      <circle cx="320" cy="340" r="4" /><circle cx="110" cy="360" r="6" /><circle cx="200" cy="140" r="3" />
+    </svg>
+  )}
+  {motif === "splash" && (
+    <svg class="bgm-svg" viewBox="0 0 600 300" fill="none" stroke="var(--bgm-color)" stroke-linecap="round">
+      <path d="M20 210 C 160 120 300 260 420 150 C 500 78 560 120 585 96" stroke-width="10" />
+      <path d="M40 250 C 180 180 320 300 460 200 C 520 158 570 178 590 160" stroke-width="6" opacity="0.6" />
+      <path d="M70 160 C 190 96 300 200 400 120" stroke-width="4" opacity="0.5" />
+    </svg>
+  )}
+</div>
+
+<style>
+  .bgm {
+    position: absolute;
+    z-index: 0;
+    pointer-events: none;
+    opacity: var(--bgm-op);
+  }
+  .bgm-svg { display: block; width: 100%; height: 100%; }
+  .bgm-img { display: block; width: var(--bgm-size); height: auto; }
+
+  /* ---- butterfly: brand mark as a masked watermark (tintable) ---- */
+  .bgm-butterfly {
+    width: var(--bgm-size);
+    height: var(--bgm-size);
+    background: var(--bgm-color);
+    -webkit-mask: var(--bgm-mask) no-repeat center / contain;
+    mask: var(--bgm-mask) no-repeat center / contain;
+  }
+  .bgm-butterfly-color { width: var(--bgm-size); height: auto; }
+
+  /* ---- droplets / splash sizing ---- */
+  .bgm-droplets { width: var(--bgm-size); height: var(--bgm-size); }
+  .bgm-splash { width: calc(var(--bgm-size) * 1.4); height: calc(var(--bgm-size) * 0.7); }
+
+  /* ---- glow: radial brand bloom ---- */
+  .bgm-glow {
+    width: var(--bgm-size);
+    height: var(--bgm-size);
+    background: radial-gradient(circle at center, var(--bgm-color) 0%, transparent 68%);
+    filter: blur(6px);
+  }
+
+  /* ---- grid: faint dot texture (whole layer) ---- */
+  .bgm-grid {
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    background-image: radial-gradient(var(--bgm-color) 1.4px, transparent 1.4px);
+    background-size: 26px 26px;
+    -webkit-mask: radial-gradient(ellipse at center, #000 35%, transparent 78%);
+    mask: radial-gradient(ellipse at center, #000 35%, transparent 78%);
+  }
+
+  /* ---- positioning ---- */
+  .bgm-pos-right { top: 50%; right: 0; transform: translate(30%, -50%); }
+  .bgm-pos-left { top: 50%; left: 0; transform: translate(-30%, -50%); }
+  .bgm-pos-center { top: 50%; left: 50%; transform: translate(-50%, -50%); }
+  .bgm-pos-top { top: 0; left: 50%; transform: translate(-50%, -40%); }
+  .bgm-pos-bottom { bottom: 0; left: 50%; transform: translate(-50%, 40%); }
+  .bgm-grid.bgm-pos-right,
+  .bgm-grid.bgm-pos-left,
+  .bgm-grid.bgm-pos-center,
+  .bgm-grid.bgm-pos-top,
+  .bgm-grid.bgm-pos-bottom { top: 0; left: 0; transform: none; }
+</style>

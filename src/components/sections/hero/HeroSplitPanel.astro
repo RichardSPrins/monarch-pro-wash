@@ -1,0 +1,151 @@
+---
+import { getBusinessData } from "@/lib/utils";
+import { getBackgroundImage } from "@/lib/images";
+import { highlight } from "@/lib/highlight";
+import type { Eyebrow, SectionCTA } from "@/types/sections";
+import { Button } from "@/components/elements/button";
+
+/**
+ * hero:split-panel — a solid content panel beside a CONTAINED photo. The panel
+ * uses the section theme (so it re-skins cleanly), the image is a real framed
+ * photo with soft elevation and an optional floating proof card. Depth from
+ * shadow + a genuine proof element, not clipped geometry. The standard
+ * contractor "content + image above the fold" hero.
+ */
+interface Props {
+  theme?: string;
+  data?: {
+    eyebrow?: Eyebrow;
+    heading?: string;
+    headline?: string;
+    subheading?: string;
+    subheadline?: string;
+    body?: string | string[];
+    ctas?: SectionCTA[];
+    showPhone?: boolean;
+    trustBadges?: Array<{ text: string }>;
+    image?: { src: string; alt?: string };
+    imagePosition?: "right" | "left";
+    floatingCard?: { value?: string; label?: string };
+  };
+}
+
+const { theme = "default", data } = Astro.props;
+const business = await getBusinessData();
+
+const heading = data?.heading ?? data?.headline;
+const subheading = data?.subheading ?? data?.subheadline;
+const bodyParts = Array.isArray(data?.body) ? data?.body : data?.body ? [data.body] : [];
+const badges = data?.trustBadges ?? [];
+const imageLeft = data?.imagePosition === "left";
+const card = data?.floatingCard;
+
+const imgUrl = await getBackgroundImage(data?.image?.src, { width: 1400 });
+const hasImage = !!imgUrl;
+---
+
+<section class:list={["hero-panel section-wrapper relative overflow-hidden", `theme-${theme}`]}>
+  <div class="section-container">
+    <div class:list={["hero-panel-grid", imageLeft && "is-image-left"]}>
+      <!-- Content panel -->
+      <div class="hero-panel-content">
+        {
+          data?.eyebrow && (
+            <span class="text-sm font-semibold uppercase tracking-widest text-color-brand-secondary">
+              {data.eyebrow.text}
+            </span>
+          )
+        }
+        {heading && <h1 class="hero-panel-h theme-heading font-extrabold m-0 leading-[1.06]" set:html={highlight(heading)}></h1>}
+        {subheading && <p class="theme-text-muted text-lg lg:text-xl m-0 max-w-xl">{subheading}</p>}
+        {bodyParts.length > 0 && (
+          <div class="flex flex-col gap-3 theme-text max-w-xl">
+            {bodyParts.map((p) => <p class="m-0 leading-relaxed" set:html={highlight(p)} />)}
+          </div>
+        )}
+
+        {
+          (data?.ctas?.length || data?.showPhone) && (
+            <div class="flex flex-wrap items-center gap-sm mt-1">
+              {data?.ctas?.map((cta) => (
+                <Button variant={cta.variant ?? "primary"} href={cta.href}>{cta.label}</Button>
+              ))}
+              {data?.showPhone && business.phone && (
+                <a href={`tel:${business.phone}`} class="inline-flex items-center gap-xs font-bold text-lg theme-text hover:opacity-80 transition-opacity no-underline">
+                  <svg class="w-5 h-5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z" /></svg>
+                  {business.phone}
+                </a>
+              )}
+            </div>
+          )
+        }
+
+        {
+          badges.length > 0 && (
+            <ul class="hero-panel-chips">
+              {badges.map((b) => (
+                <li class="hero-panel-chip">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M20 6 9 17l-5-5" /></svg>
+                  {b.text}
+                </li>
+              ))}
+            </ul>
+          )
+        }
+      </div>
+
+      <!-- Framed photo -->
+      {
+        hasImage && (
+          <div class="hero-panel-media">
+            <div class="hero-panel-photo" style={`background-image:url('${imgUrl}')`} role="img" aria-label={data?.image?.alt ?? ""} />
+            {card?.value && (
+              <div class="hero-panel-floater">
+                <span class="floater-value">{card.value}</span>
+                {card.label && <span class="floater-label">{card.label}</span>}
+              </div>
+            )}
+          </div>
+        )
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero-panel { padding-block: clamp(2.5rem, 6vw, 5rem); }
+  .hero-panel-grid {
+    display: grid; grid-template-columns: 1fr; gap: 2rem; align-items: center;
+  }
+  @media (min-width: 1024px) {
+    .hero-panel-grid { grid-template-columns: 1.05fr 0.95fr; gap: 3.5rem; }
+    .hero-panel-grid.is-image-left .hero-panel-content { order: 2; }
+    .hero-panel-grid.is-image-left .hero-panel-media { order: 1; }
+  }
+
+  .hero-panel-content { display: flex; flex-direction: column; gap: 1.25rem; }
+  .hero-panel-h { font-size: clamp(2.25rem, 4.6vw, 3.6rem); text-wrap: balance; }
+
+  .hero-panel-chips { list-style: none; margin: 0.25rem 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: 0.5rem 1.1rem; }
+  .hero-panel-chip { display: inline-flex; align-items: center; gap: 0.4rem; font-size: 0.85rem; font-weight: 600; color: var(--color-fg); }
+  .hero-panel-chip svg { width: 1rem; height: 1rem; color: var(--t-secondary); }
+
+  .hero-panel-media { position: relative; }
+  .hero-panel-photo {
+    background-size: cover; background-position: center;
+    aspect-ratio: 5 / 4; width: 100%; border-radius: 1rem;
+    box-shadow: 0 24px 60px -20px rgba(0, 0, 0, 0.55), 0 0 0 1px rgba(255, 255, 255, 0.06);
+  }
+  @media (min-width: 1024px) { .hero-panel-photo { aspect-ratio: 4 / 5; min-height: 30rem; } }
+
+  /* A real proof element for depth — not decorative geometry. */
+  .hero-panel-floater {
+    position: absolute; left: -0.75rem; bottom: 1.25rem;
+    display: flex; flex-direction: column; gap: 0.1rem;
+    background: var(--t-primary); color: #fff;
+    padding: 0.7rem 1.1rem; border-radius: 0.75rem;
+    box-shadow: 0 16px 40px -12px rgba(0, 0, 0, 0.5);
+  }
+  .floater-value { font-size: 1.35rem; font-weight: 800; line-height: 1; }
+  .floater-label { font-size: 0.72rem; font-weight: 600; opacity: 0.9; text-transform: uppercase; letter-spacing: 0.04em; }
+</style>

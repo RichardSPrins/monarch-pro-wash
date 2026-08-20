@@ -1,0 +1,136 @@
+---
+import { getBusinessData } from "@/lib/utils";
+import { getBackgroundImage } from "@/lib/images";
+import { highlight } from "@/lib/highlight";
+import type { Eyebrow, SectionCTA } from "@/types/sections";
+import { Button } from "@/components/elements/button";
+
+/**
+ * hero:spotlight — cinematic full-bleed photo with content anchored to the
+ * BOTTOM and a bottom-up gradient, so the photograph carries the section and the
+ * headline reads cleanly against it. Optional rating-lockup trio. Photo-forward,
+ * no flat-color panels (PV / Shattered Vision energy).
+ */
+interface Rating { platform?: string; score?: number | string; count?: string }
+interface Props {
+  theme?: string;
+  data?: {
+    eyebrow?: Eyebrow;
+    heading?: string;
+    headline?: string;
+    subheading?: string;
+    subheadline?: string;
+    ctas?: SectionCTA[];
+    showPhone?: boolean;
+    ratings?: Rating[];
+    combinedReviews?: string;
+    trustBadges?: Array<{ text: string }>;
+    align?: "left" | "center";
+    backgroundImage?: { src: string; overlayOpacity?: number };
+  };
+}
+
+const { theme = "default", data } = Astro.props;
+const business = await getBusinessData();
+const heading = data?.heading ?? data?.headline;
+const subheading = data?.subheading ?? data?.subheadline;
+const align = data?.align ?? "left";
+const ratings = data?.ratings ?? [];
+const badges = data?.trustBadges ?? [];
+
+const bgUrl = await getBackgroundImage(data?.backgroundImage?.src, { width: 2200 });
+const hasBackground = !!bgUrl;
+const overlayOpacity = (data?.backgroundImage?.overlayOpacity ?? 40) / 100;
+---
+
+<section
+  class:list={["hero-spotlight section-wrapper relative overflow-hidden", `theme-${theme}`, hasBackground ? "has-bg" : "no-bg"]}
+  style={hasBackground ? `--hero-image: url('${bgUrl}'); --hero-overlay: ${overlayOpacity}` : ""}
+>
+  <div class="section-container relative z-10 hero-spotlight-inner">
+    <div class:list={["flex flex-col gap-5 max-w-3xl", align === "center" && "items-center text-center mx-auto"]}>
+      {
+        ratings.length > 0 && (
+          <div class:list={["hero-ratings", align === "center" && "justify-center"]}>
+            {ratings.map((r) => (
+              <span class="rating-lockup">
+                {r.platform && <span class="rating-platform">{r.platform}</span>}
+                <span class="rating-stars" aria-hidden="true">
+                  {[0, 1, 2, 3, 4].map(() => (
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77 5.82 21l1.18-6.88-5-4.87 7.1-1.01L12 2z" /></svg>
+                  ))}
+                </span>
+                <span class="rating-score">{r.score}</span>
+              </span>
+            ))}
+            {data?.combinedReviews && <span class="rating-combined">{data.combinedReviews}</span>}
+          </div>
+        )
+      }
+      {data?.eyebrow && <span class="text-sm font-semibold uppercase tracking-widest text-color-brand-secondary">{data.eyebrow.text}</span>}
+      {heading && <h1 class="hero-h font-extrabold m-0 leading-[1.05] text-white" set:html={highlight(heading)}></h1>}
+      {subheading && <p class="text-lg lg:text-xl max-w-2xl m-0 text-white/85">{subheading}</p>}
+      {
+        (data?.ctas?.length || data?.showPhone) && (
+          <div class:list={["flex flex-wrap items-center gap-sm mt-2", align === "center" && "justify-center"]}>
+            {data?.ctas?.map((cta) => <Button variant={cta.variant ?? "primary"} href={cta.href}>{cta.label}</Button>)}
+            {data?.showPhone && business.phone && (
+              <a href={`tel:${business.phone}`} class="inline-flex items-center gap-xs font-bold text-lg text-white hover:opacity-80 transition-opacity no-underline">
+                <svg class="w-5 h-5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z" /></svg>
+                {business.phone}
+              </a>
+            )}
+          </div>
+        )
+      }
+      {
+        badges.length > 0 && (
+          <ul class:list={["hero-chips", align === "center" && "justify-center"]}>
+            {badges.map((b) => (
+              <li class="hero-chip">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M20 6 9 17l-5-5" /></svg>
+                {b.text}
+              </li>
+            ))}
+          </ul>
+        )
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero-spotlight { min-height: 660px; display: flex; }
+  .hero-spotlight.has-bg::before {
+    content: ""; position: absolute; inset: 0; z-index: 0;
+    background-image: var(--hero-image); background-size: cover; background-position: center;
+  }
+  /* Bottom-weighted gradient: legible text below, photo breathes above. */
+  .hero-spotlight.has-bg::after {
+    content: ""; position: absolute; inset: 0; z-index: 1;
+    background: linear-gradient(to top, rgba(0,0,0,0.82) 0%, rgba(0,0,0,0.55) 30%, rgba(0,0,0,0.2) 62%, rgba(0,0,0, var(--hero-overlay,0.4)) 100%);
+  }
+  .hero-spotlight.no-bg::before {
+    content: ""; position: absolute; inset: 0; z-index: 0;
+    background: linear-gradient(160deg, var(--t-bg) 0%, var(--t-bg-inverse) 100%);
+  }
+  .hero-spotlight-inner { align-self: flex-end; width: 100%; padding-block: 2.5rem 3.25rem; }
+  @media (min-width: 1024px) { .hero-spotlight-inner { padding-block: 3rem 4rem; } }
+  .hero-h { font-size: clamp(2.4rem, 5.4vw, 4rem); text-wrap: balance; }
+
+  .hero-ratings { display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem 0.9rem; }
+  .rating-lockup {
+    display: inline-flex; align-items: center; gap: 0.35rem;
+    background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.16);
+    backdrop-filter: blur(4px); border-radius: 999px; padding: 0.28rem 0.65rem;
+  }
+  .rating-platform { font-size: 0.72rem; font-weight: 700; color: #fff; }
+  .rating-stars { display: inline-flex; gap: 0.05rem; color: var(--color-rating); }
+  .rating-stars svg { width: 0.82rem; height: 0.82rem; }
+  .rating-score { font-size: 0.76rem; font-weight: 800; color: #fff; }
+  .rating-combined { font-size: 0.8rem; font-weight: 600; color: rgba(255,255,255,0.85); }
+
+  .hero-chips { list-style: none; margin: 0.25rem 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: 0.4rem 1rem; }
+  .hero-chip { display: inline-flex; align-items: center; gap: 0.4rem; font-size: 0.82rem; font-weight: 600; color: #fff; }
+  .hero-chip svg { width: 1rem; height: 1rem; color: var(--t-secondary-light); }
+</style>

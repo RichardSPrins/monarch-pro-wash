@@ -200,6 +200,7 @@ const generalSettings = defineCollection({
       .enum([
         "columns", "simple", "cta", "newsletter", "map",
         "mega", "centered", "hours", "social", "bar",
+        "brandmark", "glow", "spotlight", "marquee",
       ])
       .optional(),
   }),

@@ -1,11 +1,16 @@
 ---
-import { getServices } from "@/lib/content";
+import { getServices, getServiceCategories } from "@/lib/content";
 import type { Eyebrow, SectionCTA } from "@/types/sections";
 import Badge from "@/components/elements/badge/Badge.astro";
 import { Button } from "@/components/elements/button";
 import SmartImage from "@/components/media/SmartImage.astro";
 import roofingCrew from "@/assets/images/roofing-crew.jpg";
 
+/**
+ * services:side-by-side — image beside a compact list of service CATEGORIES
+ * (not every service, which runs too tall). Each category shows its title,
+ * description, and how many services it covers.
+ */
 interface Props {
   theme?: string;
   data?: {
@@ -21,10 +26,17 @@ interface Props {
 
 const { theme = "default", data } = Astro.props;
 
-const services = await getServices();
-const sorted = services
-  .sort((a, b) => a.data.order - b.data.order)
-  .slice(0, data?.limit ?? services.length);
+const [services, categories] = await Promise.all([getServices(), getServiceCategories()]);
+const countFor = (slug: string) => services.filter((s) => s.data.category === slug).length;
+
+// Real categories (with at least one service), ordered; fall back to a single
+// "All Services" row if the catalog has no categories defined.
+let rows = categories
+  .map((c) => ({ title: c.data.title, description: c.data.description, count: countFor(c.data.slug) }))
+  .filter((r) => r.count > 0)
+  .sort((a, b) => b.count - a.count);
+if (rows.length === 0) rows = [{ title: "All Services", description: undefined, count: services.length }];
+rows = rows.slice(0, data?.limit ?? rows.length);
 
 const imageLeft = data?.imagePosition !== "right";
 ---
@@ -33,12 +45,7 @@ const imageLeft = data?.imagePosition !== "right";
   <div class="section-container">
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
       {/* Image */}
-      <div
-        class:list={[
-          "relative rounded-2xl overflow-hidden",
-          !imageLeft && "lg:order-last",
-        ]}
-      >
+      <div class:list={["relative rounded-2xl overflow-hidden", !imageLeft && "lg:order-last"]}>
         <SmartImage
           src={data?.image?.src}
           alt={data?.image?.alt ?? ""}
@@ -55,64 +62,30 @@ const imageLeft = data?.imagePosition !== "right";
           data?.eyebrow && (
             <div>
               {data.eyebrow.variant === "badge" ? (
-                <Badge class="uppercase tracking-widest text-xs">
-                  {data.eyebrow.text}
-                </Badge>
+                <Badge class="uppercase tracking-widest text-xs">{data.eyebrow.text}</Badge>
               ) : (
-                <span class="text-sm font-semibold uppercase tracking-widest text-color-brand-secondary">
-                  {data.eyebrow.text}
-                </span>
+                <span class="text-sm font-semibold uppercase tracking-widest text-color-brand-secondary">{data.eyebrow.text}</span>
               )}
             </div>
           )
         }
+        {data?.heading && <h2 class="theme-heading text-3xl lg:text-4xl font-bold m-0">{data.heading}</h2>}
+        {data?.subheading && <p class="theme-text-muted text-lg leading-relaxed m-0">{data.subheading}</p>}
 
-        {
-          data?.heading && (
-            <h2 class="theme-heading text-3xl lg:text-4xl font-bold m-0">
-              {data.heading}
-            </h2>
-          )
-        }
-
-        {
-          data?.subheading && (
-            <p class="theme-text-muted text-lg leading-relaxed m-0">
-              {data.subheading}
-            </p>
-          )
-        }
-
-        {/* Service list */}
-        <ul class="flex flex-col gap-md list-none m-0 p-0">
+        {/* Category list */}
+        <ul class="flex flex-col gap-3 list-none m-0 p-0">
           {
-            sorted.map((service) => (
+            rows.map((row) => (
               <li class="flex items-start gap-sm">
-                <div
-                  class="shrink-0 w-6 h-6 rounded-full flex items-center justify-center mt-0.5"
-                  style="background: color-mix(in srgb, var(--theme-accent) 10%, transparent)"
-                >
-                  <svg
-                    class="w-3.5 h-3.5 text-primary"
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2.5"
-                    aria-hidden="true"
-                  >
-                    <polyline points="20 6 9 17 4 12" />
-                  </svg>
+                <div class="shrink-0 w-8 h-8 rounded-lg flex items-center justify-center mt-0.5" style="background: color-mix(in srgb, var(--color-brand-secondary) 14%, transparent)">
+                  <svg class="w-4 h-4" style="color: var(--color-brand-secondary)" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12" /></svg>
                 </div>
                 <div class="flex flex-col gap-0.5">
-                  <span class="theme-heading font-semibold text-base">
-                    {service.data.title}
+                  <span class="flex items-center gap-2">
+                    <span class="theme-heading font-semibold text-base">{row.title}</span>
+                    <span class="text-xs font-semibold theme-text-muted">{row.count} {row.count === 1 ? "service" : "services"}</span>
                   </span>
-                  {service.data.description && (
-                    <span class="theme-text-muted text-sm leading-relaxed">
-                      {service.data.description}
-                    </span>
-                  )}
+                  {row.description && <span class="theme-text-muted text-sm leading-relaxed">{row.description}</span>}
                 </div>
               </li>
             ))
@@ -122,12 +95,7 @@ const imageLeft = data?.imagePosition !== "right";
         {
           data?.cta && (
             <div class="mt-2">
-              <Button
-                variant={data.cta.variant ?? "primary"}
-                href={data.cta.href}
-              >
-                {data.cta.label}
-              </Button>
+              <Button variant={data.cta.variant ?? "primary"} href={data.cta.href}>{data.cta.label}</Button>
             </div>
           )
         }

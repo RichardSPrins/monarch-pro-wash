@@ -2,14 +2,35 @@
 import { sectionRegistry } from "@/lib/sectionRegistry";
 import { validateSectionData, isValidTheme } from "@/lib/sectionSchemas";
 import ErrorShim from "@/components/ErrorShim.astro";
+import BackgroundMotif from "@/components/flair/BackgroundMotif.astro";
+
+/** Optional decorative background motif layered onto ANY section from the CMS. */
+interface MotifConfig {
+  kind: "butterfly" | "butterfly-color" | "droplets" | "splash" | "glow" | "grid";
+  position?: "left" | "right" | "center" | "top" | "bottom";
+  color?: string;
+  opacity?: number;
+  size?: string;
+  /** Override the source SVG (defaults per kind; butterfly-color auto-picks antennae by theme). */
+  src?: string;
+}
 
 interface SectionConfig {
   type: string;
   theme?: string;
   /** Optional CMS-set vertical padding override (density keys: none|xs|sm|md|lg|xl). */
   spacing?: { desktop?: string; mobile?: string };
+  /** Optional decorative motif (watermark / texture / glow) behind this section. */
+  motif?: MotifConfig;
   data?: Record<string, unknown>;
 }
+
+const MOTIF_KINDS = ["butterfly", "butterfly-color", "droplets", "splash", "glow", "grid"];
+// Conservative default opacities for the overlay context (subtler than the
+// standalone showcase defaults, since these sit over real section content).
+const MOTIF_OPACITY: Record<string, number> = {
+  butterfly: 0.06, "butterfly-color": 0.16, droplets: 0.14, splash: 0.1, glow: 0.22, grid: 0.1,
+};
 
 interface Props {
   config: {
@@ -54,17 +75,62 @@ function validate(section: SectionConfig): string[] {
       ) : null;
     }
     const Component = sectionRegistry[section.type];
-    const el = <Component theme={section.theme ?? "default"} data={section.data} />;
+    let el = <Component theme={section.theme ?? "default"} data={section.data} />;
     // Wrap only when the CMS set a padding override (display:contents wrapper,
     // so it's layout-neutral); otherwise render the section directly.
     const pd = section.spacing?.desktop || undefined;
     const pm = section.spacing?.mobile || undefined;
-    return pd || pm ? (
-      <div class="section-slot" data-pad-d={pd} data-pad-m={pm}>
-        {el}
-      </div>
-    ) : (
-      el
-    );
+    if (pd || pm) {
+      el = (
+        <div class="section-slot" data-pad-d={pd} data-pad-m={pm}>
+          {el}
+        </div>
+      );
+    }
+    // Optional decorative motif: wrap in a clipping host and layer the motif on
+    // top (pointer-events-none, subtle opacity) so it reads as section texture.
+    const motif = section.motif;
+    if (motif && MOTIF_KINDS.includes(motif.kind)) {
+      // The full-colour butterfly needs light antennae on dark (navy) surfaces so
+      // its body/antennae don't disappear; pick the variant by section theme.
+      const darkSurface = ["default", "muted", "inverse"].includes(section.theme ?? "default");
+      const motifSrc =
+        motif.src ??
+        (motif.kind === "butterfly-color"
+          ? darkSurface
+            ? "/brand/butterfly-full-color-white-antennae.svg"
+            : "/brand/butterfly-full-color-black-antennae.svg"
+          : undefined);
+      // Host carries the section's theme background; the inner section is made
+      // transparent (CSS below) so the motif, on a negative z-layer, shows from
+      // BEHIND the content (peeking around cards/text) rather than over it.
+      el = (
+        <div class:list={["motif-host", `theme-${section.theme ?? "default"}`]}>
+          {el}
+          <BackgroundMotif
+            motif={motif.kind}
+            position={motif.position ?? (motif.kind === "grid" ? "center" : "right")}
+            color={motif.color ?? "var(--color-primary)"}
+            opacity={motif.opacity ?? MOTIF_OPACITY[motif.kind]}
+            size={motif.size}
+            src={motifSrc}
+            class="motif-overlay"
+          />
+        </div>
+      );
+    }
+    return el;
   })
 }
+
+<style is:global>
+  /* Host for a CMS-configured section motif. The host carries the section's theme
+     background (via the theme-* class); the section root inside is made transparent
+     so the motif — on a negative z-layer between the host background and the
+     content — reads as a watermark BEHIND the cards/text, not over them. Clipped to
+     the section bounds so it never bleeds into neighbours. */
+  .motif-host { position: relative; overflow: hidden; isolation: isolate; }
+  .motif-host > .motif-overlay { z-index: -1; }
+  .motif-host > [class*="theme-"],
+  .motif-host > .section-slot > [class*="theme-"] { background-color: transparent !important; }
+</style>

@@ -23,6 +23,10 @@ import FooterCentered from "@/components/layout/FooterCentered.astro";
 import FooterHours from "@/components/layout/FooterHours.astro";
 import FooterSocial from "@/components/layout/FooterSocial.astro";
 import FooterBar from "@/components/layout/FooterBar.astro";
+import FooterBrandmark from "@/components/layout/FooterBrandmark.astro";
+import FooterGlow from "@/components/layout/FooterGlow.astro";
+import FooterSpotlight from "@/components/layout/FooterSpotlight.astro";
+import FooterMarquee from "@/components/layout/FooterMarquee.astro";
 
 /**
  * Header/footer chrome variants, selectable per-site via the `headerVariant` /
@@ -53,6 +57,10 @@ export const footerVariants: Record<string, AstroComponentFactory> = {
   hours: FooterHours,
   social: FooterSocial,
   bar: FooterBar,
+  brandmark: FooterBrandmark,
+  glow: FooterGlow,
+  spotlight: FooterSpotlight,
+  marquee: FooterMarquee,
 };
 
 export function resolveHeader(variant?: string): AstroComponentFactory {

@@ -1,0 +1,99 @@
+---
+import type { Eyebrow, StatItem } from "@/types/sections";
+
+/**
+ * stats:diagonal — big animated counters separated by slanted dividers (the PV
+ * "5,000+ · 99% · 1 Hour" treatment). Count-up runs on scroll into view. The
+ * value string may carry a prefix/suffix (e.g. "$", "+", "%", " Hour"); the
+ * numeric part animates. Theme-aware.
+ */
+interface Props {
+  theme?: string;
+  data?: { eyebrow?: Eyebrow; heading?: string; subheading?: string; stats?: StatItem[] };
+}
+
+const { theme = "default", data } = Astro.props;
+const stats = data?.stats ?? [];
+---
+
+{
+  stats.length > 0 && (
+    <section class:list={["section-wrapper section-py", `theme-${theme}`]}>
+      <div class="section-container">
+        {(data?.eyebrow || data?.heading || data?.subheading) && (
+          <div class="flex flex-col items-center text-center gap-sm mb-12">
+            {data?.eyebrow && <span class="text-sm font-semibold uppercase tracking-widest text-color-brand-secondary">{data.eyebrow.text}</span>}
+            {data?.heading && <h2 class="theme-heading text-3xl lg:text-4xl font-bold m-0">{data.heading}</h2>}
+            {data?.subheading && <p class="theme-text-muted text-lg max-w-2xl m-0">{data.subheading}</p>}
+          </div>
+        )}
+        <div class="sd" data-sd>
+          {stats.map((s) => (
+            <div class="sd-col">
+              <span class="sd-value theme-heading" data-countup={String(s.value)}>{s.value}</span>
+              {s.label && <span class="sd-label theme-text-muted">{s.label}</span>}
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  )
+}
+
+<script is:inline>
+  (() => {
+    if (window.__sdCountInit) return;
+    window.__sdCountInit = true;
+    const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const run = (el) => {
+      const raw = el.dataset.countup || el.textContent || "";
+      const m = raw.match(/[\d.,]+/);
+      if (!m || reduce) { el.textContent = raw; return; }
+      const numStr = m[0].replace(/,/g, "");
+      const target = parseFloat(numStr);
+      if (!isFinite(target)) { el.textContent = raw; return; }
+      const prefix = raw.slice(0, m.index), suffix = raw.slice(m.index + m[0].length);
+      const decimals = (numStr.split(".")[1] || "").length;
+      const grouped = m[0].includes(",");
+      const dur = 1400, start = performance.now();
+      const tick = (now) => {
+        const p = Math.min(1, (now - start) / dur);
+        const val = target * (1 - Math.pow(1 - p, 3));
+        el.textContent = prefix + val.toLocaleString("en-US", { minimumFractionDigits: decimals, maximumFractionDigits: decimals, useGrouping: grouped }) + suffix;
+        if (p < 1) requestAnimationFrame(tick); else el.textContent = raw;
+      };
+      requestAnimationFrame(tick);
+    };
+    const init = () => {
+      document.querySelectorAll("[data-sd]").forEach((root) => {
+        if (root.dataset.sdReady) return;
+        root.dataset.sdReady = "1";
+        const io = new IntersectionObserver((entries) => {
+          entries.forEach((e) => {
+            if (e.isIntersecting) { root.querySelectorAll("[data-countup]").forEach(run); io.disconnect(); }
+          });
+        }, { threshold: 0.35 });
+        io.observe(root);
+      });
+    };
+    init();
+    document.addEventListener("astro:page-load", init);
+  })();
+</script>
+
+<style>
+  .sd { display: grid; grid-template-columns: 1fr; gap: 2rem 0; align-items: center; text-align: center; }
+  @media (min-width: 768px) { .sd { grid-auto-flow: column; grid-auto-columns: 1fr; gap: 0; } }
+
+  .sd-col { position: relative; display: flex; flex-direction: column; align-items: center; gap: 0.4rem; padding: 0.5rem 1.5rem; }
+  /* Slanted divider between columns (desktop). */
+  @media (min-width: 768px) {
+    .sd-col + .sd-col::before {
+      content: ""; position: absolute; left: 0; top: 12%; bottom: 12%; width: 1px;
+      background: var(--color-border); transform: skewX(-14deg);
+    }
+  }
+
+  .sd-value { font-size: clamp(2.4rem, 5vw, 3.6rem); font-weight: 800; line-height: 1; font-variant-numeric: tabular-nums; }
+  .sd-label { font-size: 0.92rem; font-weight: 600; max-width: 12rem; }
+</style>

@@ -350,16 +350,30 @@
 
   body {
     font-family: var(--font-sans);
+    font-size: var(--t-text-body);
+    line-height: var(--t-leading-body);
     background-color: var(--color-bg);
     color: var(--color-fg);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
   }
 
   h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-heading);
     color: var(--color-fg);
     font-weight: var(--t-font-weight-heading);
-    line-height: 1.2;
+    line-height: var(--t-leading-heading);
+    letter-spacing: var(--t-tracking-heading);
+    text-wrap: balance;
   }
+  /* Base scale for bare headings (component `text-*` utilities override size but
+     keep the Oswald family + tight leading above). */
+  h1 { font-size: var(--t-text-h1); }
+  h2 { font-size: var(--t-text-h2); }
+  h3 { font-size: var(--t-text-h3); }
+  h4 { font-size: var(--t-text-h4); }
+  h5 { font-size: var(--t-text-h5); }
+  h6 { font-size: var(--t-text-h6); }
 
   a {
     transition: color 0.2s ease;
@@ -644,6 +658,13 @@
     --theme-border: rgba(255, 255, 255, 0.14);
     --theme-accent: var(--t-secondary);
     --dropdown-surface: color-mix(in srgb, var(--t-bg-inverse) 92%, #ffffff);
+    /* Also flip the --color-fg* family so text-fg / text-fg-muted / border-* (not
+       just theme-* classes) read on the dark surface, on ANY section theme. This
+       is what makes a fixed-dark card (bg-bg-muted) safe on a light `alt` section. */
+    --color-fg: var(--t-fg-inverse);
+    --color-fg-muted: rgba(249, 250, 251, 0.72);
+    --color-fg-subtle: rgba(249, 250, 251, 0.45);
+    --color-border: rgba(255, 255, 255, 0.14);
   }
 
   /* Floating dropdown panels — theme-aware surface (white on light headers,

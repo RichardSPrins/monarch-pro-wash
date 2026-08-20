@@ -1,0 +1,138 @@
+---
+import { getServices, getServiceCategories } from "@/lib/content";
+import { getBusinessData } from "@/lib/utils";
+import { highlight } from "@/lib/highlight";
+import type { Eyebrow, SectionCTA } from "@/types/sections";
+import { Button } from "@/components/elements/button";
+
+/**
+ * services:category-split — a content column beside a grid of service CATEGORY
+ * cards (title · description · service count), not the full service list. The
+ * PV "content + category grid" pattern. Theme-aware throughout.
+ */
+interface Props {
+  theme?: string;
+  data?: {
+    eyebrow?: Eyebrow;
+    heading?: string;
+    subheading?: string;
+    body?: string | string[];
+    ctas?: SectionCTA[];
+    showPhone?: boolean;
+    trustBadges?: Array<{ text: string }>;
+    contentPosition?: "left" | "right";
+    columns?: 1 | 2;
+    limit?: number;
+    hrefBase?: string;
+  };
+}
+
+const { theme = "default", data } = Astro.props;
+const business = await getBusinessData();
+const hrefBase = (data?.hrefBase ?? "/services").replace(/\/$/, "");
+const contentRight = data?.contentPosition === "right";
+const cols = data?.columns ?? 2;
+
+const [services, categories] = await Promise.all([getServices(), getServiceCategories()]);
+const countFor = (slug: string) => services.filter((s) => s.data.category === slug).length;
+
+const rows = categories
+  .map((c) => ({ title: c.data.title, slug: c.data.slug, description: c.data.description, count: countFor(c.data.slug) }))
+  .filter((r) => r.count > 0)
+  .sort((a, b) => b.count - a.count)
+  .slice(0, data?.limit ?? undefined);
+
+const bodyParts = Array.isArray(data?.body) ? data?.body : data?.body ? [data.body] : [];
+const badges = data?.trustBadges ?? [];
+---
+
+<section class={`section-wrapper section-py theme-${theme}`}>
+  <div class="section-container">
+    <div class:list={["svc-cs", contentRight && "is-content-right"]}>
+      <!-- Content -->
+      <div class="svc-cs-content">
+        {data?.eyebrow && <span class="text-sm font-semibold uppercase tracking-widest text-color-brand-secondary">{data.eyebrow.text}</span>}
+        {data?.heading && <h2 class="theme-heading text-3xl lg:text-4xl font-bold m-0 leading-tight">{data.heading}</h2>}
+        {data?.subheading && <p class="theme-text-muted text-lg m-0">{data.subheading}</p>}
+        {bodyParts.length > 0 && (
+          <div class="flex flex-col gap-3 theme-text">
+            {bodyParts.map((p) => <p class="m-0 leading-relaxed" set:html={highlight(p)} />)}
+          </div>
+        )}
+        {
+          badges.length > 0 && (
+            <ul class="svc-cs-chips">
+              {badges.map((b) => (
+                <li class="svc-cs-chip">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M20 6 9 17l-5-5" /></svg>
+                  {b.text}
+                </li>
+              ))}
+            </ul>
+          )
+        }
+        {
+          (data?.ctas?.length || data?.showPhone) && (
+            <div class="flex flex-wrap items-center gap-sm mt-1">
+              {data?.ctas?.map((cta) => <Button variant={cta.variant ?? "primary"} href={cta.href}>{cta.label}</Button>)}
+              {data?.showPhone && business.phone && (
+                <a href={`tel:${business.phone}`} class="inline-flex items-center gap-xs font-bold text-lg theme-text hover:opacity-80 transition-opacity no-underline">
+                  <svg class="w-5 h-5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z" /></svg>
+                  {business.phone}
+                </a>
+              )}
+            </div>
+          )
+        }
+      </div>
+
+      <!-- Category grid -->
+      <div class:list={["svc-cs-grid", cols === 1 ? "cols-1" : "cols-2"]}>
+        {
+          rows.map((row) => (
+            <a href={`${hrefBase}#${row.slug}`} class="svc-cs-card group">
+              <span class="svc-cs-card-head">
+                <span class="svc-cs-title theme-heading">{row.title}</span>
+                <svg class="svc-cs-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 6l6 6-6 6" /></svg>
+              </span>
+              <span class="svc-cs-count">{row.count} {row.count === 1 ? "service" : "services"}</span>
+              {row.description && <span class="svc-cs-desc theme-text-muted">{row.description}</span>}
+            </a>
+          ))
+        }
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .svc-cs { display: grid; grid-template-columns: 1fr; gap: 2.25rem; align-items: start; }
+  @media (min-width: 1024px) {
+    .svc-cs { grid-template-columns: 0.9fr 1.1fr; gap: 3.5rem; }
+    .svc-cs.is-content-right .svc-cs-content { order: 2; }
+    .svc-cs.is-content-right .svc-cs-grid { order: 1; }
+    .svc-cs-content { position: sticky; top: 6rem; }
+  }
+  .svc-cs-content { display: flex; flex-direction: column; gap: 1.1rem; }
+
+  .svc-cs-chips { list-style: none; margin: 0.25rem 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: 0.5rem 1.1rem; }
+  .svc-cs-chip { display: inline-flex; align-items: center; gap: 0.4rem; font-size: 0.85rem; font-weight: 600; color: var(--color-fg); }
+  .svc-cs-chip svg { width: 1rem; height: 1rem; color: var(--t-secondary); }
+
+  .svc-cs-grid { display: grid; grid-template-columns: 1fr; gap: 0.75rem; }
+  @media (min-width: 640px) { .svc-cs-grid.cols-2 { grid-template-columns: repeat(2, 1fr); } }
+
+  .svc-cs-card {
+    display: flex; flex-direction: column; gap: 0.3rem; padding: 1.05rem 1.2rem; border-radius: 0.85rem;
+    border: 1px solid var(--color-border); background: var(--color-card, var(--color-bg)); text-decoration: none;
+    transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
+  }
+  .svc-cs-card:hover { transform: translateY(-2px); box-shadow: 0 16px 36px -20px rgba(0, 0, 0, 0.4); border-color: color-mix(in srgb, var(--t-primary) 45%, var(--color-border)); }
+  .svc-cs-card-head { display: flex; align-items: center; justify-content: space-between; gap: 0.5rem; }
+  .svc-cs-title { font-size: 1.05rem; font-weight: 700; line-height: 1.2; }
+  .svc-cs-chevron { width: 1.1rem; height: 1.1rem; color: var(--color-primary); flex-shrink: 0; transition: transform 0.18s ease; }
+  .svc-cs-card:hover .svc-cs-chevron { transform: translateX(3px); }
+  .svc-cs-count { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; color: var(--color-primary); }
+  .svc-cs-desc { font-size: 0.85rem; line-height: 1.45;
+    display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+</style>

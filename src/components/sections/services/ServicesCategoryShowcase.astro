@@ -1,0 +1,114 @@
+---
+import { getServices, getServiceCategories } from "@/lib/content";
+import type { Eyebrow } from "@/types/sections";
+import SmartImage from "@/components/media/SmartImage.astro";
+
+/**
+ * services:category-showcase — a few big cards, ONE PER service CATEGORY (not per
+ * service). Each shows the category name, description, a service count, and a
+ * photo derived from one of its member services (categories have no image field
+ * of their own). "Browse by category" — the Pool Envy pattern.
+ */
+interface Props {
+  theme?: string;
+  data?: {
+    eyebrow?: Eyebrow;
+    heading?: string;
+    subheading?: string;
+    hrefBase?: string;
+    showCount?: boolean;
+  };
+}
+
+const { theme = "default", data } = Astro.props;
+const hrefBase = (data?.hrefBase ?? "/services").replace(/\/$/, "");
+const showCount = data?.showCount ?? true;
+
+const [services, categories] = await Promise.all([getServices(), getServiceCategories()]);
+
+const cards = categories
+  .map((c) => {
+    const members = services
+      .filter((s) => s.data.category === c.data.slug)
+      .sort((a, b) => a.data.order - b.data.order);
+    return {
+      title: c.data.title,
+      slug: c.data.slug,
+      description: c.data.description,
+      count: members.length,
+      image: members.find((m) => m.data.image)?.data.image,
+    };
+  })
+  .filter((c) => c.count > 0)
+  .sort((a, b) => b.count - a.count);
+---
+
+<section class={`section-wrapper section-py theme-${theme}`}>
+  <div class="section-container">
+    <div class="flex flex-col items-center text-center gap-sm mb-12">
+      {data?.eyebrow && <span class="text-sm font-semibold uppercase tracking-widest text-color-brand-secondary">{data.eyebrow.text}</span>}
+      {data?.heading && <h2 class="theme-heading text-3xl lg:text-4xl font-bold m-0">{data.heading}</h2>}
+      {data?.subheading && <p class="theme-text-muted text-lg max-w-2xl m-0">{data.subheading}</p>}
+    </div>
+
+    <div class="svc-cat">
+      {
+        cards.map((c) => (
+          <a href={`${hrefBase}#${c.slug}`} class="svc-cat-card group">
+            <div class="svc-cat-media">
+              {c.image ? (
+                <SmartImage src={c.image} alt={c.title} width={820} class="svc-cat-img" loading="lazy" />
+              ) : (
+                <span class="svc-cat-fallback" aria-hidden="true" />
+              )}
+              <span class="svc-cat-scrim" aria-hidden="true" />
+            </div>
+            <span class="svc-cat-arrow" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M7 17 17 7M9 7h8v8" /></svg>
+            </span>
+            <div class="svc-cat-body">
+              {showCount && <span class="svc-cat-count">{c.count} {c.count === 1 ? "service" : "services"}</span>}
+              <h3 class="svc-cat-title">{c.title}</h3>
+              {c.description && <p class="svc-cat-desc">{c.description}</p>}
+            </div>
+          </a>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  .svc-cat { display: grid; gap: 1.1rem; grid-template-columns: repeat(auto-fit, minmax(min(100%, 18rem), 1fr)); }
+  .svc-cat-card {
+    position: relative; display: block; border-radius: 1rem; overflow: hidden; aspect-ratio: 3 / 2;
+    text-decoration: none; isolation: isolate; box-shadow: 0 14px 36px -18px rgba(0, 0, 0, 0.5);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  .svc-cat-card:hover { transform: translateY(-4px); box-shadow: 0 26px 56px -20px rgba(0, 0, 0, 0.6); }
+  .svc-cat-media { position: absolute; inset: 0; z-index: 0; }
+  .svc-cat-img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
+  .svc-cat-card:hover .svc-cat-img { transform: scale(1.06); }
+  .svc-cat-fallback { position: absolute; inset: 0; background: linear-gradient(155deg, var(--t-secondary) 0%, var(--t-bg-inverse) 100%); }
+  .svc-cat-scrim { position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.86) 0%, rgba(0,0,0,0.42) 48%, rgba(0,0,0,0.05) 80%); }
+
+  .svc-cat-arrow {
+    position: absolute; top: 0.85rem; right: 0.85rem; z-index: 2;
+    width: 2.1rem; height: 2.1rem; border-radius: 999px; display: grid; place-items: center;
+    color: #fff; background: color-mix(in srgb, var(--t-primary) 90%, transparent);
+    opacity: 0; transform: translateY(-4px); transition: opacity 0.2s ease, transform 0.2s ease;
+  }
+  .svc-cat-card:hover .svc-cat-arrow { opacity: 1; transform: translateY(0); }
+  .svc-cat-arrow svg { width: 1.05rem; height: 1.05rem; }
+
+  .svc-cat-body { position: absolute; inset: auto 0 0 0; z-index: 2; padding: 1.15rem 1.3rem 1.35rem; display: flex; flex-direction: column; gap: 0.3rem; }
+  .svc-cat-count {
+    align-self: flex-start; font-size: 0.68rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em;
+    color: #fff; background: color-mix(in srgb, var(--t-primary) 88%, transparent); padding: 0.12rem 0.5rem; border-radius: 999px; margin-bottom: 0.2rem;
+  }
+  .svc-cat-title { margin: 0; font-size: 1.35rem; font-weight: 800; color: #fff; line-height: 1.18; text-wrap: balance; }
+  .svc-cat-desc {
+    margin: 0; font-size: 0.87rem; line-height: 1.45; color: rgba(255, 255, 255, 0.85);
+    display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
+  }
+</style>

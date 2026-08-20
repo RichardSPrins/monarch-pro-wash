@@ -30,6 +30,7 @@ const toSlug = (t: string) => t.replace(":", "__");
     <header class="cat-hero">
       <h1>Section Catalog</h1>
       <p>{types.length} variants across {groupNames.length} groups. Each shows its example <strong>data shape</strong>; hit <strong>Preview</strong> to render it live and see what it looks like before you author it in the CMS.</p>
+      <p><a class="cat-live" href="/sections/live">▶ Live gallery — render every variant inline with per-section theme switching →</a></p>
       <nav class="cat-jump">
         {groupNames.map((g) => <a href={`#${g}`}>{g} <span>{groups[g].length}</span></a>)}
       </nav>
@@ -64,6 +65,11 @@ const toSlug = (t: string) => t.replace(":", "__");
   .cat-hero { padding: 3rem 1.5rem 1.5rem; }
   .cat-hero h1 { font-size: 2.25rem; font-weight: 800; margin: 0 0 0.5rem; }
   .cat-hero p { color: var(--color-fg-muted); margin: 0 0 1.25rem; max-width: 44rem; }
+  .cat-live {
+    display: inline-block; font-weight: 700; font-size: 0.85rem; text-decoration: none;
+    color: #fff; background: var(--color-primary); padding: 0.5rem 0.9rem; border-radius: 0.5rem;
+  }
+  .cat-live:hover { filter: brightness(1.08); }
   .cat-jump { display: flex; flex-wrap: wrap; gap: 0.4rem; }
   .cat-jump a {
     font-size: 0.78rem; text-decoration: none; padding: 0.2rem 0.55rem; text-transform: capitalize;

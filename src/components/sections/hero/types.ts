@@ -42,6 +42,10 @@ export interface HeroData {
     src: string;
     alt?: string;
     overlayOpacity?: number; // 0-100, default 60
+    /** Background crop focal point (center|left|right|top|bottom|top-left|…). Default center. */
+    focal?: string;
+    /** Optional mobile-only focal override; falls back to `focal` when unset. */
+    focalMobile?: string;
   };
   foregroundImage?: {
     src: string;

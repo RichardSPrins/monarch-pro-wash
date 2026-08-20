@@ -1,0 +1,82 @@
+---
+import { getBusinessData, getFooterNav } from "@/lib/utils";
+
+/**
+ * footer:spotlight — a floating CTA card overlaps the top edge of the footer
+ * (extends the UI upward into the page), above a clean footer body with brand,
+ * nav groups, contact, and a big wordmark strip. Refined, elevated flair.
+ */
+const business = await getBusinessData();
+const year = new Date().getFullYear();
+const { groups, legal } = await getFooterNav();
+const s = (business as any).social ?? {};
+const addr = [business.address, [business.city, business.state].filter(Boolean).join(", "), business.zip].filter(Boolean).join(" · ");
+---
+
+<footer class="fsp bg-bg-inverse text-fg-inverse relative">
+  <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+    <!-- Floating CTA card -->
+    <div class="fsp-cta">
+      <div class="fsp-cta-text">
+        <p class="fsp-cta-eyebrow">Ready to get started?</p>
+        <p class="fsp-cta-head">Get your free quote today.</p>
+      </div>
+      <div class="fsp-cta-actions">
+        <a href="/contact" class="fsp-cta-btn">Get My Free Quote</a>
+        {business.phone && <a href={`tel:${business.phone}`} class="fsp-cta-phone">{business.phone}</a>}
+      </div>
+    </div>
+  </div>
+
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-16 pb-6">
+    <div class="grid gap-10 md:grid-cols-2 lg:grid-cols-[1.6fr_1fr_1fr_1fr]">
+      <div class="flex flex-col gap-4">
+        <span class="text-xl font-extrabold">{business.businessName}</span>
+        {business.tagline && <p class="text-fg-inverse/60 text-sm leading-relaxed max-w-xs m-0">{business.tagline}</p>}
+        <div class="flex flex-col gap-1.5 text-sm text-fg-inverse/75">
+          {business.email && <a href={`mailto:${business.email}`} class="hover:text-fg-inverse no-underline w-fit">{business.email}</a>}
+          {addr && <span>{addr}</span>}
+        </div>
+        <div class="flex gap-2 mt-1">
+          {s.facebook && <a href={s.facebook} aria-label="Facebook" class="fsp-soc"><svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><path d="M24 12.07C24 5.44 18.63.07 12 .07S0 5.44 0 12.07c0 5.99 4.39 10.95 10.13 11.85v-8.38H7.08v-3.47h3.05V9.43c0-3.01 1.79-4.67 4.53-4.67 1.31 0 2.69.24 2.69.24v2.95h-1.51c-1.49 0-1.96.93-1.96 1.87v2.25h3.33l-.53 3.47h-2.8v8.38C19.61 23.02 24 18.06 24 12.07z"/></svg></a>}
+          {s.instagram && <a href={s.instagram} aria-label="Instagram" class="fsp-soc"><svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><path d="M12 2.16c3.2 0 3.58.01 4.85.07 3.25.15 4.77 1.69 4.92 4.92.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.15 3.23-1.66 4.77-4.92 4.92-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-3.26-.15-4.77-1.7-4.92-4.92-.06-1.27-.07-1.65-.07-4.85s.01-3.58.07-4.85C2.38 3.92 3.9 2.38 7.15 2.23 8.42 2.17 8.8 2.16 12 2.16zM12 5.84a6.16 6.16 0 100 12.32A6.16 6.16 0 0012 5.84zm0 10.16a4 4 0 110-8 4 4 0 010 8zm6.41-11.85a1.44 1.44 0 100 2.88 1.44 1.44 0 000-2.88z"/></svg></a>}
+          {s.youtube && <a href={s.youtube} aria-label="YouTube" class="fsp-soc"><svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><path d="M23.5 6.19a3.02 3.02 0 00-2.12-2.14C19.5 3.55 12 3.55 12 3.55s-7.5 0-9.38.5A3.02 3.02 0 00.5 6.19C0 8.08 0 12 0 12s0 3.92.5 5.81a3.02 3.02 0 002.12 2.14c1.88.5 9.38.5 9.38.5s7.5 0 9.38-.5a3.02 3.02 0 002.12-2.14C24 15.92 24 12 24 12s0-3.92-.5-5.81zM9.55 15.57V8.43L15.82 12l-6.27 3.57z"/></svg></a>}
+        </div>
+      </div>
+      {groups.slice(0, 3).map((g) => (
+        <nav class="flex flex-col gap-2.5">
+          <h3 class="text-xs font-bold uppercase tracking-widest text-fg-inverse/45 m-0">{g.label}</h3>
+          <ul class="flex flex-col gap-2 list-none m-0 p-0">
+            {(g.children ?? []).slice(0, 6).map((c) => (<li><a href={c.href ?? "#"} class="text-sm text-fg-inverse/75 hover:text-fg-inverse no-underline">{c.label}</a></li>))}
+          </ul>
+        </nav>
+      ))}
+    </div>
+
+    <div class="mt-14 pt-6 border-t border-white/10 flex flex-wrap items-center justify-between gap-3 text-xs text-fg-inverse/55">
+      <span>© {year} {business.businessName}. All rights reserved.</span>
+      <div class="flex flex-wrap gap-x-4 gap-y-1">
+        {legal.filter((l) => l.href).map((l) => <a href={l.href} class="hover:text-fg-inverse no-underline">{l.label}</a>)}
+      </div>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .fsp-cta {
+    transform: translateY(-50%); margin-bottom: -3rem;
+    display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1.5rem;
+    padding: 1.75rem 2rem; border-radius: 1.25rem;
+    background: linear-gradient(120deg, var(--color-primary) 0%, color-mix(in srgb, var(--color-primary) 70%, var(--color-brand-secondary)) 100%);
+    box-shadow: 0 30px 70px -24px rgba(0,0,0,0.6);
+  }
+  .fsp-cta-eyebrow { margin: 0; font-size: 0.78rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: rgba(255,255,255,0.85); }
+  .fsp-cta-head { margin: 0.1rem 0 0; font-size: clamp(1.4rem, 3vw, 2rem); font-weight: 800; color: #fff; line-height: 1.1; }
+  .fsp-cta-actions { display: flex; align-items: center; gap: 1.25rem; flex-wrap: wrap; }
+  .fsp-cta-btn { display: inline-flex; align-items: center; padding: 0.8rem 1.5rem; border-radius: 0.6rem; background: #fff; color: var(--color-primary); font-weight: 700; text-decoration: none; box-shadow: 0 8px 20px -8px rgba(0,0,0,0.5); }
+  .fsp-cta-btn:hover { filter: brightness(0.96); }
+  .fsp-cta-phone { color: #fff; font-weight: 800; font-size: 1.1rem; text-decoration: none; white-space: nowrap; }
+  .fsp-cta-phone:hover { text-decoration: underline; }
+  .fsp-soc { width: 2rem; height: 2rem; border-radius: 999px; display: grid; place-items: center; color: rgba(255,255,255,0.8); border: 1px solid rgba(255,255,255,0.16); transition: background 0.18s, color 0.18s, border-color 0.18s; }
+  .fsp-soc:hover { background: var(--color-primary); border-color: var(--color-primary); color: #fff; }
+</style>

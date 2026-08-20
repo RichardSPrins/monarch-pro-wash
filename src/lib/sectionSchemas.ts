@@ -63,6 +63,12 @@ const schemas: Record<string, z.ZodTypeAny> = {
   "hero:split-image": heroHeading,
   "hero:centered-card": heroHeading,
   "hero:video": heroHeading,
+  "hero:rating-spotlight": heroHeading,
+  "hero:split-panel": heroHeading,
+  "hero:spotlight": heroHeading,
+  "hero:form-overlay": heroHeading,
+  "hero:showcase": heroHeading,
+  "hero:split-video": heroHeading,
 
   // Galleries — need images/pairs
   "gallery:grid": requireArray("images"),

@@ -1,0 +1,129 @@
+---
+import FormRenderer from "@/components/forms/FormRenderer.astro";
+import type { HeroData } from "./types";
+import { highlight } from "@/lib/highlight";
+import { Button } from "@/components/elements/button";
+import { getBusinessData } from "@/lib/utils";
+import { getBackgroundImage } from "@/lib/images";
+import { getServices } from "@/lib/content";
+
+/**
+ * hero:form-overlay — full-bleed photo with the lead-form in an elevated,
+ * floating card (its own header + rating strip) beside headline/trust content
+ * laid over the image. The conversion-first contractor hero (Mammoth / Madd Air)
+ * — photo-forward, the form is a raised card, not a flat color column.
+ */
+interface Props {
+  theme?: string;
+  data?: HeroData & {
+    formTitle?: string;
+    formSubtitle?: string;
+    rating?: { platform?: string; score?: number | string; count?: string };
+  };
+}
+
+const { theme = "default", data } = Astro.props;
+const business = await getBusinessData();
+const services = (await getServices()).sort((a, b) => a.data.order - b.data.order);
+
+const heading = data?.heading;
+const bgUrl = await getBackgroundImage(data?.backgroundImage?.src, { width: 2200 });
+const hasBackground = !!bgUrl;
+const overlayOpacity = (data?.backgroundImage?.overlayOpacity ?? 66) / 100;
+const rating = data?.rating;
+---
+
+<section
+  class:list={["hero-formx section-wrapper relative overflow-hidden", `theme-${theme}`, hasBackground ? "has-bg" : "no-bg"]}
+  style={hasBackground ? `--hero-image: url('${bgUrl}'); --hero-overlay: ${overlayOpacity}` : ""}
+>
+  <div class="section-container relative z-10 py-16 lg:py-24">
+    <div class="hero-formx-grid">
+      <!-- Content over the photo -->
+      <div class="flex flex-col gap-5 max-w-xl">
+        {data?.eyebrow && <span class="text-sm font-semibold uppercase tracking-widest text-color-brand-secondary">{data.eyebrow.text}</span>}
+        {heading && <h1 class="hero-h font-extrabold m-0 leading-[1.06] text-white" set:html={highlight(heading)}></h1>}
+        {data?.subheading && <p class="text-lg lg:text-xl m-0 text-white/85">{data.subheading}</p>}
+        {
+          data?.trustBadges && data.trustBadges.length > 0 && (
+            <ul class="hero-chips">
+              {data.trustBadges.map((b) => (
+                <li class="hero-chip">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M20 6 9 17l-5-5" /></svg>
+                  {b.text}
+                </li>
+              ))}
+            </ul>
+          )
+        }
+        {
+          data?.showPhone && business.phone && (
+            <a href={`tel:${business.phone}`} class="inline-flex items-center gap-xs font-bold text-lg text-white hover:opacity-80 transition-opacity no-underline w-fit">
+              <svg class="w-5 h-5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z" /></svg>
+              Call {business.phone}
+            </a>
+          )
+        }
+      </div>
+
+      <!-- Form slot: FormRenderer renders its OWN card + heading, so we DON'T
+           wrap it again. Only a slim trust line sits above it. -->
+      <div class="hero-formx-slot">
+        {
+          rating?.score && (
+            <span class="hero-formx-rating">
+              <span class="rating-stars" aria-hidden="true">
+                {[0, 1, 2, 3, 4].map(() => (
+                  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77 5.82 21l1.18-6.88-5-4.87 7.1-1.01L12 2z" /></svg>
+                ))}
+              </span>
+              <strong>{rating.score}</strong>
+              {rating.platform && <span>{rating.platform}</span>}
+              {rating.count && <span class="hero-formx-rating-count">· {rating.count}</span>}
+            </span>
+          )
+        }
+        <FormRenderer form={data?.form} services={services} />
+        {data?.ctas && data.ctas.length > 0 && (
+          <div class="mt-1 flex flex-wrap gap-sm">
+            {data.ctas.map((cta) => <Button variant={cta.variant ?? "primary"} href={cta.href}>{cta.label}</Button>)}
+          </div>
+        )}
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero-formx { min-height: 620px; display: flex; align-items: center; }
+  .hero-formx.has-bg::before {
+    content: ""; position: absolute; inset: 0; z-index: 0;
+    background-image: var(--hero-image); background-size: cover; background-position: center;
+  }
+  .hero-formx.has-bg::after {
+    content: ""; position: absolute; inset: 0; z-index: 1;
+    background: linear-gradient(95deg, rgba(0,0,0,calc(var(--hero-overlay,0.66) + 0.1)) 0%, rgba(0,0,0,var(--hero-overlay,0.66)) 45%, rgba(0,0,0,calc(var(--hero-overlay,0.66) - 0.16)) 100%);
+  }
+  .hero-formx.no-bg::before {
+    content: ""; position: absolute; inset: 0; z-index: 0;
+    background: linear-gradient(150deg, var(--t-bg) 0%, var(--t-bg-inverse) 100%);
+  }
+
+  .hero-formx-grid { display: grid; grid-template-columns: 1fr; gap: 2rem; align-items: center; }
+  @media (min-width: 1024px) { .hero-formx-grid { grid-template-columns: 1.1fr 0.9fr; gap: 3rem; } }
+
+  .hero-h { font-size: clamp(2.1rem, 4.6vw, 3.4rem); text-wrap: balance; }
+
+  .hero-chips { list-style: none; margin: 0.25rem 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: 0.4rem 1rem; }
+  .hero-chip { display: inline-flex; align-items: center; gap: 0.4rem; font-size: 0.82rem; font-weight: 600; color: #fff; }
+  .hero-chip svg { width: 1rem; height: 1rem; color: var(--t-secondary-light); }
+
+  /* Column that holds the trust line + the form's own card (no extra card box). */
+  .hero-formx-slot { display: flex; flex-direction: column; gap: 0.85rem; }
+  /* Rating sits on the dark photo above the white form card → light text, gold stars. */
+  .hero-formx-rating { display: inline-flex; align-items: center; gap: 0.35rem; font-size: 0.82rem; font-weight: 600; color: rgba(255,255,255,0.85); }
+  .hero-formx-rating .rating-stars { display: inline-flex; gap: 0.05rem; color: var(--color-rating); }
+  .hero-formx-rating .rating-stars svg { width: 0.9rem; height: 0.9rem; }
+  .hero-formx-rating strong { color: #fff; font-weight: 800; }
+  .hero-formx-rating-count { opacity: 0.75; }
+</style>

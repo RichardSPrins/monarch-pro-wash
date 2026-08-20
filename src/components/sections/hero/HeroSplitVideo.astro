@@ -1,0 +1,196 @@
+---
+import { getBusinessData } from "@/lib/utils";
+import { getBackgroundImage } from "@/lib/images";
+import { highlight } from "@/lib/highlight";
+import type { Eyebrow, SectionCTA } from "@/types/sections";
+import { Button } from "@/components/elements/button";
+
+/**
+ * hero:split-video — a framed, click-to-play video beside a content column that
+ * carries the trust flair (rating trio + trust chips). Content sits on the
+ * section theme surface (theme-aware, so it re-skins), the video is an elevated
+ * poster with a play button that swaps to an inline player / embed on click.
+ */
+interface Rating { platform?: string; score?: number | string }
+interface Props {
+  theme?: string;
+  data?: {
+    eyebrow?: Eyebrow;
+    heading?: string;
+    headline?: string;
+    subheading?: string;
+    subheadline?: string;
+    body?: string | string[];
+    ctas?: SectionCTA[];
+    showPhone?: boolean;
+    ratings?: Rating[];
+    combinedReviews?: string;
+    trustBadges?: Array<{ text: string }>;
+    video?: { poster?: string; src?: string; embedUrl?: string; caption?: string };
+    videoPosition?: "right" | "left";
+  };
+}
+
+const { theme = "default", data } = Astro.props;
+const business = await getBusinessData();
+const heading = data?.heading ?? data?.headline;
+const subheading = data?.subheading ?? data?.subheadline;
+const bodyParts = Array.isArray(data?.body) ? data?.body : data?.body ? [data.body] : [];
+const ratings = data?.ratings ?? [];
+const badges = data?.trustBadges ?? [];
+const videoLeft = data?.videoPosition === "left";
+
+const posterUrl = await getBackgroundImage(data?.video?.poster, { width: 1400 });
+---
+
+<section class:list={["hero-splitvid section-wrapper relative overflow-hidden", `theme-${theme}`]}>
+  <div class="section-container relative z-10 py-14 lg:py-20">
+    <div class:list={["hero-splitvid-grid", videoLeft && "is-video-left"]}>
+      <!-- Content -->
+      <div class="hero-splitvid-content">
+        {data?.eyebrow && <span class="text-sm font-semibold uppercase tracking-widest text-color-brand-secondary">{data.eyebrow.text}</span>}
+        {
+          ratings.length > 0 && (
+            <div class="hero-ratings">
+              {ratings.map((r) => (
+                <span class="rating-lockup">
+                  {r.platform && <span class="rating-platform">{r.platform}</span>}
+                  <span class="rating-stars" aria-hidden="true">
+                    {[0, 1, 2, 3, 4].map(() => (<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77 5.82 21l1.18-6.88-5-4.87 7.1-1.01L12 2z" /></svg>))}
+                  </span>
+                  <span class="rating-score">{r.score}</span>
+                </span>
+              ))}
+              {data?.combinedReviews && <span class="rating-combined">{data.combinedReviews}</span>}
+            </div>
+          )
+        }
+        {heading && <h1 class="hero-h theme-heading font-extrabold m-0 leading-[1.06]" set:html={highlight(heading)}></h1>}
+        {subheading && <p class="theme-text-muted text-lg lg:text-xl m-0 max-w-xl">{subheading}</p>}
+        {bodyParts.length > 0 && (
+          <div class="flex flex-col gap-3 theme-text max-w-xl">
+            {bodyParts.map((p) => <p class="m-0 leading-relaxed" set:html={highlight(p)} />)}
+          </div>
+        )}
+
+        {
+          (data?.ctas?.length || data?.showPhone) && (
+            <div class="flex flex-wrap items-center gap-sm mt-1">
+              {data?.ctas?.map((cta) => <Button variant={cta.variant ?? "primary"} href={cta.href}>{cta.label}</Button>)}
+              {data?.showPhone && business.phone && (
+                <a href={`tel:${business.phone}`} class="inline-flex items-center gap-xs font-bold text-lg theme-text hover:opacity-80 transition-opacity no-underline">
+                  <svg class="w-5 h-5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z" /></svg>
+                  {business.phone}
+                </a>
+              )}
+            </div>
+          )
+        }
+        {
+          badges.length > 0 && (
+            <ul class="hero-chips">
+              {badges.map((b) => (
+                <li class="hero-chip">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M20 6 9 17l-5-5" /></svg>
+                  {b.text}
+                </li>
+              ))}
+            </ul>
+          )
+        }
+      </div>
+
+      <!-- Video -->
+      <div class="hero-splitvid-media">
+        <div
+          class="hero-splitvid-frame"
+          style={posterUrl ? `background-image:url('${posterUrl}')` : ""}
+          data-embed={data?.video?.embedUrl ?? ""}
+          data-src={data?.video?.src ?? ""}
+        >
+          <button class="hero-splitvid-play" type="button" aria-label="Play video">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z" /></svg>
+          </button>
+          {data?.video?.caption && <span class="hero-splitvid-caption">{data.video.caption}</span>}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script is:inline>
+  if (!window.__heroSplitVidInit) {
+    window.__heroSplitVidInit = true;
+    document.addEventListener("click", (e) => {
+      const btn = e.target.closest(".hero-splitvid-play");
+      if (!btn) return;
+      const frame = btn.closest(".hero-splitvid-frame");
+      const embed = frame.dataset.embed, src = frame.dataset.src;
+      if (embed) {
+        const sep = embed.includes("?") ? "&" : "?";
+        frame.innerHTML = `<iframe src="${embed}${sep}autoplay=1" allow="autoplay; encrypted-media; fullscreen" allowfullscreen title="Video"></iframe>`;
+      } else if (src) {
+        frame.innerHTML = `<video src="${src}" controls autoplay playsinline></video>`;
+      }
+    });
+  }
+</script>
+
+<style>
+  .hero-splitvid { position: relative; }
+  .hero-splitvid::before {
+    content: ""; position: absolute; inset: 0; z-index: 0;
+    background: linear-gradient(150deg, color-mix(in srgb, var(--t-secondary) 8%, transparent) 0%, transparent 55%);
+    pointer-events: none;
+  }
+  .hero-splitvid-grid { display: grid; grid-template-columns: 1fr; gap: 2rem; align-items: center; }
+  @media (min-width: 1024px) {
+    .hero-splitvid-grid { grid-template-columns: 1fr 1.05fr; gap: 3.5rem; }
+    .hero-splitvid-grid.is-video-left .hero-splitvid-content { order: 2; }
+    .hero-splitvid-grid.is-video-left .hero-splitvid-media { order: 1; }
+  }
+  .hero-splitvid-content { display: flex; flex-direction: column; gap: 1.25rem; }
+  .hero-h { font-size: clamp(2.1rem, 4.4vw, 3.3rem); text-wrap: balance; }
+
+  /* Theme-aware chips + rating lockups (this content sits on the theme surface). */
+  .hero-ratings { display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem 0.9rem; }
+  .rating-lockup {
+    display: inline-flex; align-items: center; gap: 0.35rem;
+    background: color-mix(in srgb, var(--color-fg) 8%, transparent);
+    border: 1px solid color-mix(in srgb, var(--color-fg) 20%, transparent);
+    border-radius: 999px; padding: 0.28rem 0.65rem;
+  }
+  .rating-platform { font-size: 0.72rem; font-weight: 700; color: var(--color-fg); }
+  .rating-stars { display: inline-flex; gap: 0.05rem; color: var(--color-rating); }
+  .rating-stars svg { width: 0.82rem; height: 0.82rem; }
+  .rating-score { font-size: 0.76rem; font-weight: 800; color: var(--color-fg); }
+  .rating-combined { font-size: 0.8rem; font-weight: 600; color: var(--color-fg); opacity: 0.8; }
+
+  .hero-chips { list-style: none; margin: 0.25rem 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: 0.4rem 1rem; }
+  .hero-chip { display: inline-flex; align-items: center; gap: 0.4rem; font-size: 0.85rem; font-weight: 600; color: var(--color-fg); }
+  .hero-chip svg { width: 1rem; height: 1rem; color: var(--t-secondary); }
+
+  .hero-splitvid-media { position: relative; }
+  .hero-splitvid-frame {
+    position: relative; aspect-ratio: 16 / 9; border-radius: 1rem; overflow: hidden;
+    background-color: #06121c; background-size: cover; background-position: center;
+    box-shadow: 0 26px 64px -22px rgba(0,0,0,0.6), 0 0 0 1px rgba(255,255,255,0.06);
+  }
+  .hero-splitvid-frame::after { content: ""; position: absolute; inset: 0; background: rgba(0,0,0,0.28); pointer-events: none; }
+  .hero-splitvid-frame :global(iframe),
+  .hero-splitvid-frame :global(video) { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+  .hero-splitvid-play {
+    position: absolute; inset: 0; margin: auto; z-index: 2;
+    width: 4.75rem; height: 4.75rem; border-radius: 999px; border: 0; cursor: pointer;
+    display: grid; place-items: center; color: #fff;
+    background: color-mix(in srgb, var(--t-primary) 92%, transparent);
+    box-shadow: 0 10px 30px -6px rgba(0,0,0,0.6);
+    transition: transform 0.15s ease, background 0.15s ease;
+  }
+  .hero-splitvid-play:hover { transform: scale(1.06); }
+  .hero-splitvid-play svg { width: 2rem; height: 2rem; margin-left: 0.18rem; }
+  .hero-splitvid-caption {
+    position: absolute; left: 0.9rem; bottom: 0.9rem; z-index: 2;
+    font-size: 0.8rem; font-weight: 600; color: #fff; text-shadow: 0 1px 8px rgba(0,0,0,0.6);
+  }
+</style>

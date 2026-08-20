@@ -18,6 +18,30 @@ const ROOT = resolve(import.meta.dirname, "..");
 const CONTENT = resolve(ROOT, "src/content");
 const OUT = resolve(ROOT, ".emdash/seed.json");
 
+// ⚠️ LIVE-DATA GUARD (added 2026-08-20 after a stale seed reset the nav menus).
+// This script rebuilds .emdash/seed.json from the *git content collections* — a
+// MINIMAL snapshot (e.g. nav = "Home" only) that does NOT reflect the live D1.
+// EmDash auto-applies .emdash/seed.json on boot when it thinks the DB is empty
+// (which the flaky shared-remote D1 can momentarily report), so an out-of-date
+// seed here is a loaded gun against production content.
+//
+// The authoritative snapshot now comes from live D1 via:
+//   npx emdash export-seed --with-content > .emdash/seed.json
+//
+// This builder is therefore OFF by default. To intentionally regenerate the
+// git-derived seed (e.g. standing up a brand-new empty site), run:
+//   EMDASH_ALLOW_SEED_BUILD=1 npm run seed
+if (process.env.EMDASH_ALLOW_SEED_BUILD !== "1") {
+  console.error(
+    "\n✋ build-seed is disabled to protect live data.\n" +
+      "   It would overwrite .emdash/seed.json with a MINIMAL git-derived snapshot\n" +
+      "   that EmDash can auto-apply on boot and wipe live content (e.g. nav menus).\n\n" +
+      "   • To back up the LIVE site instead:  npx emdash export-seed --with-content > .emdash/seed.json\n" +
+      "   • To force a fresh git-derived seed (new/empty site only):  EMDASH_ALLOW_SEED_BUILD=1 npm run seed\n",
+  );
+  process.exit(1);
+}
+
 const readJson = async (p) => JSON.parse(await readFile(p, "utf-8"));
 async function jsonFiles(dir) {
   try {
@@ -319,7 +343,7 @@ const asList = (v) => {
 
 // ---- appearance (header/footer chrome pickers — native select dropdowns) ----
 const HEADER_VARIANTS = ["classic", "centered", "minimal", "transparent", "inverse", "two-row", "pill", "compact", "cta-prominent", "gradient"];
-const FOOTER_VARIANTS = ["columns", "simple", "cta", "newsletter", "map", "mega", "centered", "hours", "social", "bar"];
+const FOOTER_VARIANTS = ["columns", "simple", "cta", "newsletter", "map", "mega", "centered", "hours", "social", "bar", "brandmark", "glow", "spotlight", "marquee"];
 collections.push({
   slug: "appearance",
   label: "Appearance",

@@ -1,0 +1,91 @@
+---
+import { getReviews } from "@/lib/content";
+
+/**
+ * CtaSpotlight — a compact trust/credential strip that sits directly BELOW a
+ * primary CTA button on high-intent sections (the "one more nudge" before the
+ * click). Bracketed callouts: a gold star-rating lockup (real review avg/count)
+ * plus one or more credential chips (licensed/guaranteed/etc.).
+ *
+ * Toggled per-section via a `spotlight` boolean in the CMS (renders as a checkbox
+ * in the section builder). Theme-aware: reads on dark CTA bands and light alike.
+ *
+ *   {data.spotlight && <CtaSpotlight align="center" />}
+ */
+interface Credential { icon?: string; label: string }
+interface Props {
+  rating?: number;
+  count?: string;
+  credentials?: Credential[];
+  align?: "start" | "center";
+  class?: string;
+}
+
+const reviews = await getReviews();
+const ratings = reviews.map((r) => r.data.rating).filter((n): n is number => typeof n === "number");
+const avg = ratings.length ? ratings.reduce((a, b) => a + b, 0) / ratings.length : 5;
+
+const {
+  rating = Math.round(avg * 10) / 10,
+  count = `${ratings.length || reviews.length}+ Customers`,
+  credentials = [{ icon: "shield", label: "Licensed & Insured" }],
+  align = "center",
+  class: cls,
+} = Astro.props;
+
+const ICON: Record<string, string> = {
+  shield: '<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/>',
+  check: '<circle cx="12" cy="12" r="9"/><path d="M8 12l3 3 5-6"/>',
+  medal: '<circle cx="12" cy="8" r="6"/><path d="M15.5 13.5 17 22l-5-3-5 3 1.5-8.5"/>',
+  clock: '<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>',
+  leaf: '<path d="M11 20A7 7 0 0 1 4 13c0-6 8-9 16-9 0 8-3 12-9 12z"/><path d="M4 20c2-4 5-7 9-9"/>',
+};
+const stars = Array.from({ length: 5 }, (_, i) => (rating >= i + 1 ? "full" : rating >= i + 0.5 ? "half" : "empty"));
+---
+
+<div class:list={["cspot", `cspot-${align}`, cls]} aria-label={`Rated ${rating} stars by ${count}`}>
+  <span class="cspot-chip cspot-rating">
+    <span class="cspot-stars" aria-hidden="true">
+      {stars.map((s) => (
+        <svg viewBox="0 0 24 24" class:list={["cspot-star", `is-${s}`]} width="14" height="14"><path d="M12 2l2.9 6.3 6.9.7-5.1 4.7 1.4 6.8L12 17.8 5.9 20.5l1.4-6.8L2.2 9l6.9-.7z"/></svg>
+      ))}
+    </span>
+    <strong>{rating.toFixed(1)}</strong><span class="cspot-sep">·</span><span class="cspot-count">{count}</span>
+  </span>
+  {credentials.map((c) => (
+    <span class="cspot-chip">
+      <svg viewBox="0 0 24 24" class="cspot-cred-icon" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" width="15" height="15" aria-hidden="true" set:html={ICON[c.icon ?? "check"] ?? ICON.check} />
+      <span>{c.label}</span>
+    </span>
+  ))}
+</div>
+
+<style>
+  .cspot {
+    display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem 1.1rem;
+    margin-top: 1rem; font-size: 0.8rem; font-weight: 600; letter-spacing: 0.02em;
+    color: var(--theme-fg-muted, var(--color-fg-muted));
+  }
+  .cspot-center { justify-content: center; }
+  .cspot-start { justify-content: flex-start; }
+
+  .cspot-chip { display: inline-flex; align-items: center; gap: 0.4rem; white-space: nowrap; }
+  /* bracket flourish around the rating lockup (matches the reference) */
+  .cspot-rating { position: relative; padding: 0.15rem 0.7rem; }
+  .cspot-rating::before, .cspot-rating::after {
+    content: ""; position: absolute; top: 0; bottom: 0; width: 0.5rem;
+    border: 1.5px solid color-mix(in srgb, currentColor 45%, transparent);
+  }
+  .cspot-rating::before { left: 0; border-right: 0; }
+  .cspot-rating::after { right: 0; border-left: 0; }
+
+  .cspot-stars { display: inline-flex; gap: 1px; }
+  .cspot-star { color: var(--color-rating); }
+  .cspot-star.is-empty { color: color-mix(in srgb, currentColor 30%, transparent); }
+  .cspot-star path { fill: currentColor; }
+
+  .cspot-rating strong { color: var(--theme-fg, var(--color-fg)); font-weight: 800; }
+  .cspot-sep { opacity: 0.5; }
+  .cspot-count { text-transform: uppercase; }
+  .cspot-cred-icon { color: var(--color-rating); flex-shrink: 0; }
+</style>

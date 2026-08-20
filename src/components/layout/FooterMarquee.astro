@@ -1,0 +1,65 @@
+---
+import { getBusinessData, getFooterNav } from "@/lib/utils";
+
+/**
+ * footer:marquee — a scrolling brand/tagline marquee band (motion flair) above a
+ * clean footer body. The big brand name repeats across the top edge. Respects
+ * reduced-motion.
+ */
+const business = await getBusinessData();
+const year = new Date().getFullYear();
+const { groups, legal } = await getFooterNav();
+const addr = [business.address, [business.city, business.state].filter(Boolean).join(", "), business.zip].filter(Boolean).join(" · ");
+const word = business.businessName ?? "";
+const marquee = Array.from({ length: 8 });
+---
+
+<footer class="fmq bg-bg-inverse text-fg-inverse relative overflow-hidden">
+  <div class="fmq-band" aria-hidden="true">
+    <div class="fmq-track">
+      {marquee.map(() => (<span class="fmq-word">{word}<span class="fmq-star">✦</span></span>))}
+    </div>
+    <div class="fmq-track" aria-hidden="true">
+      {marquee.map(() => (<span class="fmq-word">{word}<span class="fmq-star">✦</span></span>))}
+    </div>
+  </div>
+
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-14">
+    <div class="grid gap-10 md:grid-cols-2 lg:grid-cols-[1.6fr_1fr_1fr_1fr]">
+      <div class="flex flex-col gap-4">
+        <span class="text-xl font-extrabold">{business.businessName}</span>
+        {business.tagline && <p class="text-fg-inverse/60 text-sm leading-relaxed max-w-xs m-0">{business.tagline}</p>}
+        <div class="flex flex-col gap-1.5 text-sm text-fg-inverse/75">
+          {business.phone && <a href={`tel:${business.phone}`} class="hover:text-fg-inverse no-underline w-fit">{business.phone}</a>}
+          {business.email && <a href={`mailto:${business.email}`} class="hover:text-fg-inverse no-underline w-fit">{business.email}</a>}
+          {addr && <span>{addr}</span>}
+        </div>
+      </div>
+      {groups.slice(0, 3).map((g) => (
+        <nav class="flex flex-col gap-2.5">
+          <h3 class="text-xs font-bold uppercase tracking-widest text-fg-inverse/45 m-0">{g.label}</h3>
+          <ul class="flex flex-col gap-2 list-none m-0 p-0">
+            {(g.children ?? []).slice(0, 6).map((c) => (<li><a href={c.href ?? "#"} class="text-sm text-fg-inverse/75 hover:text-fg-inverse no-underline">{c.label}</a></li>))}
+          </ul>
+        </nav>
+      ))}
+    </div>
+
+    <div class="mt-12 pt-6 border-t border-white/10 flex flex-wrap items-center justify-between gap-3 text-xs text-fg-inverse/55">
+      <span>© {year} {business.businessName}. All rights reserved.</span>
+      <div class="flex flex-wrap gap-x-4 gap-y-1">
+        {legal.filter((l) => l.href).map((l) => <a href={l.href} class="hover:text-fg-inverse no-underline">{l.label}</a>)}
+      </div>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .fmq-band { display: flex; gap: 0; overflow: hidden; padding: 1.25rem 0; border-bottom: 1px solid rgba(255,255,255,0.1); user-select: none; }
+  .fmq-track { display: flex; flex-shrink: 0; align-items: center; gap: 0; animation: fmqScroll 30s linear infinite; }
+  .fmq-word { display: inline-flex; align-items: center; gap: 1.5rem; padding-right: 1.5rem; white-space: nowrap;
+    font-size: clamp(1.75rem, 4vw, 3rem); font-weight: 900; letter-spacing: -0.02em; color: rgba(255,255,255,0.1); }
+  .fmq-star { color: color-mix(in srgb, var(--color-primary) 60%, transparent); font-size: 0.7em; }
+  @keyframes fmqScroll { to { transform: translateX(-100%); } }
+  @media (prefers-reduced-motion: reduce) { .fmq-track { animation: none; } }
+</style>
