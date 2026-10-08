@@ -30,3 +30,6 @@ dev.log
 
 # local secrets
 .dev.vars
+
+# Raw D1 SQL dumps (point-in-time backups; .emdash/seed.json is the committed IaC snapshot)
+.backups/
