@@ -28,7 +28,7 @@ const avg = ratings.length ? ratings.reduce((a, b) => a + b, 0) / ratings.length
 const {
   rating = Math.round(avg * 10) / 10,
   count = `${ratings.length || reviews.length}+ Customers`,
-  credentials = [{ icon: "shield", label: "Licensed & Insured" }],
+  credentials = [{ icon: "shield", label: "Fully Insured" }],
   align = "center",
   class: cls,
 } = Astro.props;

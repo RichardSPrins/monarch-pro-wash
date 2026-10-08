@@ -24,35 +24,38 @@ const pairs = data?.pairs ?? [];
 const cols = data?.columns === 2 ? "lg:grid-cols-2" : "lg:grid-cols-1";
 ---
 
-<section class={`section-wrapper section-py theme-${theme}`}>
-  <div class="section-container">
-    {/* Header */}
-    <div class="flex flex-col items-center text-center gap-sm mb-12">
+{/* No real before/after pairs — hide the section rather than leaving a stranded heading. */}
+{(pairs.length > 0) && (
+  <section class={`section-wrapper section-py theme-${theme}`}>
+    <div class="section-container">
+      {/* Header */}
+      <div class="flex flex-col items-center text-center gap-sm mb-12">
+        {
+          data?.eyebrow && (
+            <div>
+              {data.eyebrow.variant === "badge" ? (
+                <Badge class="uppercase tracking-widest text-xs">{data.eyebrow.text}</Badge>
+              ) : (
+                <span class="text-sm font-semibold uppercase tracking-widest text-color-brand-secondary">
+                  {data.eyebrow.text}
+                </span>
+              )}
+            </div>
+          )
+        }
+        {data?.heading && <h2 class="theme-heading text-3xl lg:text-4xl font-bold m-0">{data.heading}</h2>}
+        {data?.subheading && <p class="theme-text-muted text-lg max-w-2xl m-0">{data.subheading}</p>}
+      </div>
+
       {
-        data?.eyebrow && (
-          <div>
-            {data.eyebrow.variant === "badge" ? (
-              <Badge class="uppercase tracking-widest text-xs">{data.eyebrow.text}</Badge>
-            ) : (
-              <span class="text-sm font-semibold uppercase tracking-widest text-color-brand-secondary">
-                {data.eyebrow.text}
-              </span>
-            )}
+        pairs.length > 0 && (
+          <div class={`grid grid-cols-1 ${cols} gap-xl max-w-5xl mx-auto`}>
+            {pairs.map((pair) => (
+              <BeforeAfterSlider before={pair.before} after={pair.after} label={pair.label} alt={pair.alt} />
+            ))}
           </div>
         )
       }
-      {data?.heading && <h2 class="theme-heading text-3xl lg:text-4xl font-bold m-0">{data.heading}</h2>}
-      {data?.subheading && <p class="theme-text-muted text-lg max-w-2xl m-0">{data.subheading}</p>}
     </div>
-
-    {
-      pairs.length > 0 && (
-        <div class={`grid grid-cols-1 ${cols} gap-xl max-w-5xl mx-auto`}>
-          {pairs.map((pair) => (
-            <BeforeAfterSlider before={pair.before} after={pair.after} label={pair.label} alt={pair.alt} />
-          ))}
-        </div>
-      )
-    }
-  </div>
-</section>
+  </section>
+)}

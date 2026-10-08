@@ -2,7 +2,6 @@
 import { defineConfig, envField } from 'astro/config';
 import tailwindcss from '@tailwindcss/vite';
 import markdoc from '@astrojs/markdoc';
-import sitemap from '@astrojs/sitemap';
 import icon from 'astro-icon';
 import react from '@astrojs/react';
 import cloudflare from '@astrojs/cloudflare';
@@ -10,19 +9,22 @@ import emdash from 'emdash/astro';
 import { d1, r2 } from '@emdash-cms/cloudflare';
 import { sectionBuilder } from './plugins/section-builder/register.mjs';
 
-// Loud warning if a production build runs without SITE_URL — canonical, sitemap,
-// robots, and JSON-LD would otherwise all point at https://example.com.
+// `site` is resolved at BUILD time (canonical tags, sitemap, robots, JSON-LD all
+// bake it in), so a runtime `vars` entry in wrangler.jsonc cannot supply it — the
+// production default below is what actually ships unless SITE_URL is exported
+// into the build environment.
+const PROD_SITE = 'https://www.monarchprowashidaho.com';
 const SITE_URL = process.env.SITE_URL;
 const isDev = process.argv.some((a) => a === 'dev');
 if (!SITE_URL && process.argv.some((a) => a === 'build')) {
   console.warn(
-    '\n\x1b[33m⚠  SITE_URL is not set\x1b[0m — canonical/sitemap/robots/JSON-LD will use https://example.com.' +
-      '\n   Set SITE_URL in your deploy environment before shipping this site.\n',
+    `\n\x1b[33mℹ  SITE_URL is not set\x1b[0m — using the production default ${PROD_SITE}` +
+      '\n   for canonical/sitemap/robots/JSON-LD. Export SITE_URL to build for another host.\n',
   );
 }
 // In dev, default `site` to localhost so EmDash's absolute admin/login redirects
-// stay on the local http server (otherwise they point at the prod placeholder).
-const SITE = SITE_URL || (isDev ? 'http://localhost:4321' : 'https://monarch-pro-wash.extensiblmedia.workers.dev');
+// stay on the local http server (otherwise they point at the prod domain).
+const SITE = SITE_URL || (isDev ? 'http://localhost:4321' : PROD_SITE);
 
 // https://astro.build/config
 export default defineConfig({
@@ -76,10 +78,10 @@ export default defineConfig({
       plugins: [/** @type {any} */ (sectionBuilder())],
     }),
     markdoc(),
-    sitemap({
-      // Keep internal/dev preview pages out of the sitemap (they are noindex).
-      filter: (page) => !/\/(sections|components|section-preview)(\/|$)/.test(page),
-    }),
+    // NOTE: @astrojs/sitemap is intentionally NOT used. Under `output: 'server'`
+    // it only sees statically-known routes, so it emitted a sitemap with just
+    // /blog, /estimate, /magnet-demo and /search — none of the ~240 CMS pages.
+    // src/pages/sitemap.xml.ts builds the real one from the CMS at request time.
     icon(),
   ],
 

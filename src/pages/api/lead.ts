@@ -37,12 +37,14 @@ interface NormalizedLead {
 }
 
 const CONTACT_KEYS = ["name", "email", "phone", "address", "city"] as const;
+/** Honeypot field names — kept out of `answers` so they never reach a notification. */
+const HONEYPOT_KEYS = ["companyWebsite", "company_website"] as const;
 const META_KEYS = new Set([
   "source",
   "magnet",
   "tags",
   "page",
-  "companyWebsite", // honeypot
+  ...HONEYPOT_KEYS,
   ...CONTACT_KEYS,
 ]);
 
@@ -114,19 +116,118 @@ function deriveTags(lead: NormalizedLead): string[] {
 }
 
 /**
- * Deliver a captured lead. Always writes a durable log line; if Autopilot is
- * configured (AUTOPILOT_API_KEY set), also creates/updates a lead in the CRM.
- * CRM failures never fail the request — the log preserves the lead.
+ * Deliver a captured lead. Always writes a durable log line, then fans out to
+ * whichever delivery adapters are configured. No adapter can fail the request —
+ * the log preserves the lead either way.
+ *
+ * Email is the primary adapter while the CRM decision is deferred; the Autopilot
+ * adapter below stays dormant unless AUTOPILOT_API_KEY is set.
  */
 async function deliverLead(lead: NormalizedLead): Promise<void> {
-  // Structured, greppable record — always, regardless of CRM config.
+  // Structured, greppable record — always, regardless of adapter config.
   console.info("[lead]", JSON.stringify(lead));
-  if (!AUTOPILOT_API_KEY) return; // log-only until the key is set
+
+  await deliverByEmail(lead);
+
+  if (!AUTOPILOT_API_KEY) return; // dormant until the key is set
   try {
     await deliverToAutopilot(lead, AUTOPILOT_API_KEY);
     console.info("[lead] autopilot: delivered", lead.contact.email || lead.contact.phone || "");
   } catch (err) {
     console.error("[lead] autopilot delivery failed:", (err as Error)?.message);
+  }
+}
+
+// ---- Email adapter (Cloudflare Email Sending) --------------------------------
+// Notifies the inquiries inbox on every lead. Reply-To is the lead's own address
+// so a reply goes straight back to the customer rather than to the Worker.
+//
+// Reads the binding + addresses from the Worker env rather than astro:env because
+// `send_email` is a binding (runtime-only) and the addresses live in wrangler
+// `vars`, which astro:env's build-time `access: "public"` path can't see.
+//
+// Degrades to log-only when the binding or recipient is missing, so the site can
+// ship before the sending domain is onboarded without dropping a 500 on a visitor.
+
+const esc = (s: unknown) =>
+  String(s ?? "").replace(/[&<>"']/g, (c) =>
+    ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c]!
+  );
+
+function leadSubject(lead: NormalizedLead): string {
+  const who = lead.contact.name || lead.contact.email || lead.contact.phone || "Unknown";
+  const svc = lead.tags.find((t) => t.startsWith("svc:"))?.slice(4);
+  const area = lead.tags.find((t) => t.startsWith("area:"))?.slice(5);
+  const bits = [titleize(svc ?? ""), titleize(area ?? "")].filter(Boolean).join(" · ");
+  return `New lead — ${who}${bits ? ` — ${bits}` : ""}`;
+}
+
+async function deliverByEmail(lead: NormalizedLead): Promise<void> {
+  let EMAIL: { send: (m: Record<string, unknown>) => Promise<unknown> } | undefined;
+  let to: string | undefined;
+  let from: string | undefined;
+  try {
+    const { env } = (await import("cloudflare:workers")) as { env: Record<string, any> };
+    EMAIL = env.EMAIL;
+    to = env.LEAD_NOTIFY_TO;
+    from = env.LEAD_NOTIFY_FROM;
+  } catch {
+    return; // not running on workerd (e.g. a unit test) — the log line stands
+  }
+  if (!EMAIL || !to || !from) {
+    console.warn("[lead] email adapter not configured (EMAIL binding / LEAD_NOTIFY_TO / LEAD_NOTIFY_FROM) — logged only");
+    return;
+  }
+
+  const notes = buildNotes(lead);
+  const c = lead.contact;
+  const contactRows = [
+    ["Name", c.name],
+    ["Phone", c.phone],
+    ["Email", c.email],
+    ["Address", c.address],
+    ["City", c.city],
+  ].filter(([, v]) => v);
+
+  const text = [
+    `${leadSubject(lead)}`,
+    "",
+    ...contactRows.map(([k, v]) => `${k}: ${v}`),
+    "",
+    notes,
+    "",
+    `Tags: ${lead.tags.join(", ") || "none"}`,
+  ].join("\n");
+
+  const html =
+    `<div style="font-family:system-ui,-apple-system,Segoe UI,sans-serif;font-size:15px;line-height:1.5;color:#0e2a3f">` +
+    `<h2 style="margin:0 0 .5rem">${esc(leadSubject(lead))}</h2>` +
+    `<table cellpadding="4" style="border-collapse:collapse;margin-bottom:1rem">` +
+    contactRows
+      .map(
+        ([k, v]) =>
+          `<tr><td style="color:#52646f">${esc(k)}</td><td><strong>${esc(v)}</strong></td></tr>`
+      )
+      .join("") +
+    `</table>` +
+    `<pre style="white-space:pre-wrap;font:inherit;background:#f4f7f8;padding:.75rem;border-radius:6px;margin:0">${esc(notes)}</pre>` +
+    `<p style="color:#52646f;font-size:13px">Tags: ${esc(lead.tags.join(", ") || "none")}</p>` +
+    `</div>`;
+
+  try {
+    await EMAIL.send({
+      to,
+      from: { email: from, name: "Monarch Pro Wash Website" },
+      // Reply goes to the customer, not the Worker. Omitted when they only left a phone.
+      ...(c.email ? { replyTo: c.email } : {}),
+      subject: leadSubject(lead),
+      text,
+      html,
+    });
+    console.info("[lead] email: delivered to", to);
+  } catch (err) {
+    // E_SENDER_NOT_VERIFIED here means the sending domain isn't onboarded yet.
+    console.error("[lead] email delivery failed:", (err as any)?.code, (err as Error)?.message);
   }
 }
 
@@ -284,7 +385,10 @@ export const POST: APIRoute = async ({ request }) => {
   }
 
   // Honeypot: a filled hidden field means a bot. Accept silently so it moves on.
-  if (typeof body.companyWebsite === "string" && body.companyWebsite.trim()) {
+  // Both spellings: the forms render `company_website`, while older/external
+  // callers post `companyWebsite`. Checking only one left the server-side trap
+  // dead for anything POSTing straight here.
+  if (HONEYPOT_KEYS.some((k) => typeof body[k] === "string" && (body[k] as string).trim())) {
     return json({ ok: true });
   }
 

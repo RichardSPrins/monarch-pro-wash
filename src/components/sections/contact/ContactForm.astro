@@ -1,28 +1,9 @@
 ---
 import { getHoursSettings, getServices } from "@/lib/content";
 import { getBusinessData } from "@/lib/utils";
-import type { Eyebrow } from "@/types/sections";
+import type { Eyebrow, FormConfig } from "@/types/sections";
 import Badge from "@/components/elements/badge/Badge.astro";
-import {
-  Card,
-  CardContent,
-  CardHeader,
-  CardTitle,
-  CardDescription,
-  CardFooter,
-} from "@/components/blocks/card";
-import { Button } from "@/components/elements/button";
-import { Input } from "@/components/elements/input";
-import { Label } from "@/components/elements/label";
-import {
-  Select,
-  SelectTrigger,
-  SelectValue,
-  SelectContent,
-  SelectItem,
-  SelectGroup,
-} from "@/components/blocks/select";
-import Textarea from "@/components/elements/textarea";
+import FormRenderer from "@/components/forms/FormRenderer.astro";
 
 /**
  * contact:form — standalone contact section. Business details (phone, email,
@@ -39,6 +20,8 @@ interface Props {
     formTitle?: string;
     formDescription?: string;
     submitLabel?: string;
+    /** Optional form config (type, title, submit target) — see FormConfig. */
+    form?: FormConfig;
   };
 }
 
@@ -155,55 +138,20 @@ const telHref = business.phone ? `tel:${business.phone.replace(/[^\d+]/g, "")}` 
         }
       </div>
 
-      {/* Form */}
-      <Card class="bg-bg-muted on-dark">
-        <CardHeader>
-          <CardTitle class="text-fg">{data?.formTitle ?? "Get a Free Quote"}</CardTitle>
-          <CardDescription class="text-fg-muted">
-            {data?.formDescription ?? "We'll get back to you within the hour."}
-          </CardDescription>
-        </CardHeader>
-        <CardContent>
-          <form class="flex flex-col gap-md" name="contact" method="POST">
-            <div class="flex flex-col gap-1.5">
-              <Label for="contact-name" class="text-fg">Full Name</Label>
-              <Input type="text" id="contact-name" name="name" placeholder="John Smith" required class="text-fg-muted placeholder:text-fg-muted border-bg-inverse" />
-            </div>
-            <div class="flex flex-col gap-1.5">
-              <Label for="contact-phone" class="text-fg">Phone Number</Label>
-              <Input type="tel" id="contact-phone" name="phone" placeholder="(555) 555-5555" required class="text-fg-muted placeholder:text-fg-muted border-bg-inverse" />
-            </div>
-            <div class="flex flex-col gap-1.5">
-              <Label for="contact-email" class="text-fg">Email</Label>
-              <Input type="email" id="contact-email" name="email" placeholder="you@example.com" class="text-fg-muted placeholder:text-fg-muted border-bg-inverse" />
-            </div>
-            <div class="flex flex-col gap-1.5">
-              <Label for="contact-service" class="text-fg">Service Needed</Label>
-              <Select id="contact-service" name="service">
-                <SelectTrigger class="w-full text-fg-muted placeholder:text-fg-muted border-bg-inverse">
-                  <SelectValue placeholder="Select a service" />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectGroup>
-                    {sortedServices.map((service) => (
-                      <SelectItem value={service.data.slug}>{service.data.title}</SelectItem>
-                    ))}
-                  </SelectGroup>
-                </SelectContent>
-              </Select>
-            </div>
-            <div class="flex flex-col gap-1.5">
-              <Label for="contact-message" class="text-fg">Message (optional)</Label>
-              <Textarea id="contact-message" name="message" placeholder="Tell us about your project" class="text-fg-muted placeholder:text-fg-muted border-bg-inverse" />
-            </div>
-          </form>
-        </CardContent>
-        <CardFooter>
-          <Button variant="primary" type="submit" class="w-full">
-            {data?.submitLabel ?? "Request a Free Quote"}
-          </Button>
-        </CardFooter>
-      </Card>
+      {/* Form — delegated to the shared lead form so submissions actually deliver.
+          The markup that used to live here was a bare <form> with no action and no
+          submit script, and its submit Button sat outside the <form> entirely, so
+          every submission was silently dropped. FormRenderer is the same wired path
+          contact:hours-map-form already uses. */}
+      <FormRenderer
+        form={{
+          ...(data?.form ?? {}),
+          title: data?.form?.title ?? data?.formTitle,
+          description: data?.form?.description ?? data?.formDescription,
+          submitLabel: data?.form?.submitLabel ?? data?.submitLabel,
+        }}
+        services={sortedServices}
+      />
     </div>
   </div>
 </section>

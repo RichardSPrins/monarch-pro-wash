@@ -13,6 +13,18 @@
 	"observability": {
 		"enabled": true
 	},
+	// SITE_URL must be set here: astro.config.mjs falls back to the *.workers.dev
+	// hostname without it, which would put the wrong host in every canonical tag,
+	// sitemap entry, robots.txt reference and JSON-LD url.
+	// Forms POST to the site's own /api/lead, which emails the inquiries inbox.
+	// (PUBLIC_FORM_ADAPTER defaults to "stub" — that logs and delivers nothing.)
+	"vars": {
+		"SITE_URL": "https://www.monarchprowashidaho.com",
+		"PUBLIC_FORM_ADAPTER": "webhook",
+		"PUBLIC_FORM_ENDPOINT": "/api/lead",
+		"LEAD_NOTIFY_TO": "inquiries@monarchprowashidaho.com",
+		"LEAD_NOTIFY_FROM": "noreply@monarchprowashidaho.com"
+	},
 	"d1_databases": [
 		{
 			"binding": "DB",
@@ -29,5 +41,10 @@
 			"remote": true
 		}
 	],
-	"kv_namespaces": [{ "binding": "SESSION", "id": "fb0b1a901a5e46eab98b025214455965" }]
+	"kv_namespaces": [{ "binding": "SESSION", "id": "fb0b1a901a5e46eab98b025214455965" }],
+	// Transactional send for lead notifications (/api/lead). Inert until the
+	// sending domain is onboarded — /api/lead stays log-only and never 500s.
+	// NOTE: the zone's mail is on Zoho (MX) with DMARC p=reject + strict
+	// alignment, so onboard a SENDING SUBDOMAIN and leave the apex MX/SPF alone.
+	"send_email": [{ "name": "EMAIL" }]
 }

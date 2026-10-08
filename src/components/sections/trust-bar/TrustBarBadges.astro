@@ -16,7 +16,7 @@ const yearsInBusiness = foundingYear ? new Date().getFullYear() - foundingYear :
 const googleRating = (data?.googleRating as number) ?? null;
 const reviewCount = (data?.reviewCount as number) ?? null;
 const showFamilyOwned = (data?.familyOwned as boolean) ?? true;
-const showLicensedInsured = (data?.licensedInsured as boolean) ?? true;
+const showInsured = (data?.insured as boolean) ?? true;
 
 const fullStars = googleRating ? Math.floor(googleRating) : 0;
 const hasHalf = googleRating ? googleRating % 1 >= 0.5 : false;
@@ -29,7 +29,7 @@ const badges = [
     label: googleRating.toFixed(1),
     sublabel: reviewCount ? `${reviewCount.toLocaleString()} Google Reviews` : 'Google Reviews',
   },
-  showLicensedInsured && { id: 'licensed', label: 'Licensed & Insured' },
+  showInsured && { id: 'insured', label: 'Fully Insured' },
   showFamilyOwned && { id: 'family', label: 'Family Owned & Operated' },
 ].filter(Boolean) as Array<{ id: string; label: string; sublabel?: string }>;
 ---

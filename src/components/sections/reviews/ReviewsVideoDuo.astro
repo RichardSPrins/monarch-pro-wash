@@ -34,110 +34,113 @@ function ytId(input?: string): string | null {
 const videos = (data?.videos ?? []).slice(0, 2);
 ---
 
-<section class={`section-wrapper section-py theme-${theme}`}>
-  <div class="section-container">
-    {/* Header */}
-    {
-      (data?.eyebrow || data?.heading || data?.subheading) && (
-        <div class="flex flex-col items-center text-center gap-sm mb-12">
-          {data?.eyebrow && (
-            <div>
-              {data.eyebrow.variant === "badge" ? (
-                <Badge class="uppercase tracking-widest text-xs">
-                  {data.eyebrow.text}
-                </Badge>
-              ) : (
-                <span class="text-sm font-semibold uppercase tracking-widest text-color-brand-secondary">
-                  {data.eyebrow.text}
-                </span>
-              )}
-            </div>
-          )}
-          {data?.heading && (
-            <h2 class="theme-heading text-3xl lg:text-4xl font-bold m-0">
-              {data.heading}
-            </h2>
-          )}
-          {data?.subheading && (
-            <p class="theme-text-muted text-lg max-w-2xl m-0">
-              {data.subheading}
-            </p>
-          )}
-        </div>
-      )
-    }
-
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-xl lg:gap-10">
+{/* No video testimonials — hide the section rather than rendering blank cards. */}
+{(videos.length > 0) && (
+  <section class={`section-wrapper section-py theme-${theme}`}>
+    <div class="section-container">
+      {/* Header */}
       {
-        videos.map((item) => {
-          const id = ytId(item.video);
-          const rating = item.rating;
-          const stars = rating
-            ? Array.from({ length: 5 }, (_, i) => i < rating)
-            : null;
-          return (
-            <div class="flex flex-col gap-5 rounded-xl border theme-border bg-background p-5">
-              {id ? (
-                <div class="video-embed">
-                  <iframe
-                    src={`https://www.youtube-nocookie.com/embed/${id}`}
-                    title={item.videoTitle ?? "Video"}
-                    loading="lazy"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                    allowfullscreen
-                  />
-                </div>
-              ) : (
-                <div class="video-placeholder">
-                  <span class="theme-text-subtle text-sm">Video coming soon</span>
-                </div>
-              )}
-
-              <div class="flex flex-col gap-sm">
-                {stars && (
-                  <div class="flex items-center gap-1">
-                    {stars.map((filled) => (
-                      <svg
-                        class="w-5 h-5"
-                        xmlns="http://www.w3.org/2000/svg"
-                        viewBox="0 0 24 24"
-                        fill={filled ? "var(--color-rating)" : "var(--color-rating-empty)"}
-                        aria-hidden="true"
-                      >
-                        <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
-                      </svg>
-                    ))}
-                  </div>
-                )}
-
-                {item.quote && (
-                  <blockquote class="theme-text text-lg leading-relaxed italic m-0">
-                    {item.quote}
-                  </blockquote>
-                )}
-
-                {(item.author || item.location) && (
-                  <div class="flex flex-col gap-0.5">
-                    {item.author && (
-                      <span class="theme-heading font-bold text-base">
-                        {item.author}
-                      </span>
-                    )}
-                    {item.location && (
-                      <span class="theme-text-muted text-sm">
-                        {item.location}
-                      </span>
-                    )}
-                  </div>
+        (data?.eyebrow || data?.heading || data?.subheading) && (
+          <div class="flex flex-col items-center text-center gap-sm mb-12">
+            {data?.eyebrow && (
+              <div>
+                {data.eyebrow.variant === "badge" ? (
+                  <Badge class="uppercase tracking-widest text-xs">
+                    {data.eyebrow.text}
+                  </Badge>
+                ) : (
+                  <span class="text-sm font-semibold uppercase tracking-widest text-color-brand-secondary">
+                    {data.eyebrow.text}
+                  </span>
                 )}
               </div>
-            </div>
-          );
-        })
+            )}
+            {data?.heading && (
+              <h2 class="theme-heading text-3xl lg:text-4xl font-bold m-0">
+                {data.heading}
+              </h2>
+            )}
+            {data?.subheading && (
+              <p class="theme-text-muted text-lg max-w-2xl m-0">
+                {data.subheading}
+              </p>
+            )}
+          </div>
+        )
       }
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-xl lg:gap-10">
+        {
+          videos.map((item) => {
+            const id = ytId(item.video);
+            const rating = item.rating;
+            const stars = rating
+              ? Array.from({ length: 5 }, (_, i) => i < rating)
+              : null;
+            return (
+              <div class="flex flex-col gap-5 rounded-xl border theme-border bg-background p-5">
+                {id ? (
+                  <div class="video-embed">
+                    <iframe
+                      src={`https://www.youtube-nocookie.com/embed/${id}`}
+                      title={item.videoTitle ?? "Video"}
+                      loading="lazy"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                      allowfullscreen
+                    />
+                  </div>
+                ) : (
+                  <div class="video-placeholder">
+                    <span class="theme-text-subtle text-sm">Video coming soon</span>
+                  </div>
+                )}
+
+                <div class="flex flex-col gap-sm">
+                  {stars && (
+                    <div class="flex items-center gap-1">
+                      {stars.map((filled) => (
+                        <svg
+                          class="w-5 h-5"
+                          xmlns="http://www.w3.org/2000/svg"
+                          viewBox="0 0 24 24"
+                          fill={filled ? "var(--color-rating)" : "var(--color-rating-empty)"}
+                          aria-hidden="true"
+                        >
+                          <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                        </svg>
+                      ))}
+                    </div>
+                  )}
+
+                  {item.quote && (
+                    <blockquote class="theme-text text-lg leading-relaxed italic m-0">
+                      {item.quote}
+                    </blockquote>
+                  )}
+
+                  {(item.author || item.location) && (
+                    <div class="flex flex-col gap-0.5">
+                      {item.author && (
+                        <span class="theme-heading font-bold text-base">
+                          {item.author}
+                        </span>
+                      )}
+                      {item.location && (
+                        <span class="theme-text-muted text-sm">
+                          {item.location}
+                        </span>
+                      )}
+                    </div>
+                  )}
+                </div>
+              </div>
+            );
+          })
+        }
+      </div>
     </div>
-  </div>
-</section>
+  </section>
+)}
 
 <style>
   .video-embed {
