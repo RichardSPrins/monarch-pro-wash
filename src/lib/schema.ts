@@ -111,6 +111,49 @@ export function createLocalBusinessSchema(
   };
 }
 
+const SCHEMA_DAY: Record<string, string> = {
+  monday: "Mo",
+  tuesday: "Tu",
+  wednesday: "We",
+  thursday: "Th",
+  friday: "Fr",
+  saturday: "Sa",
+  sunday: "Su",
+};
+
+/** "8:00 AM" | "17:00" → "08:00" (schema.org wants 24-hour HH:MM). */
+function to24Hour(value?: string): string | null {
+  if (!value) return null;
+  const m = value.trim().match(/^(\d{1,2}):(\d{2})\s*([AaPp][Mm])?$/);
+  if (!m) return null;
+  let hour = Number(m[1]);
+  const minute = m[2];
+  const meridiem = m[3]?.toLowerCase();
+  if (meridiem === "pm" && hour !== 12) hour += 12;
+  if (meridiem === "am" && hour === 12) hour = 0;
+  if (hour > 23) return null;
+  return `${String(hour).padStart(2, "0")}:${minute}`;
+}
+
+/**
+ * Business-hours repeater → schema.org `openingHours` strings ("Mo 08:00-17:00").
+ * Closed days and unparseable rows are dropped rather than emitted malformed,
+ * since bad values are worse than an absent property.
+ */
+export function createOpeningHours(
+  hours: { day?: string; open?: string; close?: string; closedAllDay?: boolean }[] = []
+): string[] {
+  const out: string[] = [];
+  for (const h of hours) {
+    if (h.closedAllDay) continue;
+    const day = SCHEMA_DAY[String(h.day ?? "").trim().toLowerCase()];
+    const open = to24Hour(h.open);
+    const close = to24Hour(h.close);
+    if (day && open && close) out.push(`${day} ${open}-${close}`);
+  }
+  return out;
+}
+
 export function createBlogPostSchema(post: {
   title: string;
   description: string;

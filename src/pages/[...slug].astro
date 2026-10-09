@@ -50,6 +50,12 @@ if (sd?.service || sd?.faq?.length) {
   }
   if (sd.faq?.length) pageSchemas.push(createFAQSchema(sd.faq));
 }
+
+// LocalBusiness JSON-LD is opt-OUT. This previously read `!!sd?.localBusiness`,
+// which coerced a null structured_data to false and so suppressed the schema on
+// every page — including the homepage, the one place a local-services site most
+// needs it. Set structured_data.localBusiness = false to suppress it on a page.
+const includeLocalBusiness = sd?.localBusiness ?? true;
 ---
 
 <MarketingLayout
@@ -59,7 +65,7 @@ if (sd?.service || sd?.faq?.length) {
   noindex={!!meta.robots}
   image={meta.ogImage ?? undefined}
   canonical={meta.canonical ?? undefined}
-  includeLocalBusinessSchema={!!sd?.localBusiness}
+  includeLocalBusinessSchema={includeLocalBusiness}
   schemas={pageSchemas}
 >
   <PageRenderer config={page.data} />

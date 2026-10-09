@@ -11,7 +11,9 @@ import {
   createLocalBusinessSchema,
   createBlogPostSchema,
   createBreadcrumbSchema,
+  createOpeningHours,
 } from "@/lib/schema";
+import { getHoursSettings, getServiceAreas } from "@/lib/content";
 import type {
   WithContext,
   WebSite,
@@ -93,11 +95,27 @@ const schemas: WithContext<
 >[] = [createWebsiteSchema(business, site)];
 
 if (includeLocalBusinessSchema) {
+  // Hours and service areas already live in the CMS, but nothing ever passed
+  // them, so LocalBusiness shipped without openingHours or areaServed — two of
+  // the properties that matter most for local search. Derive them here when a
+  // caller hasn't supplied explicit values.
+  const [hoursSettings, serviceAreas] = await Promise.all([
+    openingHours ? Promise.resolve(null) : getHoursSettings(),
+    areaServed ? Promise.resolve(null) : getServiceAreas(),
+  ]);
+  const resolvedHours =
+    openingHours ?? createOpeningHours(hoursSettings?.[0]?.data.hours ?? []);
+  const resolvedAreas =
+    areaServed ??
+    (serviceAreas ?? [])
+      .map((a: any) => a?.data?.city)
+      .filter((c: unknown): c is string => typeof c === "string" && c.length > 0);
+
   schemas.push(
     createLocalBusinessSchema(business, site, {
       businessType,
-      openingHours,
-      areaServed,
+      openingHours: resolvedHours.length > 0 ? resolvedHours : undefined,
+      areaServed: resolvedAreas.length > 0 ? resolvedAreas : undefined,
     })
   );
 }
