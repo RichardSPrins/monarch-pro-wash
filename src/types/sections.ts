@@ -189,3 +189,28 @@ export interface FormConfig {
     body?: string;
   };
 }
+
+/** Decorative background motif layered onto any section from the CMS. */
+export interface MotifConfig {
+  kind: "butterfly" | "butterfly-color" | "droplets" | "splash" | "glow" | "grid";
+  position?: "left" | "right" | "center" | "top" | "bottom";
+  color?: string;
+  opacity?: number;
+  size?: string;
+  /** Override the source SVG (defaults per kind; butterfly-color auto-picks antennae by theme). */
+  src?: string;
+}
+
+/**
+ * One entry in a page's `sections` array — the render contract.
+ * Shared by PageRenderer and SectionList.
+ */
+export interface SectionConfig {
+  type: string;
+  theme?: string;
+  /** Optional CMS-set vertical padding override (density keys: none|xs|sm|md|lg|xl). */
+  spacing?: { desktop?: string; mobile?: string };
+  /** Optional decorative motif (watermark / texture / glow) behind this section. */
+  motif?: MotifConfig;
+  data?: Record<string, unknown>;
+}

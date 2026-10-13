@@ -1,0 +1,135 @@
+---
+import { getServices } from "@/lib/content";
+import { getBusinessData } from "@/lib/utils";
+import { Button } from "@/components/elements/button";
+
+/**
+ * The sticky sidebar for service and service-in-area pages.
+ *
+ * Deliberately only two blocks, matching the Sol reference: a cross-sell list
+ * and a call/quote card. Trust badges, the guarantee and the service-area list
+ * are already full sections in the page body — repeating them in the rail would
+ * just be the same copy twice on one screen. No form either: the hero already
+ * carries one, and two live forms on screen compete.
+ */
+interface Props {
+  /** Town slug. Set on service-in-area pages so links stay within the town. */
+  areaSlug?: string;
+  /** Town display name, for the heading. */
+  areaName?: string;
+  /** Service slug to omit from the list (the page you're already on). */
+  currentService?: string;
+}
+
+const { areaSlug, areaName, currentService } = Astro.props;
+
+const business = await getBusinessData();
+const services = (await getServices())
+  .filter((s) => s.data.slug !== currentService)
+  .sort((a, b) => a.data.order - b.data.order)
+  .slice(0, 8);
+
+// Within a town, keep cross-sell links inside that town's matrix.
+const hrefFor = (slug: string) => (areaSlug ? `/${areaSlug}/${slug}` : `/services/${slug}`);
+const heading = areaName ? `Other Services in ${areaName}` : "Other Services";
+const telHref = business.phone ? `tel:${business.phone.replace(/[^\d+]/g, "")}` : null;
+---
+
+<div class="rail">
+  {
+    services.length > 0 && (
+      <nav class="rail-card" aria-labelledby="rail-services-heading">
+        <h2 id="rail-services-heading" class="rail-heading">{heading}</h2>
+        <ul class="rail-list">
+          {services.map((s) => (
+            <li>
+              <a href={hrefFor(s.data.slug)} class="rail-link">
+                {s.data.title}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </nav>
+    )
+  }
+
+  <div class="rail-card rail-cta">
+    <h2 class="rail-heading">Ready for a Cleaner Property?</h2>
+    <p class="rail-copy">
+      Get a free quote with your price up front, from a local team that treats your
+      property like its own.
+    </p>
+    <Button variant="primary" href="/contact" class="w-full">Get a Free Quote</Button>
+    {
+      telHref && (
+        <a href={telHref} class="rail-phone">
+          Call {business.phone}
+        </a>
+      )
+    }
+  </div>
+</div>
+
+<style>
+  .rail {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  .rail-card {
+    background-color: var(--color-bg-muted, var(--card));
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg, 0.75rem);
+    padding: 1.25rem;
+  }
+  .rail-heading {
+    font-size: 1rem;
+    font-weight: 700;
+    margin: 0 0 0.75rem;
+    color: var(--color-fg);
+  }
+  .rail-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+  }
+  .rail-list li + li {
+    border-top: 1px solid var(--color-border);
+  }
+  .rail-link {
+    display: block;
+    padding: 0.5rem 0 0.5rem 0.625rem;
+    border-left: 2px solid transparent;
+    color: var(--color-fg-muted);
+    text-decoration: none;
+    font-size: 0.9375rem;
+    transition: color 0.15s, border-color 0.15s;
+  }
+  .rail-link:hover,
+  .rail-link:focus-visible {
+    color: var(--color-primary);
+    border-left-color: var(--color-primary);
+  }
+  .rail-copy {
+    font-size: 0.9375rem;
+    line-height: 1.5;
+    color: var(--color-fg-muted);
+    margin: 0 0 1rem;
+  }
+  .rail-phone {
+    display: block;
+    text-align: center;
+    margin-top: 0.75rem;
+    font-weight: 600;
+    font-size: 0.9375rem;
+    color: var(--color-fg);
+    text-decoration: none;
+  }
+  .rail-phone:hover,
+  .rail-phone:focus-visible {
+    color: var(--color-primary);
+    text-decoration: underline;
+  }
+</style>

@@ -13,6 +13,12 @@ interface Props {
     limit?: number;
     filter?: "featured" | "all";
     service?: string;
+    /**
+     * Town name to scope reviews to, matched against the review's free-text
+     * `location` (e.g. "Boise" matches "Boise, ID"). Service-in-area pages pass
+     * this so a Meridian page shows Meridian reviews.
+     */
+    area?: string;
   };
 }
 
@@ -21,9 +27,17 @@ const { theme = "default", data } = Astro.props;
 const business = await getBusinessData();
 const allReviews = await getReviews();
 
+// `location` is free text ("Boise, ID"), so match on a case-insensitive prefix
+// rather than equality.
+const areaNeedle = data?.area?.trim().toLowerCase();
+
 const reviews = allReviews
   .filter((r) => (data?.filter === "all" ? true : r.data.featured))
   .filter((r) => !data?.service || r.data.service === data.service)
+  .filter(
+    (r) =>
+      !areaNeedle || (r.data.location ?? "").trim().toLowerCase().startsWith(areaNeedle),
+  )
   .sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
   .slice(0, data?.limit ?? 6);
 

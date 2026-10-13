@@ -1,0 +1,127 @@
+---
+import type { Eyebrow } from "@/types/sections";
+import Badge from "@/components/elements/badge/Badge.astro";
+
+/**
+ * service-areas:neighborhoods — a dense multi-column list of NEIGHBOURHOODS,
+ * corridors or landmarks within a single town.
+ *
+ * Distinct from `service-areas:columns`, which flows the service-areas
+ * collection (the 13 towns) and therefore renders the same list on every page.
+ * This one is data-driven: each service-in-area page passes its own town's
+ * places, so "Boise Neighborhoods We Serve" actually lists Boise neighbourhoods.
+ *
+ * Place names must come from the verified per-town research — never invent them.
+ */
+interface Place {
+  name: string;
+  /** Optional link, e.g. to a landmark or neighbourhood page. */
+  href?: string;
+}
+
+interface Props {
+  theme?: string;
+  data?: {
+    eyebrow?: Eyebrow;
+    heading?: string;
+    subheading?: string;
+    /** Place names. Plain strings are accepted and treated as unlinked. */
+    places?: (Place | string)[];
+    /** Trailing note under the list (e.g. "Not listed? We probably serve you."). */
+    footnote?: string;
+  };
+}
+
+const { theme = "default", data } = Astro.props;
+
+const places: Place[] = (data?.places ?? [])
+  .map((p) => (typeof p === "string" ? { name: p } : p))
+  .filter((p) => p && typeof p.name === "string" && p.name.trim().length > 0);
+
+const hasHeader = Boolean(data?.eyebrow || data?.heading || data?.subheading);
+---
+
+{
+  places.length > 0 && (
+    <section
+      class:list={["service-areas-neighborhoods section-wrapper section-py", `theme-${theme}`]}
+    >
+      <div class="section-container">
+        {hasHeader && (
+          <div class="flex flex-col items-center text-center gap-sm mb-12">
+            {data?.eyebrow && (
+              <div>
+                {data.eyebrow.variant === "badge" ? (
+                  <Badge class="uppercase tracking-widest text-xs">{data.eyebrow.text}</Badge>
+                ) : (
+                  <span class="text-sm font-semibold uppercase tracking-widest text-color-brand-secondary">
+                    {data.eyebrow.text}
+                  </span>
+                )}
+              </div>
+            )}
+            {data?.heading && (
+              <h2 class="theme-heading text-3xl lg:text-4xl font-bold m-0">{data.heading}</h2>
+            )}
+            {data?.subheading && (
+              <p class="theme-text-muted text-lg max-w-2xl m-0">{data.subheading}</p>
+            )}
+          </div>
+        )}
+
+        <ul class="place-columns">
+          {places.map((p) => (
+            <li class="place">
+              {p.href ? (
+                <a href={p.href} class="place-link">
+                  {p.name}
+                </a>
+              ) : (
+                <span class="place-text">{p.name}</span>
+              )}
+            </li>
+          ))}
+        </ul>
+
+        {data?.footnote && <p class="theme-text-muted text-sm mt-8 m-0">{data.footnote}</p>}
+      </div>
+    </section>
+  )
+}
+
+<style>
+  /* CSS columns flow a long list into balanced columns without needing to know
+     the count up front. `break-inside` keeps an item from splitting a column. */
+  .place-columns {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    columns: 1;
+    column-gap: 2rem;
+  }
+  @media (min-width: 640px) {
+    .place-columns { columns: 2; }
+  }
+  @media (min-width: 1024px) {
+    .place-columns { columns: 3; }
+  }
+  .place {
+    break-inside: avoid;
+    padding: 0.3rem 0;
+  }
+  .place-link,
+  .place-text {
+    font-size: 0.9375rem;
+    line-height: 1.5;
+  }
+  .place-text { color: var(--theme-text-muted, var(--color-fg-muted)); }
+  .place-link {
+    color: var(--theme-text, var(--color-fg));
+    text-decoration: none;
+  }
+  .place-link:hover,
+  .place-link:focus-visible {
+    color: var(--color-primary);
+    text-decoration: underline;
+  }
+</style>

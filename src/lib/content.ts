@@ -8,6 +8,7 @@
 // Resolved at request time (SSR) → live edits appear without a rebuild.
 import { getEmDashCollection, getEmDashEntry } from "emdash";
 import { estimatorPricing, type EstimatorPricing } from "@/config/estimatorPricing";
+import { isPublishedService } from "@/config/launchScope";
 
 /** A JSON column can come back parsed or as a string; normalise. */
 function asJson<T>(v: unknown, fallback: T): T {
@@ -64,13 +65,24 @@ export async function getPage(slug: string) {
 
 // ---- services / categories / areas ------------------------------------------
 
-export async function getServices() {
+/**
+ * Published services only.
+ *
+ * Every `services:*` section variant self-fetches through here, so this one
+ * filter is what keeps unpublished services out of the nav, the services hub,
+ * the home page, every cross-sell grid and the sitemap at once. Pass
+ * `{ all: true }` to see the full collection (the CMS still holds all 18).
+ */
+export async function getServices(opts: { all?: boolean } = {}) {
   // Resolve the `category` reference (stored as the target's translationGroup id)
   // back to the category slug the components group by.
   const [svcs, cats] = await Promise.all([all("services"), all("service_categories")]);
   const catSlug = new Map<string, string>();
   for (const c of cats) if (c.data?.translationGroup) catSlug.set(c.data.translationGroup, c.id);
-  return svcs.map((e) => {
+  const visible = opts.all
+    ? svcs
+    : svcs.filter((e) => isPublishedService((e.data?.slug as string) ?? e.id));
+  return visible.map((e) => {
     const d = e.data ?? {};
     return {
       id: e.id,

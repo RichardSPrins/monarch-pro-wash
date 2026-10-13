@@ -1,5 +1,6 @@
 import type { APIRoute } from "astro";
-import { getPages, getPosts } from "@/lib/content";
+import { getPages, getPosts, getServices, getServiceAreas } from "@/lib/content";
+import { hasSiaPages } from "@/config/launchScope";
 
 /**
  * Sitemap, generated at request time from the CMS.
@@ -42,7 +43,12 @@ function pathForSlug(slug: string): string | null {
 export const GET: APIRoute = async ({ site }) => {
   const base = site ?? new URL("https://www.monarchprowashidaho.com");
 
-  const [pages, posts] = await Promise.all([getPages(), getPosts()]);
+  const [pages, posts, services, areas] = await Promise.all([
+    getPages(),
+    getPosts(),
+    getServices(),
+    getServiceAreas(),
+  ]);
 
   const paths = new Set<string>();
 
@@ -51,6 +57,23 @@ export const GET: APIRoute = async ({ site }) => {
     if (page.data.draft || page.data.demo || page.data.seo?.noIndex) continue;
     const path = pathForSlug(page.data.slug);
     if (path) paths.add(path);
+  }
+
+  // Routes that resolve from collections rather than a CMS page: service detail,
+  // town hubs, and the service-in-area matrix. These are real, indexable URLs
+  // whether or not anyone has authored a page for them, and they are the bulk of
+  // the site — a sitemap without them lists almost nothing. getServices() is
+  // already filtered to the published set, and the matrix is gated the same way
+  // the route is, so this can never advertise a URL that 404s.
+  for (const service of services) {
+    paths.add(`/services/${service.data.slug}`);
+  }
+  for (const area of areas) {
+    paths.add(`/${area.data.slug}`);
+    if (!hasSiaPages(area.data.slug)) continue;
+    for (const service of services) {
+      paths.add(`/${area.data.slug}/${service.data.slug}`);
+    }
   }
 
   // Real static routes that aren't CMS pages.

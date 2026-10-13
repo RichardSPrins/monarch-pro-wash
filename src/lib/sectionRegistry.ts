@@ -229,6 +229,7 @@ import ReviewsVerified from "@/components/sections/reviews/ReviewsVerified.astro
 import ReviewsBand from "@/components/sections/reviews/ReviewsBand.astro";
 import ServiceAreasChips from "@/components/sections/service-areas/ServiceAreasChips.astro";
 import ServiceAreasColumns from "@/components/sections/service-areas/ServiceAreasColumns.astro";
+import ServiceAreasNeighborhoods from "@/components/sections/service-areas/ServiceAreasNeighborhoods.astro";
 import ServiceAreasFeaturedSplit from "@/components/sections/service-areas/ServiceAreasFeaturedSplit.astro";
 import ServiceAreasMapChips from "@/components/sections/service-areas/ServiceAreasMapChips.astro";
 import ServiceAreasDirectory from "@/components/sections/service-areas/ServiceAreasDirectory.astro";
@@ -494,6 +495,7 @@ export const sectionRegistry: Record<string, AstroComponentFactory> = {
   "reviews:band": ReviewsBand,
   "service-areas:chips": ServiceAreasChips,
   "service-areas:columns": ServiceAreasColumns,
+  "service-areas:neighborhoods": ServiceAreasNeighborhoods,
   "service-areas:featured-split": ServiceAreasFeaturedSplit,
   "service-areas:map-chips": ServiceAreasMapChips,
   "service-areas:directory": ServiceAreasDirectory,

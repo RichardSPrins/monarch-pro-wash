@@ -1,33 +1,62 @@
 ---
-// Service-detail route — /services/{slug}. Renders a `pages` entry stored under
-// the "svc-" slug prefix (e.g. /services/roof-cleaning → pages entry
-// "svc-roof-cleaning"). The prefix keeps these off the top-level catch-all, so
-// each service page resolves at exactly one URL.
+// Service-detail route — /services/{slug}.
+//
+// An authored `pages` entry at slug "svc-{slug}" wins when it exists. Otherwise
+// the page is composed from the services collection to the 15-section service
+// template, so a published service never 404s just because its page hasn't been
+// authored yet. Unpublished services (see src/config/launchScope.ts) DO 404 —
+// getServices() filters them out.
+//
+// Category hub pages ("svc-{category}-services") also resolve through here and
+// are authored-only; they have no generated fallback.
 import MarketingLayout from "@/layouts/MarketingLayout.astro";
 import PageRenderer from "@/components/PageRenderer.astro";
+import ServicePageRail from "@/components/layout/ServicePageRail.astro";
 import { getSeoMeta } from "emdash/seo";
-import { getPage } from "@/lib/content";
+import { getPage, getServices } from "@/lib/content";
 import { getBusinessData, getSiteData } from "@/lib/utils";
 import siteConfig from "@/config/site.config";
 import { createServiceSchema, createFAQSchema } from "@/lib/schema";
+import { buildServiceSections } from "@/lib/pageTemplates";
 
 const slug = Astro.params.slug ?? "";
-const page = await getPage(`svc-${slug}`);
+const authored = await getPage(`svc-${slug}`);
 
-// Must exist. Anything else → branded 404.
-if (!page || (import.meta.env.PROD && page.data.demo)) {
+// Only published services get a generated fallback.
+const service = (await getServices()).find((s) => s.data.slug === slug);
+
+// Neither an authored page nor a published service → branded 404.
+if ((!authored || (import.meta.env.PROD && authored.data.demo)) && !service) {
   return Astro.rewrite("/404");
 }
 
-const meta = getSeoMeta(page as any, {
-  siteUrl: Astro.site?.href,
-  path: Astro.url.pathname,
-  defaultOgImage: siteConfig.ogImage
-    ? new URL(siteConfig.ogImage, Astro.site).toString()
-    : undefined,
-});
+const sections =
+  authored?.data?.sections?.length
+    ? authored.data.sections
+    : buildServiceSections(service!);
 
-const sd = page.data.structuredData;
+const title = authored?.data?.title ?? `${service!.data.title} | Monarch Pro Wash`;
+const description =
+  service?.data.description ??
+  `${authored?.data?.title ?? slug} from Monarch Pro Wash, serving the Treasure Valley.`;
+
+const page = {
+  id: authored?.id ?? `svc-${slug}`,
+  data: { ...(authored?.data ?? {}), title, sections },
+};
+
+// Native EmDash SEO when the page is authored; sensible defaults otherwise.
+const meta = authored
+  ? getSeoMeta(authored as any, {
+      siteUrl: Astro.site?.href,
+      path: Astro.url.pathname,
+      defaultOgImage: siteConfig.ogImage
+        ? new URL(siteConfig.ogImage, Astro.site).toString()
+        : undefined,
+    })
+  : ({} as ReturnType<typeof getSeoMeta>);
+
+const sd = authored?.data?.structuredData;
 const pageSchemas = [];
 if (sd?.service || sd?.faq?.length) {
   const business = await getBusinessData();
@@ -48,12 +77,14 @@ if (sd?.service || sd?.faq?.length) {
 <MarketingLayout
   page={page}
   title={meta.title || page.data.title}
-  description={meta.description ?? undefined}
+  description={meta.description ?? description}
   noindex={!!meta.robots}
   image={meta.ogImage ?? undefined}
   canonical={meta.canonical ?? undefined}
   includeLocalBusinessSchema={!!sd?.localBusiness}
   schemas={pageSchemas}
 >
-  <PageRenderer config={page.data} />
+  <PageRenderer config={page.data} layout="rail">
+    <ServicePageRail slot="rail" currentService={slug} />
+  </PageRenderer>
 </MarketingLayout>

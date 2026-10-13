@@ -4,10 +4,12 @@
 import MarketingLayout from "@/layouts/MarketingLayout.astro";
 import PageRenderer from "@/components/PageRenderer.astro";
 import { getSeoMeta } from "emdash/seo";
-import { getPage } from "@/lib/content";
+import { getPage, getServiceAreas } from "@/lib/content";
 import { getBusinessData, getSiteData } from "@/lib/utils";
 import siteConfig from "@/config/site.config";
 import { createServiceSchema, createFAQSchema } from "@/lib/schema";
+import { buildTownHubSections } from "@/lib/pageTemplates";
+import { hasSiaPages } from "@/config/launchScope";
 
 const slug = Astro.params.slug ?? "index";
 
@@ -18,12 +20,28 @@ if (slug.startsWith("svc-") || slug.startsWith("sia-")) {
   return Astro.rewrite("/404");
 }
 
-const page = await getPage(slug);
+const authored = await getPage(slug);
+const isAuthored = Boolean(authored) && !(import.meta.env.PROD && authored!.data.demo);
 
-// Not found, or a demo/reference page in production → branded 404.
-if (!page || (import.meta.env.PROD && page.data.demo)) {
+// Every town in the service-areas collection gets a hub at /{town}, authored or
+// not — the nav links straight here, so these must never 404.
+const townArea = isAuthored
+  ? null
+  : (await getServiceAreas()).find((a) => a.data.slug === slug) ?? null;
+
+if (!isAuthored && !townArea) {
   return Astro.rewrite("/404");
 }
+
+const page = isAuthored
+  ? authored!
+  : {
+      id: slug,
+      data: {
+        title: `Exterior Cleaning in ${townArea!.data.city}, ${townArea!.data.state ?? "ID"} | Monarch Pro Wash`,
+        sections: buildTownHubSections(townArea!, { linkToSia: hasSiaPages(slug) }),
+      },
+    };
 
 // Native EmDash SEO (title/description/OG/canonical/noindex). No siteTitle passed
 // so we don't double a suffix an editor/migrated title may already include.
@@ -34,7 +52,8 @@ const meta = getSeoMeta(page as any, {
 });
 
 // Per-page custom JSON-LD (Service / FAQPage) for bespoke SEO landing pages.
-const sd = page.data.structuredData;
+// Only an authored page can carry it; a generated town hub has none.
+const sd = authored?.data?.structuredData;
 const pageSchemas = [];
 if (sd?.service || sd?.faq?.length) {
   const business = await getBusinessData();

@@ -1,136 +1,122 @@
 ---
-import { sectionRegistry } from "@/lib/sectionRegistry";
-import { validateSectionData, isValidTheme } from "@/lib/sectionSchemas";
-import ErrorShim from "@/components/ErrorShim.astro";
-import BackgroundMotif from "@/components/flair/BackgroundMotif.astro";
+import SectionList from "@/components/SectionList.astro";
+import type { SectionConfig } from "@/types/sections";
 
-/** Optional decorative background motif layered onto ANY section from the CMS. */
-interface MotifConfig {
-  kind: "butterfly" | "butterfly-color" | "droplets" | "splash" | "glow" | "grid";
-  position?: "left" | "right" | "center" | "top" | "bottom";
-  color?: string;
-  opacity?: number;
-  size?: string;
-  /** Override the source SVG (defaults per kind; butterfly-color auto-picks antennae by theme). */
-  src?: string;
-}
-
-interface SectionConfig {
-  type: string;
-  theme?: string;
-  /** Optional CMS-set vertical padding override (density keys: none|xs|sm|md|lg|xl). */
-  spacing?: { desktop?: string; mobile?: string };
-  /** Optional decorative motif (watermark / texture / glow) behind this section. */
-  motif?: MotifConfig;
-  data?: Record<string, unknown>;
-}
-
-const MOTIF_KINDS = ["butterfly", "butterfly-color", "droplets", "splash", "glow", "grid"];
-// Conservative default opacities for the overlay context (subtler than the
-// standalone showcase defaults, since these sit over real section content).
-const MOTIF_OPACITY: Record<string, number> = {
-  butterfly: 0.06, "butterfly-color": 0.16, droplets: 0.14, splash: 0.1, glow: 0.22, grid: 0.1,
-};
-
+/**
+ * Renders a page from its ordered `sections` array.
+ *
+ * Default ("stack") mode renders every section as a full-width sibling — the
+ * original behaviour, unchanged.
+ *
+ * "rail" mode splits the page into three runs so a sticky sidebar can sit
+ * alongside the body without the hero or the closing CTA being boxed in:
+ *
+ *     hero(s)                              full bleed
+ *     ┌──────────────────────────────────────────────┐
+ *     │  main: everything between   │  aside: rail   │
+ *     └──────────────────────────────────────────────┘
+ *     trailing cta(s)                      full bleed
+ *
+ * The rail is passed as a named slot, so it can hold real components (a form,
+ * a service list) rather than the flat link/CTA data `content:sidebar` allows.
+ * Pass `layout="rail"` AND a `rail` slot; with no slot content the page falls
+ * back to a plain stack so a missing rail can't produce an empty column.
+ */
 interface Props {
   config: {
     sections: SectionConfig[];
   };
+  layout?: "stack" | "rail";
 }
 
-const { config } = Astro.props;
-// import.meta.env.DEV is true under `astro dev`, false in production builds.
-const DEV = import.meta.env.DEV;
+const { config, layout = "stack" } = Astro.props;
 
-/** Collect validation errors for a section (empty array = valid). */
-function validate(section: SectionConfig): string[] {
-  const errors: string[] = [];
-  if (!section.type) {
-    errors.push("Missing `type`.");
-    return errors;
-  }
-  if (!sectionRegistry[section.type]) {
-    errors.push(`Unknown section type "${section.type}" — not in the registry.`);
-  }
-  if (!isValidTheme(section.theme)) {
-    errors.push(
-      `Invalid theme "${section.theme}" — use default | alt | muted | inverse | primary | brand-secondary.`,
-    );
-  }
-  if (sectionRegistry[section.type]) {
-    const { ok, errors: dataErrors } = validateSectionData(section.type, section.data);
-    if (!ok) errors.push(...dataErrors);
-  }
-  return errors;
+const sections = config.sections ?? [];
+const hasRail = layout === "rail" && Astro.slots.has("rail");
+
+/** Sections that must span the full viewport width, never the content column. */
+const isLeadingFullBleed = (s: SectionConfig) => s.type?.startsWith("hero:");
+const isTrailingFullBleed = (s: SectionConfig) => s.type?.startsWith("cta:");
+
+// Leading heroes, then the body, then any trailing CTA band. Computed by
+// walking in from each end so a page with an unusual order still splits safely.
+let start = 0;
+let end = sections.length;
+if (hasRail) {
+  while (start < end && isLeadingFullBleed(sections[start])) start++;
+  while (end > start && isTrailingFullBleed(sections[end - 1])) end--;
 }
+
+const lead = hasRail ? sections.slice(0, start) : [];
+const body = hasRail ? sections.slice(start, end) : sections;
+const tail = hasRail ? sections.slice(end) : [];
 ---
 
-{
-  config.sections.map((section) => {
-    const errors = validate(section);
-    if (errors.length > 0) {
-      // Dev: loud, locatable shim. Prod: silently omit the broken section.
-      return DEV ? (
-        <ErrorShim type={section.type} message="Section failed validation." details={errors} />
-      ) : null;
-    }
-    const Component = sectionRegistry[section.type];
-    let el = <Component theme={section.theme ?? "default"} data={section.data} />;
-    // Wrap only when the CMS set a padding override (display:contents wrapper,
-    // so it's layout-neutral); otherwise render the section directly.
-    const pd = section.spacing?.desktop || undefined;
-    const pm = section.spacing?.mobile || undefined;
-    if (pd || pm) {
-      el = (
-        <div class="section-slot" data-pad-d={pd} data-pad-m={pm}>
-          {el}
-        </div>
-      );
-    }
-    // Optional decorative motif: wrap in a clipping host and layer the motif on
-    // top (pointer-events-none, subtle opacity) so it reads as section texture.
-    const motif = section.motif;
-    if (motif && MOTIF_KINDS.includes(motif.kind)) {
-      // The full-colour butterfly needs light antennae on dark (navy) surfaces so
-      // its body/antennae don't disappear; pick the variant by section theme.
-      const darkSurface = ["default", "muted", "inverse"].includes(section.theme ?? "default");
-      const motifSrc =
-        motif.src ??
-        (motif.kind === "butterfly-color"
-          ? darkSurface
-            ? "/brand/butterfly-full-color-white-antennae.svg"
-            : "/brand/butterfly-full-color-black-antennae.svg"
-          : undefined);
-      // Host carries the section's theme background; the inner section is made
-      // transparent (CSS below) so the motif, on a negative z-layer, shows from
-      // BEHIND the content (peeking around cards/text) rather than over it.
-      el = (
-        <div class:list={["motif-host", `theme-${section.theme ?? "default"}`]}>
-          {el}
-          <BackgroundMotif
-            motif={motif.kind}
-            position={motif.position ?? (motif.kind === "grid" ? "center" : "right")}
-            color={motif.color ?? "var(--color-primary)"}
-            opacity={motif.opacity ?? MOTIF_OPACITY[motif.kind]}
-            size={motif.size}
-            src={motifSrc}
-            class="motif-overlay"
-          />
-        </div>
-      );
-    }
-    return el;
-  })
-}
+{hasRail ? (
+  <>
+    <SectionList sections={lead} />
+    <div class="page-shell">
+      <div class="page-main">
+        <SectionList sections={body} />
+      </div>
+      <aside class="page-aside">
+        <slot name="rail" />
+      </aside>
+    </div>
+    <SectionList sections={tail} />
+  </>
+) : (
+  <SectionList sections={body} />
+)}
 
 <style is:global>
-  /* Host for a CMS-configured section motif. The host carries the section's theme
-     background (via the theme-* class); the section root inside is made transparent
-     so the motif — on a negative z-layer between the host background and the
-     content — reads as a watermark BEHIND the cards/text, not over them. Clipped to
-     the section bounds so it never bleeds into neighbours. */
-  .motif-host { position: relative; overflow: hidden; isolation: isolate; }
-  .motif-host > .motif-overlay { z-index: -1; }
-  .motif-host > [class*="theme-"],
-  .motif-host > .section-slot > [class*="theme-"] { background-color: transparent !important; }
+  /* Two-column page shell with a sticky rail, for service and service-in-area
+     pages. Single column until xl: a 20rem rail plus readable body copy needs
+     more than 1024px, and the rail's content is supplementary on mobile — it is
+     rendered after the body in that case rather than pushed above it.
+
+     The rail gets its own scroll so a long list can never trap the page: it is
+     capped to the viewport and scrolls internally, with overscroll containment
+     so reaching its end doesn't start scrolling the page behind it. */
+  .page-shell {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--t-gap-xl, 2rem);
+  }
+  .page-main { min-width: 0; }
+  .page-aside { min-width: 0; }
+
+  @media (min-width: 1280px) {
+    /* Mirrors .section-container's 72rem / 2rem so the shell lines up with the
+       full-bleed hero and CTA above and below it. */
+    .page-shell {
+      grid-template-columns: minmax(0, 1fr) 20rem;
+      gap: var(--t-gap-xl, 2rem) 3rem;
+      max-width: 72rem;
+      margin-inline: auto;
+      padding-inline: 2rem;
+    }
+    .page-aside {
+      position: sticky;
+      top: 1.5rem;
+      align-self: start;
+      max-height: calc(100vh - 3rem);
+      overflow-y: auto;
+      overscroll-behavior-y: contain;
+      /* The rail scrolls often; keep the scrollbar unobtrusive. */
+      scrollbar-width: thin;
+    }
+    /* A section inside the shell can only paint its own column, so alternating
+       full-bleed theme bands stop making sense here — neutralise them and let
+       the page read as one editorial surface (this is what the Sol reference
+       does). The hero and closing CTA keep their bands; they sit outside. */
+    .page-main .section-wrapper { background-color: transparent; }
+    /* The shell already supplies the gutter and the max width, so the nested
+       containers must not pad or cap again. */
+    .page-main .section-container {
+      max-width: none;
+      padding-left: 0;
+      padding-right: 0;
+    }
+  }
 </style>
