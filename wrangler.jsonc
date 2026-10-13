@@ -42,6 +42,12 @@
 		}
 	],
 	"kv_namespaces": [{ "binding": "SESSION", "id": "fb0b1a901a5e46eab98b025214455965" }],
+	// The Cloudflare adapter's default image service resolves every optimized
+	// image through this binding, and EmDash wraps the image endpoint to delegate
+	// to it. The adapter auto-provisions it for `wrangler deploy`, but `astro dev`
+	// got no binding and `/_image` 500'd on the first local asset. Declaring it
+	// here gives the local dev runtime one too.
+	"images": { "binding": "IMAGES" },
 	// Transactional send for lead notifications (/api/lead). Inert until the
 	// sending domain is onboarded — /api/lead stays log-only and never 500s.
 	// NOTE: the zone's mail is on Zoho (MX) with DMARC p=reject + strict
