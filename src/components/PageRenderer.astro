@@ -59,9 +59,16 @@ const tail = hasRail ? sections.slice(end) : [];
       <div class="page-main">
         <SectionList sections={body} />
       </div>
-      <aside class="page-aside">
-        <slot name="rail" />
-      </aside>
+      {/* Container-aligned track the rail travels in. Above xl it is absolutely
+          positioned over the section run, so the sections stay in normal flow and
+          their backgrounds still reach the viewport edges. */}
+      <div class="page-rail">
+        <div class="page-rail-inner">
+          <aside class="page-aside">
+            <slot name="rail" />
+          </aside>
+        </div>
+      </div>
     </div>
     <SectionList sections={tail} />
   </>
@@ -70,62 +77,91 @@ const tail = hasRail ? sections.slice(end) : [];
 )}
 
 <style is:global>
-  /* Two-column page shell with a sticky rail, for service and service-in-area
-     pages. Single column until xl: a 20rem rail plus readable body copy needs
-     more than 1024px, and the rail's content is supplementary on mobile — it is
-     rendered after the body in that case rather than pushed above it.
+  /* Sticky-rail page shell, for service and service-in-area pages.
+     ---------------------------------------------------------------------------
+     The sections stay in NORMAL FLOW so their theme bands still reach both
+     viewport edges, exactly as on any other page. The rail is laid over them in
+     a container-aligned track rather than taking a grid column — a grid column
+     would confine the bands to it and reintroduce the gutters.
 
-     The rail gets its own scroll so a long list can never trap the page: it is
-     capped to the viewport and scrolls internally, with overscroll containment
-     so reaching its end doesn't start scrolling the page behind it. */
-  /* The shell itself is INVISIBLE: no background, no max-width, no side padding.
-     An earlier version boxed it to 72rem on a light background, which read as a
-     white panel floating on the dark page with wide dark gutters. Sections keep
-     painting their own full-width bands, exactly as they do on a normal page;
-     the shell only reserves a column for the rail. */
+     Two earlier attempts got this wrong in opposite directions: first boxing the
+     shell to 72rem on a light background (a white panel floating on the dark
+     page), then removing `max-width` from the nested .section-container (content
+     stopped respecting the site container). Neither is the case now: the shell is
+     invisible, and .section-container keeps its canonical 72rem. */
   .page-shell {
-    display: grid;
-    grid-template-columns: 1fr;
+    position: relative;
   }
   .page-main { min-width: 0; }
-  .page-aside { min-width: 0; }
 
-  /* Below xl the rail is a normal block after the content, so it needs its own
-     breathing room rather than butting into the next full-width band. */
-  .page-aside {
-    padding: 0 1rem 3rem;
+  /* The light channel the rail sits in. The rail's cards are navy, and without
+     this they vanish — into the page body on mobile, and into any navy band the
+     rail scrolls past on desktop. */
+  .page-rail-inner {
+    background-color: var(--t-bg-alt);
+  }
+
+  /* Below xl the rail flows after the content as a normal block, so it supplies
+     its own spacing on ALL FOUR sides — the top included, which is what was
+     missing against the preceding band. */
+  .page-rail {
+    padding-inline: 1rem;
+  }
+  .page-rail-inner {
+    padding: 2rem 1.25rem;
+    border-radius: var(--radius-lg, 0.75rem);
+    margin-block: 2.5rem;
+  }
+
+  @media (min-width: 640px) {
+    .page-rail { padding-inline: 1.5rem; }
   }
 
   @media (min-width: 1280px) {
-    .page-shell {
-      grid-template-columns: minmax(0, 1fr) 20rem;
-      column-gap: 3rem;
-      /* Keeps the rail off the viewport edge without indenting the bands. */
-      padding-right: 2rem;
+    /* The track spans the whole section run and is aligned to the SITE container
+       (72rem + its 2rem gutter), so the rail's right edge lines up with the
+       header and footer. pointer-events are released so the track can't swallow
+       clicks on the content it overlays. */
+    .page-rail {
+      position: absolute;
+      inset: 0;
+      max-width: 72rem;
+      margin-inline: auto;
+      padding-inline: 2rem;
+      pointer-events: none;
+    }
+    .page-rail-inner {
+      width: 20rem;
+      margin-left: auto;
+      margin-block: 0;
+      padding: 0;
+      border-radius: 0;
+      min-height: 100%;
+      /* Pad the channel so the cards aren't flush against its edges. */
+      padding-block: 2.5rem;
+      padding-inline: 1.25rem;
     }
     .page-aside {
       position: sticky;
       /* Clear the sticky header. `top: 1.5rem` put the rail underneath it. */
       top: calc(var(--site-header-h) + 1.5rem);
-      align-self: start;
-      /* Leave a gap at the foot so the card never kisses the next section. */
-      max-height: calc(100vh - var(--site-header-h) - 4rem);
+      max-height: calc(100vh - var(--site-header-h) - 5rem);
       overflow-y: auto;
       overscroll-behavior-y: contain;
       /* The rail scrolls often; keep the scrollbar unobtrusive. */
       scrollbar-width: thin;
-      padding: 0 0 2rem;
-      margin-bottom: 3rem;
+      pointer-events: auto;
     }
+
     /* NOTE: do NOT neutralise section backgrounds here. The theme-* classes set
        background AND text colour together, so stripping the background leaves a
        light surface's dark ink sitting on the page's dark body — unreadable.
-       Sections paint their own surface; the rhythm is chosen in the template. */
 
-    /* Sections sit in the main column, so their container should fill it rather
-       than re-centre at 72rem and strand the copy away from the rail. */
+       And do NOT override .section-container's max-width. It stays at the
+       canonical 72rem; the copy is kept clear of the overlaid rail with padding
+       instead (rail 20rem + 3rem gap + the container's own 2rem gutter). */
     .page-main .section-container {
-      max-width: none;
+      padding-right: calc(20rem + 3rem + 2rem);
     }
   }
 </style>
