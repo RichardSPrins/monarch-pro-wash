@@ -1,0 +1,192 @@
+{
+  "slug": "svc-soft-washing",
+  "title": "Soft Washing | Monarch Pro Wash",
+  "sections": [
+    {
+      "type": "hero:image-overlay",
+      "theme": "inverse",
+      "data": {
+        "eyebrow": {
+          "text": "Treasure Valley · Fully Insured",
+          "variant": "text"
+        },
+        "heading": "Soft Washing in the Treasure Valley",
+        "subheading": "Soft washing in Boise safely cleans roofs, siding, and delicate exteriors with low-pressure treatments that kill algae and mold at the root — no surface damage.",
+        "showPhone": true,
+        "ctas": [
+          {
+            "label": "Get a Free Quote",
+            "href": "/contact",
+            "variant": "primary"
+          }
+        ]
+      }
+    },
+    {
+      "type": "trust-bar:badges",
+      "theme": "alt",
+      "data": {
+        "foundingYear": 2026,
+        "familyOwned": true,
+        "insured": true
+      }
+    },
+    {
+      "type": "content:rich-text",
+      "theme": "alt",
+      "data": {
+        "eyebrow": {
+          "text": "Soft Washing",
+          "variant": "text"
+        },
+        "heading": "The Service Explained",
+        "body": "<p>If your roof shingles are streaked black, your siding looks dingy, or your fence and eaves are going green, blasting them with high pressure is the wrong fix. Soft washing is the safe method. It uses low-pressure application and specialized cleaning solutions to clean delicate exterior surfaces without forcing water behind siding, stripping shingle granules, or gouging wood. Soft washing also kills algae, mold, mildew, and moss at the root rather than just rinsing the surface, so growth stays gone longer instead of returning in weeks. In the Treasure Valley, north-facing and shaded walls hold moisture and grow algae and moss, while high-desert dust dulls everything else. We match the treatment to each surface and protect your landscaping before we start.</p>"
+      }
+    },
+    {
+      "type": "feature:alternating",
+      "theme": "alt",
+      "data": {
+        "eyebrow": {
+          "text": "What to Know",
+          "variant": "text"
+        },
+        "heading": "Top Concerns",
+        "rows": [
+          {
+            "heading": "High pressure on my roof or siding will do more harm than good",
+            "body": "This is the right worry to have. High pressure can strip granules off asphalt shingles, drive water behind siding, and split soft wood, and that damage often costs more than the cleaning did. That is exactly why soft washing exists. We use low-pressure application and let the cleaning solution do the work instead of brute force. The method is matched to the surface, so a delicate roof or painted siding gets a gentle wash, never a blast. You get a clean exterior without gambling on damage."
+          },
+          {
+            "heading": "The green and black streaks always come back a few weeks after cleaning",
+            "body": "They come back because rinsing only removes what is on the surface. The algae, mold, and moss are living organisms with roots into the material, and a quick pressure rinse leaves those roots behind to regrow. Soft washing treats the growth at the source and kills it, not just the part you can see. That is why the results last longer. On shaded and north-facing walls in the Treasure Valley, where moisture lingers and growth thrives, treating at the root is the difference between a clean that holds and one that fades fast."
+          },
+          {
+            "heading": "I want to know the person cleaning my home actually knows what they are doing",
+            "body": "Fair. The wrong method on the wrong surface is what causes damage, and not everyone with a pressure hose knows the difference. Monarch is owner-run and insured, and we match the method to the surface every time instead of using one aggressive setting on everything. We pre-wet and protect your plants and landscaping before any solution touches them. And the Monarch Standard means we clean it thoroughly the first time and come back to correct anything that is not right."
+          }
+        ]
+      }
+    },
+    {
+      "type": "process:horizontal",
+      "theme": "default",
+      "data": {
+        "eyebrow": {
+          "text": "The Process",
+          "variant": "text"
+        },
+        "heading": "How It Works",
+        "steps": [
+          {
+            "heading": "Get your free quote",
+            "body": "A clear price up front, with no guessing."
+          },
+          {
+            "heading": "We match the method to the surface",
+            "body": "Real pressure where it helps, a gentle soft wash where it protects."
+          },
+          {
+            "heading": "We clean, protect, and inspect",
+            "body": "Stains treated, landscaping protected, and the job checked before we leave."
+          }
+        ]
+      }
+    },
+    {
+      "type": "about:values",
+      "theme": "alt",
+      "data": {
+        "eyebrow": {
+          "text": "Why Monarch",
+          "variant": "text"
+        },
+        "heading": "Why Monarch",
+        "items": [
+          {
+            "title": "Surface-matched every time",
+            "body": "The method fits the material, so you get a deep clean with zero damage."
+          },
+          {
+            "title": "Soft wash, not just power wash",
+            "body": "The safe method for anything delicate is standard here, not an upsell."
+          },
+          {
+            "title": "Owner-run and insured",
+            "body": "The person accountable for the work is the person doing it."
+          },
+          {
+            "title": "One vendor for the whole property",
+            "body": "Wash, seal, windows, and gutters under one roof."
+          }
+        ]
+      }
+    },
+    {
+      "type": "reviews:cards",
+      "theme": "alt",
+      "data": {
+        "eyebrow": {
+          "text": "Reviews",
+          "variant": "text"
+        },
+        "heading": "What Our Customers Say",
+        "filter": "all",
+        "service": "soft-washing",
+        "limit": 3
+      }
+    },
+    {
+      "type": "guarantee:callout",
+      "theme": "brand-secondary",
+      "data": {
+        "eyebrow": {
+          "text": "Our Guarantee",
+          "variant": "text"
+        },
+        "heading": "The Monarch Standard",
+        "body": "We aim for a full, thorough clean on the first visit. If any surface we cleaned is not right, tell us and we come back to make it right. No fine print and no runaround.",
+        "badge": "Make It Right"
+      }
+    },
+    {
+      "type": "faqs:accordion",
+      "theme": "alt",
+      "data": {
+        "eyebrow": {
+          "text": "FAQs",
+          "variant": "text"
+        },
+        "heading": "Soft Washing: Common Questions",
+        "service": "soft-washing"
+      }
+    },
+    {
+      "type": "service-areas:grid",
+      "theme": "muted",
+      "data": {
+        "eyebrow": {
+          "text": "Service Areas",
+          "variant": "text"
+        },
+        "heading": "Serving the Treasure Valley"
+      }
+    },
+    {
+      "type": "cta:banner",
+      "theme": "primary",
+      "data": {
+        "heading": "Ready for a Cleaner Property?",
+        "subheading": "Get a free quote with your price up front and a clean that is safe for every surface.",
+        "ctas": [
+          {
+            "label": "Get My Free Quote",
+            "href": "/contact",
+            "variant": "primary"
+          }
+        ],
+        "showPhone": true
+      }
+    }
+  ]
+}

@@ -1,0 +1,255 @@
+{
+  "slug": "sia-meridian--concrete-sealing-staining",
+  "title": "Concrete Sealing & Staining in Meridian, ID | Monarch Pro Wash",
+  "sections": [
+    {
+      "type": "hero:split-form",
+      "theme": "inverse",
+      "data": {
+        "eyebrow": {
+          "text": "Concrete Sealing & Staining · Meridian",
+          "variant": "text"
+        },
+        "heading": "Concrete Sealing & Staining in Meridian, ID",
+        "subheading": "Fresh driveways and patios in Meridian's new subdivisions are worth sealing early. We protect concrete against freeze-thaw, stains, and cracking, with decorative color if you want it.",
+        "trustBadges": [
+          {
+            "text": "Fully Insured"
+          },
+          {
+            "text": "Owner-Operated"
+          },
+          {
+            "text": "Free Quotes"
+          }
+        ],
+        "showPhone": true
+      }
+    },
+    {
+      "type": "content:rich-text",
+      "theme": "alt",
+      "data": {
+        "eyebrow": {
+          "text": "Concrete Sealing & Staining · Meridian",
+          "variant": "text"
+        },
+        "body": "<p>A lot of the concrete in Meridian is new. With so much housing built since 2000 and fresh subdivisions still going in south of I-84, homeowners here have driveways and patios that are worth protecting before the weather gets to them. Sealing early is one of the smartest things you can do for new concrete.</p><p>Monarch Pro Wash is owner-run and insured, with over 15 years sealing and staining concrete around Meridian and the Treasure Valley. Whether you want a clear protective seal or decorative color that lifts your outdoor space, we handle the prep and the application so the finish lasts.</p>"
+      }
+    },
+    {
+      "type": "content:rich-text",
+      "theme": "alt",
+      "data": {
+        "eyebrow": {
+          "text": "Concrete Sealing & Staining · Meridian",
+          "variant": "text"
+        },
+        "heading": "Concrete Sealing & Staining Built for Meridian Conditions",
+        "body": "<p>Much of Meridian's housing is newer, built since 2000, and the driveways and patios in neighborhoods like Century Farm, Movado, and Paramount are prime candidates for early sealing. Sealing new concrete before it takes on stains or damage locks in that fresh look and saves you trouble down the road.</p><p>The valley's freeze-thaw cycles are hard on unsealed concrete. Water works into the surface, freezes, and pushes it apart, which leads to spalling and cracks over the years. A good seal helps the slab shed water so those cycles do less damage to your driveway or patio.</p><p>Meridian also has hard water, among the hardest in the Treasure Valley, and strong high-desert UV. Both leave their mark on bare concrete, from mineral film near sprinklers to fading on open patios. Sealing adds a protective layer, and staining gives you lasting decorative color that holds up to the sun.</p>"
+      }
+    },
+    {
+      "type": "feature:checklist",
+      "theme": "alt",
+      "data": {
+        "eyebrow": {
+          "text": "What We Do",
+          "variant": "text"
+        },
+        "heading": "What We Do Across Meridian",
+        "items": [
+          {
+            "title": "Seal new and existing driveways, patios, and walkways"
+          },
+          {
+            "title": "Decorative staining in a range of colors"
+          },
+          {
+            "title": "Protect concrete against oil, rust, and everyday stains"
+          },
+          {
+            "title": "Guard surfaces against freeze-thaw damage and cracking"
+          },
+          {
+            "title": "Prep and clean concrete thoroughly before sealing"
+          },
+          {
+            "title": "Re-seal older concrete that has lost its protection"
+          },
+          {
+            "title": "Finish work on garage aprons, porches, and pool decks"
+          }
+        ]
+      }
+    },
+    {
+      "type": "about:values",
+      "theme": "default",
+      "data": {
+        "eyebrow": {
+          "text": "Why Monarch",
+          "variant": "text"
+        },
+        "heading": "Why Meridian Homeowners Choose Monarch",
+        "items": [
+          {
+            "title": "Owner-run and insured, with 15-plus years sealing Treasure Valley concrete"
+          },
+          {
+            "title": "We know Meridian's new subdivisions and when early sealing pays off"
+          },
+          {
+            "title": "Proper prep every time, so the seal or stain actually bonds and lasts"
+          },
+          {
+            "title": "The person who quotes your job is the person who does it"
+          }
+        ]
+      }
+    },
+    {
+      "type": "feature:checklist",
+      "theme": "alt",
+      "data": {
+        "eyebrow": {
+          "text": "What We Do",
+          "variant": "text"
+        },
+        "heading": "What We Focus On Every Job",
+        "items": [
+          {
+            "title": "Cleaning and prepping concrete fully before any product goes down"
+          },
+          {
+            "title": "Choosing the right sealer or stain for your slab and conditions"
+          },
+          {
+            "title": "Even application so the finish looks consistent across the surface"
+          },
+          {
+            "title": "Protecting nearby landscaping, siding, and hardscapes"
+          },
+          {
+            "title": "Walking you through how to care for the sealed or stained surface"
+          }
+        ]
+      }
+    },
+    {
+      "type": "process:horizontal",
+      "theme": "alt",
+      "data": {
+        "eyebrow": {
+          "text": "The Process",
+          "variant": "text"
+        },
+        "heading": "How It Works",
+        "steps": [
+          {
+            "heading": "Reach out",
+            "body": "Tell us about your driveway, patio, or walkway."
+          },
+          {
+            "heading": "Free quote",
+            "body": "We look at the concrete and send a no-obligation price."
+          },
+          {
+            "heading": "Prep and apply",
+            "body": "We clean the surface, then seal or stain it properly."
+          },
+          {
+            "heading": "Walkthrough",
+            "body": "We confirm the finish and go over care."
+          }
+        ]
+      }
+    },
+    {
+      "type": "services:grid",
+      "theme": "alt",
+      "data": {
+        "eyebrow": {
+          "text": "More Services",
+          "variant": "text"
+        },
+        "heading": "Our Other Services in Meridian",
+        "hrefBase": "/meridian"
+      }
+    },
+    {
+      "type": "content:rich-text",
+      "theme": "muted",
+      "data": {
+        "eyebrow": {
+          "text": "Concrete Sealing & Staining · Meridian",
+          "variant": "text"
+        },
+        "heading": "Serving Meridian & the Treasure Valley",
+        "body": "<p>We seal and stain concrete across Meridian and the wider Treasure Valley. That covers new driveways and patios in the south subdivisions near the Ten Mile interchange, established homes in the north neighborhoods off McMillan and Chinden Blvd, and older properties around Downtown and Old Town Meridian. We also handle commercial concrete along Eagle Road, Fairview Ave, and Overland Rd near the Silverstone and El Dorado business parks. If it is in or near Meridian, we can seal it.</p>"
+      }
+    },
+    {
+      "type": "service-areas:neighborhoods",
+      "theme": "alt",
+      "data": {
+        "eyebrow": {
+          "text": "Service Areas",
+          "variant": "text"
+        },
+        "heading": "Meridian Neighborhoods We Serve",
+        "subheading": "Do not see your neighborhood? Reach out.",
+        "places": [
+          "South Meridian (83642): Century Farm, Movado, Sky Mesa, Tuscany, Reflection Ridge",
+          "North Meridian (83646): Paramount, Bridgetower, Bellano Creek, Baldwin Park, The Oaks",
+          "NW Meridian: Black Cat and McMillan corridor",
+          "NE Meridian: neighborhoods near Kleiner Park",
+          "SE Meridian: foothills view homesites",
+          "Downtown and Old Town Meridian"
+        ]
+      }
+    },
+    {
+      "type": "faqs:accordion",
+      "theme": "alt",
+      "data": {
+        "eyebrow": {
+          "text": "FAQs",
+          "variant": "text"
+        },
+        "heading": "FAQs: Concrete Sealing & Staining in Meridian",
+        "service": "meridian-concrete-sealing-staining"
+      }
+    },
+    {
+      "type": "reviews:cards",
+      "theme": "alt",
+      "data": {
+        "eyebrow": {
+          "text": "Reviews",
+          "variant": "text"
+        },
+        "heading": "What Our Customers Say",
+        "filter": "all",
+        "limit": 3,
+        "area": "Meridian"
+      }
+    },
+    {
+      "type": "cta:banner",
+      "theme": "primary",
+      "data": {
+        "heading": "Protect Your Meridian Concrete Before the Weather Does",
+        "subheading": "Owner-run, insured, and local. Tell us about your driveway or patio and we will send a free quote.",
+        "ctas": [
+          {
+            "label": "Get My Free Quote",
+            "href": "/contact",
+            "variant": "primary"
+          }
+        ],
+        "showPhone": true
+      }
+    }
+  ]
+}

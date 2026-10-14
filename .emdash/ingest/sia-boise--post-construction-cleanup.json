@@ -1,0 +1,255 @@
+{
+  "slug": "sia-boise--post-construction-cleanup",
+  "title": "Post-Construction Exterior Cleanup in Boise, ID | Monarch Pro Wash",
+  "sections": [
+    {
+      "type": "hero:split-form",
+      "theme": "inverse",
+      "data": {
+        "eyebrow": {
+          "text": "Post-Construction Exterior Cleanup · Boise",
+          "variant": "text"
+        },
+        "heading": "Post-Construction Exterior Cleanup in Boise, ID",
+        "subheading": "New builds in Harris Ranch and Barber Valley leave mortar smears, glass overspray, and high-desert jobsite dust behind. We clear it all so your home shows ready.",
+        "trustBadges": [
+          {
+            "text": "Fully Insured"
+          },
+          {
+            "text": "Owner-Operated"
+          },
+          {
+            "text": "Free Quotes"
+          }
+        ],
+        "showPhone": true
+      }
+    },
+    {
+      "type": "content:rich-text",
+      "theme": "alt",
+      "data": {
+        "eyebrow": {
+          "text": "Post-Construction Exterior Cleanup · Boise",
+          "variant": "text"
+        },
+        "body": "<p>A new house looks finished long before it is actually clean. Once the crews pull out of a Harris Ranch or Surprise Valley lot, you are left with concrete dust on the driveway, drywall haze on the windows, and paint flecks on the siding. That film does not rinse off with a garden hose, and it can hide the quality of the work underneath.</p><p>Monarch Pro Wash is owner-run and fully insured, with more than fifteen years cleaning exteriors across the Treasure Valley. We handle final cleanups on new construction in Barber Valley, newer Southeast Boise near Micron, and the newer pockets stretching toward Southwest Boise. You deal with the owner start to finish, not a rotating crew.</p>"
+      }
+    },
+    {
+      "type": "content:rich-text",
+      "theme": "alt",
+      "data": {
+        "eyebrow": {
+          "text": "Post-Construction Exterior Cleanup · Boise",
+          "variant": "text"
+        },
+        "heading": "Post-Construction Exterior Cleanup Built for Boise Conditions",
+        "body": "<p>New builds in Harris Ranch and Barber Valley sit right in the Greenbelt corridor, and river-adjacent lots collect fine grit fast. We work the whole envelope in order, from the roofline down to the driveway, so dust does not settle back onto surfaces you already cleaned.</p><p>Boise sits in high desert, and jobsite dust is relentless out toward the newer Southeast and Southwest edges. That grit works into window tracks, hardscape, and siding seams. We use the right pressure for each surface so we lift construction residue without scarring new stucco, fresh concrete, or factory finishes.</p><p>Mortar smears and overspray need more than a rinse. On new brick, stone, and glass around Surprise Valley, we treat and release those deposits with methods matched to the material. The goal is a true move-in clean, not a quick hose down that leaves streaks in the first morning light.</p>"
+      }
+    },
+    {
+      "type": "feature:checklist",
+      "theme": "alt",
+      "data": {
+        "eyebrow": {
+          "text": "What We Do",
+          "variant": "text"
+        },
+        "heading": "What We Clean Across Boise",
+        "items": [
+          {
+            "title": "New driveways and flatwork cleared of concrete slurry and dust"
+          },
+          {
+            "title": "Windows and glass doors freed of overspray and drywall haze"
+          },
+          {
+            "title": "Siding, stucco, and trim rinsed of construction film"
+          },
+          {
+            "title": "Brick and stone deposits and mortar smears treated"
+          },
+          {
+            "title": "Gutters, eaves, and soffits wiped down after trades finish"
+          },
+          {
+            "title": "Patios, walkways, and porches left show ready for handoff"
+          }
+        ]
+      }
+    },
+    {
+      "type": "about:values",
+      "theme": "default",
+      "data": {
+        "eyebrow": {
+          "text": "Why Monarch",
+          "variant": "text"
+        },
+        "heading": "Why Boise Homeowners Choose Monarch",
+        "items": [
+          {
+            "title": "Owner-run,",
+            "body": "so the person quoting the job is the person doing it"
+          },
+          {
+            "title": "Fully insured",
+            "body": "for work on new construction and finished homes"
+          },
+          {
+            "title": "More than fifteen years",
+            "body": "on Treasure Valley exteriors"
+          },
+          {
+            "title": "Familiar with Harris Ranch, Barber Valley, and Surprise Valley builds"
+          }
+        ]
+      }
+    },
+    {
+      "type": "feature:checklist",
+      "theme": "alt",
+      "data": {
+        "eyebrow": {
+          "text": "What We Do",
+          "variant": "text"
+        },
+        "heading": "What We Focus On Every Job",
+        "items": [
+          {
+            "title": "Matching pressure and method to each new surface"
+          },
+          {
+            "title": "Working top down so dust does not resettle"
+          },
+          {
+            "title": "Protecting fresh landscaping, fixtures, and finishes"
+          },
+          {
+            "title": "Clearing debris and residue, not just visible dirt"
+          },
+          {
+            "title": "Leaving the property truly ready for photos or move-in"
+          }
+        ]
+      }
+    },
+    {
+      "type": "process:horizontal",
+      "theme": "alt",
+      "data": {
+        "eyebrow": {
+          "text": "The Process",
+          "variant": "text"
+        },
+        "heading": "How It Works",
+        "steps": [
+          {
+            "heading": "Reach out",
+            "body": "Tell us about the build and where it sits in Boise."
+          },
+          {
+            "heading": "Free quote",
+            "body": "We review the scope and give you a clear price."
+          },
+          {
+            "heading": "We clean",
+            "body": "We work the exterior in order, top to bottom."
+          },
+          {
+            "heading": "Walkthrough",
+            "body": "You confirm the home is show ready before we leave."
+          }
+        ]
+      }
+    },
+    {
+      "type": "services:grid",
+      "theme": "alt",
+      "data": {
+        "eyebrow": {
+          "text": "More Services",
+          "variant": "text"
+        },
+        "heading": "Our Other Services in Boise",
+        "hrefBase": "/boise"
+      }
+    },
+    {
+      "type": "content:rich-text",
+      "theme": "muted",
+      "data": {
+        "eyebrow": {
+          "text": "Post-Construction Exterior Cleanup · Boise",
+          "variant": "text"
+        },
+        "heading": "Serving Boise & the Treasure Valley",
+        "body": "<p>We are based in Boise and work the surrounding towns across the Treasure Valley. On any given week you will find us on new builds near the Boise River and Greenbelt, out toward Barber Valley, and along the growing edges of Southeast and Southwest Boise. If your project sits near one of these corridors, we are close by.</p>"
+      }
+    },
+    {
+      "type": "service-areas:neighborhoods",
+      "theme": "alt",
+      "data": {
+        "eyebrow": {
+          "text": "Service Areas",
+          "variant": "text"
+        },
+        "heading": "Boise Neighborhoods We Serve",
+        "subheading": "Do not see your neighborhood? Reach out.",
+        "places": [
+          "Harris Ranch",
+          "Barber Valley",
+          "Surprise Valley",
+          "Southeast Boise",
+          "Newer Southwest Boise",
+          "Warm Springs Mesa"
+        ]
+      }
+    },
+    {
+      "type": "faqs:accordion",
+      "theme": "alt",
+      "data": {
+        "eyebrow": {
+          "text": "FAQs",
+          "variant": "text"
+        },
+        "heading": "FAQs: Post-Construction Exterior Cleanup in Boise",
+        "service": "boise-post-construction-cleanup"
+      }
+    },
+    {
+      "type": "reviews:cards",
+      "theme": "alt",
+      "data": {
+        "eyebrow": {
+          "text": "Reviews",
+          "variant": "text"
+        },
+        "heading": "What Our Customers Say",
+        "filter": "all",
+        "limit": 3,
+        "area": "Boise"
+      }
+    },
+    {
+      "type": "cta:banner",
+      "theme": "primary",
+      "data": {
+        "heading": "Ready to Hand Off a Clean Home?",
+        "subheading": "Get your new Boise build show ready with an owner-run, insured crew.",
+        "ctas": [
+          {
+            "label": "Get My Free Quote",
+            "href": "/contact",
+            "variant": "primary"
+          }
+        ],
+        "showPhone": true
+      }
+    }
+  ]
+}

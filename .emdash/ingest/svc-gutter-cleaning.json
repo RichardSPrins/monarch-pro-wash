@@ -1,0 +1,192 @@
+{
+  "slug": "svc-gutter-cleaning",
+  "title": "Gutter Cleaning | Monarch Pro Wash",
+  "sections": [
+    {
+      "type": "hero:image-overlay",
+      "theme": "inverse",
+      "data": {
+        "eyebrow": {
+          "text": "Treasure Valley · Fully Insured",
+          "variant": "text"
+        },
+        "heading": "Gutter Cleaning in the Treasure Valley",
+        "subheading": "Gutter cleaning in Boise clears leaves, debris, and clogs from gutters and downspouts, then brightens the exterior — protecting your roof, fascia, and foundation.",
+        "showPhone": true,
+        "ctas": [
+          {
+            "label": "Get a Free Quote",
+            "href": "/contact",
+            "variant": "primary"
+          }
+        ]
+      }
+    },
+    {
+      "type": "trust-bar:badges",
+      "theme": "alt",
+      "data": {
+        "foundingYear": 2026,
+        "familyOwned": true,
+        "insured": true
+      }
+    },
+    {
+      "type": "content:rich-text",
+      "theme": "alt",
+      "data": {
+        "eyebrow": {
+          "text": "Gutter Cleaning",
+          "variant": "text"
+        },
+        "heading": "The Service Explained",
+        "body": "<p>Gutters have one job, moving water away from your home, and a clog stops them cold. When leaves, needles, and debris pack a gutter or block a downspout, rainwater and snowmelt spill over the edge instead of draining. That overflow runs down your fascia, pools against your foundation, and in a Treasure Valley winter it feeds the freeze-thaw cycle that cracks concrete and works water where it does not belong. Gutter cleaning clears the leaves and debris from the gutters and flushes the downspouts so water flows the way it should. Monarch clears the channels and downspouts, then brightens the gutter exterior so the front of your home looks as clean as it works. It matters most heading into the seasons when your gutters carry the heaviest load, on both homes and commercial buildings.</p>"
+      }
+    },
+    {
+      "type": "feature:alternating",
+      "theme": "alt",
+      "data": {
+        "eyebrow": {
+          "text": "What to Know",
+          "variant": "text"
+        },
+        "heading": "Top Concerns",
+        "rows": [
+          {
+            "heading": "A clogged gutter is a water problem waiting to happen",
+            "body": "When a gutter overflows, the water has to go somewhere, and it goes down your fascia and against your foundation. Over a Treasure Valley winter, water pooling near concrete feeds the freeze-thaw cycle that cracks driveways and foundations. Clearing the gutters and downspouts keeps water moving away from the house the way the system was designed to. It is a small maintenance job that heads off the far larger cost of water damage to your roofline and foundation."
+          },
+          {
+            "heading": "Downspouts clog where you cannot see it",
+            "body": "A gutter can look clear from the ground while the downspout is packed solid, which stops drainage just as effectively as a full trough. Monarch clears the downspouts, not just the visible channels, and confirms water actually flows through. Flushing the whole system is the difference between a gutter that looks handled and one that genuinely drains, which is the entire point of cleaning them before the heavy-load seasons arrive."
+          },
+          {
+            "heading": "A clean gutter still looks dirty from the street",
+            "body": "Even after the debris is out, gutter exteriors hold weathered streaking and grime that make a well-kept home look neglected from the curb. Monarch brightens the gutter faces after clearing the insides, so the part everyone sees matches the work that was done. For homeowners under HOA appearance standards, that finished look keeps the front of the house consistent with the rest of the exterior."
+          }
+        ]
+      }
+    },
+    {
+      "type": "process:horizontal",
+      "theme": "default",
+      "data": {
+        "eyebrow": {
+          "text": "The Process",
+          "variant": "text"
+        },
+        "heading": "How It Works",
+        "steps": [
+          {
+            "heading": "Get your free quote",
+            "body": "A clear price up front, with no guessing."
+          },
+          {
+            "heading": "We match the method to the surface",
+            "body": "Real pressure where it helps, a gentle soft wash where it protects."
+          },
+          {
+            "heading": "We clean, protect, and inspect",
+            "body": "Stains treated, landscaping protected, and the job checked before we leave."
+          }
+        ]
+      }
+    },
+    {
+      "type": "about:values",
+      "theme": "alt",
+      "data": {
+        "eyebrow": {
+          "text": "Why Monarch",
+          "variant": "text"
+        },
+        "heading": "Why Monarch",
+        "items": [
+          {
+            "title": "Surface-matched every time",
+            "body": "The method fits the material, so you get a deep clean with zero damage."
+          },
+          {
+            "title": "Soft wash, not just power wash",
+            "body": "The safe method for anything delicate is standard here, not an upsell."
+          },
+          {
+            "title": "Owner-run and insured",
+            "body": "The person accountable for the work is the person doing it."
+          },
+          {
+            "title": "One vendor for the whole property",
+            "body": "Wash, seal, windows, and gutters under one roof."
+          }
+        ]
+      }
+    },
+    {
+      "type": "reviews:cards",
+      "theme": "alt",
+      "data": {
+        "eyebrow": {
+          "text": "Reviews",
+          "variant": "text"
+        },
+        "heading": "What Our Customers Say",
+        "filter": "all",
+        "service": "gutter-cleaning",
+        "limit": 3
+      }
+    },
+    {
+      "type": "guarantee:callout",
+      "theme": "brand-secondary",
+      "data": {
+        "eyebrow": {
+          "text": "Our Guarantee",
+          "variant": "text"
+        },
+        "heading": "The Monarch Standard",
+        "body": "We aim for a full, thorough clean on the first visit. If any surface we cleaned is not right, tell us and we come back to make it right. No fine print and no runaround.",
+        "badge": "Make It Right"
+      }
+    },
+    {
+      "type": "faqs:accordion",
+      "theme": "alt",
+      "data": {
+        "eyebrow": {
+          "text": "FAQs",
+          "variant": "text"
+        },
+        "heading": "Gutter Cleaning: Common Questions",
+        "service": "gutter-cleaning"
+      }
+    },
+    {
+      "type": "service-areas:grid",
+      "theme": "muted",
+      "data": {
+        "eyebrow": {
+          "text": "Service Areas",
+          "variant": "text"
+        },
+        "heading": "Serving the Treasure Valley"
+      }
+    },
+    {
+      "type": "cta:banner",
+      "theme": "primary",
+      "data": {
+        "heading": "Ready for a Cleaner Property?",
+        "subheading": "Get a free quote with your price up front and a clean that is safe for every surface.",
+        "ctas": [
+          {
+            "label": "Get My Free Quote",
+            "href": "/contact",
+            "variant": "primary"
+          }
+        ],
+        "showPhone": true
+      }
+    }
+  ]
+}

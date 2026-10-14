@@ -1,0 +1,258 @@
+{
+  "slug": "sia-meridian--pressure-washing",
+  "title": "Pressure Washing in Meridian, ID | Monarch Pro Wash",
+  "sections": [
+    {
+      "type": "hero:split-form",
+      "theme": "inverse",
+      "data": {
+        "eyebrow": {
+          "text": "Pressure Washing · Meridian",
+          "variant": "text"
+        },
+        "heading": "Pressure Washing in Meridian, ID",
+        "subheading": "Your Meridian concrete takes a beating from high-desert dust, freeze-thaw winters, and hard-water runoff. We pressure wash driveways, patios, and sidewalks across North and South Meridian and leave the surface clean, even, and ready to seal.",
+        "trustBadges": [
+          {
+            "text": "Fully Insured"
+          },
+          {
+            "text": "Owner-Operated"
+          },
+          {
+            "text": "Free Quotes"
+          }
+        ],
+        "showPhone": true
+      }
+    },
+    {
+      "type": "content:rich-text",
+      "theme": "alt",
+      "data": {
+        "eyebrow": {
+          "text": "Pressure Washing · Meridian",
+          "variant": "text"
+        },
+        "body": "<p>Concrete in Meridian rarely stays clean on its own. Between the fine dust that blows across the valley, the tire marks and oil that collect on a driveway, and the gray film that builds up on a patio year after year, most flatwork ends up looking a lot older than it is. A proper pressure wash pulls all of that back out and gives you a surface that looks close to new again.</p><p>Monarch Pro Wash is owner-run and insured, with more than 15 years of exterior cleaning behind us. We work driveways, patios, and walkways all over Meridian, from the newer subdivisions up in North Meridian to the fresh construction going in south of I-84. When you call, you get the person doing the work, not a rotating crew that has never seen your street.</p>"
+      }
+    },
+    {
+      "type": "content:rich-text",
+      "theme": "alt",
+      "data": {
+        "eyebrow": {
+          "text": "Pressure Washing · Meridian",
+          "variant": "text"
+        },
+        "heading": "Pressure Washing Built for Meridian Conditions",
+        "body": "<p>A lot of the driveways and patios we clean sit in newer North and South Meridian neighborhoods like Paramount, Bridgetower, and Century Farm. That concrete is often only a few years old, and the goal is to clean it hard without chewing up the surface. We match our pressure and technique to the slab so you get a deep clean without etching or streaking.</p><p>Meridian has hard water, among the hardest in the Treasure Valley. When sprinklers hit a driveway or a walkway every morning, that mineral-heavy water dries and leaves chalky white staining along the edges and low spots. We treat those areas and rinse them out instead of just blasting past them, so the concrete comes back closer to its real color.</p><p>Then there is the weather. High-desert dust settles into the surface all summer, and the freeze-thaw cycle every winter works grime deeper into the pores of the concrete. We clean the full surface evenly, corner to corner, so you do not end up with clean lanes and dirty borders. If you want the finish to last, we can seal the concrete after it dries.</p>"
+      }
+    },
+    {
+      "type": "feature:checklist",
+      "theme": "alt",
+      "data": {
+        "eyebrow": {
+          "text": "What We Do",
+          "variant": "text"
+        },
+        "heading": "What We Clean Across Meridian",
+        "items": [
+          {
+            "title": "Driveways, including oil spots and tire marks"
+          },
+          {
+            "title": "Front walkways, entry steps, and porches"
+          },
+          {
+            "title": "Back patios and pool decks"
+          },
+          {
+            "title": "Sidewalks and curb strips along the street"
+          },
+          {
+            "title": "Pavers and stamped concrete"
+          },
+          {
+            "title": "Retaining walls and block"
+          },
+          {
+            "title": "Garage floors and aprons"
+          },
+          {
+            "title": "Optional concrete sealing after the wash on Meridian driveways and patios"
+          }
+        ]
+      }
+    },
+    {
+      "type": "about:values",
+      "theme": "default",
+      "data": {
+        "eyebrow": {
+          "text": "Why Monarch",
+          "variant": "text"
+        },
+        "heading": "Why Meridian Homeowners Choose Monarch",
+        "items": [
+          {
+            "title": "Owner-run, so the person quoting your Meridian driveway is the person cleaning it"
+          },
+          {
+            "title": "Fully insured, with more than 15 years of exterior cleaning experience"
+          },
+          {
+            "title": "We adjust pressure to the age of your concrete, which matters on newer subdivision slabs"
+          },
+          {
+            "title": "Local to the Treasure Valley, so we know how hard water and dust behave on Meridian flatwork"
+          }
+        ]
+      }
+    },
+    {
+      "type": "feature:checklist",
+      "theme": "alt",
+      "data": {
+        "eyebrow": {
+          "text": "What We Do",
+          "variant": "text"
+        },
+        "heading": "What We Focus On Every Job",
+        "items": [
+          {
+            "title": "Pre-treating oil, rust, and hard-water staining before we wash"
+          },
+          {
+            "title": "Even, consistent passes so the whole slab matches"
+          },
+          {
+            "title": "Protecting siding, landscaping, and nearby windows from overspray"
+          },
+          {
+            "title": "Cleaning right up to edges, expansion joints, and control lines"
+          },
+          {
+            "title": "A final rinse that clears residue off the surface and away from your beds"
+          }
+        ]
+      }
+    },
+    {
+      "type": "process:horizontal",
+      "theme": "alt",
+      "data": {
+        "eyebrow": {
+          "text": "The Process",
+          "variant": "text"
+        },
+        "heading": "How It Works",
+        "steps": [
+          {
+            "heading": "You reach out",
+            "body": "and tell us what needs cleaning."
+          },
+          {
+            "heading": "We look at the concrete",
+            "body": "and send a free, no-obligation quote."
+          },
+          {
+            "heading": "We schedule a time",
+            "body": "that works and show up ready."
+          },
+          {
+            "heading": "We wash, rinse, and walk it with you",
+            "body": "before we leave."
+          }
+        ]
+      }
+    },
+    {
+      "type": "services:grid",
+      "theme": "alt",
+      "data": {
+        "eyebrow": {
+          "text": "More Services",
+          "variant": "text"
+        },
+        "heading": "Our Other Services in Meridian",
+        "hrefBase": "/meridian"
+      }
+    },
+    {
+      "type": "content:rich-text",
+      "theme": "muted",
+      "data": {
+        "eyebrow": {
+          "text": "Pressure Washing · Meridian",
+          "variant": "text"
+        },
+        "heading": "Serving Meridian & the Treasure Valley",
+        "body": "<p>Meridian is our home base, and we also serve Boise, Eagle, Nampa, Kuna, and Star. In Meridian we clean residential flatwork across the North and South subdivisions and handle commercial concrete along the busier corridors, including storefront walkways near Eagle Road and the business parks off Overland Road. Whether you are on a quiet cul-de-sac or fronting Fairview Avenue, we can get your concrete clean.</p>"
+      }
+    },
+    {
+      "type": "service-areas:neighborhoods",
+      "theme": "alt",
+      "data": {
+        "eyebrow": {
+          "text": "Service Areas",
+          "variant": "text"
+        },
+        "heading": "Meridian Neighborhoods We Serve",
+        "subheading": "Do not see your neighborhood? Reach out.",
+        "places": [
+          "North Meridian (83646): Paramount, Bridgetower, The Oaks, Lochsa Falls, Spurwing, Bellano Creek, Baldwin Park",
+          "South Meridian (83642): Century Farm, Movado, Sky Mesa, Tuscany, Reflection Ridge",
+          "NW Meridian around Black Cat and McMillan",
+          "SE Meridian view homesites toward the foothills",
+          "Downtown and Old Town Meridian",
+          "Commercial flatwork along Eagle Road, Fairview Avenue, and Overland Road"
+        ]
+      }
+    },
+    {
+      "type": "faqs:accordion",
+      "theme": "alt",
+      "data": {
+        "eyebrow": {
+          "text": "FAQs",
+          "variant": "text"
+        },
+        "heading": "FAQs: Pressure Washing in Meridian",
+        "service": "meridian-pressure-washing"
+      }
+    },
+    {
+      "type": "reviews:cards",
+      "theme": "alt",
+      "data": {
+        "eyebrow": {
+          "text": "Reviews",
+          "variant": "text"
+        },
+        "heading": "What Our Customers Say",
+        "filter": "all",
+        "limit": 3,
+        "area": "Meridian"
+      }
+    },
+    {
+      "type": "cta:banner",
+      "theme": "primary",
+      "data": {
+        "heading": "Ready for Clean Concrete in Meridian?",
+        "subheading": "Get your driveway, patio, and walkways looking right again. Free quotes, no obligation, from an owner who does the work.",
+        "ctas": [
+          {
+            "label": "Get My Free Quote",
+            "href": "/contact",
+            "variant": "primary"
+          }
+        ],
+        "showPhone": true
+      }
+    }
+  ]
+}

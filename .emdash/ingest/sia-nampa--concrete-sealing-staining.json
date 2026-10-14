@@ -1,0 +1,263 @@
+{
+  "slug": "sia-nampa--concrete-sealing-staining",
+  "title": "Concrete Sealing & Staining in Nampa, ID | Monarch Pro Wash",
+  "sections": [
+    {
+      "type": "hero:split-form",
+      "theme": "inverse",
+      "data": {
+        "eyebrow": {
+          "text": "Concrete Sealing & Staining · Nampa",
+          "variant": "text"
+        },
+        "heading": "Concrete Sealing & Staining in Nampa, ID",
+        "subheading": "Sealing and decorative staining for Nampa driveways and patios, protecting new South Nampa concrete against freeze-thaw, high-desert UV, and everyday stains.",
+        "trustBadges": [
+          {
+            "text": "Fully Insured"
+          },
+          {
+            "text": "Owner-Operated"
+          },
+          {
+            "text": "Free Quotes"
+          }
+        ],
+        "showPhone": true
+      }
+    },
+    {
+      "type": "content:rich-text",
+      "theme": "alt",
+      "data": {
+        "eyebrow": {
+          "text": "Concrete Sealing & Staining · Nampa",
+          "variant": "text"
+        },
+        "body": "<p>Concrete looks tough, but it is porous, and in Nampa that is a problem. Water works into it, freezes, and pushes the surface apart over the winter, while summer UV and oil, rust, and dirt leave their mark year-round. Sealing closes off those pores, and staining adds color that reads as finished rather than plain gray slab.</p><p>Monarch Pro Wash is an owner-run, insured exterior cleaning company serving Nampa and the Treasure Valley. We seal and stain concrete driveways, patios, and walkways so they hold up to the local climate and keep looking good. If your concrete is new, sealing it early is one of the best things you can do for it.</p>"
+      }
+    },
+    {
+      "type": "content:rich-text",
+      "theme": "alt",
+      "data": {
+        "eyebrow": {
+          "text": "Concrete Sealing & Staining · Nampa",
+          "variant": "text"
+        },
+        "heading": "Concrete Sealing & Staining Built for Nampa Conditions",
+        "body": "<p>Freeze-thaw is the big one here. Nampa winters cycle above and below freezing, and every time water trapped in unsealed concrete freezes, it expands and works at the surface. That is how you get spalling, flaking, and cracks. Sealing keeps water out in the first place, which is why we push homeowners to seal newer driveways and patios before the damage starts.</p><p>South Nampa is full of new construction toward Lake Lowell, in subdivisions like Southern Ridge, Meadowcrest, and Ederra, where driveways and patios are fresh and worth protecting early. Getting a seal down while the concrete is young gives it the best shot at a long, clean life.</p><p>Staining is the other side of this. Decorative stain turns a plain slab into a patio or entry with real color and depth, and paired with a quality sealer, that color is protected from the UV and stains that would otherwise wash it out.</p>"
+      }
+    },
+    {
+      "type": "feature:checklist",
+      "theme": "alt",
+      "data": {
+        "eyebrow": {
+          "text": "What We Do",
+          "variant": "text"
+        },
+        "heading": "What We Seal & Stain Across Nampa",
+        "items": [
+          {
+            "title": "New and existing concrete driveways"
+          },
+          {
+            "title": "Patios, porches, and entryways"
+          },
+          {
+            "title": "Walkways and sidewalks"
+          },
+          {
+            "title": "Garage and shop floors"
+          },
+          {
+            "title": "Decorative and stamped concrete"
+          },
+          {
+            "title": "Surfaces exposed to oil, rust, and hard-water staining"
+          },
+          {
+            "title": "Concrete you want protected before winter"
+          }
+        ]
+      }
+    },
+    {
+      "type": "about:values",
+      "theme": "default",
+      "data": {
+        "eyebrow": {
+          "text": "Why Monarch",
+          "variant": "text"
+        },
+        "heading": "Why Nampa Homeowners Choose Monarch",
+        "items": [
+          {
+            "title": "Owner on the job",
+            "body": "You deal directly with the person sealing your concrete."
+          },
+          {
+            "title": "Insured and experienced",
+            "body": "More than 15 years of exterior cleaning behind every job."
+          },
+          {
+            "title": "Freeze-thaw focused",
+            "body": "We seal with Nampa winters in mind."
+          },
+          {
+            "title": "Color done right",
+            "body": "Staining paired with protection that lasts."
+          }
+        ]
+      }
+    },
+    {
+      "type": "feature:checklist",
+      "theme": "alt",
+      "data": {
+        "eyebrow": {
+          "text": "What We Do",
+          "variant": "text"
+        },
+        "heading": "What We Focus On Every Job",
+        "items": [
+          {
+            "title": "Cleaning and prepping the concrete so the sealer bonds"
+          },
+          {
+            "title": "Making sure the slab is dry and ready before we start"
+          },
+          {
+            "title": "Applying stain evenly for consistent, natural color"
+          },
+          {
+            "title": "Sealing for even coverage without puddling or streaks"
+          },
+          {
+            "title": "Advising when to reseal so protection stays ahead of wear"
+          }
+        ]
+      }
+    },
+    {
+      "type": "process:horizontal",
+      "theme": "alt",
+      "data": {
+        "eyebrow": {
+          "text": "The Process",
+          "variant": "text"
+        },
+        "heading": "How It Works",
+        "steps": [
+          {
+            "heading": "Reach out",
+            "body": "Tell us about your concrete and whether you want sealing, staining, or both."
+          },
+          {
+            "heading": "Free quote",
+            "body": "We look at the surface and give you a clear, no-obligation price."
+          },
+          {
+            "heading": "Prep and apply",
+            "body": "We clean, prep, and then stain and seal as planned."
+          },
+          {
+            "heading": "Final check",
+            "body": "We confirm even coverage and go over how to care for it."
+          }
+        ]
+      }
+    },
+    {
+      "type": "services:grid",
+      "theme": "alt",
+      "data": {
+        "eyebrow": {
+          "text": "More Services",
+          "variant": "text"
+        },
+        "heading": "Our Other Services in Nampa",
+        "hrefBase": "/nampa"
+      }
+    },
+    {
+      "type": "content:rich-text",
+      "theme": "muted",
+      "data": {
+        "eyebrow": {
+          "text": "Concrete Sealing & Staining · Nampa",
+          "variant": "text"
+        },
+        "heading": "Serving Nampa & the Treasure Valley",
+        "body": "<p>We seal and stain concrete across Nampa, from the new South Nampa subdivisions toward Lake Lowell and Deer Flat NWR to established North Nampa off Midland Blvd and Greenhurst Rd. We also work near CWI Nampa, NNU, and the Ford Idaho Center, and we serve homeowners throughout the wider Treasure Valley.</p>"
+      }
+    },
+    {
+      "type": "service-areas:neighborhoods",
+      "theme": "alt",
+      "data": {
+        "eyebrow": {
+          "text": "Service Areas",
+          "variant": "text"
+        },
+        "heading": "Nampa Neighborhoods & Areas We Serve",
+        "subheading": "Do not see your area? Reach out.",
+        "places": [
+          "Southern Ridge",
+          "Lighthouse Estates",
+          "Stella's Point",
+          "Meadowcrest",
+          "Sterling Commons",
+          "Ederra",
+          "North Pointe",
+          "Park Ridge",
+          "Ridgevue Estates",
+          "South Nampa"
+        ]
+      }
+    },
+    {
+      "type": "faqs:accordion",
+      "theme": "alt",
+      "data": {
+        "eyebrow": {
+          "text": "FAQs",
+          "variant": "text"
+        },
+        "heading": "FAQs: Concrete Sealing & Staining in Nampa",
+        "service": "nampa-concrete-sealing-staining"
+      }
+    },
+    {
+      "type": "reviews:cards",
+      "theme": "alt",
+      "data": {
+        "eyebrow": {
+          "text": "Reviews",
+          "variant": "text"
+        },
+        "heading": "What Our Customers Say",
+        "filter": "all",
+        "limit": 3,
+        "area": "Nampa"
+      }
+    },
+    {
+      "type": "cta:banner",
+      "theme": "primary",
+      "data": {
+        "heading": "Protect Your Nampa Concrete Before Winter Does Its Worst",
+        "subheading": "Sealing and staining that stands up to freeze-thaw, UV, and everyday stains.",
+        "ctas": [
+          {
+            "label": "Get My Free Quote",
+            "href": "/contact",
+            "variant": "primary"
+          }
+        ],
+        "showPhone": true
+      }
+    }
+  ]
+}

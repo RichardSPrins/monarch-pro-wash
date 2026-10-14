@@ -1,0 +1,274 @@
+{
+  "slug": "sia-caldwell--soft-washing",
+  "title": "Soft Washing in Caldwell, ID | Monarch Pro Wash",
+  "sections": [
+    {
+      "type": "hero:split-form",
+      "theme": "inverse",
+      "data": {
+        "eyebrow": {
+          "text": "Soft Washing · Caldwell",
+          "variant": "text"
+        },
+        "heading": "Soft Washing in Caldwell, ID",
+        "subheading": "Historic homes under Caldwell's elm canopy grow algae and moss on shaded walls, and new vinyl siding streaks with dust. Soft washing cleans both safely.",
+        "trustBadges": [
+          {
+            "text": "Fully Insured"
+          },
+          {
+            "text": "Owner-Operated"
+          },
+          {
+            "text": "Free Quotes"
+          }
+        ],
+        "showPhone": true
+      }
+    },
+    {
+      "type": "content:rich-text",
+      "theme": "alt",
+      "data": {
+        "eyebrow": {
+          "text": "Soft Washing · Caldwell",
+          "variant": "text"
+        },
+        "body": "<p>Not every surface can take pressure. The early-1900s masonry and wood homes east of downtown in the Steunenberg district, the older houses along Main St and 7th Ave, and even fresh vinyl siding on Caldwell's newer subdivisions all need a gentler hand. Soft washing is how you clean them without doing damage.</p><p>Monarch Pro Wash is owner-run, insured, and has spent more than fifteen years cleaning Treasure Valley exteriors. Soft washing uses low pressure and the right cleaning solution to lift algae, mildew, and grime and kill it at the root, so your home comes clean and stays clean longer. It is the safe choice for delicate and aging surfaces, and it is the right choice for a lot of Caldwell homes.</p>"
+      }
+    },
+    {
+      "type": "content:rich-text",
+      "theme": "alt",
+      "data": {
+        "eyebrow": {
+          "text": "Soft Washing · Caldwell",
+          "variant": "text"
+        },
+        "heading": "Soft Washing Built for Caldwell Conditions",
+        "body": "<p><strong>Historic homes under the elm canopy.</strong> The Steunenberg Residential Historic District and the downtown Caldwell Historic District are full of older masonry and wood homes shaded by mature elms. That canopy, plus moisture from Indian Creek and the Boise River, feeds algae and moss on north and east walls. Those surfaces are too delicate for high pressure. We soft-wash them, so the growth is removed and the original material is protected.</p><p><strong>New vinyl siding in the subdivisions.</strong> Out in Mandalay Ranch, Mason Creek, Masterson Ranch, and the other newer builds, vinyl siding picks up a film of high-desert and ag dust that dulls the whole house. Blasting vinyl can force water behind it. We soft-wash it instead, cleaning the surface evenly and rinsing it down without driving water where it should not go.</p><p><strong>Acreage and vineyard fencing.</strong> Homes on acreage south toward Sunnyslope and out along the farm edges deal with heavy vineyard and orchard dust on fences and outbuildings. Soft washing brings those large, weathered surfaces back without tearing up the wood.</p>"
+      }
+    },
+    {
+      "type": "feature:checklist",
+      "theme": "alt",
+      "data": {
+        "eyebrow": {
+          "text": "What We Do",
+          "variant": "text"
+        },
+        "heading": "What We Clean Across Caldwell",
+        "items": [
+          {
+            "title": "Vinyl, aluminum, and fiber-cement siding"
+          },
+          {
+            "title": "Older masonry and painted-wood historic-home exteriors"
+          },
+          {
+            "title": "Stucco and delicate finishes"
+          },
+          {
+            "title": "Soffits, eaves, and trim"
+          },
+          {
+            "title": "Shaded north and east walls with algae and moss"
+          },
+          {
+            "title": "Fencing on acreage and vineyard-edge properties"
+          },
+          {
+            "title": "Outbuildings, sheds, and garages"
+          },
+          {
+            "title": "Porches, columns, and railings"
+          },
+          {
+            "title": "Exterior light fixtures and decorative surfaces"
+          }
+        ]
+      }
+    },
+    {
+      "type": "about:values",
+      "theme": "default",
+      "data": {
+        "eyebrow": {
+          "text": "Why Monarch",
+          "variant": "text"
+        },
+        "heading": "Why Caldwell Homeowners Choose Monarch",
+        "items": [
+          {
+            "title": "Right for delicate surfaces",
+            "body": "Low pressure and the correct solution protect historic masonry, wood, and vinyl alike."
+          },
+          {
+            "title": "Kills algae at the root",
+            "body": "We do not just rinse growth off, we treat it so it stays gone longer."
+          },
+          {
+            "title": "Owner-run and insured",
+            "body": "One experienced, insured operator on your property, not a rotating crew."
+          },
+          {
+            "title": "Local knowledge",
+            "body": "We understand Caldwell's historic districts and its new builds, and we treat each accordingly."
+          }
+        ]
+      }
+    },
+    {
+      "type": "feature:checklist",
+      "theme": "alt",
+      "data": {
+        "eyebrow": {
+          "text": "What We Do",
+          "variant": "text"
+        },
+        "heading": "What We Focus On Every Job",
+        "items": [
+          {
+            "title": "Testing and matching the solution to your specific surface"
+          },
+          {
+            "title": "Protecting plants, landscaping, and surroundings before we begin"
+          },
+          {
+            "title": "Keeping water out from behind siding and trim"
+          },
+          {
+            "title": "Reaching shaded, growth-prone walls fully"
+          },
+          {
+            "title": "Rinsing thoroughly and leaving the exterior clean and tidy"
+          }
+        ]
+      }
+    },
+    {
+      "type": "process:horizontal",
+      "theme": "alt",
+      "data": {
+        "eyebrow": {
+          "text": "The Process",
+          "variant": "text"
+        },
+        "heading": "How It Works",
+        "steps": [
+          {
+            "heading": "Reach out",
+            "body": "Send the form or call for a free quote and tell us about your home."
+          },
+          {
+            "heading": "We assess",
+            "body": "We check the surface and the growth so the solution and pressure fit."
+          },
+          {
+            "heading": "We soft-wash",
+            "body": "Low pressure, the right mix, and a thorough, even clean."
+          },
+          {
+            "heading": "You approve",
+            "body": "We walk the exterior with you before we call it finished."
+          }
+        ]
+      }
+    },
+    {
+      "type": "services:grid",
+      "theme": "alt",
+      "data": {
+        "eyebrow": {
+          "text": "More Services",
+          "variant": "text"
+        },
+        "heading": "Our Other Services in Caldwell",
+        "hrefBase": "/caldwell"
+      }
+    },
+    {
+      "type": "content:rich-text",
+      "theme": "muted",
+      "data": {
+        "eyebrow": {
+          "text": "Soft Washing · Caldwell",
+          "variant": "text"
+        },
+        "heading": "Serving Caldwell & the Treasure Valley",
+        "body": "<p>We soft-wash homes throughout Caldwell and the west valley, from the historic districts along Main St, 7th Ave, and Kimball Ave to the newer subdivisions off Franklin Road, Midland Blvd, and Ustick Road. We work near the College of Idaho and Cleveland Blvd, out along Simplot Blvd and Karcher Road, south toward the Sunnyslope Wine Trail and Lake Lowell, and through north Caldwell. If you are along the I-84 corridor near the Franklin or Karcher exits, we are nearby.</p>"
+      }
+    },
+    {
+      "type": "service-areas:neighborhoods",
+      "theme": "alt",
+      "data": {
+        "eyebrow": {
+          "text": "Service Areas",
+          "variant": "text"
+        },
+        "heading": "Caldwell Neighborhoods We Serve",
+        "subheading": "Do not see your neighborhood? Reach out.",
+        "places": [
+          "Steunenberg Residential Historic District",
+          "Caldwell Historic District (downtown)",
+          "North Caldwell Historic District",
+          "Mandalay Ranch",
+          "Brittany Heights",
+          "Mason Creek",
+          "Maple Hill",
+          "Shadow Glen",
+          "Solstice",
+          "Masterson Ranch",
+          "Cirrus Pointe",
+          "Pradera",
+          "Waterbrook Farms",
+          "Oakridge Estates",
+          "Chestnut Heights"
+        ]
+      }
+    },
+    {
+      "type": "faqs:accordion",
+      "theme": "alt",
+      "data": {
+        "eyebrow": {
+          "text": "FAQs",
+          "variant": "text"
+        },
+        "heading": "FAQs: Soft Washing in Caldwell",
+        "service": "caldwell-soft-washing"
+      }
+    },
+    {
+      "type": "reviews:cards",
+      "theme": "alt",
+      "data": {
+        "eyebrow": {
+          "text": "Reviews",
+          "variant": "text"
+        },
+        "heading": "What Our Customers Say",
+        "filter": "all",
+        "limit": 3,
+        "area": "Caldwell"
+      }
+    },
+    {
+      "type": "cta:banner",
+      "theme": "primary",
+      "data": {
+        "heading": "Clean Your Home the Safe Way",
+        "subheading": "From historic masonry under the elms to fresh vinyl in the new subdivisions, soft washing cleans Caldwell homes without damage. Owner-run, insured, free to quote.",
+        "ctas": [
+          {
+            "label": "Get My Free Quote",
+            "href": "/contact",
+            "variant": "primary"
+          }
+        ],
+        "showPhone": true
+      }
+    }
+  ]
+}

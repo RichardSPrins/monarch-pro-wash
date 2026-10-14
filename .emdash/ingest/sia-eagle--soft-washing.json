@@ -1,0 +1,258 @@
+{
+  "slug": "sia-eagle--soft-washing",
+  "title": "Soft Washing in Eagle, ID | Monarch Pro Wash",
+  "sections": [
+    {
+      "type": "hero:split-form",
+      "theme": "inverse",
+      "data": {
+        "eyebrow": {
+          "text": "Soft Washing · Eagle",
+          "variant": "text"
+        },
+        "heading": "Soft Washing in Eagle, ID",
+        "subheading": "Big Eagle homes with custom siding and masonry, plus river and lake shade that feeds algae on north walls, call for low pressure. Monarch Pro Wash soft washes it safely.",
+        "trustBadges": [
+          {
+            "text": "Fully Insured"
+          },
+          {
+            "text": "Owner-Operated"
+          },
+          {
+            "text": "Free Quotes"
+          }
+        ],
+        "showPhone": true
+      }
+    },
+    {
+      "type": "content:rich-text",
+      "theme": "alt",
+      "data": {
+        "eyebrow": {
+          "text": "Soft Washing · Eagle",
+          "variant": "text"
+        },
+        "body": "<p>A lot of Eagle homes are too nice, and too detailed, to blast with high pressure. Custom siding, stucco, stone veneer, and long stretches of estate fencing need a gentler approach that actually cleans without forcing water behind the surface. Soft washing uses low pressure and the right cleaning solution to break down grime and growth, then rinses it away.</p><p>Monarch Pro Wash is owner-run, insured, and has spent more than 15 years on Treasure Valley exteriors. The difference with soft washing is that it treats the cause, not just the look. It kills algae and mildew at the root so the surface stays clean longer, instead of coming back gray a few weeks later.</p>"
+      }
+    },
+    {
+      "type": "content:rich-text",
+      "theme": "alt",
+      "data": {
+        "eyebrow": {
+          "text": "Soft Washing · Eagle",
+          "variant": "text"
+        },
+        "heading": "Soft Washing Built for Eagle Conditions",
+        "body": "<p>Along the Boise River and Greenbelt, and out around the private lakes in communities like Two Rivers, Laguna Pointe, and Riverstone, heavy mature tree cover keeps north-facing walls shaded and damp. That is exactly where algae, mildew, and green growth take hold on siding and masonry. Soft washing clears it and slows its return, which pressure alone will not do.</p><p>Eagle also has serious fencing. Estate and equestrian properties off Floating Feather and Horseshoe Bend Road run long lines of fence with a lot of surface area, and it greens up on the shaded, weather-facing sides. Low-pressure washing covers that surface without splintering wood or driving water into the grain.</p><p>In Old Town Eagle near State Street, some of the homes date back well over a century, with older siding and trim that will not take aggressive pressure. Soft washing is the safe way to clean delicate and aged surfaces without stripping paint or gouging wood.</p>"
+      }
+    },
+    {
+      "type": "feature:checklist",
+      "theme": "alt",
+      "data": {
+        "eyebrow": {
+          "text": "What We Do",
+          "variant": "text"
+        },
+        "heading": "What We Clean Across Eagle",
+        "items": [
+          {
+            "title": "Siding, including vinyl, fiber cement, wood, and composite"
+          },
+          {
+            "title": "Stucco, stone veneer, and custom masonry"
+          },
+          {
+            "title": "Estate and equestrian fencing"
+          },
+          {
+            "title": "Soffits, eaves, and trim"
+          },
+          {
+            "title": "Screened porches, pergolas, and covered patios"
+          },
+          {
+            "title": "Exterior walls on shaded, north-facing elevations"
+          },
+          {
+            "title": "Painted and aged surfaces on older homes"
+          }
+        ]
+      }
+    },
+    {
+      "type": "about:values",
+      "theme": "default",
+      "data": {
+        "eyebrow": {
+          "text": "Why Monarch",
+          "variant": "text"
+        },
+        "heading": "Why Eagle Homeowners Choose Monarch",
+        "items": [
+          {
+            "title": "Low pressure, no damage",
+            "body": "The method is built to clean delicate surfaces safely."
+          },
+          {
+            "title": "Kills algae at the root",
+            "body": "Growth is treated, not just rinsed, so it stays gone longer."
+          },
+          {
+            "title": "Owner-run and insured",
+            "body": "One experienced person accountable for the whole job."
+          },
+          {
+            "title": "Right for high-end exteriors",
+            "body": "Comfortable working around custom siding, stone, and detailed trim."
+          }
+        ]
+      }
+    },
+    {
+      "type": "feature:checklist",
+      "theme": "alt",
+      "data": {
+        "eyebrow": {
+          "text": "What We Do",
+          "variant": "text"
+        },
+        "heading": "What We Focus On Every Job",
+        "items": [
+          {
+            "title": "Choosing pressure and solution to match each surface"
+          },
+          {
+            "title": "Protecting plantings, mulch beds, and landscaping during treatment"
+          },
+          {
+            "title": "Working elevation by elevation so nothing gets missed"
+          },
+          {
+            "title": "Rinsing thoroughly so no residue is left behind"
+          },
+          {
+            "title": "Checking shaded and north-facing walls where growth hides"
+          }
+        ]
+      }
+    },
+    {
+      "type": "process:horizontal",
+      "theme": "alt",
+      "data": {
+        "eyebrow": {
+          "text": "The Process",
+          "variant": "text"
+        },
+        "heading": "How It Works",
+        "steps": [
+          {
+            "heading": "Request a quote",
+            "body": "Tell us the surfaces and your Eagle neighborhood."
+          },
+          {
+            "heading": "Walk-through",
+            "body": "We check siding, masonry, and fencing and confirm the approach."
+          },
+          {
+            "heading": "We soft wash",
+            "body": "Apply, let it work, and rinse at low pressure."
+          },
+          {
+            "heading": "You approve",
+            "body": "We review the results with you before we leave."
+          }
+        ]
+      }
+    },
+    {
+      "type": "services:grid",
+      "theme": "alt",
+      "data": {
+        "eyebrow": {
+          "text": "More Services",
+          "variant": "text"
+        },
+        "heading": "Our Other Services in Eagle",
+        "hrefBase": "/eagle"
+      }
+    },
+    {
+      "type": "content:rich-text",
+      "theme": "muted",
+      "data": {
+        "eyebrow": {
+          "text": "Soft Washing · Eagle",
+          "variant": "text"
+        },
+        "heading": "Serving Eagle & the Treasure Valley",
+        "body": "<p>Monarch Pro Wash serves Eagle and the greater Treasure Valley. Around Eagle that means the shaded river and Greenbelt communities near Eagle Island State Park, the estates and equestrian properties off Beacon Light Road and Floating Feather Road, established neighborhoods near BanBury Golf Course, the historic homes of Old Town Eagle along State Street, and the newer builds out toward Avimor and Spring Valley. If your walls sit in the shade and keep greening up, that is our work.</p>"
+      }
+    },
+    {
+      "type": "service-areas:neighborhoods",
+      "theme": "alt",
+      "data": {
+        "eyebrow": {
+          "text": "Service Areas",
+          "variant": "text"
+        },
+        "heading": "Eagle Neighborhoods We Serve",
+        "subheading": "Do not see your neighborhood? Reach out.",
+        "places": [
+          "River & Greenbelt: Two Rivers, Mace River Ranch, Riverstone, Island Woods, Laguna Pointe, Westover Lakes",
+          "North Eagle & Foothills estates: High Plains Estates, Sageview, Highlander, Saddle View, Buckskin, Equus Estates, Dry Creek Ranch",
+          "Old Town & central: Downtown / Old Town Eagle, Eagle Ranch, Brookwood, Lexington Hills",
+          "Established: Eagle Hills, Legacy, BanBury, BanBury Meadows, Corrente Bello, Wedgewood Estates",
+          "Newer communities: Avimor, Spring Valley, Millstone Farm, Bella Terra, Lakemoor, Moon Lake Ranch"
+        ]
+      }
+    },
+    {
+      "type": "faqs:accordion",
+      "theme": "alt",
+      "data": {
+        "eyebrow": {
+          "text": "FAQs",
+          "variant": "text"
+        },
+        "heading": "FAQs: Soft Washing in Eagle",
+        "service": "eagle-soft-washing"
+      }
+    },
+    {
+      "type": "reviews:cards",
+      "theme": "alt",
+      "data": {
+        "eyebrow": {
+          "text": "Reviews",
+          "variant": "text"
+        },
+        "heading": "What Our Customers Say",
+        "filter": "all",
+        "limit": 3,
+        "area": "Eagle"
+      }
+    },
+    {
+      "type": "cta:banner",
+      "theme": "primary",
+      "data": {
+        "heading": "Clean Walls That Stay Clean",
+        "subheading": "Get safe, low-pressure soft washing from an insured, owner-run crew that knows Eagle exteriors.",
+        "ctas": [
+          {
+            "label": "Get My Free Quote",
+            "href": "/contact",
+            "variant": "primary"
+          }
+        ],
+        "showPhone": true
+      }
+    }
+  ]
+}

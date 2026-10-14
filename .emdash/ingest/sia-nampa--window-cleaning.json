@@ -1,0 +1,268 @@
+{
+  "slug": "sia-nampa--window-cleaning",
+  "title": "Window Cleaning in Nampa, ID | Monarch Pro Wash",
+  "sections": [
+    {
+      "type": "hero:split-form",
+      "theme": "inverse",
+      "data": {
+        "eyebrow": {
+          "text": "Window Cleaning · Nampa",
+          "variant": "text"
+        },
+        "heading": "Window Cleaning in Nampa, ID",
+        "subheading": "Nampa's moderately hard water and high-desert dust leave film and mineral spotting on glass. We get your windows clean, clear, and streak-free, inside and out.",
+        "trustBadges": [
+          {
+            "text": "Fully Insured"
+          },
+          {
+            "text": "Owner-Operated"
+          },
+          {
+            "text": "Free Quotes"
+          }
+        ],
+        "showPhone": true
+      }
+    },
+    {
+      "type": "content:rich-text",
+      "theme": "alt",
+      "data": {
+        "eyebrow": {
+          "text": "Window Cleaning · Nampa",
+          "variant": "text"
+        },
+        "body": "<p>Windows are the first thing people notice and the last thing most folks get around to. In Nampa the glass takes a beating from every direction. Dust rolls in off the fields and the roads, summer sun bakes it on, and the water here leaves spotting behind when sprinklers or rain dry on the pane. It builds up slow, then one morning you look out and everything has a haze on it.</p><p>Monarch Pro Wash is owner-run, insured, and built on more than fifteen years of exterior cleaning work around the Treasure Valley. We clean windows for homes and businesses across Nampa, and we do it the careful way. No rushing, no cutting corners, no leaving streaks behind for you to spot at sunset. You get glass you can actually see through.</p>"
+      }
+    },
+    {
+      "type": "content:rich-text",
+      "theme": "alt",
+      "data": {
+        "eyebrow": {
+          "text": "Window Cleaning · Nampa",
+          "variant": "text"
+        },
+        "heading": "Window Cleaning Built for Nampa Conditions",
+        "body": "<p>Nampa's water is moderately hard, and that shows up on glass. When sprinkler overspray or rain sits on a window and dries in the sun, it can leave mineral spotting that a quick wipe will not touch. We use the right approach to break down that buildup and clear the pane instead of just smearing it around, so the glass looks clean in every light.</p><p>Out in South Nampa near Lake Lowell, and in newer subdivisions like Southern Ridge, Ederra, and Stella's Point, the high-desert air keeps a steady film of dust on the glass. Ag dust and road dust settle on windows between cleanings, especially on the sides that face open ground. We wash the film off, detail the frames and tracks, and leave the whole opening looking sharp, not just the middle of the pane.</p><p>Along the Caldwell Boulevard and Karcher Road retail spine, and through Downtown and Old Nampa, storefront glass carries a different load. Foot traffic, hand prints, road grime, and exhaust all land on the front windows customers walk past. We clean big storefront glass and entry doors so your business reads as open and cared for from the sidewalk.</p>"
+      }
+    },
+    {
+      "type": "feature:checklist",
+      "theme": "alt",
+      "data": {
+        "eyebrow": {
+          "text": "What We Do",
+          "variant": "text"
+        },
+        "heading": "What We Clean Across Nampa",
+        "items": [
+          {
+            "title": "Interior and exterior window glass, streak-free"
+          },
+          {
+            "title": "Window tracks and sills cleared of dirt and grit"
+          },
+          {
+            "title": "Frames wiped down and detailed"
+          },
+          {
+            "title": "Hard-water and mineral spotting worked off the glass"
+          },
+          {
+            "title": "Storefront glass and glass entry doors"
+          },
+          {
+            "title": "Sliding glass doors and patio doors"
+          },
+          {
+            "title": "Screens removed, cleaned, and reset"
+          },
+          {
+            "title": "Sunroom, patio, and enclosure glass"
+          }
+        ]
+      }
+    },
+    {
+      "type": "about:values",
+      "theme": "default",
+      "data": {
+        "eyebrow": {
+          "text": "Why Monarch",
+          "variant": "text"
+        },
+        "heading": "Why Nampa Homeowners and Businesses Choose Monarch",
+        "items": [
+          {
+            "title": "Owner on the job",
+            "body": "You deal with the person doing the work, not a rotating crew. When you have a question about your glass, you ask the one who cleaned it."
+          },
+          {
+            "title": "Insured and local",
+            "body": "We carry insurance and we work right here in the Treasure Valley. You know who is at your home or storefront."
+          },
+          {
+            "title": "Fifteen-plus years of exterior work",
+            "body": "We have cleaned a lot of glass in these conditions and we know how Nampa water and dust behave on a pane."
+          },
+          {
+            "title": "Careful, not rushed",
+            "body": "We treat older frames and screens gently and take the time to leave the glass truly streak-free."
+          }
+        ]
+      }
+    },
+    {
+      "type": "feature:checklist",
+      "theme": "alt",
+      "data": {
+        "eyebrow": {
+          "text": "What We Do",
+          "variant": "text"
+        },
+        "heading": "What We Focus On Every Job",
+        "items": [
+          {
+            "title": "Streak-free glass checked in natural light before we leave"
+          },
+          {
+            "title": "Working mineral spotting off instead of smearing it"
+          },
+          {
+            "title": "Clearing tracks and sills, not just the glass"
+          },
+          {
+            "title": "Handling screens and older frames with care"
+          },
+          {
+            "title": "Leaving your home or storefront tidy, with nothing left behind"
+          }
+        ]
+      }
+    },
+    {
+      "type": "process:horizontal",
+      "theme": "alt",
+      "data": {
+        "eyebrow": {
+          "text": "The Process",
+          "variant": "text"
+        },
+        "heading": "How It Works",
+        "steps": [
+          {
+            "heading": "Reach out",
+            "body": "Tell us about your home or business and how many windows you are looking at."
+          },
+          {
+            "heading": "Get your free quote",
+            "body": "We give you a clear, no-obligation price with no surprises."
+          },
+          {
+            "heading": "We clean",
+            "body": "We show up on schedule and clean the glass, tracks, frames, and screens."
+          },
+          {
+            "heading": "You check the glass",
+            "body": "We walk it with you and make sure every pane is clear before we go."
+          }
+        ]
+      }
+    },
+    {
+      "type": "services:grid",
+      "theme": "alt",
+      "data": {
+        "eyebrow": {
+          "text": "More Services",
+          "variant": "text"
+        },
+        "heading": "Our Other Services in Nampa",
+        "hrefBase": "/nampa"
+      }
+    },
+    {
+      "type": "content:rich-text",
+      "theme": "muted",
+      "data": {
+        "eyebrow": {
+          "text": "Window Cleaning · Nampa",
+          "variant": "text"
+        },
+        "heading": "Serving Nampa & the Treasure Valley",
+        "body": "<p>We clean windows across Nampa and the surrounding Treasure Valley, from the historic streets of Old Nampa and the storefronts around Library Square to the newer subdivisions in South Nampa near Lake Lowell. We cover the Caldwell Boulevard and Karcher Road retail corridor, the District 208 area, Idaho Center Boulevard, and North Nampa neighborhoods like North Pointe and Ridgevue Estates. If you are in or around Nampa, we can get to you.</p>"
+      }
+    },
+    {
+      "type": "service-areas:neighborhoods",
+      "theme": "alt",
+      "data": {
+        "eyebrow": {
+          "text": "Service Areas",
+          "variant": "text"
+        },
+        "heading": "Nampa Neighborhoods We Serve",
+        "subheading": "Do not see your neighborhood? Reach out.",
+        "places": [
+          "Old Nampa Historic District",
+          "Downtown / Library Square",
+          "North Nampa",
+          "South Nampa",
+          "Southern Ridge",
+          "Lighthouse Estates",
+          "Stella's Point",
+          "Meadowcrest",
+          "Ederra",
+          "North Pointe",
+          "Park Ridge",
+          "Ridgevue Estates"
+        ]
+      }
+    },
+    {
+      "type": "faqs:accordion",
+      "theme": "alt",
+      "data": {
+        "eyebrow": {
+          "text": "FAQs",
+          "variant": "text"
+        },
+        "heading": "FAQs: Window Cleaning in Nampa",
+        "service": "nampa-window-cleaning"
+      }
+    },
+    {
+      "type": "reviews:cards",
+      "theme": "alt",
+      "data": {
+        "eyebrow": {
+          "text": "Reviews",
+          "variant": "text"
+        },
+        "heading": "What Our Customers Say",
+        "filter": "all",
+        "limit": 3,
+        "area": "Nampa"
+      }
+    },
+    {
+      "type": "cta:banner",
+      "theme": "primary",
+      "data": {
+        "heading": "Ready for Glass You Can Actually See Through?",
+        "subheading": "Get a free, no-obligation quote for window cleaning at your Nampa home or business.",
+        "ctas": [
+          {
+            "label": "Get My Free Quote",
+            "href": "/contact",
+            "variant": "primary"
+          }
+        ],
+        "showPhone": true
+      }
+    }
+  ]
+}

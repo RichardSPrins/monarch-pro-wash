@@ -1,0 +1,192 @@
+{
+  "slug": "svc-window-cleaning",
+  "title": "Window Cleaning | Monarch Pro Wash",
+  "sections": [
+    {
+      "type": "hero:image-overlay",
+      "theme": "inverse",
+      "data": {
+        "eyebrow": {
+          "text": "Treasure Valley · Fully Insured",
+          "variant": "text"
+        },
+        "heading": "Window Cleaning in the Treasure Valley",
+        "subheading": "Streak-free window cleaning for Boise homes and storefronts. Interior and exterior glass, tracks, and hard-water stain removal, done right the first time.",
+        "showPhone": true,
+        "ctas": [
+          {
+            "label": "Get a Free Quote",
+            "href": "/contact",
+            "variant": "primary"
+          }
+        ]
+      }
+    },
+    {
+      "type": "trust-bar:badges",
+      "theme": "alt",
+      "data": {
+        "foundingYear": 2026,
+        "familyOwned": true,
+        "insured": true
+      }
+    },
+    {
+      "type": "content:rich-text",
+      "theme": "alt",
+      "data": {
+        "eyebrow": {
+          "text": "Window Cleaning",
+          "variant": "text"
+        },
+        "heading": "The Service Explained",
+        "body": "<p>Dirty windows are rarely just dust. In the Treasure Valley, high-desert grit films the glass, sprinkler overspray leaves mineral spots, and hard water bakes on stains that a paper towel will never wipe away. Over time that buildup dulls your whole view and makes a clean house look neglected. Monarch Pro Wash cleans interior and exterior glass, wipes down and clears the tracks where dirt and dead bugs collect, and treats hard-water staining at the source rather than smearing it around. Screens and seals are handled with care, not force. The result is glass that actually looks clear from every angle, in the right light, done thoroughly the first time so you are not living with the streaks you were trying to get rid of.</p>"
+      }
+    },
+    {
+      "type": "feature:alternating",
+      "theme": "alt",
+      "data": {
+        "eyebrow": {
+          "text": "What to Know",
+          "variant": "text"
+        },
+        "heading": "Top Concerns",
+        "rows": [
+          {
+            "heading": "Hard-water spots do not come off with a rag, and Monarch treats them at the source",
+            "body": "Sprinkler overspray and Treasure Valley water leave mineral deposits that bond to the glass. You wipe, you scrub, and the cloudy spotting stays put because it is not surface dirt. Monarch treats hard-water staining at the source instead of pushing it around the pane. Where mineral buildup has set in, that is the difference between glass that looks smeared and glass that is genuinely clear. You should not have to live with permanent-looking spots on windows you just paid to have cleaned."
+          },
+          {
+            "heading": "Your seals and screens get handled with care, not force",
+            "body": "The worry with window work is damage. Aggressive scraping, harsh pressure, or careless handling can stress a window seal or bend a screen frame, and that turns a cleaning into a repair bill. Monarch works carefully around seals, screens, and tracks. Glass is cleaned with the right technique for each pane rather than brute force. The point is clean windows and intact windows, so nothing you own is worse off after the visit than it was before."
+          },
+          {
+            "heading": "Streaks mean the job was rushed, and the Monarch Standard means it gets corrected",
+            "body": "Anyone can leave a window looking clean when it is wet. The truth shows once the glass dries and the low sun hits it and every missed streak lights up. Monarch cleans for a streak-free result and stands behind it under the Monarch Standard: a thorough first-time clean, and a return to correct anything that is not right. You get glass that looks clear in the harsh afternoon light, not just clean at the moment the cleaner drives away."
+          }
+        ]
+      }
+    },
+    {
+      "type": "process:horizontal",
+      "theme": "default",
+      "data": {
+        "eyebrow": {
+          "text": "The Process",
+          "variant": "text"
+        },
+        "heading": "How It Works",
+        "steps": [
+          {
+            "heading": "Get your free quote",
+            "body": "A clear price up front, with no guessing."
+          },
+          {
+            "heading": "We match the method to the surface",
+            "body": "Real pressure where it helps, a gentle soft wash where it protects."
+          },
+          {
+            "heading": "We clean, protect, and inspect",
+            "body": "Stains treated, landscaping protected, and the job checked before we leave."
+          }
+        ]
+      }
+    },
+    {
+      "type": "about:values",
+      "theme": "alt",
+      "data": {
+        "eyebrow": {
+          "text": "Why Monarch",
+          "variant": "text"
+        },
+        "heading": "Why Monarch",
+        "items": [
+          {
+            "title": "Surface-matched every time",
+            "body": "The method fits the material, so you get a deep clean with zero damage."
+          },
+          {
+            "title": "Soft wash, not just power wash",
+            "body": "The safe method for anything delicate is standard here, not an upsell."
+          },
+          {
+            "title": "Owner-run and insured",
+            "body": "The person accountable for the work is the person doing it."
+          },
+          {
+            "title": "One vendor for the whole property",
+            "body": "Wash, seal, windows, and gutters under one roof."
+          }
+        ]
+      }
+    },
+    {
+      "type": "reviews:cards",
+      "theme": "alt",
+      "data": {
+        "eyebrow": {
+          "text": "Reviews",
+          "variant": "text"
+        },
+        "heading": "What Our Customers Say",
+        "filter": "all",
+        "service": "window-cleaning",
+        "limit": 3
+      }
+    },
+    {
+      "type": "guarantee:callout",
+      "theme": "brand-secondary",
+      "data": {
+        "eyebrow": {
+          "text": "Our Guarantee",
+          "variant": "text"
+        },
+        "heading": "The Monarch Standard",
+        "body": "We aim for a full, thorough clean on the first visit. If any surface we cleaned is not right, tell us and we come back to make it right. No fine print and no runaround.",
+        "badge": "Make It Right"
+      }
+    },
+    {
+      "type": "faqs:accordion",
+      "theme": "alt",
+      "data": {
+        "eyebrow": {
+          "text": "FAQs",
+          "variant": "text"
+        },
+        "heading": "Window Cleaning: Common Questions",
+        "service": "window-cleaning"
+      }
+    },
+    {
+      "type": "service-areas:grid",
+      "theme": "muted",
+      "data": {
+        "eyebrow": {
+          "text": "Service Areas",
+          "variant": "text"
+        },
+        "heading": "Serving the Treasure Valley"
+      }
+    },
+    {
+      "type": "cta:banner",
+      "theme": "primary",
+      "data": {
+        "heading": "Ready for a Cleaner Property?",
+        "subheading": "Get a free quote with your price up front and a clean that is safe for every surface.",
+        "ctas": [
+          {
+            "label": "Get My Free Quote",
+            "href": "/contact",
+            "variant": "primary"
+          }
+        ],
+        "showPhone": true
+      }
+    }
+  ]
+}

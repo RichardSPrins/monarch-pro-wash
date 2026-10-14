@@ -1,0 +1,192 @@
+{
+  "slug": "svc-pressure-washing",
+  "title": "Pressure Washing | Monarch Pro Wash",
+  "sections": [
+    {
+      "type": "hero:image-overlay",
+      "theme": "inverse",
+      "data": {
+        "eyebrow": {
+          "text": "Treasure Valley · Fully Insured",
+          "variant": "text"
+        },
+        "heading": "Pressure Washing in the Treasure Valley",
+        "subheading": "Restore your driveway, patio, sidewalks, and concrete with professional pressure washing in Boise. We lift years of dirt, oil, and grime — and can seal it to last.",
+        "showPhone": true,
+        "ctas": [
+          {
+            "label": "Get a Free Quote",
+            "href": "/contact",
+            "variant": "primary"
+          }
+        ]
+      }
+    },
+    {
+      "type": "trust-bar:badges",
+      "theme": "alt",
+      "data": {
+        "foundingYear": 2026,
+        "familyOwned": true,
+        "insured": true
+      }
+    },
+    {
+      "type": "content:rich-text",
+      "theme": "alt",
+      "data": {
+        "eyebrow": {
+          "text": "Pressure Washing",
+          "variant": "text"
+        },
+        "heading": "The Service Explained",
+        "body": "<p>Your driveway, patio, and walkways are the first thing people see, and over time dirt, oil, algae, and stubborn orange staining build up until the concrete looks years older than it is. Pressure washing lifts all of it. Monarch cleans concrete and paver driveways, patios, pool decks, sidewalks, and walkways, matching the pressure to the surface so hard flatwork gets a deep clean without etching, pitting, or blown-out paver sand. Across the Treasure Valley, hard water and iron leave rusty mineral staining that a rinse will never touch, and freeze-thaw winters are hard on exposed concrete. We treat the staining at the source and can seal the surface afterward so the clean holds far longer.</p>"
+      }
+    },
+    {
+      "type": "feature:alternating",
+      "theme": "alt",
+      "data": {
+        "eyebrow": {
+          "text": "What to Know",
+          "variant": "text"
+        },
+        "heading": "Top Concerns",
+        "rows": [
+          {
+            "heading": "Pressure washing done by someone who actually knows what they are doing",
+            "body": "The scary part of hiring this out is handing a high-powered machine to someone who might etch your concrete, blast the sand out of your pavers, or strip paint off the house. That worry is fair. Monarch matches the pressure to the surface every time. Hard flatwork like driveways and sidewalks gets the pressure it needs, while anything delicate gets a gentle soft wash instead of a high-pressure tip. Fifteen years of surface work is what stands behind a deep clean with zero damage."
+          },
+          {
+            "heading": "The orange and dark staining that will not scrub off",
+            "body": "Some marks are not dirt at all. Across the Treasure Valley, hard water and iron-rich irrigation leave rusty orange and dark mineral staining baked into concrete, and no amount of scrubbing on your own will lift it. Monarch treats mineral and rust staining with the right cleaning solution for the surface, not just more pressure, so the concrete comes back closer to its true color instead of looking clean for only a day."
+          },
+          {
+            "heading": "Getting dirty again a month after it is cleaned",
+            "body": "If you have paid to have concrete cleaned before and watched it go dingy within weeks, that is usually the surface, not the wash. Bare, porous concrete soaks up dirt, oil, and algae fast once it is open to the weather. That is why Monarch offers sealing right after the clean. A sealed driveway or patio sheds stains and holds its fresh look far longer, which means fewer cleanings over the years."
+          }
+        ]
+      }
+    },
+    {
+      "type": "process:horizontal",
+      "theme": "default",
+      "data": {
+        "eyebrow": {
+          "text": "The Process",
+          "variant": "text"
+        },
+        "heading": "How It Works",
+        "steps": [
+          {
+            "heading": "Get your free quote",
+            "body": "A clear price up front, with no guessing."
+          },
+          {
+            "heading": "We match the method to the surface",
+            "body": "Real pressure where it helps, a gentle soft wash where it protects."
+          },
+          {
+            "heading": "We clean, protect, and inspect",
+            "body": "Stains treated, landscaping protected, and the job checked before we leave."
+          }
+        ]
+      }
+    },
+    {
+      "type": "about:values",
+      "theme": "alt",
+      "data": {
+        "eyebrow": {
+          "text": "Why Monarch",
+          "variant": "text"
+        },
+        "heading": "Why Monarch",
+        "items": [
+          {
+            "title": "Surface-matched every time",
+            "body": "The method fits the material, so you get a deep clean with zero damage."
+          },
+          {
+            "title": "Soft wash, not just power wash",
+            "body": "The safe method for anything delicate is standard here, not an upsell."
+          },
+          {
+            "title": "Owner-run and insured",
+            "body": "The person accountable for the work is the person doing it."
+          },
+          {
+            "title": "One vendor for the whole property",
+            "body": "Wash, seal, windows, and gutters under one roof."
+          }
+        ]
+      }
+    },
+    {
+      "type": "reviews:cards",
+      "theme": "alt",
+      "data": {
+        "eyebrow": {
+          "text": "Reviews",
+          "variant": "text"
+        },
+        "heading": "What Our Customers Say",
+        "filter": "all",
+        "service": "pressure-washing",
+        "limit": 3
+      }
+    },
+    {
+      "type": "guarantee:callout",
+      "theme": "brand-secondary",
+      "data": {
+        "eyebrow": {
+          "text": "Our Guarantee",
+          "variant": "text"
+        },
+        "heading": "The Monarch Standard",
+        "body": "We aim for a full, thorough clean on the first visit. If any surface we cleaned is not right, tell us and we come back to make it right. No fine print and no runaround.",
+        "badge": "Make It Right"
+      }
+    },
+    {
+      "type": "faqs:accordion",
+      "theme": "alt",
+      "data": {
+        "eyebrow": {
+          "text": "FAQs",
+          "variant": "text"
+        },
+        "heading": "Pressure Washing: Common Questions",
+        "service": "pressure-washing"
+      }
+    },
+    {
+      "type": "service-areas:grid",
+      "theme": "muted",
+      "data": {
+        "eyebrow": {
+          "text": "Service Areas",
+          "variant": "text"
+        },
+        "heading": "Serving the Treasure Valley"
+      }
+    },
+    {
+      "type": "cta:banner",
+      "theme": "primary",
+      "data": {
+        "heading": "Ready for a Cleaner Property?",
+        "subheading": "Get a free quote with your price up front and a clean that is safe for every surface.",
+        "ctas": [
+          {
+            "label": "Get My Free Quote",
+            "href": "/contact",
+            "variant": "primary"
+          }
+        ],
+        "showPhone": true
+      }
+    }
+  ]
+}

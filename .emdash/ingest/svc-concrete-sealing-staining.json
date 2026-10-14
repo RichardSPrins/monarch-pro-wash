@@ -1,0 +1,192 @@
+{
+  "slug": "svc-concrete-sealing-staining",
+  "title": "Concrete Sealing & Staining | Monarch Pro Wash",
+  "sections": [
+    {
+      "type": "hero:image-overlay",
+      "theme": "inverse",
+      "data": {
+        "eyebrow": {
+          "text": "Treasure Valley · Fully Insured",
+          "variant": "text"
+        },
+        "heading": "Concrete Sealing & Staining in the Treasure Valley",
+        "subheading": "Concrete sealing and decorative staining across the Treasure Valley. Protect driveways and patios from stains, cracks, and freeze-thaw damage while boosting curb appeal.",
+        "showPhone": true,
+        "ctas": [
+          {
+            "label": "Get a Free Quote",
+            "href": "/contact",
+            "variant": "primary"
+          }
+        ]
+      }
+    },
+    {
+      "type": "trust-bar:badges",
+      "theme": "alt",
+      "data": {
+        "foundingYear": 2026,
+        "familyOwned": true,
+        "insured": true
+      }
+    },
+    {
+      "type": "content:rich-text",
+      "theme": "alt",
+      "data": {
+        "eyebrow": {
+          "text": "Concrete Sealing & Staining",
+          "variant": "text"
+        },
+        "heading": "The Service Explained",
+        "body": "<p>Bare concrete is porous, and that is the problem. It soaks up oil, rust, and moisture, it collects dust deep in the surface, and it takes the full force of freeze-thaw every winter as water seeps in and freezes. Concrete sealing closes those pores with a protective layer that repels stains and keeps water out before it can expand and crack the slab. Decorative staining goes a step further, adding rich, lasting color that transforms a plain gray driveway or patio into a finished surface. Both matter in the Treasure Valley, where hard UV fades surfaces, hard water leaves mineral marks, and the freeze-thaw cycle is the number one enemy of concrete. Sealing after a thorough clean protects the investment you already made in that concrete and keeps it looking clean far longer between washes.</p>"
+      }
+    },
+    {
+      "type": "feature:alternating",
+      "theme": "alt",
+      "data": {
+        "eyebrow": {
+          "text": "What to Know",
+          "variant": "text"
+        },
+        "heading": "Top Concerns",
+        "rows": [
+          {
+            "heading": "Freeze-thaw is what actually cracks your concrete",
+            "body": "Water finds its way into the pores and hairline cracks of bare concrete. When Boise temperatures drop, that water freezes and expands, and it does this over and over all winter. Each cycle widens the damage. Sealing is your direct defense. A quality sealer keeps water from soaking into the concrete in the first place, so there is nothing there to freeze and pry the surface apart. You are not just making the driveway look better, you are protecting it from the single biggest cause of cracking and spalling in this climate."
+          },
+          {
+            "heading": "Staining and dust make new concrete look old fast",
+            "body": "Oil drips, rust from hard water and sprinklers, and fine high-desert dust all settle into unsealed concrete and stay there. That is why a driveway can look dingy no matter how often you rinse it. A sealed surface does not let those stains sink in, so spills sit on top where they wipe away and dust rinses off instead of grinding in. Monarch cleans and treats existing stains at the source first, then seals, so you start fresh and stay cleaner."
+          },
+          {
+            "heading": "Curb appeal that lasts, not just for a weekend",
+            "body": "Decorative staining gives your concrete real, lasting color instead of plain gray, and sealing locks that finish in against the UV that fades it. For homes in an HOA or anyone who cares how the property presents, this is the difference between concrete that lifts the whole look of the house and concrete that drags it down. Because the finish is sealed and protected, it holds its appearance through seasons of sun and dust rather than dulling out after a few weeks."
+          }
+        ]
+      }
+    },
+    {
+      "type": "process:horizontal",
+      "theme": "default",
+      "data": {
+        "eyebrow": {
+          "text": "The Process",
+          "variant": "text"
+        },
+        "heading": "How It Works",
+        "steps": [
+          {
+            "heading": "Get your free quote",
+            "body": "A clear price up front, with no guessing."
+          },
+          {
+            "heading": "We match the method to the surface",
+            "body": "Real pressure where it helps, a gentle soft wash where it protects."
+          },
+          {
+            "heading": "We clean, protect, and inspect",
+            "body": "Stains treated, landscaping protected, and the job checked before we leave."
+          }
+        ]
+      }
+    },
+    {
+      "type": "about:values",
+      "theme": "alt",
+      "data": {
+        "eyebrow": {
+          "text": "Why Monarch",
+          "variant": "text"
+        },
+        "heading": "Why Monarch",
+        "items": [
+          {
+            "title": "Surface-matched every time",
+            "body": "The method fits the material, so you get a deep clean with zero damage."
+          },
+          {
+            "title": "Soft wash, not just power wash",
+            "body": "The safe method for anything delicate is standard here, not an upsell."
+          },
+          {
+            "title": "Owner-run and insured",
+            "body": "The person accountable for the work is the person doing it."
+          },
+          {
+            "title": "One vendor for the whole property",
+            "body": "Wash, seal, windows, and gutters under one roof."
+          }
+        ]
+      }
+    },
+    {
+      "type": "reviews:cards",
+      "theme": "alt",
+      "data": {
+        "eyebrow": {
+          "text": "Reviews",
+          "variant": "text"
+        },
+        "heading": "What Our Customers Say",
+        "filter": "all",
+        "service": "concrete-sealing-staining",
+        "limit": 3
+      }
+    },
+    {
+      "type": "guarantee:callout",
+      "theme": "brand-secondary",
+      "data": {
+        "eyebrow": {
+          "text": "Our Guarantee",
+          "variant": "text"
+        },
+        "heading": "The Monarch Standard",
+        "body": "We aim for a full, thorough clean on the first visit. If any surface we cleaned is not right, tell us and we come back to make it right. No fine print and no runaround.",
+        "badge": "Make It Right"
+      }
+    },
+    {
+      "type": "faqs:accordion",
+      "theme": "alt",
+      "data": {
+        "eyebrow": {
+          "text": "FAQs",
+          "variant": "text"
+        },
+        "heading": "Concrete Sealing & Staining: Common Questions",
+        "service": "concrete-sealing-staining"
+      }
+    },
+    {
+      "type": "service-areas:grid",
+      "theme": "muted",
+      "data": {
+        "eyebrow": {
+          "text": "Service Areas",
+          "variant": "text"
+        },
+        "heading": "Serving the Treasure Valley"
+      }
+    },
+    {
+      "type": "cta:banner",
+      "theme": "primary",
+      "data": {
+        "heading": "Ready for a Cleaner Property?",
+        "subheading": "Get a free quote with your price up front and a clean that is safe for every surface.",
+        "ctas": [
+          {
+            "label": "Get My Free Quote",
+            "href": "/contact",
+            "variant": "primary"
+          }
+        ],
+        "showPhone": true
+      }
+    }
+  ]
+}

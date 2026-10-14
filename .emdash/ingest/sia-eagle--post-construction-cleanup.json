@@ -1,0 +1,264 @@
+{
+  "slug": "sia-eagle--post-construction-cleanup",
+  "title": "Post-Construction Exterior Cleanup in Eagle, ID | Monarch Pro Wash",
+  "sections": [
+    {
+      "type": "hero:split-form",
+      "theme": "inverse",
+      "data": {
+        "eyebrow": {
+          "text": "Post-Construction Exterior Cleanup · Eagle",
+          "variant": "text"
+        },
+        "heading": "Christmas Light Installation in Eagle, ID",
+        "subheading": "Cold, icy rooflines on tall Eagle estate homes make DIY light hanging risky. Monarch Pro Wash designs, installs, takes down, and stores your holiday lights.",
+        "trustBadges": [
+          {
+            "text": "Fully Insured"
+          },
+          {
+            "text": "Owner-Operated"
+          },
+          {
+            "text": "Free Quotes"
+          }
+        ],
+        "showPhone": true
+      }
+    },
+    {
+      "type": "content:rich-text",
+      "theme": "alt",
+      "data": {
+        "eyebrow": {
+          "text": "Post-Construction Exterior Cleanup · Eagle",
+          "variant": "text"
+        },
+        "body": "<p>Hanging holiday lights on a tall Eagle home is not the same as decorating a single-story house. The custom estates across the foothills and the river communities have high rooflines, steep pitches, and long runs, and by the time you are stringing lights in November and December, those surfaces are already cold and icy. That is a lot of ladder time in the worst conditions of the year.</p><p>Monarch Pro Wash is owner-run, insured, and brings more than fifteen years of exterior work across the Treasure Valley. We handle the whole holiday season for you, from design and install to takedown and storage. You get a home that looks great through the holidays without anyone in your family on a ladder in the cold.</p>"
+      }
+    },
+    {
+      "type": "content:rich-text",
+      "theme": "alt",
+      "data": {
+        "eyebrow": {
+          "text": "Post-Construction Exterior Cleanup · Eagle",
+          "variant": "text"
+        },
+        "heading": "Christmas Light Installation Built for Eagle Conditions",
+        "body": "<p>Eagle rooflines get cold and icy early. From November into January, the tall custom homes in the North Eagle and Foothills estates along Floating Feather Road and Beacon Light Road present steep, slick surfaces that make DIY hanging genuinely risky. We are insured and equipped to work those heights safely, so you never have to climb up there yourself.</p><p>The estate and river homes also tend to be large, with long rooflines, multiple gables, and mature trees. A good display on a home like that takes planning, not just a string of lights tossed up. We design the layout to fit your home's architecture, whether you are in the foothills, along the greenbelt in a community like Two Rivers or Mace River Ranch, or in a central Village neighborhood.</p><p>Timing matters through the season, too. We install ahead of the holidays while conditions still allow safe access, keep the display running through the cold months, and come back for takedown and storage once the season ends. That last part saves you from wrestling with icy strands and tangled boxes in January.</p>"
+      }
+    },
+    {
+      "type": "feature:checklist",
+      "theme": "alt",
+      "data": {
+        "eyebrow": {
+          "text": "What We Do",
+          "variant": "text"
+        },
+        "heading": "What We Do Across Eagle",
+        "items": [
+          {
+            "title": "Design a display that fits your home's architecture"
+          },
+          {
+            "title": "Install lights on rooflines, gables, and peaks"
+          },
+          {
+            "title": "Handle tall estate homes and steep pitches safely"
+          },
+          {
+            "title": "Light trees, walkways, and landscape features"
+          },
+          {
+            "title": "Take everything down at the end of the season"
+          },
+          {
+            "title": "Store your lights so they are ready next year"
+          },
+          {
+            "title": "Serve estate, river, and central Eagle homes"
+          },
+          {
+            "title": "Work November through January around the holidays"
+          }
+        ]
+      }
+    },
+    {
+      "type": "about:values",
+      "theme": "default",
+      "data": {
+        "eyebrow": {
+          "text": "Why Monarch",
+          "variant": "text"
+        },
+        "heading": "Why Eagle Homeowners Choose Monarch",
+        "items": [
+          {
+            "title": "Owner-run and insured",
+            "body": "You deal directly with the owner, and the work is covered."
+          },
+          {
+            "title": "Safe on tall Eagle homes",
+            "body": "We are equipped for steep, icy rooflines so you stay off the ladder."
+          },
+          {
+            "title": "Full-season service",
+            "body": "Design, install, takedown, and storage all handled for you."
+          },
+          {
+            "title": "Fifteen-plus years of exterior work",
+            "body": "Long experience on estate and river homes across the valley."
+          }
+        ]
+      }
+    },
+    {
+      "type": "feature:checklist",
+      "theme": "alt",
+      "data": {
+        "eyebrow": {
+          "text": "What We Do",
+          "variant": "text"
+        },
+        "heading": "What We Focus On Every Job",
+        "items": [
+          {
+            "title": "Safe access and careful work on tall, icy rooflines"
+          },
+          {
+            "title": "A clean design that fits your home's lines"
+          },
+          {
+            "title": "Secure installs that hold through winter weather"
+          },
+          {
+            "title": "Complete takedown with no leftover clips or strands"
+          },
+          {
+            "title": "Organized storage so next season is easy"
+          }
+        ]
+      }
+    },
+    {
+      "type": "process:horizontal",
+      "theme": "alt",
+      "data": {
+        "eyebrow": {
+          "text": "The Process",
+          "variant": "text"
+        },
+        "heading": "How It Works",
+        "steps": [
+          {
+            "heading": "Reach out",
+            "body": "Tell us about your home and the look you have in mind."
+          },
+          {
+            "heading": "Get a free quote",
+            "body": "We design a display and send pricing with no obligation."
+          },
+          {
+            "heading": "We install",
+            "body": "Our crew hangs everything safely before the holidays."
+          },
+          {
+            "heading": "We return",
+            "body": "At season's end we take it all down and store it for next year."
+          }
+        ]
+      }
+    },
+    {
+      "type": "services:grid",
+      "theme": "alt",
+      "data": {
+        "eyebrow": {
+          "text": "More Services",
+          "variant": "text"
+        },
+        "heading": "Our Other Services in Eagle",
+        "hrefBase": "/eagle"
+      }
+    },
+    {
+      "type": "content:rich-text",
+      "theme": "muted",
+      "data": {
+        "eyebrow": {
+          "text": "Post-Construction Exterior Cleanup · Eagle",
+          "variant": "text"
+        },
+        "heading": "Serving Eagle & the Treasure Valley",
+        "body": "<p>We install holiday lights across Eagle and the surrounding Treasure Valley, from Downtown and Old Town Eagle out to the North Eagle and Foothills estates along Floating Feather Road and Beacon Light Road, and through the river and greenbelt communities like Two Rivers and Mace River Ranch. We also serve the central Village neighborhoods and neighboring Boise, Meridian, and Star. Whether your home is a tall foothills estate or a subdivision two-story, we can light it up.</p>"
+      }
+    },
+    {
+      "type": "service-areas:neighborhoods",
+      "theme": "alt",
+      "data": {
+        "eyebrow": {
+          "text": "Service Areas",
+          "variant": "text"
+        },
+        "heading": "Eagle Neighborhoods We Serve",
+        "subheading": "Do not see your area? Reach out.",
+        "places": [
+          "Downtown and Old Town Eagle",
+          "North Eagle and Foothills estates",
+          "Floating Feather Road and Beacon Light Road",
+          "Two Rivers and Mace River Ranch",
+          "Riverstone, Laguna Pointe, and Lakemoor",
+          "Eagle Ranch, BanBury, and Legacy",
+          "Brookwood, Lexington Hills, and Spring Valley",
+          "Neighboring Boise, Meridian, and Star"
+        ]
+      }
+    },
+    {
+      "type": "faqs:accordion",
+      "theme": "alt",
+      "data": {
+        "eyebrow": {
+          "text": "FAQs",
+          "variant": "text"
+        },
+        "heading": "FAQs: Christmas Light Installation in Eagle",
+        "service": "eagle-post-construction-cleanup"
+      }
+    },
+    {
+      "type": "reviews:cards",
+      "theme": "alt",
+      "data": {
+        "eyebrow": {
+          "text": "Reviews",
+          "variant": "text"
+        },
+        "heading": "What Our Customers Say",
+        "filter": "all",
+        "limit": 3,
+        "area": "Eagle"
+      }
+    },
+    {
+      "type": "cta:banner",
+      "theme": "primary",
+      "data": {
+        "heading": "Light Up Your Eagle Home This Season",
+        "subheading": "Design, install, takedown, and storage handled for you, safely, on tall estate rooflines. Get a free quote today.",
+        "ctas": [
+          {
+            "label": "Get My Free Quote",
+            "href": "/contact",
+            "variant": "primary"
+          }
+        ],
+        "showPhone": true
+      }
+    }
+  ]
+}

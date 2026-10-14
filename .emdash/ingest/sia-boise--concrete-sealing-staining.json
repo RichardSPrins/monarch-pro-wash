@@ -1,0 +1,255 @@
+{
+  "slug": "sia-boise--concrete-sealing-staining",
+  "title": "Concrete Sealing & Staining in Boise, ID | Monarch Pro Wash",
+  "sections": [
+    {
+      "type": "hero:split-form",
+      "theme": "inverse",
+      "data": {
+        "eyebrow": {
+          "text": "Concrete Sealing & Staining · Boise",
+          "variant": "text"
+        },
+        "heading": "Concrete Sealing & Staining in Boise, ID",
+        "subheading": "The Bench's aging 1940s concrete and new Harris Ranch driveways both face Boise freeze-thaw. We seal and stain to guard against cracks, stains, and spalling.",
+        "trustBadges": [
+          {
+            "text": "Fully Insured"
+          },
+          {
+            "text": "Owner-Operated"
+          },
+          {
+            "text": "Free Quotes"
+          }
+        ],
+        "showPhone": true
+      }
+    },
+    {
+      "type": "content:rich-text",
+      "theme": "alt",
+      "data": {
+        "eyebrow": {
+          "text": "Concrete Sealing & Staining · Boise",
+          "variant": "text"
+        },
+        "body": "<p>Concrete is one of the hardest-working surfaces on your property, and Boise weather is hard on it. Freeze-thaw cycles push moisture into the surface and open cracks. Oil, rust, and grime settle into bare concrete and stay there. A good seal keeps water out, and a stain gives you color that lifts the whole look.</p><p>Monarch Pro Wash is owner-run and fully insured, with more than fifteen years working concrete across the Treasure Valley. We seal and stain driveways and patios from the older Bench neighborhoods to the new builds in Harris Ranch. You deal with the owner directly, and the work gets done right.</p>"
+      }
+    },
+    {
+      "type": "content:rich-text",
+      "theme": "alt",
+      "data": {
+        "eyebrow": {
+          "text": "Concrete Sealing & Staining · Boise",
+          "variant": "text"
+        },
+        "heading": "Concrete Sealing & Staining Built for Boise Conditions",
+        "body": "<p>Much of the Bench was built in the 1940s and 1950s, and that aging concrete has seen decades of freeze-thaw. Around Depot Bench, South Boise Village, and Morris Hill, you see cracking and surface spalling from years of moisture cycling. We clean and seal that concrete to slow further damage and protect what is left.</p><p>New driveways in Harris Ranch and Barber Valley are worth protecting from day one. Fresh concrete looks great now, but Boise winters and strong summer sun will test it. Sealing early helps a new slab resist stains and freeze-thaw before problems ever start.</p><p>Staining is where curb appeal comes in. Whether you have a tired Bench patio or a blank new driveway, we can add decorative color that fits the home. Stain plus seal gives you a surface that looks finished and stands up to the seasons.</p>"
+      }
+    },
+    {
+      "type": "feature:checklist",
+      "theme": "alt",
+      "data": {
+        "eyebrow": {
+          "text": "What We Do",
+          "variant": "text"
+        },
+        "heading": "What We Seal and Stain Across Boise",
+        "items": [
+          {
+            "title": "Driveways on older Bench lots and new builds alike"
+          },
+          {
+            "title": "Back patios and entertaining areas"
+          },
+          {
+            "title": "Front walkways, steps, and entries"
+          },
+          {
+            "title": "Pool decks and surrounds"
+          },
+          {
+            "title": "Garage and shop floors"
+          },
+          {
+            "title": "Decorative color to match your home"
+          }
+        ]
+      }
+    },
+    {
+      "type": "about:values",
+      "theme": "default",
+      "data": {
+        "eyebrow": {
+          "text": "Why Monarch",
+          "variant": "text"
+        },
+        "heading": "Why Boise Homeowners Choose Monarch",
+        "items": [
+          {
+            "title": "Owner-run,",
+            "body": "so the person quoting is the person sealing"
+          },
+          {
+            "title": "Fully insured",
+            "body": "for concrete work on any property"
+          },
+          {
+            "title": "More than fifteen years",
+            "body": "across Boise and the Treasure Valley"
+          },
+          {
+            "title": "Experienced with both aging Bench concrete and new construction"
+          }
+        ]
+      }
+    },
+    {
+      "type": "feature:checklist",
+      "theme": "alt",
+      "data": {
+        "eyebrow": {
+          "text": "What We Do",
+          "variant": "text"
+        },
+        "heading": "What We Focus On Every Job",
+        "items": [
+          {
+            "title": "Cleaning and prepping the concrete before sealing"
+          },
+          {
+            "title": "Treating existing stains before they get locked in"
+          },
+          {
+            "title": "Choosing the right sealer for the slab and its exposure"
+          },
+          {
+            "title": "Applying stain evenly for consistent color"
+          },
+          {
+            "title": "Protecting the surface against freeze-thaw and staining"
+          }
+        ]
+      }
+    },
+    {
+      "type": "process:horizontal",
+      "theme": "alt",
+      "data": {
+        "eyebrow": {
+          "text": "The Process",
+          "variant": "text"
+        },
+        "heading": "How It Works",
+        "steps": [
+          {
+            "heading": "Reach out",
+            "body": "Tell us about the concrete and where it is in Boise."
+          },
+          {
+            "heading": "Free quote",
+            "body": "We inspect the slab and give you a clear price."
+          },
+          {
+            "heading": "We prep and apply",
+            "body": "We clean, then seal, stain, or both."
+          },
+          {
+            "heading": "Walkthrough",
+            "body": "You see the finished surface before we leave."
+          }
+        ]
+      }
+    },
+    {
+      "type": "services:grid",
+      "theme": "alt",
+      "data": {
+        "eyebrow": {
+          "text": "More Services",
+          "variant": "text"
+        },
+        "heading": "Our Other Services in Boise",
+        "hrefBase": "/boise"
+      }
+    },
+    {
+      "type": "content:rich-text",
+      "theme": "muted",
+      "data": {
+        "eyebrow": {
+          "text": "Concrete Sealing & Staining · Boise",
+          "variant": "text"
+        },
+        "heading": "Serving Boise & the Treasure Valley",
+        "body": "<p>We are based in Boise and serve the towns across the Treasure Valley. Our concrete work runs from the aging slabs of the Bench near the Boise Depot to the new driveways of Harris Ranch and Barber Valley along the Greenbelt. If your driveway or patio is near one of these areas, we are close by.</p>"
+      }
+    },
+    {
+      "type": "service-areas:neighborhoods",
+      "theme": "alt",
+      "data": {
+        "eyebrow": {
+          "text": "Service Areas",
+          "variant": "text"
+        },
+        "heading": "Boise Neighborhoods We Serve",
+        "subheading": "Do not see your neighborhood? Reach out.",
+        "places": [
+          "Depot Bench and Central Bench",
+          "South Boise Village and Morris Hill",
+          "Vista",
+          "Harris Ranch and Barber Valley",
+          "Southeast Boise",
+          "Warm Springs Mesa"
+        ]
+      }
+    },
+    {
+      "type": "faqs:accordion",
+      "theme": "alt",
+      "data": {
+        "eyebrow": {
+          "text": "FAQs",
+          "variant": "text"
+        },
+        "heading": "FAQs: Concrete Sealing & Staining in Boise",
+        "service": "boise-concrete-sealing-staining"
+      }
+    },
+    {
+      "type": "reviews:cards",
+      "theme": "alt",
+      "data": {
+        "eyebrow": {
+          "text": "Reviews",
+          "variant": "text"
+        },
+        "heading": "What Our Customers Say",
+        "filter": "all",
+        "limit": 3,
+        "area": "Boise"
+      }
+    },
+    {
+      "type": "cta:banner",
+      "theme": "primary",
+      "data": {
+        "heading": "Protect and Refresh Your Concrete",
+        "subheading": "Seal and stain your Boise driveway or patio with an owner-run, insured crew.",
+        "ctas": [
+          {
+            "label": "Get My Free Quote",
+            "href": "/contact",
+            "variant": "primary"
+          }
+        ],
+        "showPhone": true
+      }
+    }
+  ]
+}

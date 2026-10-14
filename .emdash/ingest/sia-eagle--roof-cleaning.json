@@ -1,0 +1,258 @@
+{
+  "slug": "sia-eagle--roof-cleaning",
+  "title": "Roof Cleaning in Eagle, ID | Monarch Pro Wash",
+  "sections": [
+    {
+      "type": "hero:split-form",
+      "theme": "inverse",
+      "data": {
+        "eyebrow": {
+          "text": "Roof Cleaning · Eagle",
+          "variant": "text"
+        },
+        "heading": "Roof Cleaning in Eagle, ID",
+        "subheading": "River and lake shade and mature Eagle trees leave black streaks, algae, and moss on north-side roofs. Monarch Pro Wash soft washes them off and protects the roofing.",
+        "trustBadges": [
+          {
+            "text": "Fully Insured"
+          },
+          {
+            "text": "Owner-Operated"
+          },
+          {
+            "text": "Free Quotes"
+          }
+        ],
+        "showPhone": true
+      }
+    },
+    {
+      "type": "content:rich-text",
+      "theme": "alt",
+      "data": {
+        "eyebrow": {
+          "text": "Roof Cleaning · Eagle",
+          "variant": "text"
+        },
+        "body": "<p>Those dark streaks running down a roof are not just dirt. They are usually algae, and alongside moss they hold moisture against the roofing and work into the shingles over time. On the big rooflines common in Eagle, that growth spreads across whole north-facing sections before most homeowners think to look up.</p><p>Monarch Pro Wash cleans roofs with a soft-wash method, not high pressure. That means the growth gets treated and removed without pounding the shingles or stripping granules the way a pressure washer would. Monarch is owner-run, insured, and brings more than 15 years of exterior cleaning experience to protecting a roof that is expensive to replace.</p>"
+      }
+    },
+    {
+      "type": "content:rich-text",
+      "theme": "alt",
+      "data": {
+        "eyebrow": {
+          "text": "Roof Cleaning · Eagle",
+          "variant": "text"
+        },
+        "heading": "Roof Cleaning Built for Eagle Conditions",
+        "body": "<p>Along the Boise River, the Greenbelt, and the private lakes in communities like Two Rivers, Riverstone, and Laguna Pointe, heavy mature tree cover keeps roofs shaded and slow to dry. That damp shade is what feeds algae, black streaking, and moss, and it hits north-facing slopes hardest where the sun barely reaches.</p><p>Eagle estates tend to have large, complex rooflines with lots of surface and plenty of shaded valleys. On premium roofing, letting moss and algae sit is what shortens the roof's life. Soft washing removes the growth and helps keep it from taking hold again, protecting the investment underneath.</p><p>Mature trees drop more than shade. Leaf litter and organic debris settle into valleys and along the edges, holding moisture right where moss likes to start. Clearing and treating those areas is part of getting a roof genuinely clean, not just cosmetically rinsed.</p>"
+      }
+    },
+    {
+      "type": "feature:checklist",
+      "theme": "alt",
+      "data": {
+        "eyebrow": {
+          "text": "What We Do",
+          "variant": "text"
+        },
+        "heading": "What We Do Across Eagle",
+        "items": [
+          {
+            "title": "Soft-wash removal of black streaks and algae"
+          },
+          {
+            "title": "Moss and lichen treatment and removal"
+          },
+          {
+            "title": "North-facing and shaded roof sections"
+          },
+          {
+            "title": "Asphalt shingle, tile, and metal roofing"
+          },
+          {
+            "title": "Large and complex estate rooflines"
+          },
+          {
+            "title": "Clearing of organic debris from valleys and edges"
+          },
+          {
+            "title": "Gentle treatment that protects the roofing surface"
+          }
+        ]
+      }
+    },
+    {
+      "type": "about:values",
+      "theme": "default",
+      "data": {
+        "eyebrow": {
+          "text": "Why Monarch",
+          "variant": "text"
+        },
+        "heading": "Why Eagle Homeowners Choose Monarch",
+        "items": [
+          {
+            "title": "Soft wash, not high pressure",
+            "body": "Growth comes off without damaging the shingles."
+          },
+          {
+            "title": "Protects your roof",
+            "body": "Removing algae and moss helps the roofing last longer."
+          },
+          {
+            "title": "Owner-run and insured",
+            "body": "One experienced person accountable for careful work up high."
+          },
+          {
+            "title": "Built for shaded roofs",
+            "body": "Comfortable with the north-side streaking common near the river and lakes."
+          }
+        ]
+      }
+    },
+    {
+      "type": "feature:checklist",
+      "theme": "alt",
+      "data": {
+        "eyebrow": {
+          "text": "What We Do",
+          "variant": "text"
+        },
+        "heading": "What We Focus On Every Job",
+        "items": [
+          {
+            "title": "Using a soft-wash approach that will not strip granules"
+          },
+          {
+            "title": "Treating algae and moss at the source, not just rinsing the surface"
+          },
+          {
+            "title": "Protecting gutters, landscaping, and surrounding plants"
+          },
+          {
+            "title": "Working carefully on large and steep rooflines"
+          },
+          {
+            "title": "Checking shaded valleys and north slopes where growth hides"
+          }
+        ]
+      }
+    },
+    {
+      "type": "process:horizontal",
+      "theme": "alt",
+      "data": {
+        "eyebrow": {
+          "text": "The Process",
+          "variant": "text"
+        },
+        "heading": "How It Works",
+        "steps": [
+          {
+            "heading": "Request a quote",
+            "body": "Tell us your roof type and your Eagle neighborhood."
+          },
+          {
+            "heading": "Walk-through",
+            "body": "We assess the roofline, the growth, and safe access."
+          },
+          {
+            "heading": "We soft wash",
+            "body": "Treat the algae and moss and gently remove it."
+          },
+          {
+            "heading": "You approve",
+            "body": "We review the finished roof with you before we leave."
+          }
+        ]
+      }
+    },
+    {
+      "type": "services:grid",
+      "theme": "alt",
+      "data": {
+        "eyebrow": {
+          "text": "More Services",
+          "variant": "text"
+        },
+        "heading": "Our Other Services in Eagle",
+        "hrefBase": "/eagle"
+      }
+    },
+    {
+      "type": "content:rich-text",
+      "theme": "muted",
+      "data": {
+        "eyebrow": {
+          "text": "Roof Cleaning · Eagle",
+          "variant": "text"
+        },
+        "heading": "Serving Eagle & the Treasure Valley",
+        "body": "<p>Monarch Pro Wash cleans roofs across Eagle and the Treasure Valley. Around Eagle that means the shaded river and Greenbelt communities near Eagle Island State Park, the lake neighborhoods like Two Rivers and Laguna Pointe, the estates off Floating Feather Road and Beacon Light Road, and the established homes near BanBury Golf Course and Eagle Hills Golf Course. If your roof has dark streaks or green growth on the shady side, that is our work.</p>"
+      }
+    },
+    {
+      "type": "service-areas:neighborhoods",
+      "theme": "alt",
+      "data": {
+        "eyebrow": {
+          "text": "Service Areas",
+          "variant": "text"
+        },
+        "heading": "Eagle Neighborhoods We Serve",
+        "subheading": "Do not see your neighborhood? Reach out.",
+        "places": [
+          "River & Greenbelt: Two Rivers, Mace River Ranch, Riverstone, Island Woods, Laguna Pointe, Westover Lakes",
+          "North Eagle & Foothills estates: High Plains Estates, Sageview, Highlander, Saddle View, Buckskin, Equus Estates, Dry Creek Ranch",
+          "Established & central: Eagle Ranch, Brookwood, Lexington Hills, Eagle Hills, Legacy",
+          "Newer communities: Avimor, Spring Valley, Millstone Farm, Bella Terra",
+          "Also: BanBury, BanBury Meadows, Corrente Bello, Wedgewood Estates, Lakemoor, Moon Lake Ranch, Old Town Eagle"
+        ]
+      }
+    },
+    {
+      "type": "faqs:accordion",
+      "theme": "alt",
+      "data": {
+        "eyebrow": {
+          "text": "FAQs",
+          "variant": "text"
+        },
+        "heading": "FAQs: Roof Cleaning in Eagle",
+        "service": "eagle-roof-cleaning"
+      }
+    },
+    {
+      "type": "reviews:cards",
+      "theme": "alt",
+      "data": {
+        "eyebrow": {
+          "text": "Reviews",
+          "variant": "text"
+        },
+        "heading": "What Our Customers Say",
+        "filter": "all",
+        "limit": 3,
+        "area": "Eagle"
+      }
+    },
+    {
+      "type": "cta:banner",
+      "theme": "primary",
+      "data": {
+        "heading": "Clear the Streaks and Protect Your Roof",
+        "subheading": "Get gentle, insured soft-wash roof cleaning from an owner who does the work himself in Eagle.",
+        "ctas": [
+          {
+            "label": "Get My Free Quote",
+            "href": "/contact",
+            "variant": "primary"
+          }
+        ],
+        "showPhone": true
+      }
+    }
+  ]
+}

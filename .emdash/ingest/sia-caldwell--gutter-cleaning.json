@@ -1,0 +1,271 @@
+{
+  "slug": "sia-caldwell--gutter-cleaning",
+  "title": "Gutter Cleaning in Caldwell, ID | Monarch Pro Wash",
+  "sections": [
+    {
+      "type": "hero:split-form",
+      "theme": "inverse",
+      "data": {
+        "eyebrow": {
+          "text": "Gutter Cleaning · Caldwell",
+          "variant": "text"
+        },
+        "heading": "Gutter Cleaning in Caldwell, ID",
+        "subheading": "Caldwell's elm canopy and farm-edge debris pack gutters fast, and freeze-thaw winters turn clogs into overflow. We clear them and protect your home.",
+        "trustBadges": [
+          {
+            "text": "Fully Insured"
+          },
+          {
+            "text": "Owner-Operated"
+          },
+          {
+            "text": "Free Quotes"
+          }
+        ],
+        "showPhone": true
+      }
+    },
+    {
+      "type": "content:rich-text",
+      "theme": "alt",
+      "data": {
+        "eyebrow": {
+          "text": "Gutter Cleaning · Caldwell",
+          "variant": "text"
+        },
+        "body": "<p>Gutters do one job: move water off your roof and away from your house. When they clog, water backs up under the roofline, spills down the siding, and pools against the foundation. In Caldwell, between the heavy elm canopy downtown and the field debris on the ag edges, gutters fill up faster than most people expect.</p><p>Monarch Pro Wash is owner-run, insured, and has more than fifteen years of Treasure Valley exterior cleaning behind it. We clear gutters and downspouts fully, check that water flows the way it should, and leave the exterior looking better than we found it. It is straightforward, important work, and we do it right.</p>"
+      }
+    },
+    {
+      "type": "content:rich-text",
+      "theme": "alt",
+      "data": {
+        "eyebrow": {
+          "text": "Gutter Cleaning · Caldwell",
+          "variant": "text"
+        },
+        "heading": "Gutter Cleaning Built for Caldwell Conditions",
+        "body": "<p><strong>Heavy elm and mature-tree leaf litter.</strong> The historic districts and downtown Caldwell sit under a thick canopy of mature elms and other old trees. That means gutters packed with leaves and seed litter, especially through fall. We clear all of it out of the troughs and downspouts so water actually moves, instead of just skimming the top.</p><p><strong>Farm and field debris on the ag edges.</strong> Homes on the edges of town, out toward Lake Lowell or along the farm corridors off Homedale Road and Ustick Road, catch windblown field debris, dust, and organic matter in their gutters. That builds into a heavy sludge that blocks flow. We clean it out completely and flush the downspouts.</p><p><strong>Freeze-thaw winters and your foundation.</strong> Caldwell winters cycle through freeze and thaw, and a clogged gutter that holds water becomes ice, backups, and overflow that runs straight down to the foundation. Clean gutters going into winter protect your roof edge, fascia, and foundation from that damage. It is a lot easier to clean gutters than to fix what overflow ruins.</p>"
+      }
+    },
+    {
+      "type": "feature:checklist",
+      "theme": "alt",
+      "data": {
+        "eyebrow": {
+          "text": "What We Do",
+          "variant": "text"
+        },
+        "heading": "What We Do Across Caldwell",
+        "items": [
+          {
+            "title": "Clearing leaves and debris from gutter troughs"
+          },
+          {
+            "title": "Flushing and clearing downspouts"
+          },
+          {
+            "title": "Removing packed sludge from ag-edge and tree-heavy homes"
+          },
+          {
+            "title": "Checking that water flows and drains correctly"
+          },
+          {
+            "title": "Clearing debris off the roof edge and into disposal"
+          },
+          {
+            "title": "Wiping down gutter exteriors to brighten them"
+          },
+          {
+            "title": "Spotting sagging, separations, or problem areas to flag for you"
+          },
+          {
+            "title": "Cleaning up the ground below when we finish"
+          }
+        ]
+      }
+    },
+    {
+      "type": "about:values",
+      "theme": "default",
+      "data": {
+        "eyebrow": {
+          "text": "Why Monarch",
+          "variant": "text"
+        },
+        "heading": "Why Caldwell Homeowners Choose Monarch",
+        "items": [
+          {
+            "title": "Thorough, not surface-level",
+            "body": "We clear the troughs and the downspouts and confirm water actually flows."
+          },
+          {
+            "title": "We flag what we see",
+            "body": "If a gutter is sagging or pulling away, we tell you so you can get ahead of it."
+          },
+          {
+            "title": "Owner-run and insured",
+            "body": "One experienced, insured operator doing the work carefully."
+          },
+          {
+            "title": "Local timing",
+            "body": "We know Caldwell's tree litter and freeze-thaw winters and when clean gutters matter most."
+          }
+        ]
+      }
+    },
+    {
+      "type": "feature:checklist",
+      "theme": "alt",
+      "data": {
+        "eyebrow": {
+          "text": "What We Do",
+          "variant": "text"
+        },
+        "heading": "What We Focus On Every Job",
+        "items": [
+          {
+            "title": "Clearing every trough and downspout fully, not just the reachable spots"
+          },
+          {
+            "title": "Confirming water drains the way it should"
+          },
+          {
+            "title": "Watching for sagging, separation, and fascia issues to report"
+          },
+          {
+            "title": "Protecting siding and landscaping while we work"
+          },
+          {
+            "title": "Hauling off debris and leaving the ground clean"
+          }
+        ]
+      }
+    },
+    {
+      "type": "process:horizontal",
+      "theme": "alt",
+      "data": {
+        "eyebrow": {
+          "text": "The Process",
+          "variant": "text"
+        },
+        "heading": "How It Works",
+        "steps": [
+          {
+            "heading": "Reach out",
+            "body": "Send the form or call for a free quote and tell us about your home."
+          },
+          {
+            "heading": "We assess",
+            "body": "We look at the gutters, the tree cover, and the access so the plan fits."
+          },
+          {
+            "heading": "We clear",
+            "body": "We empty the troughs and downspouts and confirm flow."
+          },
+          {
+            "heading": "You approve",
+            "body": "We review the work and flag anything worth watching before we finish."
+          }
+        ]
+      }
+    },
+    {
+      "type": "services:grid",
+      "theme": "alt",
+      "data": {
+        "eyebrow": {
+          "text": "More Services",
+          "variant": "text"
+        },
+        "heading": "Our Other Services in Caldwell",
+        "hrefBase": "/caldwell"
+      }
+    },
+    {
+      "type": "content:rich-text",
+      "theme": "muted",
+      "data": {
+        "eyebrow": {
+          "text": "Gutter Cleaning · Caldwell",
+          "variant": "text"
+        },
+        "heading": "Serving Caldwell & the Treasure Valley",
+        "body": "<p>We clean gutters throughout Caldwell and the west valley, from the elm-shaded historic districts along Main St, 7th Ave, and Kimball Ave to the newer subdivisions off Franklin Road, Midland Blvd, and Ustick Road. We cover homes near the College of Idaho and Cleveland Blvd, out along Simplot Blvd, Karcher Road, and Homedale Road, south toward the Sunnyslope Wine Trail and Lake Lowell, and through north Caldwell. If you are near the I-84 corridor at the Franklin or Karcher exits, we are close by.</p>"
+      }
+    },
+    {
+      "type": "service-areas:neighborhoods",
+      "theme": "alt",
+      "data": {
+        "eyebrow": {
+          "text": "Service Areas",
+          "variant": "text"
+        },
+        "heading": "Caldwell Neighborhoods We Serve",
+        "subheading": "Do not see your neighborhood? Reach out.",
+        "places": [
+          "Steunenberg Residential Historic District",
+          "Caldwell Historic District (downtown)",
+          "North Caldwell Historic District",
+          "Mandalay Ranch",
+          "Brittany Heights",
+          "Mason Creek",
+          "Maple Hill",
+          "Shadow Glen",
+          "Masterson Ranch",
+          "Greenmont",
+          "Topaz Ranch",
+          "Pradera",
+          "Goose Lane Estates",
+          "Waterbrook Farms",
+          "Chestnut Heights"
+        ]
+      }
+    },
+    {
+      "type": "faqs:accordion",
+      "theme": "alt",
+      "data": {
+        "eyebrow": {
+          "text": "FAQs",
+          "variant": "text"
+        },
+        "heading": "FAQs: Gutter Cleaning in Caldwell",
+        "service": "caldwell-gutter-cleaning"
+      }
+    },
+    {
+      "type": "reviews:cards",
+      "theme": "alt",
+      "data": {
+        "eyebrow": {
+          "text": "Reviews",
+          "variant": "text"
+        },
+        "heading": "What Our Customers Say",
+        "filter": "all",
+        "limit": 3,
+        "area": "Caldwell"
+      }
+    },
+    {
+      "type": "cta:banner",
+      "theme": "primary",
+      "data": {
+        "heading": "Keep the Water Where It Belongs",
+        "subheading": "Caldwell's tree litter and freeze-thaw winters make clogged gutters a real risk to your roof and foundation. We clear them fully. Owner-run, insured, free to quote.",
+        "ctas": [
+          {
+            "label": "Get My Free Quote",
+            "href": "/contact",
+            "variant": "primary"
+          }
+        ],
+        "showPhone": true
+      }
+    }
+  ]
+}

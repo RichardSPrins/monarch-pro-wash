@@ -1,0 +1,258 @@
+{
+  "slug": "sia-boise--window-cleaning",
+  "title": "Window Cleaning in Boise, ID | Monarch Pro Wash",
+  "sections": [
+    {
+      "type": "hero:split-form",
+      "theme": "inverse",
+      "data": {
+        "eyebrow": {
+          "text": "Window Cleaning · Boise",
+          "variant": "text"
+        },
+        "heading": "Window Cleaning in Boise, ID",
+        "subheading": "Boise glass takes a beating from hard water spotting, foothills dust, and summer wildfire smoke. We hand-clean your windows inside and out so you can actually see through them again.",
+        "trustBadges": [
+          {
+            "text": "Fully Insured"
+          },
+          {
+            "text": "Owner-Operated"
+          },
+          {
+            "text": "Free Quotes"
+          }
+        ],
+        "showPhone": true
+      }
+    },
+    {
+      "type": "content:rich-text",
+      "theme": "alt",
+      "data": {
+        "eyebrow": {
+          "text": "Window Cleaning · Boise",
+          "variant": "text"
+        },
+        "body": "<p>Monarch Pro Wash is an owner-run, insured exterior cleaning company serving Boise and the Treasure Valley. When you book window cleaning with us, the person who shows up is the person who runs the business, and that means the work gets done right the first time.</p><p>Boise windows do not stay clean on their own. Between the hard water in our pipes, the dust that rolls off the Foothills, and the smoke that settles in during fire season, glass here picks up film and spotting fast. We clean it off the right way and leave your view clear.</p>"
+      }
+    },
+    {
+      "type": "content:rich-text",
+      "theme": "alt",
+      "data": {
+        "eyebrow": {
+          "text": "Window Cleaning · Boise",
+          "variant": "text"
+        },
+        "heading": "Window Cleaning Built for Boise Conditions",
+        "body": "<p>Hard water is a fact of life across Boise, and it shows up on your glass as cloudy mineral spotting that a quick wipe will not touch. This is common on windows hit by sprinklers in neighborhoods like Southeast Boise and the Bench. We use the right approach to break down that mineral buildup instead of just smearing it around.</p><p>Out toward the Highlands, Boise Heights, and the Central Foothills, your windows collect a steady film of dust off the hills, and every fire season adds a layer of wildfire smoke on top of it. We wash both the interior and exterior so that hazy, filtered look is gone and daylight comes through clean.</p><p>Downtown and around The Grove, BoDo, and Old Boise, storefront glass is your first impression. Street grime, fingerprints, and hard water spotting build up quick on high-traffic entrances. We keep your front glass looking sharp so customers see a clean business before they even walk in.</p>"
+      }
+    },
+    {
+      "type": "feature:checklist",
+      "theme": "alt",
+      "data": {
+        "eyebrow": {
+          "text": "What We Do",
+          "variant": "text"
+        },
+        "heading": "What We Clean Across Boise",
+        "items": [
+          {
+            "title": "Interior and exterior window glass, streak-free"
+          },
+          {
+            "title": "Window tracks and sills where dirt and grime collect"
+          },
+          {
+            "title": "Hard water and mineral stain removal on glass"
+          },
+          {
+            "title": "Screens cleaned and reset during the visit"
+          },
+          {
+            "title": "Storefront and entrance glass for downtown businesses"
+          },
+          {
+            "title": "Sliding door and patio glass"
+          },
+          {
+            "title": "Skylights and hard-to-reach upper windows"
+          }
+        ]
+      }
+    },
+    {
+      "type": "about:values",
+      "theme": "default",
+      "data": {
+        "eyebrow": {
+          "text": "Why Monarch",
+          "variant": "text"
+        },
+        "heading": "Why Boise Homeowners and Businesses Choose Monarch",
+        "items": [
+          {
+            "title": "You work directly with the owner, not a rotating crew or a call center"
+          },
+          {
+            "title": "Fully insured, with 15-plus years of hands-on exterior cleaning experience"
+          },
+          {
+            "title": "We know Boise conditions, from hard water to Foothills dust to fire season smoke"
+          },
+          {
+            "title": "Straightforward free quotes with no pressure and no obligation"
+          }
+        ]
+      }
+    },
+    {
+      "type": "feature:checklist",
+      "theme": "alt",
+      "data": {
+        "eyebrow": {
+          "text": "What We Do",
+          "variant": "text"
+        },
+        "heading": "What We Focus On Every Job",
+        "items": [
+          {
+            "title": "Clean glass edge to edge with no streaks or missed corners"
+          },
+          {
+            "title": "Careful handling of older, brittle windows in historic homes"
+          },
+          {
+            "title": "Wiping down tracks and sills, not just the glass"
+          },
+          {
+            "title": "Protecting your landscaping, floors, and furniture while we work"
+          },
+          {
+            "title": "Leaving the site clean, with nothing for you to pick up after us"
+          }
+        ]
+      }
+    },
+    {
+      "type": "process:horizontal",
+      "theme": "alt",
+      "data": {
+        "eyebrow": {
+          "text": "The Process",
+          "variant": "text"
+        },
+        "heading": "How It Works",
+        "steps": [
+          {
+            "heading": "Reach out",
+            "body": "Send us a few details about your windows or give us a call."
+          },
+          {
+            "heading": "Free quote",
+            "body": "We look at the scope and get you a clear price with no obligation."
+          },
+          {
+            "heading": "We clean",
+            "body": "We show up on schedule and hand-clean your glass inside and out."
+          },
+          {
+            "heading": "You enjoy the view",
+            "body": "Clear windows, clean tracks, and nothing left for you to do."
+          }
+        ]
+      }
+    },
+    {
+      "type": "services:grid",
+      "theme": "alt",
+      "data": {
+        "eyebrow": {
+          "text": "More Services",
+          "variant": "text"
+        },
+        "heading": "Our Other Services in Boise",
+        "hrefBase": "/boise"
+      }
+    },
+    {
+      "type": "content:rich-text",
+      "theme": "muted",
+      "data": {
+        "eyebrow": {
+          "text": "Window Cleaning · Boise",
+          "variant": "text"
+        },
+        "heading": "Serving Boise & the Treasure Valley",
+        "body": "<p>We clean windows across Boise and out into the wider Treasure Valley, from homes near the Boise River and the Greenbelt to businesses along Fairview, Overland, Vista, State Street, and Broadway. Whether you are near Boise State University, up in the Foothills toward Table Rock, or running a storefront on the Basque Block, we will come to you.</p>"
+      }
+    },
+    {
+      "type": "service-areas:neighborhoods",
+      "theme": "alt",
+      "data": {
+        "eyebrow": {
+          "text": "Service Areas",
+          "variant": "text"
+        },
+        "heading": "Boise Neighborhoods We Serve",
+        "subheading": "Do not see your neighborhood? Reach out.",
+        "places": [
+          "North End and Hyde Park",
+          "East End",
+          "The Bench, including Depot Bench, Central Bench, Vista, Morris Hill, and South Boise Village",
+          "Southeast Boise",
+          "Harris Ranch and Barber Valley",
+          "Warm Springs and Warm Springs Mesa",
+          "Highlands, Boise Heights, and the Central Foothills",
+          "Collister and the Northwest",
+          "Downtown, BoDo, and Old Boise"
+        ]
+      }
+    },
+    {
+      "type": "faqs:accordion",
+      "theme": "alt",
+      "data": {
+        "eyebrow": {
+          "text": "FAQs",
+          "variant": "text"
+        },
+        "heading": "FAQs: Window Cleaning in Boise",
+        "service": "boise-window-cleaning"
+      }
+    },
+    {
+      "type": "reviews:cards",
+      "theme": "alt",
+      "data": {
+        "eyebrow": {
+          "text": "Reviews",
+          "variant": "text"
+        },
+        "heading": "What Our Customers Say",
+        "filter": "all",
+        "limit": 3,
+        "area": "Boise"
+      }
+    },
+    {
+      "type": "cta:banner",
+      "theme": "primary",
+      "data": {
+        "heading": "Ready for Clear Windows in Boise?",
+        "subheading": "Get a free, no-obligation quote from an owner-run, insured local team that knows Boise glass.",
+        "ctas": [
+          {
+            "label": "Get My Free Quote",
+            "href": "/contact",
+            "variant": "primary"
+          }
+        ],
+        "showPhone": true
+      }
+    }
+  ]
+}

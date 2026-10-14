@@ -1,0 +1,276 @@
+{
+  "slug": "sia-caldwell--window-cleaning",
+  "title": "Window Cleaning in Caldwell, ID | Monarch Pro Wash",
+  "sections": [
+    {
+      "type": "hero:split-form",
+      "theme": "inverse",
+      "data": {
+        "eyebrow": {
+          "text": "Window Cleaning · Caldwell",
+          "variant": "text"
+        },
+        "heading": "Window Cleaning in Caldwell, ID",
+        "subheading": "Hard water spots on your glass, plus vineyard and gravel-road dust off the fields, film Caldwell windows fast. We clean them streak-free, inside and out.",
+        "trustBadges": [
+          {
+            "text": "Fully Insured"
+          },
+          {
+            "text": "Owner-Operated"
+          },
+          {
+            "text": "Free Quotes"
+          }
+        ],
+        "showPhone": true
+      }
+    },
+    {
+      "type": "content:rich-text",
+      "theme": "alt",
+      "data": {
+        "eyebrow": {
+          "text": "Window Cleaning · Caldwell",
+          "variant": "text"
+        },
+        "body": "<p>Windows are the first thing that go cloudy in Caldwell, and you notice it most on a bright afternoon when the sun hits the glass and every spot and streak shows. Between the hard water in town, the well water out on the acreage lots, and the dust that rolls in off the fields and gravel roads, your glass rarely stays clear for long. It builds up slowly until one day you realize you are looking through a haze instead of out at your yard.</p><p>Monarch Pro Wash is owner-run, insured, and has spent 15-plus years cleaning exteriors around Caldwell and the Treasure Valley. We clean windows the careful way, by hand where it counts, so you get glass that actually looks clear instead of just wet. Whether you own an older home in the Steunenberg Residential district or a newer place out in Mandalay Ranch, we treat your windows like they are our own.</p>"
+      }
+    },
+    {
+      "type": "content:rich-text",
+      "theme": "alt",
+      "data": {
+        "eyebrow": {
+          "text": "Window Cleaning · Caldwell",
+          "variant": "text"
+        },
+        "heading": "Window Cleaning Built for Caldwell Conditions",
+        "body": "<p>Caldwell's water is hard, and that shows up on glass more than almost anywhere else in the house. In-town homes on City of Caldwell wells and rural places on private wells both deal with mineral content that dries into cloudy spotting, especially on windows that catch sprinkler overspray. We work those panes with the right approach to lift the mineral haze instead of just smearing it around, and we can tackle stubborn hard-water staining that regular wiping never seems to touch.</p><p>Out toward the Sunnyslope wine country and the orchard and vineyard ground on the edges of town, dust is the other constant. High-desert wind carries fine ag dust and grit off gravel roads and tilled fields, and it settles on glass in a film that dulls everything. Newer subdivisions like Mason Creek, Passero Ridge, and Waterbrook Farms tend to have big picture windows that show this fast. We clean the full pane edge to edge so the whole window clears, not just the middle.</p><p>Older glass gets its own treatment. Homes in the Caldwell Historic District and North Caldwell often have divided-light windows with lots of small panes and aged frames. Those take patience and a lighter hand, and we clean each section by hand so we do not stress old glazing. New construction is the flip side, where fresh homes come with paint specks, stucco splatter, and label residue on the glass, and we handle that post-construction cleanup too.</p>"
+      }
+    },
+    {
+      "type": "feature:checklist",
+      "theme": "alt",
+      "data": {
+        "eyebrow": {
+          "text": "What We Do",
+          "variant": "text"
+        },
+        "heading": "What We Do Across Caldwell",
+        "items": [
+          {
+            "title": "Exterior window washing, hand-cleaned and squeegeed streak-free"
+          },
+          {
+            "title": "Interior window cleaning, including panes behind furniture and over sinks"
+          },
+          {
+            "title": "Hard-water and mineral stain removal on spotted glass"
+          },
+          {
+            "title": "Window track and sill cleaning to clear out dirt, dead bugs, and grit"
+          },
+          {
+            "title": "Divided-light and older historic-home glass cleaned pane by pane"
+          },
+          {
+            "title": "Big picture windows and higher second-story glass on newer homes"
+          },
+          {
+            "title": "Post-construction window cleanup, including paint, stucco, and label residue"
+          },
+          {
+            "title": "Storefront and downtown glass along Cleveland Blvd and Indian Creek Plaza"
+          }
+        ]
+      }
+    },
+    {
+      "type": "about:values",
+      "theme": "default",
+      "data": {
+        "eyebrow": {
+          "text": "Why Monarch",
+          "variant": "text"
+        },
+        "heading": "Why Caldwell Homeowners Choose Monarch",
+        "items": [
+          {
+            "title": "Owner on the job",
+            "body": "Monarch is owner-run, so the person cleaning your windows is the person who cares whether they look right when the sun hits them."
+          },
+          {
+            "title": "Insured and local",
+            "body": "We carry insurance and work all over Caldwell and the Treasure Valley, so you are covered and working with someone who knows the area."
+          },
+          {
+            "title": "15-plus years on exteriors",
+            "body": "Hard-water spotting, ag dust, old divided-light glass, we have cleaned it all around here and know what each type needs."
+          },
+          {
+            "title": "We show up and follow through",
+            "body": "You get a straight answer, a free quote, and windows cleaned the way we said we would clean them."
+          }
+        ]
+      }
+    },
+    {
+      "type": "feature:checklist",
+      "theme": "alt",
+      "data": {
+        "eyebrow": {
+          "text": "What We Do",
+          "variant": "text"
+        },
+        "heading": "What We Focus On Every Job",
+        "items": [
+          {
+            "title": "Clean the whole pane edge to edge, so glass clears all the way to the frame"
+          },
+          {
+            "title": "Wipe down tracks and sills so dirt does not wash back onto fresh glass"
+          },
+          {
+            "title": "Take care around older frames, screens, and glazing so nothing gets stressed"
+          },
+          {
+            "title": "Check each window in good light for streaks and missed spots before we call it done"
+          },
+          {
+            "title": "Leave your home or storefront tidy, with screens back in place and no mess behind"
+          }
+        ]
+      }
+    },
+    {
+      "type": "process:horizontal",
+      "theme": "alt",
+      "data": {
+        "eyebrow": {
+          "text": "The Process",
+          "variant": "text"
+        },
+        "heading": "How It Works",
+        "steps": [
+          {
+            "heading": "Reach out",
+            "body": "Call or send us a quick note about your Caldwell home or business and what you need cleaned."
+          },
+          {
+            "heading": "Get your free quote",
+            "body": "We look at how many windows, how the glass sits, and any hard-water staining, then give you a clear price with no obligation."
+          },
+          {
+            "heading": "We clean the glass",
+            "body": "We wash inside and out, clear tracks and sills, and work spotted panes until they are clear."
+          },
+          {
+            "heading": "You check it in the light",
+            "body": "We walk the windows with you so you can see the difference before we leave."
+          }
+        ]
+      }
+    },
+    {
+      "type": "services:grid",
+      "theme": "alt",
+      "data": {
+        "eyebrow": {
+          "text": "More Services",
+          "variant": "text"
+        },
+        "heading": "Our Other Services in Caldwell",
+        "hrefBase": "/caldwell"
+      }
+    },
+    {
+      "type": "content:rich-text",
+      "theme": "muted",
+      "data": {
+        "eyebrow": {
+          "text": "Window Cleaning · Caldwell",
+          "variant": "text"
+        },
+        "heading": "Serving Caldwell & the Treasure Valley",
+        "body": "<p>We work all across Caldwell and out into the wider Treasure Valley, from the historic neighborhoods near downtown and Indian Creek Plaza to the newer subdivisions spreading out toward the Boise River and the Sunnyslope wine country. You will find us cleaning glass along the Cleveland Blvd corridor, around the College of Idaho campus, on storefronts near the I-84 frontage, and out on acreage and farm homes past the edge of town. If you are in or around Caldwell, we can get to you.</p>"
+      }
+    },
+    {
+      "type": "service-areas:neighborhoods",
+      "theme": "alt",
+      "data": {
+        "eyebrow": {
+          "text": "Service Areas",
+          "variant": "text"
+        },
+        "heading": "Caldwell Neighborhoods We Serve",
+        "subheading": "Do not see your neighborhood? Reach out.",
+        "places": [
+          "Steunenberg Residential Historic District",
+          "Caldwell Historic District (downtown)",
+          "North Caldwell",
+          "Mandalay Ranch",
+          "Brittany Heights",
+          "Mason Creek",
+          "Passero Ridge",
+          "Maple Hill",
+          "Shadow Glen",
+          "Solstice",
+          "Masterson Ranch",
+          "Greenmont",
+          "Topaz Ranch",
+          "Cirrus Pointe",
+          "Pradera",
+          "Goose Lane Estates",
+          "Waterbrook Farms",
+          "Oakridge Estates",
+          "Purple Sage Estates",
+          "Chestnut Heights"
+        ]
+      }
+    },
+    {
+      "type": "faqs:accordion",
+      "theme": "alt",
+      "data": {
+        "eyebrow": {
+          "text": "FAQs",
+          "variant": "text"
+        },
+        "heading": "FAQs: Window Cleaning in Caldwell",
+        "service": "caldwell-window-cleaning"
+      }
+    },
+    {
+      "type": "reviews:cards",
+      "theme": "alt",
+      "data": {
+        "eyebrow": {
+          "text": "Reviews",
+          "variant": "text"
+        },
+        "heading": "What Our Customers Say",
+        "filter": "all",
+        "limit": 3,
+        "area": "Caldwell"
+      }
+    },
+    {
+      "type": "cta:banner",
+      "theme": "primary",
+      "data": {
+        "heading": "Ready for Clear Glass in Caldwell?",
+        "subheading": "Get streak-free windows, hard-water spots and all, from an owner-run crew that knows Caldwell conditions. Free quotes, no obligation.",
+        "ctas": [
+          {
+            "label": "Get My Free Quote",
+            "href": "/contact",
+            "variant": "primary"
+          }
+        ],
+        "showPhone": true
+      }
+    }
+  ]
+}

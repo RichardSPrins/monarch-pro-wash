@@ -1,0 +1,258 @@
+{
+  "slug": "sia-eagle--gutter-cleaning",
+  "title": "Gutter Cleaning in Eagle, ID | Monarch Pro Wash",
+  "sections": [
+    {
+      "type": "hero:split-form",
+      "theme": "inverse",
+      "data": {
+        "eyebrow": {
+          "text": "Gutter Cleaning · Eagle",
+          "variant": "text"
+        },
+        "heading": "Gutter Cleaning in Eagle, ID",
+        "subheading": "Mature Greenbelt and lake-community trees pack Eagle gutters with leaves, and freeze-thaw winters turn clogs into overflow. Monarch Pro Wash clears them out.",
+        "trustBadges": [
+          {
+            "text": "Fully Insured"
+          },
+          {
+            "text": "Owner-Operated"
+          },
+          {
+            "text": "Free Quotes"
+          }
+        ],
+        "showPhone": true
+      }
+    },
+    {
+      "type": "content:rich-text",
+      "theme": "alt",
+      "data": {
+        "eyebrow": {
+          "text": "Gutter Cleaning · Eagle",
+          "variant": "text"
+        },
+        "body": "<p>Gutters only work when water can move through them. Once leaves and debris pack in, rain spills over the edge, pools against the foundation, and runs down the fascia. On the long rooflines common in Eagle, one clogged section can back up a whole run before you notice a problem.</p><p>Monarch Pro Wash clears gutters and downspouts so water goes where it should. That protects the roof edge, the fascia, and the foundation, and it leaves the exterior looking cleaner too. Monarch is owner-run, insured, and brings more than 15 years of exterior cleaning experience to the job.</p>"
+      }
+    },
+    {
+      "type": "content:rich-text",
+      "theme": "alt",
+      "data": {
+        "eyebrow": {
+          "text": "Gutter Cleaning · Eagle",
+          "variant": "text"
+        },
+        "heading": "Gutter Cleaning Built for Eagle Conditions",
+        "body": "<p>Along the Boise River, the Greenbelt, and the lake communities like Two Rivers, Riverstone, and Laguna Pointe, mature tree cover is heavy, and all of it eventually lands in the gutters. That leaf litter builds up fast in the shaded, tree-lined neighborhoods and blocks the flow. Clearing it out keeps water moving instead of spilling over.</p><p>Eagle estates also have large, multi-level rooflines with long gutter runs and plenty of downspouts. More roof means more debris feeding into the system and more places for it to jam. Getting every run and downspout clear is what actually keeps the water moving off a big roof.</p><p>Winters here bring hard freeze-thaw cycles, and a clogged gutter holds water that freezes, backs up, and works at the roof edge and foundation. Clearing gutters ahead of that keeps trapped water from causing trouble when the temperature swings.</p>"
+      }
+    },
+    {
+      "type": "feature:checklist",
+      "theme": "alt",
+      "data": {
+        "eyebrow": {
+          "text": "What We Do",
+          "variant": "text"
+        },
+        "heading": "What We Do Across Eagle",
+        "items": [
+          {
+            "title": "Clearing leaves and debris from gutters"
+          },
+          {
+            "title": "Flushing and clearing downspouts"
+          },
+          {
+            "title": "Checking that water flows to the outlets"
+          },
+          {
+            "title": "Large multi-level estate rooflines and long gutter runs"
+          },
+          {
+            "title": "Removing buildup along the roof edge"
+          },
+          {
+            "title": "Bagging and hauling away the debris"
+          },
+          {
+            "title": "Wiping down gutter exteriors to brighten the look"
+          }
+        ]
+      }
+    },
+    {
+      "type": "about:values",
+      "theme": "default",
+      "data": {
+        "eyebrow": {
+          "text": "Why Monarch",
+          "variant": "text"
+        },
+        "heading": "Why Eagle Homeowners Choose Monarch",
+        "items": [
+          {
+            "title": "Downspouts too, not just the troughs",
+            "body": "We confirm water actually flows through."
+          },
+          {
+            "title": "Protects the house",
+            "body": "Clear gutters guard the roof edge, fascia, and foundation."
+          },
+          {
+            "title": "Owner-run and insured",
+            "body": "One experienced person responsible for careful work up on the ladder."
+          },
+          {
+            "title": "Ready for big rooflines",
+            "body": "Comfortable with the long runs on Eagle estate homes."
+          }
+        ]
+      }
+    },
+    {
+      "type": "feature:checklist",
+      "theme": "alt",
+      "data": {
+        "eyebrow": {
+          "text": "What We Do",
+          "variant": "text"
+        },
+        "heading": "What We Focus On Every Job",
+        "items": [
+          {
+            "title": "Clearing the full length of every gutter run"
+          },
+          {
+            "title": "Flushing downspouts so they drain freely"
+          },
+          {
+            "title": "Removing and hauling away all debris, not leaving piles behind"
+          },
+          {
+            "title": "Checking the roof edge and fascia while we are up there"
+          },
+          {
+            "title": "Leaving the exterior tidy before we go"
+          }
+        ]
+      }
+    },
+    {
+      "type": "process:horizontal",
+      "theme": "alt",
+      "data": {
+        "eyebrow": {
+          "text": "The Process",
+          "variant": "text"
+        },
+        "heading": "How It Works",
+        "steps": [
+          {
+            "heading": "Request a quote",
+            "body": "Tell us your roofline and your Eagle neighborhood."
+          },
+          {
+            "heading": "Walk-through",
+            "body": "We look at the gutter runs, downspouts, and access."
+          },
+          {
+            "heading": "We clear them",
+            "body": "Clean the gutters, flush the downspouts, and haul the debris."
+          },
+          {
+            "heading": "You approve",
+            "body": "We confirm the water flows and review the work with you."
+          }
+        ]
+      }
+    },
+    {
+      "type": "services:grid",
+      "theme": "alt",
+      "data": {
+        "eyebrow": {
+          "text": "More Services",
+          "variant": "text"
+        },
+        "heading": "Our Other Services in Eagle",
+        "hrefBase": "/eagle"
+      }
+    },
+    {
+      "type": "content:rich-text",
+      "theme": "muted",
+      "data": {
+        "eyebrow": {
+          "text": "Gutter Cleaning · Eagle",
+          "variant": "text"
+        },
+        "heading": "Serving Eagle & the Treasure Valley",
+        "body": "<p>Monarch Pro Wash cleans gutters across Eagle and the Treasure Valley. Around Eagle that means the tree-heavy river and Greenbelt communities near Eagle Island State Park, the lake neighborhoods like Two Rivers and Laguna Pointe, the estates off Floating Feather Road and Beacon Light Road, and the established homes near BanBury Golf Course and Eagle Hills Golf Course. Wherever mature trees are filling your gutters, we can get them flowing again.</p>"
+      }
+    },
+    {
+      "type": "service-areas:neighborhoods",
+      "theme": "alt",
+      "data": {
+        "eyebrow": {
+          "text": "Service Areas",
+          "variant": "text"
+        },
+        "heading": "Eagle Neighborhoods We Serve",
+        "subheading": "Do not see your neighborhood? Reach out.",
+        "places": [
+          "River & Greenbelt: Two Rivers, Mace River Ranch, Riverstone, Island Woods, Laguna Pointe, Westover Lakes",
+          "Established & central: Eagle Ranch, Brookwood, Lexington Hills, Eagle Hills, Legacy",
+          "North Eagle & Foothills estates: High Plains Estates, Sageview, Highlander, Saddle View, Buckskin, Equus Estates, Dry Creek Ranch",
+          "Newer communities: Avimor, Spring Valley, Millstone Farm, Bella Terra",
+          "Also: BanBury, BanBury Meadows, Corrente Bello, Wedgewood Estates, Lakemoor, Moon Lake Ranch, Old Town Eagle"
+        ]
+      }
+    },
+    {
+      "type": "faqs:accordion",
+      "theme": "alt",
+      "data": {
+        "eyebrow": {
+          "text": "FAQs",
+          "variant": "text"
+        },
+        "heading": "FAQs: Gutter Cleaning in Eagle",
+        "service": "eagle-gutter-cleaning"
+      }
+    },
+    {
+      "type": "reviews:cards",
+      "theme": "alt",
+      "data": {
+        "eyebrow": {
+          "text": "Reviews",
+          "variant": "text"
+        },
+        "heading": "What Our Customers Say",
+        "filter": "all",
+        "limit": 3,
+        "area": "Eagle"
+      }
+    },
+    {
+      "type": "cta:banner",
+      "theme": "primary",
+      "data": {
+        "heading": "Keep the Water Moving",
+        "subheading": "Get thorough, insured gutter cleaning from an owner-run pro who knows Eagle's trees and winters.",
+        "ctas": [
+          {
+            "label": "Get My Free Quote",
+            "href": "/contact",
+            "variant": "primary"
+          }
+        ],
+        "showPhone": true
+      }
+    }
+  ]
+}

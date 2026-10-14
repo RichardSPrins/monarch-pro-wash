@@ -1,0 +1,258 @@
+{
+  "slug": "sia-meridian--post-construction-cleanup",
+  "title": "Post-Construction Exterior Cleanup in Meridian, ID | Monarch Pro Wash",
+  "sections": [
+    {
+      "type": "hero:split-form",
+      "theme": "inverse",
+      "data": {
+        "eyebrow": {
+          "text": "Post-Construction Exterior Cleanup · Meridian",
+          "variant": "text"
+        },
+        "heading": "Post-Construction Exterior Cleanup in Meridian, ID",
+        "subheading": "New builds across South Meridian and North Meridian leave mortar, drywall dust, and overspray behind. We clear it off concrete, glass, and siding so your home shows ready.",
+        "trustBadges": [
+          {
+            "text": "Fully Insured"
+          },
+          {
+            "text": "Owner-Operated"
+          },
+          {
+            "text": "Free Quotes"
+          }
+        ],
+        "showPhone": true
+      }
+    },
+    {
+      "type": "content:rich-text",
+      "theme": "alt",
+      "data": {
+        "eyebrow": {
+          "text": "Post-Construction Exterior Cleanup · Meridian",
+          "variant": "text"
+        },
+        "body": "<p>Meridian is one of the fastest-growing spots in the Treasure Valley, and you can see it in the new construction moving south of I-84 and filling in the master-planned neighborhoods up north. A finished home looks great from the curb, but up close there is almost always a layer of construction mess that framing crews and finishers leave behind.</p><p>That is where we come in. Monarch Pro Wash is owner-run, insured, and has been cleaning exteriors around Boise and Meridian for over 15 years. We handle the final cleanup that gets a brand-new home or building from \"done\" to genuinely show-ready, whether you are a homeowner taking possession or a builder handing keys over.</p>"
+      }
+    },
+    {
+      "type": "content:rich-text",
+      "theme": "alt",
+      "data": {
+        "eyebrow": {
+          "text": "Post-Construction Exterior Cleanup · Meridian",
+          "variant": "text"
+        },
+        "heading": "Post-Construction Exterior Cleanup Built for Meridian Conditions",
+        "body": "<p>South Meridian is the active construction frontier right now, with subdivisions like Century Farm, Movado, Sky Mesa, and Tuscany still filling in. New builds down here collect mortar splatter on foundations, thinset haze on patios, and fine drywall dust that settles into every corner. We work methodically around fresh concrete and landscaping so nothing gets damaged while the debris comes off.</p><p>Up in North Meridian, HOA neighborhoods like Paramount and Bellano Creek hold homes to an appearance standard from day one. That means overspray on windows, stucco dust on siding, and paint flecks on walkways all need to go before the community notices. We clean glass, wipe down siding, and rinse hardscapes so a new home blends right in with its neighbors.</p><p>Meridian sits in high-desert country, so wind carries jobsite dust everywhere and it bakes onto surfaces under strong UV. We adjust our approach to lift that baked-on grime without blasting fresh materials, using the right pressure and cleaning method for each surface on the home.</p>"
+      }
+    },
+    {
+      "type": "feature:checklist",
+      "theme": "alt",
+      "data": {
+        "eyebrow": {
+          "text": "What We Do",
+          "variant": "text"
+        },
+        "heading": "What We Clean Across Meridian",
+        "items": [
+          {
+            "title": "Mortar, thinset, and grout haze off concrete and foundations"
+          },
+          {
+            "title": "Drywall dust and construction debris from patios, porches, and walkways"
+          },
+          {
+            "title": "Paint overspray and caulk smears on windows and glass"
+          },
+          {
+            "title": "Stucco and siding dust, splatter, and handprints"
+          },
+          {
+            "title": "Driveways and garage aprons rinsed clean of dirt and residue"
+          },
+          {
+            "title": "Exterior glass and window frames left streak-free"
+          },
+          {
+            "title": "Job debris and nails cleared from hard surfaces"
+          },
+          {
+            "title": "Final rinse-down so the home is ready to hand off or move into"
+          }
+        ]
+      }
+    },
+    {
+      "type": "about:values",
+      "theme": "default",
+      "data": {
+        "eyebrow": {
+          "text": "Why Monarch",
+          "variant": "text"
+        },
+        "heading": "Why Meridian Homeowners and Builders Choose Monarch",
+        "items": [
+          {
+            "title": "Owner-run and on-site, so the person quoting your job is the person doing it"
+          },
+          {
+            "title": "Insured with 15-plus years cleaning exteriors around Meridian and the Treasure Valley"
+          },
+          {
+            "title": "We know local new-construction neighborhoods and their HOA appearance standards"
+          },
+          {
+            "title": "Careful around fresh concrete, new landscaping, and finished surfaces on a new build"
+          }
+        ]
+      }
+    },
+    {
+      "type": "feature:checklist",
+      "theme": "alt",
+      "data": {
+        "eyebrow": {
+          "text": "What We Do",
+          "variant": "text"
+        },
+        "heading": "What We Focus On Every Job",
+        "items": [
+          {
+            "title": "Matching pressure and method to each surface so nothing new gets damaged"
+          },
+          {
+            "title": "Getting into corners, tracks, and edges where construction dust hides"
+          },
+          {
+            "title": "Protecting fresh landscaping and finish work while we clean"
+          },
+          {
+            "title": "Leaving glass and hardscapes genuinely show-ready, not just rinsed"
+          },
+          {
+            "title": "Clear communication from the first quote through the final walkthrough"
+          }
+        ]
+      }
+    },
+    {
+      "type": "process:horizontal",
+      "theme": "alt",
+      "data": {
+        "eyebrow": {
+          "text": "The Process",
+          "variant": "text"
+        },
+        "heading": "How It Works",
+        "steps": [
+          {
+            "heading": "Reach out",
+            "body": "Tell us where the build is and what stage it is at."
+          },
+          {
+            "heading": "Free quote",
+            "body": "We review the scope and send a no-obligation price."
+          },
+          {
+            "heading": "We clean",
+            "body": "We clear mortar, dust, overspray, and debris off every exterior surface."
+          },
+          {
+            "heading": "Walkthrough",
+            "body": "We confirm the home is show-ready before we leave."
+          }
+        ]
+      }
+    },
+    {
+      "type": "services:grid",
+      "theme": "alt",
+      "data": {
+        "eyebrow": {
+          "text": "More Services",
+          "variant": "text"
+        },
+        "heading": "Our Other Services in Meridian",
+        "hrefBase": "/meridian"
+      }
+    },
+    {
+      "type": "content:rich-text",
+      "theme": "muted",
+      "data": {
+        "eyebrow": {
+          "text": "Post-Construction Exterior Cleanup · Meridian",
+          "variant": "text"
+        },
+        "heading": "Serving Meridian & the Treasure Valley",
+        "body": "<p>We cover new construction across Meridian and the wider Treasure Valley, from the subdivisions south of I-84 near the Ten Mile interchange to the master-planned communities up along Chinden Blvd and McMillan. We work residential builds near Kleiner Park and Settlers Park, and commercial projects out along Eagle Road, Fairview Ave, and Overland Rd near the Silverstone and El Dorado business parks. If your build is in or around Meridian, we can get to it.</p>"
+      }
+    },
+    {
+      "type": "service-areas:neighborhoods",
+      "theme": "alt",
+      "data": {
+        "eyebrow": {
+          "text": "Service Areas",
+          "variant": "text"
+        },
+        "heading": "Meridian Neighborhoods We Serve",
+        "subheading": "Do not see your neighborhood? Reach out.",
+        "places": [
+          "South Meridian (83642): Century Farm, Movado, Sky Mesa, Tuscany, Reflection Ridge",
+          "North Meridian (83646): Paramount, Bridgetower, Bellano Creek, Baldwin Park, The Oaks",
+          "NW Meridian: Black Cat and McMillan corridor",
+          "NE Meridian: neighborhoods near Kleiner Park",
+          "SE Meridian: foothills view homesites",
+          "Downtown and Old Town Meridian"
+        ]
+      }
+    },
+    {
+      "type": "faqs:accordion",
+      "theme": "alt",
+      "data": {
+        "eyebrow": {
+          "text": "FAQs",
+          "variant": "text"
+        },
+        "heading": "FAQs: Post-Construction Exterior Cleanup in Meridian",
+        "service": "meridian-post-construction-cleanup"
+      }
+    },
+    {
+      "type": "reviews:cards",
+      "theme": "alt",
+      "data": {
+        "eyebrow": {
+          "text": "Reviews",
+          "variant": "text"
+        },
+        "heading": "What Our Customers Say",
+        "filter": "all",
+        "limit": 3,
+        "area": "Meridian"
+      }
+    },
+    {
+      "type": "cta:banner",
+      "theme": "primary",
+      "data": {
+        "heading": "Ready to Get Your Meridian New Build Show-Ready?",
+        "subheading": "Owner-run, insured, and local. Send us the details and we will get your home cleaned up and ready to hand off.",
+        "ctas": [
+          {
+            "label": "Get My Free Quote",
+            "href": "/contact",
+            "variant": "primary"
+          }
+        ],
+        "showPhone": true
+      }
+    }
+  ]
+}

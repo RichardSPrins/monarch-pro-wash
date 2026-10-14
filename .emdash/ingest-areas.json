@@ -1,0 +1,67 @@
+[
+ {
+  "slug": "boise",
+  "city": "Boise",
+  "state": "ID"
+ },
+ {
+  "slug": "meridian",
+  "city": "Meridian",
+  "state": "ID"
+ },
+ {
+  "slug": "nampa",
+  "city": "Nampa",
+  "state": "ID"
+ },
+ {
+  "slug": "garden-city",
+  "city": "Garden City",
+  "state": "ID"
+ },
+ {
+  "slug": "eagle",
+  "city": "Eagle",
+  "state": "ID"
+ },
+ {
+  "slug": "kuna",
+  "city": "Kuna",
+  "state": "ID"
+ },
+ {
+  "slug": "star",
+  "city": "Star",
+  "state": "ID"
+ },
+ {
+  "slug": "caldwell",
+  "city": "Caldwell",
+  "state": "ID"
+ },
+ {
+  "slug": "middleton",
+  "city": "Middleton",
+  "state": "ID"
+ },
+ {
+  "slug": "melba",
+  "city": "Melba",
+  "state": "ID"
+ },
+ {
+  "slug": "payette",
+  "city": "Payette",
+  "state": "ID"
+ },
+ {
+  "slug": "emmett",
+  "city": "Emmett",
+  "state": "ID"
+ },
+ {
+  "slug": "mountain-home",
+  "city": "Mountain Home",
+  "state": "ID"
+ }
+]

@@ -1,0 +1,32 @@
+[
+ {
+  "id": "01KZEK40KKCQDCZGYSZWKN0JXQ",
+  "slug": "pressure-washing-services",
+  "title": "Pressure Washing"
+ },
+ {
+  "id": "01KZEK58EWXX6DE0TCZN6ZF8NB",
+  "slug": "property-restoration-services",
+  "title": "Property Restoration"
+ },
+ {
+  "id": "01KZEK6FPXNJQRCVGCF2XWYVPE",
+  "slug": "surface-treatment-services",
+  "title": "Surface Treatment"
+ },
+ {
+  "id": "01KZEK7TQHA2VCX3VTYCNTNAEQ",
+  "slug": "window-cleaning-services",
+  "title": "Window Cleaning"
+ },
+ {
+  "id": "01KZEK9A5MXGTXENTDZSNZ4JD0",
+  "slug": "janitorial-services",
+  "title": "Janitorial"
+ },
+ {
+  "id": "01KZEKA26WX961MW7PC310PWCJ",
+  "slug": "seasonal-services",
+  "title": "Seasonal"
+ }
+]

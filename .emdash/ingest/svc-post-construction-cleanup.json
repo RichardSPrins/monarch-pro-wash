@@ -1,0 +1,192 @@
+{
+  "slug": "svc-post-construction-cleanup",
+  "title": "Post-Construction Exterior Cleanup | Monarch Pro Wash",
+  "sections": [
+    {
+      "type": "hero:image-overlay",
+      "theme": "inverse",
+      "data": {
+        "eyebrow": {
+          "text": "Treasure Valley · Fully Insured",
+          "variant": "text"
+        },
+        "heading": "Post-Construction Exterior Cleanup in the Treasure Valley",
+        "subheading": "Post-construction exterior cleanup in the Treasure Valley — concrete, glass, siding, and debris cleared so your new build or remodel is show-ready.",
+        "showPhone": true,
+        "ctas": [
+          {
+            "label": "Get a Free Quote",
+            "href": "/contact",
+            "variant": "primary"
+          }
+        ]
+      }
+    },
+    {
+      "type": "trust-bar:badges",
+      "theme": "alt",
+      "data": {
+        "foundingYear": 2026,
+        "familyOwned": true,
+        "insured": true
+      }
+    },
+    {
+      "type": "content:rich-text",
+      "theme": "alt",
+      "data": {
+        "eyebrow": {
+          "text": "Post-Construction Exterior Cleanup",
+          "variant": "text"
+        },
+        "heading": "The Service Explained",
+        "body": "<p>A new build or remodel leaves a film that ordinary cleaning does not touch. Mortar smears and stucco splatter cling to brick and siding, paint overspray dots the windows, and fine drywall and construction dust settles over every exterior surface, made worse by the high-desert dust that blows across every Treasure Valley job site. Post-construction exterior cleanup clears that final layer of grime, debris, and construction residue so the property actually looks finished. It covers washing down siding and hard surfaces, cleaning concrete flatwork of mortar and stains, detailing glass free of overspray and stickers, and clearing leftover debris. Monarch matches the method to each surface, using real pressure on concrete and a gentle soft wash on delicate finishes, so nothing that was just installed gets damaged in the cleanup. The result is a home or building that is genuinely show-ready for the owner, the buyer, or the final walkthrough.</p>"
+      }
+    },
+    {
+      "type": "feature:alternating",
+      "theme": "alt",
+      "data": {
+        "eyebrow": {
+          "text": "What to Know",
+          "variant": "text"
+        },
+        "heading": "Top Concerns",
+        "rows": [
+          {
+            "heading": "The final cleanup can damage brand-new finishes if it is done wrong",
+            "body": "Fresh siding, new windows, and just-poured concrete are exactly what you do not want scratched or etched during the last step. Aggressive, one-size-fits-all pressure washing risks doing just that. Monarch matches the method to each surface, real pressure where concrete and hardscape can take it, and a gentle low-pressure soft wash on delicate finishes. The point of post-construction cleanup is to reveal the new work, not to mar it, so protecting what was just installed comes first."
+          },
+          {
+            "heading": "High-desert dust settles right back if the whole site is not addressed",
+            "body": "Wipe down the windows while dust still coats the siding and eaves, and the glass is hazy again by the next windy afternoon. Treasure Valley job sites collect fine dust that resettles constantly. Monarch cleans the exterior as a whole rather than spot-cleaning the obvious surfaces, so the dust is cleared from the property, not just pushed from one surface to another. A complete clean is what makes a build actually look finished and stay that way through the walkthrough."
+          },
+          {
+            "heading": "Builders and homeowners both want one vendor for the last step",
+            "body": "Coordinating separate crews for the windows, the concrete, and the debris haul-off slows down a project that is trying to reach the finish line. Monarch is one insured vendor for the whole exterior cleanup, which means a general contractor can hand off the final clean as a single line item, and a homeowner moving into a new build has one point of contact. That one-call convenience keeps the last step from becoming the slow step."
+          }
+        ]
+      }
+    },
+    {
+      "type": "process:horizontal",
+      "theme": "default",
+      "data": {
+        "eyebrow": {
+          "text": "The Process",
+          "variant": "text"
+        },
+        "heading": "How It Works",
+        "steps": [
+          {
+            "heading": "Get your free quote",
+            "body": "A clear price up front, with no guessing."
+          },
+          {
+            "heading": "We match the method to the surface",
+            "body": "Real pressure where it helps, a gentle soft wash where it protects."
+          },
+          {
+            "heading": "We clean, protect, and inspect",
+            "body": "Stains treated, landscaping protected, and the job checked before we leave."
+          }
+        ]
+      }
+    },
+    {
+      "type": "about:values",
+      "theme": "alt",
+      "data": {
+        "eyebrow": {
+          "text": "Why Monarch",
+          "variant": "text"
+        },
+        "heading": "Why Monarch",
+        "items": [
+          {
+            "title": "Surface-matched every time",
+            "body": "The method fits the material, so you get a deep clean with zero damage."
+          },
+          {
+            "title": "Soft wash, not just power wash",
+            "body": "The safe method for anything delicate is standard here, not an upsell."
+          },
+          {
+            "title": "Owner-run and insured",
+            "body": "The person accountable for the work is the person doing it."
+          },
+          {
+            "title": "One vendor for the whole property",
+            "body": "Wash, seal, windows, and gutters under one roof."
+          }
+        ]
+      }
+    },
+    {
+      "type": "reviews:cards",
+      "theme": "alt",
+      "data": {
+        "eyebrow": {
+          "text": "Reviews",
+          "variant": "text"
+        },
+        "heading": "What Our Customers Say",
+        "filter": "all",
+        "service": "post-construction-cleanup",
+        "limit": 3
+      }
+    },
+    {
+      "type": "guarantee:callout",
+      "theme": "brand-secondary",
+      "data": {
+        "eyebrow": {
+          "text": "Our Guarantee",
+          "variant": "text"
+        },
+        "heading": "The Monarch Standard",
+        "body": "We aim for a full, thorough clean on the first visit. If any surface we cleaned is not right, tell us and we come back to make it right. No fine print and no runaround.",
+        "badge": "Make It Right"
+      }
+    },
+    {
+      "type": "faqs:accordion",
+      "theme": "alt",
+      "data": {
+        "eyebrow": {
+          "text": "FAQs",
+          "variant": "text"
+        },
+        "heading": "Post-Construction Exterior Cleanup: Common Questions",
+        "service": "post-construction-cleanup"
+      }
+    },
+    {
+      "type": "service-areas:grid",
+      "theme": "muted",
+      "data": {
+        "eyebrow": {
+          "text": "Service Areas",
+          "variant": "text"
+        },
+        "heading": "Serving the Treasure Valley"
+      }
+    },
+    {
+      "type": "cta:banner",
+      "theme": "primary",
+      "data": {
+        "heading": "Ready for a Cleaner Property?",
+        "subheading": "Get a free quote with your price up front and a clean that is safe for every surface.",
+        "ctas": [
+          {
+            "label": "Get My Free Quote",
+            "href": "/contact",
+            "variant": "primary"
+          }
+        ],
+        "showPhone": true
+      }
+    }
+  ]
+}

@@ -1,0 +1,192 @@
+{
+  "slug": "svc-roof-cleaning",
+  "title": "Roof Cleaning | Monarch Pro Wash",
+  "sections": [
+    {
+      "type": "hero:image-overlay",
+      "theme": "inverse",
+      "data": {
+        "eyebrow": {
+          "text": "Treasure Valley · Fully Insured",
+          "variant": "text"
+        },
+        "heading": "Roof Cleaning in the Treasure Valley",
+        "subheading": "Roof cleaning across the Treasure Valley removes black streaks, algae, and moss with safe soft-wash methods that protect your shingles and extend roof life.",
+        "showPhone": true,
+        "ctas": [
+          {
+            "label": "Get a Free Quote",
+            "href": "/contact",
+            "variant": "primary"
+          }
+        ]
+      }
+    },
+    {
+      "type": "trust-bar:badges",
+      "theme": "alt",
+      "data": {
+        "foundingYear": 2026,
+        "familyOwned": true,
+        "insured": true
+      }
+    },
+    {
+      "type": "content:rich-text",
+      "theme": "alt",
+      "data": {
+        "eyebrow": {
+          "text": "Roof Cleaning",
+          "variant": "text"
+        },
+        "heading": "The Service Explained",
+        "body": "<p>Those black streaks running down your roof are not dirt, and they will not wash off in the rain. They are Gloeocapsa algae, a hardy growth that feeds on the limestone filler in asphalt shingles and spreads across the shaded, north-facing slopes that stay damp longest. Left alone, algae holds moisture against your shingles, and moss can take root and lift them at the edges. Roof cleaning treats the growth at its source with a low-pressure soft wash. No blasting, no scrubbing, no walking your shingles under high pressure. The cleaning solution does the work, kills the algae and moss, and rinses away gently, so your roof looks right again and the granules that protect it stay where they belong.</p>"
+      }
+    },
+    {
+      "type": "feature:alternating",
+      "theme": "alt",
+      "data": {
+        "eyebrow": {
+          "text": "What to Know",
+          "variant": "text"
+        },
+        "heading": "Top Concerns",
+        "rows": [
+          {
+            "heading": "Pressure washing strips the granules that protect your shingles",
+            "body": "A pressure washer aimed at asphalt shingles blasts off the mineral granules that shield them from the sun and give your roof its life. Once those granules wash into the gutter, the damage is done and it does not come back. Monarch cleans roofs the way the shingle manufacturers ask for, with a gentle low-pressure soft wash. The solution kills the algae and moss so the roof comes clean on its own, without high pressure ever touching the surface."
+          },
+          {
+            "heading": "Black streaks are algae, and they keep coming back until you treat the source",
+            "body": "Rinsing the surface makes a roof look better for a week, then the streaks bleed back through. That is because the algae is alive and rooted in the shingle. A soft wash uses a cleaning solution that kills the growth rather than just wetting it down, so the streaks clear and stay gone far longer. Treating the source is the difference between a roof that looks clean today and one that stays clean through the season."
+          },
+          {
+            "heading": "The shaded, north-facing side is always the worst, and that is normal",
+            "body": "If one slope of your roof looks far dirtier than the rest, it is almost always the north or tree-shaded side. Those slopes dry slowly and hold the moisture algae and moss need to thrive. Monarch cleans the whole roof to a consistent finish rather than spot-treating the ugly side, so you are not left with one bright patch and three dull ones. Matching the whole roof keeps HOA reviewers and neighbors from noticing anything but a clean home."
+          }
+        ]
+      }
+    },
+    {
+      "type": "process:horizontal",
+      "theme": "default",
+      "data": {
+        "eyebrow": {
+          "text": "The Process",
+          "variant": "text"
+        },
+        "heading": "How It Works",
+        "steps": [
+          {
+            "heading": "Get your free quote",
+            "body": "A clear price up front, with no guessing."
+          },
+          {
+            "heading": "We match the method to the surface",
+            "body": "Real pressure where it helps, a gentle soft wash where it protects."
+          },
+          {
+            "heading": "We clean, protect, and inspect",
+            "body": "Stains treated, landscaping protected, and the job checked before we leave."
+          }
+        ]
+      }
+    },
+    {
+      "type": "about:values",
+      "theme": "alt",
+      "data": {
+        "eyebrow": {
+          "text": "Why Monarch",
+          "variant": "text"
+        },
+        "heading": "Why Monarch",
+        "items": [
+          {
+            "title": "Surface-matched every time",
+            "body": "The method fits the material, so you get a deep clean with zero damage."
+          },
+          {
+            "title": "Soft wash, not just power wash",
+            "body": "The safe method for anything delicate is standard here, not an upsell."
+          },
+          {
+            "title": "Owner-run and insured",
+            "body": "The person accountable for the work is the person doing it."
+          },
+          {
+            "title": "One vendor for the whole property",
+            "body": "Wash, seal, windows, and gutters under one roof."
+          }
+        ]
+      }
+    },
+    {
+      "type": "reviews:cards",
+      "theme": "alt",
+      "data": {
+        "eyebrow": {
+          "text": "Reviews",
+          "variant": "text"
+        },
+        "heading": "What Our Customers Say",
+        "filter": "all",
+        "service": "roof-cleaning",
+        "limit": 3
+      }
+    },
+    {
+      "type": "guarantee:callout",
+      "theme": "brand-secondary",
+      "data": {
+        "eyebrow": {
+          "text": "Our Guarantee",
+          "variant": "text"
+        },
+        "heading": "The Monarch Standard",
+        "body": "We aim for a full, thorough clean on the first visit. If any surface we cleaned is not right, tell us and we come back to make it right. No fine print and no runaround.",
+        "badge": "Make It Right"
+      }
+    },
+    {
+      "type": "faqs:accordion",
+      "theme": "alt",
+      "data": {
+        "eyebrow": {
+          "text": "FAQs",
+          "variant": "text"
+        },
+        "heading": "Roof Cleaning: Common Questions",
+        "service": "roof-cleaning"
+      }
+    },
+    {
+      "type": "service-areas:grid",
+      "theme": "muted",
+      "data": {
+        "eyebrow": {
+          "text": "Service Areas",
+          "variant": "text"
+        },
+        "heading": "Serving the Treasure Valley"
+      }
+    },
+    {
+      "type": "cta:banner",
+      "theme": "primary",
+      "data": {
+        "heading": "Ready for a Cleaner Property?",
+        "subheading": "Get a free quote with your price up front and a clean that is safe for every surface.",
+        "ctas": [
+          {
+            "label": "Get My Free Quote",
+            "href": "/contact",
+            "variant": "primary"
+          }
+        ],
+        "showPhone": true
+      }
+    }
+  ]
+}

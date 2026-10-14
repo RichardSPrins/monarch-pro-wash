@@ -1,0 +1,256 @@
+{
+  "slug": "sia-meridian--graffiti-removal",
+  "title": "Graffiti Removal in Meridian, ID | Monarch Pro Wash",
+  "sections": [
+    {
+      "type": "hero:split-form",
+      "theme": "inverse",
+      "data": {
+        "eyebrow": {
+          "text": "Graffiti Removal · Meridian",
+          "variant": "text"
+        },
+        "heading": "Graffiti Removal in Meridian, ID",
+        "subheading": "A fresh tag on your Meridian storefront needs to come off fast. We remove graffiti from brick, concrete, and siding along Eagle Road, Fairview, and Downtown without leaving a shadow or damaging the surface.",
+        "trustBadges": [
+          {
+            "text": "Fully Insured"
+          },
+          {
+            "text": "Owner-Operated"
+          },
+          {
+            "text": "Free Quotes"
+          }
+        ],
+        "showPhone": true
+      }
+    },
+    {
+      "type": "content:rich-text",
+      "theme": "alt",
+      "data": {
+        "eyebrow": {
+          "text": "Graffiti Removal · Meridian",
+          "variant": "text"
+        },
+        "body": "<p>Graffiti on a business does not just look bad, it invites more. The longer a tag stays up, the more it signals that no one is watching, and the more likely another one shows up next to it. Getting it removed quickly protects the look of your property and keeps the problem from spreading.</p><p>Monarch Pro Wash is owner-run and insured, with more than 15 years of exterior cleaning experience. We handle graffiti removal for businesses and property owners across Meridian, from the retail corridor along Eagle Road to the storefronts Downtown. We take the tag off and match our method to the surface so the wall comes clean without new damage.</p>"
+      }
+    },
+    {
+      "type": "content:rich-text",
+      "theme": "alt",
+      "data": {
+        "eyebrow": {
+          "text": "Graffiti Removal · Meridian",
+          "variant": "text"
+        },
+        "heading": "Graffiti Removal Built for Meridian Conditions",
+        "body": "<p>The Eagle Road retail corridor is one of the busiest stretches in the valley, and a tag on a building near The Village at Meridian or along that run gets seen by a lot of traffic fast. Those are the walls where quick removal matters most. We respond to get the graffiti off before it becomes the first thing every passing car notices.</p><p>Downtown and Old Town Meridian bring a different challenge. The storefronts along Main Street include older brick and mixed materials, and brick holds paint differently than smooth concrete or siding. We adjust our approach to the surface so we lift the paint without etching the brick or leaving a ghosted outline behind.</p><p>We also work the commercial stretches along Fairview Avenue, the Ten Mile interchange area, and the business parks off Overland Road. Every surface is a little different, from block walls to metal to painted siding, and the goal is always the same. Get the tag off cleanly and leave the wall looking like nothing was ever there.</p>"
+      }
+    },
+    {
+      "type": "feature:checklist",
+      "theme": "alt",
+      "data": {
+        "eyebrow": {
+          "text": "What We Do",
+          "variant": "text"
+        },
+        "heading": "What We Do Across Meridian",
+        "items": [
+          {
+            "title": "Remove spray-paint tags from brick and block"
+          },
+          {
+            "title": "Clear graffiti from concrete walls and flatwork"
+          },
+          {
+            "title": "Take paint off siding and painted surfaces"
+          },
+          {
+            "title": "Handle storefront walls, dumpster enclosures, and fences"
+          },
+          {
+            "title": "Work commercial buildings along Eagle Road and Fairview"
+          },
+          {
+            "title": "Address tags near The Village at Meridian and Downtown storefronts"
+          },
+          {
+            "title": "Match the method to the surface to avoid new damage"
+          }
+        ]
+      }
+    },
+    {
+      "type": "about:values",
+      "theme": "default",
+      "data": {
+        "eyebrow": {
+          "text": "Why Monarch",
+          "variant": "text"
+        },
+        "heading": "Why Meridian Businesses Choose Monarch",
+        "items": [
+          {
+            "title": "Owner-run, so you deal directly with the person doing the removal"
+          },
+          {
+            "title": "Fully insured, with more than 15 years of exterior cleaning experience"
+          },
+          {
+            "title": "We match the method to brick, concrete, or siding to protect the surface"
+          },
+          {
+            "title": "Local to the Treasure Valley, so we can respond to Meridian tags quickly"
+          }
+        ]
+      }
+    },
+    {
+      "type": "feature:checklist",
+      "theme": "alt",
+      "data": {
+        "eyebrow": {
+          "text": "What We Do",
+          "variant": "text"
+        },
+        "heading": "What We Focus On Every Job",
+        "items": [
+          {
+            "title": "Matching our removal method to the specific surface"
+          },
+          {
+            "title": "Lifting the paint without etching or ghosting the wall"
+          },
+          {
+            "title": "Protecting nearby glass, trim, and landscaping"
+          },
+          {
+            "title": "Getting it done quickly so the tag does not invite more"
+          },
+          {
+            "title": "Leaving the wall looking like the graffiti was never there"
+          }
+        ]
+      }
+    },
+    {
+      "type": "process:horizontal",
+      "theme": "alt",
+      "data": {
+        "eyebrow": {
+          "text": "The Process",
+          "variant": "text"
+        },
+        "heading": "How It Works",
+        "steps": [
+          {
+            "heading": "You reach out",
+            "body": "and tell us about the tag and the surface."
+          },
+          {
+            "heading": "We assess it",
+            "body": "and send a free, no-obligation quote."
+          },
+          {
+            "heading": "We schedule quickly",
+            "body": "and arrive ready to work."
+          },
+          {
+            "heading": "We remove the graffiti",
+            "body": "and confirm the wall is clean with you."
+          }
+        ]
+      }
+    },
+    {
+      "type": "services:grid",
+      "theme": "alt",
+      "data": {
+        "eyebrow": {
+          "text": "More Services",
+          "variant": "text"
+        },
+        "heading": "Our Other Services in Meridian",
+        "hrefBase": "/meridian"
+      }
+    },
+    {
+      "type": "content:rich-text",
+      "theme": "muted",
+      "data": {
+        "eyebrow": {
+          "text": "Graffiti Removal · Meridian",
+          "variant": "text"
+        },
+        "heading": "Serving Meridian & the Treasure Valley",
+        "body": "<p>Meridian is our home base, and we also serve Boise, Eagle, Nampa, Kuna, and Star. Around Meridian we remove graffiti along the Eagle Road retail corridor, near The Village at Meridian, along Fairview Avenue, around the Ten Mile interchange, and on the Downtown and Old Town storefronts. If your property gets tagged, we can get out and clear it.</p>"
+      }
+    },
+    {
+      "type": "service-areas:neighborhoods",
+      "theme": "alt",
+      "data": {
+        "eyebrow": {
+          "text": "Service Areas",
+          "variant": "text"
+        },
+        "heading": "Meridian Areas We Serve",
+        "subheading": "Do not see your area? Reach out.",
+        "places": [
+          "Eagle Road retail corridor",
+          "The Village at Meridian and the Kleiner Park area",
+          "Downtown and Old Town Meridian storefronts on Main Street",
+          "Fairview Avenue commercial stretch",
+          "Ten Mile interchange and nearby businesses",
+          "Silverstone and El Dorado business parks off Overland Road",
+          "Franklin Road industrial properties"
+        ]
+      }
+    },
+    {
+      "type": "faqs:accordion",
+      "theme": "alt",
+      "data": {
+        "eyebrow": {
+          "text": "FAQs",
+          "variant": "text"
+        },
+        "heading": "FAQs: Graffiti Removal in Meridian",
+        "service": "meridian-graffiti-removal"
+      }
+    },
+    {
+      "type": "reviews:cards",
+      "theme": "alt",
+      "data": {
+        "eyebrow": {
+          "text": "Reviews",
+          "variant": "text"
+        },
+        "heading": "What Our Customers Say",
+        "filter": "all",
+        "limit": 3,
+        "area": "Meridian"
+      }
+    },
+    {
+      "type": "cta:banner",
+      "theme": "primary",
+      "data": {
+        "heading": "Tagged in Meridian? Let Us Clear It Fast.",
+        "subheading": "Get graffiti off your brick, concrete, or siding without new damage. Free quotes, no obligation, from an owner who does the work.",
+        "ctas": [
+          {
+            "label": "Get My Free Quote",
+            "href": "/contact",
+            "variant": "primary"
+          }
+        ],
+        "showPhone": true
+      }
+    }
+  ]
+}

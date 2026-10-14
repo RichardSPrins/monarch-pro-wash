@@ -1,0 +1,255 @@
+{
+  "slug": "sia-meridian--roof-cleaning",
+  "title": "Roof Cleaning in Meridian, ID | Monarch Pro Wash",
+  "sections": [
+    {
+      "type": "hero:split-form",
+      "theme": "inverse",
+      "data": {
+        "eyebrow": {
+          "text": "Roof Cleaning · Meridian",
+          "variant": "text"
+        },
+        "heading": "Roof Cleaning in Meridian, ID",
+        "subheading": "Those black streaks on your Meridian roof are algae, and the shaded, tree-lined streets around Old Town and Kleiner Park see them worst. We soft wash roofs to remove streaks, algae, and moss without pounding your shingles.",
+        "trustBadges": [
+          {
+            "text": "Fully Insured"
+          },
+          {
+            "text": "Owner-Operated"
+          },
+          {
+            "text": "Free Quotes"
+          }
+        ],
+        "showPhone": true
+      }
+    },
+    {
+      "type": "content:rich-text",
+      "theme": "alt",
+      "data": {
+        "eyebrow": {
+          "text": "Roof Cleaning · Meridian",
+          "variant": "text"
+        },
+        "body": "<p>The dark streaks running down a Meridian roof are not dirt and they will not rinse off with rain. That is algae, and once it takes hold it spreads across the shingles and feeds on the surface. Left alone it keeps darkening the roof and shortens the life of your shingles. Cleaning it off restores the look of your home and protects what is under it.</p><p>Monarch Pro Wash is owner-run and insured, with more than 15 years of exterior cleaning experience. We clean roofs across Meridian using a soft-wash approach, never high pressure. From the shaded streets of Old Town to the maturing subdivisions in the north, we get the algae and moss off and leave the shingles intact.</p>"
+      }
+    },
+    {
+      "type": "content:rich-text",
+      "theme": "alt",
+      "data": {
+        "eyebrow": {
+          "text": "Roof Cleaning · Meridian",
+          "variant": "text"
+        },
+        "heading": "Roof Cleaning Built for Meridian Conditions",
+        "body": "<p>Old Town and NE Meridian near Kleiner Park have mature trees and a lot of shade. That shade keeps roofs damp longer, especially on the north-facing slopes, and damp shade is exactly where algae and moss thrive. Those are the roofs where we see the heaviest black streaking, and they are the roofs soft washing is built for.</p><p>The older subdivisions are catching up too. Neighborhoods like Lochsa Falls have matured, the trees have filled in, and roofs that looked fine for years are now showing streaks. We treat the algae directly so it dies off and washes clear, instead of scrubbing or blasting shingles that are already aging.</p><p>High pressure has no place on a roof. It strips the protective granules off shingles and can drive water where it should not go. We use a low-pressure, soft-wash method that lets the cleaning solution do the work. The streaks lift, the moss loosens, and your shingles come through the job without the damage a pressure washer would cause.</p>"
+      }
+    },
+    {
+      "type": "feature:checklist",
+      "theme": "alt",
+      "data": {
+        "eyebrow": {
+          "text": "What We Do",
+          "variant": "text"
+        },
+        "heading": "What We Do Across Meridian",
+        "items": [
+          {
+            "title": "Remove black algae streaks from shingles"
+          },
+          {
+            "title": "Treat and clear moss growth"
+          },
+          {
+            "title": "Clean north-facing slopes that stay shaded and damp"
+          },
+          {
+            "title": "Rinse organic buildup off the full roof"
+          },
+          {
+            "title": "Protect gutters, siding, and landscaping during the wash"
+          },
+          {
+            "title": "Handle asphalt shingle roofs common across Meridian subdivisions"
+          },
+          {
+            "title": "Address the heavy streaking on shaded Old Town and NE Meridian roofs"
+          }
+        ]
+      }
+    },
+    {
+      "type": "about:values",
+      "theme": "default",
+      "data": {
+        "eyebrow": {
+          "text": "Why Monarch",
+          "variant": "text"
+        },
+        "heading": "Why Meridian Homeowners Choose Monarch",
+        "items": [
+          {
+            "title": "Owner-run, so the person on your Meridian roof is the person who quoted it"
+          },
+          {
+            "title": "Fully insured, with more than 15 years of exterior cleaning experience"
+          },
+          {
+            "title": "Soft-wash only, which protects your shingles instead of wearing them down"
+          },
+          {
+            "title": "Local knowledge of which Meridian roofs streak worst and why"
+          }
+        ]
+      }
+    },
+    {
+      "type": "feature:checklist",
+      "theme": "alt",
+      "data": {
+        "eyebrow": {
+          "text": "What We Do",
+          "variant": "text"
+        },
+        "heading": "What We Focus On Every Job",
+        "items": [
+          {
+            "title": "Using a soft-wash method that never blasts the shingles"
+          },
+          {
+            "title": "Treating algae and moss at the source so it clears fully"
+          },
+          {
+            "title": "Protecting gutters, downspouts, and the plants below the roofline"
+          },
+          {
+            "title": "Working the shaded, north-facing slopes where growth is worst"
+          },
+          {
+            "title": "Rinsing thoroughly so runoff does not stain your siding or beds"
+          }
+        ]
+      }
+    },
+    {
+      "type": "process:horizontal",
+      "theme": "alt",
+      "data": {
+        "eyebrow": {
+          "text": "The Process",
+          "variant": "text"
+        },
+        "heading": "How It Works",
+        "steps": [
+          {
+            "heading": "You reach out",
+            "body": "and tell us about your roof."
+          },
+          {
+            "heading": "We assess it",
+            "body": "and send a free, no-obligation quote."
+          },
+          {
+            "heading": "We schedule a time",
+            "body": "and arrive ready to work."
+          },
+          {
+            "heading": "We soft wash, rinse, and review the results",
+            "body": "with you."
+          }
+        ]
+      }
+    },
+    {
+      "type": "services:grid",
+      "theme": "alt",
+      "data": {
+        "eyebrow": {
+          "text": "More Services",
+          "variant": "text"
+        },
+        "heading": "Our Other Services in Meridian",
+        "hrefBase": "/meridian"
+      }
+    },
+    {
+      "type": "content:rich-text",
+      "theme": "muted",
+      "data": {
+        "eyebrow": {
+          "text": "Roof Cleaning · Meridian",
+          "variant": "text"
+        },
+        "heading": "Serving Meridian & the Treasure Valley",
+        "body": "<p>Meridian is our home base, and we also serve Boise, Eagle, Nampa, Kuna, and Star. Around Meridian we clean the shaded roofs of Old Town near Main Street, the tree-lined streets around Julius M. Kleiner Memorial Park and The Village, and the maturing subdivisions across North Meridian. If your roof is streaked or mossy, we can help wherever you are in town.</p>"
+      }
+    },
+    {
+      "type": "service-areas:neighborhoods",
+      "theme": "alt",
+      "data": {
+        "eyebrow": {
+          "text": "Service Areas",
+          "variant": "text"
+        },
+        "heading": "Meridian Neighborhoods We Serve",
+        "subheading": "Do not see your neighborhood? Reach out.",
+        "places": [
+          "Downtown and Old Town Meridian, with mature-tree shade",
+          "NE Meridian near Kleiner Park and The Village",
+          "North Meridian (83646): Lochsa Falls, Paramount, Bridgetower, The Oaks, Spurwing",
+          "South Meridian (83642): Century Farm, Movado, Tuscany",
+          "NW Meridian around Black Cat and McMillan",
+          "SE Meridian view homesites toward the foothills"
+        ]
+      }
+    },
+    {
+      "type": "faqs:accordion",
+      "theme": "alt",
+      "data": {
+        "eyebrow": {
+          "text": "FAQs",
+          "variant": "text"
+        },
+        "heading": "FAQs: Roof Cleaning in Meridian",
+        "service": "meridian-roof-cleaning"
+      }
+    },
+    {
+      "type": "reviews:cards",
+      "theme": "alt",
+      "data": {
+        "eyebrow": {
+          "text": "Reviews",
+          "variant": "text"
+        },
+        "heading": "What Our Customers Say",
+        "filter": "all",
+        "limit": 3,
+        "area": "Meridian"
+      }
+    },
+    {
+      "type": "cta:banner",
+      "theme": "primary",
+      "data": {
+        "heading": "Ready to Clear the Streaks Off Your Meridian Roof?",
+        "subheading": "Get the algae and moss gone without damaging your shingles. Free quotes, no obligation, from an owner who does the work.",
+        "ctas": [
+          {
+            "label": "Get My Free Quote",
+            "href": "/contact",
+            "variant": "primary"
+          }
+        ],
+        "showPhone": true
+      }
+    }
+  ]
+}

@@ -1,0 +1,266 @@
+{
+  "slug": "sia-eagle--concrete-sealing-staining",
+  "title": "Concrete Sealing & Staining in Eagle, ID | Monarch Pro Wash",
+  "sections": [
+    {
+      "type": "hero:split-form",
+      "theme": "inverse",
+      "data": {
+        "eyebrow": {
+          "text": "Concrete Sealing & Staining · Eagle",
+          "variant": "text"
+        },
+        "heading": "Concrete Sealing & Staining in Eagle, ID",
+        "subheading": "Sealing and decorative staining for Eagle estate driveways, patios, and pool decks, protecting concrete against freeze-thaw, efflorescence, and high-desert UV while adding custom color.",
+        "trustBadges": [
+          {
+            "text": "Fully Insured"
+          },
+          {
+            "text": "Owner-Operated"
+          },
+          {
+            "text": "Free Quotes"
+          }
+        ],
+        "showPhone": true
+      }
+    },
+    {
+      "type": "content:rich-text",
+      "theme": "alt",
+      "data": {
+        "eyebrow": {
+          "text": "Concrete Sealing & Staining · Eagle",
+          "variant": "text"
+        },
+        "body": "<p>Eagle homes come with a lot of concrete, and on large lots that means broad driveways, expansive patios, and pool decks that see sun, water, and weather all year. Left bare, that concrete takes the full hit of Eagle's freeze-thaw swings, its strong high-desert UV, and the white efflorescence bloom that hard water and moisture push to the surface. Over time it stains, spalls, and dulls.</p><p>Sealing protects it, and staining lets you upgrade the look while you are at it. Monarch Pro Wash seals and stains residential concrete across Eagle so it resists stains and cracking and holds a finish you actually want to look at. We are owner-run, insured, and have spent more than fifteen years on exterior surfaces around the Treasure Valley, so we know how concrete behaves in this climate.</p>"
+      }
+    },
+    {
+      "type": "content:rich-text",
+      "theme": "alt",
+      "data": {
+        "eyebrow": {
+          "text": "Concrete Sealing & Staining · Eagle",
+          "variant": "text"
+        },
+        "heading": "Concrete Sealing & Staining Built for Eagle Conditions",
+        "body": "<p><strong>Freeze-thaw on estate driveways.</strong> Eagle nights freeze and days thaw for a good part of the year, and every cycle drives moisture into unsealed concrete where it expands and works at the surface. On long estate driveways and large patios, that shows up as spalling, pitting, and cracks. A quality sealer limits how much water gets in, which slows that damage and helps the slab last.</p><p><strong>Efflorescence and hard water.</strong> Eagle's hard water, harder still on foothills wells, carries minerals that surface as a chalky white efflorescence on concrete, especially around pool decks and irrigated areas. We clean and prep the surface to address existing bloom before sealing, so you are protecting clean concrete rather than locking a haze underneath.</p><p><strong>High-desert UV and custom color.</strong> Strong sun fades and dries exposed concrete over the years. Staining adds color that suits your outdoor living space, from driveways to pool decks, and sealing over it helps hold that color against UV. For Eagle's custom patios and entertaining areas, that means decorative concrete that stays looking intentional instead of washed out.</p>"
+      }
+    },
+    {
+      "type": "feature:checklist",
+      "theme": "alt",
+      "data": {
+        "eyebrow": {
+          "text": "What We Do",
+          "variant": "text"
+        },
+        "heading": "What We Seal & Stain Across Eagle",
+        "items": [
+          {
+            "title": "Estate driveways and approach aprons"
+          },
+          {
+            "title": "Patios and outdoor living areas"
+          },
+          {
+            "title": "Pool decks and surrounds"
+          },
+          {
+            "title": "Walkways, paths, and entryways"
+          },
+          {
+            "title": "Garage and shop floors"
+          },
+          {
+            "title": "Decorative and stamped concrete"
+          },
+          {
+            "title": "Newly cured concrete on custom builds"
+          },
+          {
+            "title": "Surfaces showing efflorescence, staining, or early wear"
+          }
+        ]
+      }
+    },
+    {
+      "type": "about:values",
+      "theme": "default",
+      "data": {
+        "eyebrow": {
+          "text": "Why Monarch",
+          "variant": "text"
+        },
+        "heading": "Why Eagle Homeowners Choose Monarch",
+        "items": [
+          {
+            "title": "We prep before we seal",
+            "body": "Sealing over dirty or efflorescing concrete traps the problem. We clean and prepare properly so the sealer protects clean concrete."
+          },
+          {
+            "title": "We seal for this climate",
+            "body": "Eagle freeze-thaw and UV are hard on concrete. We use sealers suited to what your slab actually faces here."
+          },
+          {
+            "title": "Owner-run and insured",
+            "body": "You deal directly with the person doing the work, fully covered."
+          },
+          {
+            "title": "We treat estate concrete as a finished surface",
+            "body": "On custom patios and pool decks, appearance matters as much as protection, and we deliver both."
+          }
+        ]
+      }
+    },
+    {
+      "type": "feature:checklist",
+      "theme": "alt",
+      "data": {
+        "eyebrow": {
+          "text": "What We Do",
+          "variant": "text"
+        },
+        "heading": "What We Focus On Every Job",
+        "items": [
+          {
+            "title": "Cleaning and prepping the concrete before any sealer or stain"
+          },
+          {
+            "title": "Addressing existing efflorescence and staining first"
+          },
+          {
+            "title": "Choosing sealers and stains suited to the surface and exposure"
+          },
+          {
+            "title": "Applying evenly for consistent color and protection"
+          },
+          {
+            "title": "Protecting nearby surfaces, landscaping, and pool areas"
+          }
+        ]
+      }
+    },
+    {
+      "type": "process:horizontal",
+      "theme": "alt",
+      "data": {
+        "eyebrow": {
+          "text": "The Process",
+          "variant": "text"
+        },
+        "heading": "How It Works",
+        "steps": [
+          {
+            "heading": "Reach out",
+            "body": "Tell us about your concrete, whether you want sealing, staining, or both, and what you are seeing now."
+          },
+          {
+            "heading": "Free quote",
+            "body": "We look at the concrete and its condition and give you a clear, no-obligation quote."
+          },
+          {
+            "heading": "Prep, stain, seal",
+            "body": "We clean and prepare the surface, apply stain if you want color, and seal for protection."
+          },
+          {
+            "heading": "Walk it with you",
+            "body": "We review the finish together and go over how to keep it looking right."
+          }
+        ]
+      }
+    },
+    {
+      "type": "services:grid",
+      "theme": "alt",
+      "data": {
+        "eyebrow": {
+          "text": "More Services",
+          "variant": "text"
+        },
+        "heading": "Our Other Services in Eagle",
+        "hrefBase": "/eagle"
+      }
+    },
+    {
+      "type": "content:rich-text",
+      "theme": "muted",
+      "data": {
+        "eyebrow": {
+          "text": "Concrete Sealing & Staining · Eagle",
+          "variant": "text"
+        },
+        "heading": "Serving Eagle & the Treasure Valley",
+        "body": "<p>We seal and stain concrete throughout Eagle and the wider Treasure Valley, from foothills estates off Floating Feather and Beacon Light to the Village neighborhoods around Eagle Ranch, Brookwood, and Lexington Hills, and across master-plans like Spring Valley, Avimor, Millstone Farm, and Two Rivers. We work driveways, patios, and pool decks on large-lot properties throughout North Eagle and on custom homes near the river and greenbelt. If you have concrete to protect in or around Eagle, we can help.</p>"
+      }
+    },
+    {
+      "type": "service-areas:neighborhoods",
+      "theme": "alt",
+      "data": {
+        "eyebrow": {
+          "text": "Service Areas",
+          "variant": "text"
+        },
+        "heading": "Eagle Neighborhoods & Areas We Serve",
+        "subheading": "Do not see your area? Reach out.",
+        "places": [
+          "North Eagle & Foothills estates",
+          "Floating Feather & Beacon Light corridors",
+          "Eagle Ranch, Brookwood, Lexington Hills",
+          "Spring Valley, Avimor, Millstone Farm",
+          "Dry Creek Ranch, Streamside, Stillwater",
+          "Two Rivers, Legacy, BanBury",
+          "Lakemoor, Corrente Bello, Bella Terra",
+          "Wedgewood Estates",
+          "River, Greenbelt & Eagle Island area",
+          "Village & central Eagle"
+        ]
+      }
+    },
+    {
+      "type": "faqs:accordion",
+      "theme": "alt",
+      "data": {
+        "eyebrow": {
+          "text": "FAQs",
+          "variant": "text"
+        },
+        "heading": "FAQs: Concrete Sealing & Staining in Eagle",
+        "service": "eagle-concrete-sealing-staining"
+      }
+    },
+    {
+      "type": "reviews:cards",
+      "theme": "alt",
+      "data": {
+        "eyebrow": {
+          "text": "Reviews",
+          "variant": "text"
+        },
+        "heading": "What Our Customers Say",
+        "filter": "all",
+        "limit": 3,
+        "area": "Eagle"
+      }
+    },
+    {
+      "type": "cta:banner",
+      "theme": "primary",
+      "data": {
+        "heading": "Protect and Upgrade Your Eagle Concrete",
+        "subheading": "Sealing and decorative staining built for Eagle's freeze-thaw, UV, and hard water. Owner-run, insured, and ready to help.",
+        "ctas": [
+          {
+            "label": "Get My Free Quote",
+            "href": "/contact",
+            "variant": "primary"
+          }
+        ],
+        "showPhone": true
+      }
+    }
+  ]
+}

@@ -1,0 +1,264 @@
+{
+  "slug": "sia-boise--soft-washing",
+  "title": "Soft Washing in Boise, ID | Monarch Pro Wash",
+  "sections": [
+    {
+      "type": "hero:split-form",
+      "theme": "inverse",
+      "data": {
+        "eyebrow": {
+          "text": "Soft Washing · Boise",
+          "variant": "text"
+        },
+        "heading": "Soft Washing in Boise, ID",
+        "subheading": "Boise homes take a beating from foothills dust, hard water, and river-shade algae along the Greenbelt. Soft washing cleans historic siding, roofs, and delicate surfaces at low pressure, so nothing gets stripped, cracked, or blasted loose.",
+        "trustBadges": [
+          {
+            "text": "Fully Insured"
+          },
+          {
+            "text": "Owner-Operated"
+          },
+          {
+            "text": "Free Quotes"
+          }
+        ],
+        "showPhone": true
+      }
+    },
+    {
+      "type": "content:rich-text",
+      "theme": "alt",
+      "data": {
+        "eyebrow": {
+          "text": "Soft Washing · Boise",
+          "variant": "text"
+        },
+        "body": "<p>When your siding looks chalky, your north-facing walls go green, or your eaves show dark streaks, pressure is not always the answer. A lot of Boise homes have surfaces that high pressure will damage. Soft washing gets them clean without the risk, using gentle water pressure and the right cleaning solution to lift grime, algae, and mildew instead of forcing it off.</p><p>Monarch Pro Wash is owner-run and insured, with over fifteen years of hands-on exterior cleaning. You deal with the person doing the work, from the North End and Hyde Park to the Bench, Southeast Boise, and out to Harris Ranch and Barber Valley. We match the method to your surface every time, so your home comes out clean and undamaged.</p>"
+      }
+    },
+    {
+      "type": "content:rich-text",
+      "theme": "alt",
+      "data": {
+        "eyebrow": {
+          "text": "Soft Washing · Boise",
+          "variant": "text"
+        },
+        "heading": "Soft Washing Built for Boise Conditions",
+        "body": "<p>Historic Boise was built for a softer touch. Homes in the North End, Hyde Park, the East End, and the Warm Springs corridor have older siding, painted wood, and delicate trim that high pressure can splinter or strip. Soft washing is the safe choice here. We use low pressure and a cleaning solution that does the work, so your historic exterior gets clean without gouged wood or forced-open seams.</p><p>Down by the river it is a different problem. Homes backing the Boise River and Greenbelt, plus much of Harris Ranch, Barber Valley, and Warm Springs Mesa, sit in shade and humidity that feed algae and mildew. That green and gray film keeps coming back because the roots stay behind. Soft washing treats it at the source and kills what a rinse leaves behind, so your walls stay clean longer.</p><p>Up in the Highlands, Boise Heights, and the Central Foothills, the trouble is fine dust off the hills and settled wildfire smoke that dulls everything it lands on. Boise also runs hard water, which leaves a mineral haze on siding and glass. We adjust our solution and technique to your surfaces and these conditions, not a one-size rinse.</p>"
+      }
+    },
+    {
+      "type": "feature:checklist",
+      "theme": "alt",
+      "data": {
+        "eyebrow": {
+          "text": "What We Do",
+          "variant": "text"
+        },
+        "heading": "What We Clean Across Boise",
+        "items": [
+          {
+            "title": "Painted and stained wood siding on historic North End and Hyde Park homes, soft-wash only"
+          },
+          {
+            "title": "Vinyl, aluminum, fiber cement, and stucco siding"
+          },
+          {
+            "title": "Roofs with algae, moss, or black streaking, cleaned at low pressure"
+          },
+          {
+            "title": "Eaves, soffits, and fascia"
+          },
+          {
+            "title": "Shaded, algae-prone walls along the Greenbelt and river corridor"
+          },
+          {
+            "title": "Painted trim, shutters, and delicate architectural details"
+          },
+          {
+            "title": "Exterior surfaces dulled by foothills dust and hard-water film"
+          },
+          {
+            "title": "Surface-matched cleaning, so the method fits the material every time"
+          }
+        ]
+      }
+    },
+    {
+      "type": "about:values",
+      "theme": "default",
+      "data": {
+        "eyebrow": {
+          "text": "Why Monarch",
+          "variant": "text"
+        },
+        "heading": "Why Boise Homeowners Choose Monarch",
+        "items": [
+          {
+            "title": "Surface-matched cleaning",
+            "body": "We read your material first, then set the pressure and solution to match, which matters on Boise's older historic homes."
+          },
+          {
+            "title": "Owner-run and insured",
+            "body": "The person quoting your soft wash is the person doing it, backed by proper insurance."
+          },
+          {
+            "title": "We treat at the source",
+            "body": "Algae and mildew get killed at the root, not just rinsed off, so river-shade growth stays gone longer."
+          },
+          {
+            "title": "One vendor for your whole exterior",
+            "body": "Siding, roof, eaves, and more, handled by one crew that knows Boise."
+          }
+        ]
+      }
+    },
+    {
+      "type": "feature:checklist",
+      "theme": "alt",
+      "data": {
+        "eyebrow": {
+          "text": "What We Do",
+          "variant": "text"
+        },
+        "heading": "What We Focus On Every Job",
+        "items": [
+          {
+            "title": "Protecting plants, landscaping, and finishes around your home before we start"
+          },
+          {
+            "title": "Setting pressure low enough to clean without damaging siding or trim"
+          },
+          {
+            "title": "Matching the cleaning solution to your surface and the growth we find"
+          },
+          {
+            "title": "Reaching shaded, hard-to-see algae before it spreads across the wall"
+          },
+          {
+            "title": "Leaving your exterior evenly clean, not streaked or patchy"
+          }
+        ]
+      }
+    },
+    {
+      "type": "process:horizontal",
+      "theme": "alt",
+      "data": {
+        "eyebrow": {
+          "text": "The Process",
+          "variant": "text"
+        },
+        "heading": "How It Works",
+        "steps": [
+          {
+            "heading": "Request your free quote",
+            "body": "Tell us about your home and what is bothering you."
+          },
+          {
+            "heading": "We assess your surfaces",
+            "body": "We identify materials and growth, then match the method."
+          },
+          {
+            "heading": "We soft wash",
+            "body": "Low pressure and the right solution, applied where your home needs it."
+          },
+          {
+            "heading": "You see the results",
+            "body": "A clean exterior, cleaned safely, with nothing stripped or damaged."
+          }
+        ]
+      }
+    },
+    {
+      "type": "services:grid",
+      "theme": "alt",
+      "data": {
+        "eyebrow": {
+          "text": "More Services",
+          "variant": "text"
+        },
+        "heading": "Our Other Services in Boise",
+        "hrefBase": "/boise"
+      }
+    },
+    {
+      "type": "content:rich-text",
+      "theme": "muted",
+      "data": {
+        "eyebrow": {
+          "text": "Soft Washing · Boise",
+          "variant": "text"
+        },
+        "heading": "Serving Boise & the Treasure Valley",
+        "body": "<p>Monarch Pro Wash is based in Boise and serves the surrounding Treasure Valley, including Meridian, Eagle, Nampa, and Kuna. In Boise we soft wash historic homes in the North End and Hyde Park, river-shade homes along the Boise River and Greenbelt through Harris Ranch and Barber Valley, and dust-worn exteriors up toward Table Rock and the foothills. Wherever your home sits, we bring the right method to it.</p>"
+      }
+    },
+    {
+      "type": "service-areas:neighborhoods",
+      "theme": "alt",
+      "data": {
+        "eyebrow": {
+          "text": "Service Areas",
+          "variant": "text"
+        },
+        "heading": "Boise Neighborhoods We Serve",
+        "subheading": "Do not see your neighborhood? Reach out.",
+        "places": [
+          "North End & Hyde Park (historic, soft-wash only)",
+          "East End",
+          "Warm Springs & Warm Springs Mesa",
+          "Harris Ranch & Barber Valley",
+          "The Bench (Depot Bench, Central Bench, Vista, Morris Hill, South Boise Village)",
+          "Southeast Boise",
+          "Highlands, Boise Heights & Central Foothills",
+          "Collister & the Northwest"
+        ]
+      }
+    },
+    {
+      "type": "faqs:accordion",
+      "theme": "alt",
+      "data": {
+        "eyebrow": {
+          "text": "FAQs",
+          "variant": "text"
+        },
+        "heading": "FAQs: Soft Washing in Boise",
+        "service": "boise-soft-washing"
+      }
+    },
+    {
+      "type": "reviews:cards",
+      "theme": "alt",
+      "data": {
+        "eyebrow": {
+          "text": "Reviews",
+          "variant": "text"
+        },
+        "heading": "What Our Customers Say",
+        "filter": "all",
+        "limit": 3,
+        "area": "Boise"
+      }
+    },
+    {
+      "type": "cta:banner",
+      "theme": "primary",
+      "data": {
+        "heading": "Ready to Clean Your Boise Home the Safe Way?",
+        "subheading": "Owner-run, insured, and matched to your surfaces. Get a free quote with no obligation.",
+        "ctas": [
+          {
+            "label": "Get My Free Quote",
+            "href": "/contact",
+            "variant": "primary"
+          }
+        ],
+        "showPhone": true
+      }
+    }
+  ]
+}
