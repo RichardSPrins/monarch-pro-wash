@@ -34,13 +34,23 @@ const ctas = (
 const hasContent = Boolean(
   data?.heading || data?.subheading || data?.body || data?.signatureName,
 );
+
+// Without a portrait there is no second column to fill. Keeping the two-track
+// grid would drop the letter into the narrow 18rem portrait track and leave the
+// wide track empty.
+const hasPortrait = Boolean(data?.image?.src);
 ---
 
 {
   hasContent && (
     <section class:list={["about-owner-letter section-wrapper section-py", `theme-${theme}`]}>
       <div class="section-container">
-        <div class="grid grid-cols-1 lg:grid-cols-[minmax(0,18rem)_1fr] gap-10 lg:gap-14 items-start">
+        <div
+          class:list={[
+            "grid grid-cols-1 gap-10 lg:gap-14 items-start",
+            hasPortrait ? "lg:grid-cols-[minmax(0,18rem)_1fr]" : "max-w-3xl",
+          ]}
+        >
           {/* Portrait */}
           {data?.image?.src && (
             <figure class="portrait-card m-0 order-1 lg:order-none">

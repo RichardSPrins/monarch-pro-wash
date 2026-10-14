@@ -18,11 +18,19 @@ interface Props {
 const { theme = "default", data } = Astro.props;
 
 const imageOnLeft = data?.imagePosition === "left";
+// No image means no second column — keep it one readable column instead of
+// stranding the copy in half the width with an empty space beside it.
+const hasImage = Boolean(data?.image?.src);
 ---
 
 <section class={`section-wrapper section-py theme-${theme}`}>
   <div class="section-container">
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+    <div
+      class:list={[
+        "grid grid-cols-1 gap-12 lg:gap-16 items-center",
+        hasImage ? "lg:grid-cols-2" : "max-w-3xl",
+      ]}
+    >
       {/* Content */}
       <div class={`flex flex-col gap-lg ${imageOnLeft ? "lg:order-2" : "lg:order-1"}`}>
         {
