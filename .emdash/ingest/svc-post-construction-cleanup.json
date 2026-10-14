@@ -70,7 +70,7 @@
     },
     {
       "type": "process:horizontal",
-      "theme": "default",
+      "theme": "alt",
       "data": {
         "eyebrow": {
           "text": "The Process",
@@ -138,7 +138,7 @@
     },
     {
       "type": "guarantee:callout",
-      "theme": "brand-secondary",
+      "theme": "alt",
       "data": {
         "eyebrow": {
           "text": "Our Guarantee",
@@ -163,7 +163,7 @@
     },
     {
       "type": "service-areas:grid",
-      "theme": "muted",
+      "theme": "alt",
       "data": {
         "eyebrow": {
           "text": "Service Areas",

@@ -104,7 +104,7 @@ export function buildServiceSections(service: Service): SectionConfig[] {
       },
     },
     { type: "process:horizontal", theme: "alt", data: { eyebrow: { text: "The Process", variant: "text" }, heading: "How It Works", steps: PROCESS_STEPS } },
-    { type: "about:values", theme: "default", data: { eyebrow: { text: "Why Monarch", variant: "text" }, heading: "Why Monarch", items: WHY_ITEMS } },
+    { type: "about:values", theme: "alt", data: { eyebrow: { text: "Why Monarch", variant: "text" }, heading: "Why Monarch", items: WHY_ITEMS } },
     // No gallery:before-after in the generated page: with no pairs it fails
     // validation, which is a loud shim in dev and nothing in prod. Authored
     // pages add it back once there are real photos.
@@ -113,7 +113,7 @@ export function buildServiceSections(service: Service): SectionConfig[] {
       theme: "alt",
       data: { eyebrow: { text: "Reviews", variant: "text" }, heading: "What Our Customers Say", filter: "all", service: service.data.slug, limit: 3 },
     },
-    GUARANTEE,
+    { ...GUARANTEE, theme: "alt" },
     {
       type: "faqs:accordion",
       theme: "alt",
@@ -121,7 +121,7 @@ export function buildServiceSections(service: Service): SectionConfig[] {
       // service slug. Omitting it would show only the untagged general FAQs.
       data: { eyebrow: { text: "FAQs", variant: "text" }, heading: `${title}: Common Questions`, service: service.data.slug },
     },
-    { type: "service-areas:grid", theme: "muted", data: { eyebrow: { text: "Service Areas", variant: "text" }, heading: "Serving the Treasure Valley" } },
+    { type: "service-areas:grid", theme: "alt", data: { eyebrow: { text: "Service Areas", variant: "text" }, heading: "Serving the Treasure Valley" } },
     {
       type: "cta:banner",
       theme: "primary",

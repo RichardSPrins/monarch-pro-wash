@@ -88,7 +88,7 @@
     },
     {
       "type": "about:values",
-      "theme": "default",
+      "theme": "alt",
       "data": {
         "eyebrow": {
           "text": "Why Monarch",
@@ -186,7 +186,7 @@
     },
     {
       "type": "content:rich-text",
-      "theme": "muted",
+      "theme": "alt",
       "data": {
         "eyebrow": {
           "text": "Post-Construction Exterior Cleanup · Caldwell",

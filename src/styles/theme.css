@@ -33,6 +33,8 @@
      --------------------------------------------------------------- */
   --t-bg: #0e2a3f; /* base = deep navy (default sections, header) */
   --t-bg-alt: #f5f8f9; /* the LIGHT/white sections (theme="alt") */
+  --t-bg-alt-2: #ffffff; /* a second light tone, for gentle alternation where
+                            dark bands can't be used (e.g. beside a sticky rail) */
   --t-bg-muted: #0a2233; /* deeper navy (theme="muted") */
   --t-bg-inverse: #0a1f2e; /* footer / dark bands (theme="inverse") */
 

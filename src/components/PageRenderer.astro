@@ -94,23 +94,38 @@ const tail = hasRail ? sections.slice(end) : [];
   }
   .page-main { min-width: 0; }
 
-  /* The light channel the rail sits in. The rail's cards are navy, and without
-     this they vanish — into the page body on mobile, and into any navy band the
-     rail scrolls past on desktop. */
-  .page-rail-inner {
-    background-color: var(--t-bg-alt);
+  /* The rail region is a single LIGHT surface, so the navy rail cards always
+     have contrast and nothing has to be painted behind them.
+
+     An earlier version gave the rail its own light channel while the sections
+     kept alternating navy/white. Because the rail sits inside the container,
+     that cut a white rectangle out of the middle of every navy band with navy
+     still showing to its right — far worse than the seam it was meant to avoid.
+
+     This is what the Sol reference does too: every section in its rail region
+     shares one surface, and the rhythm comes from cards, spacing and light-tone
+     variation rather than bands, because a sidebar makes full-width bands
+     impossible.
+
+     Gentle tonal alternation replaces them: pure white against the off-white
+     base. Scoped to .theme-alt deliberately — a theme-* class sets text colour
+     as well as background, so repainting a navy section light would leave
+     light-on-light text. The section DATA is all `alt` in the rail region (see
+     the page templates and scripts/ingest-vault-copy.mjs); this only varies the
+     tone within that. */
+  .page-main > .section-wrapper.theme-alt:nth-of-type(even) {
+    background-color: var(--t-bg-alt-2);
   }
 
-  /* Below xl the rail flows after the content as a normal block, so it supplies
-     its own spacing on ALL FOUR sides — the top included, which is what was
-     missing against the preceding band. */
+  /* Below xl the rail flows after the content as a normal block, on the same
+     light surface, with spacing on ALL FOUR sides — the top included, which is
+     what was missing against the preceding section. */
   .page-rail {
+    background-color: var(--t-bg-alt);
     padding-inline: 1rem;
   }
   .page-rail-inner {
-    padding: 2rem 1.25rem;
-    border-radius: var(--radius-lg, 0.75rem);
-    margin-block: 2.5rem;
+    padding-block: 0.5rem 2.5rem;
   }
 
   @media (min-width: 640px) {
@@ -133,13 +148,8 @@ const tail = hasRail ? sections.slice(end) : [];
     .page-rail-inner {
       width: 20rem;
       margin-left: auto;
-      margin-block: 0;
-      padding: 0;
-      border-radius: 0;
       min-height: 100%;
-      /* Pad the channel so the cards aren't flush against its edges. */
-      padding-block: 2.5rem;
-      padding-inline: 1.25rem;
+      padding-block: 0;
     }
     .page-aside {
       position: sticky;
@@ -162,6 +172,16 @@ const tail = hasRail ? sections.slice(end) : [];
        instead (rail 20rem + 3rem gap + the container's own 2rem gutter). */
     .page-main .section-container {
       padding-right: calc(20rem + 3rem + 2rem);
+    }
+
+    /* The rail takes 20rem out of the container, leaving ~45rem of copy. Grid
+       utilities inside the sections still key off the VIEWPORT, so a four-up
+       grid kept four columns in 45rem — about 180px each, which broke headings
+       like "Surface-matched cleaning" over three lines. Halve the densest
+       grids to match the width that's actually available. */
+    .page-main [class*="lg:grid-cols-4"],
+    .page-main [class*="lg:grid-cols-5"] {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
     }
   }
 </style>
