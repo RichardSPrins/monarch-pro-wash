@@ -78,49 +78,54 @@ const tail = hasRail ? sections.slice(end) : [];
      The rail gets its own scroll so a long list can never trap the page: it is
      capped to the viewport and scrolls internally, with overscroll containment
      so reaching its end doesn't start scrolling the page behind it. */
-  /* The shell sits on the LIGHT surface. This theme is dark-first (theme-default
-     is deep navy, theme-alt is the white break), and a long two-column reading
-     page wants white as its base with navy used deliberately for contrast. */
+  /* The shell itself is INVISIBLE: no background, no max-width, no side padding.
+     An earlier version boxed it to 72rem on a light background, which read as a
+     white panel floating on the dark page with wide dark gutters. Sections keep
+     painting their own full-width bands, exactly as they do on a normal page;
+     the shell only reserves a column for the rail. */
   .page-shell {
     display: grid;
     grid-template-columns: 1fr;
-    gap: var(--t-gap-xl, 2rem);
-    background-color: var(--t-bg-alt);
   }
   .page-main { min-width: 0; }
   .page-aside { min-width: 0; }
 
+  /* Below xl the rail is a normal block after the content, so it needs its own
+     breathing room rather than butting into the next full-width band. */
+  .page-aside {
+    padding: 0 1rem 3rem;
+  }
+
   @media (min-width: 1280px) {
-    /* Mirrors .section-container's 72rem / 2rem so the shell lines up with the
-       full-bleed hero and CTA above and below it. */
     .page-shell {
       grid-template-columns: minmax(0, 1fr) 20rem;
-      gap: var(--t-gap-xl, 2rem) 3rem;
-      max-width: 72rem;
-      margin-inline: auto;
-      padding-inline: 2rem;
+      column-gap: 3rem;
+      /* Keeps the rail off the viewport edge without indenting the bands. */
+      padding-right: 2rem;
     }
     .page-aside {
       position: sticky;
-      top: 1.5rem;
+      /* Clear the sticky header. `top: 1.5rem` put the rail underneath it. */
+      top: calc(var(--site-header-h) + 1.5rem);
       align-self: start;
-      max-height: calc(100vh - 3rem);
+      /* Leave a gap at the foot so the card never kisses the next section. */
+      max-height: calc(100vh - var(--site-header-h) - 4rem);
       overflow-y: auto;
       overscroll-behavior-y: contain;
       /* The rail scrolls often; keep the scrollbar unobtrusive. */
       scrollbar-width: thin;
+      padding: 0 0 2rem;
+      margin-bottom: 3rem;
     }
     /* NOTE: do NOT neutralise section backgrounds here. The theme-* classes set
        background AND text colour together, so stripping the background leaves a
        light surface's dark ink sitting on the page's dark body — unreadable.
        Sections paint their own surface; the rhythm is chosen in the template. */
 
-    /* The shell already supplies the gutter and the max width, so the nested
-       containers must not pad or cap again. */
+    /* Sections sit in the main column, so their container should fill it rather
+       than re-centre at 72rem and strand the copy away from the rail. */
     .page-main .section-container {
       max-width: none;
-      padding-left: 0;
-      padding-right: 0;
     }
   }
 </style>

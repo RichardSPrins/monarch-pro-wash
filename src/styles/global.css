@@ -155,6 +155,13 @@
   --background: var(--t-bg);
   --foreground: var(--t-fg);
 
+  /* Height of the sticky site header (src/components/layout/Header.astro).
+     Anything that has to sit below it — a sticky rail, an anchor scroll offset —
+     should offset by this rather than guessing. Mobile is the h-16 row alone;
+     the top contact bar is `hidden md:block` (~2.25rem); the row grows to h-20
+     at lg. */
+  --site-header-h: 4rem;
+
   /* Dark-first base: cards/popovers are a RAISED navy (visible on the base). */
   --card: color-mix(in srgb, var(--t-bg) 92%, #ffffff);
   --card-foreground: var(--t-fg);
@@ -216,6 +223,16 @@
      dark headers are dark cards (not white boxes). Overridden by .on-dark. */
   --dropdown-surface: var(--t-bg);
 }
+
+/* Header height grows with its breakpoints: the top contact bar appears at md,
+   and the main row goes h-16 -> h-20 at lg. */
+@media (min-width: 768px) {
+  :root { --site-header-h: 6.25rem; }
+}
+@media (min-width: 1024px) {
+  :root { --site-header-h: 7.25rem; }
+}
+
 
 /* =====================
    Theme Class Overrides
