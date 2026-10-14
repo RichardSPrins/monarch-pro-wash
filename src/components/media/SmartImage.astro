@@ -1,7 +1,7 @@
 ---
 import { Image } from "astro:assets";
 import type { ImageMetadata } from "astro";
-import { resolveImage, isLocal } from "@/lib/images";
+import { resolveImage, isLocal, isEmdashMedia, toOptimizableMediaUrl } from "@/lib/images";
 
 /**
  * JSON-friendly image. Takes a string `src` (from page/content JSON), resolves
@@ -14,6 +14,8 @@ interface Props {
   alt?: string;
   fallback?: ImageMetadata;
   width?: number;
+  /** Intrinsic height. Supply alongside `width` for CMS media to skip inferSize. */
+  height?: number;
   widths?: number[];
   sizes?: string;
   class?: string;
@@ -26,6 +28,7 @@ const {
   alt = "",
   fallback,
   width,
+  height,
   widths,
   sizes,
   class: className,
@@ -34,6 +37,20 @@ const {
 } = Astro.props;
 
 const resolved = resolveImage(src) ?? fallback;
+
+// CMS media lives in R2 and IS optimizable — EmDash's image endpoint resizes it
+// from the bucket. Astro only engages for an absolute URL matching its remote
+// patterns, so absolutize first. Known dimensions avoid inferSize, which would
+// otherwise have to read the bytes just to learn the aspect ratio.
+const cmsSrc =
+  typeof resolved === "string" && isEmdashMedia(resolved)
+    ? toOptimizableMediaUrl(resolved)
+    : null;
+
+// A remote image needs either both intrinsic dimensions or inferSize, which
+// reads them from the bytes.
+const cmsDims =
+  width && height ? { width, height } : ({ inferSize: true } as const);
 ---
 
 {
@@ -42,6 +59,17 @@ const resolved = resolveImage(src) ?? fallback;
       src={resolved}
       alt={alt}
       width={width}
+      widths={widths}
+      sizes={sizes}
+      class={className}
+      loading={loading}
+      fetchpriority={fetchpriority}
+    />
+  ) : cmsSrc ? (
+    <Image
+      src={cmsSrc}
+      alt={alt}
+      {...cmsDims}
       widths={widths}
       sizes={sizes}
       class={className}

@@ -87,13 +87,13 @@ const fallbackSections = [
   // which rendered "16+ Years in Business" for a company founded in 2026. At 2026
   // the computed value is 0, which is falsy, so the badge correctly hides.
   // The flag is `insured`, not `licensedInsured` — Monarch is insured, not licensed.
-  { type: "trust-bar:badges", theme: "default", data: { foundingYear: 2026, familyOwned: true, insured: true } },
+  { type: "trust-bar:badges", theme: "alt", data: { foundingYear: 2026, familyOwned: true, insured: true } },
   { type: "content:rich-text", theme: "alt", data: {
     eyebrow: { text: `${svcTitle} · ${city}`, variant: "text" },
     heading: `${svcTitle} for ${city} Homes and Businesses`,
     body: `<p>${desc}</p><p>Monarch Pro Wash brings ${svcLower} to ${city}, ${state} and the surrounding Treasure Valley, with the same surface-matched method and the Monarch Standard on every job. Read more about our <a href="/services/${serviceSlug}">${svcLower}</a>, or see <a href="/${areaSlug}">every service we offer in ${city}</a>.</p>`,
   } },
-  { type: "process:horizontal", theme: "default", data: {
+  { type: "process:horizontal", theme: "alt", data: {
     eyebrow: { text: "The Process", variant: "text" },
     heading: "How It Works",
     steps: [
@@ -102,7 +102,7 @@ const fallbackSections = [
       { heading: "We clean, protect, and inspect", body: "Stains treated, landscaping protected, and the job checked before we leave." },
     ],
   } },
-  { type: "about:values", theme: "alt", data: {
+  { type: "about:values", theme: "default", data: {
     eyebrow: { text: "Why Monarch", variant: "text" },
     heading: `Why ${city} Property Owners Choose Monarch`,
     items: [
@@ -112,12 +112,9 @@ const fallbackSections = [
       { title: "One vendor for the whole property", body: "Wash, seal, windows, and gutters under one roof." },
     ],
   } },
-  { type: "gallery:before-after", theme: "default", data: {
-    eyebrow: { text: "Before & After", variant: "text" },
-    heading: `${city} ${svcTitle}, Before & After`,
-    columns: 1,
-    pairs: [],
-  } },
+  // No gallery:before-after here. With no pairs it fails validation, which is a
+  // loud error shim in dev and nothing at all in production — it only made the
+  // page look broken. Authored pages add it back once there are real photos.
   { type: "reviews:cards", theme: "alt", data: {
     eyebrow: { text: "Reviews", variant: "text" },
     heading: `What ${city} Customers Say`,
@@ -125,7 +122,7 @@ const fallbackSections = [
     area: city,
     limit: 3,
   } },
-  { type: "guarantee:callout", theme: "default", data: {
+  { type: "guarantee:callout", theme: "brand-secondary", data: {
     eyebrow: { text: "Our Guarantee", variant: "text" },
     heading: "The Monarch Standard",
     body: "We aim for a full, thorough clean on the first visit. If any surface we cleaned is not right, tell us and we come back to make it right. No fine print and no runaround.",
@@ -136,13 +133,13 @@ const fallbackSections = [
     heading: `${svcTitle} in ${city}: Common Questions`,
     service: faqTopic,
   } },
-  { type: "services:grid", theme: "default", data: {
+  { type: "services:grid", theme: "alt", data: {
     eyebrow: { text: "More Services", variant: "text" },
     heading: `Our Other Services in ${city}`,
     subheading: "Most properties need more than one thing cleaned. We handle it in one visit.",
     hrefBase: `/${areaSlug}`,
   } },
-  { type: "service-areas:chips", theme: "alt", data: {
+  { type: "service-areas:chips", theme: "muted", data: {
     eyebrow: { text: "Service Areas", variant: "text" },
     heading: "Serving the Treasure Valley",
   } },

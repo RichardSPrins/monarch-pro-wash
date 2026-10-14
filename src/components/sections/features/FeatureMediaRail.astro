@@ -53,10 +53,15 @@ const iconPaths: Record<string, string> = {
 };
 
 const hasRail = data?.image || stats.length > 0;
+
+// The checklist is optional. Gating the whole section on `items` meant a section
+// with a real heading, image and stats rendered as nothing at all the moment the
+// list was empty — which is how the homepage lost this band entirely.
+const hasContent = items.length > 0 || hasRail || Boolean(data?.heading || data?.subheading);
 ---
 
 {
-  items.length > 0 && (
+  hasContent && (
     <section
       class:list={["feature-media-rail section-wrapper section-py", `theme-${theme}`]}
     >
@@ -87,7 +92,7 @@ const hasRail = data?.image || stats.length > 0;
               </p>
             )}
 
-            <ul class="flex flex-col gap-5 list-none m-0 p-0 mt-1">
+            <ul class="flex flex-col gap-5 list-none m-0 p-0 mt-1" hidden={items.length === 0}>
               {items.map((item) => (
                 <li class="flex items-start gap-md">
                   <span class="rail-icon" aria-hidden="true">

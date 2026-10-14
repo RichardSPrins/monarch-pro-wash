@@ -78,10 +78,14 @@ const tail = hasRail ? sections.slice(end) : [];
      The rail gets its own scroll so a long list can never trap the page: it is
      capped to the viewport and scrolls internally, with overscroll containment
      so reaching its end doesn't start scrolling the page behind it. */
+  /* The shell sits on the LIGHT surface. This theme is dark-first (theme-default
+     is deep navy, theme-alt is the white break), and a long two-column reading
+     page wants white as its base with navy used deliberately for contrast. */
   .page-shell {
     display: grid;
     grid-template-columns: 1fr;
     gap: var(--t-gap-xl, 2rem);
+    background-color: var(--t-bg-alt);
   }
   .page-main { min-width: 0; }
   .page-aside { min-width: 0; }
@@ -106,11 +110,11 @@ const tail = hasRail ? sections.slice(end) : [];
       /* The rail scrolls often; keep the scrollbar unobtrusive. */
       scrollbar-width: thin;
     }
-    /* A section inside the shell can only paint its own column, so alternating
-       full-bleed theme bands stop making sense here — neutralise them and let
-       the page read as one editorial surface (this is what the Sol reference
-       does). The hero and closing CTA keep their bands; they sit outside. */
-    .page-main .section-wrapper { background-color: transparent; }
+    /* NOTE: do NOT neutralise section backgrounds here. The theme-* classes set
+       background AND text colour together, so stripping the background leaves a
+       light surface's dark ink sitting on the page's dark body — unreadable.
+       Sections paint their own surface; the rhythm is chosen in the template. */
+
     /* The shell already supplies the gutter and the max width, so the nested
        containers must not pad or cap again. */
     .page-main .section-container {

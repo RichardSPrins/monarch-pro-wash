@@ -52,7 +52,7 @@ const WHY_ITEMS = [
 
 const GUARANTEE: SectionConfig = {
   type: "guarantee:callout",
-  theme: "alt",
+  theme: "brand-secondary",
   data: {
     eyebrow: { text: "Our Guarantee", variant: "text" },
     heading: "The Monarch Standard",
@@ -89,7 +89,7 @@ export function buildServiceSections(service: Service): SectionConfig[] {
     },
     {
       type: "trust-bar:badges",
-      theme: "default",
+      theme: "alt",
       // foundingYear 2026 makes "years in business" zero, which is falsy, so that
       // badge correctly hides for a company founded this year.
       data: { foundingYear: 2026, familyOwned: true, insured: true },
@@ -103,13 +103,11 @@ export function buildServiceSections(service: Service): SectionConfig[] {
         body: `<p>${desc}</p><p>Every job starts by reading the surface and matching the method to it, so you get a thorough clean without the damage that comes from treating every surface the same.</p>`,
       },
     },
-    { type: "process:horizontal", theme: "default", data: { eyebrow: { text: "The Process", variant: "text" }, heading: "How It Works", steps: PROCESS_STEPS } },
-    { type: "about:values", theme: "alt", data: { eyebrow: { text: "Why Monarch", variant: "text" }, heading: "Why Monarch", items: WHY_ITEMS } },
-    {
-      type: "gallery:before-after",
-      theme: "default",
-      data: { eyebrow: { text: "Before & After", variant: "text" }, heading: `${title}, Before & After`, columns: 1, pairs: [] },
-    },
+    { type: "process:horizontal", theme: "alt", data: { eyebrow: { text: "The Process", variant: "text" }, heading: "How It Works", steps: PROCESS_STEPS } },
+    { type: "about:values", theme: "default", data: { eyebrow: { text: "Why Monarch", variant: "text" }, heading: "Why Monarch", items: WHY_ITEMS } },
+    // No gallery:before-after in the generated page: with no pairs it fails
+    // validation, which is a loud shim in dev and nothing in prod. Authored
+    // pages add it back once there are real photos.
     {
       type: "reviews:cards",
       theme: "alt",
@@ -118,12 +116,12 @@ export function buildServiceSections(service: Service): SectionConfig[] {
     GUARANTEE,
     {
       type: "faqs:accordion",
-      theme: "default",
+      theme: "alt",
       // `service` is a `topics` TERM slug, which for service pages equals the
       // service slug. Omitting it would show only the untagged general FAQs.
       data: { eyebrow: { text: "FAQs", variant: "text" }, heading: `${title}: Common Questions`, service: service.data.slug },
     },
-    { type: "service-areas:grid", theme: "alt", data: { eyebrow: { text: "Service Areas", variant: "text" }, heading: "Serving the Treasure Valley" } },
+    { type: "service-areas:grid", theme: "muted", data: { eyebrow: { text: "Service Areas", variant: "text" }, heading: "Serving the Treasure Valley" } },
     {
       type: "cta:banner",
       theme: "primary",
@@ -161,7 +159,7 @@ export function buildTownHubSections(area: ServiceArea, opts: { linkToSia: boole
         ctas: [{ label: "Get a Free Quote", href: "/contact", variant: "primary" }],
       },
     },
-    { type: "trust-bar:badges", theme: "default", data: { foundingYear: 2026, familyOwned: true, insured: true } },
+    { type: "trust-bar:badges", theme: "alt", data: { foundingYear: 2026, familyOwned: true, insured: true } },
     {
       type: "content:rich-text",
       theme: "alt",
@@ -172,7 +170,7 @@ export function buildTownHubSections(area: ServiceArea, opts: { linkToSia: boole
     },
     {
       type: "services:grid",
-      theme: "default",
+      theme: "alt",
       data: {
         eyebrow: { text: "What We Do", variant: "text" },
         heading: `Our Services in ${city}`,
@@ -189,8 +187,8 @@ export function buildTownHubSections(area: ServiceArea, opts: { linkToSia: boole
       data: { eyebrow: { text: "Reviews", variant: "text" }, heading: `What ${city} Customers Say`, filter: "all", area: city, limit: 3 },
     },
     GUARANTEE,
-    { type: "faqs:accordion", theme: "default", data: { eyebrow: { text: "FAQs", variant: "text" }, heading: "Common Questions" } },
-    { type: "service-areas:chips", theme: "alt", data: { eyebrow: { text: "Service Areas", variant: "text" }, heading: "Serving the Treasure Valley" } },
+    { type: "faqs:accordion", theme: "alt", data: { eyebrow: { text: "FAQs", variant: "text" }, heading: "Common Questions" } },
+    { type: "service-areas:chips", theme: "muted", data: { eyebrow: { text: "Service Areas", variant: "text" }, heading: "Serving the Treasure Valley" } },
     {
       type: "cta:banner",
       theme: "primary",

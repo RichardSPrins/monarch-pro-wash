@@ -5,7 +5,9 @@
  * name as text (styled by the parent link). Keep the wrapping <a href="/"> on
  * the caller so the logo stays a home link with its own aria-label.
  */
+import { Image } from "astro:assets";
 import type { BusinessData } from "@/lib/schema";
+import { isEmdashMedia, toOptimizableMediaUrl } from "@/lib/images";
 
 interface Props {
   business: BusinessData;
@@ -20,15 +22,44 @@ const {
   class: className = "w-auto h-auto max-w-[180px] max-h-11 object-contain",
   eager = false,
 } = Astro.props;
+
+const logo = business.logo;
+
+// The logo is CMS media in R2, and the stored original is huge (the Monarch
+// horizontal mark is 2932px wide for a ~180px slot). EmDash's image endpoint can
+// resize it from the bucket, but only if Astro is handed an absolute URL that
+// matches its remote patterns. Width/height come from the media record, so no
+// inferSize round-trip is needed.
+const optimizable =
+  logo?.url && isEmdashMedia(logo.url) && logo.width && logo.height
+    ? toOptimizableMediaUrl(logo.url)
+    : null;
+
+// Render at 2x the largest CSS slot (180px) for crisp HiDPI without shipping 2932px.
+const RENDER_WIDTH = 360;
+const renderHeight =
+  optimizable && logo?.width && logo?.height
+    ? Math.round((logo.height / logo.width) * RENDER_WIDTH)
+    : undefined;
 ---
 
 {
-  business.logo ? (
+  optimizable && renderHeight ? (
+    <Image
+      src={optimizable}
+      alt={logo!.alt ?? business.businessName}
+      width={RENDER_WIDTH}
+      height={renderHeight}
+      class={className}
+      loading={eager ? "eager" : "lazy"}
+      decoding="async"
+    />
+  ) : logo ? (
     <img
-      src={business.logo.url}
-      alt={business.logo.alt ?? business.businessName}
-      width={business.logo.width}
-      height={business.logo.height}
+      src={logo.url}
+      alt={logo.alt ?? business.businessName}
+      width={logo.width}
+      height={logo.height}
       class={className}
       loading={eager ? "eager" : "lazy"}
       decoding="async"

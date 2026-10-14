@@ -25,6 +25,46 @@ const assets = import.meta.glob<{ default: ImageMetadata }>(
   { eager: true },
 );
 
+/**
+ * EmDash serves CMS media from R2 at this path. Images under it are NOT inert
+ * public files: `@emdash-cms/cloudflare/image-endpoint` reads the bytes straight
+ * from the R2 binding and resizes them with the Cloudflare IMAGES binding, so
+ * they can be optimized exactly like a bundled asset.
+ */
+export const EMDASH_MEDIA_PREFIX = "/_emdash/api/media/file/";
+
+/** Is this an EmDash CMS media URL (relative or absolute)? */
+export function isEmdashMedia(src?: string): boolean {
+  if (!src) return false;
+  try {
+    return new URL(src, "http://localhost").pathname.startsWith(EMDASH_MEDIA_PREFIX);
+  } catch {
+    return false;
+  }
+}
+
+/**
+ * Absolutize an EmDash media URL against the site origin.
+ *
+ * Astro only optimizes a remote image when `isRemoteAllowed()` passes, and that
+ * starts with `URL.canParse(src)` — a site-relative path fails immediately and
+ * is handed back untouched. EmDash registers a remote pattern for
+ * `{site}/_emdash/api/media/file/**`, so the absolute form is what makes the
+ * optimizer engage. Returns the input unchanged when there's no site origin.
+ *
+ * Defaults to `import.meta.env.SITE` (the `site` from astro.config) so callers
+ * don't have to thread `Astro.site` through every component that renders an image.
+ */
+export function toOptimizableMediaUrl(src: string, site?: URL | string): string {
+  const origin = site ?? import.meta.env.SITE;
+  if (!origin) return src;
+  try {
+    return new URL(src, origin).href;
+  } catch {
+    return src;
+  }
+}
+
 function normalize(src: string): string {
   if (src.startsWith("@/")) return src.replace(/^@\//, "/src/");
   if (src.startsWith("src/")) return "/" + src;
@@ -59,11 +99,31 @@ export function isLocal(img: ResolvedImage): img is ImageMetadata {
  */
 export async function getBackgroundImage(
   src: string | undefined,
-  opts: { width?: number; format?: "webp" | "avif" | "jpeg" } = {},
+  opts: { width?: number; format?: "webp" | "avif" | "jpeg"; site?: URL | string } = {},
 ): Promise<string | undefined> {
   const resolved = resolveImage(src);
   if (!resolved) return undefined;
-  if (typeof resolved === "string") return resolved;
+
+  if (typeof resolved === "string") {
+    // CMS media can be optimized (EmDash resizes it from R2); other remote and
+    // public/ URLs genuinely can't be, so they pass through as-is.
+    if (!isEmdashMedia(resolved)) return resolved;
+    try {
+      const img = await getImage({
+        src: toOptimizableMediaUrl(resolved, opts.site),
+        width: opts.width ?? 1920,
+        format: opts.format ?? "webp",
+        // Dimensions aren't carried in section data, and a hero is too large to
+        // ship unresized; inferSize lets the optimizer read them from the bytes.
+        inferSize: true,
+      });
+      return img.src;
+    } catch {
+      // Never let an un-optimizable image blank out a hero background.
+      return resolved;
+    }
+  }
+
   const img = await getImage({
     src: resolved,
     width: opts.width ?? 1920,

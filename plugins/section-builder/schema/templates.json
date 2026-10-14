@@ -1,10 +1,10 @@
 {
   "hero:minimal": {
-    "headline": "About Peak Roofing Co",
+    "headline": "About Monarch Pro Wash",
     "subheadline": "Helping Boise homeowners with trusted roofing services since 2019.",
     "cta": {
       "label": "Call Now",
-      "href": "tel:2085550147"
+      "href": "tel:+14582097735"
     },
     "secondaryCta": {
       "label": "Get a Free Quote",
@@ -23,10 +23,10 @@
       "variant": "text"
     },
     "heading": "Family-Owned, Locally Trusted",
-    "body": "Peak Roofing Co was founded in 2019 with a simple goal: give Treasure Valley homeowners roofing they can count on, from honest estimates to clean, on-time work. We're licensed, insured, and proud to treat every roof like it's our own.",
+    "body": "Monarch Pro Wash was founded in 2019 with a simple goal: give Treasure Valley homeowners roofing they can count on, from honest estimates to clean, on-time work. We're licensed, insured, and proud to treat every roof like it's our own.",
     "image": {
-      "src": "/src/assets/images/roofing-crew.jpg",
-      "alt": "The Peak Roofing Co crew"
+      "src": "",
+      "alt": "The Monarch Pro Wash crew"
     },
     "overlayText": "5-Star Rated on Google",
     "stats": [
@@ -36,7 +36,7 @@
         "description": "Serving the Treasure Valley since 2019"
       },
       {
-        "value": "500+",
+        "value": "",
         "label": "Roofs Completed",
         "description": "Across Boise, Meridian, and Nampa"
       },
@@ -53,10 +53,7 @@
   },
   "trust-bar:badges": {
     "foundingYear": 2019,
-    "googleRating": 4.9,
-    "reviewCount": 142,
-    "familyOwned": true,
-    "licensedInsured": true
+    "familyOwned": true
   },
   "reviews:cards": {
     "eyebrow": {
@@ -91,18 +88,17 @@
     "ratings": [
       {
         "platform": "Google",
-        "score": "4.9"
+        "score": ""
       },
       {
         "platform": "Facebook",
-        "score": "5.0"
+        "score": ""
       }
     ],
-    "combinedReviews": "240+ 5-star reviews",
     "showPhone": true,
     "trustBadges": [
       {
-        "text": "Licensed & Insured"
+        "text": "Fully Insured"
       },
       {
         "text": "Owner-Operated"
@@ -119,7 +115,7 @@
       }
     ],
     "backgroundImage": {
-      "src": "/images/roofing-crew.jpg",
+      "src": "",
       "overlayOpacity": 60
     }
   },
@@ -160,11 +156,11 @@
     },
     "heading": "Long-Form Content Block",
     "subheading": "For legal pages, SEO copy, and service detail.",
-    "body": "<p>A roof is one of the largest investments in your home, and choosing the right contractor matters. At Peak Roofing Co, we've spent years serving the Treasure Valley with honest estimates and clean, on-time work.</p><h3>What to expect</h3><ul><li>A free, no-pressure inspection</li><li>A detailed, itemized estimate</li><li>Licensed, insured crews</li></ul><blockquote>We treat every roof like it's our own.</blockquote><p>Ready to get started? <a href=\"/contact\">Request a free quote</a> and we'll respond within the hour.</p>"
+    "body": "<p>A roof is one of the largest investments in your home, and choosing the right contractor matters. At Monarch Pro Wash, we've spent years serving the Treasure Valley with honest estimates and clean, on-time work.</p><h3>What to expect</h3><ul><li>A free, no-pressure inspection</li><li>A detailed, itemized estimate</li><li>Insured crews</li></ul><blockquote>We treat every roof like it's our own.</blockquote><p>Ready to get started? <a href=\"/contact\">Request a free quote</a> and we'll respond within the hour.</p>"
   },
   "hero:full": {
     "headline": "hero:full",
-    "subheadline": "Full-viewport centered hero — bold brand landing.",
+    "subheadline": "Full-viewport centered hero \u2014 bold brand landing.",
     "backgroundImage": {
       "src": "",
       "overlayOpacity": 60
@@ -172,15 +168,15 @@
   },
   "hero:split-form": {
     "eyebrow": {
-      "text": "Roofing Specialists — Boise • Meridian • Nampa",
+      "text": "Roofing Specialists \u2014 Boise \u2022 Meridian \u2022 Nampa",
       "variant": "badge"
     },
     "heading": "Trusted Roof Repair in Boise, ID",
-    "subheading": "Fast response times, licensed and insured.",
+    "subheading": "Fast response times, Fully Insured.",
     "body": "Family-owned and operated. Competitive pricing, fast response, and a team that gets the job done right.",
     "trustBadges": [
       {
-        "text": "Licensed & Insured"
+        "text": "Fully Insured"
       },
       {
         "text": "Family Owned"
@@ -192,13 +188,13 @@
     "ctas": [
       {
         "label": "Get a Free Quote",
-        "href": "tel:2085550147",
+        "href": "tel:+14582097735",
         "variant": "primary"
       }
     ],
     "showPhone": true,
     "backgroundImage": {
-      "src": "/src/assets/images/landing.jpg",
+      "src": "",
       "overlayOpacity": 70,
       "focal": "center",
       "focalMobile": ""
@@ -221,7 +217,7 @@
     },
     "heading": "hero:video",
     "subheading": "Background video with overlay (poster fallback).",
-    "poster": "/src/assets/images/landing.jpg",
+    "poster": "",
     "showPhone": true,
     "ctas": [
       {
@@ -265,7 +261,7 @@
     "heading": "hero:stats",
     "subheading": "Hero with stat highlights below.",
     "backgroundImage": {
-      "src": "/src/assets/images/landing.jpg",
+      "src": "",
       "overlayOpacity": 65
     },
     "ctas": [
@@ -281,11 +277,11 @@
         "label": "Years"
       },
       {
-        "value": "500+",
+        "value": "",
         "label": "Roofs"
       },
       {
-        "value": "4.9",
+        "value": "",
         "label": "Rating"
       },
       {
@@ -303,7 +299,7 @@
     "subheading": "Content beside a large image.",
     "body": "Family-owned and operated, serving the Treasure Valley since 2019.",
     "image": {
-      "src": "/src/assets/images/roofing-crew.jpg",
+      "src": "",
       "alt": "Crew"
     },
     "imagePosition": "right",
@@ -329,7 +325,7 @@
     "heading": "hero:centered-card",
     "subheading": "Floating card over a background image.",
     "backgroundImage": {
-      "src": "/src/assets/images/landing.jpg",
+      "src": "",
       "overlayOpacity": 60
     },
     "showPhone": true,
@@ -395,17 +391,17 @@
         "label": "Years in business"
       },
       {
-        "value": "500+",
+        "value": "",
         "label": "Roofs replaced"
       },
       {
-        "value": "4.9",
+        "value": "",
         "label": "Google rating",
-        "description": "from 210+ reviews"
+        "description": ""
       },
       {
         "value": "100%",
-        "label": "Licensed & insured"
+        "label": "Fully Insured"
       }
     ],
     "backgroundImage": {
@@ -437,7 +433,7 @@
     "showPhone": true,
     "cardPosition": "left",
     "image": {
-      "src": "/src/assets/images/landing.jpg",
+      "src": "",
       "alt": "Finished roof"
     },
     "backgroundImage": {
@@ -453,18 +449,17 @@
       "variant": "text"
     },
     "heading": "Cleaner Home. **Zero Hassle.**",
-    "subheading": "Surface-matched washing that comes clean without the damage — booked in minutes, backed by our make-it-right guarantee.",
+    "subheading": "Surface-matched washing that comes clean without the damage \u2014 booked in minutes, backed by our make-it-right guarantee.",
     "ratings": [
       {
         "platform": "Google",
-        "score": "4.9"
+        "score": ""
       },
       {
         "platform": "Facebook",
-        "score": "5.0"
+        "score": ""
       }
     ],
-    "combinedReviews": "240+ 5-star reviews",
     "ctas": [
       {
         "label": "Get My Free Quote",
@@ -475,7 +470,7 @@
     "showPhone": true,
     "trustBadges": [
       {
-        "text": "Licensed & Insured"
+        "text": "Fully Insured"
       },
       {
         "text": "Owner-Operated"
@@ -485,7 +480,7 @@
       }
     ],
     "backgroundImage": {
-      "src": "/images/landing.jpg",
+      "src": "",
       "overlayOpacity": 52,
       "focal": "center",
       "focalMobile": ""
@@ -513,19 +508,19 @@
     ],
     "badges": [
       {
-        "icon": "🛡️",
-        "label": "Licensed & Insured"
+        "icon": "\ud83d\udee1\ufe0f",
+        "label": "Fully Insured"
       },
       {
-        "icon": "⭐",
-        "label": "4.9 on Google"
+        "icon": "\u2b50",
+        "label": ""
       },
       {
-        "icon": "🏆",
+        "icon": "\ud83c\udfc6",
         "label": "7+ Years"
       },
       {
-        "icon": "✅",
+        "icon": "\u2705",
         "label": "Free Estimates"
       }
     ],
@@ -579,11 +574,11 @@
         "label": "Years Experience"
       },
       {
-        "value": "500+",
+        "value": "",
         "label": "Roofs Completed"
       },
       {
-        "value": "4.9",
+        "value": "",
         "label": "Google Rating"
       },
       {
@@ -622,7 +617,7 @@
     "sources": [
       {
         "name": "Google",
-        "rating": 4.9,
+        "rating": 5,
         "count": 184
       },
       {
@@ -632,7 +627,7 @@
       },
       {
         "name": "Yelp",
-        "rating": 4.8,
+        "rating": 5,
         "count": 41
       }
     ]
@@ -644,7 +639,7 @@
     },
     "heading": "Trusted Across the Valley",
     "items": [
-      "Licensed & Insured",
+      "Fully Insured",
       "Family Owned",
       "5-Star Rated",
       "GAF Certified",
@@ -658,17 +653,17 @@
       "variant": "text"
     },
     "items": [
-      "Licensed & Insured",
+      "Fully Insured",
       "Family Owned",
       "5-Star Rated",
       "Free Estimates"
     ]
   },
   "trust-bar:rating-callout": {
-    "rating": 4.9,
+    "rating": 5,
     "count": 327,
     "sourceName": "Google",
-    "label": "Rated 4.9 by Boise homeowners",
+    "label": "",
     "cta": {
       "label": "Read Our Reviews",
       "href": "/reviews",
@@ -684,7 +679,7 @@
     "count": "2,400+",
     "suffix": "Treasure Valley homeowners since 2009",
     "points": [
-      "Licensed & insured in Idaho",
+      "Fully Insured in Idaho",
       "GAF Master Elite Contractor",
       "A+ BBB rated"
     ],
@@ -730,7 +725,7 @@
         "description": "Preferred Contractor Network"
       },
       {
-        "label": "BBB Accredited — A+",
+        "label": "BBB Accredited \u2014 A+",
         "description": "Better Business Bureau"
       },
       {
@@ -749,8 +744,8 @@
   },
   "trust-bar:guarantee-strip": {
     "seal": "10-Year Warranty",
-    "heading": "The Peak Roofing Promise",
-    "body": "Every roof we install is backed by our workmanship guarantee and a manufacturer-backed warranty — in writing.",
+    "heading": "The Monarch Pro Wash Promise",
+    "body": "Every roof we install is backed by our workmanship guarantee and a manufacturer-backed warranty \u2014 in writing.",
     "points": [
       "No hidden fees",
       "Free damage inspection",
@@ -798,7 +793,7 @@
     "heading": "Full-Service Roofing",
     "subheading": "Image beside service copy.",
     "image": {
-      "src": "/src/assets/images/roofing-crew.jpg",
+      "src": "",
       "alt": "Crew"
     },
     "imagePosition": "left",
@@ -813,7 +808,7 @@
       "variant": "text"
     },
     "heading": "Our Services",
-    "subheading": "Expandable rows — click to open."
+    "subheading": "Expandable rows \u2014 click to open."
   },
   "services:tabs": {
     "eyebrow": {
@@ -821,7 +816,7 @@
       "variant": "text"
     },
     "heading": "Our Services",
-    "subheading": "Tabbed — click a service."
+    "subheading": "Tabbed \u2014 click a service."
   },
   "services:icon-grid": {
     "eyebrow": {
@@ -936,7 +931,7 @@
       "variant": "text"
     },
     "heading": "Browse by Category",
-    "subheading": "One tab per category — click through the offerings."
+    "subheading": "One tab per category \u2014 click through the offerings."
   },
   "services:category-cards": {
     "eyebrow": {
@@ -968,7 +963,7 @@
     "heading": "Family-Owned, Locally Trusted",
     "body": "Founded in 2019 with a simple goal: give homeowners roofing they can count on, from honest estimates to clean, on-time work.",
     "image": {
-      "src": "/src/assets/images/roofing-crew.jpg",
+      "src": "",
       "alt": "Our crew"
     },
     "imagePosition": "right",
@@ -982,8 +977,8 @@
       "text": "about:stacked",
       "variant": "text"
     },
-    "heading": "About Peak Roofing Co",
-    "body": "Centered stacked story block — short brand intro for interior pages and about sections.",
+    "heading": "About Monarch Pro Wash",
+    "body": "Centered stacked story block \u2014 short brand intro for interior pages and about sections.",
     "cta": {
       "label": "Get a Free Quote",
       "href": "/contact"
@@ -1002,11 +997,11 @@
         "label": "Years Experience"
       },
       {
-        "value": "500+",
+        "value": "",
         "label": "Roofs Completed"
       },
       {
-        "value": "4.9",
+        "value": "",
         "label": "Google Rating"
       },
       {
@@ -1088,7 +1083,7 @@
     "heading": "Built for Idaho Weather",
     "body": "From Boise summers to Treasure Valley winters, we build roofs that hold up.",
     "image": {
-      "src": "/src/assets/images/landing.jpg",
+      "src": "",
       "alt": "Roof"
     },
     "cta": {
@@ -1102,12 +1097,12 @@
       "variant": "text"
     },
     "heading": "Meet the Owner",
-    "body": "I started Peak Roofing in 2019 to give Treasure Valley homeowners roofing they can actually trust — honest estimates, clean work, and a team that shows up.",
+    "body": "I started Monarch Pro Wash in 2019 to give Treasure Valley homeowners roofing they can actually trust \u2014 honest estimates, clean work, and a team that shows up.",
     "video": "https://www.youtube.com/watch?v=aqz-KE-bpKQ",
     "videoTitle": "Owner introduction",
     "name": "Marcus Reed",
     "role": "Founder & Lead Roofer",
-    "signature": "— Marcus",
+    "signature": "\u2014 Marcus",
     "imagePosition": "left",
     "cta": {
       "label": "Get a Free Quote",
@@ -1124,7 +1119,7 @@
       {
         "year": "2019",
         "title": "Founded in Boise",
-        "body": "Peak Roofing Co opens its doors."
+        "body": "Monarch Pro Wash opens its doors."
       },
       {
         "year": "2021",
@@ -1138,7 +1133,7 @@
       },
       {
         "year": "2026",
-        "title": "142+ 5-Star Reviews",
+        "title": "",
         "body": "Trusted by homeowners valley-wide."
       }
     ]
@@ -1148,12 +1143,12 @@
       "text": "about:owner-letter",
       "variant": "text"
     },
-    "heading": "Why I started Peak Roofing Co",
+    "heading": "Why I started Monarch Pro Wash",
     "subheading": "A quick note about how we do things a little differently around here.",
-    "body": "When I started Peak Roofing Co back in 2009, I had one truck, one ladder, and one rule: treat every roof like it's protecting my own family.\n\nFifteen years later, that hasn't changed. I still climb every roof before we quote it, I still answer the phone myself most mornings, and I still lose sleep when a storm rolls through the Treasure Valley.",
+    "body": "When I started Monarch Pro Wash back in 2009, I had one truck, one ladder, and one rule: treat every roof like it's protecting my own family.\n\nFifteen years later, that hasn't changed. I still climb every roof before we quote it, I still answer the phone myself most mornings, and I still lose sleep when a storm rolls through the Treasure Valley.",
     "image": {
-      "src": "/src/assets/images/roofing-crew.jpg",
-      "alt": "Marcus Bell, founder of Peak Roofing Co"
+      "src": "",
+      "alt": "Marcus Bell, founder of Monarch Pro Wash"
     },
     "signatureName": "Marcus Bell",
     "signatureRole": "Founder & Master Roofer",
@@ -1169,7 +1164,7 @@
       "variant": "text"
     },
     "heading": "15 years on Boise rooftops",
-    "subheading": "The work speaks for itself — here's what a decade and a half looks like.",
+    "subheading": "The work speaks for itself \u2014 here's what a decade and a half looks like.",
     "stats": [
       {
         "value": "2,400+",
@@ -1182,7 +1177,7 @@
         "description": "Locally owned since 2009"
       },
       {
-        "value": "4.9★",
+        "value": "",
         "label": "Google rating",
         "description": "From 600+ verified reviews"
       },
@@ -1194,16 +1189,16 @@
     ],
     "images": [
       {
-        "src": "/src/assets/images/landing.jpg",
-        "alt": "Peak Roofing crew installing shingles"
+        "src": "",
+        "alt": "Monarch Pro Wash crew installing shingles"
       },
       {
-        "src": "/src/assets/images/roofing-crew.jpg",
+        "src": "",
         "alt": "Completed asphalt shingle roof in Boise"
       },
       {
-        "src": "/src/assets/images/landing.jpg",
-        "alt": "Peak Roofing truck parked at a job site"
+        "src": "",
+        "alt": "Monarch Pro Wash truck parked at a job site"
       }
     ],
     "cta": {
@@ -1255,17 +1250,17 @@
     },
     "heading": "Rooted in Boise, built to last",
     "subheading": "Two generations of roofers, one Treasure Valley zip code.",
-    "body": "Peak Roofing Co started as a single truck and a ladder. Today we're the crew your neighbors call first — but we still answer the phone ourselves.",
+    "body": "Monarch Pro Wash started as a single truck and a ladder. Today we're the crew your neighbors call first \u2014 but we still answer the phone ourselves.",
     "image": {
-      "src": "/src/assets/images/roofing-crew.jpg",
+      "src": "",
       "alt": "Founder inspecting a roof on-site"
     },
     "imageBack": {
-      "src": "/src/assets/images/landing.jpg",
+      "src": "",
       "alt": "Boise neighborhood with freshly roofed homes"
     },
     "bullets": [
-      "Locally owned and operated — never a franchise",
+      "Locally owned and operated \u2014 never a franchise",
       "Every quote comes from an owner, not a salesperson",
       "We magnet-sweep for nails before we leave your yard"
     ],
@@ -1275,8 +1270,8 @@
       "variant": "primary"
     },
     "secondaryCta": {
-      "label": "Call (208) 555-0142",
-      "href": "tel:+12085550142",
+      "label": "Call (458) 209-7735",
+      "href": "tel:+14582097735",
       "variant": "outline"
     }
   },
@@ -1286,7 +1281,7 @@
       "variant": "text"
     },
     "heading": "Four promises we put in writing",
-    "subheading": "Every Peak Roofing Co project is backed by the same commitments — no fine print, no surprises.",
+    "subheading": "Every Monarch Pro Wash project is backed by the same commitments \u2014 no fine print, no surprises.",
     "items": [
       {
         "title": "An honest inspection, always",
@@ -1394,19 +1389,19 @@
     "heading": "Your Project Timeline",
     "steps": [
       {
-        "heading": "Day 1 — Inspection",
+        "heading": "Day 1 \u2014 Inspection",
         "body": "Free on-site assessment."
       },
       {
-        "heading": "Day 2 — Estimate",
+        "heading": "Day 2 \u2014 Estimate",
         "body": "Itemized, no-pressure quote."
       },
       {
-        "heading": "Day 3 — Install",
+        "heading": "Day 3 \u2014 Install",
         "body": "Certified crew, clean site."
       },
       {
-        "heading": "Day 4 — Walkthrough",
+        "heading": "Day 4 \u2014 Walkthrough",
         "body": "Final review with you."
       }
     ]
@@ -1438,11 +1433,11 @@
       "variant": "text"
     },
     "heading": "A Clear Path From Leak to Fixed",
-    "subheading": "No guesswork, no surprises — just four straightforward steps from your first call to a roof that's done right.",
+    "subheading": "No guesswork, no surprises \u2014 just four straightforward steps from your first call to a roof that's done right.",
     "steps": [
       {
         "heading": "Book Your Free Inspection",
-        "body": "Call Peak Roofing Co or request online and we schedule a visit within 24 hours."
+        "body": "Call Monarch Pro Wash or request online and we schedule a visit within 24 hours."
       },
       {
         "heading": "Detailed Roof Report",
@@ -1468,7 +1463,7 @@
     "steps": [
       {
         "heading": "We Answer, Every Time",
-        "body": "A real person picks up. Tell us what's going on and we'll get a truck out fast — even for emergencies."
+        "body": "A real person picks up. Tell us what's going on and we'll get a truck out fast \u2014 even for emergencies."
       },
       {
         "heading": "Free On-Site Estimate",
@@ -1476,7 +1471,7 @@
       },
       {
         "heading": "The Work Gets Done Right",
-        "body": "Licensed Idaho crews, premium materials, and a written workmanship warranty on every install."
+        "body": "Insured Idaho crews, premium materials, and a written workmanship warranty on every install."
       }
     ],
     "cta": {
@@ -1491,7 +1486,7 @@
       "variant": "text"
     },
     "heading": "From Storm Damage to Done in Days",
-    "subheading": "When a Boise storm hits, speed matters. Here's how fast we move once you call Peak Roofing Co.",
+    "subheading": "When a Boise storm hits, speed matters. Here's how fast we move once you call Monarch Pro Wash",
     "steps": [
       {
         "phase": "Day 1",
@@ -1506,7 +1501,7 @@
       {
         "phase": "Week 1",
         "heading": "Repairs Begin",
-        "body": "Materials ordered and crews scheduled — most jobs start within a few days."
+        "body": "Materials ordered and crews scheduled \u2014 most jobs start within a few days."
       },
       {
         "phase": "Done",
@@ -1521,7 +1516,7 @@
       "variant": "text"
     },
     "heading": "A Guided Sequence, Start to Finish",
-    "subheading": "You always know where you stand. Follow the same simple path every Peak Roofing customer takes.",
+    "subheading": "You always know where you stand. Follow the same simple path every Monarch Pro Wash customer takes.",
     "steps": [
       {
         "heading": "Request",
@@ -1533,11 +1528,11 @@
       },
       {
         "heading": "Quote",
-        "body": "Clear, written estimate — no pressure, no upsells."
+        "body": "Clear, written estimate \u2014 no pressure, no upsells."
       },
       {
         "heading": "Repair",
-        "body": "Licensed crews finish on schedule and clean up."
+        "body": "Insured crews finish on schedule and clean up."
       }
     ],
     "current": 4
@@ -1553,7 +1548,7 @@
     "steps": [
       {
         "heading": "Tell us what's wrong",
-        "body": "Call or send photos — we'll know how to help right away."
+        "body": "Call or send photos \u2014 we'll know how to help right away."
       },
       {
         "heading": "Get a free, honest estimate",
@@ -1584,7 +1579,7 @@
     "location": "Boise, ID",
     "rating": 5,
     "source": "Google",
-    "body": "Peak Roofing showed up the same day I called about a leak. Fixed in a few hours and the price was exactly what they quoted."
+    "body": "Monarch Pro Wash showed up the same day I called about a leak. Fixed in a few hours and the price was exactly what they quoted."
   },
   "reviews:video": {
     "eyebrow": {
@@ -1881,7 +1876,7 @@
       "variant": "text"
     },
     "heading": "Cities We Serve",
-    "subheading": "Fast, friendly local service across the region — find your city below.",
+    "subheading": "Fast, friendly local service across the region \u2014 find your city below.",
     "limit": 24
   },
   "service-areas:columns": {
@@ -1908,7 +1903,7 @@
       "variant": "text"
     },
     "heading": "See If You're In Our Zone",
-    "subheading": "Our coverage area at a glance — tap any city for details.",
+    "subheading": "Our coverage area at a glance \u2014 tap any city for details.",
     "limit": 18,
     "mapEmbedUrl": "https://maps.google.com/maps?q=Boise,ID&output=embed&z=9"
   },
@@ -1927,7 +1922,7 @@
       "variant": "text"
     },
     "heading": "About Our Process",
-    "bodyLeft": "<p>Every project starts with a free, no-pressure inspection. We document the condition of your roof and walk you through the options.</p><h3>Transparent Estimates</h3><p>You get a detailed, itemized quote — no hidden fees.</p>",
+    "bodyLeft": "<p>Every project starts with a free, no-pressure inspection. We document the condition of your roof and walk you through the options.</p><h3>Transparent Estimates</h3><p>You get a detailed, itemized quote \u2014 no hidden fees.</p>",
     "bodyRight": "<p>Our crews are licensed, insured, and background-checked. We install to manufacturer spec and clean up thoroughly.</p><ul><li>Premium materials</li><li>Written warranty</li><li>On-time completion</li></ul>"
   },
   "content:image-text": {
@@ -1938,7 +1933,7 @@
     "heading": "Craftsmanship That Shows",
     "body": "<p>We don't cut corners. From underlayment to ventilation, every layer is installed to last through Idaho's seasons.</p><ul><li>Certified installers</li><li>Manufacturer-backed warranties</li></ul>",
     "image": {
-      "src": "/src/assets/images/roofing-crew.jpg",
+      "src": "",
       "alt": "Crew"
     },
     "imagePosition": "right",
@@ -1966,7 +1961,7 @@
     },
     "quote": "A roof is only as good as the crew that installs it.",
     "attribution": "Marcus Reed",
-    "role": "Founder, Peak Roofing Co"
+    "role": "Founder, Monarch Pro Wash"
   },
   "content:cards": {
     "eyebrow": {
@@ -1995,10 +1990,10 @@
       "text": "content:lead-article",
       "variant": "text"
     },
-    "heading": "Why Boise homeowners trust Peak Roofing Co",
+    "heading": "Why Boise homeowners trust Monarch Pro Wash",
     "subheading": "Family-owned, GAF-certified, and built on 18 years of Treasure Valley roofs.",
-    "lead": "When a hailstorm rolls off the Boise Foothills, the difference between a quick patch and a lasting repair comes down to who is on your roof — and Peak Roofing Co has been the name Ada County families call first since 2007.",
-    "body": "<p>We started with a single truck and a simple promise: treat every roof like it was over our own family's heads. Today our crews replace and repair hundreds of roofs a year across Boise, Meridian, Eagle, and Nampa — and that promise hasn't changed.</p><h3>Idaho weather is hard on roofs</h3><p>Between summer UV, sudden hailstorms, and heavy winter snow load, a Treasure Valley roof works harder than most. We install architectural shingles rated for our climate and back every full replacement with a workmanship warranty that actually means something.</p><p>From the first free inspection to the final cleanup with our magnetic nail sweep, you deal with real people who live and work in this valley.</p>",
+    "lead": "When a hailstorm rolls off the Boise Foothills, the difference between a quick patch and a lasting repair comes down to who is on your roof \u2014 and Monarch Pro Wash has been the name Ada County families call first since 2007.",
+    "body": "<p>We started with a single truck and a simple promise: treat every roof like it was over our own family's heads. Today our crews replace and repair hundreds of roofs a year across Boise, Meridian, Eagle, and Nampa \u2014 and that promise hasn't changed.</p><h3>Idaho weather is hard on roofs</h3><p>Between summer UV, sudden hailstorms, and heavy winter snow load, a Treasure Valley roof works harder than most. We install architectural shingles rated for our climate and back every full replacement with a workmanship warranty that actually means something.</p><p>From the first free inspection to the final cleanup with our magnetic nail sweep, you deal with real people who live and work in this valley.</p>",
     "cta": {
       "label": "Book a free roof inspection",
       "href": "/contact",
@@ -2016,8 +2011,8 @@
       "variant": "text"
     },
     "heading": "What to expect during your roof replacement",
-    "subheading": "A day-by-day walkthrough of a typical Peak Roofing Co install.",
-    "body": "<h3>Before we start</h3><p>Every project begins with a free, no-pressure inspection. We document the condition of your roof with photos, measure it precisely, and walk you through your options and financing — all before you sign anything.</p><h3>Tear-off day</h3><p>Our crew arrives early, protects your landscaping and siding, and strips the old roofing down to the deck.</p><h3>Installation</h3><p>We install ice-and-water shield, synthetic underlayment, and your chosen architectural shingles to GAF spec. Most Boise-area homes are completed in a single day.</p><h3>Cleanup & final walkthrough</h3><p>We run a magnetic sweep for stray nails, haul away every scrap, and do a final walkthrough with you before registering your warranty.</p>",
+    "subheading": "A day-by-day walkthrough of a typical Monarch Pro Wash install.",
+    "body": "<h3>Before we start</h3><p>Every project begins with a free, no-pressure inspection. We document the condition of your roof with photos, measure it precisely, and walk you through your options and financing \u2014 all before you sign anything.</p><h3>Tear-off day</h3><p>Our crew arrives early, protects your landscaping and siding, and strips the old roofing down to the deck.</p><h3>Installation</h3><p>We install ice-and-water shield, synthetic underlayment, and your chosen architectural shingles to GAF spec. Most Boise-area homes are completed in a single day.</p><h3>Cleanup & final walkthrough</h3><p>We run a magnetic sweep for stray nails, haul away every scrap, and do a final walkthrough with you before registering your warranty.</p>",
     "sidebarTitle": "On this page",
     "links": [
       {
@@ -2049,7 +2044,7 @@
       "variant": "text"
     },
     "heading": "Nearly two decades on Treasure Valley roofs",
-    "bodyTop": "<p>Peak Roofing Co isn't a storm-chaser passing through after the next big hail event. We're a local, licensed Idaho contractor with deep roots in Boise, Meridian, and Eagle — and the track record to prove it.</p>",
+    "bodyTop": "<p>Monarch Pro Wash isn't a storm-chaser passing through after the next big hail event. We're a local, licensed Idaho contractor with deep roots in Boise, Meridian, and Eagle \u2014 and the track record to prove it.</p>",
     "stats": [
       {
         "value": "3,200+",
@@ -2057,7 +2052,7 @@
         "description": "Across Ada & Canyon County since 2007"
       },
       {
-        "value": "4.9★",
+        "value": "",
         "label": "Average rating",
         "description": "From 480+ verified Google reviews"
       },
@@ -2074,12 +2069,12 @@
       "text": "content:quote-band",
       "variant": "text"
     },
-    "quote": "I grew up in Boise, and I roof every house like it belongs to someone I'll run into at the grocery store — because usually it does.",
+    "quote": "I grew up in Boise, and I roof every house like it belongs to someone I'll run into at the grocery store \u2014 because usually it does.",
     "attribution": "Marcus Delgado",
-    "role": "Founder & Owner, Peak Roofing Co",
+    "role": "Founder & Owner, Monarch Pro Wash",
     "image": {
-      "src": "/src/assets/images/roofing-crew.jpg",
-      "alt": "Marcus Delgado, founder of Peak Roofing Co, on a Boise job site"
+      "src": "",
+      "alt": "Marcus Delgado, founder of Monarch Pro Wash, on a Boise job site"
     },
     "imagePosition": "left",
     "cta": {
@@ -2110,7 +2105,7 @@
       },
       {
         "question": "Do you offer financing?",
-        "answer": "<p>Yes — we offer flexible monthly payment plans with quick approval.</p>"
+        "answer": "<p>Yes \u2014 we offer flexible monthly payment plans with quick approval.</p>"
       }
     ],
     "cta": {
@@ -2129,32 +2124,32 @@
     "columns": 3,
     "images": [
       {
-        "src": "/src/assets/images/landing.jpg",
+        "src": "",
         "alt": "Roof",
         "caption": "Meridian, ID"
       },
       {
-        "src": "/src/assets/images/roofing-crew.jpg",
+        "src": "",
         "alt": "Crew",
         "caption": "Boise, ID"
       },
       {
-        "src": "/src/assets/images/landing.jpg",
+        "src": "",
         "alt": "Roof",
         "caption": "Nampa, ID"
       },
       {
-        "src": "/src/assets/images/roofing-crew.jpg",
+        "src": "",
         "alt": "Crew",
         "caption": "Eagle, ID"
       },
       {
-        "src": "/src/assets/images/landing.jpg",
+        "src": "",
         "alt": "Roof",
         "caption": "Caldwell, ID"
       },
       {
-        "src": "/src/assets/images/roofing-crew.jpg",
+        "src": "",
         "alt": "Crew",
         "caption": "Kuna, ID"
       }
@@ -2170,9 +2165,9 @@
     "columns": 1,
     "pairs": [
       {
-        "before": "/src/assets/images/landing.jpg",
-        "after": "/src/assets/images/roofing-crew.jpg",
-        "label": "Full roof replacement — Boise, ID",
+        "before": "",
+        "after": "",
+        "label": "Full roof replacement \u2014 Boise, ID",
         "alt": "Roof project"
       }
     ]
@@ -2187,20 +2182,20 @@
     "columns": 3,
     "pairs": [
       {
-        "before": "/src/assets/images/landing.jpg",
-        "after": "/src/assets/images/roofing-crew.jpg",
+        "before": "",
+        "after": "",
         "label": "Meridian, ID",
         "alt": "Project 1"
       },
       {
-        "before": "/src/assets/images/roofing-crew.jpg",
-        "after": "/src/assets/images/landing.jpg",
+        "before": "",
+        "after": "",
         "label": "Nampa, ID",
         "alt": "Project 2"
       },
       {
-        "before": "/src/assets/images/landing.jpg",
-        "after": "/src/assets/images/roofing-crew.jpg",
+        "before": "",
+        "after": "",
         "label": "Eagle, ID",
         "alt": "Project 3"
       }
@@ -2215,32 +2210,32 @@
     "subheading": "Masonry layout + lightbox.",
     "images": [
       {
-        "src": "/src/assets/images/landing.jpg",
+        "src": "",
         "alt": "Roof",
         "caption": "Boise"
       },
       {
-        "src": "/src/assets/images/roofing-crew.jpg",
+        "src": "",
         "alt": "Crew",
         "caption": "Meridian"
       },
       {
-        "src": "/src/assets/images/landing.jpg",
+        "src": "",
         "alt": "Roof",
         "caption": "Nampa"
       },
       {
-        "src": "/src/assets/images/roofing-crew.jpg",
+        "src": "",
         "alt": "Crew",
         "caption": "Eagle"
       },
       {
-        "src": "/src/assets/images/landing.jpg",
+        "src": "",
         "alt": "Roof",
         "caption": "Caldwell"
       },
       {
-        "src": "/src/assets/images/roofing-crew.jpg",
+        "src": "",
         "alt": "Crew",
         "caption": "Kuna"
       }
@@ -2255,19 +2250,19 @@
     "subheading": "Swipe through photos.",
     "images": [
       {
-        "src": "/src/assets/images/landing.jpg",
+        "src": "",
         "alt": "Roof",
-        "caption": "Full replacement — Boise"
+        "caption": "Full replacement \u2014 Boise"
       },
       {
-        "src": "/src/assets/images/roofing-crew.jpg",
+        "src": "",
         "alt": "Crew",
-        "caption": "Crew on site — Meridian"
+        "caption": "Crew on site \u2014 Meridian"
       },
       {
-        "src": "/src/assets/images/landing.jpg",
+        "src": "",
         "alt": "Roof",
-        "caption": "Repair — Nampa"
+        "caption": "Repair \u2014 Nampa"
       }
     ]
   },
@@ -2280,17 +2275,17 @@
     "subheading": "Click a thumbnail to swap.",
     "images": [
       {
-        "src": "/src/assets/images/landing.jpg",
+        "src": "",
         "alt": "Finished roof",
         "caption": "Finished roof"
       },
       {
-        "src": "/src/assets/images/roofing-crew.jpg",
+        "src": "",
         "alt": "Crew at work",
         "caption": "Crew at work"
       },
       {
-        "src": "/src/assets/images/landing.jpg",
+        "src": "",
         "alt": "Detail shot",
         "caption": "Detail shot"
       }
@@ -2305,25 +2300,25 @@
     "subheading": "Filter the gallery.",
     "images": [
       {
-        "src": "/src/assets/images/landing.jpg",
+        "src": "",
         "alt": "Repair",
         "caption": "Leak repair",
         "category": "Repairs"
       },
       {
-        "src": "/src/assets/images/roofing-crew.jpg",
+        "src": "",
         "alt": "Replacement",
         "caption": "Full replacement",
         "category": "Replacements"
       },
       {
-        "src": "/src/assets/images/landing.jpg",
+        "src": "",
         "alt": "Replacement",
         "caption": "New roof",
         "category": "Replacements"
       },
       {
-        "src": "/src/assets/images/roofing-crew.jpg",
+        "src": "",
         "alt": "Gutters",
         "caption": "Gutter install",
         "category": "Gutters"
@@ -2339,37 +2334,37 @@
     "handle": "peakroofingco",
     "images": [
       {
-        "src": "/src/assets/images/landing.jpg",
+        "src": "",
         "alt": "Post",
         "caption": "New roof day"
       },
       {
-        "src": "/src/assets/images/roofing-crew.jpg",
+        "src": "",
         "alt": "Post",
         "caption": "Crew life"
       },
       {
-        "src": "/src/assets/images/landing.jpg",
+        "src": "",
         "alt": "Post"
       },
       {
-        "src": "/src/assets/images/roofing-crew.jpg",
+        "src": "",
         "alt": "Post"
       },
       {
-        "src": "/src/assets/images/landing.jpg",
+        "src": "",
         "alt": "Post"
       },
       {
-        "src": "/src/assets/images/roofing-crew.jpg",
+        "src": "",
         "alt": "Post"
       },
       {
-        "src": "/src/assets/images/landing.jpg",
+        "src": "",
         "alt": "Post"
       },
       {
-        "src": "/src/assets/images/roofing-crew.jpg",
+        "src": "",
         "alt": "Post"
       }
     ]
@@ -2383,29 +2378,29 @@
     "subheading": "A look at recent installs and tear-offs across the Treasure Valley.",
     "images": [
       {
-        "src": "/src/assets/images/roofing-crew.jpg",
-        "alt": "Peak Roofing crew installing architectural shingles",
-        "caption": "Full architectural shingle re-roof — Boise Bench"
+        "src": "",
+        "alt": "Monarch Pro Wash crew installing architectural shingles",
+        "caption": "Full architectural shingle re-roof \u2014 Boise Bench"
       },
       {
-        "src": "/src/assets/images/landing.jpg",
+        "src": "",
         "alt": "Completed standing-seam metal roof",
-        "caption": "Standing-seam metal roof — Eagle, ID"
+        "caption": "Standing-seam metal roof \u2014 Eagle, ID"
       },
       {
-        "src": "/src/assets/images/roofing-crew.jpg",
+        "src": "",
         "alt": "Crew replacing storm-damaged roof",
-        "caption": "Storm-damage tear-off & replace — Meridian"
+        "caption": "Storm-damage tear-off & replace \u2014 Meridian"
       },
       {
-        "src": "/src/assets/images/landing.jpg",
+        "src": "",
         "alt": "New roof on a Boise home at dusk",
-        "caption": "New construction roof — North End"
+        "caption": "New construction roof \u2014 North End"
       },
       {
-        "src": "/src/assets/images/roofing-crew.jpg",
-        "alt": "Peak Roofing team on a finished roof",
-        "caption": "Class 4 impact-resistant upgrade — Nampa"
+        "src": "",
+        "alt": "Monarch Pro Wash team on a finished roof",
+        "caption": "Class 4 impact-resistant upgrade \u2014 Nampa"
       }
     ]
   },
@@ -2419,37 +2414,37 @@
     "columns": 3,
     "images": [
       {
-        "src": "/src/assets/images/roofing-crew.jpg",
+        "src": "",
         "alt": "Architectural shingle roof in Boise Bench",
         "caption": "Bench Bungalow Re-Roof",
         "category": "Asphalt Shingle"
       },
       {
-        "src": "/src/assets/images/landing.jpg",
+        "src": "",
         "alt": "Standing-seam metal roof in Eagle",
         "caption": "Eagle Hillside Residence",
         "category": "Standing-Seam Metal"
       },
       {
-        "src": "/src/assets/images/roofing-crew.jpg",
+        "src": "",
         "alt": "Storm damage roof replacement in Meridian",
         "caption": "Meridian Storm Restoration",
         "category": "Insurance Claim"
       },
       {
-        "src": "/src/assets/images/landing.jpg",
+        "src": "",
         "alt": "New construction roof in the North End",
         "caption": "North End New Build",
         "category": "New Construction"
       },
       {
-        "src": "/src/assets/images/roofing-crew.jpg",
+        "src": "",
         "alt": "Flat roof recoat on a Nampa commercial building",
         "caption": "Nampa Commercial Recoat",
         "category": "Flat / TPO"
       },
       {
-        "src": "/src/assets/images/landing.jpg",
+        "src": "",
         "alt": "Class 4 impact-resistant shingle upgrade",
         "caption": "Kuna Impact-Resistant Upgrade",
         "category": "Class 4 Shingle"
@@ -2465,16 +2460,16 @@
     "subheading": "Two of our favorite recent transformations.",
     "images": [
       {
-        "src": "/src/assets/images/landing.jpg",
+        "src": "",
         "alt": "Standing-seam metal roof on an Eagle hillside home",
         "caption": "A full tear-off and standing-seam metal install engineered for 50+ years of Idaho weather.",
-        "category": "Standing-Seam Metal — Eagle"
+        "category": "Standing-Seam Metal \u2014 Eagle"
       },
       {
-        "src": "/src/assets/images/roofing-crew.jpg",
+        "src": "",
         "alt": "Architectural shingle re-roof in the Boise Bench",
         "caption": "Storm-damaged roof rebuilt in two days with GAF Timberline HDZ shingles.",
-        "category": "Architectural Shingle — Boise Bench"
+        "category": "Architectural Shingle \u2014 Boise Bench"
       }
     ]
   },
@@ -2484,30 +2479,30 @@
       "variant": "text"
     },
     "heading": "Snapshots From the Crew",
-    "subheading": "Real photos our team snaps on the roof — no stock imagery.",
+    "subheading": "Real photos our team snaps on the roof \u2014 no stock imagery.",
     "images": [
       {
-        "src": "/src/assets/images/roofing-crew.jpg",
+        "src": "",
         "alt": "Crew laying shingles on a sunny morning",
         "caption": "Early start in Meridian"
       },
       {
-        "src": "/src/assets/images/landing.jpg",
+        "src": "",
         "alt": "Finished metal roof catching the sunset",
         "caption": "Golden hour in Eagle"
       },
       {
-        "src": "/src/assets/images/roofing-crew.jpg",
+        "src": "",
         "alt": "Team posing on a completed roof",
         "caption": "Wrapped it before the storm"
       },
       {
-        "src": "/src/assets/images/landing.jpg",
+        "src": "",
         "alt": "New roof on a North End home",
         "caption": "North End, day two"
       },
       {
-        "src": "/src/assets/images/roofing-crew.jpg",
+        "src": "",
         "alt": "Detail of ridge vent installation",
         "caption": "Ridge vent going in"
       }
@@ -2527,31 +2522,31 @@
     },
     "images": [
       {
-        "src": "/src/assets/images/roofing-crew.jpg",
+        "src": "",
         "alt": "Architectural shingle re-roof",
         "caption": "Full architectural shingle re-roof",
         "category": "Boise Bench, ID"
       },
       {
-        "src": "/src/assets/images/landing.jpg",
+        "src": "",
         "alt": "Standing-seam metal roof",
         "caption": "Standing-seam metal install",
         "category": "Eagle, ID"
       },
       {
-        "src": "/src/assets/images/roofing-crew.jpg",
+        "src": "",
         "alt": "Storm damage replacement",
         "caption": "Storm-damage tear-off & replace",
         "category": "Meridian, ID"
       },
       {
-        "src": "/src/assets/images/landing.jpg",
+        "src": "",
         "alt": "New construction roof",
         "caption": "New construction roof",
         "category": "North End, Boise"
       },
       {
-        "src": "/src/assets/images/roofing-crew.jpg",
+        "src": "",
         "alt": "Class 4 shingle upgrade",
         "caption": "Class 4 impact-resistant upgrade",
         "category": "Nampa, ID"
@@ -2625,7 +2620,7 @@
       "variant": "text"
     },
     "heading": "Prefer to Talk?",
-    "subheading": "Call us — we answer fast.",
+    "subheading": "Call us \u2014 we answer fast.",
     "showPhone": true,
     "cta": {
       "label": "Or request a quote online",
@@ -2641,7 +2636,7 @@
     "heading": "See the Difference Quality Makes",
     "body": "Book a free inspection and get an honest, itemized estimate.",
     "image": {
-      "src": "/src/assets/images/roofing-crew.jpg",
+      "src": "",
       "alt": "Crew"
     },
     "imagePosition": "right",
@@ -2657,11 +2652,11 @@
       "variant": "text"
     },
     "heading": "Roofing Tips & Seasonal Offers",
-    "subheading": "Join our list — no spam, ever.",
+    "subheading": "Join our list \u2014 no spam, ever.",
     "submitLabel": "Subscribe"
   },
   "cta:sticky-bar": {
-    "text": "cta:sticky-bar — Free roofing estimate, no obligation.",
+    "text": "cta:sticky-bar \u2014 Free roofing estimate, no obligation.",
     "cta": {
       "label": "Get a Quote",
       "href": "/contact"
@@ -2683,8 +2678,8 @@
       "variant": "primary"
     },
     "secondaryCta": {
-      "label": "Call (208) 555-0142",
-      "href": "tel:+12085550142",
+      "label": "Call (458) 209-7735",
+      "href": "tel:+14582097735",
       "variant": "outline"
     }
   },
@@ -2694,10 +2689,10 @@
       "variant": "text"
     },
     "heading": "Pick the Path That Fits Your Roof",
-    "subheading": "Whether it's an emergency leak or long-term planning, Peak Roofing Co has a next step for you.",
+    "subheading": "Whether it's an emergency leak or long-term planning, Monarch Pro Wash has a next step for you.",
     "paths": [
       {
-        "icon": "🚨",
+        "icon": "\ud83d\udea8",
         "title": "I Have an Active Leak",
         "body": "Same-day emergency tarping and repair crews across the Treasure Valley. We stop the water first, then fix it right.",
         "cta": {
@@ -2707,7 +2702,7 @@
         }
       },
       {
-        "icon": "📋",
+        "icon": "\ud83d\udccb",
         "title": "I'm Planning a Replacement",
         "body": "Free, no-pressure estimate with photos, material options, and financing built for Boise homeowners.",
         "cta": {
@@ -2724,10 +2719,10 @@
       "variant": "text"
     },
     "heading": "A Roof Built for Idaho's Toughest Weather",
-    "subheading": "From Boise foothills wind to Meridian hail, Peak Roofing Co installs systems engineered to last decades — backed by a written workmanship warranty.",
+    "subheading": "From Boise foothills wind to Meridian hail, Monarch Pro Wash installs systems engineered to last decades \u2014 backed by a written workmanship warranty.",
     "image": {
-      "src": "/src/assets/images/landing.jpg",
-      "alt": "Peak Roofing Co crew installing architectural shingles on a Boise home"
+      "src": "",
+      "alt": "Monarch Pro Wash crew installing architectural shingles on a Boise home"
     },
     "cardAlign": "left",
     "cta": {
@@ -2747,7 +2742,7 @@
       "variant": "text"
     },
     "heading": "The Numbers Boise Homeowners Trust",
-    "subheading": "Two decades of roofs that hold up — and neighbors who recommend us.",
+    "subheading": "Two decades of roofs that hold up \u2014 and neighbors who recommend us.",
     "stats": [
       {
         "value": "2,400+",
@@ -2755,9 +2750,9 @@
         "description": "Across Ada & Canyon County"
       },
       {
-        "value": "4.9★",
+        "value": "",
         "label": "Google Rating",
-        "description": "From 380+ reviews"
+        "description": ""
       },
       {
         "value": "20 yrs",
@@ -2786,13 +2781,13 @@
       "text": "cta:guarantee",
       "variant": "text"
     },
-    "heading": "The Peak Roofing No-Leak Guarantee",
-    "subheading": "If it isn't right, we make it right — at no cost to you. That's in writing on every job.",
+    "heading": "The Monarch Pro Wash No-Leak Guarantee",
+    "subheading": "If it isn't right, we make it right \u2014 at no cost to you. That's in writing on every job.",
     "sealText": "100% Satisfaction Guaranteed",
     "bullets": [
       "Written workmanship warranty on every install",
       "Free re-inspection within 12 months",
-      "No hidden fees — the quote is the price",
+      "No hidden fees \u2014 the quote is the price",
       "Fully licensed, bonded, and insured in Idaho"
     ],
     "cta": {
@@ -2801,8 +2796,8 @@
       "variant": "primary"
     },
     "secondaryCta": {
-      "label": "Call (208) 555-0142",
-      "href": "tel:+12085550142",
+      "label": "Call (458) 209-7735",
+      "href": "tel:+14582097735",
       "variant": "outline"
     }
   },
@@ -2876,9 +2871,9 @@
       "variant": "text"
     },
     "heading": "Trusted by Boise Homeowners",
-    "subheading": "Join hundreds of neighbors who chose Peak Roofing Co for honest, on-time roofing work.",
+    "subheading": "Join hundreds of neighbors who chose Monarch Pro Wash for honest, on-time roofing work.",
     "trustPoints": [
-      "Licensed & insured in Idaho",
+      "Fully Insured in Idaho",
       "Free, no-pressure inspections",
       "Workmanship guaranteed for 10 years"
     ],
@@ -2909,7 +2904,7 @@
     },
     "heading": "24/7 Emergency Roof Repair",
     "subheading": "Active leak or storm damage? Our Boise crew is on call around the clock to tarp, secure, and repair fast.",
-    "phone": "(208) 555-0142",
+    "phone": "(458) 209-7735",
     "points": [
       "Available 24/7",
       "Same-day response",
@@ -2927,7 +2922,7 @@
       "variant": "text"
     },
     "heading": "We'll Call You Back",
-    "subheading": "Leave your number and a Peak Roofing specialist will reach out within the hour.",
+    "subheading": "Leave your number and a Monarch Pro Wash specialist will reach out within the hour.",
     "showPhone": true,
     "form": {
       "type": "simple",
@@ -2941,7 +2936,7 @@
       "variant": "text"
     },
     "heading": "Get Your Free Roofing Estimate",
-    "subheading": "Talk to a real Peak Roofing Co estimator today — no call centers, no pressure.",
+    "subheading": "Talk to a real Monarch Pro Wash estimator today \u2014 no call centers, no pressure.",
     "cta": {
       "label": "Request a Quote",
       "href": "/contact",
@@ -2950,7 +2945,7 @@
     "showHours": true
   },
   "banner:announcement": {
-    "text": "banner:announcement — Storm season is here. Free roof inspections through the end of the month.",
+    "text": "banner:announcement \u2014 Storm season is here. Free roof inspections through the end of the month.",
     "cta": {
       "label": "Book now",
       "href": "/contact"
@@ -2959,7 +2954,7 @@
   },
   "banner:phone-cta": {
     "text": "Talk to a local Boise roofer today",
-    "hoursNote": "Mon–Sat 7am–7pm",
+    "hoursNote": "Mon\u2013Sat 7am\u20137pm",
     "cta": {
       "label": "Free Estimate",
       "href": "/contact",
@@ -2971,7 +2966,7 @@
     }
   },
   "banner:promo-strip": {
-    "icon": "🏠",
+    "icon": "\ud83c\udfe0",
     "badge": "Limited Time",
     "text": "$500 off any full roof replacement this month",
     "code": "PEAK500",
@@ -2987,7 +2982,7 @@
   },
   "banner:weather-alert": {
     "label": "Storm Alert",
-    "text": "Hail hit the Treasure Valley — free storm-damage roof inspections now booking.",
+    "text": "Hail hit the Treasure Valley \u2014 free storm-damage roof inspections now booking.",
     "cta": {
       "label": "Book Inspection",
       "href": "/storm-damage",
@@ -3018,7 +3013,7 @@
     }
   },
   "banner:review-rating": {
-    "rating": 4.9,
+    "rating": 5,
     "count": 327,
     "source": "Google",
     "text": "Trusted by Boise homeowners since 2009",
@@ -3328,8 +3323,8 @@
       "variant": "primary"
     },
     "secondaryCta": {
-      "label": "Call (208) 555-0142",
-      "href": "tel:+12085550142",
+      "label": "Call (458) 209-7735",
+      "href": "tel:+14582097735",
       "variant": "outline"
     }
   },
@@ -3392,7 +3387,7 @@
         "description": "Emergency same-day tarping to stop active leaks.",
         "cta": {
           "label": "Call now",
-          "href": "tel:+12085550142",
+          "href": "tel:+14582097735",
           "variant": "outline"
         }
       }
@@ -3438,41 +3433,41 @@
       "text": "pricing:quote",
       "variant": "text"
     },
-    "heading": "Every Roof Is Different — Get a Real Quote",
+    "heading": "Every Roof Is Different \u2014 Get a Real Quote",
     "subheading": "No pushy sales visits. We inspect, measure, and send a clear written estimate you can hold us to.",
     "rangesTitle": "What projects typically cost in the Treasure Valley",
     "rows": [
       {
         "service": "Asphalt Shingle Re-Roof",
-        "from": "$8.5k–$18k",
-        "note": "1,500–2,500 sq ft home"
+        "from": "$8.5k\u2013$18k",
+        "note": "1,500\u20132,500 sq ft home"
       },
       {
         "service": "Standing-Seam Metal Roof",
-        "from": "$18k–$40k",
-        "note": "40–50 year lifespan"
+        "from": "$18k\u2013$40k",
+        "note": "40\u201350 year lifespan"
       },
       {
         "service": "Flat / Low-Slope (TPO)",
-        "from": "$9k–$22k",
+        "from": "$9k\u2013$22k",
         "note": "Additions & garages"
       },
       {
         "service": "Storm & Hail Repair",
-        "from": "$500–$4k",
+        "from": "$500\u2013$4k",
         "note": "Often insurance-covered"
       }
     ],
-    "trustNote": "Locally owned in Boise since 2009 • Licensed, bonded & insured.",
-    "disclaimer": "Ranges reflect recent Peak Roofing projects and vary with size, pitch, and materials.",
+    "trustNote": "Locally owned in Boise since 2009 \u2022 Insured, bonded & insured.",
+    "disclaimer": "Ranges reflect recent Monarch Pro Wash projects and vary with size, pitch, and materials.",
     "cta": {
       "label": "Request Free Quote",
       "href": "/contact",
       "variant": "primary"
     },
     "secondaryCta": {
-      "label": "Call (208) 555-0142",
-      "href": "tel:+12085550142",
+      "label": "Call (458) 209-7735",
+      "href": "tel:+14582097735",
       "variant": "outline"
     }
   },
@@ -3482,7 +3477,7 @@
       "variant": "text"
     },
     "heading": "Good, Better, Best",
-    "subheading": "Three honest options for your replacement — pick the protection and lifespan that fit your home.",
+    "subheading": "Three honest options for your replacement \u2014 pick the protection and lifespan that fit your home.",
     "plans": [
       {
         "name": "Essential",
@@ -3555,10 +3550,10 @@
     "subheading": "Alternating text/media rows.",
     "rows": [
       {
-        "heading": "Licensed & Insured",
-        "body": "Fully licensed and insured in Idaho — proof provided before any job starts.",
+        "heading": "Fully Insured",
+        "body": "Fully Fully Insured in Idaho \u2014 proof provided before any job starts.",
         "image": {
-          "src": "/src/assets/images/roofing-crew.jpg",
+          "src": "",
           "alt": "Crew"
         },
         "bullets": [
@@ -3570,7 +3565,7 @@
         "heading": "Same-Day Response",
         "body": "We answer fast and most repairs are completed within 48 hours.",
         "image": {
-          "src": "/src/assets/images/landing.jpg",
+          "src": "",
           "alt": "Roof"
         },
         "bullets": [
@@ -3590,7 +3585,7 @@
     "items": [
       {
         "icon": "shield",
-        "title": "Licensed & Insured",
+        "title": "Fully Insured",
         "body": "Fully covered on every job."
       },
       {
@@ -3601,7 +3596,7 @@
       {
         "icon": "star",
         "title": "5-Star Rated",
-        "body": "142+ reviews across the valley."
+        "body": ""
       },
       {
         "title": "Written Warranty",
@@ -3638,7 +3633,7 @@
       {
         "icon": "shield",
         "title": "Trust",
-        "body": "Licensed, insured, warrantied."
+        "body": "Insured, insured, warrantied."
       }
     ]
   },
@@ -3670,7 +3665,7 @@
         "body": "Covered end to end.",
         "bullets": [
           "Written warranty",
-          "Licensed & insured"
+          "Fully Insured"
         ]
       }
     ]
@@ -3709,9 +3704,9 @@
       "variant": "text"
     },
     "heading": "Built to Last",
-    "body": "We install complete roof systems engineered for Idaho weather — not just shingles.",
+    "body": "We install complete roof systems engineered for Idaho weather \u2014 not just shingles.",
     "image": {
-      "src": "/src/assets/images/roofing-crew.jpg",
+      "src": "",
       "alt": "Crew"
     },
     "imagePosition": "left",
@@ -3731,12 +3726,12 @@
       "variant": "text"
     },
     "heading": "Boise's roof, done right the first time",
-    "subheading": "Licensed, insured, and obsessive about the details other crews skip.",
+    "subheading": "Insured, insured, and obsessive about the details other crews skip.",
     "items": [
       {
         "icon": "shield",
         "title": "Lifetime workmanship warranty",
-        "body": "Every roof we install is backed in writing — not just the shingle maker's coverage, but our own labor guarantee.",
+        "body": "Every roof we install is backed in writing \u2014 not just the shingle maker's coverage, but our own labor guarantee.",
         "bullets": [
           "Transferable to new owners",
           "No fine-print exclusions"
@@ -3764,7 +3759,7 @@
       {
         "icon": "home",
         "title": "Local, family-owned",
-        "body": "Boise-based since 2009 — the same crew from estimate to final nail."
+        "body": "Boise-based since 2009 \u2014 the same crew from estimate to final nail."
       },
       {
         "icon": "clock",
@@ -3779,7 +3774,7 @@
       "variant": "text"
     },
     "heading": "Everything that goes into a roof built to last",
-    "subheading": "We don't cut corners you can't see. Here's what's included on every Peak Roofing project.",
+    "subheading": "We don't cut corners you can't see. Here's what's included on every Monarch Pro Wash project.",
     "cta": {
       "label": "Get a free inspection",
       "href": "/contact",
@@ -3824,7 +3819,7 @@
       "variant": "text"
     },
     "heading": "Four reasons Boise homeowners choose Peak",
-    "subheading": "No pressure, no surprises — just the standards we hold on every single roof.",
+    "subheading": "No pressure, no surprises \u2014 just the standards we hold on every single roof.",
     "cta": {
       "label": "Book your free estimate",
       "href": "/contact",
@@ -3845,7 +3840,7 @@
         "title": "Certified, background-checked crews",
         "body": "GAF Master Elite training plus full licensing and insurance.",
         "bullets": [
-          "Licensed & insured",
+          "Fully Insured",
           "No subcontractors"
         ]
       },
@@ -3867,11 +3862,11 @@
       "variant": "text"
     },
     "heading": "Roofs engineered for hail, wind, and sun",
-    "subheading": "Treasure Valley homes take a beating. We build for it — and the numbers back it up.",
+    "subheading": "Treasure Valley homes take a beating. We build for it \u2014 and the numbers back it up.",
     "imagePosition": "right",
     "image": {
-      "src": "/src/assets/images/landing.jpg",
-      "alt": "Peak Roofing crew installing architectural shingles"
+      "src": "",
+      "alt": "Monarch Pro Wash crew installing architectural shingles"
     },
     "cta": {
       "label": "Schedule an inspection",
@@ -3882,7 +3877,7 @@
       {
         "icon": "bolt",
         "title": "Class 4 impact-rated shingles",
-        "body": "The top hail rating available — and often a discount on your homeowner's insurance."
+        "body": "The top hail rating available \u2014 and often a discount on your homeowner's insurance."
       },
       {
         "icon": "droplet",
@@ -3901,7 +3896,7 @@
         "label": "Treasure Valley roofs installed"
       },
       {
-        "value": "4.9★",
+        "value": "",
         "label": "Average Google rating"
       },
       {
@@ -3924,7 +3919,7 @@
       },
       {
         "icon": "award",
-        "title": "Licensed & insured",
+        "title": "Fully Insured",
         "body": "Idaho RCE + full liability cover"
       },
       {
@@ -3934,8 +3929,8 @@
       },
       {
         "icon": "star",
-        "title": "4.9-star rated",
-        "body": "500+ Boise reviews"
+        "title": "",
+        "body": ""
       }
     ]
   },
@@ -3945,7 +3940,7 @@
       "variant": "text"
     },
     "heading": "The Peak Difference",
-    "usLabel": "Peak Roofing Co",
+    "usLabel": "Monarch Pro Wash",
     "themLabel": "Other Contractors",
     "rows": [
       {
@@ -3964,7 +3959,7 @@
         "them": "Sometimes"
       },
       {
-        "feature": "Licensed & insured",
+        "feature": "Fully Insured",
         "us": true,
         "them": true
       },
@@ -3980,9 +3975,9 @@
       "text": "comparison:us-vs-them-cards",
       "variant": "text"
     },
-    "heading": "Peak Roofing vs. the Typical Contractor",
+    "heading": "Monarch Pro Wash vs. the Typical Contractor",
     "subheading": "Two roofers can quote the same job and deliver wildly different results. Here is what actually separates us.",
-    "usLabel": "Peak Roofing Co.",
+    "usLabel": "Monarch Pro Wash",
     "usTagline": "Locally owned, Boise-based since 2009",
     "themLabel": "The Typical Contractor",
     "themTagline": "Storm-chasers and out-of-town crews",
@@ -4029,7 +4024,7 @@
       "text": "comparison:what-sets-us-apart",
       "variant": "text"
     },
-    "heading": "What Sets Peak Roofing Apart",
+    "heading": "What Sets Monarch Pro Wash Apart",
     "subheading": "No jargon, no pressure. Just the standards we hold ourselves to on every roof in the Treasure Valley.",
     "items": [
       {
@@ -4085,7 +4080,7 @@
     "rows": [
       {
         "feature": "Old roof torn off first",
-        "them": "Shingled over — hides rot",
+        "them": "Shingled over \u2014 hides rot",
         "us": "Full tear-off & deck inspection"
       },
       {
@@ -4125,10 +4120,10 @@
       "text": "comparison:diy-vs-pro",
       "variant": "text"
     },
-    "heading": "DIY Roof Repair vs. Hiring Peak Roofing",
+    "heading": "DIY Roof Repair vs. Hiring Monarch Pro Wash",
     "subheading": "Some jobs are worth a Saturday. A roof usually is not. Here is an honest side-by-side.",
     "themLabel": "Doing It Yourself",
-    "usLabel": "Hiring Peak Roofing",
+    "usLabel": "Hiring Monarch Pro Wash",
     "rows": [
       {
         "feature": "Up-front cash outlay",
@@ -4180,12 +4175,12 @@
     },
     "heading": "7 Questions to Ask Before You Hire Any Roofer",
     "subheading": "Use this list on every bid you get. We built it around the questions we wish every homeowner asked.",
-    "usLabel": "Peak Roofing Co.",
+    "usLabel": "Monarch Pro Wash",
     "assuranceTitle": "We Answer Yes to All Seven",
     "assuranceBody": "Print this out, ask any contractor, and compare. We put every one of these in writing before you sign.",
     "items": [
       {
-        "title": "Are you licensed and insured in Idaho?",
+        "title": "Are you Fully Insured in Idaho?",
         "body": "Ask for the license number and a current certificate of insurance, not just a promise."
       },
       {
@@ -4387,8 +4382,8 @@
     "owner": {
       "name": "Dave Thornton",
       "role": "Founder & Master Roofer",
-      "photo": "/src/assets/images/landing.jpg",
-      "bio": "Dave started Peak Roofing Co in 2009 after fifteen years climbing ladders for other outfits across the Treasure Valley. He still personally inspects every roof his crew touches.",
+      "photo": "",
+      "bio": "Dave started Monarch Pro Wash in 2009 after fifteen years climbing ladders for other outfits across the Treasure Valley. He still personally inspects every roof his crew touches.",
       "quote": "If it's not a roof I'd put over my own family, it's not going on yours.",
       "signature": "Dave Thornton, Boise, Idaho"
     },
@@ -4403,38 +4398,38 @@
       "text": "team:roster-strip",
       "variant": "text"
     },
-    "heading": "The Peak Roofing Team",
-    "subheading": "Licensed, background-checked, and Boise-proud — the same faces on every job.",
+    "heading": "The Monarch Pro Wash Team",
+    "subheading": "Insured, background-checked, and Boise-proud \u2014 the same faces on every job.",
     "members": [
       {
         "name": "Dave Thornton",
         "role": "Founder",
-        "photo": "/src/assets/images/landing.jpg"
+        "photo": ""
       },
       {
         "name": "Marcus Reyes",
         "role": "Crew Lead",
-        "photo": "/src/assets/images/roofing-crew.jpg"
+        "photo": ""
       },
       {
         "name": "Tyler Okafor",
         "role": "Estimator",
-        "photo": "/src/assets/images/roofing-crew.jpg"
+        "photo": ""
       },
       {
         "name": "Jenna Blackwood",
         "role": "Office Manager",
-        "photo": "/src/assets/images/landing.jpg"
+        "photo": ""
       },
       {
         "name": "Cole Baptiste",
         "role": "Senior Roofer",
-        "photo": "/src/assets/images/roofing-crew.jpg"
+        "photo": ""
       },
       {
         "name": "Sam Whitfield",
         "role": "Roofer",
-        "photo": "/src/assets/images/roofing-crew.jpg"
+        "photo": ""
       }
     ]
   },
@@ -4444,10 +4439,10 @@
       "variant": "text"
     },
     "heading": "One Team, Every Roof",
-    "subheading": "When Peak Roofing shows up, you get the whole crew — no subcontractors, no strangers.",
+    "subheading": "When Monarch Pro Wash shows up, you get the whole crew \u2014 no subcontractors, no strangers.",
     "groupPhoto": {
-      "src": "/src/assets/images/roofing-crew.jpg",
-      "alt": "The Peak Roofing Co crew on a Boise job site"
+      "src": "",
+      "alt": "The Monarch Pro Wash crew on a Boise job site"
     },
     "members": [
       {
@@ -4487,42 +4482,42 @@
       {
         "name": "Dave Thornton",
         "role": "Founder & Master Roofer",
-        "photo": "/src/assets/images/landing.jpg",
+        "photo": "",
         "specialty": "Steep-Slope",
         "bio": "25+ years on Idaho roofs, from historic North End Victorians to new builds."
       },
       {
         "name": "Marcus Reyes",
         "role": "Crew Lead",
-        "photo": "/src/assets/images/roofing-crew.jpg",
+        "photo": "",
         "specialty": "Tear-Offs",
         "bio": "Runs the fastest, cleanest tear-off crew in Ada County."
       },
       {
         "name": "Tyler Okafor",
         "role": "Lead Estimator",
-        "photo": "/src/assets/images/roofing-crew.jpg",
+        "photo": "",
         "specialty": "Storm Damage",
         "bio": "Insurance-claim expert who documents every hailstrike."
       },
       {
         "name": "Cole Baptiste",
         "role": "Senior Roofer",
-        "photo": "/src/assets/images/roofing-crew.jpg",
+        "photo": "",
         "specialty": "Metal Roofing",
-        "bio": "Standing-seam metal is his craft — clean lines, no leaks."
+        "bio": "Standing-seam metal is his craft \u2014 clean lines, no leaks."
       },
       {
         "name": "Sam Whitfield",
         "role": "Roofer",
-        "photo": "/src/assets/images/roofing-crew.jpg",
+        "photo": "",
         "specialty": "Flashing & Detail",
         "bio": "The one you want around your chimneys and valleys."
       },
       {
         "name": "Jenna Blackwood",
         "role": "Office Manager",
-        "photo": "/src/assets/images/landing.jpg",
+        "photo": "",
         "specialty": "Scheduling",
         "bio": "Keeps every job on the calendar and every customer in the loop."
       }
@@ -4534,37 +4529,37 @@
       "variant": "text"
     },
     "heading": "Build Boise's Best Roofs With Us",
-    "subheading": "Peak Roofing Co is growing. Meet the crew — then come join it.",
+    "subheading": "Monarch Pro Wash is growing. Meet the crew \u2014 then come join it.",
     "members": [
       {
         "name": "Dave Thornton",
         "role": "Founder",
-        "photo": "/src/assets/images/landing.jpg"
+        "photo": ""
       },
       {
         "name": "Marcus Reyes",
         "role": "Crew Lead",
-        "photo": "/src/assets/images/roofing-crew.jpg"
+        "photo": ""
       },
       {
         "name": "Tyler Okafor",
         "role": "Estimator",
-        "photo": "/src/assets/images/roofing-crew.jpg"
+        "photo": ""
       },
       {
         "name": "Cole Baptiste",
         "role": "Senior Roofer",
-        "photo": "/src/assets/images/roofing-crew.jpg"
+        "photo": ""
       },
       {
         "name": "Sam Whitfield",
         "role": "Roofer",
-        "photo": "/src/assets/images/roofing-crew.jpg"
+        "photo": ""
       },
       {
         "name": "Jenna Blackwood",
         "role": "Office Manager",
-        "photo": "/src/assets/images/landing.jpg"
+        "photo": ""
       }
     ],
     "hiringHeading": "Now Hiring Experienced Roofers",
@@ -4586,7 +4581,7 @@
       "variant": "text"
     },
     "heading": "Our Workmanship Guarantee",
-    "body": "Every job is backed by a written warranty. If something isn't right, we make it right — no runaround.",
+    "body": "Every job is backed by a written warranty. If something isn't right, we make it right \u2014 no runaround.",
     "badge": "100% Satisfaction"
   },
   "guarantee:badges": {
@@ -4597,7 +4592,7 @@
     "heading": "Our Guarantees",
     "items": [
       {
-        "label": "Licensed & Insured",
+        "label": "Fully Insured",
         "description": "Fully covered"
       },
       {
@@ -4620,7 +4615,7 @@
       "variant": "text"
     },
     "heading": "Backed by a 25-Year Workmanship Warranty",
-    "subheading": "Every roof Peak Roofing Co installs across the Treasure Valley is covered in writing — materials and labor — so you're protected long after the crew drives away.",
+    "subheading": "Every roof Monarch Pro Wash installs across the Treasure Valley is covered in writing \u2014 materials and labor \u2014 so you're protected long after the crew drives away.",
     "seal": "25-Year Warranty",
     "bullets": [
       "Full labor and workmanship coverage for 25 years",
@@ -4644,12 +4639,12 @@
       "text": "guarantee:card-grid",
       "variant": "text"
     },
-    "heading": "The Peak Roofing Co Triple Guarantee",
+    "heading": "The Monarch Pro Wash Triple Guarantee",
     "subheading": "We put every promise in writing before we set a single shingle. No fine print, no surprises.",
     "items": [
       {
         "title": "100% Satisfaction",
-        "body": "If you're not thrilled with the finished roof, we'll make it right or refund your deposit — no questions asked.",
+        "body": "If you're not thrilled with the finished roof, we'll make it right or refund your deposit \u2014 no questions asked.",
         "bullets": [
           "Final walkthrough with the crew lead",
           "Punch-list items fixed within 48 hours"
@@ -4679,10 +4674,10 @@
       "variant": "text"
     },
     "heading": "My name is on every roof we build.",
-    "body": "I started Peak Roofing Co because Boise homeowners deserved a roofer who shows up, does the work right, and stands behind it. That's still how we operate. If anything about your project falls short of what we promised, call me directly — I'll personally see it made right.",
+    "body": "I started Monarch Pro Wash because Boise homeowners deserved a roofer who shows up, does the work right, and stands behind it. That's still how we operate. If anything about your project falls short of what we promised, call me directly \u2014 I'll personally see it made right.",
     "seal": "Signed Guarantee",
     "signatureName": "Dan Whitaker",
-    "signatureRole": "Founder & Owner, Peak Roofing Co"
+    "signatureRole": "Founder & Owner, Monarch Pro Wash"
   },
   "guarantee:image-split": {
     "eyebrow": {
@@ -4690,7 +4685,7 @@
       "variant": "text"
     },
     "heading": "Built to Handle Every Boise Season",
-    "body": "From July hailstorms to January ice dams, your roof is engineered and installed to keep water out — guaranteed. If it doesn't, we're back on the ladder the same week at no cost to you.",
+    "body": "From July hailstorms to January ice dams, your roof is engineered and installed to keep water out \u2014 guaranteed. If it doesn't, we're back on the ladder the same week at no cost to you.",
     "bullets": [
       "Ice-and-water shield on every eave and valley",
       "Wind-rated to 130 mph on all shingle installs",
@@ -4698,8 +4693,8 @@
     ],
     "seal": "No-Leak Pledge",
     "image": {
-      "src": "/src/assets/images/roofing-crew.jpg",
-      "alt": "Peak Roofing Co crew installing a new roof in Boise"
+      "src": "",
+      "alt": "Monarch Pro Wash crew installing a new roof in Boise"
     },
     "imageRight": true,
     "cta": {
@@ -4714,7 +4709,7 @@
       "variant": "text"
     },
     "heading": "Not Happy? You Don't Pay.",
-    "body": "Peak Roofing Co stands behind every job with a simple, written money-back guarantee. If we can't make it right, your deposit comes back — that's our promise to every Boise homeowner.",
+    "body": "Monarch Pro Wash stands behind every job with a simple, written money-back guarantee. If we can't make it right, your deposit comes back \u2014 that's our promise to every Boise homeowner.",
     "bullets": [
       "We show up on the date we promised, or your inspection is free",
       "We finish on schedule, or we credit you for the delay",
@@ -4739,11 +4734,11 @@
         "label": "Years Experience"
       },
       {
-        "value": "500+",
+        "value": "",
         "label": "Roofs Completed"
       },
       {
-        "value": "4.9",
+        "value": "",
         "label": "Google Rating"
       },
       {
@@ -4765,12 +4760,12 @@
         "description": "Since 2019"
       },
       {
-        "value": "500+",
+        "value": "",
         "label": "Roofs",
         "description": "Completed"
       },
       {
-        "value": "4.9",
+        "value": "",
         "label": "Rating",
         "description": "Google"
       },
@@ -4790,11 +4785,11 @@
     "body": "The numbers behind a decade of Treasure Valley roofing.",
     "stats": [
       {
-        "value": "500+",
+        "value": "",
         "label": "Roofs Completed"
       },
       {
-        "value": "142+",
+        "value": "",
         "label": "5-Star Reviews"
       },
       {
@@ -4803,7 +4798,7 @@
       },
       {
         "value": "100%",
-        "label": "Licensed & Insured"
+        "label": "Fully Insured"
       }
     ],
     "cta": {
@@ -4829,7 +4824,7 @@
         "label": "Roofing the Treasure Valley"
       },
       {
-        "value": "4.9★",
+        "value": "",
         "label": "Average Google rating"
       },
       {
@@ -4859,7 +4854,7 @@
         "label": "Roofs installed"
       },
       {
-        "value": "4.9★",
+        "value": "",
         "label": "Google rating"
       },
       {
@@ -4881,25 +4876,25 @@
     "subheading": "Proof we bring to every Boise roof.",
     "stats": [
       {
-        "icon": "🏠",
+        "icon": "\ud83c\udfe0",
         "value": "2,400+",
         "label": "Roofs installed",
         "description": "Residential & commercial across Ada and Canyon County."
       },
       {
-        "icon": "⭐",
-        "value": "4.9",
+        "icon": "\u2b50",
+        "value": "",
         "label": "Google rating",
         "description": "From 640+ verified Boise homeowner reviews."
       },
       {
-        "icon": "🛡️",
+        "icon": "\ud83d\udee1\ufe0f",
         "value": "25-yr",
         "label": "Workmanship warranty",
         "description": "Backed in writing on every installation."
       },
       {
-        "icon": "⚡",
+        "icon": "\u26a1",
         "value": "48 hrs",
         "label": "Storm-damage response",
         "description": "Emergency tarping and repair turnaround."
@@ -4923,9 +4918,9 @@
         "description": "Ridge-vent airflow plus radiant-barrier decking."
       },
       {
-        "label": "Attic temperature on a 100° day",
-        "before": "138°",
-        "after": "96°",
+        "label": "Attic temperature on a 100\u00b0 day",
+        "before": "138\u00b0",
+        "after": "96\u00b0",
         "description": "Balanced intake and exhaust ventilation."
       },
       {
@@ -4936,9 +4931,9 @@
       },
       {
         "label": "Rating of their previous roofer",
-        "before": "3.2★",
-        "after": "4.9★",
-        "description": "Why Boise homeowners switched to Peak Roofing Co."
+        "before": "",
+        "after": "",
+        "description": "Why Boise homeowners switched to Monarch Pro Wash"
       }
     ],
     "cta": {
@@ -4982,7 +4977,7 @@
       "variant": "text"
     },
     "heading": "Why Homeowners Choose Us",
-    "subheading": "Vertical tabs — click to switch.",
+    "subheading": "Vertical tabs \u2014 click to switch.",
     "tabs": [
       {
         "label": "Craftsmanship",
@@ -4993,7 +4988,7 @@
           "Manufacturer-certified crews"
         ],
         "image": {
-          "src": "/src/assets/images/roofing-crew.jpg",
+          "src": "",
           "alt": "Crew"
         }
       },
@@ -5006,20 +5001,20 @@
           "48-hour repairs"
         ],
         "image": {
-          "src": "/src/assets/images/landing.jpg",
+          "src": "",
           "alt": "Roof"
         }
       },
       {
         "label": "Trust",
-        "heading": "Licensed & Insured",
-        "body": "Fully licensed and insured with a written workmanship warranty.",
+        "heading": "Fully Insured",
+        "body": "Fully Fully Insured with a written workmanship warranty.",
         "bullets": [
           "Written warranty",
           "Background-checked crews"
         ],
         "image": {
-          "src": "/src/assets/images/roofing-crew.jpg",
+          "src": "",
           "alt": "Team"
         }
       }
@@ -5084,7 +5079,7 @@
       "variant": "text"
     },
     "heading": "Roofing done right the first time",
-    "subheading": "Boise homeowners choose Peak Roofing Co because we sweat the details other crews skip.",
+    "subheading": "Boise homeowners choose Monarch Pro Wash because we sweat the details other crews skip.",
     "items": [
       {
         "icon": "shield",
@@ -5112,8 +5107,8 @@
         "body": "Our own W-2 installers do every job, so the people who bid your roof are the people on your roof.",
         "bullets": [
           "No day-labor subcontractors",
-          "Licensed and insured in Idaho",
-          "500+ Treasure Valley roofs installed"
+          "Fully Insured in Idaho",
+          ""
         ]
       }
     ]
@@ -5124,14 +5119,14 @@
       "variant": "text"
     },
     "heading": "Roofing headaches, solved",
-    "subheading": "The common frustrations Boise homeowners tell us about — and exactly how we handle them.",
+    "subheading": "The common frustrations Boise homeowners tell us about \u2014 and exactly how we handle them.",
     "problemLabel": "What goes wrong",
     "solutionLabel": "How we fix it",
     "pairs": [
       {
         "problem": "Contractors ghost you after the storm and never send the estimate they promised.",
         "solution": "A detailed written estimate within 24 hours of your inspection.",
-        "detail": "Photos, scope, and price in one clear PDF — no vague ballparks."
+        "detail": "Photos, scope, and price in one clear PDF \u2014 no vague ballparks."
       },
       {
         "problem": "Surprise change orders blow the budget halfway through the job.",
@@ -5141,7 +5136,7 @@
       {
         "problem": "Nails and debris left in the yard put pets and kids at risk.",
         "solution": "A magnetic sweep of your entire property every single day.",
-        "detail": "We treat your lawn like it's our own — guaranteed."
+        "detail": "We treat your lawn like it's our own \u2014 guaranteed."
       }
     ]
   },
@@ -5154,13 +5149,13 @@
     "subheading": "Fifteen years on Treasure Valley rooftops adds up to results you can measure.",
     "items": [
       {
-        "stat": "500+",
+        "stat": "",
         "title": "Roofs installed in the valley",
         "body": "From Boise bungalows to Eagle estates, we've protected homes across the region since 2010.",
         "icon": "home"
       },
       {
-        "stat": "4.9★",
+        "stat": "",
         "title": "Average Google rating",
         "body": "Built from more than 230 verified reviews by local homeowners.",
         "icon": "star"
@@ -5189,7 +5184,7 @@
     "items": [
       {
         "icon": "shield",
-        "title": "Fully licensed & insured",
+        "title": "Fully Fully Insured",
         "body": "Idaho-licensed and carrying full liability and workers' comp coverage, so you're never on the hook."
       },
       {
@@ -5210,7 +5205,7 @@
       "variant": "text"
     },
     "heading": "Everything you want in a roofer, in one crew",
-    "subheading": "Here's what you get when Peak Roofing Co handles your project.",
+    "subheading": "Here's what you get when Monarch Pro Wash handles your project.",
     "items": [
       {
         "icon": "check",
@@ -5256,7 +5251,7 @@
     "subheading": "Credentials you can verify.",
     "items": [
       {
-        "label": "Licensed & Insured",
+        "label": "Fully Insured",
         "description": "ID-RCE-12345"
       },
       {
@@ -5290,7 +5285,7 @@
         "label": "OSHA"
       },
       {
-        "label": "Licensed & Insured"
+        "label": "Fully Insured"
       }
     ]
   },
@@ -5305,7 +5300,7 @@
       {
         "label": "GAF Master Elite Contractor",
         "logo": "/src/assets/images/logo.png",
-        "description": "Awarded to the top 2% of roofers in North America — factory-trained crews and access to GAF's strongest workmanship warranties."
+        "description": "Awarded to the top 2% of roofers in North America \u2014 factory-trained crews and access to GAF's strongest workmanship warranties."
       },
       {
         "label": "Owens Corning Preferred Contractor",
@@ -5320,7 +5315,7 @@
       {
         "label": "Idaho Contractor RCE-#38217",
         "logo": "/src/assets/images/logo.png",
-        "description": "Licensed and registered with the Idaho Contractors Board."
+        "description": "Insured and registered with the Idaho Contractors Board."
       },
       {
         "label": "Fully Bonded & Insured",
@@ -5340,12 +5335,12 @@
       "variant": "text"
     },
     "heading": "Certified Installers for the Brands You Trust",
-    "subheading": "We're factory-authorized by the industry's leading manufacturers — which unlocks warranties independent roofers simply can't offer.",
+    "subheading": "We're factory-authorized by the industry's leading manufacturers \u2014 which unlocks warranties independent roofers simply can't offer.",
     "items": [
       {
         "label": "GAF Master Elite",
         "logo": "/src/assets/images/logo.png",
-        "description": "As a GAF Master Elite contractor — held by only 2% of roofers nationwide — Peak Roofing Co can register the Golden Pledge warranty."
+        "description": "As a GAF Master Elite contractor \u2014 held by only 2% of roofers nationwide \u2014 Monarch Pro Wash can register the Golden Pledge warranty."
       },
       {
         "label": "Owens Corning",
@@ -5374,8 +5369,8 @@
       "text": "certifications:credential-list",
       "variant": "text"
     },
-    "heading": "Licensed, Bonded & Insured",
-    "subheading": "Don't take our word for it — every credential below links to the official issuing authority.",
+    "heading": "Insured, Bonded & Insured",
+    "subheading": "Don't take our word for it \u2014 every credential below links to the official issuing authority.",
     "verifyLabel": "Verify",
     "items": [
       {
@@ -5410,7 +5405,7 @@
       "text": "certifications:split-copy",
       "variant": "text"
     },
-    "heading": "Certifications Aren't Decoration — They're Your Protection",
+    "heading": "Certifications Aren't Decoration \u2014 They're Your Protection",
     "body": "Anyone can buy a ladder and call themselves a roofer. Manufacturer certifications and state licensing are what separate a warranty you can count on from a handshake you can't.",
     "bullets": [
       "Factory training means your shingles are installed exactly the way the warranty requires",
@@ -5435,7 +5430,7 @@
         "description": "Verified installer"
       },
       {
-        "label": "Idaho Licensed RCE-38217",
+        "label": "Idaho Insured RCE-38217",
         "logo": "/src/assets/images/logo.png",
         "description": "Registered & bonded"
       },
@@ -5452,7 +5447,7 @@
       "variant": "text"
     },
     "heading": "Roof Backed by the Best in the Business",
-    "subheading": "Master Elite certified, fully insured, and locally trusted — book with the crew Boise homeowners rely on.",
+    "subheading": "Master Elite certified, fully insured, and locally trusted \u2014 book with the crew Boise homeowners rely on.",
     "cta": {
       "label": "Schedule Free Estimate",
       "href": "/contact",
@@ -5477,7 +5472,7 @@
         "logo": "/src/assets/images/logo.png"
       },
       {
-        "label": "Idaho Licensed & Bonded",
+        "label": "Idaho Insured & Bonded",
         "logo": "/src/assets/images/logo.png"
       },
       {
@@ -5492,7 +5487,7 @@
       "variant": "text"
     },
     "heading": "Find Us",
-    "subheading": "Visit or call — we're local."
+    "subheading": "Visit or call \u2014 we're local."
   },
   "location:map-overlay": {
     "eyebrow": {
@@ -5517,15 +5512,15 @@
     "heading": "Easy to find, easy to reach",
     "subheading": "Free customer parking out front, and we're two minutes off I-84.",
     "mapEmbedUrl": "https://maps.google.com/maps?q=Boise,ID&output=embed&z=12",
-    "note": "Enter from Fairview Ave; visitor parking is marked to the right of the main entrance.",
+    "note": "Parking and entry notes for visitors.",
     "cta": {
       "label": "Get directions",
       "href": "https://www.google.com/maps/dir/?api=1&destination=Boise%2C+ID",
       "variant": "primary"
     },
     "secondaryCta": {
-      "label": "Call (208) 555-0142",
-      "href": "tel:+12085550142",
+      "label": "Call (458) 209-7735",
+      "href": "tel:+14582097735",
       "variant": "outline"
     }
   },
@@ -5535,28 +5530,28 @@
       "variant": "text"
     },
     "heading": "Two yards, one Treasure Valley crew",
-    "subheading": "Visit whichever branch is closest — same guarantee, same team.",
+    "subheading": "Visit whichever branch is closest \u2014 same guarantee, same team.",
     "locations": [
       {
-        "name": "Peak Roofing Co — Boise",
-        "address": "1420 W Fairview Ave, Boise, ID 83702",
-        "phone": "(208) 555-0142",
-        "hoursNote": "Mon–Fri 7:30a–5:30p",
-        "mapUrl": "https://www.google.com/maps/dir/?api=1&destination=1420+W+Fairview+Ave+Boise+ID"
+        "name": "Monarch Pro Wash \u2014 Boise",
+        "address": "",
+        "phone": "(458) 209-7735",
+        "hoursNote": "Mon\u2013Fri 7:30a\u20135:30p",
+        "mapUrl": ""
       },
       {
-        "name": "Peak Roofing Co — Nampa",
-        "address": "908 12th Ave S, Nampa, ID 83651",
-        "phone": "(208) 555-0188",
-        "hoursNote": "Mon–Fri 8:00a–5:00p",
-        "mapUrl": "https://www.google.com/maps/dir/?api=1&destination=908+12th+Ave+S+Nampa+ID"
+        "name": "Monarch Pro Wash \u2014 Nampa",
+        "address": "",
+        "phone": "(458) 209-7735",
+        "hoursNote": "Mon\u2013Fri 8:00a\u20135:00p",
+        "mapUrl": ""
       },
       {
-        "name": "Peak Roofing Co — Meridian",
-        "address": "3300 E Overland Rd, Meridian, ID 83642",
-        "phone": "(208) 555-0173",
+        "name": "Monarch Pro Wash \u2014 Meridian",
+        "address": "",
+        "phone": "(458) 209-7735",
         "hoursNote": "By appointment",
-        "mapUrl": "https://www.google.com/maps/dir/?api=1&destination=3300+E+Overland+Rd+Meridian+ID"
+        "mapUrl": ""
       }
     ]
   },
@@ -5580,7 +5575,7 @@
       "variant": "text"
     },
     "heading": "Covering the whole Treasure Valley",
-    "subheading": "Free roof inspections across Ada and Canyon counties — usually same week.",
+    "subheading": "Free roof inspections across Ada and Canyon counties \u2014 usually same week.",
     "mapEmbedUrl": "https://maps.google.com/maps?q=Boise,ID&output=embed&z=11",
     "areas": [
       "Boise",
@@ -5592,7 +5587,7 @@
       "Star",
       "Garden City"
     ],
-    "footnote": "Not sure if you're in range? Give us a call — we cover a 40-mile radius from downtown Boise.",
+    "footnote": "Not sure if you're in range? Give us a call \u2014 we cover a 40-mile radius from downtown Boise.",
     "cta": {
       "label": "Check my address",
       "href": "/contact",
@@ -5604,7 +5599,7 @@
       "text": "Free Download"
     },
     "heading": "Your Treasure Valley Exterior-Care Calendar",
-    "subheading": "Know exactly when to clean, seal, and blow out — month by month.",
+    "subheading": "Know exactly when to clean, seal, and blow out \u2014 month by month.",
     "highlights": [
       "Freeze-thaw timeline",
       "Roof-algae check reminders",
@@ -5625,24 +5620,23 @@
   },
   "hero:rating-spotlight": {
     "eyebrow": {
-      "text": "Boise’s 5-Star Exterior Cleaning",
+      "text": "Boise\u2019s 5-Star Exterior Cleaning",
       "variant": "text"
     },
     "heading": "Your Home, **Restored** to Its Best",
-    "subheading": "Soft washing, pressure washing, and roof cleaning that treats your property like our own — with a price up front and the Monarch Standard on every job.",
+    "subheading": "Soft washing, pressure washing, and roof cleaning that treats your property like our own \u2014 with a price up front and the Monarch Standard on every job.",
     "ratings": [
       {
         "platform": "Google",
-        "score": "4.9",
-        "count": "180+ reviews"
+        "score": "",
+        "count": ""
       },
       {
         "platform": "Facebook",
-        "score": "5.0",
-        "count": "60+ reviews"
+        "score": "",
+        "count": ""
       }
     ],
-    "combinedReviews": "240+ combined 5-star reviews",
     "ctas": [
       {
         "label": "Get My Free Quote",
@@ -5653,7 +5647,7 @@
     "showPhone": true,
     "trustBadges": [
       {
-        "text": "Licensed & Insured"
+        "text": "Fully Insured"
       },
       {
         "text": "Owner-Operated"
@@ -5663,7 +5657,7 @@
       }
     ],
     "backgroundImage": {
-      "src": "/images/roofing-crew.jpg",
+      "src": "",
       "overlayOpacity": 68,
       "focal": "center",
       "focalMobile": ""
@@ -5676,9 +5670,9 @@
       "variant": "text"
     },
     "heading": "The Clean That **Lasts** Longer",
-    "subheading": "We match the method to the surface — real pressure where it helps, a gentle soft wash where it protects — so your home comes clean without the damage.",
+    "subheading": "We match the method to the surface \u2014 real pressure where it helps, a gentle soft wash where it protects \u2014 so your home comes clean without the damage.",
     "body": [
-      "Owner-run and insured, with the Monarch Standard on every visit: if any surface we cleaned isn’t right, we come back and make it right."
+      "Owner-run and insured, with the Monarch Standard on every visit: if any surface we cleaned isn\u2019t right, we come back and make it right."
     ],
     "ctas": [
       {
@@ -5700,7 +5694,7 @@
       }
     ],
     "image": {
-      "src": "/images/landing.jpg",
+      "src": "",
       "alt": "Monarch Pro Wash crew cleaning a Treasure Valley home"
     },
     "imagePosition": "right",
@@ -5715,18 +5709,17 @@
       "variant": "text"
     },
     "heading": "Bring Back the **Curb Appeal**",
-    "subheading": "Soft washing, pressure washing, and roof cleaning done the right way — surface-matched, owner-run, and guaranteed.",
+    "subheading": "Soft washing, pressure washing, and roof cleaning done the right way \u2014 surface-matched, owner-run, and guaranteed.",
     "ratings": [
       {
         "platform": "Google",
-        "score": "4.9"
+        "score": ""
       },
       {
         "platform": "Facebook",
-        "score": "5.0"
+        "score": ""
       }
     ],
-    "combinedReviews": "240+ 5-star reviews",
     "ctas": [
       {
         "label": "Get My Free Quote",
@@ -5737,27 +5730,27 @@
     "showPhone": true,
     "trustBadges": [
       {
-        "text": "Licensed & Insured"
+        "text": "Fully Insured"
       },
       {
         "text": "Owner-Operated"
       }
     ],
     "backgroundImage": {
-      "src": "/images/roofing-crew.jpg",
+      "src": "",
       "overlayOpacity": 38
     }
   },
   "hero:form-overlay": {
     "eyebrow": {
-      "text": "Free · Fast · No Obligation",
+      "text": "Free \u00b7 Fast \u00b7 No Obligation",
       "variant": "text"
     },
     "heading": "Your Free Quote in **60 Seconds**",
-    "subheading": "Tell us what needs cleaning and we’ll send a clear price up front — no walkthrough required.",
+    "subheading": "Tell us what needs cleaning and we\u2019ll send a clear price up front \u2014 no walkthrough required.",
     "trustBadges": [
       {
-        "text": "Licensed & Insured"
+        "text": "Fully Insured"
       },
       {
         "text": "Same-Day Response"
@@ -5771,15 +5764,15 @@
     "formSubtitle": "A real price up front, usually same day.",
     "rating": {
       "platform": "Google",
-      "score": "4.9",
-      "count": "180+ reviews"
+      "score": "",
+      "count": ""
     },
     "form": {
       "type": "simple",
       "title": "Get My Free Quote"
     },
     "backgroundImage": {
-      "src": "/images/landing.jpg",
+      "src": "",
       "overlayOpacity": 66
     }
   },
@@ -5789,7 +5782,7 @@
       "variant": "text"
     },
     "heading": "Exterior Cleaning You Can **Count On**",
-    "subheading": "From driveways to rooftops, we treat your property like our own — and back every job with our make-it-right guarantee.",
+    "subheading": "From driveways to rooftops, we treat your property like our own \u2014 and back every job with our make-it-right guarantee.",
     "ctas": [
       {
         "label": "Get My Free Quote",
@@ -5804,8 +5797,8 @@
         "label": "Serving the Treasure Valley"
       },
       {
-        "value": "4.9★",
-        "label": "240+ Google & Facebook reviews"
+        "value": "",
+        "label": ""
       },
       {
         "value": "100%",
@@ -5817,7 +5810,7 @@
       }
     ],
     "backgroundImage": {
-      "src": "/images/roofing-crew.jpg",
+      "src": "",
       "overlayOpacity": 56
     }
   },
@@ -5827,18 +5820,17 @@
       "variant": "text"
     },
     "heading": "Watch How We **Protect** Your Property",
-    "subheading": "A 90-second look at our surface-matched process — real pressure where it helps, a gentle soft wash where it protects.",
+    "subheading": "A 90-second look at our surface-matched process \u2014 real pressure where it helps, a gentle soft wash where it protects.",
     "ratings": [
       {
         "platform": "Google",
-        "score": "4.9"
+        "score": ""
       },
       {
         "platform": "Facebook",
-        "score": "5.0"
+        "score": ""
       }
     ],
-    "combinedReviews": "240+ 5-star reviews",
     "ctas": [
       {
         "label": "Get My Free Quote",
@@ -5856,7 +5848,7 @@
       }
     ],
     "video": {
-      "poster": "/images/roofing-crew.jpg",
+      "poster": "",
       "embedUrl": "https://www.youtube.com/embed/aqz-KE-bpKQ",
       "caption": "Our process, start to finish"
     },
@@ -5886,13 +5878,13 @@
       "variant": "text"
     },
     "heading": "Exterior Cleaning, Every Surface",
-    "subheading": "From driveways to rooftops, one local team handles it all — matched to the surface and backed by our guarantee.",
+    "subheading": "From driveways to rooftops, one local team handles it all \u2014 matched to the surface and backed by our guarantee.",
     "body": [
       "Not sure which service you need? Tell us what you are looking at and we will point you the right way, with a clear price up front."
     ],
     "trustBadges": [
       {
-        "text": "Licensed & Insured"
+        "text": "Fully Insured"
       },
       {
         "text": "Owner-Operated"
@@ -5914,7 +5906,7 @@
       "variant": "text"
     },
     "heading": "What We Clean",
-    "subheading": "Explore our services by category — every surface outside your home, handled by one local team.",
+    "subheading": "Explore our services by category \u2014 every surface outside your home, handled by one local team.",
     "showCount": true
   },
   "reviews:video-cta": {
@@ -5929,15 +5921,15 @@
     ],
     "rating": {
       "platform": "Google",
-      "score": "4.9",
-      "count": "240+ reviews"
+      "score": "",
+      "count": ""
     },
     "quote": {
       "body": "They soft-washed our roof and it looks incredible, with zero damage.",
       "author": "Mike & Jen R., Meridian"
     },
     "video": {
-      "poster": "/images/roofing-crew.jpg",
+      "poster": "",
       "embedUrl": "https://www.youtube.com/embed/aqz-KE-bpKQ",
       "caption": "Our process, start to finish"
     },
@@ -5961,16 +5953,16 @@
     "ratings": [
       {
         "platform": "Google",
-        "score": "4.9",
-        "count": "180+ reviews"
+        "score": "",
+        "count": ""
       },
       {
         "platform": "Facebook",
-        "score": "5.0",
-        "count": "60+ reviews"
+        "score": "",
+        "count": ""
       }
     ],
-    "combined": "240+ combined 5-star reviews",
+    "combined": "",
     "showQuotes": true
   },
   "trust-bar:icon-strip": {
@@ -5978,7 +5970,7 @@
     "items": [
       {
         "icon": "shield",
-        "label": "Licensed & Insured"
+        "label": "Fully Insured"
       },
       {
         "icon": "star",
@@ -5995,7 +5987,7 @@
     ]
   },
   "trust-bar:google-badge": {
-    "rating": 4.9,
+    "rating": 5,
     "count": 184,
     "label": "Google Rating"
   },
@@ -6006,11 +5998,11 @@
         "label": "Years in the Valley"
       },
       {
-        "value": "4.9★",
+        "value": "",
         "label": "Google Rating"
       },
       {
-        "value": "500+",
+        "value": "",
         "label": "Jobs Completed"
       },
       {
@@ -6029,7 +6021,7 @@
   "trust-bar:split-cta": {
     "heading": "Ready When You Are",
     "items": [
-      "Licensed & Insured",
+      "Fully Insured",
       "Owner-Operated",
       "Free Quotes"
     ],
@@ -6056,7 +6048,7 @@
         "label": "Jobs Completed"
       },
       {
-        "value": "4.9",
+        "value": "",
         "label": "Average Google Rating"
       },
       {
@@ -6081,7 +6073,7 @@
     ],
     "showPhone": true,
     "backgroundImage": {
-      "src": "/images/roofing-crew.jpg",
+      "src": "",
       "overlayOpacity": 72
     }
   },
