@@ -79,16 +79,19 @@ const telHref = business.phone ? `tel:${business.phone.replace(/[^\d+]/g, "")}` 
   /* The rail floats over whatever band is behind it — white, grey, navy, teal
      or the orange CTA — so the cards pin their own light surface and dark ink
      rather than inheriting the surrounding theme. Inheriting is what made them
-     navy-on-navy and invisible over the dark bands. */
+     navy-on-navy and invisible over the dark bands.
+
+     No drop shadow: the rail scrolls independently (.page-aside has
+     overflow-y: auto, which makes overflow-x compute to auto as well), so the
+     scroll box clipped the shadow into a hard straight edge. The border and
+     the surface difference already separate the card on every band, so the
+     shadow was only ever decorative. */
   .rail-card {
     background-color: #ffffff;
     color: var(--t-fg-on-light);
-    border: 1px solid rgba(14, 42, 63, 0.1);
+    border: 1px solid rgba(14, 42, 63, 0.14);
     border-radius: var(--radius-lg, 0.75rem);
     padding: 1.25rem;
-    box-shadow:
-      0 1px 2px rgba(14, 42, 63, 0.06),
-      0 8px 24px rgba(14, 42, 63, 0.1);
   }
   .rail-heading {
     font-size: 1rem;
