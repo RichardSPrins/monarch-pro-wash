@@ -54,12 +54,17 @@ const slugFromFile = (f) => {
  * Light-first surface rhythm, keyed by the vault's §N. `alt` is the WHITE
  * surface in this theme; default/muted are navy accents; primary is the CTA.
  */
+/**
+ * Surface rhythm, keyed by the vault's §N. Sections behave exactly as they do
+ * anywhere else on the site — this only chooses which surface each one uses.
+ * Light sections additionally alternate grey/white via a nth-of-type rule in
+ * PageRenderer, so the run reads white -> grey -> navy rather than flat.
+ */
 const THEME_BY_SECTION = {
-  1: "inverse",   // hero — full bleed, outside the rail region
-  14: "primary",  // CTA  — full bleed, outside the rail region
-  // Everything between lives beside the sticky rail, so it shares ONE light
-  // surface. A navy band here would be sliced by the rail; PageRenderer varies
-  // the tone instead (see .page-main > .section-wrapper.theme-alt:nth-of-type).
+  1: "inverse",   // hero — full bleed
+  5: "default",   // navy accent
+  10: "muted",    // navy accent
+  14: "primary",  // CTA — full bleed
 };
 const RAIL_BODY_THEME = "alt";
 
@@ -312,7 +317,7 @@ function build(sec, ctx) {
     case "guarantee:callout":
       return {
         type: "guarantee:callout",
-        theme: RAIL_BODY_THEME,
+        theme: "brand-secondary",
         data: {
           eyebrow: eyebrow("Our Guarantee"),
           heading: realTitle(title) || "The Monarch Standard",
@@ -462,7 +467,7 @@ for (const slug of PUBLISHED_SERVICES) {
       heading: "Top Concerns",
       rows: v.rows,
     } },
-    { type: "process:horizontal", theme: "alt", data: {
+    { type: "process:horizontal", theme: "default", data: {
       eyebrow: eyebrow("The Process"), heading: "How It Works",
       steps: [
         { heading: "Get your free quote", body: "A clear price up front, with no guessing." },
@@ -483,7 +488,7 @@ for (const slug of PUBLISHED_SERVICES) {
       eyebrow: eyebrow("Reviews"), heading: "What Our Customers Say",
       filter: "all", service: slug, limit: 3,
     } },
-    { type: "guarantee:callout", theme: "alt", data: {
+    { type: "guarantee:callout", theme: "brand-secondary", data: {
       eyebrow: eyebrow("Our Guarantee"), heading: "The Monarch Standard",
       body: "We aim for a full, thorough clean on the first visit. If any surface we cleaned is not right, tell us and we come back to make it right. No fine print and no runaround.",
       badge: "Make It Right",
@@ -491,7 +496,7 @@ for (const slug of PUBLISHED_SERVICES) {
     { type: "faqs:accordion", theme: "alt", data: {
       eyebrow: eyebrow("FAQs"), heading: `${title}: Common Questions`, service: slug,
     } },
-    { type: "service-areas:grid", theme: "alt", data: {
+    { type: "service-areas:grid", theme: "muted", data: {
       eyebrow: eyebrow("Service Areas"), heading: "Serving the Treasure Valley",
     } },
     { type: "cta:banner", theme: "primary", data: {

@@ -94,38 +94,32 @@ const tail = hasRail ? sections.slice(end) : [];
   }
   .page-main { min-width: 0; }
 
-  /* The rail region is a single LIGHT surface, so the navy rail cards always
-     have contrast and nothing has to be painted behind them.
+  /* Sections behave here exactly as they do anywhere else on the site: each one
+     paints its own full-width band from its theme, and the rhythm (white, grey,
+     navy, plus the bold CTA) comes from the section data. The rail is laid over
+     the top; it does not change how sections work.
 
-     An earlier version gave the rail its own light channel while the sections
-     kept alternating navy/white. Because the rail sits inside the container,
-     that cut a white rectangle out of the middle of every navy band with navy
-     still showing to its right — far worse than the seam it was meant to avoid.
-
-     This is what the Sol reference does too: every section in its rail region
-     shares one surface, and the rhythm comes from cards, spacing and light-tone
-     variation rather than bands, because a sidebar makes full-width bands
-     impossible.
-
-     Gentle tonal alternation replaces them: pure white against the off-white
-     base. Scoped to .theme-alt deliberately — a theme-* class sets text colour
-     as well as background, so repainting a navy section light would leave
-     light-on-light text. The section DATA is all `alt` in the rail region (see
-     the page templates and scripts/ingest-vault-copy.mjs); this only varies the
-     tone within that. */
+     The only addition is a second light tone, so consecutive light sections
+     alternate white/grey rather than reading as one flat slab. Scoped to
+     .theme-alt deliberately — a theme-* class sets text colour as well as
+     background, so repainting a navy section light would leave light-on-light
+     text. */
   .page-main > .section-wrapper.theme-alt:nth-of-type(even) {
     background-color: var(--t-bg-alt-2);
   }
 
-  /* Below xl the rail flows after the content as a normal block, on the same
-     light surface, with spacing on ALL FOUR sides — the top included, which is
-     what was missing against the preceding section. */
+  /* The track is transparent — it is only a positioning device. The rail reads
+     as floating cards over whatever band happens to be behind them, so the
+     cards carry their own surface (see ServicePageRail).
+
+     Below xl the rail flows after the content as a normal block, with spacing
+     on ALL FOUR sides — the top included, which is what was missing against the
+     preceding section. */
   .page-rail {
-    background-color: var(--t-bg-alt);
     padding-inline: 1rem;
   }
   .page-rail-inner {
-    padding-block: 0.5rem 2.5rem;
+    padding-block: 2.5rem;
   }
 
   @media (min-width: 640px) {

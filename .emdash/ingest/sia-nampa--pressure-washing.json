@@ -91,7 +91,7 @@
     },
     {
       "type": "about:values",
-      "theme": "alt",
+      "theme": "default",
       "data": {
         "eyebrow": {
           "text": "Why Monarch",
@@ -189,7 +189,7 @@
     },
     {
       "type": "content:rich-text",
-      "theme": "alt",
+      "theme": "muted",
       "data": {
         "eyebrow": {
           "text": "Pressure Washing · Nampa",
