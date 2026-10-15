@@ -68,14 +68,14 @@ const siteConfig: SiteConfig = {
   author: "Velocity Web Studio",
   branding: {
     logo: {
-      alt: "Demo Contractor",
+      alt: "Monarch Pro Wash",
     },
     favicon: {
       svg: "/favicon.svg",
     },
     colors: {
-      themeColor: "#1a1a1a",
-      backgroundColor: "#ffffff",
+      themeColor: "#0a1f2e",
+      backgroundColor: "#0a1f2e",
     },
   },
   analytics: {
