@@ -1,19 +1,23 @@
 ---
+import { Image } from "astro:assets";
 import { getBusinessData, getFooterNav } from "@/lib/utils";
 import Logo from "@/components/layout/Logo.astro";
+import footerMotif from "@/assets/images/footer-motif.png";
 
 /**
- * footer:brandmark — the brand name set OVERSIZED as a gradient watermark
- * spanning the footer, with nav groups + contact above it. Big-lettering brand
- * moment (Baird / Shattered Vision energy).
+ * footer:brandmark — a full-bleed brand motif spanning the footer, with nav
+ * groups + contact above it. Big brand moment at the close of every page.
+ *
+ * The mark used to be the brand's first word set as oversized SVG <text>. It is
+ * now the Monarch motif artwork (wand, spray, rooflines) — same slot, same
+ * full-bleed treatment, but it says what the business does rather than just
+ * repeating the name already shown in the logo directly above it.
  */
 const business = await getBusinessData();
 const year = new Date().getFullYear();
 const { groups, legal } = await getFooterNav();
 const s = (business as any).social ?? {};
 const addr = [business.address, [business.city, business.state].filter(Boolean).join(", "), business.zip].filter(Boolean).join(" · ");
-// Just the first word of the brand (e.g. "MONARCH"), stretched full-bleed below.
-const mark = (business.businessName ?? "").split(" ")[0].toUpperCase();
 ---
 
 <footer class="fbm bg-bg-inverse text-fg-inverse relative overflow-hidden">
@@ -49,15 +53,16 @@ const mark = (business.businessName ?? "").split(" ")[0].toUpperCase();
     </div>
   </div>
 
-  <svg class="fbm-mark" viewBox="0 0 1200 210" preserveAspectRatio="xMidYMax meet" aria-hidden="true">
-    <defs>
-      <linearGradient id="fbmGrad" x1="0" y1="0" x2="0" y2="1">
-        <stop offset="0%" stop-color="#ffffff" stop-opacity="0.16" />
-        <stop offset="92%" stop-color="#ffffff" stop-opacity="0.02" />
-      </linearGradient>
-    </defs>
-    <text x="600" y="180" text-anchor="middle" textLength="1184" lengthAdjust="spacingAndGlyphs" fill="url(#fbmGrad)" font-size="200" font-weight="900" style="letter-spacing:-0.02em">{mark}</text>
-  </svg>
+  <div class="fbm-motif" aria-hidden="true">
+    <Image
+      src={footerMotif}
+      alt=""
+      widths={[640, 1024, 1536, 2048]}
+      sizes="100vw"
+      loading="lazy"
+      decoding="async"
+    />
+  </div>
 
   <div class="relative z-10 border-t border-white/10">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-5 flex flex-wrap items-center justify-between gap-3 text-xs text-fg-inverse/55">
@@ -72,5 +77,15 @@ const mark = (business.businessName ?? "").split(" ")[0].toUpperCase();
 <style>
   .fbm-soc { width: 2rem; height: 2rem; border-radius: 999px; display: grid; place-items: center; color: rgba(255,255,255,0.8); border: 1px solid rgba(255,255,255,0.16); transition: background 0.18s, color 0.18s, border-color 0.18s; }
   .fbm-soc:hover { background: var(--color-primary); border-color: var(--color-primary); color: #fff; }
-  .fbm-mark { display: block; width: 100%; margin-top: -0.5rem; user-select: none; pointer-events: none; }
+  /* The source PNG is 2048x768 but its artwork only occupies rows 372-687 —
+     the top 48% and bottom 11% are empty alpha. Rendering it untrimmed would
+     push ~250px of nothing into the footer, so the wrapper is sized to the
+     artwork's own 2048:315 box and the image is pulled up by the top padding.
+     Both offsets are percentages of the WRAPPER WIDTH (margin percentages
+     always resolve against the containing block's inline size), so the crop
+     holds at every viewport width:
+       top padding  372 / 2048 = 18.164%
+       artwork band 315 / 2048 = 15.381%  → aspect-ratio 2048 / 315 */
+  .fbm-motif { overflow: hidden; aspect-ratio: 2048 / 315; user-select: none; pointer-events: none; }
+  .fbm-motif :global(img) { display: block; width: 100%; height: auto; margin-top: -18.164%; }
 </style>
