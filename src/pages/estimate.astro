@@ -60,7 +60,7 @@ const page = {
   <!-- Intro -->
   <section
     class="section-wrapper section-py-lg theme-inverse hero-bg has-bg est-hero"
-    style="--hero-image: url('/images/roofing-crew.jpg'); --hero-overlay: 0.72;"
+    style="--hero-overlay: 0.72;"
   >
     <div
       class="section-container text-center flex flex-col items-center gap-sm"
@@ -76,7 +76,7 @@ const page = {
       </h1>
       <p class="theme-text-muted text-lg max-w-2xl m-0">
         Pick your services, tell us about your place, and watch your estimate
-        build in real time. See your number in about a minute — no obligation.
+        build in real time. See your number in about a minute, with no obligation.
       </p>
       <div class="flex flex-wrap justify-center gap-sm mt-xs">
         <span class="est-chip">Fully Insured</span>
@@ -132,7 +132,7 @@ const page = {
             <p class="est-other">
               <label
                 ><input type="checkbox" id="est-other" /> Something else / not sure
-                — we'll follow up</label
+                and we'll follow up</label
               >
             </p>
           </fieldset>
@@ -290,7 +290,7 @@ const page = {
                 confirm.
               </p>
               <p class="est-error" hidden>
-                Something went wrong — please try again or call us.
+                Something went wrong. Please try again, or call us.
               </p>
             </form>
 
@@ -307,7 +307,7 @@ const page = {
           </div>
           <p class="est-disclaimer">
             Ballpark based on typical Treasure Valley jobs. Your exact price is
-            confirmed with a quick look — never more than the range without your
+            confirmed with a quick look, never more than the range without your
             OK.
           </p>
         </aside>
@@ -804,7 +804,7 @@ const page = {
         amountVal.hidden = true;
         noteEl.textContent = state.other
           ? "Estimate ready. Your extra request is quoted on-site."
-          : "Estimate ready — reveal it below.";
+          : "Estimate ready. Reveal it below.";
       } else {
         amountVal.textContent = `${money(lo)}–${money(hi)}`;
         noteEl.textContent = state.other

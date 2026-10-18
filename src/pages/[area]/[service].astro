@@ -11,6 +11,7 @@
 // generated fallback below covers anything not yet authored. Either way it runs
 // through PageRenderer in "rail" mode.
 import MarketingLayout from "@/layouts/MarketingLayout.astro";
+import { deriveDescription } from "@/lib/seoText";
 import PageRenderer from "@/components/PageRenderer.astro";
 import ServicePageRail from "@/components/layout/ServicePageRail.astro";
 import { getServices, getServiceAreas, getPage } from "@/lib/content";
@@ -161,7 +162,7 @@ const page = {
 <MarketingLayout
   page={page}
   title={page.data.title}
-  description={`${svcTitle} in ${city}, ${state}. ${desc}`}
+  description={deriveDescription(sections) ?? `${svcTitle} in ${city}, ${state}. ${desc}`}
 >
   <PageRenderer config={page.data} layout="rail">
     <ServicePageRail

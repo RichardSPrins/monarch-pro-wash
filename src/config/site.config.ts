@@ -61,8 +61,9 @@ export interface SiteConfig {
 
 const siteConfig: SiteConfig = {
   // These are demo defaults — client-specific data lives in CMS generalSettings
-  name: "Demo Contractor",
-  description: "Quality contracting services you can trust.",
+  name: "Monarch Pro Wash",
+  description:
+    "Insured, owner-run exterior cleaning for Boise and the Treasure Valley. Pressure washing, soft washing, roof, gutter and window cleaning, with the price up front.",
   url: import.meta.env.SITE || "https://example.com",
   ogImage: "/og-default.png",
   author: "Velocity Web Studio",

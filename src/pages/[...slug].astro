@@ -2,6 +2,7 @@
 // Page route — sourced live from EmDash (D1) under SSR. Meta tags come from
 // EmDash's NATIVE SEO panel (getSeoMeta); custom JSON-LD from `structured_data`.
 import MarketingLayout from "@/layouts/MarketingLayout.astro";
+import { deriveDescription } from "@/lib/seoText";
 import PageRenderer from "@/components/PageRenderer.astro";
 import { getSeoMeta } from "emdash/seo";
 import { getPage, getServiceAreas } from "@/lib/content";
@@ -80,7 +81,7 @@ const includeLocalBusiness = sd?.localBusiness ?? true;
 <MarketingLayout
   page={page}
   title={meta.title || page.data.title}
-  description={meta.description ?? undefined}
+  description={meta.description ?? deriveDescription(page.data.sections) ?? undefined}
   noindex={!!meta.robots}
   image={meta.ogImage ?? undefined}
   canonical={meta.canonical ?? undefined}

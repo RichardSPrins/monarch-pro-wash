@@ -35,7 +35,17 @@ const {
   canonical,
 } = Astro.props;
 
-const pageTitle = title ? `${title} | ${businessName}` : businessName;
+// Only append the brand suffix when the title does not already end with it.
+// Stored CMS titles mostly include "| Monarch Pro Wash" already, so blindly
+// appending produced "Roof Cleaning in Boise, ID | Monarch Pro Wash | Monarch
+// Pro Wash" on every service and service-in-area page. "About Monarch Pro Wash"
+// is left alone for the same reason.
+const trimmedTitle = title?.trim();
+const pageTitle = !trimmedTitle
+  ? businessName
+  : trimmedTitle.toLowerCase().endsWith(businessName.toLowerCase())
+    ? trimmedTitle
+    : `${trimmedTitle} | ${businessName}`;
 const canonicalURL = canonical
   ? new URL(canonical, Astro.site)
   : new URL(Astro.url.pathname, Astro.site);
