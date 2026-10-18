@@ -149,6 +149,102 @@ export const PROSE = {
     },
   },
 
+  // ------------------------------------------------------------ Boise set
+  // These pages already opened on the problem and carry strong, verified local
+  // detail, so most keep their wording. Two things are fixed across the set:
+  // window-cleaning opened with the company instead of the reader, and the
+  // "conditions" blocks get bolded lead-ins so three themed paragraphs scan as
+  // three causes rather than as a column of text.
+  "sia-boise--window-cleaning": {
+    1: {
+      _was: 'Opened "Monarch Pro Wash is an owner-run, insured exterior cleaning company serving Boise". Company first, reader second. The problem was in paragraph two.',
+      body: p(
+        "Boise glass does not stay clear for long. Hard water leaves cloudy mineral spotting that a wipe will not touch, dust rolls off the Foothills all summer, and fire season settles a film over everything.",
+        "You end up looking at the view through a haze you stopped noticing months ago, and a well-kept house reads as tired from the street.",
+        "We clean interior and exterior glass, clear the tracks, and break down the mineral buildup at the source instead of smearing it around.",
+        "Monarch is owner-run and insured. The person who books your job is the person who shows up to do it.",
+      ),
+    },
+    2: {
+      body: p(
+        "<strong>Hard water.</strong> It is a fact of life across Boise, and it shows on your glass as cloudy mineral spotting that a quick wipe will not shift. It is worst on windows the sprinklers reach, which is most of Southeast Boise and the Bench. We break that buildup down rather than moving it around.",
+        "<strong>Foothills dust and fire season.</strong> Out toward the Highlands, Boise Heights and the Central Foothills, windows collect a steady film off the hills, and every fire season lays smoke on top of it. We wash inside and out so the filtered look goes and daylight comes through clean.",
+        "<strong>Storefront traffic.</strong> Around The Grove, BoDo and Old Boise, your front glass is the first impression. Street grime, fingerprints and spotting build up fast on a busy entrance. We keep it sharp so customers see a clean business before they reach the door.",
+      ),
+    },
+  },
+
+  "sia-boise--roof-cleaning": {
+    2: {
+      body: p(
+        "<strong>Shade is the main culprit.</strong> In the North End and Hyde Park, mature trees keep whole roof slopes damp, and homes backing the Boise River and Greenbelt sit in humidity that never really burns off. Those north-facing slopes grow algae, black streaks and moss. Soft washing removes it at the root instead of scraping it, so it does not come racing back in a few months.",
+        "<strong>In the foothills, it falls out of the sky.</strong> Around the Highlands, Boise Heights and the Central Foothills, fine dust off the hills and settled wildfire smoke build up on the roof and work into the grit. We rinse and treat at low pressure, clearing it without driving water up under the shingles.",
+        "<strong>High pressure is the wrong tool for any of it.</strong> Blasting a roof strips the protective granules off asphalt shingles and forces water where it does not belong. We soft wash instead: the solution kills the growth, and low pressure carries it away. Your roof gets clean and the shingles stay intact.",
+      ),
+    },
+  },
+
+  "sia-boise--pressure-washing": {
+    2: {
+      body: p(
+        "Boise is hard on hard surfaces in three specific ways, and each calls for a different touch.",
+        "<strong>Aging concrete on the Bench.</strong> Many homes there, and their original slabs, date to the 1940s and 1950s, and decades of freeze-thaw have already stressed them. Older concrete gets a measured, surface-safe clean, never a turbo nozzle dragged across it that etches and pits.",
+        "<strong>Hard water and iron.</strong> Across most of the city, iron-rich irrigation leaves rusty orange and dull mineral staining that rinsing will not lift. We treat it at the source with the right solution rather than with more pressure.",
+        "<strong>Foothills grit and smoke.</strong> Up in the Highlands and Boise Heights, wind-blown grit and wildfire fallout settle on driveways and walkways right through the dry months. We clean it off, and where you want the finish to hold, we can seal afterward.",
+      ),
+    },
+  },
+
+  "sia-boise--soft-washing": {
+    2: {
+      body: p(
+        "<strong>Historic Boise was built for a softer touch.</strong> Homes in the North End, Hyde Park, the East End and the Warm Springs corridor have older siding, painted wood and delicate trim that high pressure splinters or strips. Low pressure plus the right solution gets them clean without gouged wood or forced-open seams.",
+        "<strong>By the river it is a different problem.</strong> Homes backing the Boise River and Greenbelt, plus much of Harris Ranch, Barber Valley and Warm Springs Mesa, sit in shade and humidity that feed algae and mildew. That green and gray film keeps returning because the roots stay behind. Soft washing kills what a rinse leaves, so the walls stay clean longer.",
+        "<strong>Up in the foothills it is dust and hard water.</strong> Around the Highlands, Boise Heights and the Central Foothills, fine hill dust and settled smoke dull everything they land on, and Boise's hard water leaves a mineral haze on siding and glass. We adjust solution and technique to the surface rather than running one rinse over all of it.",
+      ),
+    },
+  },
+
+  "sia-boise--gutter-cleaning": {
+    2: {
+      body: p(
+        "<strong>The North End and Hyde Park are the classic case.</strong> Decades-old shade trees line those streets and drop enough leaf litter every fall to pack a gutter solid. Once the channels and downspouts block, water has nowhere to go but over the side. We clear the debris by hand and flush the downspouts until the system drains again.",
+        "<strong>Winter makes it worse.</strong> Water trapped in a clogged gutter freezes, thaws and freezes again. That cycle strains the gutters, backs water up under the roof edge and works against your fascia. Clearing before winter gives the water a path out instead of letting it sit.",
+        "<strong>Then there is your foundation.</strong> When gutters overflow, water dumps straight down beside the house and pools against the foundation. Downspouts that actually carry water away are the first line of defense. We make sure yours are open and moving it clear of the house.",
+      ),
+    },
+  },
+
+  "sia-boise--concrete-sealing-staining": {
+    2: {
+      body: p(
+        "<strong>Older Bench concrete is already tired.</strong> Much of the Bench went in during the 1940s and 1950s, and that concrete has seen decades of freeze-thaw. Around Depot Bench, South Boise Village and Morris Hill you see cracking and surface spalling from years of moisture cycling. Cleaning and sealing slows the damage and protects what is left.",
+        "<strong>New slabs are worth protecting from day one.</strong> Driveways in Harris Ranch and Barber Valley look great now, but Boise winters and hard summer sun will test them. Sealing early helps a new slab resist staining and freeze-thaw before any of it starts.",
+        "<strong>Staining is where the curb appeal comes in.</strong> A tired Bench patio or a blank new driveway can take decorative color that suits the house. Stain plus seal gives you a surface that looks finished and stands up to the seasons.",
+      ),
+    },
+  },
+
+  "sia-boise--post-construction-cleanup": {
+    2: {
+      body: p(
+        "<strong>River-adjacent lots collect grit fast.</strong> New builds in Harris Ranch and Barber Valley sit right in the Greenbelt corridor. We work the whole envelope in order, roofline down to driveway, so dust does not settle back onto surfaces we have already cleaned.",
+        "<strong>Jobsite dust is relentless out on the edges.</strong> Boise is high desert, and out toward the newer Southeast and Southwest pockets that grit works into window tracks, hardscape and siding seams. We use the right pressure per surface to lift it without scarring new stucco, fresh concrete or factory finishes.",
+        "<strong>Mortar and overspray need more than a rinse.</strong> On new brick, stone and glass around Surprise Valley we treat and release those deposits with methods matched to the material. The goal is a true move-in clean, not a hose-down that shows streaks in the first morning light.",
+      ),
+    },
+  },
+
+  "sia-boise--graffiti-removal": {
+    2: {
+      body: p(
+        "<strong>Downtown is where most of it happens.</strong> Storefronts and walls through BoDo, Old Boise, the Basque Block and around The Grove take the brunt, and a visible tag on a business frontage needs to come off fast. Freak Alley is the city's sanctioned mural gallery, so art belongs there. The surrounding blocks are where unwanted tagging lands on private property.",
+        "<strong>The busy corridors carry their share.</strong> State Street, Broadway near Boise State, and the commercial stretches along Fairview, Overland and Vista see steady foot and vehicle traffic, so a tag is seen by a lot of people until it is gone. Quick removal keeps your building from becoming a repeat target.",
+        "<strong>Every surface takes a different touch.</strong> Brick, concrete, painted walls and siding each call for their own approach, and the wrong method leaves a shadow or damages the material. We match technique and pressure to what we are cleaning, so the tag lifts without etching the surface or stripping the finish behind it.",
+      ),
+    },
+  },
+
   // --------------------------------------------------------- SIA exemplar
   "sia-meridian--pressure-washing": {
     1: {
