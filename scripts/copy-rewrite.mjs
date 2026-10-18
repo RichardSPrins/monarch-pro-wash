@@ -205,6 +205,56 @@ const GLOBAL_REPLACEMENTS = [
   [/\bOne local, insured team\b/gi, "One insured, owner-run operation"],
   [/\blocal, insured team\b/gi, "insured, owner-run operation"],
   [/\blicensed and insured\b/gi, "insured"],
+  // ---- FALSE EXPERIENCE CLAIMS -------------------------------------------
+  // The 15 years are the OWNER'S pre-Monarch background: commercial trades plus
+  // residential carpet cleaning, pressure washing and surface care, done across
+  // the country. The company was founded in 2026. So every construction that
+  // reads "15 years of exterior cleaning", "15 years cleaning Treasure Valley
+  // exteriors", or "serving {town} for 15 years" is false, and the last shape is
+  // the worst: it claims local operating history that does not exist.
+  //
+  // Everything below normalises onto the two phrasings the vault approves:
+  // "in the trades" and "hands-on surface work".
+  [/\b(serving [^.,]{3,40}) for (more than|over) (15|fifteen)\+? years\b/gi,
+    "$1, backed by $2 $3 years in the trades"],
+  // "has served {town} ... for more than 15 years" claims local operating
+  // history for a company founded in 2026.
+  [/\bthat has served ([^.,]{3,40}) for (more than|over) (15|fifteen)\+? years\b/gi,
+    "that serves $1, backed by $2 $3 years in the trades"],
+  [/\bhas served ([^.,]{3,40}) for (more than|over) (15|fifteen)\+? years\b/gi,
+    "serves $1, backed by $2 $3 years in the trades"],
+  [/\b(has |have )?(been )?cleaning exteriors (in|around|across) [^.,]{3,40} for (over|more than) (15|fifteen)\+? years\b/gi,
+    "backed by $4 $5 years in the trades"],
+  [/\b(15|fifteen)\+? years of exterior cleaning experience\b/gi,
+    "$1 years of hands-on trade experience"],
+  [/\b(15|fifteen)\+? years of hands-on exterior cleaning\b/gi,
+    "$1 years of hands-on surface work"],
+  [/\b(15|fifteen)\+? years of (Treasure Valley )?exterior cleaning( work)?\b/gi,
+    "$1 years in the trades"],
+  [/\b(15|fifteen)\+? years of Treasure Valley exterior work\b/gi,
+    "$1 years in the trades"],
+  [/\b(15|fifteen)\+? years cleaning exteriors (across|around|in) the [^.,]{3,40}\b/gi,
+    "$1 years in the trades"],
+  [/\b(15|fifteen)\+? years cleaning [A-Z][a-z]+ exteriors\b/gi,
+    "$1 years in the trades"],
+  [/\b(15|fifteen)\+? years cleaning (Treasure Valley )?exteriors\b/gi,
+    "$1 years in the trades"],
+  [/\bspent (more than|over) (15|fifteen)\+? years on Treasure Valley exteriors\b/gi,
+    "spent $1 $2 years in the trades"],
+  [/\b(15|fifteen)\+? years of exterior work (across|around|on) [^.,]{3,40}\b/gi,
+    "$1 years in the trades"],
+  [/\b(15|fifteen)\+? years working on [A-Z][a-z]+ homes\b/gi,
+    "$1 years in the trades"],
+  [/\b(15|fifteen)\+? years of exterior work\b/gi, "$1 years in the trades"],
+
+  // ---- SLOP --------------------------------------------------------------
+  // Only the genuinely soft openers. "Whether you are near Boise State or on the
+  // Basque Block" is kept: the construction reads as filler only when the
+  // alternatives are vague, and on these pages they are real places.
+  [/\bWe understand how mature-tree shade drives\b/g, "Mature-tree shade drives"],
+  [/\bfully insured for your peace of mind\b/gi, "fully insured"],
+  [/\bUnmatched Service for\b/g, "Exterior Cleaning for"],
+
   // Monarch claiming a crew of its own. (Phrases like "not a rotating crew"
   // describe COMPETITORS and are deliberately left alone: they are accurate and
   // they carry the owner-accountability contrast.)
