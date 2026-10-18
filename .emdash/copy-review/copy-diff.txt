@@ -174,16 +174,19 @@
   [1] trust-bar:badges
     # Insured + Owner-Operated + 15+ Years in the Trades + Free Quotes.
     # familyOwned off: single-member LLC, no employees. About keeps the framing.
+  [2] content:rich-text - long paragraph split
 
 === svc-graffiti-removal
   [1] trust-bar:badges
     # Insured + Owner-Operated + 15+ Years in the Trades + Free Quotes.
     # familyOwned off: single-member LLC, no employees. About keeps the framing.
+  [2] content:rich-text - long paragraph split
 
 === svc-post-construction-cleanup
   [1] trust-bar:badges
     # Insured + Owner-Operated + 15+ Years in the Trades + Free Quotes.
     # familyOwned off: single-member LLC, no employees. About keeps the framing.
+  [2] content:rich-text - long paragraph split
   GLOBAL (1)
     ~ Post-construction exterior cleanup in the Treasure Valley — concrete,  -> Treasure Valley: concrete, glass
 
@@ -191,6 +194,7 @@
   [1] trust-bar:badges
     # Insured + Owner-Operated + 15+ Years in the Trades + Free Quotes.
     # familyOwned off: single-member LLC, no employees. About keeps the framing.
+  [2] content:rich-text - long paragraph split
   GLOBAL (1)
     ~ Gutter cleaning in Boise clears leaves, debris, and clogs from gutters -> , protecting your roof
 
@@ -198,16 +202,19 @@
   [1] trust-bar:badges
     # Insured + Owner-Operated + 15+ Years in the Trades + Free Quotes.
     # familyOwned off: single-member LLC, no employees. About keeps the framing.
+  [2] content:rich-text - long paragraph split
 
 === svc-window-cleaning
   [1] trust-bar:badges
     # Insured + Owner-Operated + 15+ Years in the Trades + Free Quotes.
     # familyOwned off: single-member LLC, no employees. About keeps the framing.
+  [2] content:rich-text - long paragraph split
 
 === svc-soft-washing
   [1] trust-bar:badges
     # Insured + Owner-Operated + 15+ Years in the Trades + Free Quotes.
     # familyOwned off: single-member LLC, no employees. About keeps the framing.
+  [2] content:rich-text - long paragraph split
   GLOBAL (1)
     ~ Soft washing in Boise safely cleans roofs, siding, and delicate exteri -> at the root, with no surface damage
 
@@ -215,6 +222,7 @@
   [1] trust-bar:badges
     # Insured + Owner-Operated + 15+ Years in the Trades + Free Quotes.
     # familyOwned off: single-member LLC, no employees. About keeps the framing.
+  [2] content:rich-text - long paragraph split
   GLOBAL (1)
     ~ Restore your driveway, patio, sidewalks, and concrete with professiona -> grime, and can seal
 
@@ -352,10 +360,21 @@
   GLOBAL (1)
     ~ Those black streaks running down a roof are not just dirt. They are al -> $1 years in the trades
 
+=== sia-caldwell--graffiti-removal
+  [1] content:rich-text - long paragraph split
+  [8] content:rich-text - long paragraph split
+
 === sia-caldwell--gutter-cleaning
   GLOBAL (1)
     ~ Gutters do one job: move water off your roof and away from your house. -> $1 years in the trades
 
 === sia-caldwell--window-cleaning
+  [1] content:rich-text - long paragraph split
   GLOBAL (1)
     ~ Get streak-free windows, hard-water spots and all, from an owner-run c -> owner-run operation
+
+=== sia-caldwell--concrete-sealing-staining
+  [2] content:rich-text - long paragraph split
+
+=== sia-caldwell--post-construction-cleanup
+  [8] content:rich-text - long paragraph split

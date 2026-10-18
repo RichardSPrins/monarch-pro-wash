@@ -320,6 +320,55 @@ function applyGlobal(node, hits) {
   return node;
 }
 
+
+/**
+ * Break wall-of-text paragraphs.
+ *
+ * Eleven rendered paragraphs ran 90 to 150 words as a single block, including
+ * the main explainer on all eight service pages. That is a readability problem,
+ * not a wording one, so this splits at existing sentence boundaries and changes
+ * no words at all. Target is roughly 55 words per paragraph, split at the
+ * sentence boundary nearest each ideal break point.
+ */
+function splitLongParagraphs(html, target = 55, trigger = 85) {
+  if (typeof html !== "string" || !/<p>/i.test(html)) return html;
+  return html.replace(/<p>([\s\S]*?)<\/p>/gi, (full, inner) => {
+    const text = inner.trim();
+    const words = text.split(/\s+/).length;
+    if (words < trigger) return full;
+    const sentences = text.split(/(?<=[.!?])\s+/).filter(Boolean);
+    if (sentences.length < 3) return full;
+
+    const parts = Math.min(3, Math.max(2, Math.round(words / target)));
+    const per = words / parts;
+    const out = [];
+    let buf = [], count = 0, made = 1;
+    for (const sent of sentences) {
+      buf.push(sent);
+      count += sent.split(/\s+/).length;
+      const remaining = sentences.length - (out.join(" ").split(/\s+/).filter(Boolean).length ? 0 : 0);
+      if (made < parts && count >= per && buf.length >= 1) {
+        out.push(buf.join(" ")); buf = []; count = 0; made++;
+      }
+    }
+    if (buf.length) out.push(buf.join(" "));
+    if (out.length < 2) return full;
+    return out.map((p) => `<p>${p}</p>`).join("");
+  });
+}
+
+/** Walk a section's data and split any long body prose. */
+function applyParagraphSplit(node) {
+  if (typeof node === "string") return splitLongParagraphs(node);
+  if (Array.isArray(node)) return node.map(applyParagraphSplit);
+  if (node && typeof node === "object") {
+    const o = {};
+    for (const [k, v] of Object.entries(node)) o[k] = k === "body" ? applyParagraphSplit(v) : applyParagraphSplit(v);
+    return o;
+  }
+  return node;
+}
+
 const rows = JSON.parse(fs.readFileSync(pagesArg, "utf8"));
 fs.mkdirSync(DIFF_DIR, { recursive: true });
 
@@ -395,7 +444,15 @@ for (const row of rows) {
     }
   }
 
-  // 3. global replacements
+  // 3. break wall-of-text paragraphs (no wording changes)
+  for (const sec of sections) {
+    if (!sec.data) continue;
+    const before = JSON.stringify(sec.data);
+    sec.data = applyParagraphSplit(sec.data);
+    if (JSON.stringify(sec.data) !== before) lines.push(`  [${sections.indexOf(sec)}] ${sec.type} - long paragraph split`);
+  }
+
+  // 4. global replacements
   const hits = [];
   const patched = applyGlobal(sections, hits);
   if (hits.length) {
