@@ -149,6 +149,41 @@ export const PROSE = {
     },
   },
 
+  // --------------------------------------------------------- Meridian set
+  "sia-meridian--window-cleaning": {
+    1: {
+      _was: "Opened with the company, same defect as the Boise page. Problem was in paragraph two.",
+      body: p(
+        "Meridian has some of the hardest water in the Treasure Valley, and your windows are where it shows. Sprinkler overspray and irrigation runoff dry on the glass and leave cloudy mineral spotting that a cloth will not shift.",
+        "Add high-desert dust to that and the view goes flat. You stop noticing it until someone cleans one pane and you see the difference.",
+        "We clean inside and out, clear the tracks, and break the mineral buildup down at the source rather than moving it around the glass.",
+        "Monarch is owner-run and insured. The person who quotes the job is the person who turns up to do it.",
+      ),
+    },
+  },
+  "sia-meridian--concrete-sealing-staining": {
+    1: {
+      _was: 'Opened "A lot of the concrete in Meridian is new." A hedge, and a fact about the town rather than a reason for the reader to act.',
+      body: p(
+        "Most Meridian driveways are young. That is exactly why sealing them matters now rather than in ten years.",
+        "Bare concrete is porous. It drinks up oil and rust, holds dust deep in the surface, and takes the full force of freeze-thaw every winter as water works in and expands. By the time a slab is visibly spalling, sealing will not undo it.",
+        "Sealing closes the pores before any of that starts. Staining goes further, adding lasting color that turns a blank gray slab into a finished surface.",
+        "Monarch is owner-run and insured, and we seal and stain driveways and patios across Meridian. You deal with the owner from quote to finish.",
+      ),
+    },
+  },
+  "sia-meridian--post-construction-cleanup": {
+    1: {
+      _was: 'Opened "Meridian is one of the fastest-growing spots in the Treasure Valley." Interesting, but it is about the city, not about the reader\'s problem.',
+      body: p(
+        "A finished build does not look finished until the exterior is clean. Concrete dust sits on the driveway, drywall haze films the windows, and mortar and paint flecks cling to brick and siding.",
+        "A buyer or an owner walking up sees that before they see any of the work that went into the place. It is the cheapest possible thing to get wrong at the end of an expensive project.",
+        "We work the whole envelope in order, roofline down to driveway, so nothing we have cleaned gets dusted again. Real pressure on concrete, a gentle soft wash on anything newly installed.",
+        "Monarch is owner-run and insured, and we handle final cleanups across Meridian's new construction. You deal with the owner start to finish.",
+      ),
+    },
+  },
+
   // ------------------------------------------------------------ Boise set
   // These pages already opened on the problem and carry strong, verified local
   // detail, so most keep their wording. Two things are fixed across the set:
@@ -269,10 +304,138 @@ export const PROSE = {
   },
 };
 
+
+/**
+ * Flip company-first openings.
+ *
+ * A run of service-in-area intros start with "Monarch Pro Wash is an owner-run,
+ * insured exterior cleaning company serving {town}..." and only reach the
+ * reader's problem in the second or third sentence. The proof is worth keeping,
+ * it is just in the wrong place: it belongs at the end, after the problem has
+ * been named.
+ *
+ * This moves that sentence to the end of the block as its own paragraph. No
+ * wording changes, so the verified local detail around it is untouched.
+ */
+const COMPANY_OPENER =
+  /^(Monarch(?: Pro Wash)? is an? [^.]*?(?:owner-run|owner run)[^.]*\.)\s*/;
+
+function flipCompanyOpening(sections, lines) {
+  const sec = sections.find((s, i) => i === 1 && s.type === "content:rich-text");
+  if (!sec?.data?.body) return;
+  const paras = sec.data.body.split(/<\/p>\s*<p>/).map((x) => x.replace(/^<p>|<\/p>$/g, ""));
+  if (!paras.length) return;
+  const m = paras[0].match(COMPANY_OPENER);
+  if (!m) return;
+  const moved = m[1];
+  paras[0] = paras[0].slice(m[0].length).trim();
+  if (!paras[0]) paras.shift();
+  paras.push(moved);
+  sec.data.body = paras.map((t) => `<p>${t}</p>`).join("");
+  lines.push(`  [1] company-first opening moved to the close: "${moved.slice(0, 60)}..."`);
+}
+
+/**
+ * Bold the lead-ins the copy already has.
+ *
+ * Several towns' "conditions" paragraphs already open with a short labelling
+ * sentence ("Freeze-thaw on estate driveways." / "Old Town brick." / "Ag and
+ * gravel-road dust."), written as plain text so it disappears into the block.
+ * Bolding it costs nothing and turns the section into something scannable.
+ *
+ * Only a genuinely short opener is treated as a label, and only when real
+ * sentences follow it, so ordinary prose is never emboldened by accident.
+ */
+function boldExistingLeadIns(sections, lines) {
+  const sec = sections.find((s, i) => i === 2 && s.type === "content:rich-text");
+  if (!sec?.data?.body) return;
+  let hits = 0;
+  const next = sec.data.body.replace(/<p>(?!<strong>)([^<]{0,400}?)<\/p>/g, (full, inner) => {
+    const m = inner.match(/^([A-Z][^.!?]{3,58}\.)\s+(?=[A-Z])/);
+    if (!m) return full;
+    const words = m[1].trim().split(/\s+/).length;
+    if (words > 9) return full;
+    const rest = inner.slice(m[0].length);
+    if (rest.split(/\s+/).length < 12) return full;
+    hits++;
+    return `<p><strong>${m[1]}</strong> ${rest}</p>`;
+  });
+  if (hits) { sec.data.body = next; lines.push(`  [2] bolded ${hits} existing lead-in(s)`); }
+}
+
+/**
+ * Bolded lead-ins for the "Built for {Town} Conditions" blocks.
+ *
+ * Those sections are three themed paragraphs with no visual entry point, so
+ * they render as a column of text and nobody reads the third one. Prefixing
+ * each paragraph with the cause it describes makes the section scan as three
+ * causes. The paragraph text itself is untouched, which matters because the
+ * local detail in it is verified against the vault's per-town reference files.
+ *
+ * slug -> array of labels, one per paragraph, in order. A null skips that
+ * paragraph. Extra paragraphs beyond the array are left alone.
+ */
+export const LEAD_INS = {
+  "sia-meridian--concrete-sealing-staining": ["Newer concrete, worth protecting early", "Freeze-thaw does the real damage", "Hard water and high-desert UV"],
+  "sia-meridian--graffiti-removal": ["The Eagle Road corridor", "Old Town brick needs a softer hand", "The commercial stretches"],
+  "sia-meridian--gutter-cleaning": ["Mature trees in Old Town", "Winter makes a clog worse", "HOA appearance standards"],
+  "sia-meridian--post-construction-cleanup": ["South Meridian is the active frontier", "North Meridian HOAs expect it perfect on day one", "High-desert dust bakes on"],
+  "sia-meridian--roof-cleaning": ["Shade keeps roofs damp", "The older subdivisions are catching up", "High pressure has no place on a roof"],
+  "sia-meridian--soft-washing": ["Newer construction needs a gentle hand", "Older Meridian siding needs gentler still", "HOA standards notice a streaky exterior"],
+  "sia-meridian--window-cleaning": ["Hard water is the big one here", "Newer subdivisions, bigger glass", "Storefront glass on Eagle Road"],
+
+  // Pages whose "conditions" paragraphs had no lead-in of their own.
+  "sia-caldwell--graffiti-removal": ["Historic downtown brick", "Industrial park surfaces", "The Cleveland Blvd retail stretch"],
+  "sia-caldwell--window-cleaning": ["Hard water is the main culprit", "Orchard and vineyard dust", "Older divided-light glass"],
+  "sia-eagle--gutter-cleaning": ["Mature trees along the river", "Long runs on estate rooflines", "Winter freeze-thaw"],
+  "sia-eagle--pressure-washing": ["Gravel and ag dust on the north end", "Freeze-thaw and efflorescence", "Hard water near sprinklers"],
+  "sia-nampa--graffiti-removal": ["Old Nampa brick storefronts", "The Caldwell Blvd retail corridor", "Garrity and the industrial corridor"],
+  "sia-nampa--gutter-cleaning": ["Mature trees in the historic district", "Winter makes a clog worse", "Low ground near Lake Lowell"],
+  "sia-nampa--post-construction-cleanup": ["South Nampa is the busiest", "North Nampa is filling in", "Farmland dust does not stop"],
+  "sia-nampa--pressure-washing": ["New builds next to working farmland", "Older North Nampa concrete", "Moderately hard water"],
+  "sia-nampa--roof-cleaning": ["Shade in the Old Nampa historic district", "Years of untreated growth", "Why soft washing matters here"],
+  "sia-nampa--soft-washing": ["Century-old siding in Old Nampa", "Shade keeps siding damp", "Dust and hard water in South Nampa"],
+  "sia-nampa--window-cleaning": ["Moderately hard water", "High-desert air near Lake Lowell", "Storefront glass on the retail spine"],
+};
+
+function applyLeadIns(sections, slug, lines) {
+  const labels = LEAD_INS[slug];
+  if (!labels) return;
+  const sec = sections.find((s, i) => s.type === "content:rich-text" && i === 2);
+  if (!sec?.data?.body) return;
+  // Idempotent: a paragraph that already opens with a bold lead-in is skipped,
+  // so re-running the pipeline cannot stack labels on top of each other.
+  let n = 0;
+  const next = sec.data.body.replace(/<p>(<strong>)?/g, (full, alreadyBold) => {
+    const label = labels[n++];
+    if (alreadyBold) return full;
+    return label ? `<p><strong>${label}.</strong> ` : "<p>";
+  });
+  if (next !== sec.data.body) {
+    sec.data.body = next;
+    lines.push(`  [2] lead-ins: ${labels.filter(Boolean).join(" / ")}`);
+  }
+}
+
 // ---------------------------------------------------------------------------
 if (process.argv[1] && process.argv[1].endsWith("copy-prose.mjs")) {
   const strip = (v) => String(v).replace(/<\/p>/g, "\n").replace(/<[^>]+>/g, "").replace(/[ \t]+/g, " ").trim();
   let n = 0;
+
+  // structural passes across every service-in-area draft
+  const siaSlugs = fs.readdirSync(DIR).filter((f) => f.startsWith("sia-")).map((f) => f.replace(".json", ""));
+  for (const slug of new Set([...siaSlugs, ...Object.keys(LEAD_INS)])) {
+    const f = `${DIR}/${slug}.json`;
+    if (!fs.existsSync(f)) { console.log("MISSING", slug); continue; }
+    const j = JSON.parse(fs.readFileSync(f, "utf8"));
+    const lines = [];
+    flipCompanyOpening(j.sections, lines);
+    boldExistingLeadIns(j.sections, lines);
+    applyLeadIns(j.sections, slug, lines);
+    if (lines.length) { n++; console.log(`${slug}\n${lines.join("\n")}`); }
+    if (WRITE) fs.writeFileSync(f, JSON.stringify(j, null, 2) + "\n");
+  }
+
   for (const [slug, secs] of Object.entries(PROSE)) {
     const f = `${DIR}/${slug}.json`;
     if (!fs.existsSync(f)) { console.log("MISSING", slug); continue; }
