@@ -1,6 +1,24 @@
 ---
-import { getBusinessData } from '@/lib/utils';
-
+/**
+ * trust-bar:badges — the thin proof strip under the hero.
+ *
+ * Every badge here must be TRUE. The bar deliberately has no slot for awards or
+ * certifications, because none have been earned yet.
+ *
+ * Two notes on the data:
+ *
+ * - `familyOwned` defaults to FALSE. Monarch is a single-member LLC with no
+ *   employees, so "family owned and operated" overclaims on a service page. The
+ *   About page opts back in, where the founding story gives it context.
+ * - `foundingYear` drives "N+ Years in Business". Founded 2026 computes to zero,
+ *   which is falsy, so that badge correctly hides. The owner's pre-Monarch trades
+ *   experience is a SEPARATE badge (`tradeYears`) and must not be confused with
+ *   company age.
+ *
+ * All the plain badges render identically (circle, icon, label), so they share one
+ * block and differ only by icon path. Only the Google rating badge is bespoke,
+ * because of the stars.
+ */
 interface Props {
   theme?: 'default' | 'alt' | 'muted' | 'inverse' | 'primary' | 'accent';
   data?: Record<string, unknown>;
@@ -8,30 +26,48 @@ interface Props {
 
 const { theme = 'default', data } = Astro.props;
 
-const business = await getBusinessData();
-
 const foundingYear = (data?.foundingYear as number) ?? null;
 const yearsInBusiness = foundingYear ? new Date().getFullYear() - foundingYear : null;
 
 const googleRating = (data?.googleRating as number) ?? null;
 const reviewCount = (data?.reviewCount as number) ?? null;
-const showFamilyOwned = (data?.familyOwned as boolean) ?? true;
+
 const showInsured = (data?.insured as boolean) ?? true;
+const showOwnerOperated = (data?.ownerOperated as boolean) ?? true;
+const showFreeQuotes = (data?.freeQuotes as boolean) ?? true;
+const showFamilyOwned = (data?.familyOwned as boolean) ?? false;
+const tradeYears = (data?.tradeYears as number) ?? null;
 
 const fullStars = googleRating ? Math.floor(googleRating) : 0;
 const hasHalf = googleRating ? googleRating % 1 >= 0.5 : false;
 const emptyStars = googleRating ? 5 - fullStars - (hasHalf ? 1 : 0) : 0;
 
+const ICONS = {
+  shield: 'M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z',
+  user: 'M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z',
+  wrench: 'M14.7 6.3a4 4 0 01-5 5L5 16a2.1 2.1 0 003 3l4.7-4.7a4 4 0 015-5l-2.5 2.5-2-2 2.5-2.5z',
+  doc: 'M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z',
+  calendar: 'M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z',
+  home: 'M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6',
+} as const;
+
+type Badge = { id: string; label: string; sublabel?: string; icon?: string };
+
+// Order is deliberate: insurance is the most-named trust gate in the customer
+// research, and owner accountability is the positioning wedge, so they lead.
 const badges = [
-  yearsInBusiness && { id: 'years', label: `${yearsInBusiness}+ Years in Business` },
+  showInsured && { id: 'insured', label: 'Fully Insured', icon: ICONS.shield },
+  showOwnerOperated && { id: 'owner', label: 'Owner-Operated', icon: ICONS.user },
+  tradeYears && { id: 'trades', label: `${tradeYears}+ Years in the Trades`, icon: ICONS.wrench },
+  showFreeQuotes && { id: 'quotes', label: 'Free Quotes', icon: ICONS.doc },
+  yearsInBusiness && { id: 'years', label: `${yearsInBusiness}+ Years in Business`, icon: ICONS.calendar },
   googleRating && {
     id: 'rating',
     label: googleRating.toFixed(1),
     sublabel: reviewCount ? `${reviewCount.toLocaleString()} Google Reviews` : 'Google Reviews',
   },
-  showInsured && { id: 'insured', label: 'Fully Insured' },
-  showFamilyOwned && { id: 'family', label: 'Family Owned & Operated' },
-].filter(Boolean) as Array<{ id: string; label: string; sublabel?: string }>;
+  showFamilyOwned && { id: 'family', label: 'Family Owned & Operated', icon: ICONS.home },
+].filter(Boolean) as Badge[];
 ---
 
 <section class={`section-wrapper section-py-xs theme-${theme}`}>
@@ -41,14 +77,14 @@ const badges = [
         <li class="flex items-center gap-x-xl md:gap-x-12">
           <div class="flex items-center gap-sm">
 
-            {badge.id === 'years' && (
+            {badge.icon && (
               <>
                 <span
                   class="shrink-0 flex items-center justify-center w-10 h-10 rounded-full"
                   style="background-color: var(--theme-border);"
                 >
                   <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.75" style="color: var(--theme-fg);" aria-hidden="true">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                    <path stroke-linecap="round" stroke-linejoin="round" d={badge.icon} />
                   </svg>
                 </span>
                 <span class="text-sm font-semibold theme-text leading-tight">{badge.label}</span>
@@ -100,34 +136,6 @@ const badges = [
                   </div>
                   <span class="text-xs theme-text-muted">{badge.sublabel}</span>
                 </div>
-              </>
-            )}
-
-            {badge.id === 'insured' && (
-              <>
-                <span
-                  class="shrink-0 flex items-center justify-center w-10 h-10 rounded-full"
-                  style="background-color: var(--theme-border);"
-                >
-                  <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.75" style="color: var(--theme-fg);" aria-hidden="true">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-                  </svg>
-                </span>
-                <span class="text-sm font-semibold theme-text leading-tight">{badge.label}</span>
-              </>
-            )}
-
-            {badge.id === 'family' && (
-              <>
-                <span
-                  class="shrink-0 flex items-center justify-center w-10 h-10 rounded-full"
-                  style="background-color: var(--theme-border);"
-                >
-                  <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.75" style="color: var(--theme-fg);" aria-hidden="true">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
-                  </svg>
-                </span>
-                <span class="text-sm font-semibold theme-text leading-tight">{badge.label}</span>
               </>
             )}
 

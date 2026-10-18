@@ -1,0 +1,240 @@
+{
+  "slug": "index",
+  "title": "Pressure Washing & Exterior Cleaning in Boise, ID",
+  "sections": [
+    {
+      "type": "hero:angled",
+      "theme": "default",
+      "data": {
+        "eyebrow": {
+          "text": "Boise & the Treasure Valley · Insured & Owner-Operated",
+          "variant": "primary"
+        },
+        "heading": "Pressure Washing & Exterior Cleaning in Boise, ==Done Right the First Time==",
+        "subheading": "Driveways, roofs, siding and windows cleaned with the right method for every surface, so nothing gets damaged. Insured, owner-run, and always a free quote with the price up front. Serving Boise, Meridian, Nampa, Eagle and the whole Treasure Valley.",
+        "ctas": [
+          {
+            "label": "Get My Free Quote",
+            "href": "/contact",
+            "variant": "primary"
+          }
+        ],
+        "showPhone": true,
+        "trustBadges": [
+          {
+            "text": "Same Day Estimates"
+          },
+          {
+            "text": "Fully Insured"
+          },
+          {
+            "text": "Commercial & Residential"
+          }
+        ],
+        "quoteForm": true
+      }
+    },
+    {
+      "type": "trust-bar:badges",
+      "theme": "default",
+      "data": {
+        "foundingYear": 2026,
+        "familyOwned": false,
+        "insured": true,
+        "ownerOperated": true,
+        "tradeYears": 15,
+        "freeQuotes": true
+      },
+      "spacing": {
+        "mobile": "md"
+      }
+    },
+    {
+      "type": "feature:media-rail",
+      "theme": "alt",
+      "data": {
+        "eyebrow": {
+          "text": "How We Work",
+          "variant": "primary"
+        },
+        "heading": "One Call for the Whole Property",
+        "subheading": "Most exterior cleaners do one thing. Monarch handles the driveway, the roof, the siding, the windows and the gutters in a single visit, with the method matched to each surface. One quote, one visit, and one person accountable for all of it.",
+        "imagePosition": "right",
+        "items": [],
+        "stats": [
+          {
+            "value": "15+",
+            "label": "Years in the trades"
+          },
+          {
+            "value": "Owner",
+            "label": "On site for every job"
+          }
+        ]
+      },
+      "spacing": {
+        "desktop": "lg",
+        "mobile": "md"
+      }
+    },
+    {
+      "type": "divider:shape",
+      "theme": "default",
+      "data": {
+        "variant": "squeegee",
+        "topTheme": "alt",
+        "bottomTheme": "muted",
+        "height": ""
+      }
+    },
+    {
+      "type": "services:sidebar-cta",
+      "theme": "muted",
+      "data": {
+        "eyebrow": {
+          "text": "Our Services",
+          "variant": "primary"
+        },
+        "heading": "Exterior Cleaning Services Across the Treasure Valley",
+        "subheading": "One visit for the whole property, or just the one thing that is bothering you. Every surface gets the method that suits it, whether that means real pressure on concrete or a gentle soft wash on a roof.",
+        "limit": 8,
+        "cta": {
+          "label": "Get Your Free Estimate",
+          "href": "/contact",
+          "variant": "primary"
+        }
+      },
+      "motif": {
+        "kind": "grid",
+        "opacity": 0.46,
+        "color": "var(--color-primary)",
+        "position": "top"
+      }
+    },
+    {
+      "type": "divider:shape",
+      "theme": "default",
+      "data": {
+        "variant": "wave",
+        "topTheme": "muted",
+        "bottomTheme": "alt",
+        "height": ""
+      }
+    },
+    {
+      "type": "reviews:rating-summary",
+      "theme": "alt",
+      "data": {
+        "eyebrow": {
+          "text": "Reviews",
+          "variant": "primary"
+        },
+        "heading": "What Customers Say",
+        "subheading": "Early feedback from Treasure Valley property owners. More as the jobs come in.",
+        "showQuotes": true
+      }
+    },
+    {
+      "type": "divider:shape",
+      "theme": "default",
+      "data": {
+        "variant": "wave",
+        "topTheme": "alt",
+        "bottomTheme": "muted",
+        "height": ""
+      }
+    },
+    {
+      "type": "about:owner-letter",
+      "theme": "muted",
+      "data": {
+        "eyebrow": {
+          "text": "Meet the Owner",
+          "variant": "primary"
+        },
+        "heading": "Why I Started Monarch Pro Wash",
+        "subheading": "Owner/Operator Rich Prins shares his story",
+        "body": "I spent fifteen years in construction before I ever picked up a pressure washer professionally. That time taught me something most exterior cleaners learn the hard way: every surface has a right method and a wrong one, and the wrong one costs the homeowner far more than the cleaning did. Stucco isn't concrete. A shingle roof isn't a driveway. Monarch Pro Wash exists because I got tired of seeing etched concrete, stripped paint, and shingles blown loose by someone in a hurry.\n\nSo we're new as a company, and deliberately small. When you call, you get me. When we quote, the price is the price. And when we're on your property, we're using the method that surface actually needs, even when it's the slower one.",
+        "signatureName": "Richard Prins",
+        "signatureRole": "Owner / Operator",
+        "cta": {
+          "label": "Meet the Owner",
+          "href": "/about",
+          "variant": "primary"
+        }
+      },
+      "motif": {
+        "kind": "butterfly-color",
+        "opacity": 0.24
+      },
+      "spacing": {
+        "desktop": "xl",
+        "mobile": "lg"
+      }
+    },
+    {
+      "type": "service-areas:map-split",
+      "theme": "default",
+      "data": {
+        "eyebrow": {
+          "text": "AREAS WE SERVE",
+          "variant": "primary"
+        },
+        "heading": "Serving Boise and the Treasure Valley",
+        "body": "Monarch is based in Boise and covers the Treasure Valley, from Meridian and Eagle out to Nampa, Caldwell and Kuna. We also take work in Middleton, Star, Garden City, Emmett, Payette and Mountain Home.",
+        "coverageNote": "Outside those towns? Ask anyway. If we are already working nearby that week, we can usually fit you in.",
+        "featuredOnly": true,
+        "cta": {
+          "label": "Get A Free Quote",
+          "href": "/contact",
+          "variant": "primary"
+        }
+      }
+    },
+    {
+      "type": "contact:form",
+      "theme": "alt",
+      "data": {
+        "eyebrow": {
+          "text": "Contact",
+          "variant": "primary"
+        },
+        "heading": "Get Your Free Quote",
+        "subheading": "Tell us what needs cleaning and we will come back with one clear price. No obligation and no pressure to book.",
+        "showHours": true
+      }
+    },
+    {
+      "type": "faqs:accordion",
+      "theme": "alt",
+      "data": {
+        "eyebrow": {
+          "text": "FAQs",
+          "variant": "primary"
+        },
+        "heading": "Frequently Asked Questions",
+        "subheading": "The questions we get asked most, answered plainly."
+      }
+    },
+    {
+      "type": "cta:statement",
+      "theme": "default",
+      "data": {
+        "eyebrow": {
+          "text": "Ready to get started?",
+          "variant": "primary"
+        },
+        "heading": "One Call. A Cleaner Property.",
+        "subheading": "Free quote, a clear price up front, and the owner doing the work. New customers get 10% off their first service.",
+        "ctas": [
+          {
+            "label": "Get My Free Quote",
+            "href": "/estimate",
+            "variant": "primary"
+          }
+        ],
+        "showPhone": true
+      }
+    }
+  ]
+}

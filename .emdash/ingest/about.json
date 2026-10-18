@@ -1,0 +1,234 @@
+{
+  "slug": "about",
+  "title": "About Monarch Pro Wash",
+  "sections": [
+    {
+      "type": "hero:minimal",
+      "theme": "inverse",
+      "data": {
+        "headline": "Local, Family-Owned, and Here to Stay",
+        "subheadline": "Behind every clean is a real person you can call by name. Monarch Pro Wash is owner-run, built on more than fifteen years in the trades, and rooted right here in the Treasure Valley.",
+        "cta": {
+          "label": "Get My Free Quote",
+          "href": "/contact"
+        },
+        "secondaryCta": {
+          "label": "Call (458) 209-7735",
+          "href": "tel:4582097735"
+        }
+      }
+    },
+    {
+      "type": "about:split",
+      "theme": "default",
+      "data": {
+        "eyebrow": {
+          "text": "Who We Are",
+          "variant": "text"
+        },
+        "heading": "Our Story",
+        "body": "Richard Prins spent more than fifteen years in the trades before starting Monarch, doing commercial and residential surface work across the country. After years of moving and building, he and his family put down roots in the Treasure Valley and set out to build something of their own. Monarch Pro Wash is that something: a local company built to do exterior cleaning the right way, for neighbors who want their home or business cared for by someone they can trust and reach directly.",
+        "imagePosition": "right",
+        "cta": {
+          "label": "Get a Free Quote",
+          "href": "/contact"
+        }
+      }
+    },
+    {
+      "type": "about:split",
+      "theme": "inverse",
+      "data": {
+        "eyebrow": {
+          "text": "Our Name",
+          "variant": "text"
+        },
+        "heading": "Why the Monarch?",
+        "body": "The monarch has always meant something to our family. It stands for transformation, for taking something worn and weathered and helping it emerge renewed. That is exactly what we do for a property: we take something tired and bring it back to life. The monarch also travels far and always finds its way home, which fits a family that has lived all over the country and finally found home here in the Treasure Valley.",
+        "imagePosition": "left"
+      },
+      "motif": {
+        "kind": "butterfly-color",
+        "opacity": 0.3
+      }
+    },
+    {
+      "type": "about:values",
+      "theme": "default",
+      "data": {
+        "eyebrow": {
+          "text": "Our Values",
+          "variant": "text"
+        },
+        "heading": "What We Stand For",
+        "subheading": "The principles behind every job.",
+        "items": [
+          {
+            "icon": "check",
+            "title": "Do It Right the First Time",
+            "body": "A full, thorough clean, or we come back and fix it."
+          },
+          {
+            "icon": "shield",
+            "title": "Never Damage a Surface",
+            "body": "The method always matches the material."
+          },
+          {
+            "icon": "star",
+            "title": "Honest, Up-Front Pricing",
+            "body": "One clear price before we start. No hourly meter and no surprise additions at the end."
+          },
+          {
+            "icon": "heart",
+            "title": "Treat Your Property Like Our Own",
+            "body": "Careful around your landscaping, your pets, and your time."
+          },
+          {
+            "icon": "clock",
+            "title": "Local, and Here to Stay",
+            "body": "We are building Monarch to be a name you trust for years."
+          }
+        ]
+      }
+    },
+    {
+      "type": "team:owner-spotlight",
+      "theme": "alt",
+      "data": {
+        "eyebrow": {
+          "text": "The Owner",
+          "variant": "text"
+        },
+        "heading": "Meet Richard",
+        "owner": {
+          "name": "Richard Prins",
+          "role": "Owner & Operator",
+          "bio": "Monarch is owner-run by Richard Prins, with more than fifteen years of hands-on surface work behind him. When you hire Monarch, the person accountable for the result is the person doing the work, and he is reachable by phone. As Monarch grows, every person who joins the crew will be held to the same standard: careful, respectful, and proud of the work.",
+          "signature": "Richard Prins, Boise, Idaho"
+        },
+        "cta": {
+          "label": "Get a Free Quote",
+          "href": "/contact",
+          "variant": "primary"
+        }
+      }
+    },
+    {
+      "type": "about:split",
+      "theme": "default",
+      "data": {
+        "eyebrow": {
+          "text": "Our Community",
+          "variant": "text"
+        },
+        "heading": "Part of This Community",
+        "body": "The Treasure Valley is home. We live here, and we are raising our family here. That is why Monarch is not built for a quick season of work; it is built to be a company our neighbors count on for the long haul. Giving back is part of that, and as we grow we are committing to support the local causes, schools, and neighbors that make this valley home.",
+        "imagePosition": "right"
+      }
+    },
+    {
+      "type": "stats:band",
+      "theme": "brand-secondary",
+      "data": {
+        "eyebrow": {
+          "text": "By the Numbers",
+          "variant": "text"
+        },
+        "heading": "Rooted in the Treasure Valley",
+        "subheading": "Local, owner-run, and relentless about the details.",
+        "stats": [
+          {
+            "value": "15+",
+            "label": "Years Richard has worked in the trades"
+          },
+          {
+            "value": "13",
+            "label": "Treasure Valley towns we cover"
+          },
+          {
+            "value": "Owner",
+            "label": "Run and reachable"
+          },
+          {
+            "value": "8",
+            "label": "Services under one roof"
+          }
+        ],
+        "cta": {
+          "label": "Get a Free Quote",
+          "href": "/contact"
+        }
+      }
+    },
+    {
+      "type": "certifications:logos-row",
+      "theme": "alt",
+      "data": {
+        "eyebrow": {
+          "text": "Credentials",
+          "variant": "text"
+        },
+        "heading": "Credentials You Can Count On",
+        "items": [
+          {
+            "label": "Fully Insured in Idaho"
+          }
+        ]
+      }
+    },
+    {
+      "type": "guarantee:seal-spotlight",
+      "theme": "default",
+      "data": {
+        "eyebrow": {
+          "text": "Our Guarantee",
+          "variant": "text"
+        },
+        "heading": "The Monarch Standard",
+        "subheading": "We aim for a full, thorough clean on the first visit. If any surface we cleaned is not right, tell us and we come back to make it right. No fine print and no runaround.",
+        "seal": "Make It Right",
+        "bullets": [
+          "A full, thorough clean on the first visit",
+          "If it's not right, we come back and fix it",
+          "No fine print and no runaround",
+          "Careful around your landscaping, pets, and time"
+        ],
+        "cta": {
+          "label": "Get a Free Quote",
+          "href": "/contact",
+          "variant": "primary"
+        }
+      }
+    },
+    {
+      "type": "reviews:spotlight",
+      "theme": "alt",
+      "data": {
+        "eyebrow": {
+          "text": "Reviews",
+          "variant": "text"
+        },
+        "heading": "What Customers Say",
+        "subheading": "Early feedback from Treasure Valley property owners.",
+        "filter": "featured",
+        "limit": 1
+      }
+    },
+    {
+      "type": "cta:banner",
+      "theme": "primary",
+      "data": {
+        "heading": "Work With a Local You Can Trust",
+        "subheading": "Get a free quote with your price up front, from the owner who will be doing the work.",
+        "ctas": [
+          {
+            "label": "Get My Free Quote",
+            "href": "/contact",
+            "variant": "primary"
+          }
+        ],
+        "showPhone": true
+      }
+    }
+  ]
+}

@@ -16,6 +16,16 @@ import ServicePageRail from "@/components/layout/ServicePageRail.astro";
 import { getServices, getServiceAreas, getPage } from "@/lib/content";
 import { getSiaQuiz } from "@/lib/siaQuizzes";
 import { hasSiaPages } from "@/config/launchScope";
+import {
+  PROCESS_STEPS,
+  PROCESS_HEADINGS,
+  WHY_ITEMS,
+  WHY_HEADINGS,
+  GUARANTEE,
+  TRUST_BADGES,
+  ctaBanner,
+  pickVariant,
+} from "@/content/copy/shared";
 
 const areaSlug = Astro.params.area ?? "";
 const serviceSlug = Astro.params.service ?? "";
@@ -72,6 +82,8 @@ const siaQuiz = {
 // fails validation, and reviews:cards hides itself when the query is empty.
 // Section 11 (neighbourhoods) is omitted here because place names must come
 // from the verified per-town research, never be generated.
+const seed = `sia-${areaSlug}--${serviceSlug}`;
+
 const fallbackSections = [
   { type: "hero:split-form", theme: "inverse", data: {
     eyebrow: { text: `${svcTitle} · ${city}, ${state}`, variant: "text" },
@@ -83,38 +95,26 @@ const fallbackSections = [
     // roofing-crew photo used to sit here, on a pressure-washing site.
     form: siaQuiz,
   } },
-  // foundingYear drives "{n}+ Years in Business" in TrustBarBadges. It read 2010,
-  // which rendered "16+ Years in Business" for a company founded in 2026. At 2026
-  // the computed value is 0, which is falsy, so the badge correctly hides.
-  // The flag is `insured`, not `licensedInsured` — Monarch is insured, not licensed.
-  { type: "trust-bar:badges", theme: "alt", data: { foundingYear: 2026, familyOwned: true, insured: true } },
+  // Shared blocks come from src/content/copy/shared.ts. They were duplicated
+  // here and in pageTemplates.ts, which is how they drifted apart.
+  { type: "trust-bar:badges", theme: "alt", data: { ...TRUST_BADGES } },
   { type: "content:rich-text", theme: "alt", data: {
     eyebrow: { text: `${svcTitle} · ${city}`, variant: "text" },
     heading: `${svcTitle} for ${city} Homes and Businesses`,
-    body: `<p>${desc}</p><p>Monarch Pro Wash brings ${svcLower} to ${city}, ${state} and the surrounding Treasure Valley, with the same surface-matched method and the Monarch Standard on every job. Read more about our <a href="/services/${serviceSlug}">${svcLower}</a>, or see <a href="/${areaSlug}">every service we offer in ${city}</a>.</p>`,
+    body: `<p>${desc}</p><p>Monarch brings ${svcLower} to ${city} and the surrounding Treasure Valley, with the same surface-matched method and the same owner on site for every job. Read more about our <a href="/services/${serviceSlug}">${svcLower}</a>, or see <a href="/${areaSlug}">every service we offer in ${city}</a>.</p>`,
   } },
   { type: "process:horizontal", theme: "alt", data: {
     eyebrow: { text: "The Process", variant: "text" },
-    heading: "How It Works",
-    steps: [
-      { heading: "Get your free quote", body: "A clear price up front, with no guessing." },
-      { heading: "We match the method to the surface", body: "Real pressure where it helps, a gentle soft wash where it protects." },
-      { heading: "We clean, protect, and inspect", body: "Stains treated, landscaping protected, and the job checked before we leave." },
-    ],
+    heading: pickVariant(seed, PROCESS_HEADINGS),
+    steps: PROCESS_STEPS.map((s) => ({ ...s })),
   } },
   { type: "about:values", theme: "default", data: {
     eyebrow: { text: "Why Monarch", variant: "text" },
     heading: `Why ${city} Property Owners Choose Monarch`,
-    items: [
-      { title: "Surface-matched every time", body: "The method fits the material, so you get a deep clean with zero damage." },
-      { title: "Soft wash, not just power wash", body: "The safe method for anything delicate is standard here, not an upsell." },
-      { title: "Owner-run and insured", body: "The person accountable for the work is the person doing it." },
-      { title: "One vendor for the whole property", body: "Wash, seal, windows, and gutters under one roof." },
-    ],
+    items: WHY_ITEMS.map((i) => ({ ...i })),
   } },
   // No gallery:before-after here. With no pairs it fails validation, which is a
-  // loud error shim in dev and nothing at all in production — it only made the
-  // page look broken. Authored pages add it back once there are real photos.
+  // loud error shim in dev and nothing at all in production.
   { type: "reviews:cards", theme: "alt", data: {
     eyebrow: { text: "Reviews", variant: "text" },
     heading: `What ${city} Customers Say`,
@@ -122,12 +122,7 @@ const fallbackSections = [
     area: city,
     limit: 3,
   } },
-  { type: "guarantee:callout", theme: "brand-secondary", data: {
-    eyebrow: { text: "Our Guarantee", variant: "text" },
-    heading: "The Monarch Standard",
-    body: "We aim for a full, thorough clean on the first visit. If any surface we cleaned is not right, tell us and we come back to make it right. No fine print and no runaround.",
-    badge: "Make It Right",
-  } },
+  { type: "guarantee:callout", theme: "brand-secondary", data: { ...GUARANTEE } },
   { type: "faqs:accordion", theme: "alt", data: {
     eyebrow: { text: "FAQs", variant: "text" },
     heading: `${svcTitle} in ${city}: Common Questions`,
@@ -136,19 +131,16 @@ const fallbackSections = [
   { type: "services:grid", theme: "alt", data: {
     eyebrow: { text: "More Services", variant: "text" },
     heading: `Our Other Services in ${city}`,
-    subheading: "Most properties need more than one thing cleaned. We handle it in one visit.",
+    subheading: "Most properties need more than one thing cleaned. We handle it in a single visit.",
     hrefBase: `/${areaSlug}`,
   } },
   { type: "service-areas:chips", theme: "muted", data: {
     eyebrow: { text: "Service Areas", variant: "text" },
     heading: "Serving the Treasure Valley",
   } },
-  { type: "cta:banner", theme: "primary", data: {
+  { type: "cta:banner", theme: "primary", data: ctaBanner(seed, {
     heading: `Ready for ${svcTitle} in ${city}?`,
-    subheading: "Get a free quote with your price up front, from a local team that treats your property like its own.",
-    ctas: [{ label: "Get My Free Quote", href: "/contact", variant: "primary" }],
-    showPhone: true,
-  } },
+  }) },
 ];
 
 const rawSections = authored?.data?.sections?.length ? authored.data.sections : fallbackSections;

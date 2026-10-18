@@ -1,0 +1,101 @@
+{
+  "slug": "contact",
+  "title": "Contact Monarch Pro Wash",
+  "sections": [
+    {
+      "type": "hero:minimal",
+      "theme": "inverse",
+      "data": {
+        "headline": "Get Your Free Quote",
+        "subheadline": "Tell us what needs cleaning and we will get you a clear, up-front price. No pressure, no obligation, and usually a reply the same business day.",
+        "cta": {
+          "label": "Call (458) 209-7735",
+          "href": "tel:4582097735"
+        },
+        "secondaryCta": {
+          "label": "Email Us",
+          "href": "mailto:info@monarchprowashidaho.com"
+        }
+      }
+    },
+    {
+      "type": "contact:hours-map-form",
+      "theme": "default",
+      "data": {
+        "eyebrow": {
+          "text": "Contact Monarch Pro Wash",
+          "variant": "text"
+        },
+        "heading": "Reach Monarch Pro Wash",
+        "subheading": "We come to you across the Treasure Valley. There is no storefront to visit, just fast, local service at your property.",
+        "mapEmbedUrl": "https://www.google.com/maps?q=Treasure%20Valley%2C%20Idaho&z=9&output=embed",
+        "form": {
+          "type": "simple",
+          "title": "Request a Free Quote",
+          "submitLabel": "Get My Free Quote"
+        }
+      }
+    },
+    {
+      "type": "process:horizontal",
+      "theme": "alt",
+      "data": {
+        "eyebrow": {
+          "text": "What's Next",
+          "variant": "text"
+        },
+        "heading": "What Happens After You Reach Out",
+        "steps": [
+          {
+            "heading": "We reply fast",
+            "body": "Usually the same business day, by call, text, or email, whichever you prefer."
+          },
+          {
+            "heading": "We get you a clear quote",
+            "body": "A flat, per-service price up front, with no vague hourly meter."
+          },
+          {
+            "heading": "We schedule the work",
+            "body": "Pick a time that fits, and we handle the rest. You do not even need to be home for most jobs."
+          }
+        ]
+      }
+    },
+    {
+      "type": "faqs:contact-split",
+      "theme": "default",
+      "data": {
+        "eyebrow": {
+          "text": "FAQ",
+          "variant": "text"
+        },
+        "heading": "Before You Reach Out",
+        "subheading": "A few common questions. Do not see yours? Reach out and we will answer it fast.",
+        "limit": 6,
+        "cta": {
+          "label": "Get My Free Quote",
+          "href": "/contact",
+          "variant": "primary"
+        }
+      }
+    },
+    {
+      "type": "cta:phone-focused",
+      "theme": "primary",
+      "data": {
+        "eyebrow": {
+          "text": "Talk to a Local",
+          "variant": "text"
+        },
+        "heading": "Prefer to Talk? Give Us a Call.",
+        "subheading": "Reach Richard directly. We are happy to walk through your project and get you a price.",
+        "showPhone": true,
+        "cta": {
+          "label": "Get My Free Quote",
+          "href": "/contact",
+          "variant": "outline"
+        }
+      }
+    }
+  ]
+}

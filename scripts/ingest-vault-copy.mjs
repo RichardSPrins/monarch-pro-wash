@@ -32,7 +32,8 @@ const VAULT = join(
   homedir(),
   "Documents/brain/second-brain/output/monarch-pro-wash/website-copy",
 );
-const OUT_DIR = ".emdash/ingest";
+const outIdx = process.argv.indexOf("--out");
+const OUT_DIR = outIdx > -1 ? process.argv[outIdx + 1] : ".emdash/ingest";
 const REPORT_ONLY = process.argv.includes("--report");
 
 // Keep in step with src/config/launchScope.ts.
@@ -44,7 +45,14 @@ const PUBLISHED_SERVICES = [
 const SIA_AREAS = ["boise", "meridian", "nampa", "eagle", "caldwell"];
 
 /** Vault filenames don't always match service slugs. */
-const FILE_ALIASES = { "christmas-light-installation": "christmas-lights" };
+const FILE_ALIASES = {
+  "christmas-light-installation": "christmas-lights",
+  // nampa/eagle/caldwell name this file differently from boise/meridian. Without
+  // the alias those three towns matched no published slug, and the build silently
+  // emitted Christmas-light copy under the post-construction URL. Three live pages
+  // shipped with the wrong service on them.
+  "post-construction-exterior-cleanup": "post-construction-cleanup",
+};
 const slugFromFile = (f) => {
   const s = basename(f, ".md");
   return FILE_ALIASES[s] ?? s;
@@ -352,10 +360,26 @@ function build(sec, ctx) {
 // ---------------------------------------------------------------------------
 
 function buildSia(areaSlug, areaName, serviceSlug, serviceTitle) {
-  const file = join(VAULT, "service-in-area", areaSlug, `${serviceSlug}.md`);
-  const alt = join(VAULT, "service-in-area", areaSlug, "christmas-light-installation.md");
-  const path = existsSync(file) ? file : existsSync(alt) ? alt : null;
-  if (!path) return { error: "no vault file" };
+  // Resolve the vault file for this service. Filenames are not consistent across
+  // towns (nampa/eagle/caldwell call it post-construction-EXTERIOR-cleanup), so
+  // fall back to scanning the directory and mapping each filename through
+  // FILE_ALIASES rather than guessing.
+  //
+  // This previously fell back to a hardcoded christmas-light-installation.md,
+  // which meant any slug/filename mismatch silently produced a Christmas-light
+  // page under the wrong URL. Three of those reached production. Never substitute
+  // an unrelated service: if nothing matches, fail loudly so --report shows it.
+  const dir = join(VAULT, "service-in-area", areaSlug);
+  if (!existsSync(dir)) return { error: `no vault directory for ${areaSlug}` };
+  const direct = join(dir, `${serviceSlug}.md`);
+  let path = existsSync(direct) ? direct : null;
+  if (!path) {
+    const match = readdirSync(dir)
+      .filter((f) => f.endsWith(".md") && !f.startsWith("_"))
+      .find((f) => slugFromFile(f) === serviceSlug);
+    if (match) path = join(dir, match);
+  }
+  if (!path) return { error: `no vault file for ${areaSlug}/${serviceSlug}` };
 
   const ctx = {
     eyebrow: `${serviceTitle} · ${areaName}`,

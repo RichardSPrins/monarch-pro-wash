@@ -1,0 +1,124 @@
+{
+  "slug": "services",
+  "title": "Exterior Cleaning Services | Monarch Pro Wash",
+  "sections": [
+    {
+      "type": "hero:image-overlay",
+      "theme": "inverse",
+      "data": {
+        "heading": "Exterior Cleaning Services for Every Part of Your Property",
+        "subheading": "Pressure washing, soft washing, roof and gutter cleaning, windows, concrete sealing and more. One insured, owner-run operation for the whole property, with the price up front.",
+        "showPhone": false,
+        "ctas": [
+          {
+            "label": "Get a Free Quote",
+            "href": "/contact",
+            "variant": "secondary"
+          },
+          {
+            "label": "Call (458) 209-7735",
+            "href": "tel:4582097735",
+            "variant": "outline"
+          }
+        ]
+      }
+    },
+    {
+      "type": "content:rich-text",
+      "theme": "default",
+      "data": {
+        "eyebrow": {
+          "text": "The Whole Property",
+          "variant": "text"
+        },
+        "heading": "One Team for the Whole Property",
+        "body": "<p>Most exterior cleaning companies do one or two things. Monarch does the whole property. From the driveway to the roofline, the windows to the gutters, and the storefront to the parking lot, we bring the right method to every surface.</p><p>Every job is quoted per service, up front, and backed by the Monarch Standard. Browse by category below, or reach out and we will build a plan for your property.</p>"
+      }
+    },
+    {
+      "type": "services:by-category",
+      "theme": "alt",
+      "data": {
+        "eyebrow": {
+          "text": "What We Do",
+          "variant": "text"
+        },
+        "heading": "Our Services",
+        "subheading": "Grouped by the kind of work. Tap any service for the details.",
+        "cta": {
+          "label": "Get a Free Quote",
+          "href": "/contact",
+          "variant": "outline"
+        }
+      }
+    },
+    {
+      "type": "process:horizontal",
+      "theme": "default",
+      "data": {
+        "eyebrow": {
+          "text": "The Process",
+          "variant": "text"
+        },
+        "heading": "How It Works",
+        "steps": [
+          {
+            "heading": "Get your free quote",
+            "body": "A clear, per-service price up front, with no vague hourly meter."
+          },
+          {
+            "heading": "We match the method to the surface",
+            "body": "Real pressure or a gentle soft wash, exactly as each surface needs."
+          },
+          {
+            "heading": "We clean, protect, and inspect",
+            "body": "Stains treated, landscaping protected, and the job checked before we leave."
+          }
+        ]
+      }
+    },
+    {
+      "type": "service-areas:map-chips",
+      "theme": "alt",
+      "data": {
+        "eyebrow": {
+          "text": "Where We Work",
+          "variant": "text"
+        },
+        "heading": "Every Service, Across the Treasure Valley",
+        "subheading": "We bring all of these services to homes and businesses across the valley. Find your town for details on the work we do where you live.",
+        "limit": 18,
+        "mapEmbedUrl": "https://www.google.com/maps?q=Treasure%20Valley%2C%20Idaho&z=9&output=embed"
+      }
+    },
+    {
+      "type": "faqs:accordion",
+      "theme": "default",
+      "data": {
+        "eyebrow": {
+          "text": "FAQ",
+          "variant": "text"
+        },
+        "heading": "Questions About Our Services",
+        "subheading": "The common ones. Do not see yours? Reach out and we will answer it fast.",
+        "limit": 6
+      }
+    },
+    {
+      "type": "cta:banner",
+      "theme": "primary",
+      "data": {
+        "heading": "One Call for the Whole Property",
+        "subheading": "Get a free quote with your price up front, from the owner who will be doing the work.",
+        "ctas": [
+          {
+            "label": "Get My Free Quote",
+            "href": "/contact",
+            "variant": "primary"
+          }
+        ],
+        "showPhone": true
+      }
+    }
+  ]
+}
