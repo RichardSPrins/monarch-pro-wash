@@ -27,8 +27,11 @@
       "theme": "alt",
       "data": {
         "foundingYear": 2026,
-        "familyOwned": true,
-        "insured": true
+        "familyOwned": false,
+        "insured": true,
+        "ownerOperated": true,
+        "tradeYears": 15,
+        "freeQuotes": true
       }
     },
     {

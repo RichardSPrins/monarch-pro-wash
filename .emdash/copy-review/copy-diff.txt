@@ -170,19 +170,51 @@
   GLOBAL (1)
     ~ Get a free quote with your price up front, from a local team that trea -> from the owner who will be doing the work
 
+=== svc-roof-cleaning
+  [1] trust-bar:badges
+    # Insured + Owner-Operated + 15+ Years in the Trades + Free Quotes.
+    # familyOwned off: single-member LLC, no employees. About keeps the framing.
+
+=== svc-graffiti-removal
+  [1] trust-bar:badges
+    # Insured + Owner-Operated + 15+ Years in the Trades + Free Quotes.
+    # familyOwned off: single-member LLC, no employees. About keeps the framing.
+
 === svc-post-construction-cleanup
+  [1] trust-bar:badges
+    # Insured + Owner-Operated + 15+ Years in the Trades + Free Quotes.
+    # familyOwned off: single-member LLC, no employees. About keeps the framing.
   GLOBAL (1)
     ~ Post-construction exterior cleanup in the Treasure Valley — concrete,  -> Treasure Valley: concrete, glass
 
 === svc-gutter-cleaning
+  [1] trust-bar:badges
+    # Insured + Owner-Operated + 15+ Years in the Trades + Free Quotes.
+    # familyOwned off: single-member LLC, no employees. About keeps the framing.
   GLOBAL (1)
     ~ Gutter cleaning in Boise clears leaves, debris, and clogs from gutters -> , protecting your roof
 
+=== svc-concrete-sealing-staining
+  [1] trust-bar:badges
+    # Insured + Owner-Operated + 15+ Years in the Trades + Free Quotes.
+    # familyOwned off: single-member LLC, no employees. About keeps the framing.
+
+=== svc-window-cleaning
+  [1] trust-bar:badges
+    # Insured + Owner-Operated + 15+ Years in the Trades + Free Quotes.
+    # familyOwned off: single-member LLC, no employees. About keeps the framing.
+
 === svc-soft-washing
+  [1] trust-bar:badges
+    # Insured + Owner-Operated + 15+ Years in the Trades + Free Quotes.
+    # familyOwned off: single-member LLC, no employees. About keeps the framing.
   GLOBAL (1)
     ~ Soft washing in Boise safely cleans roofs, siding, and delicate exteri -> at the root, with no surface damage
 
 === svc-pressure-washing
+  [1] trust-bar:badges
+    # Insured + Owner-Operated + 15+ Years in the Trades + Free Quotes.
+    # familyOwned off: single-member LLC, no employees. About keeps the framing.
   GLOBAL (1)
     ~ Restore your driveway, patio, sidewalks, and concrete with professiona -> grime, and can seal
 

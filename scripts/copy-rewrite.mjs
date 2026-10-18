@@ -324,7 +324,28 @@ for (const row of rows) {
     }
   }
 
-  // 2. global replacements
+  // 2. every trust bar gets the same true badge set. All 9 pages carrying one
+  //    set familyOwned:true explicitly in D1, so changing the component default
+  //    alone would not have reached them.
+  for (const [i, sec] of sections.entries()) {
+    if (sec.type !== "trust-bar:badges") continue;
+    sec.data ??= {};
+    const was = JSON.stringify(sec.data);
+    Object.assign(sec.data, {
+      insured: true,
+      ownerOperated: true,
+      tradeYears: 15,
+      freeQuotes: true,
+      familyOwned: false,
+    });
+    if (JSON.stringify(sec.data) !== was) {
+      lines.push(`  [${i}] trust-bar:badges`);
+      lines.push(`    # Insured + Owner-Operated + 15+ Years in the Trades + Free Quotes.`);
+      lines.push(`    # familyOwned off: single-member LLC, no employees. About keeps the framing.`);
+    }
+  }
+
+  // 3. global replacements
   const hits = [];
   const patched = applyGlobal(sections, hits);
   if (hits.length) {
