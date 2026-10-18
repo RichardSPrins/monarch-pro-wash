@@ -1,0 +1,1264 @@
+{
+  "slug": "black-streaks-on-roof",
+  "title": "How to Get Rid of Black Streaks on Your Roof",
+  "description": "Those dark streaks are a living organism feeding on your shingles, not dirt. What they are, why they appear on some slopes and not others, and the only method that removes them without damage.",
+  "date": "2026-09-01",
+  "category": "How-To",
+  "author": "Richard Prins",
+  "cover": "/images/blog/roof-black-streaks.png",
+  "cover_alt": "Monarch Pro Wash roof streak removal cover illustration",
+  "featured": 0,
+  "read_minutes": 8,
+  "status": "draft",
+  "body": [
+    {
+      "_type": "block",
+      "_key": "k0",
+      "style": "normal",
+      "children": [
+        {
+          "_type": "span",
+          "text": "If your roof has dark vertical streaks running down it, you are not looking at dirt, soot, or weathering. You are looking at something alive, and it is feeding on the roof.",
+          "marks": []
+        }
+      ],
+      "markDefs": []
+    },
+    {
+      "_type": "block",
+      "_key": "k1",
+      "style": "normal",
+      "children": [
+        {
+          "_type": "span",
+          "text": "The good news is that it is straightforward to remove. The bad news is that the obvious way to remove it is also the way people destroy their roofs.",
+          "marks": []
+        }
+      ],
+      "markDefs": []
+    },
+    {
+      "_type": "block",
+      "_key": "k2",
+      "style": "h2",
+      "children": [
+        {
+          "_type": "span",
+          "text": "What the streaks actually are",
+          "marks": []
+        }
+      ],
+      "markDefs": []
+    },
+    {
+      "_type": "block",
+      "_key": "k3",
+      "style": "normal",
+      "children": [
+        {
+          "_type": "span",
+          "text": "The organism is ",
+          "marks": []
+        },
+        {
+          "_type": "span",
+          "text": "Gloeocapsa magma",
+          "marks": [
+            "em"
+          ]
+        },
+        {
+          "_type": "span",
+          "text": ", a type of blue-green algae. It travels on the wind as airborne spores, lands on a roof, and if conditions suit it, takes hold.",
+          "marks": []
+        }
+      ],
+      "markDefs": []
+    },
+    {
+      "_type": "block",
+      "_key": "k4",
+      "style": "normal",
+      "children": [
+        {
+          "_type": "span",
+          "text": "What makes asphalt shingles so hospitable is the limestone filler used in their manufacture. The algae feeds on it. That is why it colonises shingle roofs specifically and tends to leave metal and tile alone.",
+          "marks": []
+        }
+      ],
+      "markDefs": []
+    },
+    {
+      "_type": "block",
+      "_key": "k5",
+      "style": "normal",
+      "children": [
+        {
+          "_type": "span",
+          "text": "The dark colour is a protective sheath the organism develops against UV. It is effectively sunscreen, and it is what makes the colony visible from the street.",
+          "marks": []
+        }
+      ],
+      "markDefs": []
+    },
+    {
+      "_type": "block",
+      "_key": "k6",
+      "style": "normal",
+      "children": [
+        {
+          "_type": "span",
+          "text": "The streaking runs vertically because rain carries spores and nutrients downslope. That is also why the staining is usually worst below the ridge and heaviest where several planes drain together.",
+          "marks": []
+        }
+      ],
+      "markDefs": []
+    },
+    {
+      "_type": "block",
+      "_key": "k7",
+      "style": "h2",
+      "children": [
+        {
+          "_type": "span",
+          "text": "Why one slope and not the others",
+          "marks": []
+        }
+      ],
+      "markDefs": []
+    },
+    {
+      "_type": "block",
+      "_key": "k8",
+      "style": "normal",
+      "children": [
+        {
+          "_type": "span",
+          "text": "Almost always because of moisture and sun.",
+          "marks": []
+        }
+      ],
+      "markDefs": []
+    },
+    {
+      "_type": "block",
+      "_key": "k9",
+      "style": "normal",
+      "children": [
+        {
+          "_type": "span",
+          "text": "North-facing slopes stay damp the longest. They get the least direct sun, dry slowest after rain or overnight dew, and therefore offer the most hospitable conditions. In most Treasure Valley homes the north pitch goes first, sometimes by years.",
+          "marks": []
+        }
+      ],
+      "markDefs": []
+    },
+    {
+      "_type": "block",
+      "_key": "ka",
+      "style": "normal",
+      "children": [
+        {
+          "_type": "span",
+          "text": "Shade does the same thing regardless of orientation. The mature canopy over the North End and Hyde Park, the older streets of Nampa and Caldwell under their elms, and anywhere with large trees close to the house all keep roof surfaces damp enough for growth that a bare lot would not support.",
+          "marks": []
+        }
+      ],
+      "markDefs": []
+    },
+    {
+      "_type": "block",
+      "_key": "kb",
+      "style": "normal",
+      "children": [
+        {
+          "_type": "span",
+          "text": "Proximity to water does it too. Homes backing the Boise River and the Greenbelt, through Harris Ranch and Barber Valley, sit in ambient humidity that does not fully burn off even on hot days.",
+          "marks": []
+        }
+      ],
+      "markDefs": []
+    },
+    {
+      "_type": "block",
+      "_key": "kc",
+      "style": "normal",
+      "children": [
+        {
+          "_type": "span",
+          "text": "Worth saying clearly: we are a semi-arid climate at roughly ten to twelve inches of rain a year. The heavy, carpet-like roof moss common in the Pacific Northwest is not typical here. What we get is algae streaking, which is widespread, and localised moss in genuinely shaded, damp pockets. Anyone telling you every roof in the valley is covered in moss is selling rather than looking.",
+          "marks": []
+        }
+      ],
+      "markDefs": []
+    },
+    {
+      "_type": "block",
+      "_key": "kd",
+      "style": "h2",
+      "children": [
+        {
+          "_type": "span",
+          "text": "Is it actually damaging the roof?",
+          "marks": []
+        }
+      ],
+      "markDefs": []
+    },
+    {
+      "_type": "block",
+      "_key": "ke",
+      "style": "normal",
+      "children": [
+        {
+          "_type": "span",
+          "text": "Yes, though more slowly than a sales pitch might suggest. Three mechanisms:",
+          "marks": []
+        }
+      ],
+      "markDefs": []
+    },
+    {
+      "_type": "block",
+      "_key": "kf",
+      "style": "normal",
+      "children": [
+        {
+          "_type": "span",
+          "text": "Moisture retention.",
+          "marks": [
+            "strong"
+          ]
+        },
+        {
+          "_type": "span",
+          "text": " The colony holds water against the shingle surface rather than letting it dry. Prolonged dampness degrades the asphalt and accelerates granule loss.",
+          "marks": []
+        }
+      ],
+      "markDefs": []
+    },
+    {
+      "_type": "block",
+      "_key": "kg",
+      "style": "normal",
+      "children": [
+        {
+          "_type": "span",
+          "text": "Heat absorption.",
+          "marks": [
+            "strong"
+          ]
+        },
+        {
+          "_type": "span",
+          "text": " A dark roof absorbs more solar energy than a light one. Heavy streaking measurably raises attic temperatures, which both ages the shingle from underneath and shows up in cooling costs.",
+          "marks": []
+        }
+      ],
+      "markDefs": []
+    },
+    {
+      "_type": "block",
+      "_key": "kh",
+      "style": "normal",
+      "children": [
+        {
+          "_type": "span",
+          "text": "Moss, where it follows.",
+          "marks": [
+            "strong"
+          ]
+        },
+        {
+          "_type": "span",
+          "text": " Algae is the mild version. Moss is the genuinely destructive one, because it roots. As it establishes along shingle edges it lifts them, and a lifted shingle lets water underneath. That is how algae streaking turns into an actual leak.",
+          "marks": []
+        }
+      ],
+      "markDefs": []
+    },
+    {
+      "_type": "block",
+      "_key": "ki",
+      "style": "normal",
+      "children": [
+        {
+          "_type": "span",
+          "text": "The realistic framing is that this does not cause a sudden failure. It shortens the life of the roof, quietly, over years.",
+          "marks": []
+        }
+      ],
+      "markDefs": []
+    },
+    {
+      "_type": "block",
+      "_key": "kj",
+      "style": "h2",
+      "children": [
+        {
+          "_type": "span",
+          "text": "The thing you must not do",
+          "marks": []
+        }
+      ],
+      "markDefs": []
+    },
+    {
+      "_type": "block",
+      "_key": "kk",
+      "style": "normal",
+      "children": [
+        {
+          "_type": "span",
+          "text": "Do not pressure wash it.",
+          "marks": []
+        }
+      ],
+      "markDefs": []
+    },
+    {
+      "_type": "block",
+      "_key": "kl",
+      "style": "normal",
+      "children": [
+        {
+          "_type": "span",
+          "text": "Asphalt shingles are protected by a layer of mineral granules embedded in the surface. Those granules shield the asphalt from UV, and UV is what destroys asphalt. The granules are, functionally, the roof.",
+          "marks": []
+        }
+      ],
+      "markDefs": []
+    },
+    {
+      "_type": "block",
+      "_key": "km",
+      "style": "normal",
+      "children": [
+        {
+          "_type": "span",
+          "text": "High pressure removes them. Not all at once and not visibly from the ground, but you will find them in the gutters afterward, and the shingle underneath ages dramatically faster from that point.",
+          "marks": []
+        }
+      ],
+      "markDefs": []
+    },
+    {
+      "_type": "block",
+      "_key": "kn",
+      "style": "normal",
+      "children": [
+        {
+          "_type": "span",
+          "text": "Three further consequences worth knowing:",
+          "marks": []
+        }
+      ],
+      "markDefs": []
+    },
+    {
+      "_type": "block",
+      "_key": "ko",
+      "style": "normal",
+      "children": [
+        {
+          "_type": "span",
+          "text": "Nearly every shingle manufacturer voids the warranty on a pressure-washed roof",
+          "marks": []
+        }
+      ],
+      "markDefs": [],
+      "listItem": "bullet",
+      "level": 1
+    },
+    {
+      "_type": "block",
+      "_key": "kp",
+      "style": "normal",
+      "children": [
+        {
+          "_type": "span",
+          "text": "A home inspector or roofer can identify it, which matters at resale",
+          "marks": []
+        }
+      ],
+      "markDefs": [],
+      "listItem": "bullet",
+      "level": 1
+    },
+    {
+      "_type": "block",
+      "_key": "kq",
+      "style": "normal",
+      "children": [
+        {
+          "_type": "span",
+          "text": "High pressure on a slope can force water up under the shingle courses",
+          "marks": []
+        }
+      ],
+      "markDefs": [],
+      "listItem": "bullet",
+      "level": 1
+    },
+    {
+      "_type": "block",
+      "_key": "kr",
+      "style": "normal",
+      "children": [
+        {
+          "_type": "span",
+          "text": "It will look clean the day it is done. That is the problem: the damage is invisible and the result is immediate, so people recommend it to each other.",
+          "marks": []
+        }
+      ],
+      "markDefs": []
+    },
+    {
+      "_type": "block",
+      "_key": "ks",
+      "style": "h2",
+      "children": [
+        {
+          "_type": "span",
+          "text": "The method that works",
+          "marks": []
+        }
+      ],
+      "markDefs": []
+    },
+    {
+      "_type": "block",
+      "_key": "kt",
+      "style": "normal",
+      "children": [
+        {
+          "_type": "span",
+          "text": "Soft washing. Low pressure, roughly what comes out of a garden hose, combined with a cleaning solution that kills the organism.",
+          "marks": []
+        }
+      ],
+      "markDefs": []
+    },
+    {
+      "_type": "block",
+      "_key": "ku",
+      "style": "normal",
+      "children": [
+        {
+          "_type": "span",
+          "text": "The solution does the work. It penetrates the colony and kills it at the root rather than stripping the visible layer off the surface. The low-pressure rinse then carries away the dead material.",
+          "marks": []
+        }
+      ],
+      "markDefs": []
+    },
+    {
+      "_type": "block",
+      "_key": "kv",
+      "style": "normal",
+      "children": [
+        {
+          "_type": "span",
+          "text": "The sequence that matters:",
+          "marks": []
+        }
+      ],
+      "markDefs": []
+    },
+    {
+      "_type": "block",
+      "_key": "kw",
+      "style": "normal",
+      "children": [
+        {
+          "_type": "span",
+          "text": "Inspect",
+          "marks": [
+            "strong"
+          ]
+        },
+        {
+          "_type": "span",
+          "text": " the roof material, pitch and condition, and flag anything damaged before starting",
+          "marks": []
+        }
+      ],
+      "markDefs": [],
+      "listItem": "number",
+      "level": 1
+    },
+    {
+      "_type": "block",
+      "_key": "kx",
+      "style": "normal",
+      "children": [
+        {
+          "_type": "span",
+          "text": "Protect",
+          "marks": [
+            "strong"
+          ]
+        },
+        {
+          "_type": "span",
+          "text": " everything underneath, saturating planting with plain water first so it absorbs far less",
+          "marks": []
+        }
+      ],
+      "markDefs": [],
+      "listItem": "number",
+      "level": 1
+    },
+    {
+      "_type": "block",
+      "_key": "ky",
+      "style": "normal",
+      "children": [
+        {
+          "_type": "span",
+          "text": "Apply",
+          "marks": [
+            "strong"
+          ]
+        },
+        {
+          "_type": "span",
+          "text": " at low pressure, working so the solution flows down the slope",
+          "marks": []
+        }
+      ],
+      "markDefs": [],
+      "listItem": "number",
+      "level": 1
+    },
+    {
+      "_type": "block",
+      "_key": "kz",
+      "style": "normal",
+      "children": [
+        {
+          "_type": "span",
+          "text": "Dwell",
+          "marks": [
+            "strong"
+          ]
+        },
+        {
+          "_type": "span",
+          "text": ", which is the step that decides whether the clean lasts",
+          "marks": []
+        }
+      ],
+      "markDefs": [],
+      "listItem": "number",
+      "level": 1
+    },
+    {
+      "_type": "block",
+      "_key": "k10",
+      "style": "normal",
+      "children": [
+        {
+          "_type": "span",
+          "text": "Rinse",
+          "marks": [
+            "strong"
+          ]
+        },
+        {
+          "_type": "span",
+          "text": " gently and re-water the planting",
+          "marks": []
+        }
+      ],
+      "markDefs": [],
+      "listItem": "number",
+      "level": 1
+    },
+    {
+      "_type": "block",
+      "_key": "k11",
+      "style": "normal",
+      "children": [
+        {
+          "_type": "span",
+          "text": "Check the gutters",
+          "marks": [
+            "strong"
+          ]
+        },
+        {
+          "_type": "span",
+          "text": ", because a lot of dead material ends up in them",
+          "marks": []
+        }
+      ],
+      "markDefs": [],
+      "listItem": "number",
+      "level": 1
+    },
+    {
+      "_type": "block",
+      "_key": "k12",
+      "style": "normal",
+      "children": [
+        {
+          "_type": "span",
+          "text": "Dwell time is where corners get cut. Spraying and immediately rinsing removes the colour and leaves the organism, which is why some roofs are visibly streaking again within a few months.",
+          "marks": []
+        }
+      ],
+      "markDefs": []
+    },
+    {
+      "_type": "block",
+      "_key": "k13",
+      "style": "h2",
+      "children": [
+        {
+          "_type": "span",
+          "text": "Can you do this yourself?",
+          "marks": []
+        }
+      ],
+      "markDefs": []
+    },
+    {
+      "_type": "block",
+      "_key": "k14",
+      "style": "normal",
+      "children": [
+        {
+          "_type": "span",
+          "text": "Technically. Realistically, this is the service I would most strongly suggest not doing yourself, for reasons that have nothing to do with wanting the work.",
+          "marks": []
+        }
+      ],
+      "markDefs": []
+    },
+    {
+      "_type": "block",
+      "_key": "k15",
+      "style": "normal",
+      "children": [
+        {
+          "_type": "span",
+          "text": "The hazard is height. Roof falls are among the most common serious home-maintenance injuries, and a wet roof with cleaning solution on it is considerably more slippery than a dry one.",
+          "marks": []
+        }
+      ],
+      "markDefs": []
+    },
+    {
+      "_type": "block",
+      "_key": "k16",
+      "style": "normal",
+      "children": [
+        {
+          "_type": "span",
+          "text": "The second issue is everything underneath. The solution that kills algae will also kill planting if it is not pre-wet and rinsed, and the runoff goes exactly where your downspouts send it.",
+          "marks": []
+        }
+      ],
+      "markDefs": []
+    },
+    {
+      "_type": "block",
+      "_key": "k17",
+      "style": "normal",
+      "children": [
+        {
+          "_type": "span",
+          "text": "The third is concentration. Too weak does nothing. Too strong can lighten shingles unevenly, which leaves you with a different cosmetic problem and no way back.",
+          "marks": []
+        }
+      ],
+      "markDefs": []
+    },
+    {
+      "_type": "block",
+      "_key": "k18",
+      "style": "normal",
+      "children": [
+        {
+          "_type": "span",
+          "text": "If you are going to try it anyway: work from a ladder rather than walking the roof, never on a windy day, pre-wet everything below, and have someone with you.",
+          "marks": []
+        }
+      ],
+      "markDefs": []
+    },
+    {
+      "_type": "block",
+      "_key": "k19",
+      "style": "h2",
+      "children": [
+        {
+          "_type": "span",
+          "text": "Stopping it coming back",
+          "marks": []
+        }
+      ],
+      "markDefs": []
+    },
+    {
+      "_type": "block",
+      "_key": "k1a",
+      "style": "normal",
+      "children": [
+        {
+          "_type": "span",
+          "text": "Zinc or copper strips",
+          "marks": [
+            "strong"
+          ]
+        },
+        {
+          "_type": "span",
+          "text": " along the ridge release trace metal ions as rain runs over them, which inhibits growth downslope. Effective, inexpensive, best fitted when a roof is being replaced.",
+          "marks": []
+        }
+      ],
+      "markDefs": []
+    },
+    {
+      "_type": "block",
+      "_key": "k1b",
+      "style": "normal",
+      "children": [
+        {
+          "_type": "span",
+          "text": "Trim back overhanging branches.",
+          "marks": [
+            "strong"
+          ]
+        },
+        {
+          "_type": "span",
+          "text": " More sun and more airflow means faster drying, and faster drying means less hospitable conditions. This also reduces the organic debris that feeds growth.",
+          "marks": []
+        }
+      ],
+      "markDefs": []
+    },
+    {
+      "_type": "block",
+      "_key": "k1c",
+      "style": "normal",
+      "children": [
+        {
+          "_type": "span",
+          "text": "Keep gutters clear.",
+          "marks": [
+            "strong"
+          ]
+        },
+        {
+          "_type": "span",
+          "text": " A blocked gutter holds water at the roof edge, which keeps the lowest course of shingles damp.",
+          "marks": []
+        }
+      ],
+      "markDefs": []
+    },
+    {
+      "_type": "block",
+      "_key": "k1d",
+      "style": "normal",
+      "children": [
+        {
+          "_type": "span",
+          "text": "Algae-resistant shingles.",
+          "marks": [
+            "strong"
+          ]
+        },
+        {
+          "_type": "span",
+          "text": " If you are already replacing the roof, these have copper granules built in. Worth specifying.",
+          "marks": []
+        }
+      ],
+      "markDefs": []
+    },
+    {
+      "_type": "block",
+      "_key": "k1e",
+      "style": "normal",
+      "children": [
+        {
+          "_type": "span",
+          "text": "Treat it early.",
+          "marks": [
+            "strong"
+          ]
+        },
+        {
+          "_type": "span",
+          "text": " A light streak is a quick job. A decade of accumulation with moss established in the valleys is a long one.",
+          "marks": []
+        }
+      ],
+      "markDefs": []
+    },
+    {
+      "_type": "block",
+      "_key": "k1f",
+      "style": "h2",
+      "children": [
+        {
+          "_type": "span",
+          "text": "How often does it need doing?",
+          "marks": []
+        }
+      ],
+      "markDefs": []
+    },
+    {
+      "_type": "block",
+      "_key": "k1g",
+      "style": "normal",
+      "children": [
+        {
+          "_type": "span",
+          "text": "In our climate, every two to three years for most homes.",
+          "marks": []
+        }
+      ],
+      "markDefs": []
+    },
+    {
+      "_type": "block",
+      "_key": "k1h",
+      "style": "normal",
+      "children": [
+        {
+          "_type": "span",
+          "text": "Shaded and north-facing slopes will come back sooner. Open, sunny lots on newer builds in South Meridian or South Nampa may go considerably longer.",
+          "marks": []
+        }
+      ],
+      "markDefs": []
+    },
+    {
+      "_type": "block",
+      "_key": "k1i",
+      "style": "normal",
+      "children": [
+        {
+          "_type": "span",
+          "text": "If streaking returns within a few months of a clean, that is not bad luck, it is a sign the colony was removed rather than killed.",
+          "marks": []
+        }
+      ],
+      "markDefs": []
+    },
+    {
+      "_type": "block",
+      "_key": "k1j",
+      "style": "h2",
+      "children": [
+        {
+          "_type": "span",
+          "text": "Telling algae apart from the other things on a roof",
+          "marks": []
+        }
+      ],
+      "markDefs": []
+    },
+    {
+      "_type": "block",
+      "_key": "k1k",
+      "style": "normal",
+      "children": [
+        {
+          "_type": "span",
+          "text": "Not every dark mark is the same problem, and the treatment differs.",
+          "marks": []
+        }
+      ],
+      "markDefs": []
+    },
+    {
+      "_type": "block",
+      "_key": "k1l",
+      "style": "normal",
+      "children": [
+        {
+          "_type": "span",
+          "text": "Algae",
+          "marks": [
+            "strong"
+          ]
+        },
+        {
+          "_type": "span",
+          "text": " is the flat, dark vertical streaking described above. It sits on the surface with no real thickness and runs downslope. It is the most common thing on Treasure Valley roofs by a wide margin.",
+          "marks": []
+        }
+      ],
+      "markDefs": []
+    },
+    {
+      "_type": "block",
+      "_key": "k1m",
+      "style": "normal",
+      "children": [
+        {
+          "_type": "span",
+          "text": "Moss",
+          "marks": [
+            "strong"
+          ]
+        },
+        {
+          "_type": "span",
+          "text": " is three-dimensional. Green, spongy, and you can see it standing proud of the shingle, usually clustered along edges, in valleys and around penetrations where debris collects. Moss is the one that physically lifts shingles and is worth treating urgently.",
+          "marks": []
+        }
+      ],
+      "markDefs": []
+    },
+    {
+      "_type": "block",
+      "_key": "k1n",
+      "style": "normal",
+      "children": [
+        {
+          "_type": "span",
+          "text": "Lichen",
+          "marks": [
+            "strong"
+          ]
+        },
+        {
+          "_type": "span",
+          "text": " looks like flat, crusty grey-green patches, often roughly circular. It is the most stubborn of the three, because it anchors into the shingle surface. Killing it is straightforward; getting every trace of the anchor point out without damaging the shingle is not, and some shadowing can remain.",
+          "marks": []
+        }
+      ],
+      "markDefs": []
+    },
+    {
+      "_type": "block",
+      "_key": "k1o",
+      "style": "normal",
+      "children": [
+        {
+          "_type": "span",
+          "text": "Granule loss",
+          "marks": [
+            "strong"
+          ]
+        },
+        {
+          "_type": "span",
+          "text": " is not growth at all. It shows as patches where the shingle looks darker and smoother than the surrounding area, because the mineral layer has gone and the asphalt beneath is exposed. Cleaning will not fix it. If you are seeing this alongside a lot of granules in the gutters, the conversation to have is with a roofer rather than with us.",
+          "marks": []
+        }
+      ],
+      "markDefs": []
+    },
+    {
+      "_type": "block",
+      "_key": "k1p",
+      "style": "normal",
+      "children": [
+        {
+          "_type": "span",
+          "text": "Soot and general grime",
+          "marks": [
+            "strong"
+          ]
+        },
+        {
+          "_type": "span",
+          "text": " happens near busy roads and after a heavy wildfire smoke season. It is not organic, it is not feeding on anything, and it rinses far more easily.",
+          "marks": []
+        }
+      ],
+      "markDefs": []
+    },
+    {
+      "_type": "block",
+      "_key": "k1q",
+      "style": "h2",
+      "children": [
+        {
+          "_type": "span",
+          "text": "What a clean roof is worth at resale",
+          "marks": []
+        }
+      ],
+      "markDefs": []
+    },
+    {
+      "_type": "block",
+      "_key": "k1r",
+      "style": "normal",
+      "children": [
+        {
+          "_type": "span",
+          "text": "If you are planning to sell, this is one of the highest-return items on the list.",
+          "marks": []
+        }
+      ],
+      "markDefs": []
+    },
+    {
+      "_type": "block",
+      "_key": "k1s",
+      "style": "normal",
+      "children": [
+        {
+          "_type": "span",
+          "text": "Roof condition is one of the first things a buyer asks about and one of the most expensive things they fear. A roof with heavy black streaking reads as an old roof, even when it has years of life left. That perception shows up in offers and in inspection negotiations.",
+          "marks": []
+        }
+      ],
+      "markDefs": []
+    },
+    {
+      "_type": "block",
+      "_key": "k1t",
+      "style": "normal",
+      "children": [
+        {
+          "_type": "span",
+          "text": "It also shows up in photography. The roof is a large proportion of the visible surface in most exterior listing photos, particularly aerial and drone shots, which are now standard. Streaking is extremely visible from above.",
+          "marks": []
+        }
+      ],
+      "markDefs": []
+    },
+    {
+      "_type": "block",
+      "_key": "k1u",
+      "style": "normal",
+      "children": [
+        {
+          "_type": "span",
+          "text": "Cleaning the roof before photographs are taken is a small cost against a large asset, and unlike most pre-listing work it changes the single element buyers worry about most.",
+          "marks": []
+        }
+      ],
+      "markDefs": []
+    },
+    {
+      "_type": "block",
+      "_key": "k1v",
+      "style": "h2",
+      "children": [
+        {
+          "_type": "span",
+          "text": "Common questions",
+          "marks": []
+        }
+      ],
+      "markDefs": []
+    },
+    {
+      "_type": "block",
+      "_key": "k1w",
+      "style": "normal",
+      "children": [
+        {
+          "_type": "span",
+          "text": "How long until the streaks disappear?",
+          "marks": [
+            "strong"
+          ]
+        },
+        {
+          "_type": "span",
+          "text": " Most of the discolouration lifts during the wash. Some residual shading can continue to fade over the following few weeks as rain and weather carry away the last of the dead material.",
+          "marks": []
+        }
+      ],
+      "markDefs": []
+    },
+    {
+      "_type": "block",
+      "_key": "k1x",
+      "style": "normal",
+      "children": [
+        {
+          "_type": "span",
+          "text": "Will it come back?",
+          "marks": [
+            "strong"
+          ]
+        },
+        {
+          "_type": "span",
+          "text": " Eventually. Spores are airborne and the conditions that favoured growth have not changed. A proper treatment kills what is there, so you restart from zero rather than from surviving roots. Two to three years is typical here.",
+          "marks": []
+        }
+      ],
+      "markDefs": []
+    },
+    {
+      "_type": "block",
+      "_key": "k1y",
+      "style": "normal",
+      "children": [
+        {
+          "_type": "span",
+          "text": "Can you treat just the bad slope?",
+          "marks": [
+            "strong"
+          ]
+        },
+        {
+          "_type": "span",
+          "text": " Yes, though it is worth knowing that the other slopes almost certainly have early growth that is simply not visible yet, and treating everything at once is usually better value than returning.",
+          "marks": []
+        }
+      ],
+      "markDefs": []
+    },
+    {
+      "_type": "block",
+      "_key": "k1z",
+      "style": "normal",
+      "children": [
+        {
+          "_type": "span",
+          "text": "Does insurance cover this?",
+          "marks": [
+            "strong"
+          ]
+        },
+        {
+          "_type": "span",
+          "text": " No. It is maintenance, not damage. The relevant point is the reverse: neglected maintenance can affect a claim if it contributed to a failure.",
+          "marks": []
+        }
+      ],
+      "markDefs": []
+    },
+    {
+      "_type": "block",
+      "_key": "k20",
+      "style": "normal",
+      "children": [
+        {
+          "_type": "span",
+          "text": "My roof is only a few years old and already streaking.",
+          "marks": [
+            "strong"
+          ]
+        },
+        {
+          "_type": "span",
+          "text": " That is normal in a shaded or north-facing situation. Age is less relevant than exposure.",
+          "marks": []
+        }
+      ],
+      "markDefs": []
+    },
+    {
+      "_type": "block",
+      "_key": "k21",
+      "style": "normal",
+      "children": [
+        {
+          "_type": "span",
+          "text": "Will this fix a leak?",
+          "marks": [
+            "strong"
+          ]
+        },
+        {
+          "_type": "span",
+          "text": " No. Cleaning is not repair. If you have a leak, you need a roofer first.",
+          "marks": []
+        }
+      ],
+      "markDefs": []
+    },
+    {
+      "_type": "block",
+      "_key": "k22",
+      "style": "h2",
+      "children": [
+        {
+          "_type": "span",
+          "text": "The short version",
+          "marks": []
+        }
+      ],
+      "markDefs": []
+    },
+    {
+      "_type": "block",
+      "_key": "k23",
+      "style": "normal",
+      "children": [
+        {
+          "_type": "span",
+          "text": "Black roof streaks are algae feeding on the limestone in your shingles. They favour north-facing and shaded slopes, they hold moisture against the roof, and where moss follows they lift shingles and let water in.",
+          "marks": []
+        }
+      ],
+      "markDefs": []
+    },
+    {
+      "_type": "block",
+      "_key": "k24",
+      "style": "normal",
+      "children": [
+        {
+          "_type": "span",
+          "text": "Soft washing removes them properly. Pressure washing removes them visibly and takes years off the roof doing it.",
+          "marks": []
+        }
+      ],
+      "markDefs": []
+    },
+    {
+      "_type": "block",
+      "_key": "k27",
+      "style": "normal",
+      "children": [
+        {
+          "_type": "span",
+          "text": "Get a free quote",
+          "marks": [
+            "k25"
+          ]
+        },
+        {
+          "_type": "span",
+          "text": " for soft-wash roof cleaning, or read more about ",
+          "marks": []
+        },
+        {
+          "_type": "span",
+          "text": "what roof cleaning costs",
+          "marks": [
+            "k26"
+          ]
+        },
+        {
+          "_type": "span",
+          "text": ". New customers get 10% off their first service.",
+          "marks": []
+        }
+      ],
+      "markDefs": [
+        {
+          "_type": "link",
+          "_key": "k25",
+          "href": "/contact"
+        },
+        {
+          "_type": "link",
+          "_key": "k26",
+          "href": "/blog/how-much-does-roof-cleaning-cost"
+        }
+      ]
+    }
+  ]
+}

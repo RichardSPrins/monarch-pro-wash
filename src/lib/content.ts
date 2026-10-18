@@ -161,7 +161,13 @@ function mapPost(e: any) {
       description: d.description ?? undefined,
       date: new Date(d.date ?? 0),
       featured: d.featured ?? false,
-      author: d.byline?.displayName ?? "Admin",
+      // `author` is a plain field on the collection now; fall back to the byline
+      // relation, then to the owner, never to "Admin".
+      author: d.author ?? d.byline?.displayName ?? "Richard Prins",
+      cover: d.cover ?? undefined,
+      coverAlt: d.cover_alt ?? undefined,
+      category: d.category ?? undefined,
+      readMinutes: d.read_minutes ?? undefined,
       body: asJson<any[]>(d.body, []), // Portable Text blocks (render with emdash/ui PortableText)
     },
   };

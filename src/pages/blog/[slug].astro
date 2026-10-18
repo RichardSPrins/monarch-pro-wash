@@ -1,40 +1,196 @@
 ---
-// Blog post — live from EmDash (D1) under SSR. Body = Portable Text rendered
-// inside Starwind's <Prose> (the `prose` class alone has no styles — Tailwind
-// Typography isn't installed; Prose carries its own sw-prose CSS). Meta tags
-// come from EmDash's native SEO panel (getSeoMeta).
+// Blog post — live from EmDash (D1) under SSR.
+//
+// Body is Portable Text rendered inside Starwind's <Prose> (the bare `prose`
+// class has no styles here; Tailwind Typography is not installed, Prose carries
+// its own sw-prose CSS). Meta comes from EmDash's native SEO panel.
+//
+// The page is deliberately more than title-plus-body: cover image, a metadata
+// strip, a mid-article call to action, an end call to action, and related posts.
+// Covers are generated brand art (scripts/make-post-covers.mjs), not stock
+// photography, and are meant to be replaced by real job photos as they exist.
 import BlogLayout from "@/layouts/BlogLayout.astro";
 import { PortableText, WidgetArea } from "emdash/ui";
 import Prose from "@/components/starwind/prose/Prose.astro";
+import { Button } from "@/components/elements/button";
 import { getSeoMeta } from "emdash/seo";
-import { getPost } from "@/lib/content";
+import { getPost, getPosts } from "@/lib/content";
+import { getBusinessData } from "@/lib/utils";
 import siteConfig from "@/config/site.config";
 
 const slug = Astro.params.slug!;
 const post = await getPost(slug);
 if (!post) return Astro.rewrite("/404");
 
+const business = await getBusinessData();
+
 const meta = getSeoMeta(post as any, {
   siteUrl: Astro.site?.href,
   path: Astro.url.pathname,
   defaultOgImage: siteConfig.ogImage ? new URL(siteConfig.ogImage, Astro.site).toString() : undefined,
 });
+
+const d = post.data;
+const fmtDate = (x: Date) =>
+  x && !isNaN(x.getTime())
+    ? x.toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" })
+    : undefined;
+
+/** Fall back to a word-count estimate when the field is unset. */
+const wordsIn = (blocks: any[]): number =>
+  (blocks ?? []).reduce(
+    (n, b) => n + String((b?.children ?? []).map((c: any) => c?.text ?? "").join(" ")).split(/\s+/).filter(Boolean).length,
+    0,
+  );
+const readMinutes = d.readMinutes ?? Math.max(1, Math.round(wordsIn(d.body) / 225));
+
+// Related: same category first, then most recent, never this post.
+const all = (await getPosts())
+  .filter((p) => p.data.slug !== d.slug)
+  .sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+const sameCat = all.filter((p) => d.category && p.data.category === d.category);
+const related = [...sameCat, ...all.filter((p) => !sameCat.includes(p))].slice(0, 3);
+
+const cover = d.cover ?? null;
+const ogImage = meta.ogImage ?? (cover ? new URL(cover, Astro.site).toString() : undefined);
 ---
 
 <BlogLayout
   page={post}
-  title={meta.title || post.data.title}
-  description={meta.description ?? post.data.description}
+  title={meta.title || d.title}
+  description={meta.description ?? d.description}
   noindex={!!meta.robots}
-  image={meta.ogImage ?? undefined}
+  image={ogImage}
+  imageAlt={d.coverAlt ?? d.title}
   canonical={meta.canonical ?? undefined}
-  article={{ publishedTime: post.data.date, authors: [post.data.author] }}
+  article={{ publishedTime: d.date, authors: [d.author] }}
 >
-  <article class="post-article">
-    <Prose>
-      <h1>{post.data.title}</h1>
-      <PortableText value={post.data.body} />
-    </Prose>
+  <article class="post">
+    <nav class="crumbs" aria-label="Breadcrumb">
+      <a href="/">Home</a><span aria-hidden="true">/</span>
+      <a href="/blog">Blog</a><span aria-hidden="true">/</span>
+      <span aria-current="page">{d.title}</span>
+    </nav>
+
+    <header class="post-head">
+      {d.category && <span class="cat">{d.category}</span>}
+      <h1>{d.title}</h1>
+      {d.description && <p class="standfirst">{d.description}</p>}
+      <div class="meta">
+        <span>{d.author}</span>
+        {fmtDate(d.date) && <><span aria-hidden="true">·</span><time datetime={d.date.toISOString()}>{fmtDate(d.date)}</time></>}
+        <span aria-hidden="true">·</span><span>{readMinutes} min read</span>
+      </div>
+    </header>
+
+    {cover && (
+      <figure class="cover">
+        <img src={cover} alt={d.coverAlt ?? ""} width="1200" height="630" loading="eager" decoding="async" />
+      </figure>
+    )}
+
+    <div class="post-body">
+      <Prose><PortableText value={d.body} /></Prose>
+    </div>
+
+    <aside class="inline-cta">
+      <h2>Want this handled instead?</h2>
+      <p>
+        Free quote, a clear price up front, and the owner doing the work. New
+        customers get 10% off their first service.
+      </p>
+      <div class="inline-cta-actions">
+        <Button variant="primary" href="/contact">Get My Free Quote</Button>
+        {business.phone && <a class="call" href={`tel:${business.phone.replace(/[^\d+]/g, "")}`}>Call {business.phone}</a>}
+      </div>
+    </aside>
+
+    {related.length > 0 && (
+      <section class="related" aria-labelledby="related-heading">
+        <h2 id="related-heading">Keep reading</h2>
+        <ul>
+          {related.map((p) => (
+            <li>
+              <a href={`/blog/${p.data.slug}`}>
+                {p.data.cover && <img src={p.data.cover} alt="" width="1200" height="630" loading="lazy" decoding="async" />}
+                <div class="rel-body">
+                  {p.data.category && <span class="cat sm">{p.data.category}</span>}
+                  <h3>{p.data.title}</h3>
+                  {p.data.description && <p>{p.data.description}</p>}
+                </div>
+              </a>
+            </li>
+          ))}
+        </ul>
+      </section>
+    )}
   </article>
+
   <WidgetArea name="post-footer" class="widget-area post-footer" />
 </BlogLayout>
+
+<style>
+  .post { max-width: 48rem; margin-inline: auto; }
+
+  .crumbs {
+    display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: center;
+    font-size: 0.8125rem; color: var(--theme-fg-muted, rgba(255,255,255,0.6));
+    margin-bottom: 1.5rem;
+  }
+  .crumbs a { color: inherit; text-decoration: none; }
+  .crumbs a:hover { color: var(--color-primary); text-decoration: underline; }
+
+  .cat {
+    display: inline-block; font-size: 0.6875rem; font-weight: 700;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--color-primary);
+    border: 1px solid currentColor; border-radius: 999px;
+    padding: 0.25rem 0.625rem; margin-bottom: 0.875rem;
+  }
+  .cat.sm { margin-bottom: 0.5rem; font-size: 0.625rem; }
+
+  .post-head h1 { margin: 0 0 0.75rem; }
+  .standfirst {
+    font-size: 1.1875rem; line-height: 1.6;
+    color: var(--theme-fg-muted, rgba(255,255,255,0.75)); margin: 0 0 1.25rem;
+  }
+  .meta {
+    display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: center;
+    font-size: 0.875rem; color: var(--theme-fg-muted, rgba(255,255,255,0.6));
+  }
+
+  /* Full-bleed within the article column, so the cover reads as a hero. */
+  .cover { margin: 2rem 0; }
+  .cover img {
+    display: block; width: 100%; height: auto;
+    border-radius: var(--radius-lg, 0.75rem);
+  }
+
+  .post-body { margin-bottom: 3rem; }
+
+  .inline-cta {
+    border: 1px solid var(--theme-border, rgba(255,255,255,0.14));
+    border-radius: var(--radius-lg, 0.75rem);
+    padding: 1.75rem; margin: 3rem 0;
+    background: color-mix(in srgb, var(--color-primary) 8%, transparent);
+  }
+  .inline-cta h2 { margin: 0 0 0.5rem; font-size: 1.375rem; }
+  .inline-cta p { margin: 0 0 1.25rem; color: var(--theme-fg-muted, rgba(255,255,255,0.75)); }
+  .inline-cta-actions { display: flex; flex-wrap: wrap; gap: 1rem; align-items: center; }
+  .call { font-weight: 600; text-decoration: none; color: inherit; }
+  .call:hover { color: var(--color-primary); text-decoration: underline; }
+
+  .related { border-top: 1px solid var(--theme-border, rgba(255,255,255,0.14)); padding-top: 2rem; }
+  .related h2 { font-size: 1.25rem; margin: 0 0 1.25rem; }
+  .related ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 1.25rem; grid-template-columns: repeat(3, 1fr); }
+  @media (max-width: 760px) { .related ul { grid-template-columns: 1fr; } }
+  .related a { text-decoration: none; color: inherit; display: block; }
+  .related img { width: 100%; height: auto; border-radius: var(--radius-md, 0.5rem); margin-bottom: 0.75rem; display: block; }
+  .related h3 { font-size: 1rem; margin: 0 0 0.375rem; line-height: 1.35; }
+  .related p {
+    margin: 0; font-size: 0.875rem; line-height: 1.5;
+    color: var(--theme-fg-muted, rgba(255,255,255,0.65));
+    display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;
+  }
+  .related a:hover h3 { color: var(--color-primary); }
+</style>
