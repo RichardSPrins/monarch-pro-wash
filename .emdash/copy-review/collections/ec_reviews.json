@@ -1,0 +1,35 @@
+[
+  {
+    "slug": "sample-driveway-boise",
+    "status": "published",
+    "author": "Sample Review",
+    "rating": 5,
+    "location": "Boise, ID",
+    "date": "2026-09-18",
+    "source": "Direct",
+    "featured": 1,
+    "body": "My driveway and patio look brand new. On time, clear on pricing, and zero mess left behind."
+  },
+  {
+    "slug": "sample-roof-meridian",
+    "status": "published",
+    "author": "Sample Review",
+    "rating": 5,
+    "location": "Meridian, ID",
+    "date": "2026-09-29",
+    "source": "Direct",
+    "featured": 0,
+    "body": "They soft-washed our roof and the black streaks are gone, with no damage to the shingles."
+  },
+  {
+    "slug": "sample-whole-property-nampa",
+    "status": "published",
+    "author": "Sample Review",
+    "rating": 5,
+    "location": "Nampa, ID",
+    "date": "2026-10-06",
+    "source": "Direct",
+    "featured": 0,
+    "body": "One call covered the windows, the gutters and a full house wash. Same person quoted it and did it."
+  }
+]

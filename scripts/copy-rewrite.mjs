@@ -369,6 +369,9 @@ function applyParagraphSplit(node) {
   return node;
 }
 
+const REVIEW_DISCLAIMER =
+  "Sample reviews, shown while we collect feedback from our first customers. These are examples, not real customer reviews.";
+
 const rows = JSON.parse(fs.readFileSync(pagesArg, "utf8"));
 fs.mkdirSync(DIFF_DIR, { recursive: true });
 
@@ -444,7 +447,20 @@ for (const row of rows) {
     }
   }
 
-  // 3. break wall-of-text paragraphs (no wording changes)
+  // 3. every reviews section states that the reviews are samples.
+  //    Richard asked for sample reviews with a disclaimer while real ones are
+  //    collected. The disclaimer sits in the section subheading, where every
+  //    visitor sees it above the cards, rather than in small print.
+  for (const [i, sec] of sections.entries()) {
+    if (!sec.type?.startsWith("reviews:")) continue;
+    sec.data ??= {};
+    if (sec.data.subheading !== REVIEW_DISCLAIMER) {
+      sec.data.subheading = REVIEW_DISCLAIMER;
+      lines.push(`  [${i}] ${sec.type} - sample-review disclaimer applied`);
+    }
+  }
+
+  // 4. break wall-of-text paragraphs (no wording changes)
   for (const sec of sections) {
     if (!sec.data) continue;
     const before = JSON.stringify(sec.data);
@@ -452,7 +468,7 @@ for (const row of rows) {
     if (JSON.stringify(sec.data) !== before) lines.push(`  [${sections.indexOf(sec)}] ${sec.type} - long paragraph split`);
   }
 
-  // 4. global replacements
+  // 5. global replacements
   const hits = [];
   const patched = applyGlobal(sections, hits);
   if (hits.length) {

@@ -42,8 +42,8 @@
           "text": "Gutter Cleaning",
           "variant": "text"
         },
-        "heading": "The Service Explained",
-        "body": "<p>Gutters have one job, moving water away from your home, and a clog stops them cold. When leaves, needles, and debris pack a gutter or block a downspout, rainwater and snowmelt spill over the edge instead of draining. That overflow runs down your fascia, pools against your foundation, and in a Treasure Valley winter it feeds the freeze-thaw cycle that cracks concrete and works water where it does not belong.</p><p>Gutter cleaning clears the leaves and debris from the gutters and flushes the downspouts so water flows the way it should. Monarch clears the channels and downspouts, then brightens the gutter exterior so the front of your home looks as clean as it works. It matters most heading into the seasons when your gutters carry the heaviest load, on both homes and commercial buildings.</p>"
+        "heading": "A Clogged Gutter Is a Foundation Problem",
+        "body": "<p>Gutters have one job. When leaves and needles pack the channel or block a downspout, rainwater and snowmelt spill over the edge instead of draining away.</p><p>That overflow runs down your fascia and pools against the foundation. Through a Treasure Valley winter it feeds the freeze-thaw cycle that cracks concrete and drives water in where it does not belong. Clearing a gutter is cheap. Ignoring one is not.</p><p>We clear the channels, flush the downspouts until the water runs clean, and brighten the gutter exterior so the front of the house looks as good as it drains.</p><p>Best done before the seasons when your gutters carry the heaviest load. Homes and commercial buildings both.</p>"
       }
     },
     {
@@ -136,7 +136,8 @@
         "heading": "What Our Customers Say",
         "filter": "all",
         "service": "gutter-cleaning",
-        "limit": 3
+        "limit": 3,
+        "subheading": "Sample reviews, shown while we collect feedback from our first customers. These are examples, not real customer reviews."
       }
     },
     {

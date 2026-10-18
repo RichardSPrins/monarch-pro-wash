@@ -42,8 +42,8 @@
           "text": "Roof Cleaning",
           "variant": "text"
         },
-        "heading": "The Service Explained",
-        "body": "<p>Those black streaks running down your roof are not dirt, and they will not wash off in the rain. They are Gloeocapsa algae, a hardy growth that feeds on the limestone filler in asphalt shingles and spreads across the shaded, north-facing slopes that stay damp longest. Left alone, algae holds moisture against your shingles, and moss can take root and lift them at the edges.</p><p>Roof cleaning treats the growth at its source with a low-pressure soft wash. No blasting, no scrubbing, no walking your shingles under high pressure. The cleaning solution does the work, kills the algae and moss, and rinses away gently, so your roof looks right again and the granules that protect it stay where they belong.</p>"
+        "heading": "Those Black Streaks Are Alive",
+        "body": "<p>The black streaks running down your roof are not dirt, and they will not wash off in the rain. They are Gloeocapsa algae, and they feed on the limestone filler in your shingles.</p><p>Left alone, that growth holds moisture against the roof. Moss follows, roots at the shingle edges and starts lifting them. That is how a roof gets replaced years before it should have been.</p><p>Roof cleaning stops it at the source with a low-pressure soft wash. No blasting, no scrubbing, nobody dragging equipment across your shingles. The solution does the work and rinses away gently.</p><p>Your roof looks right again, and the granules that protect it stay where they belong.</p>"
       }
     },
     {
@@ -136,7 +136,8 @@
         "heading": "What Our Customers Say",
         "filter": "all",
         "service": "roof-cleaning",
-        "limit": 3
+        "limit": 3,
+        "subheading": "Sample reviews, shown while we collect feedback from our first customers. These are examples, not real customer reviews."
       }
     },
     {

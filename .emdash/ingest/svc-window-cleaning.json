@@ -42,8 +42,8 @@
           "text": "Window Cleaning",
           "variant": "text"
         },
-        "heading": "The Service Explained",
-        "body": "<p>Dirty windows are rarely just dust. In the Treasure Valley, high-desert grit films the glass, sprinkler overspray leaves mineral spots, and hard water bakes on stains that a paper towel will never wipe away. Over time that buildup dulls your whole view and makes a clean house look neglected. Monarch Pro Wash cleans interior and exterior glass, wipes down and clears the tracks where dirt and dead bugs collect, and treats hard-water staining at the source rather than smearing it around.</p><p>Screens and seals are handled with care, not force. The result is glass that actually looks clear from every angle, in the right light, done thoroughly the first time so you are not living with the streaks you were trying to get rid of.</p>"
+        "heading": "Why Your Windows Still Look Dirty After You Clean Them",
+        "body": "<p>Dirty windows here are rarely just dust. High-desert grit films the glass, sprinkler overspray leaves mineral spots, and hard water bakes on staining that a paper towel will never move.</p><p>That buildup dulls the whole view, and it makes a well-kept house read as neglected from the street.</p><p>We clean interior and exterior glass, clear the tracks where grit and dead bugs collect, and treat hard-water staining at the source instead of smearing it around. Screens and seals get care, not force.</p><p>The result is glass that is actually clear from every angle and in any light, done properly the first time.</p>"
       }
     },
     {
@@ -136,7 +136,8 @@
         "heading": "What Our Customers Say",
         "filter": "all",
         "service": "window-cleaning",
-        "limit": 3
+        "limit": 3,
+        "subheading": "Sample reviews, shown while we collect feedback from our first customers. These are examples, not real customer reviews."
       }
     },
     {

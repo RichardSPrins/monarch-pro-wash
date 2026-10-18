@@ -42,8 +42,8 @@
           "text": "Concrete Sealing & Staining",
           "variant": "text"
         },
-        "heading": "The Service Explained",
-        "body": "<p>Bare concrete is porous, and that is the problem. It soaks up oil, rust, and moisture, it collects dust deep in the surface, and it takes the full force of freeze-thaw every winter as water seeps in and freezes. Concrete sealing closes those pores with a protective layer that repels stains and keeps water out before it can expand and crack the slab. Decorative staining goes a step further, adding rich, lasting color that transforms a plain gray driveway or patio into a finished surface.</p><p>Both matter in the Treasure Valley, where hard UV fades surfaces, hard water leaves mineral marks, and the freeze-thaw cycle is the number one enemy of concrete. Sealing after a thorough clean protects the investment you already made in that concrete and keeps it looking clean far longer between washes.</p>"
+        "heading": "Bare Concrete Is a Sponge",
+        "body": "<p>Bare concrete is porous, and that is the whole problem. It drinks up oil and rust, holds dust deep in the surface, and takes the full force of freeze-thaw every winter as water seeps in and expands.</p><p>That is how a good slab starts spalling and cracking. Once it does, you are pricing replacement, not cleaning.</p><p>Sealing closes the pores with a protective layer that repels stains and keeps water out before it can do the damage. Decorative staining goes further, adding lasting color that turns a plain gray driveway or patio into a finished surface.</p><p>Both matter here, where UV fades surfaces, hard water leaves mineral marks, and freeze-thaw is the number one enemy of concrete. Sealed after a thorough clean, the slab stays looking right far longer between washes.</p>"
       }
     },
     {
@@ -136,7 +136,8 @@
         "heading": "What Our Customers Say",
         "filter": "all",
         "service": "concrete-sealing-staining",
-        "limit": 3
+        "limit": 3,
+        "subheading": "Sample reviews, shown while we collect feedback from our first customers. These are examples, not real customer reviews."
       }
     },
     {

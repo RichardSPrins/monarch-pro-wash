@@ -42,8 +42,8 @@
           "text": "Graffiti Removal",
           "variant": "text"
         },
-        "heading": "The Service Explained",
-        "body": "<p>Graffiti on your storefront or building sends the wrong message to every customer and neighbor who passes by, and the longer a tag stays up the more it invites more. Graffiti removal lifts spray paint, marker, and etching from exterior surfaces and gets your property back to looking like it should.</p><p>The challenge is that paint sits differently on every surface. Porous brick and concrete absorb it, while siding and coated surfaces hold it on top. Monarch matches the method to the surface, using the right removal approach and real pressure only where a hard surface can take it, and a gentler process where it cannot.</p><p>The goal is a clean wall, not a bright scrubbed patch that stands out as much as the tag did. Fast turnaround matters here, and Monarch treats graffiti as the priority it is.</p>"
+        "heading": "Every Day a Tag Stays Up, It Invites the Next One",
+        "body": "<p>Graffiti on your storefront tells every customer and every neighbor something you did not choose to say. And a tag that sits there attracts more.</p><p>Speed matters here more than almost anything else.</p><p>The difficulty is that paint behaves differently on every surface. Porous brick and concrete absorb it. Siding and coated surfaces hold it on top. We match the method to the material, using real pressure only where a hard surface can take it and a gentler process where it cannot.</p><p>The goal is a clean wall, not a bright scrubbed patch that draws the eye as much as the tag did.</p>"
       }
     },
     {
@@ -136,7 +136,8 @@
         "heading": "What Our Customers Say",
         "filter": "all",
         "service": "graffiti-removal",
-        "limit": 3
+        "limit": 3,
+        "subheading": "Sample reviews, shown while we collect feedback from our first customers. These are examples, not real customer reviews."
       }
     },
     {

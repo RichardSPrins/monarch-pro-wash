@@ -42,8 +42,8 @@
           "text": "Soft Washing",
           "variant": "text"
         },
-        "heading": "The Service Explained",
-        "body": "<p>If your roof shingles are streaked black, your siding looks dingy, or your fence and eaves are going green, blasting them with high pressure is the wrong fix. Soft washing is the safe method. It uses low-pressure application and specialized cleaning solutions to clean delicate exterior surfaces without forcing water behind siding, stripping shingle granules, or gouging wood. Soft washing also kills algae, mold, mildew, and moss at the root rather than just rinsing the surface, so growth stays gone longer instead of returning in weeks.</p><p>In the Treasure Valley, north-facing and shaded walls hold moisture and grow algae and moss, while high-desert dust dulls everything else. We match the treatment to each surface and protect your landscaping before we start.</p>"
+        "heading": "When Pressure Is the Wrong Tool",
+        "body": "<p>Black streaks down the roof. Siding gone dull and green on the north side. A fence darkening where the sun never reaches it. The instinct is to hit all of it hard.</p><p>That is how roofs lose shingle granules, how water gets forced in behind siding, and how wood gets gouged. The damage costs more than the cleaning ever would have.</p><p>Soft washing is the right tool for those surfaces. Low pressure, plus a solution that kills algae, mold, mildew and moss at the root, so the growth stays gone for seasons instead of weeks.</p><p>Here the north-facing and shaded walls hold moisture and grow the worst of it, while high-desert dust dulls everything else. We match the treatment to each surface and wet down your landscaping before we start.</p>"
       }
     },
     {
@@ -136,7 +136,8 @@
         "heading": "What Our Customers Say",
         "filter": "all",
         "service": "soft-washing",
-        "limit": 3
+        "limit": 3,
+        "subheading": "Sample reviews, shown while we collect feedback from our first customers. These are examples, not real customer reviews."
       }
     },
     {
