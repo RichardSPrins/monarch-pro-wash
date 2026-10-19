@@ -72,7 +72,7 @@ const faqs = allFaqs
                     {faq.data.question}
                   </h3>
                   <p class="theme-text-muted leading-relaxed mt-2 mb-0">
-                    {faq.data.answer}
+                    <div class="faq-answer" set:html={faq.data.answer} />
                   </p>
                 </div>
               ))}
@@ -87,6 +87,10 @@ const faqs = allFaqs
 </section>
 
 <style>
+  .faq-answer :global(a) { color: var(--color-primary); text-decoration: underline; text-underline-offset: 2px; }
+  .faq-answer :global(p) { margin: 0 0 0.75rem; }
+  .faq-answer :global(p:last-child) { margin-bottom: 0; }
+
   .faq-row + .faq-row {
     border-top: 1px solid var(--theme-border);
   }

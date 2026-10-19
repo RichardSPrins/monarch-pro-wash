@@ -76,7 +76,10 @@ const faqs = allFaqs
                   {faq.data.question}
                 </AccordionTrigger>
                 <AccordionContent class="theme-text-muted leading-relaxed">
-                  {faq.data.answer}
+                  {/* Rendered as HTML so answers can carry links and light
+                      formatting, the same way content section `body` fields
+                      already do. Authors are CMS-authenticated. */}
+                  <div class="faq-answer" set:html={faq.data.answer} />
                 </AccordionContent>
               </AccordionItem>
             ))}
