@@ -33,6 +33,13 @@
           "type": "simple",
           "title": "Request a Free Quote",
           "submitLabel": "Get My Free Quote"
+        },
+        "embed": {
+          "mountAttr": "data-zolato-form",
+          "formId": "DiYl3djJjSt8QgQmCQjjp_f8",
+          "src": "https://zolato.ai/embed/form.js",
+          "hostedUrl": "https://zolato.ai/f/DiYl3djJjSt8QgQmCQjjp_f8",
+          "title": "Request a Free Quote"
         }
       }
     },

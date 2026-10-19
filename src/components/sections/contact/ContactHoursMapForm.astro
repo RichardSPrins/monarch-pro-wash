@@ -4,6 +4,7 @@ import { getBusinessData } from "@/lib/utils";
 import type { Eyebrow, FormConfig } from "@/types/sections";
 import Badge from "@/components/elements/badge/Badge.astro";
 import FormRenderer from "@/components/forms/FormRenderer.astro";
+import EmbeddedForm from "@/components/forms/EmbeddedForm.astro";
 
 /**
  * contact:hours-map-form — an "everything to reach us" section. Top row is a
@@ -22,6 +23,19 @@ interface Props {
     subheading?: string;
     mapEmbedUrl?: string;
     form?: FormConfig;
+    /**
+     * Render a third-party embedded form instead of the native one. The embed
+     * posts to its own destination, so it bypasses /api/lead, our tagging and
+     * our consent constant entirely. Any consent wording has to be configured
+     * on the provider's side.
+     */
+    embed?: {
+      mountAttr: string;
+      formId: string;
+      src: string;
+      hostedUrl?: string;
+      title?: string;
+    };
   };
 }
 
@@ -153,9 +167,19 @@ const mapSrc =
         }
       </div>
 
-      {/* Right: form */}
+      {/* Right: form. An embed takes precedence when one is configured. */}
       <div class="w-full">
-        <FormRenderer form={data?.form} services={sortedServices} />
+        {data?.embed ? (
+          <EmbeddedForm
+            mountAttr={data.embed.mountAttr}
+            formId={data.embed.formId}
+            src={data.embed.src}
+            hostedUrl={data.embed.hostedUrl}
+            title={data.embed.title ?? data?.form?.title}
+          />
+        ) : (
+          <FormRenderer form={data?.form} services={sortedServices} />
+        )}
       </div>
     </div>
 

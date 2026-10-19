@@ -450,6 +450,35 @@ function useRatingsTrustBar(sections, slug, lines) {
 }
 
 /**
+ * Put the Zolato embed on the contact page.
+ *
+ * This is a second, independent capture point: the embed posts straight to
+ * Zolato and does not go through /api/lead, so it carries none of our tagging
+ * and none of our consent constant. Any consent wording for it has to be set
+ * on the Zolato form itself, under Settings → Lead Intake.
+ *
+ * The native form config is left in place beneath it. Removing the `embed`
+ * object is all it takes to fall back to the in-house form, which still posts
+ * to /api/lead and still reaches the same CRM.
+ */
+const CONTACT_EMBED = {
+  mountAttr: "data-zolato-form",
+  formId: "DiYl3djJjSt8QgQmCQjjp_f8",
+  src: "https://zolato.ai/embed/form.js",
+  hostedUrl: "https://zolato.ai/f/DiYl3djJjSt8QgQmCQjjp_f8",
+  title: "Request a Free Quote",
+};
+
+function addContactEmbed(sections, slug, lines) {
+  if (slug !== "contact") return;
+  const sec = sections.find((s) => s.type === "contact:hours-map-form");
+  if (!sec || sec.data?.embed) return; // idempotent
+  sec.data ??= {};
+  sec.data.embed = { ...CONTACT_EMBED };
+  lines.push(`  contact:hours-map-form + Zolato embed (${CONTACT_EMBED.formId})`);
+}
+
+/**
  * Bold the lead-ins the copy already has.
  *
  * Several towns' "conditions" paragraphs already open with a short labelling
@@ -545,6 +574,7 @@ if (process.argv[1] && process.argv[1].endsWith("copy-prose.mjs")) {
     const lines = [];
     flipCompanyOpening(j.sections, lines);
     fillAboutImages(j.sections, slug, lines);
+    addContactEmbed(j.sections, slug, lines);
     useRatingsTrustBar(j.sections, slug, lines);
     insertRecentPosts(j.sections, slug, lines);
     boldExistingLeadIns(j.sections, lines);

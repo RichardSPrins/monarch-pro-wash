@@ -1,0 +1,142 @@
+---
+/**
+ * A third-party embedded form, with a fallback for when it does not render.
+ *
+ * Used where a form posts to an external system on its own rather than through
+ * /api/lead. The embed owns its submission; nothing here touches our lead
+ * pipeline, our tagging or our consent constant.
+ *
+ * WHY THE FALLBACK EXISTS
+ * A remote script can fail in ways the page cannot detect through `onerror`
+ * alone: an ad blocker removing it, a CSP refusal, a DNS failure, the provider
+ * being down, or the script loading but never mounting anything. Each leaves a
+ * silent empty box where the contact form should be, which on a contact page
+ * means losing the enquiry entirely.
+ *
+ * So the check is on the outcome rather than the mechanism: after a timeout,
+ * if the mount point is still empty, reveal a fallback with the phone number,
+ * the email address and a link to the provider's own hosted version of the
+ * same form. A visitor always has a way to reach someone.
+ */
+import { getBusinessData } from "@/lib/utils";
+
+interface Props {
+  /** Mount point attribute, e.g. data-zolato-form. */
+  mountAttr: string;
+  /** The form id that attribute carries. */
+  formId: string;
+  /** Script to load. */
+  src: string;
+  /** Provider-hosted version of the same form, used as the fallback link. */
+  hostedUrl?: string;
+  /** How long to wait before deciding the embed has not rendered. */
+  timeoutMs?: number;
+  title?: string;
+}
+
+const { mountAttr, formId, src, hostedUrl, timeoutMs = 6000, title = "Request a quote" } = Astro.props;
+
+const business = await getBusinessData();
+const tel = business.phone ? business.phone.replace(/[^\d+]/g, "") : null;
+---
+
+<div class="embedded-form" data-embed-root data-timeout={String(timeoutMs)}>
+  <div class="embed-mount" {...{ [mountAttr]: formId }}></div>
+
+  {/* Shown only if the embed has not rendered by the timeout, or without JS. */}
+  <div class="embed-fallback" data-embed-fallback hidden>
+    <h3>{title}</h3>
+    <p>
+      Our online form is not loading right now. Reach us directly and we will get
+      straight back to you.
+    </p>
+    <ul>
+      {business.phone && (
+        <li><a href={`tel:${tel}`}>Call {business.phone}</a></li>
+      )}
+      {business.email && (
+        <li><a href={`mailto:${business.email}`}>{business.email}</a></li>
+      )}
+      {hostedUrl && (
+        <li><a href={hostedUrl} rel="noopener">Open the quote form in a new page</a></li>
+      )}
+    </ul>
+  </div>
+
+  <noscript>
+    <div class="embed-fallback embed-fallback-static">
+      <h3>{title}</h3>
+      <p>This form needs JavaScript. You can still reach us directly:</p>
+      <ul>
+        {business.phone && <li><a href={`tel:${tel}`}>Call {business.phone}</a></li>}
+        {business.email && <li><a href={`mailto:${business.email}`}>{business.email}</a></li>}
+        {hostedUrl && <li><a href={hostedUrl} rel="noopener">Open the quote form</a></li>}
+      </ul>
+    </div>
+  </noscript>
+</div>
+
+<script is:inline define:vars={{ src }}>
+  // Load the provider script once per page even if the section repeats.
+  if (!document.querySelector(`script[data-embed-src="${src}"]`)) {
+    const s = document.createElement("script");
+    s.src = src;
+    s.async = true;
+    s.setAttribute("data-embed-src", src);
+    document.head.appendChild(s);
+  }
+</script>
+
+<script>
+  // Outcome-based check: did anything actually mount? A script can load and
+  // still render nothing, so testing for script errors alone is not enough.
+  document.querySelectorAll<HTMLElement>("[data-embed-root]").forEach((root) => {
+    const mount = root.querySelector<HTMLElement>(".embed-mount");
+    const fallback = root.querySelector<HTMLElement>("[data-embed-fallback]");
+    if (!mount || !fallback) return;
+
+    const timeout = Number(root.dataset.timeout ?? 6000);
+    let settled = false;
+
+    const rendered = () => mount.childElementCount > 0 || mount.textContent!.trim().length > 0;
+
+    const settle = () => {
+      if (settled) return;
+      settled = true;
+      observer.disconnect();
+      if (!rendered()) {
+        fallback.hidden = false;
+        root.setAttribute("data-embed-failed", "");
+      }
+    };
+
+    // Resolve as soon as the provider injects anything, rather than always
+    // waiting out the full timeout.
+    const observer = new MutationObserver(() => {
+      if (rendered()) {
+        settled = true;
+        observer.disconnect();
+      }
+    });
+    observer.observe(mount, { childList: true, subtree: true });
+
+    window.setTimeout(settle, timeout);
+  });
+</script>
+
+<style>
+  .embedded-form { width: 100%; }
+  .embed-mount { width: 100%; }
+
+  .embed-fallback {
+    border: 1px solid var(--theme-border, rgba(255, 255, 255, 0.14));
+    border-radius: var(--radius-lg, 0.75rem);
+    padding: 1.5rem;
+    background: color-mix(in srgb, var(--color-primary) 7%, transparent);
+  }
+  .embed-fallback h3 { margin: 0 0 0.5rem; font-size: 1.125rem; }
+  .embed-fallback p { margin: 0 0 1rem; color: var(--theme-fg-muted, rgba(255, 255, 255, 0.75)); }
+  .embed-fallback ul { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 0.5rem; }
+  .embed-fallback a { color: var(--color-primary); font-weight: 600; text-decoration: none; }
+  .embed-fallback a:hover { text-decoration: underline; }
+</style>
