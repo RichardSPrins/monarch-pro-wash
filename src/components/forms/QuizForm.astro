@@ -1,4 +1,5 @@
 ---
+import { CONSENT_TEXT } from "@/content/copy/consent";
 import type { FormConfig } from "@/types/sections";
 import { Input } from "@/components/starwind/input";
 import { Label } from "@/components/starwind/label";
@@ -119,6 +120,11 @@ const ICONS: Record<string, string> = {
     <button type="button" class="quiz-next" data-quiz-next>Next</button>
   </div>
 
+  {/* Consent disclosure. Shown on the step that actually submits, which is the
+      one carrying the contact fields. The lead endpoint sends this exact string
+      to the CRM as the wording the visitor agreed to. */}
+  <p class="quiz-consent" data-quiz-consent hidden>{CONSENT_TEXT}</p>
+
   <script type="application/json" data-quiz-config set:html={JSON.stringify({ submit: { ...siteConfig.forms, ...(form.submit ?? {}), formName: "quiz" }, outcome: form.outcome ?? {}, submitLabel: form.submitLabel ?? "Get My Free Estimate" })} />
 </div>
 
@@ -182,6 +188,12 @@ const ICONS: Record<string, string> = {
     background: transparent; color: var(--color-fg); font-weight: 600; font-size: 0.9rem; cursor: pointer;
   }
   .quiz-back:hover { background: color-mix(in srgb, var(--color-fg) 5%, transparent); }
+  .quiz-consent {
+    font-size: 0.6875rem;
+    line-height: 1.45;
+    margin: 0.75rem 0 0;
+    color: var(--theme-fg-subtle, rgba(255, 255, 255, 0.55));
+  }
   .quiz-next {
     flex: 1; padding: 0.75rem 1.25rem; border-radius: var(--radius); border: none;
     background: var(--color-primary); color: var(--color-fg-on-primary);
@@ -267,6 +279,9 @@ const ICONS: Record<string, string> = {
       if (count) count.textContent = `Step ${current + 1} of ${total}`;
       if (backBtn) backBtn.hidden = current === 0;
       nextBtn!.textContent = isLast() ? (cfg.submitLabel || "Submit") : "Next";
+      // The disclosure belongs next to the control that actually submits.
+      const consentEl = root.querySelector<HTMLElement>("[data-quiz-consent]");
+      if (consentEl) consentEl.hidden = !isLast();
       const focusable = steps[current].querySelector<HTMLElement>("input, .quiz-option");
       focusable?.focus?.({ preventScroll: true } as FocusOptions);
     }

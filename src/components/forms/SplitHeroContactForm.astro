@@ -1,4 +1,5 @@
 ---
+import { CONSENT_TEXT } from "@/content/copy/consent";
 import {
   Card,
   CardContent,
@@ -93,6 +94,10 @@ const submitCfg = {
         <Textarea id="hero-message" name="message" placeholder="Tell us about your project" />
       </div>
 
+      {/* Consent disclosure. Must stay adjacent to the submit control: the
+          lead endpoint transmits this exact string to the CRM as the wording
+          the visitor agreed to, which is only true if they could see it. */}
+      <p class="lead-consent">{CONSENT_TEXT}</p>
       <Button variant="primary" type="submit" class="w-full mt-1" data-lead-submit>{submitLabel}</Button>
     </form>
 
@@ -110,6 +115,13 @@ const submitCfg = {
 </Card>
 
 <style>
+  .lead-consent {
+    font-size: 0.6875rem;
+    line-height: 1.45;
+    margin: 0.25rem 0 0;
+    color: var(--theme-fg-subtle, rgba(255, 255, 255, 0.55));
+  }
+
   .lead-hp { position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0; }
   .lead-success { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 0.4rem; padding: 1.5rem 0.5rem; }
   .lead-success-check {

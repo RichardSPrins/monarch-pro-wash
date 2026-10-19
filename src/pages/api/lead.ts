@@ -1,5 +1,6 @@
 import type { APIRoute } from "astro";
-import { AUTOPILOT_API_KEY, AUTOPILOT_WEBSITE_SOURCE_ID } from "astro:env/server";
+import { ZOLATO_API_KEY } from "astro:env/server";
+import { CONSENT_TEXT } from "@/content/copy/consent";
 
 /**
  * /api/lead — the single, CRM-agnostic capture endpoint for every lead magnet
@@ -11,7 +12,7 @@ import { AUTOPILOT_API_KEY, AUTOPILOT_WEBSITE_SOURCE_ID } from "astro:env/server
  * the Worker logs so we capture everything while the CRM is still being chosen.
  *
  * TODO(before launch): wire the real CRM. Target is likely Autopilot
- * (autopilotapp.io). Autopilot's API/automations are limited, so we will need to
+ * (Zolato). Leads post to Zolato's lead-intake webhook; the email adapter is a
  * massage this normalized shape into what their API accepts — and split off any
  * data it can't hold (e.g. rich estimator answers, computed $ bands) into a
  * secondary store or a Zapier/Make hop. Keep the normalized shape below stable;
@@ -116,26 +117,33 @@ function deriveTags(lead: NormalizedLead): string[] {
 }
 
 /**
- * Deliver a captured lead. Always writes a durable log line, then fans out to
- * whichever delivery adapters are configured. No adapter can fail the request —
- * the log preserves the lead either way.
+ * Deliver a captured lead to every configured destination.
  *
- * Email is the primary adapter while the CRM decision is deferred; the Autopilot
- * adapter below stays dormant unless AUTOPILOT_API_KEY is set.
+ * Returns true when at least one destination accepted it. The caller uses that
+ * to decide what the visitor is told: this endpoint previously answered
+ * `{ok:true}` even when every adapter had failed, so a visitor saw "thanks,
+ * we'll be in touch" while the lead existed only in a log line.
  */
-async function deliverLead(lead: NormalizedLead): Promise<void> {
+async function deliverLead(lead: NormalizedLead): Promise<boolean> {
   // Structured, greppable record — always, regardless of adapter config.
   console.info("[lead]", JSON.stringify(lead));
 
-  await deliverByEmail(lead);
+  let delivered = false;
 
-  if (!AUTOPILOT_API_KEY) return; // dormant until the key is set
-  try {
-    await deliverToAutopilot(lead, AUTOPILOT_API_KEY);
-    console.info("[lead] autopilot: delivered", lead.contact.email || lead.contact.phone || "");
-  } catch (err) {
-    console.error("[lead] autopilot delivery failed:", (err as Error)?.message);
+  if (ZOLATO_API_KEY) {
+    try {
+      await deliverToZolato(lead, ZOLATO_API_KEY);
+      console.info("[lead] zolato: delivered", lead.contact.email || lead.contact.phone || "");
+      delivered = true;
+    } catch (err) {
+      console.error("[lead] zolato delivery failed:", (err as Error)?.message);
+    }
   }
+
+  if (await deliverByEmail(lead)) delivered = true;
+
+  if (!delivered) console.error("[lead] NO DESTINATION ACCEPTED THIS LEAD — log only");
+  return delivered;
 }
 
 // ---- Email adapter (Cloudflare Email Sending) --------------------------------
@@ -162,7 +170,7 @@ function leadSubject(lead: NormalizedLead): string {
   return `New lead — ${who}${bits ? ` — ${bits}` : ""}`;
 }
 
-async function deliverByEmail(lead: NormalizedLead): Promise<void> {
+async function deliverByEmail(lead: NormalizedLead): Promise<boolean> {
   let EMAIL: { send: (m: Record<string, unknown>) => Promise<unknown> } | undefined;
   let to: string | undefined;
   let from: string | undefined;
@@ -172,11 +180,11 @@ async function deliverByEmail(lead: NormalizedLead): Promise<void> {
     to = env.LEAD_NOTIFY_TO;
     from = env.LEAD_NOTIFY_FROM;
   } catch {
-    return; // not running on workerd (e.g. a unit test) — the log line stands
+    return false; // not running on workerd (e.g. a unit test) — the log line stands
   }
   if (!EMAIL || !to || !from) {
     console.warn("[lead] email adapter not configured (EMAIL binding / LEAD_NOTIFY_TO / LEAD_NOTIFY_FROM) — logged only");
-    return;
+    return false;
   }
 
   const notes = buildNotes(lead);
@@ -225,92 +233,22 @@ async function deliverByEmail(lead: NormalizedLead): Promise<void> {
       html,
     });
     console.info("[lead] email: delivered to", to);
+    return true;
   } catch (err) {
-    // E_SENDER_NOT_VERIFIED here means the sending domain isn't onboarded yet.
+    // E_SENDER_DOMAIN_NOT_CONFIGURED here means the sending domain is not set
+    // up in Cloudflare. Zolato is the primary destination, so this is a
+    // secondary notification path rather than the thing leads depend on.
     console.error("[lead] email delivery failed:", (err as any)?.code, (err as Error)?.message);
+    return false;
   }
 }
 
-// ---- Autopilot (autopilotapp.io) adapter ------------------------------------
-// A website lead maps to a `client` with client_or_lead:"lead". Contact fields
-// are typed; everything else (service, area, timeline, estimate, quiz answers)
-// goes into client_notes since Autopilot has no custom-field API. Our namespaced
-// tags map to readable Autopilot tag names (resolve-or-create, since tags are
-// UUID-referenced). Dedupe by email then phone → PATCH+merge instead of dupe.
-
-const AP_BASE = "https://app.autopilotapp.io/api";
-
-async function apFetch(key: string, path: string, init?: RequestInit): Promise<any> {
-  const r = await fetch(`${AP_BASE}${path}`, {
-    ...init,
-    headers: { Authorization: `Bearer ${key}`, "Content-Type": "application/json", ...(init?.headers || {}) },
-  });
-  let body: any = null;
-  try { body = await r.json(); } catch { /* 204 No Content */ }
-  if (!r.ok) throw new Error(`autopilot ${init?.method || "GET"} ${path} -> ${r.status} ${body?.error?.message ?? ""}`);
-  return body;
-}
+// ---- Shared lead formatting --------------------------------------------------
+// Used by both the Zolato payload and the email notification, so a lead reads
+// the same wherever it lands.
 
 const titleize = (slug: string) => slug.replace(/[-_]+/g, " ").replace(/\b\w/g, (c) => c.toUpperCase());
 
-/** Map our namespaced tag strings (svc:/area:/temp:…) to readable Autopilot names. */
-function friendlyTagNames(lead: NormalizedLead): string[] {
-  const names = new Set<string>(["Website Lead"]);
-  for (const t of lead.tags) {
-    const [ns, ...rest] = t.split(":");
-    const val = rest.join(":");
-    if (!val) { names.add(t); continue; }
-    switch (ns) {
-      case "src": names.add(`Source: ${val === "sia-quiz" ? "Website Quiz" : titleize(val)}`); break;
-      case "svc": names.add(`Service: ${titleize(val)}`); break;
-      case "area": names.add(`Area: ${titleize(val)}`); break;
-      case "interest": names.add(`Interest: ${titleize(val)}`); break;
-      case "prop": names.add(`Property: ${titleize(val)}`); break;
-      case "temp": names.add(val === "hot" ? "Hot Lead" : val === "warm" ? "Warm Lead" : "Cold Lead"); break;
-      case "flag": names.add(val === "high-value" ? "High Value" : val === "multi-service" ? "Multi-Service" : titleize(val)); break;
-      case "ad": names.add(val === "google" ? "Google Ads" : val === "facebook" ? "Facebook Ads" : `${titleize(val)} Ads`); break;
-      case "campaign": names.add(`Campaign: ${titleize(val)}`); break;
-      default: names.add(titleize(t));
-    }
-  }
-  return [...names];
-}
-
-// Tag vocabulary cache (per worker instance) so we don't GET it on every lead.
-let apTagCache: Map<string, string> | null = null;
-async function resolveTagIds(key: string, wanted: string[]): Promise<string[]> {
-  if (!apTagCache) {
-    apTagCache = new Map();
-    const res = await apFetch(key, "/v1/client-tags");
-    for (const t of res?.data ?? []) apTagCache.set(String(t.name).toLowerCase(), t.id);
-  }
-  const ids: string[] = [];
-  for (const name of wanted) {
-    const k = name.toLowerCase();
-    let id = apTagCache.get(k);
-    if (!id) {
-      const created = await apFetch(key, "/v1/client-tags", { method: "POST", body: JSON.stringify({ name }) });
-      id = created?.id;
-      if (id) apTagCache.set(k, id);
-    }
-    if (id) ids.push(id);
-  }
-  return ids;
-}
-
-async function findClient(key: string, email?: string, phone?: string): Promise<any | null> {
-  if (email) {
-    const r = await apFetch(key, `/v1/clients?email=${encodeURIComponent(email)}&limit=1`);
-    if (r?.data?.[0]) return r.data[0];
-  }
-  if (phone) {
-    const r = await apFetch(key, `/v1/clients?phone=${encodeURIComponent(phone)}&limit=1`);
-    if (r?.data?.[0]) return r.data[0];
-  }
-  return null;
-}
-
-/** Fold everything untyped into one readable note block. */
 function buildNotes(lead: NormalizedLead): string {
   const a = lead.answers;
   const svc = lead.tags.filter((t) => t.startsWith("svc:")).map((t) => titleize(t.slice(4)));
@@ -336,44 +274,109 @@ function buildNotes(lead: NormalizedLead): string {
   return L.join("\n");
 }
 
-function splitName(name?: string): { first: string | null; last: string | null } {
-  if (!name) return { first: null, last: null };
-  const parts = name.trim().split(/\s+/);
-  if (parts.length === 1) return { first: parts[0], last: null };
-  return { first: parts[0], last: parts.slice(1).join(" ") };
-}
+// ---- Zolato CRM adapter ------------------------------------------------------
+// POST https://zolato.ai/api/public/v1/leads with a Bearer key. Chosen over the
+// Settings → Lead Intake webhook because that endpoint answers 200 to anything,
+// including an empty body, so a broken payload looks like a success. This one
+// validates and names the offending field.
+//
+// Accepted top level (confirmed by probing the endpoint's validation errors):
+//   name, phone, email, address, service, message, source, consent, custom_fields
+// Anything else is rejected with 422, so all our routing detail goes into
+// custom_fields rather than being silently dropped.
+//
+// CONSENT. Zolato requires `consent.text` whenever sms or email consent is
+// true: "the exact wording the person agreed to". Every form now renders the
+// disclosure from src/content/copy/consent.ts next to its submit control, and
+// this adapter transmits that same constant. The two must stay identical, which
+// is why neither keeps its own copy of the string. Never assert consent from a
+// form that does not display it.
+//
+// The key is a credential: set it with `wrangler secret put ZOLATO_API_KEY`,
+// never in wrangler.jsonc `vars`, which is committed.
+// Limits: 60 requests/minute, 1,000/day.
 
-async function deliverToAutopilot(lead: NormalizedLead, key: string): Promise<void> {
-  const { first, last } = splitName(lead.contact.name);
-  const notes = buildNotes(lead);
-  const tagIds = await resolveTagIds(key, friendlyTagNames(lead));
+const ZOLATO_LEADS_URL = "https://zolato.ai/api/public/v1/leads";
 
-  const existing = await findClient(key, lead.contact.email, lead.contact.phone);
-  if (existing) {
-    const merged = [existing.client_notes, notes].filter(Boolean).join("\n\n— — —\n\n");
-    await apFetch(key, `/v1/clients/${existing.id}`, { method: "PATCH", body: JSON.stringify({ client_notes: merged }) });
-    const existingTagIds: string[] = (existing.tags ?? []).map((t: any) => t.id);
-    const tagSet = [...new Set([...existingTagIds, ...tagIds])];
-    await apFetch(key, `/v1/clients/${existing.id}/tags`, { method: "PUT", body: JSON.stringify({ tag_ids: tagSet }) });
-    return;
+async function deliverToZolato(lead: NormalizedLead, key: string): Promise<void> {
+  const c = lead.contact;
+  const a = lead.answers;
+  const svc = lead.tags.find((t) => t.startsWith("svc:"))?.slice(4);
+  const area = lead.tags.find((t) => t.startsWith("area:"))?.slice(5);
+
+  // Zolato writes its own note on the lead and already prints "Received via
+  // Website", "Service requested" and "Address" at the top of it, then our
+  // `message` as the body, then `custom_fields` beneath an "Additional details"
+  // heading. So `message` carries only what the visitor actually wrote, and the
+  // structured extras go in custom_fields with human-readable labels rather
+  // than snake_case keys, because those keys are shown verbatim.
+  const custom: Record<string, string> = {};
+  const put = (label: string, v: unknown) => {
+    if (v === undefined || v === null || v === "") return;
+    custom[label] = String(v);
+  };
+  put("Service area", area ? titleize(area) : a.city);
+  put("Best time to reach", a.contactTime);
+  put("Timeline", a.timeline);
+  put("Property type", a.propertyType);
+  put("Home size", a.homeSqft ? `~${a.homeSqft} sq ft` : undefined);
+  put("Stories", a.stories);
+  put("Solar panels", a.solarPanels);
+  if (a.estimateLow != null && a.estimateHigh != null) {
+    put("Estimate range", `$${a.estimateLow}-$${a.estimateHigh}`);
   }
+  put("Submitted from", lead.page);
+  put("Lead source", lead.source);
 
-  await apFetch(key, "/v1/clients", {
+  // Remaining quiz answers, so a service-specific questionnaire is not lost.
+  const known = new Set([
+    "city", "contactTime", "timeline", "propertyType", "homeSqft", "stories",
+    "solarPanels", "estimateLow", "estimateHigh", "service", "notes", "message",
+  ]);
+  for (const [k, v] of Object.entries(a)) if (!known.has(k)) put(titleize(k), v);
+
+  const visitorMessage = [a.message, a.notes].filter(Boolean).join("\n\n");
+
+  const payload: Record<string, unknown> = {
+    name: c.name,
+    phone: c.phone,
+    email: c.email,
+    address: [c.address, c.city].filter(Boolean).join(", ") || undefined,
+    service: svc ? titleize(svc) : a.service ? titleize(String(a.service)) : undefined,
+    message: visitorMessage || undefined,
+    source: "Website",
+  };
+
+  // Consent is collected by the disclosure shown next to every form's submit
+  // control. CONSENT_TEXT is the exact string the visitor saw, which is what
+  // Zolato asks for; it is imported rather than retyped so the record cannot
+  // drift from what was displayed. Email consent is only asserted when we
+  // actually have an address to send to, which the API enforces anyway.
+  payload.consent = {
+    sms: Boolean(c.phone),
+    email: Boolean(c.email),
+    text: CONSENT_TEXT,
+  };
+
+  for (const k of Object.keys(payload)) if (payload[k] === undefined || payload[k] === "") delete payload[k];
+  if (Object.keys(custom).length) payload.custom_fields = custom;
+
+  const r = await fetch(ZOLATO_LEADS_URL, {
     method: "POST",
-    body: JSON.stringify({
-      first_name: first,
-      last_name: last,
-      email: lead.contact.email ?? null,
-      primary_phone_number: lead.contact.phone ?? null,
-      client_notes: notes,
-      client_or_lead: "lead",
-      // Native "Website" lead source if configured; the "Website Lead" tag covers it either way.
-      ...(AUTOPILOT_WEBSITE_SOURCE_ID ? { source_id: AUTOPILOT_WEBSITE_SOURCE_ID } : {}),
-      // No explicit SMS opt-in captured on the site yet — stay off marketing SMS.
-      is_do_not_marketing_sms: true,
-      tag_ids: tagIds,
-    }),
+    headers: { authorization: `Bearer ${key}`, "content-type": "application/json" },
+    body: JSON.stringify(payload),
   });
+
+  const body = await r.text().catch(() => "");
+  if (!r.ok) throw new Error(`zolato ${r.status} ${body.slice(0, 300)}`);
+
+  // 201 with status "needs_review" means it could not identify a lead from the
+  // payload. Treat that as a failure so it surfaces rather than looking fine.
+  let parsed: any = null;
+  try { parsed = JSON.parse(body); } catch { /* non-JSON 2xx */ }
+  if (parsed?.status && parsed.status !== "created") {
+    throw new Error(`zolato accepted but returned status="${parsed.status}" (id ${parsed.id ?? "?"})`);
+  }
 }
 
 export const POST: APIRoute = async ({ request }) => {
@@ -400,7 +403,8 @@ export const POST: APIRoute = async ({ request }) => {
   }
 
   try {
-    await deliverLead(lead);
+    const delivered = await deliverLead(lead);
+    if (!delivered) return json({ ok: false, error: "delivery_failed" }, 502);
   } catch (err) {
     console.error("[lead] delivery failed:", (err as Error)?.message);
     // Still 200 so the visitor sees success; the log above preserves the lead.
