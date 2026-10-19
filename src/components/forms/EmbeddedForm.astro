@@ -29,12 +29,13 @@ interface Props {
   src: string;
   /** Provider-hosted version of the same form, used as the fallback link. */
   hostedUrl?: string;
-  /** How long to wait before deciding the embed has not rendered. */
+  /** How long to wait before deciding the embed has not rendered. The
+   *  decision is reversible, so this errs on the generous side. */
   timeoutMs?: number;
   title?: string;
 }
 
-const { mountAttr, formId, src, hostedUrl, timeoutMs = 6000, title = "Request a quote" } = Astro.props;
+const { mountAttr, formId, src, hostedUrl, timeoutMs = 10000, title = "Request a quote" } = Astro.props;
 
 const business = await getBusinessData();
 const tel = business.phone ? business.phone.replace(/[^\d+]/g, "") : null;
@@ -90,37 +91,50 @@ const tel = business.phone ? business.phone.replace(/[^\d+]/g, "") : null;
 <script>
   // Outcome-based check: did anything actually mount? A script can load and
   // still render nothing, so testing for script errors alone is not enough.
+  //
+  // The observer deliberately stays connected for the life of the page. A slow
+  // provider can finish AFTER the timeout, and the first version of this
+  // revealed the fallback at that point and never took it back, so the page
+  // showed the working form and "our online form is not loading" at the same
+  // time. Showing the fallback is therefore reversible: if the embed arrives
+  // late, it is hidden again.
   document.querySelectorAll<HTMLElement>("[data-embed-root]").forEach((root) => {
-    const mount = root.querySelector<HTMLElement>(".embed-mount");
     const fallback = root.querySelector<HTMLElement>("[data-embed-fallback]");
-    if (!mount || !fallback) return;
+    if (!fallback) return;
 
-    const timeout = Number(root.dataset.timeout ?? 6000);
-    let settled = false;
+    const timeout = Number(root.dataset.timeout ?? 10000);
 
-    const rendered = () => mount.childElementCount > 0 || mount.textContent!.trim().length > 0;
-
-    const settle = () => {
-      if (settled) return;
-      settled = true;
-      observer.disconnect();
-      if (!rendered()) {
-        fallback.hidden = false;
-        root.setAttribute("data-embed-failed", "");
+    /**
+     * Look for rendered form content anywhere under the root, rather than
+     * holding a reference to the mount node. Some providers replace that node
+     * outright, which would leave a stale reference that never reports content.
+     * The fallback's own markup is excluded so it cannot satisfy its own check.
+     */
+    const rendered = () => {
+      const candidates = root.querySelectorAll("form, iframe, input, select, textarea, button");
+      for (const el of candidates) {
+        if (!fallback.contains(el)) return true;
       }
+      const mount = root.querySelector<HTMLElement>(".embed-mount");
+      return !!mount && (mount.childElementCount > 0 || mount.textContent!.trim().length > 0);
     };
 
-    // Resolve as soon as the provider injects anything, rather than always
-    // waiting out the full timeout.
+    const sync = () => {
+      const ok = rendered();
+      fallback.hidden = ok;
+      root.toggleAttribute("data-embed-failed", !ok);
+    };
+
     const observer = new MutationObserver(() => {
+      // Only ever hide early; the timeout decides when to show.
       if (rendered()) {
-        settled = true;
-        observer.disconnect();
+        fallback.hidden = true;
+        root.removeAttribute("data-embed-failed");
       }
     });
-    observer.observe(mount, { childList: true, subtree: true });
+    observer.observe(root, { childList: true, subtree: true });
 
-    window.setTimeout(settle, timeout);
+    window.setTimeout(sync, timeout);
   });
 </script>
 

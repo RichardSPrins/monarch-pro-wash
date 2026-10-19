@@ -76,6 +76,11 @@ export interface Post {
   date?: string;
   featured?: boolean;
   body?: PortableTextBlock[];
+  cover?: string;
+  cover_alt?: string;
+  topic?: string;
+  author?: string;
+  read_minutes?: number;
   createdAt: Date;
   updatedAt: Date;
   publishedAt: Date | null;
