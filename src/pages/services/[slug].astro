@@ -18,6 +18,7 @@ import { getPage, getServices } from "@/lib/content";
 import { getBusinessData, getSiteData } from "@/lib/utils";
 import siteConfig from "@/config/site.config";
 import { createServiceSchema, createFAQSchema } from "@/lib/schema";
+import { faqsForSections } from "@/lib/faqSchema";
 import { buildServiceSections } from "@/lib/pageTemplates";
 
 const slug = Astro.params.slug ?? "";
@@ -72,6 +73,13 @@ if (sd?.service || sd?.faq?.length) {
     );
   }
   if (sd.faq?.length) pageSchemas.push(createFAQSchema(sd.faq));
+}
+
+// Fall back to the FAQs the page's own sections render. A page may only carry
+// one FAQPage, so this only runs when nothing was authored by hand.
+if (!pageSchemas.some((s: any) => s?.["@type"] === "FAQPage")) {
+  const rendered = await faqsForSections(page.data.sections);
+  if (rendered) pageSchemas.push(createFAQSchema(rendered));
 }
 ---
 

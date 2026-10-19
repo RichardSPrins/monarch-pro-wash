@@ -17,6 +17,8 @@ import ServicePageRail from "@/components/layout/ServicePageRail.astro";
 import { getServices, getServiceAreas, getPage } from "@/lib/content";
 import { getSiaQuiz } from "@/lib/siaQuizzes";
 import { hasSiaPages } from "@/config/launchScope";
+import { createFAQSchema } from "@/lib/schema";
+import { faqsForSections } from "@/lib/faqSchema";
 import {
   PROCESS_STEPS,
   PROCESS_HEADINGS,
@@ -153,6 +155,12 @@ const sections = rawSections.map((s: any) =>
   s?.type === "hero:split-form" ? { ...s, data: { ...s.data, form: siaQuiz } } : s,
 );
 
+// These pages emitted no page-level structured data at all. Describe the FAQs
+// they render, matching the visible accordion.
+const pageSchemas: any[] = [];
+const renderedFaqs = await faqsForSections(sections);
+if (renderedFaqs) pageSchemas.push(createFAQSchema(renderedFaqs));
+
 const page = {
   id: `${areaSlug}/${serviceSlug}`,
   data: { title, sections },
@@ -163,6 +171,7 @@ const page = {
   page={page}
   title={page.data.title}
   description={deriveDescription(sections) ?? `${svcTitle} in ${city}, ${state}. ${desc}`}
+  schemas={pageSchemas}
 >
   <PageRenderer config={page.data} layout="rail">
     <ServicePageRail
