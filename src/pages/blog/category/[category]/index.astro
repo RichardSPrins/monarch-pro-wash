@@ -1,0 +1,23 @@
+---
+// Category archive, page one. Filtering happens in the database via `where`.
+import BlogLayout from "@/layouts/BlogLayout.astro";
+import BlogListing from "@/components/blog/BlogListing.astro";
+import { getPage, getCategories } from "@/lib/blog";
+
+const raw = decodeURIComponent(Astro.params.category ?? "");
+const categories = await getCategories();
+// URLs are lowercase; resolve back to the canonical stored casing so the
+// where-clause matches exactly.
+const category = categories.find((c) => c.toLowerCase() === raw.toLowerCase());
+if (!category) return Astro.rewrite("/404");
+
+const { posts, hasMore, isEmpty } = await getPage({ page: 1, category });
+if (isEmpty) return Astro.rewrite("/404");
+
+const title = `${category} articles`;
+const description = `Exterior cleaning articles filed under ${category}, for Boise and the Treasure Valley.`;
+---
+<BlogLayout page={{ id: `blog-cat-${category}`, data: { title } }} title={title} description={description} includeLocalBusinessSchema={false}>
+  <BlogListing title={title} intro={description} posts={posts} page={1} hasMore={hasMore}
+    categories={categories} activeCategory={category} />
+</BlogLayout>

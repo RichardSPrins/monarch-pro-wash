@@ -1,0 +1,100 @@
+---
+/**
+ * blog:recent-posts — a short strip of recent articles for marketing pages.
+ *
+ * Self-fetching, like the other collection-backed sections, so a page only has
+ * to declare the section and optionally a heading. It hides itself entirely
+ * when there are no published posts, which matters because the posts start as
+ * drafts and an empty "Recent Articles" heading looks broken.
+ *
+ * `exclude` keeps a post from linking to itself if this is ever dropped onto a
+ * post page.
+ */
+import { recentPosts } from "@/lib/blog";
+
+interface Props {
+  theme?: string;
+  data?: {
+    eyebrow?: { text?: string };
+    heading?: string;
+    subheading?: string;
+    limit?: number;
+    exclude?: string;
+    ctaLabel?: string;
+  };
+}
+
+const { theme = "alt", data = {} } = Astro.props;
+const limit = data.limit ?? 3;
+const posts = await recentPosts(limit, data.exclude);
+
+const fmt = (d: Date) =>
+  d && !isNaN(d.getTime())
+    ? d.toLocaleDateString("en-US", { year: "numeric", month: "short", day: "numeric" })
+    : undefined;
+---
+
+{posts.length > 0 && (
+  <section class={`section-wrapper section-py theme-${theme}`}>
+    <div class="section-container">
+      <div class="brp-head">
+        <div>
+          {data.eyebrow?.text && <span class="brp-eyebrow">{data.eyebrow.text}</span>}
+          <h2>{data.heading ?? "Recent Articles"}</h2>
+          {data.subheading && <p class="brp-sub">{data.subheading}</p>}
+        </div>
+        <a class="brp-all" href="/blog">{data.ctaLabel ?? "All articles"}</a>
+      </div>
+
+      <ul class="brp-grid">
+        {posts.map((p) => (
+          <li>
+            <a href={`/blog/${p.slug}`}>
+              {p.cover && <img src={p.cover} alt={p.coverAlt ?? ""} width="1200" height="630" loading="lazy" decoding="async" />}
+              <div class="brp-body">
+                {p.category && <span class="brp-cat">{p.category}</span>}
+                <h3>{p.title}</h3>
+                {p.description && <p>{p.description}</p>}
+                <span class="brp-meta">{fmt(p.date)}</span>
+              </div>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+)}
+
+<style>
+  .brp-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 1.5rem; margin-bottom: 2rem; flex-wrap: wrap; }
+  .brp-eyebrow {
+    display: block; font-size: 0.6875rem; font-weight: 700; letter-spacing: 0.12em;
+    text-transform: uppercase; color: var(--color-primary); margin-bottom: 0.5rem;
+  }
+  .brp-head h2 { margin: 0; }
+  .brp-sub { margin: 0.5rem 0 0; color: var(--theme-fg-muted); max-width: 42rem; }
+  .brp-all {
+    font-size: 0.9375rem; font-weight: 600; text-decoration: none; color: var(--color-primary); white-space: nowrap;
+  }
+  .brp-all:hover { text-decoration: underline; }
+
+  .brp-grid { list-style: none; margin: 0; padding: 0; display: grid; gap: 1.75rem; grid-template-columns: repeat(3, 1fr); }
+  @media (max-width: 900px) { .brp-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 620px) { .brp-grid { grid-template-columns: 1fr; } }
+
+  .brp-grid a { text-decoration: none; color: inherit; display: block; }
+  .brp-grid img { display: block; width: 100%; height: auto; border-radius: var(--radius-lg, 0.75rem); }
+  .brp-body { padding-top: 0.875rem; }
+  .brp-cat {
+    display: inline-block; font-size: 0.625rem; font-weight: 700; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--color-primary);
+    border: 1px solid currentColor; border-radius: 999px; padding: 0.2rem 0.5rem; margin-bottom: 0.5rem;
+  }
+  .brp-grid h3 { margin: 0 0 0.5rem; font-size: 1.0625rem; line-height: 1.35; }
+  .brp-grid p {
+    margin: 0 0 0.5rem; font-size: 0.9375rem; line-height: 1.55; color: var(--theme-fg-muted);
+    display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;
+  }
+  .brp-grid a:hover h3 { color: var(--color-primary); }
+  .brp-meta { font-size: 0.8125rem; color: var(--theme-fg-subtle); }
+</style>

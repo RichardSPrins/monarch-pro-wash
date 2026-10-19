@@ -1,9 +1,9 @@
 {
-  "slug": "how-much-does-roof-cleaning-cost",
-  "title": "How Much Does Roof Cleaning Cost in the Treasure Valley?",
-  "description": "What drives the price of roof cleaning in Boise and the surrounding valley, why the cheapest quote is often the most expensive one, and how to tell a soft wash from a roof-damaging shortcut.",
+  "slug": "how-much-does-roof-cleaning-cost-in-boise",
+  "title": "How Much Does Roof Cleaning Cost in Boise?",
+  "description": "What drives the price of roof cleaning in Boise, why the cheapest quote is often the most expensive one, and how to tell a soft wash from a roof-damaging shortcut.",
   "date": "2026-09-28",
-  "category": "Pricing",
+  "topic": "Pricing",
   "author": "Richard Prins",
   "cover": "/images/blog/roof-cleaning-cost.png",
   "cover_alt": "Monarch Pro Wash roof cleaning cover illustration",
@@ -13,7 +13,7 @@
   "body": [
     {
       "_type": "block",
-      "_key": "k8j",
+      "_key": "k6i",
       "style": "normal",
       "children": [
         {
@@ -26,7 +26,7 @@
     },
     {
       "_type": "block",
-      "_key": "k8k",
+      "_key": "k6j",
       "style": "normal",
       "children": [
         {
@@ -39,7 +39,7 @@
     },
     {
       "_type": "block",
-      "_key": "k8l",
+      "_key": "k6k",
       "style": "h2",
       "children": [
         {
@@ -52,7 +52,7 @@
     },
     {
       "_type": "block",
-      "_key": "k8m",
+      "_key": "k6l",
       "style": "normal",
       "children": [
         {
@@ -65,7 +65,7 @@
     },
     {
       "_type": "block",
-      "_key": "k8n",
+      "_key": "k6m",
       "style": "normal",
       "children": [
         {
@@ -78,7 +78,7 @@
     },
     {
       "_type": "block",
-      "_key": "k8o",
+      "_key": "k6n",
       "style": "normal",
       "children": [
         {
@@ -91,7 +91,7 @@
     },
     {
       "_type": "block",
-      "_key": "k8p",
+      "_key": "k6o",
       "style": "normal",
       "children": [
         {
@@ -104,7 +104,7 @@
     },
     {
       "_type": "block",
-      "_key": "k8q",
+      "_key": "k6p",
       "style": "h2",
       "children": [
         {
@@ -117,7 +117,7 @@
     },
     {
       "_type": "block",
-      "_key": "k8r",
+      "_key": "k6q",
       "style": "h3",
       "children": [
         {
@@ -130,7 +130,7 @@
     },
     {
       "_type": "block",
-      "_key": "k8s",
+      "_key": "k6r",
       "style": "normal",
       "children": [
         {
@@ -143,7 +143,7 @@
     },
     {
       "_type": "block",
-      "_key": "k8t",
+      "_key": "k6s",
       "style": "h3",
       "children": [
         {
@@ -156,7 +156,7 @@
     },
     {
       "_type": "block",
-      "_key": "k8u",
+      "_key": "k6t",
       "style": "normal",
       "children": [
         {
@@ -169,7 +169,7 @@
     },
     {
       "_type": "block",
-      "_key": "k8v",
+      "_key": "k6u",
       "style": "h3",
       "children": [
         {
@@ -182,7 +182,7 @@
     },
     {
       "_type": "block",
-      "_key": "k8w",
+      "_key": "k6v",
       "style": "normal",
       "children": [
         {
@@ -195,7 +195,7 @@
     },
     {
       "_type": "block",
-      "_key": "k8x",
+      "_key": "k6w",
       "style": "h3",
       "children": [
         {
@@ -208,7 +208,7 @@
     },
     {
       "_type": "block",
-      "_key": "k8y",
+      "_key": "k6x",
       "style": "normal",
       "children": [
         {
@@ -221,7 +221,7 @@
     },
     {
       "_type": "block",
-      "_key": "k8z",
+      "_key": "k6y",
       "style": "h3",
       "children": [
         {
@@ -234,7 +234,7 @@
     },
     {
       "_type": "block",
-      "_key": "k90",
+      "_key": "k6z",
       "style": "normal",
       "children": [
         {
@@ -247,7 +247,7 @@
     },
     {
       "_type": "block",
-      "_key": "k91",
+      "_key": "k70",
       "style": "h3",
       "children": [
         {
@@ -260,7 +260,7 @@
     },
     {
       "_type": "block",
-      "_key": "k92",
+      "_key": "k71",
       "style": "normal",
       "children": [
         {
@@ -273,7 +273,7 @@
     },
     {
       "_type": "block",
-      "_key": "k93",
+      "_key": "k72",
       "style": "h2",
       "children": [
         {
@@ -286,7 +286,7 @@
     },
     {
       "_type": "block",
-      "_key": "k94",
+      "_key": "k73",
       "style": "normal",
       "children": [
         {
@@ -299,7 +299,7 @@
     },
     {
       "_type": "block",
-      "_key": "k95",
+      "_key": "k74",
       "style": "normal",
       "children": [
         {
@@ -319,7 +319,7 @@
     },
     {
       "_type": "block",
-      "_key": "k96",
+      "_key": "k75",
       "style": "normal",
       "children": [
         {
@@ -339,7 +339,7 @@
     },
     {
       "_type": "block",
-      "_key": "k97",
+      "_key": "k76",
       "style": "normal",
       "children": [
         {
@@ -359,7 +359,7 @@
     },
     {
       "_type": "block",
-      "_key": "k98",
+      "_key": "k77",
       "style": "normal",
       "children": [
         {
@@ -372,7 +372,7 @@
     },
     {
       "_type": "block",
-      "_key": "k99",
+      "_key": "k78",
       "style": "h2",
       "children": [
         {
@@ -385,7 +385,7 @@
     },
     {
       "_type": "block",
-      "_key": "k9a",
+      "_key": "k79",
       "style": "normal",
       "children": [
         {
@@ -400,7 +400,7 @@
     },
     {
       "_type": "block",
-      "_key": "k9b",
+      "_key": "k7a",
       "style": "normal",
       "children": [
         {
@@ -415,7 +415,7 @@
     },
     {
       "_type": "block",
-      "_key": "k9c",
+      "_key": "k7b",
       "style": "normal",
       "children": [
         {
@@ -430,7 +430,7 @@
     },
     {
       "_type": "block",
-      "_key": "k9d",
+      "_key": "k7c",
       "style": "normal",
       "children": [
         {
@@ -445,7 +445,7 @@
     },
     {
       "_type": "block",
-      "_key": "k9e",
+      "_key": "k7d",
       "style": "normal",
       "children": [
         {
@@ -460,7 +460,7 @@
     },
     {
       "_type": "block",
-      "_key": "k9f",
+      "_key": "k7e",
       "style": "normal",
       "children": [
         {
@@ -475,7 +475,7 @@
     },
     {
       "_type": "block",
-      "_key": "k9g",
+      "_key": "k7f",
       "style": "normal",
       "children": [
         {
@@ -488,7 +488,7 @@
     },
     {
       "_type": "block",
-      "_key": "k9h",
+      "_key": "k7g",
       "style": "h2",
       "children": [
         {
@@ -501,7 +501,7 @@
     },
     {
       "_type": "block",
-      "_key": "k9i",
+      "_key": "k7h",
       "style": "normal",
       "children": [
         {
@@ -514,7 +514,7 @@
     },
     {
       "_type": "block",
-      "_key": "k9j",
+      "_key": "k7i",
       "style": "normal",
       "children": [
         {
@@ -527,7 +527,7 @@
     },
     {
       "_type": "block",
-      "_key": "k9k",
+      "_key": "k7j",
       "style": "normal",
       "children": [
         {
@@ -549,7 +549,7 @@
     },
     {
       "_type": "block",
-      "_key": "k9l",
+      "_key": "k7k",
       "style": "normal",
       "children": [
         {
@@ -571,7 +571,7 @@
     },
     {
       "_type": "block",
-      "_key": "k9m",
+      "_key": "k7l",
       "style": "normal",
       "children": [
         {
@@ -593,7 +593,7 @@
     },
     {
       "_type": "block",
-      "_key": "k9n",
+      "_key": "k7m",
       "style": "normal",
       "children": [
         {
@@ -606,7 +606,7 @@
     },
     {
       "_type": "block",
-      "_key": "k9o",
+      "_key": "k7n",
       "style": "normal",
       "children": [
         {
@@ -619,7 +619,7 @@
     },
     {
       "_type": "block",
-      "_key": "k9p",
+      "_key": "k7o",
       "style": "h2",
       "children": [
         {
@@ -632,7 +632,7 @@
     },
     {
       "_type": "block",
-      "_key": "k9q",
+      "_key": "k7p",
       "style": "normal",
       "children": [
         {
@@ -645,7 +645,7 @@
     },
     {
       "_type": "block",
-      "_key": "k9t",
+      "_key": "k7s",
       "style": "normal",
       "children": [
         {
@@ -657,7 +657,7 @@
           "_type": "span",
           "text": "instant estimate",
           "marks": [
-            "k9r"
+            "k7q"
           ]
         },
         {
@@ -669,7 +669,7 @@
           "_type": "span",
           "text": "send us a few photos",
           "marks": [
-            "k9s"
+            "k7r"
           ]
         },
         {
@@ -681,19 +681,19 @@
       "markDefs": [
         {
           "_type": "link",
-          "_key": "k9r",
+          "_key": "k7q",
           "href": "/estimate"
         },
         {
           "_type": "link",
-          "_key": "k9s",
+          "_key": "k7r",
           "href": "/contact"
         }
       ]
     },
     {
       "_type": "block",
-      "_key": "k9u",
+      "_key": "k7t",
       "style": "h2",
       "children": [
         {
@@ -706,7 +706,7 @@
     },
     {
       "_type": "block",
-      "_key": "k9v",
+      "_key": "k7u",
       "style": "normal",
       "children": [
         {
@@ -719,7 +719,7 @@
     },
     {
       "_type": "block",
-      "_key": "k9w",
+      "_key": "k7v",
       "style": "normal",
       "children": [
         {
@@ -732,7 +732,7 @@
     },
     {
       "_type": "block",
-      "_key": "k9x",
+      "_key": "k7w",
       "style": "normal",
       "children": [
         {
@@ -745,7 +745,7 @@
     },
     {
       "_type": "block",
-      "_key": "k9y",
+      "_key": "k7x",
       "style": "h2",
       "children": [
         {
@@ -758,7 +758,7 @@
     },
     {
       "_type": "block",
-      "_key": "k9z",
+      "_key": "k7y",
       "style": "normal",
       "children": [
         {
@@ -771,7 +771,7 @@
     },
     {
       "_type": "block",
-      "_key": "ka0",
+      "_key": "k7z",
       "style": "normal",
       "children": [
         {
@@ -791,7 +791,7 @@
     },
     {
       "_type": "block",
-      "_key": "ka1",
+      "_key": "k80",
       "style": "normal",
       "children": [
         {
@@ -811,7 +811,7 @@
     },
     {
       "_type": "block",
-      "_key": "ka2",
+      "_key": "k81",
       "style": "normal",
       "children": [
         {
@@ -831,7 +831,7 @@
     },
     {
       "_type": "block",
-      "_key": "ka3",
+      "_key": "k82",
       "style": "normal",
       "children": [
         {
@@ -851,7 +851,7 @@
     },
     {
       "_type": "block",
-      "_key": "ka4",
+      "_key": "k83",
       "style": "normal",
       "children": [
         {
@@ -871,7 +871,7 @@
     },
     {
       "_type": "block",
-      "_key": "ka5",
+      "_key": "k84",
       "style": "normal",
       "children": [
         {
@@ -884,7 +884,7 @@
     },
     {
       "_type": "block",
-      "_key": "ka6",
+      "_key": "k85",
       "style": "h2",
       "children": [
         {
@@ -897,7 +897,7 @@
     },
     {
       "_type": "block",
-      "_key": "ka7",
+      "_key": "k86",
       "style": "normal",
       "children": [
         {
@@ -910,7 +910,7 @@
     },
     {
       "_type": "block",
-      "_key": "ka8",
+      "_key": "k87",
       "style": "normal",
       "children": [
         {
@@ -923,7 +923,7 @@
     },
     {
       "_type": "block",
-      "_key": "ka9",
+      "_key": "k88",
       "style": "normal",
       "children": [
         {
@@ -936,7 +936,7 @@
     },
     {
       "_type": "block",
-      "_key": "kaa",
+      "_key": "k89",
       "style": "normal",
       "children": [
         {
@@ -949,7 +949,7 @@
     },
     {
       "_type": "block",
-      "_key": "kab",
+      "_key": "k8a",
       "style": "h2",
       "children": [
         {
@@ -962,7 +962,7 @@
     },
     {
       "_type": "block",
-      "_key": "kac",
+      "_key": "k8b",
       "style": "normal",
       "children": [
         {
@@ -982,7 +982,7 @@
     },
     {
       "_type": "block",
-      "_key": "kad",
+      "_key": "k8c",
       "style": "normal",
       "children": [
         {
@@ -1002,7 +1002,7 @@
     },
     {
       "_type": "block",
-      "_key": "kae",
+      "_key": "k8d",
       "style": "normal",
       "children": [
         {
@@ -1022,7 +1022,7 @@
     },
     {
       "_type": "block",
-      "_key": "kaf",
+      "_key": "k8e",
       "style": "normal",
       "children": [
         {
@@ -1042,7 +1042,7 @@
     },
     {
       "_type": "block",
-      "_key": "kag",
+      "_key": "k8f",
       "style": "normal",
       "children": [
         {
@@ -1062,7 +1062,7 @@
     },
     {
       "_type": "block",
-      "_key": "kah",
+      "_key": "k8g",
       "style": "normal",
       "children": [
         {
@@ -1082,7 +1082,7 @@
     },
     {
       "_type": "block",
-      "_key": "kai",
+      "_key": "k8h",
       "style": "h2",
       "children": [
         {
@@ -1095,7 +1095,7 @@
     },
     {
       "_type": "block",
-      "_key": "kaj",
+      "_key": "k8i",
       "style": "normal",
       "children": [
         {
@@ -1108,7 +1108,7 @@
     },
     {
       "_type": "block",
-      "_key": "kak",
+      "_key": "k8j",
       "style": "normal",
       "children": [
         {
@@ -1121,14 +1121,14 @@
     },
     {
       "_type": "block",
-      "_key": "kan",
+      "_key": "k8m",
       "style": "normal",
       "children": [
         {
           "_type": "span",
           "text": "Get a free quote",
           "marks": [
-            "kal"
+            "k8k"
           ]
         },
         {
@@ -1140,7 +1140,7 @@
           "_type": "span",
           "text": "instant estimate",
           "marks": [
-            "kam"
+            "k8l"
           ]
         },
         {
@@ -1152,12 +1152,12 @@
       "markDefs": [
         {
           "_type": "link",
-          "_key": "kal",
+          "_key": "k8k",
           "href": "/contact"
         },
         {
           "_type": "link",
-          "_key": "kam",
+          "_key": "k8l",
           "href": "/estimate"
         }
       ]

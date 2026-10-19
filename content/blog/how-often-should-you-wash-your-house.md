@@ -1,7 +1,7 @@
 ---
-title: How Often Should You Wash Your House in Boise?
+title: How Often Should You Wash Your House?
 slug: how-often-should-you-wash-your-house
-description: Once a year suits most Treasure Valley homes, but your lot decides more than the calendar does. How to read your own property, and what waiting too long actually costs.
+description: Once a year suits most homes, but your lot decides more than the calendar does. How to read your own property, and what waiting too long actually costs.
 date: 2026-08-18
 category: Maintenance
 cover: /images/blog/house-wash-frequency.png
@@ -11,6 +11,18 @@ cover_alt: Monarch Pro Wash house washing cover illustration
 The short answer is once a year for most Treasure Valley homes, in spring.
 
 The useful answer is that your lot matters far more than the calendar. Two identical houses three streets apart can need genuinely different schedules, and the difference is almost always about shade, water and what is upwind.
+
+## Why the answer is different here than elsewhere
+
+Most house-washing advice comes out of wetter, milder places, and it does not transfer well to the high desert.
+
+In a humid climate the driver is biological: things grow on the house, more or less continuously, and the schedule is set by how fast they grow. Here the dominant input for most of the year is mineral and particulate. High-desert dust, hard water from irrigation, and a long dry season with strong UV.
+
+That changes two things. It means a lot of Treasure Valley homes genuinely need washing less often than a national rule of thumb suggests. And it means that when organic growth does appear, it is concentrated in very specific places rather than spread over the whole building: the north elevation, the shaded side, anywhere under a mature tree, and anywhere near water.
+
+Boise has plenty of all four. The old canopy over the North End and Hyde Park, the humidity along the Boise River and the Greenbelt through Harris Ranch and Barber Valley, and the shaded older streets of Nampa and Caldwell all behave more like a wet climate than the open subdivisions a few miles away.
+
+That is why the honest answer to how often is: look at your own north wall.
 
 ## What actually accumulates on a house here
 

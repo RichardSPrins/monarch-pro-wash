@@ -3,7 +3,7 @@
   "title": "Should You Seal Your Concrete Driveway in Idaho?",
   "description": "Freeze and thaw is the thing that destroys concrete here, and sealing is the main defence. When it is worth doing, when it is too late, and what the process actually involves.",
   "date": "2026-09-08",
-  "category": "How-To",
+  "topic": "How-To",
   "author": "Richard Prins",
   "cover": "/images/blog/concrete-sealing.png",
   "cover_alt": "Monarch Pro Wash concrete sealing cover illustration",
@@ -13,7 +13,7 @@
   "body": [
     {
       "_type": "block",
-      "_key": "kcw",
+      "_key": "kb1",
       "style": "normal",
       "children": [
         {
@@ -26,7 +26,7 @@
     },
     {
       "_type": "block",
-      "_key": "kcx",
+      "_key": "kb2",
       "style": "normal",
       "children": [
         {
@@ -39,7 +39,7 @@
     },
     {
       "_type": "block",
-      "_key": "kcy",
+      "_key": "kb3",
       "style": "h2",
       "children": [
         {
@@ -52,7 +52,7 @@
     },
     {
       "_type": "block",
-      "_key": "kcz",
+      "_key": "kb4",
       "style": "normal",
       "children": [
         {
@@ -65,7 +65,7 @@
     },
     {
       "_type": "block",
-      "_key": "kd0",
+      "_key": "kb5",
       "style": "normal",
       "children": [
         {
@@ -78,7 +78,7 @@
     },
     {
       "_type": "block",
-      "_key": "kd1",
+      "_key": "kb6",
       "style": "h2",
       "children": [
         {
@@ -91,7 +91,7 @@
     },
     {
       "_type": "block",
-      "_key": "kd2",
+      "_key": "kb7",
       "style": "normal",
       "children": [
         {
@@ -104,7 +104,7 @@
     },
     {
       "_type": "block",
-      "_key": "kd3",
+      "_key": "kb8",
       "style": "normal",
       "children": [
         {
@@ -117,7 +117,7 @@
     },
     {
       "_type": "block",
-      "_key": "kd4",
+      "_key": "kb9",
       "style": "normal",
       "children": [
         {
@@ -130,7 +130,7 @@
     },
     {
       "_type": "block",
-      "_key": "kd5",
+      "_key": "kba",
       "style": "h2",
       "children": [
         {
@@ -143,7 +143,7 @@
     },
     {
       "_type": "block",
-      "_key": "kd6",
+      "_key": "kbb",
       "style": "normal",
       "children": [
         {
@@ -163,7 +163,7 @@
     },
     {
       "_type": "block",
-      "_key": "kd7",
+      "_key": "kbc",
       "style": "normal",
       "children": [
         {
@@ -183,7 +183,7 @@
     },
     {
       "_type": "block",
-      "_key": "kd8",
+      "_key": "kbd",
       "style": "normal",
       "children": [
         {
@@ -203,7 +203,7 @@
     },
     {
       "_type": "block",
-      "_key": "kd9",
+      "_key": "kbe",
       "style": "normal",
       "children": [
         {
@@ -223,7 +223,7 @@
     },
     {
       "_type": "block",
-      "_key": "kda",
+      "_key": "kbf",
       "style": "normal",
       "children": [
         {
@@ -243,7 +243,7 @@
     },
     {
       "_type": "block",
-      "_key": "kdb",
+      "_key": "kbg",
       "style": "h2",
       "children": [
         {
@@ -256,7 +256,7 @@
     },
     {
       "_type": "block",
-      "_key": "kdc",
+      "_key": "kbh",
       "style": "normal",
       "children": [
         {
@@ -276,7 +276,7 @@
     },
     {
       "_type": "block",
-      "_key": "kdd",
+      "_key": "kbi",
       "style": "normal",
       "children": [
         {
@@ -296,7 +296,7 @@
     },
     {
       "_type": "block",
-      "_key": "kde",
+      "_key": "kbj",
       "style": "normal",
       "children": [
         {
@@ -316,7 +316,7 @@
     },
     {
       "_type": "block",
-      "_key": "kdf",
+      "_key": "kbk",
       "style": "normal",
       "children": [
         {
@@ -336,7 +336,7 @@
     },
     {
       "_type": "block",
-      "_key": "kdg",
+      "_key": "kbl",
       "style": "h2",
       "children": [
         {
@@ -349,7 +349,7 @@
     },
     {
       "_type": "block",
-      "_key": "kdh",
+      "_key": "kbm",
       "style": "normal",
       "children": [
         {
@@ -362,7 +362,7 @@
     },
     {
       "_type": "block",
-      "_key": "kdi",
+      "_key": "kbn",
       "style": "normal",
       "children": [
         {
@@ -382,7 +382,7 @@
     },
     {
       "_type": "block",
-      "_key": "kdj",
+      "_key": "kbo",
       "style": "normal",
       "children": [
         {
@@ -402,7 +402,7 @@
     },
     {
       "_type": "block",
-      "_key": "kdk",
+      "_key": "kbp",
       "style": "normal",
       "children": [
         {
@@ -415,7 +415,7 @@
     },
     {
       "_type": "block",
-      "_key": "kdl",
+      "_key": "kbq",
       "style": "h2",
       "children": [
         {
@@ -428,7 +428,7 @@
     },
     {
       "_type": "block",
-      "_key": "kdm",
+      "_key": "kbr",
       "style": "normal",
       "children": [
         {
@@ -448,7 +448,7 @@
     },
     {
       "_type": "block",
-      "_key": "kdn",
+      "_key": "kbs",
       "style": "normal",
       "children": [
         {
@@ -468,7 +468,7 @@
     },
     {
       "_type": "block",
-      "_key": "kdo",
+      "_key": "kbt",
       "style": "normal",
       "children": [
         {
@@ -488,7 +488,7 @@
     },
     {
       "_type": "block",
-      "_key": "kdp",
+      "_key": "kbu",
       "style": "normal",
       "children": [
         {
@@ -508,7 +508,7 @@
     },
     {
       "_type": "block",
-      "_key": "kdq",
+      "_key": "kbv",
       "style": "normal",
       "children": [
         {
@@ -528,7 +528,7 @@
     },
     {
       "_type": "block",
-      "_key": "kdr",
+      "_key": "kbw",
       "style": "normal",
       "children": [
         {
@@ -541,7 +541,7 @@
     },
     {
       "_type": "block",
-      "_key": "kds",
+      "_key": "kbx",
       "style": "h2",
       "children": [
         {
@@ -554,7 +554,7 @@
     },
     {
       "_type": "block",
-      "_key": "kdt",
+      "_key": "kby",
       "style": "normal",
       "children": [
         {
@@ -567,7 +567,7 @@
     },
     {
       "_type": "block",
-      "_key": "kdu",
+      "_key": "kbz",
       "style": "normal",
       "children": [
         {
@@ -580,7 +580,7 @@
     },
     {
       "_type": "block",
-      "_key": "kdv",
+      "_key": "kc0",
       "style": "normal",
       "children": [
         {
@@ -593,7 +593,7 @@
     },
     {
       "_type": "block",
-      "_key": "kdw",
+      "_key": "kc1",
       "style": "h2",
       "children": [
         {
@@ -606,7 +606,7 @@
     },
     {
       "_type": "block",
-      "_key": "kdx",
+      "_key": "kc2",
       "style": "normal",
       "children": [
         {
@@ -619,7 +619,7 @@
     },
     {
       "_type": "block",
-      "_key": "kdy",
+      "_key": "kc3",
       "style": "normal",
       "children": [
         {
@@ -632,7 +632,7 @@
     },
     {
       "_type": "block",
-      "_key": "kdz",
+      "_key": "kc4",
       "style": "normal",
       "children": [
         {
@@ -645,7 +645,7 @@
     },
     {
       "_type": "block",
-      "_key": "ke0",
+      "_key": "kc5",
       "style": "h2",
       "children": [
         {
@@ -658,7 +658,7 @@
     },
     {
       "_type": "block",
-      "_key": "ke1",
+      "_key": "kc6",
       "style": "normal",
       "children": [
         {
@@ -671,7 +671,7 @@
     },
     {
       "_type": "block",
-      "_key": "ke2",
+      "_key": "kc7",
       "style": "normal",
       "children": [
         {
@@ -684,7 +684,7 @@
     },
     {
       "_type": "block",
-      "_key": "ke3",
+      "_key": "kc8",
       "style": "normal",
       "children": [
         {
@@ -697,7 +697,7 @@
     },
     {
       "_type": "block",
-      "_key": "ke4",
+      "_key": "kc9",
       "style": "normal",
       "children": [
         {
@@ -710,7 +710,7 @@
     },
     {
       "_type": "block",
-      "_key": "ke5",
+      "_key": "kca",
       "style": "h2",
       "children": [
         {
@@ -723,7 +723,7 @@
     },
     {
       "_type": "block",
-      "_key": "ke6",
+      "_key": "kcb",
       "style": "normal",
       "children": [
         {
@@ -738,7 +738,7 @@
     },
     {
       "_type": "block",
-      "_key": "ke7",
+      "_key": "kcc",
       "style": "normal",
       "children": [
         {
@@ -753,7 +753,7 @@
     },
     {
       "_type": "block",
-      "_key": "ke8",
+      "_key": "kcd",
       "style": "normal",
       "children": [
         {
@@ -768,7 +768,7 @@
     },
     {
       "_type": "block",
-      "_key": "ke9",
+      "_key": "kce",
       "style": "normal",
       "children": [
         {
@@ -783,7 +783,7 @@
     },
     {
       "_type": "block",
-      "_key": "kea",
+      "_key": "kcf",
       "style": "normal",
       "children": [
         {
@@ -798,7 +798,7 @@
     },
     {
       "_type": "block",
-      "_key": "keb",
+      "_key": "kcg",
       "style": "normal",
       "children": [
         {
@@ -813,7 +813,7 @@
     },
     {
       "_type": "block",
-      "_key": "kec",
+      "_key": "kch",
       "style": "normal",
       "children": [
         {
@@ -826,7 +826,7 @@
     },
     {
       "_type": "block",
-      "_key": "ked",
+      "_key": "kci",
       "style": "h2",
       "children": [
         {
@@ -839,7 +839,7 @@
     },
     {
       "_type": "block",
-      "_key": "kee",
+      "_key": "kcj",
       "style": "normal",
       "children": [
         {
@@ -852,7 +852,7 @@
     },
     {
       "_type": "block",
-      "_key": "kef",
+      "_key": "kck",
       "style": "normal",
       "children": [
         {
@@ -865,7 +865,7 @@
     },
     {
       "_type": "block",
-      "_key": "keg",
+      "_key": "kcl",
       "style": "normal",
       "children": [
         {
@@ -878,7 +878,7 @@
     },
     {
       "_type": "block",
-      "_key": "keh",
+      "_key": "kcm",
       "style": "normal",
       "children": [
         {
@@ -891,7 +891,7 @@
     },
     {
       "_type": "block",
-      "_key": "kei",
+      "_key": "kcn",
       "style": "h2",
       "children": [
         {
@@ -904,7 +904,7 @@
     },
     {
       "_type": "block",
-      "_key": "kej",
+      "_key": "kco",
       "style": "normal",
       "children": [
         {
@@ -924,7 +924,7 @@
     },
     {
       "_type": "block",
-      "_key": "kek",
+      "_key": "kcp",
       "style": "normal",
       "children": [
         {
@@ -944,7 +944,7 @@
     },
     {
       "_type": "block",
-      "_key": "kel",
+      "_key": "kcq",
       "style": "normal",
       "children": [
         {
@@ -964,7 +964,7 @@
     },
     {
       "_type": "block",
-      "_key": "kem",
+      "_key": "kcr",
       "style": "normal",
       "children": [
         {
@@ -984,7 +984,7 @@
     },
     {
       "_type": "block",
-      "_key": "ken",
+      "_key": "kcs",
       "style": "normal",
       "children": [
         {
@@ -1004,7 +1004,7 @@
     },
     {
       "_type": "block",
-      "_key": "keo",
+      "_key": "kct",
       "style": "h2",
       "children": [
         {
@@ -1017,7 +1017,7 @@
     },
     {
       "_type": "block",
-      "_key": "kep",
+      "_key": "kcu",
       "style": "normal",
       "children": [
         {
@@ -1030,7 +1030,7 @@
     },
     {
       "_type": "block",
-      "_key": "keq",
+      "_key": "kcv",
       "style": "normal",
       "children": [
         {
@@ -1043,7 +1043,7 @@
     },
     {
       "_type": "block",
-      "_key": "ker",
+      "_key": "kcw",
       "style": "normal",
       "children": [
         {
@@ -1056,14 +1056,14 @@
     },
     {
       "_type": "block",
-      "_key": "keu",
+      "_key": "kcz",
       "style": "normal",
       "children": [
         {
           "_type": "span",
           "text": "Get a free quote",
           "marks": [
-            "kes"
+            "kcx"
           ]
         },
         {
@@ -1075,7 +1075,7 @@
           "_type": "span",
           "text": "instant estimate",
           "marks": [
-            "ket"
+            "kcy"
           ]
         },
         {
@@ -1087,12 +1087,12 @@
       "markDefs": [
         {
           "_type": "link",
-          "_key": "kes",
+          "_key": "kcx",
           "href": "/contact"
         },
         {
           "_type": "link",
-          "_key": "ket",
+          "_key": "kcy",
           "href": "/estimate"
         }
       ]

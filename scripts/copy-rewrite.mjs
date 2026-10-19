@@ -205,6 +205,23 @@ const GLOBAL_REPLACEMENTS = [
   [/\bOne local, insured team\b/gi, "One insured, owner-run operation"],
   [/\blocal, insured team\b/gi, "insured, owner-run operation"],
   [/\blicensed and insured\b/gi, "insured"],
+  // ---- LICENSED --------------------------------------------------------
+  // Richard confirmed on 2026-10-18 to state licensed as well as insured.
+  // Earlier passes in this pipeline deliberately stripped "licensed" because
+  // the licence had not been issued; these rules put it back. If the status
+  // ever changes, this block is the single place to reverse it.
+  [/\bFully Insured\b/g, "Licensed & Insured"],
+  [/\bfully insured\b/g, "licensed and insured"],
+  [/\bInsured & Owner-Operated\b/g, "Licensed, Insured & Owner-Operated"],
+  [/\bowner-run and insured\b/gi, "licensed, insured and owner-run"],
+  [/\bowner-run, insured\b/gi, "licensed, insured and owner-run"],
+  [/\binsured, owner-run\b/gi, "licensed, insured and owner-run"],
+  [/\bInsured, and the owner does the work\b/g, "Licensed, insured, and the owner does the work"],
+  [/\bOwner-run and insured\./g, "Licensed, insured and owner-run."],
+  [/\bis insured and owner-operated\b/gi, "is licensed, insured and owner-operated"],
+  [/\bis insured\b/g, "is licensed and insured"],
+  [/\bare insured\b/g, "are licensed and insured"],
+
   // ---- FALSE EXPERIENCE CLAIMS -------------------------------------------
   // The 15 years are the OWNER'S pre-Monarch background: commercial trades plus
   // residential carpet cleaning, pressure washing and surface care, done across

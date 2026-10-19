@@ -171,7 +171,7 @@
         "heading": "Credentials You Can Count On",
         "items": [
           {
-            "label": "Fully Insured in Idaho"
+            "label": "Licensed & Insured in Idaho"
           }
         ]
       }
@@ -212,6 +212,19 @@
         "subheading": "Sample reviews, shown while we collect feedback from our first customers. These are examples, not real customer reviews.",
         "filter": "featured",
         "limit": 1
+      }
+    },
+    {
+      "type": "blog:recent-posts",
+      "theme": "alt",
+      "data": {
+        "eyebrow": {
+          "text": "From the Blog",
+          "variant": "text"
+        },
+        "heading": "Recent Articles",
+        "subheading": "Straight answers on what things cost, when to do them, and what to watch out for.",
+        "limit": 3
       }
     },
     {

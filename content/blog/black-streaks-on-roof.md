@@ -161,4 +161,4 @@ Black roof streaks are algae feeding on the limestone in your shingles. They fav
 
 Soft washing removes them properly. Pressure washing removes them visibly and takes years off the roof doing it.
 
-[Get a free quote](/contact) for soft-wash roof cleaning, or read more about [what roof cleaning costs](/blog/how-much-does-roof-cleaning-cost). New customers get 10% off their first service.
+[Get a free quote](/contact) for soft-wash roof cleaning, or read more about [what roof cleaning costs](/blog/how-much-does-roof-cleaning-cost-in-boise). New customers get 10% off their first service.

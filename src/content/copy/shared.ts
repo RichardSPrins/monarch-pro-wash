@@ -17,7 +17,9 @@
  * Specifics read as real, adjectives read as marketing.
  *
  * TRUE CLAIMS (binding — see docs and the vault foundation doc)
- * - INSURED, not licensed. There is no Idaho contractor licence yet.
+ * - Licensed and insured. Confirmed by Richard on 2026-10-18; the earlier
+ *   insured-only wording is gone. If that status changes, this file and
+ *   TrustBarBadges are the two places to change it back.
  * - Founded 2026. No operating history, no "serving since", no years-in-business.
  * - "Fifteen years" is the OWNER'S trades background BEFORE Monarch existed.
  *   Never "fifteen years cleaning Boise exteriors".
@@ -139,8 +141,8 @@ export const WHY_HEADINGS = [
  */
 export const WHY_ITEMS = [
   {
-    title: "Insured, and the owner does the work",
-    body: "The person who quotes your job is the person who shows up to do it. Fully insured, with proof any time you want to see it. No subcontractors and no call center.",
+    title: "Licensed, insured, and the owner does the work",
+    body: "The person who quotes your job is the person who shows up to do it. Licensed and insured, with proof any time you want to see it. No subcontractors and no call center.",
   },
   {
     title: "Your property looks cared for again",

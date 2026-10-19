@@ -105,7 +105,7 @@ for (const f of files) {
     title: fm.title,
     description: fm.description,
     date: fm.date,
-    category: fm.category,
+    topic: fm.category,
     author: fm.author ?? "Richard Prins",
     cover: fm.cover,
     cover_alt: fm.cover_alt,

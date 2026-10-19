@@ -3,7 +3,7 @@
   "title": "Do I Need Soft Washing or Pressure Washing?",
   "description": "The difference matters more than most people realise, and picking wrong is how roofs lose granules and siding gets gouged. A plain guide to which method belongs on which surface.",
   "date": "2026-10-02",
-  "category": "How-To",
+  "topic": "How-To",
   "author": "Richard Prins",
   "cover": "/images/blog/soft-wash-vs-pressure.png",
   "cover_alt": "Monarch Pro Wash soft washing cover illustration",
@@ -13,7 +13,7 @@
   "body": [
     {
       "_type": "block",
-      "_key": "kev",
+      "_key": "kd0",
       "style": "normal",
       "children": [
         {
@@ -26,7 +26,7 @@
     },
     {
       "_type": "block",
-      "_key": "kew",
+      "_key": "kd1",
       "style": "normal",
       "children": [
         {
@@ -39,7 +39,7 @@
     },
     {
       "_type": "block",
-      "_key": "kex",
+      "_key": "kd2",
       "style": "normal",
       "children": [
         {
@@ -52,7 +52,7 @@
     },
     {
       "_type": "block",
-      "_key": "key",
+      "_key": "kd3",
       "style": "h2",
       "children": [
         {
@@ -65,7 +65,7 @@
     },
     {
       "_type": "block",
-      "_key": "kez",
+      "_key": "kd4",
       "style": "normal",
       "children": [
         {
@@ -85,7 +85,7 @@
     },
     {
       "_type": "block",
-      "_key": "kf0",
+      "_key": "kd5",
       "style": "normal",
       "children": [
         {
@@ -105,7 +105,7 @@
     },
     {
       "_type": "block",
-      "_key": "kf1",
+      "_key": "kd6",
       "style": "normal",
       "children": [
         {
@@ -118,7 +118,7 @@
     },
     {
       "_type": "block",
-      "_key": "kf2",
+      "_key": "kd7",
       "style": "h2",
       "children": [
         {
@@ -131,7 +131,7 @@
     },
     {
       "_type": "block",
-      "_key": "kf3",
+      "_key": "kd8",
       "style": "normal",
       "children": [
         {
@@ -144,7 +144,7 @@
     },
     {
       "_type": "block",
-      "_key": "kf4",
+      "_key": "kd9",
       "style": "normal",
       "children": [
         {
@@ -157,7 +157,7 @@
     },
     {
       "_type": "block",
-      "_key": "kf5",
+      "_key": "kda",
       "style": "normal",
       "children": [
         {
@@ -170,7 +170,7 @@
     },
     {
       "_type": "block",
-      "_key": "kf6",
+      "_key": "kdb",
       "style": "h2",
       "children": [
         {
@@ -183,7 +183,7 @@
     },
     {
       "_type": "block",
-      "_key": "kf7",
+      "_key": "kdc",
       "style": "h3",
       "children": [
         {
@@ -196,7 +196,7 @@
     },
     {
       "_type": "block",
-      "_key": "kf8",
+      "_key": "kdd",
       "style": "normal",
       "children": [
         {
@@ -218,7 +218,7 @@
     },
     {
       "_type": "block",
-      "_key": "kf9",
+      "_key": "kde",
       "style": "normal",
       "children": [
         {
@@ -240,7 +240,7 @@
     },
     {
       "_type": "block",
-      "_key": "kfa",
+      "_key": "kdf",
       "style": "normal",
       "children": [
         {
@@ -262,7 +262,7 @@
     },
     {
       "_type": "block",
-      "_key": "kfb",
+      "_key": "kdg",
       "style": "normal",
       "children": [
         {
@@ -284,7 +284,7 @@
     },
     {
       "_type": "block",
-      "_key": "kfc",
+      "_key": "kdh",
       "style": "normal",
       "children": [
         {
@@ -306,7 +306,7 @@
     },
     {
       "_type": "block",
-      "_key": "kfd",
+      "_key": "kdi",
       "style": "normal",
       "children": [
         {
@@ -328,7 +328,7 @@
     },
     {
       "_type": "block",
-      "_key": "kfe",
+      "_key": "kdj",
       "style": "h3",
       "children": [
         {
@@ -341,7 +341,7 @@
     },
     {
       "_type": "block",
-      "_key": "kff",
+      "_key": "kdk",
       "style": "normal",
       "children": [
         {
@@ -363,7 +363,7 @@
     },
     {
       "_type": "block",
-      "_key": "kfg",
+      "_key": "kdl",
       "style": "normal",
       "children": [
         {
@@ -380,7 +380,7 @@
     },
     {
       "_type": "block",
-      "_key": "kfh",
+      "_key": "kdm",
       "style": "normal",
       "children": [
         {
@@ -397,7 +397,7 @@
     },
     {
       "_type": "block",
-      "_key": "kfi",
+      "_key": "kdn",
       "style": "normal",
       "children": [
         {
@@ -414,7 +414,7 @@
     },
     {
       "_type": "block",
-      "_key": "kfj",
+      "_key": "kdo",
       "style": "h3",
       "children": [
         {
@@ -427,7 +427,7 @@
     },
     {
       "_type": "block",
-      "_key": "kfk",
+      "_key": "kdp",
       "style": "normal",
       "children": [
         {
@@ -449,7 +449,7 @@
     },
     {
       "_type": "block",
-      "_key": "kfl",
+      "_key": "kdq",
       "style": "normal",
       "children": [
         {
@@ -471,7 +471,7 @@
     },
     {
       "_type": "block",
-      "_key": "kfm",
+      "_key": "kdr",
       "style": "normal",
       "children": [
         {
@@ -493,7 +493,7 @@
     },
     {
       "_type": "block",
-      "_key": "kfn",
+      "_key": "kds",
       "style": "h2",
       "children": [
         {
@@ -506,7 +506,7 @@
     },
     {
       "_type": "block",
-      "_key": "kfo",
+      "_key": "kdt",
       "style": "normal",
       "children": [
         {
@@ -519,7 +519,7 @@
     },
     {
       "_type": "block",
-      "_key": "kfp",
+      "_key": "kdu",
       "style": "normal",
       "children": [
         {
@@ -539,7 +539,7 @@
     },
     {
       "_type": "block",
-      "_key": "kfq",
+      "_key": "kdv",
       "style": "normal",
       "children": [
         {
@@ -559,7 +559,7 @@
     },
     {
       "_type": "block",
-      "_key": "kfr",
+      "_key": "kdw",
       "style": "normal",
       "children": [
         {
@@ -579,7 +579,7 @@
     },
     {
       "_type": "block",
-      "_key": "kfs",
+      "_key": "kdx",
       "style": "normal",
       "children": [
         {
@@ -599,7 +599,7 @@
     },
     {
       "_type": "block",
-      "_key": "kft",
+      "_key": "kdy",
       "style": "h2",
       "children": [
         {
@@ -612,7 +612,7 @@
     },
     {
       "_type": "block",
-      "_key": "kfu",
+      "_key": "kdz",
       "style": "normal",
       "children": [
         {
@@ -625,7 +625,7 @@
     },
     {
       "_type": "block",
-      "_key": "kfv",
+      "_key": "ke0",
       "style": "normal",
       "children": [
         {
@@ -645,7 +645,7 @@
     },
     {
       "_type": "block",
-      "_key": "kfw",
+      "_key": "ke1",
       "style": "normal",
       "children": [
         {
@@ -665,7 +665,7 @@
     },
     {
       "_type": "block",
-      "_key": "kfx",
+      "_key": "ke2",
       "style": "normal",
       "children": [
         {
@@ -685,7 +685,7 @@
     },
     {
       "_type": "block",
-      "_key": "kfy",
+      "_key": "ke3",
       "style": "normal",
       "children": [
         {
@@ -705,7 +705,7 @@
     },
     {
       "_type": "block",
-      "_key": "kfz",
+      "_key": "ke4",
       "style": "h2",
       "children": [
         {
@@ -718,7 +718,7 @@
     },
     {
       "_type": "block",
-      "_key": "kg0",
+      "_key": "ke5",
       "style": "normal",
       "children": [
         {
@@ -731,7 +731,7 @@
     },
     {
       "_type": "block",
-      "_key": "kg1",
+      "_key": "ke6",
       "style": "normal",
       "children": [
         {
@@ -753,7 +753,7 @@
     },
     {
       "_type": "block",
-      "_key": "kg2",
+      "_key": "ke7",
       "style": "normal",
       "children": [
         {
@@ -775,7 +775,7 @@
     },
     {
       "_type": "block",
-      "_key": "kg3",
+      "_key": "ke8",
       "style": "normal",
       "children": [
         {
@@ -797,7 +797,7 @@
     },
     {
       "_type": "block",
-      "_key": "kg4",
+      "_key": "ke9",
       "style": "normal",
       "children": [
         {
@@ -819,7 +819,7 @@
     },
     {
       "_type": "block",
-      "_key": "kg5",
+      "_key": "kea",
       "style": "normal",
       "children": [
         {
@@ -841,7 +841,7 @@
     },
     {
       "_type": "block",
-      "_key": "kg6",
+      "_key": "keb",
       "style": "normal",
       "children": [
         {
@@ -863,7 +863,7 @@
     },
     {
       "_type": "block",
-      "_key": "kg7",
+      "_key": "kec",
       "style": "normal",
       "children": [
         {
@@ -876,7 +876,7 @@
     },
     {
       "_type": "block",
-      "_key": "kg8",
+      "_key": "ked",
       "style": "h2",
       "children": [
         {
@@ -889,7 +889,7 @@
     },
     {
       "_type": "block",
-      "_key": "kg9",
+      "_key": "kee",
       "style": "normal",
       "children": [
         {
@@ -902,7 +902,7 @@
     },
     {
       "_type": "block",
-      "_key": "kga",
+      "_key": "kef",
       "style": "normal",
       "children": [
         {
@@ -915,7 +915,7 @@
     },
     {
       "_type": "block",
-      "_key": "kgb",
+      "_key": "keg",
       "style": "normal",
       "children": [
         {
@@ -928,7 +928,7 @@
     },
     {
       "_type": "block",
-      "_key": "kgc",
+      "_key": "keh",
       "style": "h2",
       "children": [
         {
@@ -941,7 +941,7 @@
     },
     {
       "_type": "block",
-      "_key": "kgd",
+      "_key": "kei",
       "style": "normal",
       "children": [
         {
@@ -954,7 +954,7 @@
     },
     {
       "_type": "block",
-      "_key": "kge",
+      "_key": "kej",
       "style": "normal",
       "children": [
         {
@@ -967,7 +967,7 @@
     },
     {
       "_type": "block",
-      "_key": "kgf",
+      "_key": "kek",
       "style": "normal",
       "children": [
         {
@@ -980,7 +980,7 @@
     },
     {
       "_type": "block",
-      "_key": "kgg",
+      "_key": "kel",
       "style": "normal",
       "children": [
         {
@@ -993,7 +993,7 @@
     },
     {
       "_type": "block",
-      "_key": "kgh",
+      "_key": "kem",
       "style": "h2",
       "children": [
         {
@@ -1006,7 +1006,7 @@
     },
     {
       "_type": "block",
-      "_key": "kgi",
+      "_key": "ken",
       "style": "normal",
       "children": [
         {
@@ -1019,7 +1019,7 @@
     },
     {
       "_type": "block",
-      "_key": "kgj",
+      "_key": "keo",
       "style": "normal",
       "children": [
         {
@@ -1032,7 +1032,7 @@
     },
     {
       "_type": "block",
-      "_key": "kgk",
+      "_key": "kep",
       "style": "normal",
       "children": [
         {
@@ -1045,7 +1045,7 @@
     },
     {
       "_type": "block",
-      "_key": "kgl",
+      "_key": "keq",
       "style": "normal",
       "children": [
         {
@@ -1058,7 +1058,7 @@
     },
     {
       "_type": "block",
-      "_key": "kgm",
+      "_key": "ker",
       "style": "h2",
       "children": [
         {
@@ -1071,7 +1071,7 @@
     },
     {
       "_type": "block",
-      "_key": "kgn",
+      "_key": "kes",
       "style": "normal",
       "children": [
         {
@@ -1091,7 +1091,7 @@
     },
     {
       "_type": "block",
-      "_key": "kgo",
+      "_key": "ket",
       "style": "normal",
       "children": [
         {
@@ -1111,7 +1111,7 @@
     },
     {
       "_type": "block",
-      "_key": "kgp",
+      "_key": "keu",
       "style": "normal",
       "children": [
         {
@@ -1131,7 +1131,7 @@
     },
     {
       "_type": "block",
-      "_key": "kgq",
+      "_key": "kev",
       "style": "normal",
       "children": [
         {
@@ -1151,7 +1151,7 @@
     },
     {
       "_type": "block",
-      "_key": "kgr",
+      "_key": "kew",
       "style": "normal",
       "children": [
         {
@@ -1171,7 +1171,7 @@
     },
     {
       "_type": "block",
-      "_key": "kgs",
+      "_key": "kex",
       "style": "h2",
       "children": [
         {
@@ -1184,7 +1184,7 @@
     },
     {
       "_type": "block",
-      "_key": "kgt",
+      "_key": "key",
       "style": "normal",
       "children": [
         {
@@ -1197,7 +1197,7 @@
     },
     {
       "_type": "block",
-      "_key": "kgu",
+      "_key": "kez",
       "style": "normal",
       "children": [
         {
@@ -1210,7 +1210,7 @@
     },
     {
       "_type": "block",
-      "_key": "kgv",
+      "_key": "kf0",
       "style": "normal",
       "children": [
         {
@@ -1223,14 +1223,14 @@
     },
     {
       "_type": "block",
-      "_key": "kgx",
+      "_key": "kf2",
       "style": "normal",
       "children": [
         {
           "_type": "span",
           "text": "Get a free quote",
           "marks": [
-            "kgw"
+            "kf1"
           ]
         },
         {
@@ -1242,7 +1242,7 @@
       "markDefs": [
         {
           "_type": "link",
-          "_key": "kgw",
+          "_key": "kf1",
           "href": "/contact"
         }
       ]

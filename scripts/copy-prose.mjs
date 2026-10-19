@@ -336,6 +336,50 @@ function flipCompanyOpening(sections, lines) {
 }
 
 /**
+ * Insert a "Recent Articles" strip on the marketing pages.
+ *
+ * Requested for the home page, About, the Services hub and the service detail
+ * pages. It goes immediately before the closing CTA band, so the page still
+ * ends on the call to action rather than on a list of links.
+ *
+ * This is the one deliberate structural change in the whole copy pass. The
+ * section self-hides when there are no published posts, so adding it before the
+ * articles go live is safe.
+ */
+const RECENT_POSTS_PAGES = new Set([
+  "index", "about", "services",
+  "svc-pressure-washing", "svc-soft-washing", "svc-roof-cleaning", "svc-gutter-cleaning",
+  "svc-window-cleaning", "svc-concrete-sealing-staining", "svc-post-construction-cleanup",
+  "svc-graffiti-removal",
+]);
+
+function insertRecentPosts(sections, slug, lines) {
+  if (!RECENT_POSTS_PAGES.has(slug)) return;
+  if (sections.some((s) => s.type === "blog:recent-posts")) return; // idempotent
+
+  const section = {
+    type: "blog:recent-posts",
+    theme: "alt",
+    data: {
+      eyebrow: { text: "From the Blog", variant: "text" },
+      heading: "Recent Articles",
+      subheading:
+        "Straight answers on what things cost, when to do them, and what to watch out for.",
+      limit: 3,
+    },
+  };
+
+  // Before the trailing CTA band if there is one, otherwise at the end.
+  let at = sections.length;
+  for (let i = sections.length - 1; i >= 0; i--) {
+    if (sections[i].type?.startsWith("cta:")) at = i;
+    else break;
+  }
+  sections.splice(at, 0, section);
+  lines.push(`  [${at}] + blog:recent-posts inserted`);
+}
+
+/**
  * Bold the lead-ins the copy already has.
  *
  * Several towns' "conditions" paragraphs already open with a short labelling
@@ -422,14 +466,15 @@ if (process.argv[1] && process.argv[1].endsWith("copy-prose.mjs")) {
   const strip = (v) => String(v).replace(/<\/p>/g, "\n").replace(/<[^>]+>/g, "").replace(/[ \t]+/g, " ").trim();
   let n = 0;
 
-  // structural passes across every service-in-area draft
-  const siaSlugs = fs.readdirSync(DIR).filter((f) => f.startsWith("sia-")).map((f) => f.replace(".json", ""));
-  for (const slug of new Set([...siaSlugs, ...Object.keys(LEAD_INS)])) {
+  // structural passes across every draft
+  const allSlugs = fs.readdirSync(DIR).filter((f) => f.endsWith(".json")).map((f) => f.replace(".json", ""));
+  for (const slug of new Set([...allSlugs, ...Object.keys(LEAD_INS)])) {
     const f = `${DIR}/${slug}.json`;
     if (!fs.existsSync(f)) { console.log("MISSING", slug); continue; }
     const j = JSON.parse(fs.readFileSync(f, "utf8"));
     const lines = [];
     flipCompanyOpening(j.sections, lines);
+    insertRecentPosts(j.sections, slug, lines);
     boldExistingLeadIns(j.sections, lines);
     applyLeadIns(j.sections, slug, lines);
     if (lines.length) { n++; console.log(`${slug}\n${lines.join("\n")}`); }

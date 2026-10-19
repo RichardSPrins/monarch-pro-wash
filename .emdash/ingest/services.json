@@ -7,7 +7,7 @@
       "theme": "inverse",
       "data": {
         "heading": "Exterior Cleaning Services for Every Part of Your Property",
-        "subheading": "Pressure washing, soft washing, roof and gutter cleaning, windows, concrete sealing and more. One insured, owner-run operation for the whole property, with the price up front.",
+        "subheading": "Pressure washing, soft washing, roof and gutter cleaning, windows, concrete sealing and more. One licensed, insured and owner-run operation for the whole property, with the price up front.",
         "showPhone": false,
         "ctas": [
           {
@@ -102,6 +102,19 @@
         "heading": "Questions About Our Services",
         "subheading": "The common ones. Do not see yours? Reach out and we will answer it fast.",
         "limit": 6
+      }
+    },
+    {
+      "type": "blog:recent-posts",
+      "theme": "alt",
+      "data": {
+        "eyebrow": {
+          "text": "From the Blog",
+          "variant": "text"
+        },
+        "heading": "Recent Articles",
+        "subheading": "Straight answers on what things cost, when to do them, and what to watch out for.",
+        "limit": 3
       }
     },
     {

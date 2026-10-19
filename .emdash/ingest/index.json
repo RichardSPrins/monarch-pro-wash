@@ -7,11 +7,11 @@
       "theme": "default",
       "data": {
         "eyebrow": {
-          "text": "Boise & the Treasure Valley · Insured & Owner-Operated",
+          "text": "Boise & the Treasure Valley · Licensed, Insured & Owner-Operated",
           "variant": "primary"
         },
         "heading": "Pressure Washing & Exterior Cleaning in Boise, ==Done Right the First Time==",
-        "subheading": "Driveways, roofs, siding and windows cleaned with the right method for every surface, so nothing gets damaged. Insured, owner-run, and always a free quote with the price up front. Serving Boise, Meridian, Nampa, Eagle and the whole Treasure Valley.",
+        "subheading": "Driveways, roofs, siding and windows cleaned with the right method for every surface, so nothing gets damaged. licensed, insured and owner-run, and always a free quote with the price up front. Serving Boise, Meridian, Nampa, Eagle and the whole Treasure Valley.",
         "ctas": [
           {
             "label": "Get My Free Quote",
@@ -25,7 +25,7 @@
             "text": "Same Day Estimates"
           },
           {
-            "text": "Fully Insured"
+            "text": "Licensed & Insured"
           },
           {
             "text": "Commercial & Residential"
@@ -214,6 +214,19 @@
         },
         "heading": "Frequently Asked Questions",
         "subheading": "The questions we get asked most, answered plainly."
+      }
+    },
+    {
+      "type": "blog:recent-posts",
+      "theme": "alt",
+      "data": {
+        "eyebrow": {
+          "text": "From the Blog",
+          "variant": "text"
+        },
+        "heading": "Recent Articles",
+        "subheading": "Straight answers on what things cost, when to do them, and what to watch out for.",
+        "limit": 3
       }
     },
     {

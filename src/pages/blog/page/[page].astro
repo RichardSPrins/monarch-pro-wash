@@ -1,0 +1,22 @@
+---
+import BlogLayout from "@/layouts/BlogLayout.astro";
+import BlogListing from "@/components/blog/BlogListing.astro";
+import { getPage, getCategories } from "@/lib/blog";
+
+const n = Number(Astro.params.page);
+if (!Number.isInteger(n) || n < 1) return Astro.rewrite("/404");
+if (n === 1) return Astro.redirect("/blog", 301);
+
+const { posts, hasMore, isEmpty } = await getPage({ page: n });
+// Past the end of the archive there is nothing to show, so 404 rather than
+// serve an empty page a crawler would index.
+if (isEmpty) return Astro.rewrite("/404");
+const categories = await getCategories();
+
+const title = "Exterior Cleaning Advice for Boise and the Treasure Valley";
+---
+<BlogLayout page={{ id: `blog-${n}`, data: { title } }} title={`${title}, page ${n}`}
+  description="Straight answers on pressure washing, soft washing, roofs, gutters, windows and concrete."
+  includeLocalBusinessSchema={false}>
+  <BlogListing title={title} posts={posts} page={n} hasMore={hasMore} categories={categories} />
+</BlogLayout>

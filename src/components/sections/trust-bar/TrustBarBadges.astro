@@ -3,7 +3,8 @@
  * trust-bar:badges — the thin proof strip under the hero.
  *
  * Every badge here must be TRUE. The bar deliberately has no slot for awards or
- * certifications, because none have been earned yet.
+ * certifications, because none have been earned yet. The licence claim was
+ * confirmed by Richard on 2026-10-18.
  *
  * Two notes on the data:
  *
@@ -56,7 +57,7 @@ type Badge = { id: string; label: string; sublabel?: string; icon?: string };
 // Order is deliberate: insurance is the most-named trust gate in the customer
 // research, and owner accountability is the positioning wedge, so they lead.
 const badges = [
-  showInsured && { id: 'insured', label: 'Fully Insured', icon: ICONS.shield },
+  showInsured && { id: 'insured', label: 'Licensed & Insured', icon: ICONS.shield },
   showOwnerOperated && { id: 'owner', label: 'Owner-Operated', icon: ICONS.user },
   tradeYears && { id: 'trades', label: `${tradeYears}+ Years in the Trades`, icon: ICONS.wrench },
   showFreeQuotes && { id: 'quotes', label: 'Free Quotes', icon: ICONS.doc },

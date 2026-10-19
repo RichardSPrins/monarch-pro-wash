@@ -14,7 +14,8 @@ import { PortableText, WidgetArea } from "emdash/ui";
 import Prose from "@/components/starwind/prose/Prose.astro";
 import { Button } from "@/components/elements/button";
 import { getSeoMeta } from "emdash/seo";
-import { getPost, getPosts } from "@/lib/content";
+import { getPost } from "@/lib/content";
+import { relatedPosts } from "@/lib/blog";
 import { getBusinessData } from "@/lib/utils";
 import siteConfig from "@/config/site.config";
 
@@ -44,12 +45,9 @@ const wordsIn = (blocks: any[]): number =>
   );
 const readMinutes = d.readMinutes ?? Math.max(1, Math.round(wordsIn(d.body) / 225));
 
-// Related: same category first, then most recent, never this post.
-const all = (await getPosts())
-  .filter((p) => p.data.slug !== d.slug)
-  .sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
-const sameCat = all.filter((p) => d.category && p.data.category === d.category);
-const related = [...sameCat, ...all.filter((p) => !sameCat.includes(p))].slice(0, 3);
+// Related: same category first, then recent, never this post. Two bounded
+// queries rather than pulling the whole archive and filtering in memory.
+const related = await relatedPosts(d.slug, d.category, 3);
 
 const cover = d.cover ?? null;
 const ogImage = meta.ogImage ?? (cover ? new URL(cover, Astro.site).toString() : undefined);
@@ -111,12 +109,12 @@ const ogImage = meta.ogImage ?? (cover ? new URL(cover, Astro.site).toString() :
         <ul>
           {related.map((p) => (
             <li>
-              <a href={`/blog/${p.data.slug}`}>
-                {p.data.cover && <img src={p.data.cover} alt="" width="1200" height="630" loading="lazy" decoding="async" />}
+              <a href={`/blog/${p.slug}`}>
+                {p.cover && <img src={p.cover} alt="" width="1200" height="630" loading="lazy" decoding="async" />}
                 <div class="rel-body">
-                  {p.data.category && <span class="cat sm">{p.data.category}</span>}
-                  <h3>{p.data.title}</h3>
-                  {p.data.description && <p>{p.data.description}</p>}
+                  {p.category && <span class="cat sm">{p.category}</span>}
+                  <h3>{p.title}</h3>
+                  {p.description && <p>{p.description}</p>}
                 </div>
               </a>
             </li>

@@ -1,7 +1,7 @@
 ---
-title: When Should You Clean Your Gutters in Boise?
-slug: when-to-clean-gutters-boise
-description: Timing matters more than frequency with gutters in the Treasure Valley. Here is when to book, why the autumn window is tighter than people think, and what a clog actually costs.
+title: When Should You Clean Your Gutters?
+slug: when-should-you-clean-your-gutters
+description: Timing matters more than frequency. When to book, why the autumn window is tighter than people think, and what a clogged gutter actually costs you.
 date: 2026-09-22
 category: Seasonal
 cover: /images/blog/gutter-cleaning-timing.png
@@ -11,6 +11,16 @@ cover_alt: Monarch Pro Wash gutter cleaning cover illustration
 Gutters are the least interesting thing on your house and one of the most consequential. They have a single job, and when they stop doing it, the damage does not stay in the gutter.
 
 The question is not really how often. It is when.
+
+## Why Boise is a particular case
+
+Gutter advice written for the rest of the country mostly assumes rain. Ours is a different problem.
+
+We get around ten to twelve inches of precipitation a year, so the volume of water is modest. What makes a blocked gutter damaging here is the freeze-thaw cycle. Boise swings above and below freezing dozens of times through a winter rather than freezing once and staying there, and every one of those swings expands the water trapped in a packed channel.
+
+The second local factor is what fills the gutter in the first place. The mature canopy through the North End and Hyde Park, the elms over the Caldwell historic districts, and the older streets of Nampa and Old Town Meridian put far more into a gutter than the newer subdivisions out in South Meridian or toward Lake Lowell, where the lots are open and the trees are young.
+
+So the right schedule depends less on where you live in general and more on what is directly over your roof.
 
 ## What a clogged gutter actually does
 

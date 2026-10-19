@@ -1,7 +1,7 @@
 ---
-title: Why Treasure Valley Hard Water Stains Your Windows, and How to Get It Off
-slug: hard-water-stains-on-windows
-description: Those cloudy spots are mineral deposits, not dirt, which is why wiping does nothing. What causes them here, how to remove them, and how to stop them coming back.
+title: Why Hard Water Stains Your Windows, and How to Remove It
+slug: why-hard-water-stains-your-windows
+description: Those cloudy spots are mineral deposits, not dirt, which is why wiping does nothing. What causes them, how to remove them, and how to stop them coming back.
 date: 2026-09-15
 category: How-To
 cover: /images/blog/hard-water-windows.png
@@ -11,6 +11,16 @@ cover_alt: Monarch Pro Wash window cleaning cover illustration
 You clean a window, it dries, and the cloudy patches are still there. You go at it harder with glass cleaner and a cloth, and they are still there.
 
 That is not a cleaning failure. You are not dealing with dirt.
+
+## Why this is such a problem in the Treasure Valley
+
+Two things combine here that do not combine everywhere.
+
+The first is the water. Hardness varies across the valley, and meaningfully so, but much of it sits at the harder end of the scale. Meridian and Kuna are the clearest cases, and homes on private wells out on acreage are often harder still.
+
+The second is the sun. We are high desert with long, hot, dry summers. A droplet of hard water on a north-facing window in a damp climate may sit for hours and get rinsed away by the next rain. The same droplet on a Boise window in July evaporates in minutes, in direct sun, and leaves everything it was carrying bonded to the glass.
+
+Add in a landscape that needs irrigation most of the year, and you have the exact recipe: mineral-rich water, applied daily, drying fast in strong sun, on glass.
 
 ## What is actually on the glass
 

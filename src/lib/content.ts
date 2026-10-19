@@ -166,7 +166,7 @@ function mapPost(e: any) {
       author: d.author ?? d.byline?.displayName ?? "Richard Prins",
       cover: d.cover ?? undefined,
       coverAlt: d.cover_alt ?? undefined,
-      category: d.category ?? undefined,
+      category: d.topic ?? undefined,
       readMinutes: d.read_minutes ?? undefined,
       body: asJson<any[]>(d.body, []), // Portable Text blocks (render with emdash/ui PortableText)
     },

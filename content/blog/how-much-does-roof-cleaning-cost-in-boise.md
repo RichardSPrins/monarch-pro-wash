@@ -1,7 +1,7 @@
 ---
-title: How Much Does Roof Cleaning Cost in the Treasure Valley?
-slug: how-much-does-roof-cleaning-cost
-description: What drives the price of roof cleaning in Boise and the surrounding valley, why the cheapest quote is often the most expensive one, and how to tell a soft wash from a roof-damaging shortcut.
+title: How Much Does Roof Cleaning Cost in Boise?
+slug: how-much-does-roof-cleaning-cost-in-boise
+description: What drives the price of roof cleaning in Boise, why the cheapest quote is often the most expensive one, and how to tell a soft wash from a roof-damaging shortcut.
 date: 2026-09-28
 category: Pricing
 cover: /images/blog/roof-cleaning-cost.png

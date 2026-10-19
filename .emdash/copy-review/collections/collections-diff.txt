@@ -127,7 +127,7 @@
   licensed-and-insured
     answer
       - Yes. Monarch is fully insured and owner-operated, with proof of insurance available on request — you're covered before anyone turns on a machine.
-      + Yes. Monarch is fully insured and owner-operated, with proof of insurance available on request. You are covered before anyone turns on a machine.
+      + Yes. Monarch is licensed and insured and owner-operated, with proof of insurance available on request. You are covered before anyone turns on a machine.
   meridian-solar-panel-cleaning-faq-5
     answer
       - Every array is different — size, mount, and access all matter — so we quote each job after a look. Send us a few details and we will give you a free, no-obligation quote. No charge and no pressure to find out.

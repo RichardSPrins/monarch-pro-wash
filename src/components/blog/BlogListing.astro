@@ -1,0 +1,58 @@
+---
+/**
+ * The listing shell shared by /blog, /blog/page/N, /blog/category/X and
+ * /blog/category/X/page/N, so the four routes cannot drift apart.
+ */
+import PostGrid from "@/components/blog/PostGrid.astro";
+import type { PostCard } from "@/lib/blog";
+
+interface Props {
+  title: string;
+  intro?: string;
+  posts: PostCard[];
+  lead?: PostCard | null;
+  page: number;
+  hasMore: boolean;
+  categories?: string[];
+  activeCategory?: string;
+}
+
+const { title, intro, posts, lead = null, page, hasMore, categories = [], activeCategory } = Astro.props;
+const base = activeCategory ? `/blog/category/${encodeURIComponent(activeCategory.toLowerCase())}` : "/blog";
+---
+
+<div class="blog-index">
+  <header class="bi-head">
+    <h1>{title}</h1>
+    {intro && <p>{intro}</p>}
+    {page > 1 && <p class="pg-note">Page {page}</p>}
+  </header>
+
+  {categories.length > 0 && (
+    <nav class="cats" aria-label="Filter by topic">
+      <a href="/blog" class={!activeCategory ? "on" : ""}>All</a>
+      {categories.map((c) => (
+        <a href={`/blog/category/${encodeURIComponent(c.toLowerCase())}`} class={activeCategory === c ? "on" : ""}>{c}</a>
+      ))}
+    </nav>
+  )}
+
+  <PostGrid posts={posts} lead={lead} page={page} hasMore={hasMore} basePath={base} />
+</div>
+
+<style>
+  .blog-index { max-width: 72rem; margin-inline: auto; }
+  .bi-head { max-width: 46rem; margin-bottom: 1.5rem; }
+  .bi-head h1 { margin: 0 0 0.75rem; }
+  .bi-head p { margin: 0; font-size: 1.0625rem; line-height: 1.65; color: var(--theme-fg-muted, rgba(255,255,255,0.72)); }
+  .pg-note { margin-top: 0.5rem !important; font-size: 0.9375rem !important; }
+
+  .cats { display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 0 0 2.25rem; }
+  .cats a {
+    font-size: 0.75rem; font-weight: 600; letter-spacing: 0.04em;
+    border: 1px solid var(--theme-border, rgba(255,255,255,0.16)); border-radius: 999px;
+    padding: 0.35rem 0.8rem; color: var(--theme-fg-muted, rgba(255,255,255,0.75)); text-decoration: none;
+  }
+  .cats a:hover { border-color: var(--color-primary); color: var(--color-primary); }
+  .cats a.on { background: var(--color-primary); border-color: var(--color-primary); color: #fff; }
+</style>

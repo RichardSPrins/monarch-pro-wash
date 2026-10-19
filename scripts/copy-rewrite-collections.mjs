@@ -50,9 +50,9 @@ const RULES = [
   [/\bby local pros\b/gi, "by a local owner-operator"],
   [/\bour (crew|team)\b/gi, "the owner"],
 
-  // Insured, never licensed.
-  [/\bLicensed (?:&|and) Insured\b/gi, "Fully Insured"],
-  [/\blicensed and insured\b/gi, "insured"],
+  // Licensed confirmed 2026-10-18.
+  [/\bFully Insured\b/g, "Licensed & Insured"],
+  [/\bfully insured\b/g, "licensed and insured"],
 ];
 
 const apply = (v) => {

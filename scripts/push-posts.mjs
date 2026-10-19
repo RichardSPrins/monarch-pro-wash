@@ -51,10 +51,10 @@ for (const f of files) {
   const del = `DELETE FROM ec_posts WHERE slug = ${q(d.slug)};`;
   const ins =
     `INSERT INTO ec_posts (id, slug, status, created_at, updated_at, published_at, version, locale, translation_group, ` +
-    `title, description, date, featured, body, cover, cover_alt, category, author, read_minutes) VALUES (` +
+    `title, description, date, featured, body, cover, cover_alt, topic, author, read_minutes) VALUES (` +
     `${q(id)}, ${q(d.slug)}, ${q(STATUS)}, ${q(now)}, ${q(now)}, ${STATUS === "published" ? q(now) : "NULL"}, 1, 'en', ${q(id)}, ` +
     `${q(d.title)}, ${q(d.description)}, ${q(d.date)}, ${n(d.featured)}, ${q(body)}, ${q(d.cover)}, ${q(d.cover_alt)}, ` +
-    `${q(d.category)}, ${q(d.author)}, ${n(d.read_minutes)});`;
+    `${q(d.topic)}, ${q(d.author)}, ${n(d.read_minutes)});`;
 
   if (!APPLY) { console.log(`would insert ${d.slug}  (${STATUS}, ${d.body.length} blocks)`); continue; }
   try {
