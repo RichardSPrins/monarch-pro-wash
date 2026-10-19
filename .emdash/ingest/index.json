@@ -35,15 +35,20 @@
       }
     },
     {
-      "type": "trust-bar:badges",
+      "type": "trust-bar:ratings",
       "theme": "default",
       "data": {
-        "foundingYear": 2026,
-        "familyOwned": false,
-        "insured": true,
-        "ownerOperated": true,
-        "tradeYears": 15,
-        "freeQuotes": true
+        "eyebrow": {
+          "text": "Reviews",
+          "variant": "text"
+        },
+        "sources": [
+          {
+            "name": "Monarch Pro Wash",
+            "rating": 5,
+            "count": 3
+          }
+        ]
       },
       "spacing": {
         "mobile": "md"

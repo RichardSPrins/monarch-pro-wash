@@ -27,13 +27,20 @@
       }
     },
     {
-      "type": "content:rich-text",
+      "type": "trust-bar:ratings",
       "theme": "alt",
       "data": {
         "eyebrow": {
-          "text": "Window Cleaning · Meridian",
+          "text": "Reviews",
           "variant": "text"
         },
+        "sources": [
+          {
+            "name": "Monarch Pro Wash",
+            "rating": 5,
+            "count": 3
+          }
+        ],
         "body": "<p>Meridian has some of the hardest water in the Treasure Valley, and your windows are where it shows. Sprinkler overspray and irrigation runoff dry on the glass and leave cloudy mineral spotting that a cloth will not shift.</p><p>Add high-desert dust to that and the view goes flat. You stop noticing it until someone cleans one pane and you see the difference.</p><p>We clean inside and out, clear the tracks, and break the mineral buildup down at the source rather than moving it around the glass.</p><p>Monarch is owner-run and insured. The person who quotes the job is the person who turns up to do it.</p>"
       }
     },
@@ -45,8 +52,19 @@
           "text": "Window Cleaning · Meridian",
           "variant": "text"
         },
+        "body": "<p><strong>Hard water is the big one here.</strong> With more than 15 years of hands-on work behind us, we know what Meridian glass goes through and how to bring it back to clear.</p><p><strong>Windows here take a beating from two directions.</strong> Meridian has hard water, among the hardest in the Treasure Valley, so sprinklers and runoff leave mineral spots baked onto the glass. On top of that, the high-desert climate kicks up a steady film of dust that dulls every pane. We handle both, and we treat your home or storefront like it matters, because to us it does.</p><p><strong>Storefront glass on Eagle Road.</strong> Monarch Pro Wash is a licensed, insured and owner-run exterior cleaning company serving Meridian and the wider Treasure Valley.</p>"
+      }
+    },
+    {
+      "type": "content:rich-text",
+      "theme": "alt",
+      "data": {
+        "eyebrow": {
+          "text": "Window Cleaning · Meridian",
+          "variant": "text"
+        },
         "heading": "Window Cleaning Built for Meridian Conditions",
-        "body": "<p><strong>Hard water is the big one here.</strong> Hard water is the single biggest window problem in Meridian. Sprinkler overspray, drip lines, and irrigation runoff dry on the glass and leave cloudy mineral spotting that a household squeegee will not touch. We use the right cleaning approach to lift that buildup off the pane and get down to clear glass, then finish it streak-free so it stays looking sharp.</p><p><strong>Newer subdivisions, bigger glass.</strong> Out in the newer North and South Meridian subdivisions like Paramount, Bridgetower, Century Farm, and Movado, much of the housing is newer, built since 2000, with big picture windows and multi-pane spans that catch every bit of high-desert dust. Those large panes show streaks and film the moment the light hits them, so we clean them carefully and check the glass from more than one angle before we call it done.</p><p><strong>Storefront glass on Eagle Road.</strong> Along the Eagle Road retail corridor and at The Village at Meridian, storefront glass tells the whole story to anyone walking past. Dust, fingerprints, and door-handle grime build up quick on high-traffic entrances. We clean storefront glass, entry doors, and display windows so your business looks open and cared for.</p>"
+        "body": "<p>Hard water is the single biggest window problem in Meridian. Sprinkler overspray, drip lines, and irrigation runoff dry on the glass and leave cloudy mineral spotting that a household squeegee will not touch. We use the right cleaning approach to lift that buildup off the pane and get down to clear glass, then finish it streak-free so it stays looking sharp.</p><p>Out in the newer North and South Meridian subdivisions like Paramount, Bridgetower, Century Farm, and Movado, much of the housing is newer, built since 2000, with big picture windows and multi-pane spans that catch every bit of high-desert dust. Those large panes show streaks and film the moment the light hits them, so we clean them carefully and check the glass from more than one angle before we call it done.</p><p>Along the Eagle Road retail corridor and at The Village at Meridian, storefront glass tells the whole story to anyone walking past. Dust, fingerprints, and door-handle grime build up quick on high-traffic entrances. We clean storefront glass, entry doors, and display windows so your business looks open and cared for.</p>"
       }
     },
     {

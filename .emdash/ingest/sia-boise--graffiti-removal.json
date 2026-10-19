@@ -27,6 +27,23 @@
       }
     },
     {
+      "type": "trust-bar:ratings",
+      "theme": "alt",
+      "data": {
+        "eyebrow": {
+          "text": "Reviews",
+          "variant": "text"
+        },
+        "sources": [
+          {
+            "name": "Monarch Pro Wash",
+            "rating": 5,
+            "count": 3
+          }
+        ]
+      }
+    },
+    {
       "type": "content:rich-text",
       "theme": "alt",
       "data": {
@@ -34,7 +51,7 @@
           "text": "Graffiti Removal · Boise",
           "variant": "text"
         },
-        "body": "<p>Graffiti on your building is a problem you want gone quickly. A fresh tag on a storefront or wall pulls attention for the wrong reasons, and the longer it stays up, the more it tends to attract. Fast, clean removal gets your property back to looking the way it should.</p><p>Monarch Pro Wash is licensed, insured and owner-run, with over fifteen years of hands-on trade experience. We remove graffiti from commercial and residential surfaces across Boise, from the downtown core and Old Boise to the storefront corridors along State Street and Broadway. We match our method to your surface, so the tag comes off and the brick, concrete, or siding stays sound.</p>"
+        "body": "<p><strong>Downtown is where most of it happens.</strong> Storefronts and walls through BoDo, Old Boise, the Basque Block and around The Grove take the brunt, and a visible tag on a business frontage needs to come off fast. Freak Alley is the city's sanctioned mural gallery, so art belongs there. The surrounding blocks are where unwanted tagging lands on private property.</p><p><strong>The busy corridors carry their share.</strong> State Street, Broadway near Boise State, and the commercial stretches along Fairview, Overland and Vista see steady foot and vehicle traffic, so a tag is seen by a lot of people until it is gone. Quick removal keeps your building from becoming a repeat target.</p><p><strong>Every surface takes a different touch.</strong> Brick, concrete, painted walls and siding each call for their own approach, and the wrong method leaves a shadow or damages the material. We match technique and pressure to what we are cleaning, so the tag lifts without etching the surface or stripping the finish behind it.</p>"
       }
     },
     {
@@ -46,7 +63,7 @@
           "variant": "text"
         },
         "heading": "Graffiti Removal Built for Boise Conditions",
-        "body": "<p><strong>Downtown is where most of it happens.</strong> Storefronts and walls through BoDo, Old Boise, the Basque Block and around The Grove take the brunt, and a visible tag on a business frontage needs to come off fast. Freak Alley is the city's sanctioned mural gallery, so art belongs there. The surrounding blocks are where unwanted tagging lands on private property.</p><p><strong>The busy corridors carry their share.</strong> State Street, Broadway near Boise State, and the commercial stretches along Fairview, Overland and Vista see steady foot and vehicle traffic, so a tag is seen by a lot of people until it is gone. Quick removal keeps your building from becoming a repeat target.</p><p><strong>Every surface takes a different touch.</strong> Brick, concrete, painted walls and siding each call for their own approach, and the wrong method leaves a shadow or damages the material. We match technique and pressure to what we are cleaning, so the tag lifts without etching the surface or stripping the finish behind it.</p>"
+        "body": "<p>Downtown is where most of it happens. Storefronts and walls through BoDo, Old Boise, the Basque Block, and around The Grove take the brunt of it, and a visible tag on a business frontage needs to come off fast. Freak Alley is the city's sanctioned mural gallery, so art belongs there, but the surrounding downtown blocks are where unwanted tagging shows up on private property. We get those surfaces cleared quickly so your storefront looks right again.</p><p>The busy corridors carry their share too. State Street, Broadway Avenue near Boise State University, and the commercial stretches along Fairview, Overland, and Vista see steady foot and vehicle traffic, which means a tag gets seen by a lot of people until it is gone. Quick removal keeps your building from becoming a repeat target.</p><p>Every surface takes a different touch. Brick, concrete, painted walls, and siding each call for their own approach, and the wrong method can leave a shadow or damage the material. We match technique and pressure to what we are cleaning, so the graffiti lifts without etching the surface or stripping the finish behind it.</p>"
       }
     },
     {

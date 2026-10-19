@@ -27,6 +27,23 @@
       }
     },
     {
+      "type": "trust-bar:ratings",
+      "theme": "alt",
+      "data": {
+        "eyebrow": {
+          "text": "Reviews",
+          "variant": "text"
+        },
+        "sources": [
+          {
+            "name": "Monarch Pro Wash",
+            "rating": 5,
+            "count": 3
+          }
+        ]
+      }
+    },
+    {
       "type": "content:rich-text",
       "theme": "alt",
       "data": {
@@ -34,7 +51,7 @@
           "text": "Graffiti Removal · Caldwell",
           "variant": "text"
         },
-        "body": "<p>Graffiti shows up fast in Caldwell, and it tends to land where the most people see it: downtown storefronts along Cleveland Blvd, the alleys and back walls near Indian Creek Plaza, and the block walls and metal doors out around the Sky Ranch industrial area.</p><p>When a tag goes up, you want it gone before it draws more of the same. Monarch Pro Wash handles graffiti removal across Caldwell for property owners, downtown businesses, and industrial operators who need it handled right the first time.</p><p>Different surfaces call for different methods, and that is the whole job. Caldwell's downtown historic districts are full of older brick and masonry that will not forgive an aggressive approach, while a steel roll-up door near the airport can take a firmer touch. We read the surface first, then match the method to it, so the tag comes off and the wall underneath stays intact.</p>"
+        "body": "<p><strong>Historic downtown brick.</strong> Graffiti shows up fast in Caldwell, and it tends to land where the most people see it: downtown storefronts along Cleveland Blvd, the alleys and back walls near Indian Creek Plaza, and the block walls and metal doors out around the Sky Ranch industrial area.</p><p><strong>Industrial park surfaces.</strong> When a tag goes up, you want it gone before it draws more of the same. Monarch Pro Wash handles graffiti removal across Caldwell for property owners, downtown businesses, and industrial operators who need it handled right the first time.</p><p><strong>The Cleveland Blvd retail stretch.</strong> Different surfaces call for different methods, and that is the whole job. Caldwell's downtown historic districts are full of older brick and masonry that will not forgive an aggressive approach, while a steel roll-up door near the airport can take a firmer touch. We read the surface first, then match the method to it, so the tag comes off and the wall underneath stays intact.</p>"
       }
     },
     {
@@ -46,7 +63,7 @@
           "variant": "text"
         },
         "heading": "Graffiti Removal Built for Caldwell Conditions",
-        "body": "<p><strong>Historic downtown brick.</strong> Downtown Caldwell sits inside three historic districts, and the buildings show it. The Caldwell Historic District along Main Street, 7th, and Kimball, plus the Steunenberg Residential area, carry older brick and soft masonry that soaks up spray paint quickly. On those walls we work gentle, using low-pressure methods and surface-safe removers so we lift the paint out of the pores without blasting the face off the brick or leaving a clean-scrubbed halo that stands out worse than the tag did.</p><p><strong>Industrial park surfaces.</strong> Out at Sky Ranch Business Park and along the Caldwell Industrial Airport frontage, the surfaces change completely. Painted block, concrete tilt-up, and metal roll-up doors take the brunt of tagging in the industrial and warehousing corridors. These surfaces let us work firmer, so we can clear larger tags and repeated hits without babying the wall the way we would downtown.</p><p><strong>The Cleveland Blvd retail stretch.</strong> Then there is the everyday retail and commercial stretch along Cleveland Blvd and the I-84 frontage, where stucco, EIFS, and painted siding are common. Those coated surfaces need a careful read, because the wrong remover can pull the building's own paint along with the tag. We test first, work in a controlled way, and keep the finish underneath looking like it should.</p>"
+        "body": "<p>Downtown Caldwell sits inside three historic districts, and the buildings show it. The Caldwell Historic District along Main Street, 7th, and Kimball, plus the Steunenberg Residential area, carry older brick and soft masonry that soaks up spray paint quickly. On those walls we work gentle, using low-pressure methods and surface-safe removers so we lift the paint out of the pores without blasting the face off the brick or leaving a clean-scrubbed halo that stands out worse than the tag did.</p><p>Out at Sky Ranch Business Park and along the Caldwell Industrial Airport frontage, the surfaces change completely. Painted block, concrete tilt-up, and metal roll-up doors take the brunt of tagging in the industrial and warehousing corridors. These surfaces let us work firmer, so we can clear larger tags and repeated hits without babying the wall the way we would downtown.</p><p>Then there is the everyday retail and commercial stretch along Cleveland Blvd and the I-84 frontage, where stucco, EIFS, and painted siding are common. Those coated surfaces need a careful read, because the wrong remover can pull the building's own paint along with the tag. We test first, work in a controlled way, and keep the finish underneath looking like it should.</p>"
       }
     },
     {

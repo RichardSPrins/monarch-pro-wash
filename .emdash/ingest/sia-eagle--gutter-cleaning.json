@@ -27,6 +27,23 @@
       }
     },
     {
+      "type": "trust-bar:ratings",
+      "theme": "alt",
+      "data": {
+        "eyebrow": {
+          "text": "Reviews",
+          "variant": "text"
+        },
+        "sources": [
+          {
+            "name": "Monarch Pro Wash",
+            "rating": 5,
+            "count": 3
+          }
+        ]
+      }
+    },
+    {
       "type": "content:rich-text",
       "theme": "alt",
       "data": {
@@ -34,7 +51,7 @@
           "text": "Gutter Cleaning · Eagle",
           "variant": "text"
         },
-        "body": "<p>Gutters only work when water can move through them. Once leaves and debris pack in, rain spills over the edge, pools against the foundation, and runs down the fascia. On the long rooflines common in Eagle, one clogged section can back up a whole run before you notice a problem.</p><p>Monarch Pro Wash clears gutters and downspouts so water goes where it should. That protects the roof edge, the fascia, and the foundation, and it leaves the exterior looking cleaner too. Monarch is licensed, insured and owner-run, and brings more than 15 years of hands-on trade experience to the job.</p>"
+        "body": "<p><strong>Gutters only work when water can move through them.</strong> Once leaves and debris pack in, rain spills over the edge, pools against the foundation, and runs down the fascia. On the long rooflines common in Eagle, one clogged section can back up a whole run before you notice a problem.</p><p><strong>Long runs on estate rooflines.</strong> Monarch Pro Wash clears gutters and downspouts so water goes where it should. That protects the roof edge, the fascia, and the foundation, and it leaves the exterior looking cleaner too. Monarch is licensed, insured and owner-run, and brings more than 15 years of hands-on trade experience to the job.</p>"
       }
     },
     {
@@ -46,7 +63,7 @@
           "variant": "text"
         },
         "heading": "Gutter Cleaning Built for Eagle Conditions",
-        "body": "<p><strong>Mature trees along the river.</strong> Along the Boise River, the Greenbelt, and the lake communities like Two Rivers, Riverstone, and Laguna Pointe, mature tree cover is heavy, and all of it eventually lands in the gutters. That leaf litter builds up fast in the shaded, tree-lined neighborhoods and blocks the flow. Clearing it out keeps water moving instead of spilling over.</p><p><strong>Long runs on estate rooflines.</strong> Eagle estates also have large, multi-level rooflines with long gutter runs and plenty of downspouts. More roof means more debris feeding into the system and more places for it to jam. Getting every run and downspout clear is what actually keeps the water moving off a big roof.</p><p><strong>Winter freeze-thaw.</strong> Winters here bring hard freeze-thaw cycles, and a clogged gutter holds water that freezes, backs up, and works at the roof edge and foundation. Clearing gutters ahead of that keeps trapped water from causing trouble when the temperature swings.</p>"
+        "body": "<p>Along the Boise River, the Greenbelt, and the lake communities like Two Rivers, Riverstone, and Laguna Pointe, mature tree cover is heavy, and all of it eventually lands in the gutters. That leaf litter builds up fast in the shaded, tree-lined neighborhoods and blocks the flow. Clearing it out keeps water moving instead of spilling over.</p><p>Eagle estates also have large, multi-level rooflines with long gutter runs and plenty of downspouts. More roof means more debris feeding into the system and more places for it to jam. Getting every run and downspout clear is what actually keeps the water moving off a big roof.</p><p>Winters here bring hard freeze-thaw cycles, and a clogged gutter holds water that freezes, backs up, and works at the roof edge and foundation. Clearing gutters ahead of that keeps trapped water from causing trouble when the temperature swings.</p>"
       }
     },
     {

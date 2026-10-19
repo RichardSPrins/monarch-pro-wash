@@ -27,6 +27,23 @@
       }
     },
     {
+      "type": "trust-bar:ratings",
+      "theme": "alt",
+      "data": {
+        "eyebrow": {
+          "text": "Reviews",
+          "variant": "text"
+        },
+        "sources": [
+          {
+            "name": "Monarch Pro Wash",
+            "rating": 5,
+            "count": 3
+          }
+        ]
+      }
+    },
+    {
       "type": "content:rich-text",
       "theme": "alt",
       "data": {
@@ -34,7 +51,7 @@
           "text": "Soft Washing · Meridian",
           "variant": "text"
         },
-        "body": "<p>Most homes in Meridian do not need high pressure to get clean. What builds up on siding is organic, meaning algae, mildew, and a layer of dust and pollen, and the right way to remove that is a gentle wash that treats the growth instead of trying to blast it off. That is exactly what soft washing does.</p><p>Monarch Pro Wash is licensed, insured and owner-run, with more than 15 years of hands-on trade experience. We soft wash homes throughout Meridian, from the newer North and South subdivisions to the older siding around Old Town. The pressure stays low, the cleaning solution does the work, and your home comes out clean without the risk that comes from a pressure washer aimed at your walls.</p>"
+        "body": "<p><strong>Newer construction needs a gentle hand.</strong> Most homes in Meridian do not need high pressure to get clean. What builds up on siding is organic, meaning algae, mildew, and a layer of dust and pollen, and the right way to remove that is a gentle wash that treats the growth instead of trying to blast it off. That is exactly what soft washing does.</p><p><strong>Older Meridian siding needs gentler still.</strong> Monarch Pro Wash is licensed, insured and owner-run, with more than 15 years of hands-on trade experience. We soft wash homes throughout Meridian, from the newer North and South subdivisions to the older siding around Old Town. The pressure stays low, the cleaning solution does the work, and your home comes out clean without the risk that comes from a pressure washer aimed at your walls.</p>"
       }
     },
     {
@@ -46,7 +63,7 @@
           "variant": "text"
         },
         "heading": "Soft Washing Built for Meridian Conditions",
-        "body": "<p><strong>Newer construction needs a gentle hand.</strong> A huge share of Meridian is newer construction, and much of the housing is newer, built since 2000. Neighborhoods like Paramount, Century Farm, Movado, and Tuscany are full of siding that looks great but was never meant to take a high-pressure blast. Soft washing is the right call there. We apply a cleaning solution at low pressure, let it break down the algae and grime, and rinse it clean without forcing water behind the siding.</p><p><strong>Older Meridian siding needs gentler still.</strong> Old Town and other older pockets of Meridian have aging siding that needs an even gentler touch. Years of dust and organic growth settle in, and a careful soft wash brings the color back without stressing older material. We read the surface before we start and adjust from there.</p><p><strong>HOA standards notice a streaky exterior.</strong> Meridian also has a lot of HOA neighborhoods with appearance standards, and a streaky, algae-stained exterior stands out fast. Because soft washing kills algae and mildew at the root rather than just knocking off the surface, your home stays cleaner longer. That helps you stay ahead of a letter from the HOA instead of scrambling after one.</p>"
+        "body": "<p>A huge share of Meridian is newer construction, and much of the housing is newer, built since 2000. Neighborhoods like Paramount, Century Farm, Movado, and Tuscany are full of siding that looks great but was never meant to take a high-pressure blast. Soft washing is the right call there. We apply a cleaning solution at low pressure, let it break down the algae and grime, and rinse it clean without forcing water behind the siding.</p><p>Old Town and other older pockets of Meridian have aging siding that needs an even gentler touch. Years of dust and organic growth settle in, and a careful soft wash brings the color back without stressing older material. We read the surface before we start and adjust from there.</p><p>Meridian also has a lot of HOA neighborhoods with appearance standards, and a streaky, algae-stained exterior stands out fast. Because soft washing kills algae and mildew at the root rather than just knocking off the surface, your home stays cleaner longer. That helps you stay ahead of a letter from the HOA instead of scrambling after one.</p>"
       }
     },
     {

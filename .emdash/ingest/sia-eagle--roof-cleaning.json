@@ -27,6 +27,23 @@
       }
     },
     {
+      "type": "trust-bar:ratings",
+      "theme": "alt",
+      "data": {
+        "eyebrow": {
+          "text": "Reviews",
+          "variant": "text"
+        },
+        "sources": [
+          {
+            "name": "Monarch Pro Wash",
+            "rating": 5,
+            "count": 3
+          }
+        ]
+      }
+    },
+    {
       "type": "content:rich-text",
       "theme": "alt",
       "data": {
@@ -46,7 +63,7 @@
           "variant": "text"
         },
         "heading": "Roof Cleaning Built for Eagle Conditions",
-        "body": "<p>Along the Boise River, the Greenbelt, and the private lakes in communities like Two Rivers, Riverstone, and Laguna Pointe, heavy mature tree cover keeps roofs shaded and slow to dry. That damp shade is what feeds algae, black streaking, and moss, and it hits north-facing slopes hardest where the sun barely reaches.</p><p>Eagle estates tend to have large, complex rooflines with lots of surface and plenty of shaded valleys. On premium roofing, letting moss and algae sit is what shortens the roof's life. Soft washing removes the growth and helps keep it from taking hold again, protecting the investment underneath.</p><p><strong>Mature trees drop more than shade.</strong> Leaf litter and organic debris settle into valleys and along the edges, holding moisture right where moss likes to start. Clearing and treating those areas is part of getting a roof genuinely clean, not just cosmetically rinsed.</p>"
+        "body": "<p>Along the Boise River, the Greenbelt, and the private lakes in communities like Two Rivers, Riverstone, and Laguna Pointe, heavy mature tree cover keeps roofs shaded and slow to dry. That damp shade is what feeds algae, black streaking, and moss, and it hits north-facing slopes hardest where the sun barely reaches.</p><p>Eagle estates tend to have large, complex rooflines with lots of surface and plenty of shaded valleys. On premium roofing, letting moss and algae sit is what shortens the roof's life. Soft washing removes the growth and helps keep it from taking hold again, protecting the investment underneath.</p><p>Mature trees drop more than shade. Leaf litter and organic debris settle into valleys and along the edges, holding moisture right where moss likes to start. Clearing and treating those areas is part of getting a roof genuinely clean, not just cosmetically rinsed.</p>"
       }
     },
     {

@@ -32,6 +32,10 @@
         "cta": {
           "label": "Get a Free Quote",
           "href": "/contact"
+        },
+        "image": {
+          "src": "/images/about/our-story.png",
+          "alt": "Monarch Pro Wash brand illustration of the Treasure Valley"
         }
       }
     },
@@ -45,11 +49,11 @@
         },
         "heading": "Why the Monarch?",
         "body": "The monarch has always meant something to our family. It stands for transformation, for taking something worn and weathered and helping it emerge renewed. That is exactly what we do for a property: we take something tired and bring it back to life. The monarch also travels far and always finds its way home, which fits a family that has lived all over the country and finally found home here in the Treasure Valley.",
-        "imagePosition": "left"
-      },
-      "motif": {
-        "kind": "butterfly-color",
-        "opacity": 0.3
+        "imagePosition": "left",
+        "image": {
+          "src": "/images/about/why-the-monarch.png",
+          "alt": "The Monarch Pro Wash butterfly mark"
+        }
       }
     },
     {
@@ -123,7 +127,11 @@
         },
         "heading": "Part of This Community",
         "body": "The Treasure Valley is home. We live here, and we are raising our family here. That is why Monarch is not built for a quick season of work; it is built to be a company our neighbors count on for the long haul. Giving back is part of that, and as we grow we are committing to support the local causes, schools, and neighbors that make this valley home.",
-        "imagePosition": "right"
+        "imagePosition": "right",
+        "image": {
+          "src": "/images/about/community.png",
+          "alt": "Illustration of the Treasure Valley foothills"
+        }
       }
     },
     {

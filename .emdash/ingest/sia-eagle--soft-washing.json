@@ -27,6 +27,23 @@
       }
     },
     {
+      "type": "trust-bar:ratings",
+      "theme": "alt",
+      "data": {
+        "eyebrow": {
+          "text": "Reviews",
+          "variant": "text"
+        },
+        "sources": [
+          {
+            "name": "Monarch Pro Wash",
+            "rating": 5,
+            "count": 3
+          }
+        ]
+      }
+    },
+    {
       "type": "content:rich-text",
       "theme": "alt",
       "data": {
@@ -46,7 +63,7 @@
           "variant": "text"
         },
         "heading": "Soft Washing Built for Eagle Conditions",
-        "body": "<p>Along the Boise River and Greenbelt, and out around the private lakes in communities like Two Rivers, Laguna Pointe, and Riverstone, heavy mature tree cover keeps north-facing walls shaded and damp. That is exactly where algae, mildew, and green growth take hold on siding and masonry. Soft washing clears it and slows its return, which pressure alone will not do.</p><p><strong>Eagle also has serious fencing.</strong> Estate and equestrian properties off Floating Feather and Horseshoe Bend Road run long lines of fence with a lot of surface area, and it greens up on the shaded, weather-facing sides. Low-pressure washing covers that surface without splintering wood or driving water into the grain.</p><p>In Old Town Eagle near State Street, some of the homes date back well over a century, with older siding and trim that will not take aggressive pressure. Soft washing is the safe way to clean delicate and aged surfaces without stripping paint or gouging wood.</p>"
+        "body": "<p>Along the Boise River and Greenbelt, and out around the private lakes in communities like Two Rivers, Laguna Pointe, and Riverstone, heavy mature tree cover keeps north-facing walls shaded and damp. That is exactly where algae, mildew, and green growth take hold on siding and masonry. Soft washing clears it and slows its return, which pressure alone will not do.</p><p>Eagle also has serious fencing. Estate and equestrian properties off Floating Feather and Horseshoe Bend Road run long lines of fence with a lot of surface area, and it greens up on the shaded, weather-facing sides. Low-pressure washing covers that surface without splintering wood or driving water into the grain.</p><p>In Old Town Eagle near State Street, some of the homes date back well over a century, with older siding and trim that will not take aggressive pressure. Soft washing is the safe way to clean delicate and aged surfaces without stripping paint or gouging wood.</p>"
       }
     },
     {
@@ -244,7 +261,7 @@
       "theme": "primary",
       "data": {
         "heading": "Clean Walls That Stay Clean",
-        "subheading": "Get safe, low-pressure soft washing from an licensed, insured and owner-run operation that knows Eagle exteriors.",
+        "subheading": "Get safe, low-pressure soft washing from a licensed, insured and owner-run operation that knows Eagle exteriors.",
         "ctas": [
           {
             "label": "Get My Free Quote",

@@ -27,6 +27,23 @@
       }
     },
     {
+      "type": "trust-bar:ratings",
+      "theme": "alt",
+      "data": {
+        "eyebrow": {
+          "text": "Reviews",
+          "variant": "text"
+        },
+        "sources": [
+          {
+            "name": "Monarch Pro Wash",
+            "rating": 5,
+            "count": 3
+          }
+        ]
+      }
+    },
+    {
       "type": "content:rich-text",
       "theme": "alt",
       "data": {
@@ -34,7 +51,7 @@
           "text": "Roof Cleaning · Meridian",
           "variant": "text"
         },
-        "body": "<p>The dark streaks running down a Meridian roof are not dirt and they will not rinse off with rain. That is algae, and once it takes hold it spreads across the shingles and feeds on the surface. Left alone it keeps darkening the roof and shortens the life of your shingles. Cleaning it off restores the look of your home and protects what is under it.</p><p>Monarch Pro Wash is licensed, insured and owner-run, with more than 15 years of hands-on trade experience. We clean roofs across Meridian using a soft-wash approach, never high pressure. From the shaded streets of Old Town to the maturing subdivisions in the north, we get the algae and moss off and leave the shingles intact.</p>"
+        "body": "<p><strong>Shade keeps roofs damp.</strong> The dark streaks running down a Meridian roof are not dirt and they will not rinse off with rain. That is algae, and once it takes hold it spreads across the shingles and feeds on the surface. Left alone it keeps darkening the roof and shortens the life of your shingles. Cleaning it off restores the look of your home and protects what is under it.</p><p><strong>The older subdivisions are catching up.</strong> Monarch Pro Wash is licensed, insured and owner-run, with more than 15 years of hands-on trade experience. We clean roofs across Meridian using a soft-wash approach, never high pressure. From the shaded streets of Old Town to the maturing subdivisions in the north, we get the algae and moss off and leave the shingles intact.</p>"
       }
     },
     {
@@ -46,7 +63,7 @@
           "variant": "text"
         },
         "heading": "Roof Cleaning Built for Meridian Conditions",
-        "body": "<p><strong>Shade keeps roofs damp.</strong> Old Town and NE Meridian near Kleiner Park have mature trees and a lot of shade. That shade keeps roofs damp longer, especially on the north-facing slopes, and damp shade is exactly where algae and moss thrive. Those are the roofs where we see the heaviest black streaking, and they are the roofs soft washing is built for.</p><p><strong>The older subdivisions are catching up too.</strong> Neighborhoods like Lochsa Falls have matured, the trees have filled in, and roofs that looked fine for years are now showing streaks. We treat the algae directly so it dies off and washes clear, instead of scrubbing or blasting shingles that are already aging.</p><p><strong>High pressure has no place on a roof.</strong> It strips the protective granules off shingles and can drive water where it should not go. We use a low-pressure, soft-wash method that lets the cleaning solution do the work. The streaks lift, the moss loosens, and your shingles come through the job without the damage a pressure washer would cause.</p>"
+        "body": "<p>Old Town and NE Meridian near Kleiner Park have mature trees and a lot of shade. That shade keeps roofs damp longer, especially on the north-facing slopes, and damp shade is exactly where algae and moss thrive. Those are the roofs where we see the heaviest black streaking, and they are the roofs soft washing is built for.</p><p>The older subdivisions are catching up too. Neighborhoods like Lochsa Falls have matured, the trees have filled in, and roofs that looked fine for years are now showing streaks. We treat the algae directly so it dies off and washes clear, instead of scrubbing or blasting shingles that are already aging.</p><p>High pressure has no place on a roof. It strips the protective granules off shingles and can drive water where it should not go. We use a low-pressure, soft-wash method that lets the cleaning solution do the work. The streaks lift, the moss loosens, and your shingles come through the job without the damage a pressure washer would cause.</p>"
       }
     },
     {

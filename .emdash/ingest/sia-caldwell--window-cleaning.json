@@ -27,6 +27,23 @@
       }
     },
     {
+      "type": "trust-bar:ratings",
+      "theme": "alt",
+      "data": {
+        "eyebrow": {
+          "text": "Reviews",
+          "variant": "text"
+        },
+        "sources": [
+          {
+            "name": "Monarch Pro Wash",
+            "rating": 5,
+            "count": 3
+          }
+        ]
+      }
+    },
+    {
       "type": "content:rich-text",
       "theme": "alt",
       "data": {
@@ -34,7 +51,7 @@
           "text": "Window Cleaning · Caldwell",
           "variant": "text"
         },
-        "body": "<p>Windows are the first thing that go cloudy in Caldwell, and you notice it most on a bright afternoon when the sun hits the glass and every spot and streak shows. Between the hard water in town, the well water out on the acreage lots, and the dust that rolls in off the fields and gravel roads, your glass rarely stays clear for long.</p><p>It builds up slowly until one day you realize you are looking through a haze instead of out at your yard.</p><p>Monarch Pro Wash is licensed, insured and owner-run, and has spent 15-plus years cleaning exteriors around Caldwell and the Treasure Valley. We clean windows the careful way, by hand where it counts, so you get glass that actually looks clear instead of just wet. Whether you own an older home in the Steunenberg Residential district or a newer place out in Mandalay Ranch, we treat your windows like they are our own.</p>"
+        "body": "<p><strong>Hard water is the main culprit.</strong> Windows are the first thing that go cloudy in Caldwell, and you notice it most on a bright afternoon when the sun hits the glass and every spot and streak shows. Between the hard water in town, the well water out on the acreage lots, and the dust that rolls in off the fields and gravel roads, your glass rarely stays clear for long.</p><p><strong>Orchard and vineyard dust.</strong> It builds up slowly until one day you realize you are looking through a haze instead of out at your yard.</p><p><strong>Older divided-light glass.</strong> Monarch Pro Wash is licensed, insured and owner-run, and has spent 15-plus years cleaning exteriors around Caldwell and the Treasure Valley. We clean windows the careful way, by hand where it counts, so you get glass that actually looks clear instead of just wet. Whether you own an older home in the Steunenberg Residential district or a newer place out in Mandalay Ranch, we treat your windows like they are our own.</p>"
       }
     },
     {
@@ -46,7 +63,7 @@
           "variant": "text"
         },
         "heading": "Window Cleaning Built for Caldwell Conditions",
-        "body": "<p><strong>Hard water is the main culprit.</strong> Caldwell's water is hard, and that shows up on glass more than almost anywhere else in the house. In-town homes on City of Caldwell wells and rural places on private wells both deal with mineral content that dries into cloudy spotting, especially on windows that catch sprinkler overspray. We work those panes with the right approach to lift the mineral haze instead of just smearing it around, and we can tackle stubborn hard-water staining that regular wiping never seems to touch.</p><p><strong>Orchard and vineyard dust.</strong> Out toward the Sunnyslope wine country and the orchard and vineyard ground on the edges of town, dust is the other constant. High-desert wind carries fine ag dust and grit off gravel roads and tilled fields, and it settles on glass in a film that dulls everything. Newer subdivisions like Mason Creek, Passero Ridge, and Waterbrook Farms tend to have big picture windows that show this fast. We clean the full pane edge to edge so the whole window clears, not just the middle.</p><p><strong>Older divided-light glass.</strong> Older glass gets its own treatment. Homes in the Caldwell Historic District and North Caldwell often have divided-light windows with lots of small panes and aged frames. Those take patience and a lighter hand, and we clean each section by hand so we do not stress old glazing. New construction is the flip side, where fresh homes come with paint specks, stucco splatter, and label residue on the glass, and we handle that post-construction cleanup too.</p>"
+        "body": "<p>Caldwell's water is hard, and that shows up on glass more than almost anywhere else in the house. In-town homes on City of Caldwell wells and rural places on private wells both deal with mineral content that dries into cloudy spotting, especially on windows that catch sprinkler overspray. We work those panes with the right approach to lift the mineral haze instead of just smearing it around, and we can tackle stubborn hard-water staining that regular wiping never seems to touch.</p><p>Out toward the Sunnyslope wine country and the orchard and vineyard ground on the edges of town, dust is the other constant. High-desert wind carries fine ag dust and grit off gravel roads and tilled fields, and it settles on glass in a film that dulls everything. Newer subdivisions like Mason Creek, Passero Ridge, and Waterbrook Farms tend to have big picture windows that show this fast. We clean the full pane edge to edge so the whole window clears, not just the middle.</p><p>Older glass gets its own treatment. Homes in the Caldwell Historic District and North Caldwell often have divided-light windows with lots of small panes and aged frames. Those take patience and a lighter hand, and we clean each section by hand so we do not stress old glazing. New construction is the flip side, where fresh homes come with paint specks, stucco splatter, and label residue on the glass, and we handle that post-construction cleanup too.</p>"
       }
     },
     {

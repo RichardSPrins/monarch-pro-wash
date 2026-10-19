@@ -27,6 +27,23 @@
       }
     },
     {
+      "type": "trust-bar:ratings",
+      "theme": "alt",
+      "data": {
+        "eyebrow": {
+          "text": "Reviews",
+          "variant": "text"
+        },
+        "sources": [
+          {
+            "name": "Monarch Pro Wash",
+            "rating": 5,
+            "count": 3
+          }
+        ]
+      }
+    },
+    {
       "type": "content:rich-text",
       "theme": "alt",
       "data": {
@@ -34,7 +51,7 @@
           "text": "Graffiti Removal · Meridian",
           "variant": "text"
         },
-        "body": "<p>Graffiti on a business does not just look bad, it invites more. The longer a tag stays up, the more it signals that no one is watching, and the more likely another one shows up next to it. Getting it removed quickly protects the look of your property and keeps the problem from spreading.</p><p>Monarch Pro Wash is licensed, insured and owner-run, with more than 15 years of hands-on trade experience. We handle graffiti removal for businesses and property owners across Meridian, from the retail corridor along Eagle Road to the storefronts Downtown. We take the tag off and match our method to the surface so the wall comes clean without new damage.</p>"
+        "body": "<p><strong>The Eagle Road corridor.</strong> Graffiti on a business does not just look bad, it invites more. The longer a tag stays up, the more it signals that no one is watching, and the more likely another one shows up next to it. Getting it removed quickly protects the look of your property and keeps the problem from spreading.</p><p><strong>Old Town brick needs a softer hand.</strong> Monarch Pro Wash is licensed, insured and owner-run, with more than 15 years of hands-on trade experience. We handle graffiti removal for businesses and property owners across Meridian, from the retail corridor along Eagle Road to the storefronts Downtown. We take the tag off and match our method to the surface so the wall comes clean without new damage.</p>"
       }
     },
     {
@@ -46,7 +63,7 @@
           "variant": "text"
         },
         "heading": "Graffiti Removal Built for Meridian Conditions",
-        "body": "<p><strong>The Eagle Road corridor.</strong> The Eagle Road retail corridor is one of the busiest stretches in the valley, and a tag on a building near The Village at Meridian or along that run gets seen by a lot of traffic fast. Those are the walls where quick removal matters most. We respond to get the graffiti off before it becomes the first thing every passing car notices.</p><p><strong>Downtown and Old Town Meridian bring a different challenge.</strong> The storefronts along Main Street include older brick and mixed materials, and brick holds paint differently than smooth concrete or siding. We adjust our approach to the surface so we lift the paint without etching the brick or leaving a ghosted outline behind.</p><p><strong>The commercial stretches.</strong> We also work the commercial stretches along Fairview Avenue, the Ten Mile interchange area, and the business parks off Overland Road. Every surface is a little different, from block walls to metal to painted siding, and the goal is always the same. Get the tag off cleanly and leave the wall looking like nothing was ever there.</p>"
+        "body": "<p>The Eagle Road retail corridor is one of the busiest stretches in the valley, and a tag on a building near The Village at Meridian or along that run gets seen by a lot of traffic fast. Those are the walls where quick removal matters most. We respond to get the graffiti off before it becomes the first thing every passing car notices.</p><p>Downtown and Old Town Meridian bring a different challenge. The storefronts along Main Street include older brick and mixed materials, and brick holds paint differently than smooth concrete or siding. We adjust our approach to the surface so we lift the paint without etching the brick or leaving a ghosted outline behind.</p><p>We also work the commercial stretches along Fairview Avenue, the Ten Mile interchange area, and the business parks off Overland Road. Every surface is a little different, from block walls to metal to painted siding, and the goal is always the same. Get the tag off cleanly and leave the wall looking like nothing was ever there.</p>"
       }
     },
     {

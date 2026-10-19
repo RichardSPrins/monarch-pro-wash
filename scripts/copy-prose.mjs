@@ -380,6 +380,76 @@ function insertRecentPosts(sections, slug, lines) {
 }
 
 /**
+ * Fill the About page's empty about:split image slots.
+ *
+ * Those sections set `imagePosition` but carry no image, so `hasImage` is false
+ * and the component collapses the two-column grid to a single narrow column,
+ * leaving a large empty band beside and below the text. On "Why the Monarch?"
+ * that band is also where the butterfly motif renders oversized and runs off
+ * the right edge.
+ *
+ * Images are generated brand art (scripts/make-about-images.mjs), 4:3 to match
+ * the aspect ratio the component reserves. Replace with real photography of
+ * Richard, the van and actual jobs when it exists; keep the filenames.
+ */
+const ABOUT_IMAGES = {
+  1: { src: "/images/about/our-story.png", alt: "Monarch Pro Wash brand illustration of the Treasure Valley" },
+  2: { src: "/images/about/why-the-monarch.png", alt: "The Monarch Pro Wash butterfly mark" },
+  5: { src: "/images/about/community.png", alt: "Illustration of the Treasure Valley foothills" },
+};
+
+function fillAboutImages(sections, slug, lines) {
+  if (slug !== "about") return;
+  for (const [idx, image] of Object.entries(ABOUT_IMAGES)) {
+    const sec = sections[Number(idx)];
+    if (!sec || sec.type !== "about:split" || sec.data?.image) continue;
+    sec.data ??= {};
+    sec.data.image = { ...image };
+    lines.push(`  [${idx}] about:split + image ${image.src}`);
+    // The butterfly is now the image, so the oversized background motif of the
+    // same mark is redundant and is what was overflowing.
+    if (sec.motif?.kind === "butterfly-color") {
+      delete sec.motif;
+      lines.push(`  [${idx}] removed oversized butterfly-color motif`);
+    }
+  }
+}
+
+/**
+ * Swap the home page and service-in-area trust bars to trust-bar:ratings.
+ *
+ * The component is used exactly as it ships: it only draws a third-party logo
+ * when the source is named Google or Facebook, so naming the source after the
+ * business renders the star lockup without attributing a rating to a platform
+ * Monarch has no presence on. The figures come from the reviews collection,
+ * which currently holds the three disclaimed samples.
+ */
+const RATING_SOURCES = [{ name: "Monarch Pro Wash", rating: 5, count: 3 }];
+
+function useRatingsTrustBar(sections, slug, lines) {
+  const isTarget = slug === "index" || slug.startsWith("sia-");
+  if (!isTarget) return;
+  if (sections.some((s) => s.type === "trust-bar:ratings")) return; // idempotent
+
+  const existing = sections.findIndex((s) => s.type === "trust-bar:badges");
+  const data = {
+    eyebrow: { text: "Reviews", variant: "text" },
+    sources: RATING_SOURCES.map((r) => ({ ...r })),
+  };
+
+  if (existing >= 0) {
+    sections[existing] = { ...sections[existing], type: "trust-bar:ratings", data };
+    lines.push(`  [${existing}] trust-bar:badges -> trust-bar:ratings`);
+    return;
+  }
+  // Service-in-area pages carry no trust bar at all; add one under the hero.
+  let at = sections.findIndex((s) => !s.type?.startsWith("hero:"));
+  if (at < 0) at = sections.length;
+  sections.splice(at, 0, { type: "trust-bar:ratings", theme: "alt", data });
+  lines.push(`  [${at}] + trust-bar:ratings inserted`);
+}
+
+/**
  * Bold the lead-ins the copy already has.
  *
  * Several towns' "conditions" paragraphs already open with a short labelling
@@ -474,6 +544,8 @@ if (process.argv[1] && process.argv[1].endsWith("copy-prose.mjs")) {
     const j = JSON.parse(fs.readFileSync(f, "utf8"));
     const lines = [];
     flipCompanyOpening(j.sections, lines);
+    fillAboutImages(j.sections, slug, lines);
+    useRatingsTrustBar(j.sections, slug, lines);
     insertRecentPosts(j.sections, slug, lines);
     boldExistingLeadIns(j.sections, lines);
     applyLeadIns(j.sections, slug, lines);

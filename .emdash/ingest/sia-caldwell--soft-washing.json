@@ -27,6 +27,23 @@
       }
     },
     {
+      "type": "trust-bar:ratings",
+      "theme": "alt",
+      "data": {
+        "eyebrow": {
+          "text": "Reviews",
+          "variant": "text"
+        },
+        "sources": [
+          {
+            "name": "Monarch Pro Wash",
+            "rating": 5,
+            "count": 3
+          }
+        ]
+      }
+    },
+    {
       "type": "content:rich-text",
       "theme": "alt",
       "data": {
@@ -34,7 +51,7 @@
           "text": "Soft Washing · Caldwell",
           "variant": "text"
         },
-        "body": "<p>Not every surface can take pressure. The early-1900s masonry and wood homes east of downtown in the Steunenberg district, the older houses along Main St and 7th Ave, and even fresh vinyl siding on Caldwell's newer subdivisions all need a gentler hand. Soft washing is how you clean them without doing damage.</p><p>Monarch Pro Wash is licensed, insured and owner-run, and has spent more than fifteen years in the trades. Soft washing uses low pressure and the right cleaning solution to lift algae, mildew, and grime and kill it at the root, so your home comes clean and stays clean longer. It is the safe choice for delicate and aging surfaces, and it is the right choice for a lot of Caldwell homes.</p>"
+        "body": "<p><strong>Not every surface can take pressure.</strong> The early-1900s masonry and wood homes east of downtown in the Steunenberg district, the older houses along Main St and 7th Ave, and even fresh vinyl siding on Caldwell's newer subdivisions all need a gentler hand. Soft washing is how you clean them without doing damage.</p><p>Monarch Pro Wash is licensed, insured and owner-run, and has spent more than fifteen years in the trades. Soft washing uses low pressure and the right cleaning solution to lift algae, mildew, and grime and kill it at the root, so your home comes clean and stays clean longer. It is the safe choice for delicate and aging surfaces, and it is the right choice for a lot of Caldwell homes.</p>"
       }
     },
     {

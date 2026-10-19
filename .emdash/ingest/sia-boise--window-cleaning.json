@@ -27,13 +27,20 @@
       }
     },
     {
-      "type": "content:rich-text",
+      "type": "trust-bar:ratings",
       "theme": "alt",
       "data": {
         "eyebrow": {
-          "text": "Window Cleaning · Boise",
+          "text": "Reviews",
           "variant": "text"
         },
+        "sources": [
+          {
+            "name": "Monarch Pro Wash",
+            "rating": 5,
+            "count": 3
+          }
+        ],
         "body": "<p>Boise glass does not stay clear for long. Hard water leaves cloudy mineral spotting that a wipe will not touch, dust rolls off the Foothills all summer, and fire season settles a film over everything.</p><p>You end up looking at the view through a haze you stopped noticing months ago, and a well-kept house reads as tired from the street.</p><p>We clean interior and exterior glass, clear the tracks, and break down the mineral buildup at the source instead of smearing it around.</p><p>Monarch is owner-run and insured. The person who books your job is the person who shows up to do it.</p>"
       }
     },
@@ -45,8 +52,19 @@
           "text": "Window Cleaning · Boise",
           "variant": "text"
         },
-        "heading": "Window Cleaning Built for Boise Conditions",
         "body": "<p><strong>Hard water.</strong> It is a fact of life across Boise, and it shows on your glass as cloudy mineral spotting that a quick wipe will not shift. It is worst on windows the sprinklers reach, which is most of Southeast Boise and the Bench. We break that buildup down rather than moving it around.</p><p><strong>Foothills dust and fire season.</strong> Out toward the Highlands, Boise Heights and the Central Foothills, windows collect a steady film off the hills, and every fire season lays smoke on top of it. We wash inside and out so the filtered look goes and daylight comes through clean.</p><p><strong>Storefront traffic.</strong> Around The Grove, BoDo and Old Boise, your front glass is the first impression. Street grime, fingerprints and spotting build up fast on a busy entrance. We keep it sharp so customers see a clean business before they reach the door.</p>"
+      }
+    },
+    {
+      "type": "content:rich-text",
+      "theme": "alt",
+      "data": {
+        "eyebrow": {
+          "text": "Window Cleaning · Boise",
+          "variant": "text"
+        },
+        "heading": "Window Cleaning Built for Boise Conditions",
+        "body": "<p>Hard water is a fact of life across Boise, and it shows up on your glass as cloudy mineral spotting that a quick wipe will not touch. This is common on windows hit by sprinklers in neighborhoods like Southeast Boise and the Bench. We use the right approach to break down that mineral buildup instead of just smearing it around.</p><p>Out toward the Highlands, Boise Heights, and the Central Foothills, your windows collect a steady film of dust off the hills, and every fire season adds a layer of wildfire smoke on top of it. We wash both the interior and exterior so that hazy, filtered look is gone and daylight comes through clean.</p><p>Downtown and around The Grove, BoDo, and Old Boise, storefront glass is your first impression. Street grime, fingerprints, and hard water spotting build up quick on high-traffic entrances. We keep your front glass looking sharp so customers see a clean business before they even walk in.</p>"
       }
     },
     {
@@ -244,7 +262,7 @@
       "theme": "primary",
       "data": {
         "heading": "Ready for Clear Windows in Boise?",
-        "subheading": "Get a free, no-obligation quote from an licensed, insured and owner-run local team that knows Boise glass.",
+        "subheading": "Get a free, no-obligation quote from a licensed, insured and owner-run local operation that knows Boise glass.",
         "ctas": [
           {
             "label": "Get My Free Quote",

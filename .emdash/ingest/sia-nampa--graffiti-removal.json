@@ -27,6 +27,23 @@
       }
     },
     {
+      "type": "trust-bar:ratings",
+      "theme": "alt",
+      "data": {
+        "eyebrow": {
+          "text": "Reviews",
+          "variant": "text"
+        },
+        "sources": [
+          {
+            "name": "Monarch Pro Wash",
+            "rating": 5,
+            "count": 3
+          }
+        ]
+      }
+    },
+    {
       "type": "content:rich-text",
       "theme": "alt",
       "data": {
@@ -34,7 +51,7 @@
           "text": "Graffiti Removal · Nampa",
           "variant": "text"
         },
-        "body": "<p>Graffiti is one of those problems that gets worse the longer it sits. A fresh tag on your Nampa building signals to the next person that the wall is fair game, and paint that bakes in the high-desert sun sets harder every day it stays up. Getting it gone quickly protects the look of your property and keeps it from becoming a repeat target.</p><p>Monarch Pro Wash is an licensed, insured and owner-run exterior cleaning company serving Nampa and the Treasure Valley. We remove graffiti from brick, concrete, block, metal, and siding without tearing up the surface underneath. The goal is a wall that looks like nothing ever happened, not a cleaned patch that stands out worse than the tag did.</p>"
+        "body": "<p><strong>Old Nampa brick storefronts.</strong> Graffiti is one of those problems that gets worse the longer it sits. A fresh tag on your Nampa building signals to the next person that the wall is fair game, and paint that bakes in the high-desert sun sets harder every day it stays up. Getting it gone quickly protects the look of your property and keeps it from becoming a repeat target.</p><p><strong>The Caldwell Blvd retail corridor.</strong> Monarch Pro Wash is a licensed, insured and owner-run exterior cleaning company serving Nampa and the Treasure Valley. We remove graffiti from brick, concrete, block, metal, and siding without tearing up the surface underneath. The goal is a wall that looks like nothing ever happened, not a cleaned patch that stands out worse than the tag did.</p>"
       }
     },
     {
@@ -46,7 +63,7 @@
           "variant": "text"
         },
         "heading": "Graffiti Removal Built for Nampa Conditions",
-        "body": "<p><strong>Old Nampa brick storefronts.</strong> Downtown Nampa and the Old Nampa Historic District are full of old brick storefronts, and brick is where a lot of graffiti removal goes wrong. Blast it too hard and you strip the soft outer face of the brick or the mortar joints, leaving permanent damage. Around Library Square and the Nampa Train Depot Museum area, we use gentle, controlled methods and the right removers so the tag lifts and the historic brick stays intact.</p><p><strong>The Caldwell Blvd retail corridor.</strong> The Caldwell Blvd and Karcher Rd retail corridor, along with the redeveloped District 208 center, sees tagging on painted walls, dumpster enclosures, and back-of-house doors. Painted surfaces need a different touch than raw masonry, since the wrong remover can lift your paint along with the tag. We match the method to what you are working with so your finish holds.</p><p><strong>Garrity and the industrial corridor.</strong> Out along Garrity Blvd and the rail and industrial corridor near the sugar, bakery, and dairy plants, we handle larger commercial jobs on block, metal, and roll-up doors. These are working buildings, and we clean around your operation with minimal disruption.</p>"
+        "body": "<p>Downtown Nampa and the Old Nampa Historic District are full of old brick storefronts, and brick is where a lot of graffiti removal goes wrong. Blast it too hard and you strip the soft outer face of the brick or the mortar joints, leaving permanent damage. Around Library Square and the Nampa Train Depot Museum area, we use gentle, controlled methods and the right removers so the tag lifts and the historic brick stays intact.</p><p>The Caldwell Blvd and Karcher Rd retail corridor, along with the redeveloped District 208 center, sees tagging on painted walls, dumpster enclosures, and back-of-house doors. Painted surfaces need a different touch than raw masonry, since the wrong remover can lift your paint along with the tag. We match the method to what you are working with so your finish holds.</p><p>Out along Garrity Blvd and the rail and industrial corridor near the sugar, bakery, and dairy plants, we handle larger commercial jobs on block, metal, and roll-up doors. These are working buildings, and we clean around your operation with minimal disruption.</p>"
       }
     },
     {

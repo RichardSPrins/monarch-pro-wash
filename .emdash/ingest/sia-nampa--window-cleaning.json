@@ -27,6 +27,23 @@
       }
     },
     {
+      "type": "trust-bar:ratings",
+      "theme": "alt",
+      "data": {
+        "eyebrow": {
+          "text": "Reviews",
+          "variant": "text"
+        },
+        "sources": [
+          {
+            "name": "Monarch Pro Wash",
+            "rating": 5,
+            "count": 3
+          }
+        ]
+      }
+    },
+    {
       "type": "content:rich-text",
       "theme": "alt",
       "data": {
@@ -34,7 +51,7 @@
           "text": "Window Cleaning · Nampa",
           "variant": "text"
         },
-        "body": "<p>Windows are the first thing people notice and the last thing most folks get around to. In Nampa the glass takes a beating from every direction. Dust rolls in off the fields and the roads, summer sun bakes it on, and the water here leaves spotting behind when sprinklers or rain dry on the pane. It builds up slow, then one morning you look out and everything has a haze on it.</p><p>Monarch Pro Wash is licensed, insured and owner-run, and built on more than fifteen years in the trades around the Treasure Valley. We clean windows for homes and businesses across Nampa, and we do it the careful way. No rushing, no cutting corners, no leaving streaks behind for you to spot at sunset. You get glass you can actually see through.</p>"
+        "body": "<p><strong>Moderately hard water.</strong> Windows are the first thing people notice and the last thing most folks get around to. In Nampa the glass takes a beating from every direction. Dust rolls in off the fields and the roads, summer sun bakes it on, and the water here leaves spotting behind when sprinklers or rain dry on the pane. It builds up slow, then one morning you look out and everything has a haze on it.</p><p><strong>High-desert air near Lake Lowell.</strong> Monarch Pro Wash is licensed, insured and owner-run, and built on more than fifteen years in the trades around the Treasure Valley. We clean windows for homes and businesses across Nampa, and we do it the careful way. No rushing, no cutting corners, no leaving streaks behind for you to spot at sunset. You get glass you can actually see through.</p>"
       }
     },
     {
@@ -46,7 +63,7 @@
           "variant": "text"
         },
         "heading": "Window Cleaning Built for Nampa Conditions",
-        "body": "<p><strong>Moderately hard water.</strong> Nampa's water is moderately hard, and that shows up on glass. When sprinkler overspray or rain sits on a window and dries in the sun, it can leave mineral spotting that a quick wipe will not touch. We use the right approach to break down that buildup and clear the pane instead of just smearing it around, so the glass looks clean in every light.</p><p><strong>High-desert air near Lake Lowell.</strong> Out in South Nampa near Lake Lowell, and in newer subdivisions like Southern Ridge, Ederra, and Stella's Point, the high-desert air keeps a steady film of dust on the glass. Ag dust and road dust settle on windows between cleanings, especially on the sides that face open ground. We wash the film off, detail the frames and tracks, and leave the whole opening looking sharp, not just the middle of the pane.</p><p><strong>Storefront glass on the retail spine.</strong> Along the Caldwell Boulevard and Karcher Road retail spine, and through Downtown and Old Nampa, storefront glass carries a different load. Foot traffic, hand prints, road grime, and exhaust all land on the front windows customers walk past. We clean big storefront glass and entry doors so your business reads as open and cared for from the sidewalk.</p>"
+        "body": "<p>Nampa's water is moderately hard, and that shows up on glass. When sprinkler overspray or rain sits on a window and dries in the sun, it can leave mineral spotting that a quick wipe will not touch. We use the right approach to break down that buildup and clear the pane instead of just smearing it around, so the glass looks clean in every light.</p><p>Out in South Nampa near Lake Lowell, and in newer subdivisions like Southern Ridge, Ederra, and Stella's Point, the high-desert air keeps a steady film of dust on the glass. Ag dust and road dust settle on windows between cleanings, especially on the sides that face open ground. We wash the film off, detail the frames and tracks, and leave the whole opening looking sharp, not just the middle of the pane.</p><p>Along the Caldwell Boulevard and Karcher Road retail spine, and through Downtown and Old Nampa, storefront glass carries a different load. Foot traffic, hand prints, road grime, and exhaust all land on the front windows customers walk past. We clean big storefront glass and entry doors so your business reads as open and cared for from the sidewalk.</p>"
       }
     },
     {

@@ -27,6 +27,23 @@
       }
     },
     {
+      "type": "trust-bar:ratings",
+      "theme": "alt",
+      "data": {
+        "eyebrow": {
+          "text": "Reviews",
+          "variant": "text"
+        },
+        "sources": [
+          {
+            "name": "Monarch Pro Wash",
+            "rating": 5,
+            "count": 3
+          }
+        ]
+      }
+    },
+    {
       "type": "content:rich-text",
       "theme": "alt",
       "data": {
@@ -34,7 +51,7 @@
           "text": "Post-Construction Exterior Cleanup · Boise",
           "variant": "text"
         },
-        "body": "<p>A new house looks finished long before it is actually clean. Once the crews pull out of a Harris Ranch or Surprise Valley lot, you are left with concrete dust on the driveway, drywall haze on the windows, and paint flecks on the siding. That film does not rinse off with a garden hose, and it can hide the quality of the work underneath.</p><p>Monarch Pro Wash is owner-run and licensed and insured, with more than fifteen years in the trades. We handle final cleanups on new construction in Barber Valley, newer Southeast Boise near Micron, and the newer pockets stretching toward Southwest Boise. You deal with the owner start to finish, not a rotating crew.</p>"
+        "body": "<p><strong>River-adjacent lots collect grit fast.</strong> New builds in Harris Ranch and Barber Valley sit right in the Greenbelt corridor. We work the whole envelope in order, roofline down to driveway, so dust does not settle back onto surfaces we have already cleaned.</p><p><strong>Jobsite dust is relentless out on the edges.</strong> Boise is high desert, and out toward the newer Southeast and Southwest pockets that grit works into window tracks, hardscape and siding seams. We use the right pressure per surface to lift it without scarring new stucco, fresh concrete or factory finishes.</p><p><strong>Mortar and overspray need more than a rinse.</strong> On new brick, stone and glass around Surprise Valley we treat and release those deposits with methods matched to the material. The goal is a true move-in clean, not a hose-down that shows streaks in the first morning light.</p>"
       }
     },
     {
@@ -46,7 +63,7 @@
           "variant": "text"
         },
         "heading": "Post-Construction Exterior Cleanup Built for Boise Conditions",
-        "body": "<p><strong>River-adjacent lots collect grit fast.</strong> New builds in Harris Ranch and Barber Valley sit right in the Greenbelt corridor. We work the whole envelope in order, roofline down to driveway, so dust does not settle back onto surfaces we have already cleaned.</p><p><strong>Jobsite dust is relentless out on the edges.</strong> Boise is high desert, and out toward the newer Southeast and Southwest pockets that grit works into window tracks, hardscape and siding seams. We use the right pressure per surface to lift it without scarring new stucco, fresh concrete or factory finishes.</p><p><strong>Mortar and overspray need more than a rinse.</strong> On new brick, stone and glass around Surprise Valley we treat and release those deposits with methods matched to the material. The goal is a true move-in clean, not a hose-down that shows streaks in the first morning light.</p>"
+        "body": "<p>New builds in Harris Ranch and Barber Valley sit right in the Greenbelt corridor, and river-adjacent lots collect fine grit fast. We work the whole envelope in order, from the roofline down to the driveway, so dust does not settle back onto surfaces you already cleaned.</p><p>Boise sits in high desert, and jobsite dust is relentless out toward the newer Southeast and Southwest edges. That grit works into window tracks, hardscape, and siding seams. We use the right pressure for each surface so we lift construction residue without scarring new stucco, fresh concrete, or factory finishes.</p><p>Mortar smears and overspray need more than a rinse. On new brick, stone, and glass around Surprise Valley, we treat and release those deposits with methods matched to the material. The goal is a true move-in clean, not a quick hose down that leaves streaks in the first morning light.</p>"
       }
     },
     {
@@ -241,7 +258,7 @@
       "theme": "primary",
       "data": {
         "heading": "Ready to Hand Off a Clean Home?",
-        "subheading": "Get your new Boise build show ready with an licensed, insured and owner-run operation.",
+        "subheading": "Get your new Boise build show ready with a licensed, insured and owner-run operation.",
         "ctas": [
           {
             "label": "Get My Free Quote",

@@ -27,6 +27,23 @@
       }
     },
     {
+      "type": "trust-bar:ratings",
+      "theme": "alt",
+      "data": {
+        "eyebrow": {
+          "text": "Reviews",
+          "variant": "text"
+        },
+        "sources": [
+          {
+            "name": "Monarch Pro Wash",
+            "rating": 5,
+            "count": 3
+          }
+        ]
+      }
+    },
+    {
       "type": "content:rich-text",
       "theme": "alt",
       "data": {
@@ -34,7 +51,7 @@
           "text": "Concrete Sealing & Staining · Nampa",
           "variant": "text"
         },
-        "body": "<p>Concrete looks tough, but it is porous, and in Nampa that is a problem. Water works into it, freezes, and pushes the surface apart over the winter, while summer UV and oil, rust, and dirt leave their mark year-round. Sealing closes off those pores, and staining adds color that reads as finished rather than plain gray slab.</p><p>Monarch Pro Wash is an licensed, insured and owner-run exterior cleaning company serving Nampa and the Treasure Valley. We seal and stain concrete driveways, patios, and walkways so they hold up to the local climate and keep looking good. If your concrete is new, sealing it early is one of the best things you can do for it.</p>"
+        "body": "<p>Concrete looks tough, but it is porous, and in Nampa that is a problem. Water works into it, freezes, and pushes the surface apart over the winter, while summer UV and oil, rust, and dirt leave their mark year-round. Sealing closes off those pores, and staining adds color that reads as finished rather than plain gray slab.</p><p>Monarch Pro Wash is a licensed, insured and owner-run exterior cleaning company serving Nampa and the Treasure Valley. We seal and stain concrete driveways, patios, and walkways so they hold up to the local climate and keep looking good. If your concrete is new, sealing it early is one of the best things you can do for it.</p>"
       }
     },
     {
@@ -46,7 +63,7 @@
           "variant": "text"
         },
         "heading": "Concrete Sealing & Staining Built for Nampa Conditions",
-        "body": "<p><strong>Freeze-thaw is the big one here.</strong> Nampa winters cycle above and below freezing, and every time water trapped in unsealed concrete freezes, it expands and works at the surface. That is how you get spalling, flaking, and cracks. Sealing keeps water out in the first place, which is why we push homeowners to seal newer driveways and patios before the damage starts.</p><p>South Nampa is full of new construction toward Lake Lowell, in subdivisions like Southern Ridge, Meadowcrest, and Ederra, where driveways and patios are fresh and worth protecting early. Getting a seal down while the concrete is young gives it the best shot at a long, clean life.</p><p><strong>Staining is the other side of this.</strong> Decorative stain turns a plain slab into a patio or entry with real color and depth, and paired with a quality sealer, that color is protected from the UV and stains that would otherwise wash it out.</p>"
+        "body": "<p>Freeze-thaw is the big one here. Nampa winters cycle above and below freezing, and every time water trapped in unsealed concrete freezes, it expands and works at the surface. That is how you get spalling, flaking, and cracks. Sealing keeps water out in the first place, which is why we push homeowners to seal newer driveways and patios before the damage starts.</p><p>South Nampa is full of new construction toward Lake Lowell, in subdivisions like Southern Ridge, Meadowcrest, and Ederra, where driveways and patios are fresh and worth protecting early. Getting a seal down while the concrete is young gives it the best shot at a long, clean life.</p><p>Staining is the other side of this. Decorative stain turns a plain slab into a patio or entry with real color and depth, and paired with a quality sealer, that color is protected from the UV and stains that would otherwise wash it out.</p>"
       }
     },
     {

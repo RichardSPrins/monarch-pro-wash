@@ -27,13 +27,20 @@
       }
     },
     {
-      "type": "content:rich-text",
+      "type": "trust-bar:ratings",
       "theme": "alt",
       "data": {
         "eyebrow": {
-          "text": "Pressure Washing · Meridian",
+          "text": "Reviews",
           "variant": "text"
         },
+        "sources": [
+          {
+            "name": "Monarch Pro Wash",
+            "rating": 5,
+            "count": 3
+          }
+        ],
         "body": "<p>Your driveway is the first thing visitors see, and in Meridian it is fighting a losing battle. Dust blows in off the valley all summer. Sprinkler runoff dries into chalky mineral lines along the edges. Oil and tire marks sink in and stay.</p><p>Leave it long enough and that gray film stops being dirt and becomes the color of the slab. Concrete that is five years old starts reading as fifteen.</p><p>A proper wash pulls it back out. You get an even surface, corner to corner, that looks close to the day it was poured.</p><p>Monarch is owner-run and insured. The person who quotes your driveway is the person who cleans it, and that does not change between the estimate and the job.</p>"
       }
     },
@@ -45,8 +52,20 @@
           "text": "Pressure Washing · Meridian",
           "variant": "text"
         },
-        "heading": "What Meridian Does to Your Concrete",
-        "body": "<p>Two things here are harder on flatwork than most people expect.</p><p><strong>Hard water.</strong> Meridian's water is among the hardest in the Treasure Valley. Sprinklers hit the driveway every morning, that mineral-heavy water dries, and it leaves chalky white staining along the edges and low spots. Rinsing does nothing to it. We treat those areas directly so the concrete comes back to its real color.</p><p><strong>Dust and freeze-thaw.</strong> High-desert dust settles into the surface all summer. Winter freeze and thaw then works it deeper into the pores. By spring it is not sitting on the slab any more, it is in it.</p><p>Most of the flatwork we clean here is in newer neighborhoods like Paramount, Bridgetower and Century Farm, where the slab is only a few years old. That changes the job. We match pressure and technique to the age of the concrete, so you get a deep clean without etching or streaking, and we work the surface evenly so you are not left with clean lanes next to dirty borders.</p>"
+        "body": "<p>Two things here are harder on flatwork than most people expect.</p><p><strong>Hard water.</strong> Meridian's water is among the hardest in the Treasure Valley. Sprinklers hit the driveway every morning, that mineral-heavy water dries, and it leaves chalky white staining along the edges and low spots. Rinsing does nothing to it. We treat those areas directly so the concrete comes back to its real color.</p><p><strong>Dust and freeze-thaw.</strong> High-desert dust settles into the surface all summer. Winter freeze and thaw then works it deeper into the pores. By spring it is not sitting on the slab any more, it is in it.</p><p>Most of the flatwork we clean here is in newer neighborhoods like Paramount, Bridgetower and Century Farm, where the slab is only a few years old. That changes the job. We match pressure and technique to the age of the concrete, so you get a deep clean without etching or streaking, and we work the surface evenly so you are not left with clean lanes next to dirty borders.</p>",
+        "heading": "What Meridian Does to Your Concrete"
+      }
+    },
+    {
+      "type": "content:rich-text",
+      "theme": "alt",
+      "data": {
+        "eyebrow": {
+          "text": "Pressure Washing · Meridian",
+          "variant": "text"
+        },
+        "heading": "Pressure Washing Built for Meridian Conditions",
+        "body": "<p>A lot of the driveways and patios we clean sit in newer North and South Meridian neighborhoods like Paramount, Bridgetower, and Century Farm. That concrete is often only a few years old, and the goal is to clean it hard without chewing up the surface. We match our pressure and technique to the slab so you get a deep clean without etching or streaking.</p><p>Meridian has hard water, among the hardest in the Treasure Valley. When sprinklers hit a driveway or a walkway every morning, that mineral-heavy water dries and leaves chalky white staining along the edges and low spots. We treat those areas and rinse them out instead of just blasting past them, so the concrete comes back closer to its real color.</p><p>Then there is the weather. High-desert dust settles into the surface all summer, and the freeze-thaw cycle every winter works grime deeper into the pores of the concrete. We clean the full surface evenly, corner to corner, so you do not end up with clean lanes and dirty borders. If you want the finish to last, we can seal the concrete after it dries.</p>"
       }
     },
     {

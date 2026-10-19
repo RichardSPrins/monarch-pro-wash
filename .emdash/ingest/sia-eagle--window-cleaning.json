@@ -27,6 +27,23 @@
       }
     },
     {
+      "type": "trust-bar:ratings",
+      "theme": "alt",
+      "data": {
+        "eyebrow": {
+          "text": "Reviews",
+          "variant": "text"
+        },
+        "sources": [
+          {
+            "name": "Monarch Pro Wash",
+            "rating": 5,
+            "count": 3
+          }
+        ]
+      }
+    },
+    {
       "type": "content:rich-text",
       "theme": "alt",
       "data": {
@@ -34,7 +51,7 @@
           "text": "Window Cleaning · Eagle",
           "variant": "text"
         },
-        "body": "<p>Eagle homes are built around their windows. Whether you are looking out over the valley from the Floating Feather Road foothills or watching the greenbelt from a place near Two Rivers, the glass is a big part of why you live where you do. When it clouds over with mineral spotting and dust film, you notice it every day.</p><p>Monarch Pro Wash is licensed, insured and owner-run, and backed by more than fifteen years in the trades. We treat Eagle glass the way we would treat our own, working carefully around estate windows, screens, and landscaping. You get clear glass, clean tracks, and someone who shows up when they say they will.</p>"
+        "body": "<p><strong>Eagle homes are built around their windows.</strong> Whether you are looking out over the valley from the Floating Feather Road foothills or watching the greenbelt from a place near Two Rivers, the glass is a big part of why you live where you do. When it clouds over with mineral spotting and dust film, you notice it every day.</p><p>Monarch Pro Wash is licensed, insured and owner-run, and backed by more than fifteen years in the trades. We treat Eagle glass the way we would treat our own, working carefully around estate windows, screens, and landscaping. You get clear glass, clean tracks, and someone who shows up when they say they will.</p>"
       }
     },
     {
@@ -46,7 +63,7 @@
           "variant": "text"
         },
         "heading": "Window Cleaning Built for Eagle Conditions",
-        "body": "<p>Eagle runs hard water, and it shows up on glass faster than most people expect. Homes in the foothills off Beacon Light Road and places on private wells tend to run even harder, so sprinkler overspray and runoff leave stubborn mineral spotting on the lower panes. We use methods made for that kind of buildup instead of just wiping and hoping, so the glass actually comes clear rather than smearing.</p><p>Out in the estate neighborhoods like BanBury, Legacy, and Wedgewood Estates, the homes carry a lot of glass. Big picture windows, two-story entries, sunrooms, and outdoor-living glass all add up. We plan each visit around the full count so nothing gets skipped, and we work the interior and exterior when you want both done in one trip.</p><p><strong>Downtown, the conditions change again.</strong> Old Town storefronts along State Street and Eagle Road pick up street dust, fingerprints, and restaurant grime near spots like Bardenay and Rembrandt's. High-desert wind and traffic keep that glass working hard, so we clean frontage in a way that holds up for your customers walking past on a Saturday Market morning.</p>"
+        "body": "<p>Eagle runs hard water, and it shows up on glass faster than most people expect. Homes in the foothills off Beacon Light Road and places on private wells tend to run even harder, so sprinkler overspray and runoff leave stubborn mineral spotting on the lower panes. We use methods made for that kind of buildup instead of just wiping and hoping, so the glass actually comes clear rather than smearing.</p><p>Out in the estate neighborhoods like BanBury, Legacy, and Wedgewood Estates, the homes carry a lot of glass. Big picture windows, two-story entries, sunrooms, and outdoor-living glass all add up. We plan each visit around the full count so nothing gets skipped, and we work the interior and exterior when you want both done in one trip.</p><p>Downtown, the conditions change again. Old Town storefronts along State Street and Eagle Road pick up street dust, fingerprints, and restaurant grime near spots like Bardenay and Rembrandt's. High-desert wind and traffic keep that glass working hard, so we clean frontage in a way that holds up for your customers walking past on a Saturday Market morning.</p>"
       }
     },
     {

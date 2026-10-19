@@ -27,6 +27,23 @@
       }
     },
     {
+      "type": "trust-bar:ratings",
+      "theme": "alt",
+      "data": {
+        "eyebrow": {
+          "text": "Reviews",
+          "variant": "text"
+        },
+        "sources": [
+          {
+            "name": "Monarch Pro Wash",
+            "rating": 5,
+            "count": 3
+          }
+        ]
+      }
+    },
+    {
       "type": "content:rich-text",
       "theme": "alt",
       "data": {
@@ -34,7 +51,7 @@
           "text": "Gutter Cleaning · Boise",
           "variant": "text"
         },
-        "body": "<p>Clogged gutters do not stay a small problem for long. When leaves and debris pack the channels, water spills over the edge, runs down your siding, and pools against the foundation. In Boise, that overflow freezes and thaws through winter, which makes the damage worse. Clean gutters send water away from your home the way they are meant to.</p><p>Monarch Pro Wash is licensed, insured and owner-run, with over fifteen years in the trades. We clear gutters and downspouts across the city, from the mature-tree streets of the North End and Hyde Park to the Bench and Southeast Boise. You get gutters that flow, an exterior that looks brighter, and a roofline and foundation that stay protected.</p>"
+        "body": "<p><strong>The North End and Hyde Park are the classic case.</strong> Decades-old shade trees line those streets and drop enough leaf litter every fall to pack a gutter solid. Once the channels and downspouts block, water has nowhere to go but over the side. We clear the debris by hand and flush the downspouts until the system drains again.</p><p><strong>Winter makes it worse.</strong> Water trapped in a clogged gutter freezes, thaws and freezes again. That cycle strains the gutters, backs water up under the roof edge and works against your fascia. Clearing before winter gives the water a path out instead of letting it sit.</p><p><strong>Then there is your foundation.</strong> When gutters overflow, water dumps straight down beside the house and pools against the foundation. Downspouts that actually carry water away are the first line of defense. We make sure yours are open and moving it clear of the house.</p>"
       }
     },
     {
@@ -46,7 +63,7 @@
           "variant": "text"
         },
         "heading": "Gutter Cleaning Built for Boise Conditions",
-        "body": "<p><strong>The North End and Hyde Park are the classic case.</strong> Decades-old shade trees line those streets and drop enough leaf litter every fall to pack a gutter solid. Once the channels and downspouts block, water has nowhere to go but over the side. We clear the debris by hand and flush the downspouts until the system drains again.</p><p><strong>Winter makes it worse.</strong> Water trapped in a clogged gutter freezes, thaws and freezes again. That cycle strains the gutters, backs water up under the roof edge and works against your fascia. Clearing before winter gives the water a path out instead of letting it sit.</p><p><strong>Then there is your foundation.</strong> When gutters overflow, water dumps straight down beside the house and pools against the foundation. Downspouts that actually carry water away are the first line of defense. We make sure yours are open and moving it clear of the house.</p>"
+        "body": "<p>The North End and Hyde Park are the classic case. Decades-old shade trees line those streets, and every fall they drop enough leaf litter to pack a gutter solid. Once the channels and downspouts clog, water has nowhere to go but over the side. We clear the debris out by hand and flush the downspouts so the whole system drains again.</p><p>Boise winters add a second problem. Water trapped in a clogged gutter freezes, thaws, and freezes again, and that freeze-thaw cycle strains the gutters, backs water up under the roof edge, and works against your fascia. Clearing the gutters before winter gives that water a clean path out instead of letting it sit and freeze.</p><p>There is a foundation angle too, and it applies all over the city. When gutters overflow, water dumps straight down beside the house and pools against the foundation. Downspouts that actually carry water away are your first defense. We make sure yours are open and moving water clear of the home.</p>"
       }
     },
     {

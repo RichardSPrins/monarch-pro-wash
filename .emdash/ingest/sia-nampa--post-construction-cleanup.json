@@ -27,6 +27,23 @@
       }
     },
     {
+      "type": "trust-bar:ratings",
+      "theme": "alt",
+      "data": {
+        "eyebrow": {
+          "text": "Reviews",
+          "variant": "text"
+        },
+        "sources": [
+          {
+            "name": "Monarch Pro Wash",
+            "rating": 5,
+            "count": 3
+          }
+        ]
+      }
+    },
+    {
       "type": "content:rich-text",
       "theme": "alt",
       "data": {
@@ -34,7 +51,7 @@
           "text": "Post-Construction Exterior Cleanup · Nampa",
           "variant": "text"
         },
-        "body": "<p>A new home or building looks finished long before it is actually clean. Once the crews clear out, what is left behind is mortar smears on the driveway, overspray on the glass, drywall dust on the siding, and the fine grit that settles over everything on a construction site. That last layer of cleanup is what makes a build ready to photograph, walk, and hand over.</p><p>Monarch Pro Wash is an licensed, insured and owner-run exterior cleaning company serving Nampa and the Treasure Valley. We handle the final exterior cleanup on new construction so the concrete, glass, and siding show the way they are supposed to. Builders, contractors, and owners all call us for the same reason: the last ten percent is the part everyone sees.</p>"
+        "body": "<p><strong>South Nampa is the busiest.</strong> A new home or building looks finished long before it is actually clean. Once the crews clear out, what is left behind is mortar smears on the driveway, overspray on the glass, drywall dust on the siding, and the fine grit that settles over everything on a construction site. That last layer of cleanup is what makes a build ready to photograph, walk, and hand over.</p><p><strong>North Nampa is filling in.</strong> Monarch Pro Wash is a licensed, insured and owner-run exterior cleaning company serving Nampa and the Treasure Valley. We handle the final exterior cleanup on new construction so the concrete, glass, and siding show the way they are supposed to. Builders, contractors, and owners all call us for the same reason: the last ten percent is the part everyone sees.</p>"
       }
     },
     {
@@ -46,7 +63,7 @@
           "variant": "text"
         },
         "heading": "Post-Construction Cleanup Built for Nampa Conditions",
-        "body": "<p><strong>South Nampa is the busiest.</strong> South Nampa is where a lot of the new building is happening right now, in subdivisions like Southern Ridge, Lighthouse Estates, and Ederra out toward Lake Lowell. These homes go up fast, and the fresh concrete flatwork picks up mortar droppings, paint overspray, and sealant smears during the final trades. We clean it off carefully so we do not damage brand-new surfaces that have not cured a season yet.</p><p><strong>North Nampa is filling in.</strong> North Nampa is filling in too, with newer subdivisions like North Pointe, Park Ridge, and Ridgevue Estates. On these builds, the big issue is dust. Between the ag dust that blows across the valley and the grit thrown off by ongoing site work, siding and windows end up coated. We wash it down and detail the glass so the exterior reads as move-in ready.</p><p><strong>Farmland dust does not stop.</strong> Because so much of this construction sits near open ground and farmland, the dust does not stop when the crews leave. We time the final cleanup close to your handoff so it stays clean through the walkthrough.</p>"
+        "body": "<p>South Nampa is where a lot of the new building is happening right now, in subdivisions like Southern Ridge, Lighthouse Estates, and Ederra out toward Lake Lowell. These homes go up fast, and the fresh concrete flatwork picks up mortar droppings, paint overspray, and sealant smears during the final trades. We clean it off carefully so we do not damage brand-new surfaces that have not cured a season yet.</p><p>North Nampa is filling in too, with newer subdivisions like North Pointe, Park Ridge, and Ridgevue Estates. On these builds, the big issue is dust. Between the ag dust that blows across the valley and the grit thrown off by ongoing site work, siding and windows end up coated. We wash it down and detail the glass so the exterior reads as move-in ready.</p><p>Because so much of this construction sits near open ground and farmland, the dust does not stop when the crews leave. We time the final cleanup close to your handoff so it stays clean through the walkthrough.</p>"
       }
     },
     {

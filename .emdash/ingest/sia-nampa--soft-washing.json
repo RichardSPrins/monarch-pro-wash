@@ -27,6 +27,23 @@
       }
     },
     {
+      "type": "trust-bar:ratings",
+      "theme": "alt",
+      "data": {
+        "eyebrow": {
+          "text": "Reviews",
+          "variant": "text"
+        },
+        "sources": [
+          {
+            "name": "Monarch Pro Wash",
+            "rating": 5,
+            "count": 3
+          }
+        ]
+      }
+    },
+    {
       "type": "content:rich-text",
       "theme": "alt",
       "data": {
@@ -34,7 +51,7 @@
           "text": "Soft Washing · Nampa",
           "variant": "text"
         },
-        "body": "<p>Soft washing is one of the most important tools we use, because a lot of what makes your home dirty cannot handle high pressure at all.</p><p>Soft washing uses low pressure and the right cleaning solutions to remove algae, mildew, and grime from siding, roofs, and delicate surfaces. It cleans gently and treats the growth at its source, so your home stays cleaner longer. On many Nampa homes, it is the only safe way to wash.</p><p>Monarch Pro Wash is an licensed, insured and owner-run exterior cleaning company serving Nampa and the Treasure Valley, backed by more than 15 years in the trades.</p>"
+        "body": "<p><strong>Century-old siding in Old Nampa.</strong> Soft washing is one of the most important tools we use, because a lot of what makes your home dirty cannot handle high pressure at all.</p><p><strong>Shade keeps siding damp.</strong> Soft washing uses low pressure and the right cleaning solutions to remove algae, mildew, and grime from siding, roofs, and delicate surfaces. It cleans gently and treats the growth at its source, so your home stays cleaner longer. On many Nampa homes, it is the only safe way to wash.</p><p><strong>Dust and hard water in South Nampa.</strong> Monarch Pro Wash is a licensed, insured and owner-run exterior cleaning company serving Nampa and the Treasure Valley, backed by more than 15 years in the trades.</p>"
       }
     },
     {
@@ -46,7 +63,7 @@
           "variant": "text"
         },
         "heading": "Soft Washing Built for Nampa Conditions",
-        "body": "<p><strong>Century-old siding in Old Nampa.</strong> The Old Nampa Neighborhood Historic District is full of Craftsman, Bungalow, and Queen Anne homes built between 1920 and 1940. Those older surfaces, with their wood siding and aged masonry, must be soft-washed only. High pressure would tear into them. We use low pressure and gentle solutions to clean these homes safely and preserve the character that makes the district special.</p><p><strong>Shade keeps siding damp.</strong> Mature trees shade much of Old Nampa, and that steady shade keeps siding damp, which invites algae and mildew. Soft washing does more than rinse the surface. It kills the growth at the root, so the green and black streaks do not come racing back within weeks.</p><p><strong>Dust and hard water in South Nampa.</strong> Newer South Nampa subdivisions have their own reason for soft washing. Homes near the ag edge collect dust film, and Nampa's moderately hard water can leave mineral spotting on siding near sprinklers. We soft wash that buildup off vinyl, fiber cement, and stucco without forcing water behind the panels.</p>"
+        "body": "<p>The Old Nampa Neighborhood Historic District is full of Craftsman, Bungalow, and Queen Anne homes built between 1920 and 1940. Those older surfaces, with their wood siding and aged masonry, must be soft-washed only. High pressure would tear into them. We use low pressure and gentle solutions to clean these homes safely and preserve the character that makes the district special.</p><p>Mature trees shade much of Old Nampa, and that steady shade keeps siding damp, which invites algae and mildew. Soft washing does more than rinse the surface. It kills the growth at the root, so the green and black streaks do not come racing back within weeks.</p><p>Newer South Nampa subdivisions have their own reason for soft washing. Homes near the ag edge collect dust film, and Nampa's moderately hard water can leave mineral spotting on siding near sprinklers. We soft wash that buildup off vinyl, fiber cement, and stucco without forcing water behind the panels.</p>"
       }
     },
     {

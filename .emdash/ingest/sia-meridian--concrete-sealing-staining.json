@@ -27,13 +27,20 @@
       }
     },
     {
-      "type": "content:rich-text",
+      "type": "trust-bar:ratings",
       "theme": "alt",
       "data": {
         "eyebrow": {
-          "text": "Concrete Sealing & Staining · Meridian",
+          "text": "Reviews",
           "variant": "text"
         },
+        "sources": [
+          {
+            "name": "Monarch Pro Wash",
+            "rating": 5,
+            "count": 3
+          }
+        ],
         "body": "<p>Most Meridian driveways are young. That is exactly why sealing them matters now rather than in ten years.</p><p>Bare concrete is porous. It drinks up oil and rust, holds dust deep in the surface, and takes the full force of freeze-thaw every winter as water works in and expands. By the time a slab is visibly spalling, sealing will not undo it.</p><p>Sealing closes the pores before any of that starts. Staining goes further, adding lasting color that turns a blank gray slab into a finished surface.</p><p>Monarch is owner-run and insured, and we seal and stain driveways and patios across Meridian. You deal with the owner from quote to finish.</p>"
       }
     },
@@ -45,8 +52,19 @@
           "text": "Concrete Sealing & Staining · Meridian",
           "variant": "text"
         },
+        "body": "<p><strong>A lot of the concrete in Meridian is new.</strong> With so much housing built since 2000 and fresh subdivisions still going in south of I-84, homeowners here have driveways and patios that are worth protecting before the weather gets to them. Sealing early is one of the smartest things you can do for new concrete.</p><p><strong>Freeze-thaw does the real damage.</strong> Monarch Pro Wash is licensed, insured and owner-run, with over 15 years sealing and staining concrete around Meridian and the Treasure Valley. Whether you want a clear protective seal or decorative color that lifts your outdoor space, we handle the prep and the application so the finish lasts.</p>"
+      }
+    },
+    {
+      "type": "content:rich-text",
+      "theme": "alt",
+      "data": {
+        "eyebrow": {
+          "text": "Concrete Sealing & Staining · Meridian",
+          "variant": "text"
+        },
         "heading": "Concrete Sealing & Staining Built for Meridian Conditions",
-        "body": "<p><strong>Newer concrete, worth protecting early.</strong> Much of Meridian's housing is newer, built since 2000, and the driveways and patios in neighborhoods like Century Farm, Movado, and Paramount are prime candidates for early sealing. Sealing new concrete before it takes on stains or damage locks in that fresh look and saves you trouble down the road.</p><p><strong>Freeze-thaw does the real damage.</strong> The valley's freeze-thaw cycles are hard on unsealed concrete. Water works into the surface, freezes, and pushes it apart, which leads to spalling and cracks over the years. A good seal helps the slab shed water so those cycles do less damage to your driveway or patio.</p><p><strong>Hard water and high-desert UV.</strong> Meridian also has hard water, among the hardest in the Treasure Valley, and strong high-desert UV. Both leave their mark on bare concrete, from mineral film near sprinklers to fading on open patios. Sealing adds a protective layer, and staining gives you lasting decorative color that holds up to the sun.</p>"
+        "body": "<p>Much of Meridian's housing is newer, built since 2000, and the driveways and patios in neighborhoods like Century Farm, Movado, and Paramount are prime candidates for early sealing. Sealing new concrete before it takes on stains or damage locks in that fresh look and saves you trouble down the road.</p><p>The valley's freeze-thaw cycles are hard on unsealed concrete. Water works into the surface, freezes, and pushes it apart, which leads to spalling and cracks over the years. A good seal helps the slab shed water so those cycles do less damage to your driveway or patio.</p><p>Meridian also has hard water, among the hardest in the Treasure Valley, and strong high-desert UV. Both leave their mark on bare concrete, from mineral film near sprinklers to fading on open patios. Sealing adds a protective layer, and staining gives you lasting decorative color that holds up to the sun.</p>"
       }
     },
     {

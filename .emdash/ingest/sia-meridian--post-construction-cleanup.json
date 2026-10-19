@@ -27,13 +27,20 @@
       }
     },
     {
-      "type": "content:rich-text",
+      "type": "trust-bar:ratings",
       "theme": "alt",
       "data": {
         "eyebrow": {
-          "text": "Post-Construction Exterior Cleanup · Meridian",
+          "text": "Reviews",
           "variant": "text"
         },
+        "sources": [
+          {
+            "name": "Monarch Pro Wash",
+            "rating": 5,
+            "count": 3
+          }
+        ],
         "body": "<p>A finished build does not look finished until the exterior is clean. Concrete dust sits on the driveway, drywall haze films the windows, and mortar and paint flecks cling to brick and siding.</p><p>A buyer or an owner walking up sees that before they see any of the work that went into the place. It is the cheapest possible thing to get wrong at the end of an expensive project.</p><p>We work the whole envelope in order, roofline down to driveway, so nothing we have cleaned gets dusted again. Real pressure on concrete, a gentle soft wash on anything newly installed.</p><p>Monarch is owner-run and insured, and we handle final cleanups across Meridian's new construction. You deal with the owner start to finish.</p>"
       }
     },
@@ -45,8 +52,19 @@
           "text": "Post-Construction Exterior Cleanup · Meridian",
           "variant": "text"
         },
+        "body": "<p><strong>South Meridian is the active frontier.</strong> Meridian is one of the fastest-growing spots in the Treasure Valley, and you can see it in the new construction moving south of I-84 and filling in the master-planned neighborhoods up north. A finished home looks great from the curb, but up close there is almost always a layer of construction mess that framing crews and finishers leave behind.</p><p><strong>That is where we come in.</strong> Monarch Pro Wash is licensed, insured and owner-run, and backed by over 15 years in the trades. We handle the final cleanup that gets a brand-new home or building from \"done\" to genuinely show-ready, whether you are a homeowner taking possession or a builder handing keys over.</p>"
+      }
+    },
+    {
+      "type": "content:rich-text",
+      "theme": "alt",
+      "data": {
+        "eyebrow": {
+          "text": "Post-Construction Exterior Cleanup · Meridian",
+          "variant": "text"
+        },
         "heading": "Post-Construction Exterior Cleanup Built for Meridian Conditions",
-        "body": "<p><strong>South Meridian is the active frontier.</strong> South Meridian is the active construction frontier right now, with subdivisions like Century Farm, Movado, Sky Mesa, and Tuscany still filling in. New builds down here collect mortar splatter on foundations, thinset haze on patios, and fine drywall dust that settles into every corner. We work methodically around fresh concrete and landscaping so nothing gets damaged while the debris comes off.</p><p><strong>North Meridian HOAs expect it perfect on day one.</strong> Up in North Meridian, HOA neighborhoods like Paramount and Bellano Creek hold homes to an appearance standard from day one. That means overspray on windows, stucco dust on siding, and paint flecks on walkways all need to go before the community notices. We clean glass, wipe down siding, and rinse hardscapes so a new home blends right in with its neighbors.</p><p><strong>High-desert dust bakes on.</strong> Meridian sits in high-desert country, so wind carries jobsite dust everywhere and it bakes onto surfaces under strong UV. We adjust our approach to lift that baked-on grime without blasting fresh materials, using the right pressure and cleaning method for each surface on the home.</p>"
+        "body": "<p>South Meridian is the active construction frontier right now, with subdivisions like Century Farm, Movado, Sky Mesa, and Tuscany still filling in. New builds down here collect mortar splatter on foundations, thinset haze on patios, and fine drywall dust that settles into every corner. We work methodically around fresh concrete and landscaping so nothing gets damaged while the debris comes off.</p><p>Up in North Meridian, HOA neighborhoods like Paramount and Bellano Creek hold homes to an appearance standard from day one. That means overspray on windows, stucco dust on siding, and paint flecks on walkways all need to go before the community notices. We clean glass, wipe down siding, and rinse hardscapes so a new home blends right in with its neighbors.</p><p>Meridian sits in high-desert country, so wind carries jobsite dust everywhere and it bakes onto surfaces under strong UV. We adjust our approach to lift that baked-on grime without blasting fresh materials, using the right pressure and cleaning method for each surface on the home.</p>"
       }
     },
     {

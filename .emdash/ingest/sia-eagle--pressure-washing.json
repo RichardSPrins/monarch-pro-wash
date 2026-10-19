@@ -27,6 +27,23 @@
       }
     },
     {
+      "type": "trust-bar:ratings",
+      "theme": "alt",
+      "data": {
+        "eyebrow": {
+          "text": "Reviews",
+          "variant": "text"
+        },
+        "sources": [
+          {
+            "name": "Monarch Pro Wash",
+            "rating": 5,
+            "count": 3
+          }
+        ]
+      }
+    },
+    {
       "type": "content:rich-text",
       "theme": "alt",
       "data": {
@@ -34,7 +51,7 @@
           "text": "Pressure Washing · Eagle",
           "variant": "text"
         },
-        "body": "<p>Eagle homes tend to sit on bigger lots with more concrete to keep up. Long driveways off Floating Feather Road, poured pool decks in Two Rivers, paver patios in BanBury, and stamped walkways through Eagle Ranch all collect grime you stop noticing until it is deep in the surface. Monarch Pro Wash is licensed, insured and owner-run, with more than 15 years in the trades behind the work.</p><p>You get one person who shows up, looks at your actual surfaces, and cleans them the way each one needs. Concrete, pavers, brick, and natural stone do not all respond the same, and Eagle has plenty of every kind. The goal is a clean that looks even and lasts, not a quick pass that leaves wand marks and missed edges.</p>"
+        "body": "<p><strong>Gravel and ag dust on the north end.</strong> Eagle homes tend to sit on bigger lots with more concrete to keep up. Long driveways off Floating Feather Road, poured pool decks in Two Rivers, paver patios in BanBury, and stamped walkways through Eagle Ranch all collect grime you stop noticing until it is deep in the surface. Monarch Pro Wash is licensed, insured and owner-run, with more than 15 years in the trades behind the work.</p><p><strong>Freeze-thaw and efflorescence.</strong> You get one person who shows up, looks at your actual surfaces, and cleans them the way each one needs. Concrete, pavers, brick, and natural stone do not all respond the same, and Eagle has plenty of every kind. The goal is a clean that looks even and lasts, not a quick pass that leaves wand marks and missed edges.</p>"
       }
     },
     {
@@ -46,7 +63,7 @@
           "variant": "text"
         },
         "heading": "Pressure Washing Built for Eagle Conditions",
-        "body": "<p><strong>Gravel and ag dust on the north end.</strong> Out on the north-end estates along Beacon Light and Horseshoe Bend Road, gravel roads, ag traffic, and foothills wind push a steady film of fine dust onto driveways and walkways. That grit grinds into the surface and dulls everything. Monarch cleans it out at the right pressure for the material, then rinses so the dust does not just settle back into the pores.</p><p><strong>Freeze-thaw and efflorescence.</strong> Eagle winters bring hard freeze-thaw cycles, and on masonry and pavers that often shows up as efflorescence, the chalky white haze that surfaces as moisture works through the stone. Around premium hardscape in places like Corrente Bello and Wedgewood Estates, that haze is common on patios, retaining walls, and pool coping. The right approach lifts it without chewing up the surface.</p><p><strong>Hard water near sprinklers.</strong> Hard water is a real factor here too, and it shows on concrete near sprinkler overspray and hose bibs as cloudy mineral staining. Homes in the foothills and on private wells tend to run harder still. Monarch targets that staining directly instead of blasting the whole slab and hoping.</p>"
+        "body": "<p>Out on the north-end estates along Beacon Light and Horseshoe Bend Road, gravel roads, ag traffic, and foothills wind push a steady film of fine dust onto driveways and walkways. That grit grinds into the surface and dulls everything. Monarch cleans it out at the right pressure for the material, then rinses so the dust does not just settle back into the pores.</p><p>Eagle winters bring hard freeze-thaw cycles, and on masonry and pavers that often shows up as efflorescence, the chalky white haze that surfaces as moisture works through the stone. Around premium hardscape in places like Corrente Bello and Wedgewood Estates, that haze is common on patios, retaining walls, and pool coping. The right approach lifts it without chewing up the surface.</p><p>Hard water is a real factor here too, and it shows on concrete near sprinkler overspray and hose bibs as cloudy mineral staining. Homes in the foothills and on private wells tend to run harder still. Monarch targets that staining directly instead of blasting the whole slab and hoping.</p>"
       }
     },
     {
