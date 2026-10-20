@@ -182,11 +182,28 @@ export async function getMagnets() {
   return (await all("magnets")).map(mapMagnet);
 }
 
-/** One magnet by slug. Returns null when the slug is unset or does not resolve. */
-export async function getMagnet(slug?: string) {
-  if (!slug) return null;
-  const { entry } = await getEmDashEntry("magnets" as any, slug);
-  return entry ? mapMagnet(entry) : null;
+/**
+ * One magnet, by whatever the caller has.
+ *
+ * `posts.magnet` is a reference field so the admin shows a dropdown instead of
+ * asking an editor to type a slug exactly right, and a reference stores the
+ * target's translationGroup id rather than its slug (same as services.category).
+ * A `magnet:offer` section, being hand-authored JSON, naturally carries a slug.
+ * Both are accepted: try the slug lookup first, then fall back to matching on
+ * translationGroup, so neither caller has to know how the other works.
+ *
+ * Returns null when unset or unresolvable, which callers treat as "no magnet".
+ */
+export async function getMagnet(ref?: string) {
+  if (!ref) return null;
+
+  const { entry } = await getEmDashEntry("magnets" as any, ref);
+  if (entry) return mapMagnet(entry);
+
+  const match = (await all("magnets")).find(
+    (e: any) => e.data?.translationGroup === ref || e.id === ref,
+  );
+  return match ? mapMagnet(match) : null;
 }
 
 // ---- posts (byline → author, portableText body) -----------------------------
