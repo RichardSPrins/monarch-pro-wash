@@ -28,6 +28,10 @@ interface Props {
     ctaLabel: string;
     image?: string;
     successBody?: string;
+    /** card (default) | banner | compact */
+    variant?: string;
+    /** brand-secondary (default) | primary | alt | muted */
+    theme?: string;
   };
   /** Article slug, so the CRM shows which post produced the lead. */
   postSlug?: string;
@@ -35,10 +39,15 @@ interface Props {
 
 const { magnet, postSlug } = Astro.props;
 const usable = Boolean(magnet?.file);
+
+// Layout and colour are per-magnet so the same offer can read as a quiet
+// in-article card on one page and a full-width band on another.
+const variant = magnet?.variant ?? "card";
+const theme = magnet?.theme ?? "brand-secondary";
 ---
 
 {usable && (
-  <aside class="magnet" data-magnet data-slug={magnet.slug} data-file={magnet.file} data-post={postSlug}>
+  <aside class:list={["magnet", `magnet-${variant}`, `magnet-theme-${theme}`]} data-magnet data-slug={magnet.slug} data-file={magnet.file} data-post={postSlug}>
     <div class="magnet-body">
       <span class="magnet-kicker">Free download</span>
       <h2>{magnet.title}</h2>
@@ -149,8 +158,28 @@ const usable = Boolean(magnet?.file);
     border: 1px solid var(--theme-border, rgba(255, 255, 255, 0.16));
     border-radius: var(--radius-lg, 0.75rem);
     padding: 1.75rem; margin: 3rem 0;
-    background: color-mix(in srgb, var(--color-brand-secondary, #2fa8b5) 10%, transparent);
   }
+
+  /* Colour: a tint of the chosen brand surface, so the block separates from
+     body copy without becoming a second hero. */
+  .magnet-theme-brand-secondary { background: color-mix(in srgb, var(--color-brand-secondary, #2fa8b5) 10%, transparent); }
+  .magnet-theme-primary         { background: color-mix(in srgb, var(--color-primary) 10%, transparent); }
+  .magnet-theme-alt             { background: color-mix(in srgb, #ffffff 6%, transparent); }
+  .magnet-theme-muted           { background: var(--t-bg-muted, rgba(0,0,0,0.18)); }
+
+  /* Layouts.
+     card    — default, art beside the copy
+     banner  — full width, art hidden, centred, for between-section placement
+     compact — tighter padding and no art, for a sidebar or a short post */
+  .magnet-banner { grid-template-columns: 1fr; text-align: center; padding: 2.25rem 1.75rem; }
+  .magnet-banner .magnet-art { display: none; }
+  .magnet-banner .magnet-form { justify-content: center; }
+  .magnet-banner .magnet-list { display: inline-grid; text-align: left; }
+
+  .magnet-compact { grid-template-columns: 1fr; padding: 1.25rem; }
+  .magnet-compact .magnet-art { display: none; }
+  .magnet-compact .magnet-list { display: none; }
+  .magnet-compact h2 { font-size: 1.125rem; }
   @media (max-width: 720px) { .magnet { grid-template-columns: 1fr; } }
 
   .magnet-kicker {

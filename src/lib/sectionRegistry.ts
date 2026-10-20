@@ -231,6 +231,7 @@ import ServiceAreasChips from "@/components/sections/service-areas/ServiceAreasC
 import ServiceAreasColumns from "@/components/sections/service-areas/ServiceAreasColumns.astro";
 import ServiceAreasNeighborhoods from "@/components/sections/service-areas/ServiceAreasNeighborhoods.astro";
 import BlogRecentPosts from "@/components/sections/blog/BlogRecentPosts.astro";
+import MagnetOffer from "@/components/sections/magnets/MagnetOffer.astro";
 import ServiceAreasFeaturedSplit from "@/components/sections/service-areas/ServiceAreasFeaturedSplit.astro";
 import ServiceAreasMapChips from "@/components/sections/service-areas/ServiceAreasMapChips.astro";
 import ServiceAreasDirectory from "@/components/sections/service-areas/ServiceAreasDirectory.astro";
@@ -498,6 +499,7 @@ export const sectionRegistry: Record<string, AstroComponentFactory> = {
   "service-areas:columns": ServiceAreasColumns,
   "service-areas:neighborhoods": ServiceAreasNeighborhoods,
   "blog:recent-posts": BlogRecentPosts,
+  "magnet:offer": MagnetOffer,
   "service-areas:featured-split": ServiceAreasFeaturedSplit,
   "service-areas:map-chips": ServiceAreasMapChips,
   "service-areas:directory": ServiceAreasDirectory,

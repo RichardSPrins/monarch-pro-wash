@@ -1,0 +1,55 @@
+---
+/**
+ * magnet:offer — drop a lead magnet from the `magnets` collection onto any page.
+ *
+ * The companion to the per-post `magnet` field. A post picks a magnet by slug
+ * and gets it rendered in a fixed spot; this section does the same for CMS
+ * pages, where it can sit wherever you place it in the section list.
+ *
+ * Copy, file, layout and colour all live on the magnet record, so one offer
+ * stays consistent everywhere it appears and is edited in exactly one place.
+ * The optional overrides below exist for the case where the same offer needs a
+ * different pitch on a particular page, and nothing more.
+ *
+ * Renders nothing when the slug is unset or does not resolve, so a half-
+ * configured section is invisible rather than broken.
+ */
+import { getMagnet } from "@/lib/content";
+import PostMagnet from "@/components/blog/PostMagnet.astro";
+
+interface Props {
+  theme?: string;
+  data?: {
+    /** Slug of the magnet to show. Required. */
+    magnet?: string;
+    /** Per-placement overrides. Leave unset to use the magnet's own copy. */
+    title?: string;
+    description?: string;
+    ctaLabel?: string;
+    variant?: string;
+  };
+}
+
+const { theme, data } = Astro.props;
+const found = await getMagnet(data?.magnet);
+
+const magnet = found
+  ? {
+      ...found.data,
+      title: data?.title ?? found.data.title,
+      description: data?.description ?? found.data.description,
+      ctaLabel: data?.ctaLabel ?? found.data.ctaLabel,
+      variant: data?.variant ?? found.data.variant,
+      // A section-level theme wins, so the offer can match the band it sits in.
+      theme: theme ?? found.data.theme,
+    }
+  : null;
+---
+
+{magnet && (
+  <section class="section-wrapper section-py-sm">
+    <div class="section-container">
+      <PostMagnet magnet={magnet} />
+    </div>
+  </section>
+)}

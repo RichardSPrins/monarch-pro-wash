@@ -89,15 +89,19 @@ export default defineConfig({
 
   vite: {
     plugins: [tailwindcss()],
-    // `astro build` and `astro dev` both default to node_modules/.vite. A build
-    // rewrites that directory, which pulls the pre-bundled SSR deps out from
-    // under a dev server that is still running and leaves every route 500ing
-    // with "the file does not exist ... which is in the optimize deps
-    // directory". Giving the build its own cache directory keeps the two from
-    // touching each other, so a deploy no longer breaks the running dev server.
+    // `astro build` and `astro dev` both default to node_modules/.vite, and a
+    // build rewriting it under a running dev server leaves that server 500ing
+    // on every route with "the file does not exist ... which is in the optimize
+    // deps directory".
     //
-    // optimizeDeps.exclude does NOT fix this: the problem is the shared cache
-    // being rewritten, not which modules get pre-bundled.
+    // Pointing the build at its own cache directory reduces the collision but
+    // does NOT eliminate it: something still touches node_modules/.vite after a
+    // build completes. optimizeDeps.exclude does not help either; the problem
+    // is the shared cache, not which modules get pre-bundled.
+    //
+    // The reliable fix is operational: stop the dev server before building.
+    //   npx astro dev stop && npm run build && npm run dev
+    // If it does happen, `rm -rf node_modules/.vite` and restart dev.
     cacheDir: process.argv.includes('build')
       ? 'node_modules/.vite-build'
       : 'node_modules/.vite',

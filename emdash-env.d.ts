@@ -63,6 +63,8 @@ export interface Magnet {
   cta_label?: string;
   image?: string;
   success_body?: string;
+  variant?: string;
+  theme?: string;
   createdAt: Date;
   updatedAt: Date;
   publishedAt: Date | null;

@@ -170,6 +170,10 @@ function mapMagnet(e: any) {
       ctaLabel: d.cta_label ?? "Send it to me",
       image: d.image ?? undefined,
       successBody: d.success_body ?? undefined,
+      // Presentation, chosen per magnet in the CMS. Falls back to the card
+      // layout on the brand-secondary surface.
+      variant: (d.variant as string) || "card",
+      theme: (d.theme as string) || "brand-secondary",
     },
   };
 }

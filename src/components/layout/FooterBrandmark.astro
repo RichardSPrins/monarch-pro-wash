@@ -29,8 +29,8 @@ const addr = [business.address, [business.city, business.state].filter(Boolean).
         </a>
         {business.tagline && <p class="text-fg-inverse/60 text-sm leading-relaxed max-w-xs m-0">{business.tagline}</p>}
         <div class="flex flex-col gap-1.5 text-sm text-fg-inverse/75">
-          {business.phone && <a href={`tel:${business.phone}`} class="hover:text-fg-inverse no-underline w-fit">{business.phone}</a>}
-          {business.email && <a href={`mailto:${business.email}`} class="hover:text-fg-inverse no-underline w-fit">{business.email}</a>}
+          {business.phone && <a href={`tel:${business.phone}`} class="fbm-link no-underline w-fit">{business.phone}</a>}
+          {business.email && <a href={`mailto:${business.email}`} class="fbm-link no-underline w-fit">{business.email}</a>}
           {addr && <span>{addr}</span>}
         </div>
         <div class="flex gap-2 mt-1">
@@ -41,7 +41,7 @@ const addr = [business.address, [business.city, business.state].filter(Boolean).
 
         <div class="mt-3 flex flex-col gap-1.5 text-xs text-fg-inverse/50">
           <div class="flex flex-wrap gap-x-4 gap-y-1">
-            {legal.filter((l) => l.href).map((l) => <a href={l.href} class="hover:text-fg-inverse no-underline">{l.label}</a>)}
+            {legal.filter((l) => l.href).map((l) => <a href={l.href} class="fbm-link no-underline">{l.label}</a>)}
           </div>
           <span>© {year} {business.businessName}. All rights reserved.</span>
         </div>
@@ -54,7 +54,7 @@ const addr = [business.address, [business.city, business.state].filter(Boolean).
           <h3 class="text-xs font-bold uppercase tracking-widest text-fg-inverse/45 m-0">{g.label}</h3>
           <ul class="flex flex-col gap-2 list-none m-0 p-0">
             {(g.children ?? []).slice(0, 6).map((c) => (
-              <li><a href={c.href ?? "#"} class="text-sm text-fg-inverse/75 hover:text-fg-inverse no-underline">{c.label}</a></li>
+              <li><a href={c.href ?? "#"} class="fbm-link text-sm text-fg-inverse/75 no-underline">{c.label}</a></li>
             ))}
           </ul>
         </nav>
@@ -76,6 +76,27 @@ const addr = [business.address, [business.city, business.state].filter(Boolean).
 </footer>
 
 <style>
+  /* Footer links answer in the brand orange on hover, keyboard focus and while
+     being pressed, so an interaction is visibly acknowledged. Previously they
+     brightened to white, which on a navy footer reads as almost no change at
+     all. :focus-visible is included so keyboard users get the same signal, and
+     :active gives a distinct pressed state on touch, where there is no hover. */
+  .fbm-link {
+    transition: color 0.15s ease;
+  }
+  .fbm-link:hover,
+  .fbm-link:focus-visible {
+    color: var(--color-primary);
+  }
+  .fbm-link:active {
+    color: var(--color-primary-light, var(--color-primary));
+  }
+  .fbm-link:focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+
   .fbm-soc { width: 2rem; height: 2rem; border-radius: 999px; display: grid; place-items: center; color: rgba(255,255,255,0.8); border: 1px solid rgba(255,255,255,0.16); transition: background 0.18s, color 0.18s, border-color 0.18s; }
   .fbm-soc:hover { background: var(--color-primary); border-color: var(--color-primary); color: #fff; }
   /* The source PNG is 1536x1024 but the illustration only occupies rows
