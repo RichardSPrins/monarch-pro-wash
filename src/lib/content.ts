@@ -149,6 +149,42 @@ export async function getReviews() {
   });
 }
 
+
+// ---- lead magnets -----------------------------------------------------------
+
+/**
+ * Downloadable offers. A post references one by slug, and marketing pages can
+ * drop the same offer through the magnet:cta section.
+ */
+function mapMagnet(e: any) {
+  const d = e.data ?? {};
+  return {
+    id: e.id,
+    data: {
+      slug: d.slug ?? e.id,
+      title: d.title,
+      description: d.description ?? undefined,
+      // Authored one per line, which is friendlier in a plain textarea than JSON.
+      bullets: String(d.bullets ?? "").split("\n").map((x: string) => x.trim()).filter(Boolean),
+      file: d.file ?? undefined,
+      ctaLabel: d.cta_label ?? "Send it to me",
+      image: d.image ?? undefined,
+      successBody: d.success_body ?? undefined,
+    },
+  };
+}
+
+export async function getMagnets() {
+  return (await all("magnets")).map(mapMagnet);
+}
+
+/** One magnet by slug. Returns null when the slug is unset or does not resolve. */
+export async function getMagnet(slug?: string) {
+  if (!slug) return null;
+  const { entry } = await getEmDashEntry("magnets" as any, slug);
+  return entry ? mapMagnet(entry) : null;
+}
+
 // ---- posts (byline → author, portableText body) -----------------------------
 
 function mapPost(e: any) {
@@ -165,6 +201,7 @@ function mapPost(e: any) {
       // relation, then to the owner, never to "Admin".
       author: d.author ?? d.byline?.displayName ?? "Richard Prins",
       cover: d.cover ?? undefined,
+      magnet: d.magnet ?? undefined,
       coverAlt: d.cover_alt ?? undefined,
       category: d.topic ?? undefined,
       readMinutes: d.read_minutes ?? undefined,

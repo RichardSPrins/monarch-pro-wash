@@ -52,6 +52,24 @@ export interface Faq {
   terms?: Record<string, TaxonomyTerm[]>;
 }
 
+export interface Magnet {
+  id: string;
+  slug: string | null;
+  status: string;
+  title: string;
+  description?: string;
+  bullets?: string;
+  file?: string;
+  cta_label?: string;
+  image?: string;
+  success_body?: string;
+  createdAt: Date;
+  updatedAt: Date;
+  publishedAt: Date | null;
+  bylines?: ContentBylineCredit[];
+  terms?: Record<string, TaxonomyTerm[]>;
+}
+
 export interface Page {
   id: string;
   slug: string | null;
@@ -81,6 +99,7 @@ export interface Post {
   topic?: string;
   author?: string;
   read_minutes?: number;
+  magnet?: string;
   createdAt: Date;
   updatedAt: Date;
   publishedAt: Date | null;
@@ -175,6 +194,7 @@ declare module "emdash" {
     appearance: Appearance;
     business: Business;
     faqs: Faq;
+    magnets: Magnet;
     pages: Page;
     posts: Post;
     pricing: Pricing;

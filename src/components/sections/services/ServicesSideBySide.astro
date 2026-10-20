@@ -4,7 +4,6 @@ import type { Eyebrow, SectionCTA } from "@/types/sections";
 import Badge from "@/components/elements/badge/Badge.astro";
 import { Button } from "@/components/elements/button";
 import SmartImage from "@/components/media/SmartImage.astro";
-import roofingCrew from "@/assets/images/roofing-crew.jpg";
 
 /**
  * services:side-by-side — image beside a compact list of service CATEGORIES
@@ -49,7 +48,6 @@ const imageLeft = data?.imagePosition !== "right";
         <SmartImage
           src={data?.image?.src}
           alt={data?.image?.alt ?? ""}
-          fallback={roofingCrew}
           widths={[480, 768, 1024]}
           sizes="(min-width: 1024px) 50vw, 100vw"
           class="w-full h-full object-cover aspect-[4/3]"

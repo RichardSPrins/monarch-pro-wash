@@ -22,7 +22,7 @@ const addr = [business.address, [business.city, business.state].filter(Boolean).
 
 <footer class="fbm bg-bg-inverse text-fg-inverse relative overflow-hidden">
   <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-16 pb-6 relative z-10">
-    <div class="grid gap-10 md:grid-cols-2 lg:grid-cols-[1.5fr_1fr_1fr_1fr]">
+    <div class="grid gap-10 md:grid-cols-2 lg:grid-cols-[1.4fr_1fr_1fr_1fr_1fr]">
       <div class="flex flex-col gap-4">
         <a href="/" class="no-underline w-fit" aria-label={business.businessName}>
           <Logo business={business} class="h-auto w-auto max-h-14 max-w-[220px] object-contain" />
@@ -47,7 +47,9 @@ const addr = [business.address, [business.city, business.state].filter(Boolean).
         </div>
       </div>
 
-      {groups.slice(0, 3).map((g) => (
+      {/* Four groups: Services, Service Areas, Company, Resources. Raising this
+          cap means the grid below has to make room for a fourth column too. */}
+      {groups.slice(0, 4).map((g) => (
         <nav class="flex flex-col gap-2.5">
           <h3 class="text-xs font-bold uppercase tracking-widest text-fg-inverse/45 m-0">{g.label}</h3>
           <ul class="flex flex-col gap-2 list-none m-0 p-0">

@@ -14,7 +14,8 @@ import { PortableText, WidgetArea } from "emdash/ui";
 import Prose from "@/components/starwind/prose/Prose.astro";
 import { Button } from "@/components/elements/button";
 import { getSeoMeta } from "emdash/seo";
-import { getPost } from "@/lib/content";
+import { getPost, getMagnet } from "@/lib/content";
+import PostMagnet from "@/components/blog/PostMagnet.astro";
 import { relatedPosts } from "@/lib/blog";
 import { getBusinessData } from "@/lib/utils";
 import siteConfig from "@/config/site.config";
@@ -48,6 +49,10 @@ const readMinutes = d.readMinutes ?? Math.max(1, Math.round(wordsIn(d.body) / 22
 // Related: same category first, then recent, never this post. Two bounded
 // queries rather than pulling the whole archive and filtering in memory.
 const related = await relatedPosts(d.slug, d.category, 3);
+
+// Optional per-post lead magnet, chosen in the CMS by slug. Renders nothing
+// when unset, or when the chosen magnet has no file to hand over.
+const magnet = await getMagnet(d.magnet);
 
 const cover = d.cover ?? null;
 const ogImage = meta.ogImage ?? (cover ? new URL(cover, Astro.site).toString() : undefined);
@@ -90,6 +95,8 @@ const ogImage = meta.ogImage ?? (cover ? new URL(cover, Astro.site).toString() :
     <div class="post-body">
       <Prose><PortableText value={d.body} /></Prose>
     </div>
+
+    {magnet && <PostMagnet magnet={magnet.data} postSlug={d.slug} />}
 
     <aside class="inline-cta">
       <h2>Want this handled instead?</h2>
