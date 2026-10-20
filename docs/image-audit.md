@@ -17,7 +17,7 @@ from stock until the real thing exists.
 
 | Slot | Count | Status | Priority |
 |---|---:|---|---|
-| Hero backgrounds | **50** | empty | **1** |
+| Hero backgrounds | **52** | empty | **1** |
 | Before / after pairs | reserved | section hidden, no pairs | **1** |
 | Owner portrait | 1 | shows "RP" initials | **2** |
 | Service-page feature rows | **24** | empty | 2 |
@@ -33,7 +33,7 @@ that uses them.
 
 ---
 
-## 1. Hero backgrounds — 50 slots
+## 1. Hero backgrounds — 52 slots
 
 The biggest single win. Every hero currently renders as flat navy. The component already supports
 a background with a darkening overlay (`backgroundImage: { src, overlayOpacity }`, default 60%),
@@ -62,7 +62,12 @@ One per service, plus the services hub. Each should show **that specific service
 | `/services/graffiti-removal` | Tagged wall mid-removal, half cleared |
 | `/services` (hub) | Wide shot of a whole property, several surfaces visible |
 
-### 1c. Service-in-area pages — 40 slots (`hero:split-form`)
+### 1c. About and Contact — 2 slots (`hero:minimal`)
+Both support a background image and both are currently flat navy. About wants the warmest image
+you have of Richard or the van; Contact wants something calm and wide, a Treasure Valley
+streetscape or foothills horizon. Low priority but they are real slots.
+
+### 1d. Service-in-area pages — 40 slots (`hero:split-form`)
 Five towns × eight services. **Do not shoot 40 photographs.** The practical approach is one
 recognisable image per town, reused across that town's eight pages: a streetscape or housing type
 that reads as Boise, Meridian, Nampa, Eagle or Caldwell. North End bungalows, Meridian
@@ -204,7 +209,7 @@ siding of a North End bungalow in Boise", not "pressure washing".
 1. **Three before/after pairs** from your next three jobs. Highest value, costs nothing but remembering to shoot the before.
 2. **Owner portrait.** One hour with anyone competent.
 3. **Five town hero images.** Covers 40 pages.
-4. **Nine service hero images.** Shoot during normal work over a few weeks.
+4. **Nine service hero images**, plus the home, About and Contact heroes. Shoot during normal work over a few weeks.
 5. **24 feature-row detail shots.** Phone photos during jobs.
 6. Replace the generated About and blog artwork last.
 
